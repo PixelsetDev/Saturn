@@ -2,14 +2,13 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+The following versions of Saturn are currenlty supported and will receive future Security Updated.
 
 | Version | Supported          |
 | ------- | ------------------ |
 | BETA 1.0.0  | :white_check_mark: |
 | ALPHA 1.4.0 | :white_check_mark: |
-| < ALPHA 1.3.5 | :x: |
+| ALPHA 1.3.5 & Below | :x: |
 
 ## Reporting a Vulnerability
 
