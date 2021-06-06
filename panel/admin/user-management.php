@@ -36,7 +36,7 @@
                                         </button>
                                         <div class="absolute top-0 left-0 h-screen w-screen z-40" x-show="open">
                                             <div class="h-screen w-full z-40 inset-0 overflow-y-auto">
-                                                <div class="absolute w-full h-full inset-0 bg-gray-500 opacity-75"></div>
+                                                <div @click="open = false" class="absolute w-full h-full inset-0 bg-gray-500 opacity-75"></div>
                                                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                                                     <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"></span>
                                                     <div class="inline-block relative overflow-hidden transform transition-all sm:align-middle sm:max-w-lg" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
@@ -69,10 +69,10 @@
                                                                                 <input type="text" name="userid" id="userid" value="'.$value.'" class="hidden">
                                                                                 <div class="relative inline-block w-full text-gray-700">
                                                                                     <select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-                                                                                        <option value="4" selected>Administrator</option>
-                                                                                        <option value="3">Editor</option>
-                                                                                        <option value="2">Writer</option>
-                                                                                        <option value="0">Restricted</option>
+                                                                                        <option value="4"';if(get_user_roleID($value) == '4'){echo' selected';}echo'>Administrator</option>
+                                                                                        '; if(CONFIG_PAGE_APPROVALS==true OR get_user_roleID($value) == '3'){echo'<option value="3"';if(get_user_roleID($value) == '3'){echo' selected';}echo'>Editor</option>';} echo'
+                                                                                        <option value="2"';if(get_user_roleID($value) == '2'){echo' selected';}echo'>Writer</option>
+                                                                                        <option value="0"';if(get_user_roleID($value) == '0'){echo' selected';}echo'>Restricted</option>
                                                                                     </select>
                                                                                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                                                                         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
