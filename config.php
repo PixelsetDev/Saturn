@@ -16,12 +16,12 @@
     define('CONFIG_SITE_CHARSET', 'UTF-8');
     define('CONFIG_SITE_TIMEZONE', 'Europe/London');
     /* Database */
-    define('DATABASE_HOST', 'sv9.byethost9.org');
+    define('DATABASE_HOST', 'localhost');
     define('DATABASE_PORT', '3306');
-    define('DATABASE_NAME', 'lmwncouk_geolhistory');
-    define('DATABASE_USERNAME', 'lmwncouk_geolhis');
-    define('DATABASE_PASSWORD', 'BKO,V@6Gwys%');
-    define('DATABASE_PREFIX', 'gh_');
+    define('DATABASE_NAME', '');
+    define('DATABASE_USERNAME', '');
+    define('DATABASE_PASSWORD', '');
+    define('DATABASE_PREFIX', '');
     /* Email */
     define('CONFIG_EMAIL_ADMIN', '');
     define('CONFIG_EMAIL_FUNCTION', 'phpmail');
