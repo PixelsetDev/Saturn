@@ -1,0 +1,14 @@
+Options -Indexes
+
+ErrorDocument 401 /error.php?error=401
+ErrorDocument 403 /error.php?error=403
+ErrorDocument 405 /error.php?error=405
+ErrorDocument 408 /error.php?error=408
+ErrorDocument 413 /error.php?error=413
+ErrorDocument 414 /error.php?error=414
+ErrorDocument 425 /error.php?error=425
+ErrorDocument 429 /error.php?error=429
+ErrorDocument 500 /error.php?error=500
+ErrorDocument 501 /error.php?error=501
+ErrorDocument 502 /error.php?error=502
+ErrorDocument 504 /error.php?error=504

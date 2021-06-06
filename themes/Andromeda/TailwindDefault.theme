@@ -1,0 +1,19 @@
+name: "Andromeda";
+slug: "Andromeda";
+version: "1.0.0";
+author: "Lewis Milburn";
+framework: "Tailwind";
+external-css: false;
+external-js: "<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>";
+
+theme-templates {
+	- Homepage
+	- Default
+}
+theme-colours {
+	- Sunset
+	- Ocean
+	- Emerald
+	- Light
+	- Dark
+}

@@ -1,0 +1,11 @@
+Template: "TailwindDefault";
+Theme: "TailwindDefault";
+html: {
+
+}
+css: {
+
+}
+js: {
+
+}
