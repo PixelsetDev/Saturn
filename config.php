@@ -9,34 +9,34 @@
      */
 
     /* General */
-    define('CONFIG_INSTALL_URL', '/Saturn_BETA');
-    define('CONFIG_SITE_NAME', 'Saturn on LMWN Workshop');
-    define('CONFIG_SITE_DESCRIPTION', 'A website running the Saturn Content Management System.');
-    define('CONFIG_SITE_KEYWORDS', '');
-    define('CONFIG_SITE_CHARSET', 'UTF-8');
-    define('CONFIG_SITE_TIMEZONE', 'Europe/London');
+    const CONFIG_INSTALL_URL = '/Saturn_BETA';
+    const CONFIG_SITE_NAME = 'Saturn on LMWN Workshop';
+    const CONFIG_SITE_DESCRIPTION = 'A website running the Saturn Content Management System.';
+    const CONFIG_SITE_KEYWORDS = '';
+    const CONFIG_SITE_CHARSET = 'UTF-8';
+    const CONFIG_SITE_TIMEZONE = 'Europe/London';
     /* Database */
-    define('DATABASE_HOST', 'sv9.byethost9.org');
-    define('DATABASE_PORT', '3306');
-    define('DATABASE_NAME', 'lmwncouk_geolhistory');
-    define('DATABASE_USERNAME', 'lmwncouk_geolhis');
-    define('DATABASE_PASSWORD', 'BKO,V@6Gwys%');
-    define('DATABASE_PREFIX', 'gh_');
+    const DATABASE_HOST = 'localhost';
+    const DATABASE_PORT = '3306';
+    const DATABASE_NAME = '';
+    const DATABASE_USERNAME = '';
+    const DATABASE_PASSWORD = '';
+    const DATABASE_PREFIX = '';
     /* Email */
-    define('CONFIG_EMAIL_ADMIN', '');
-    define('CONFIG_EMAIL_FUNCTION', 'phpmail');
-    define('CONFIG_EMAIL_SENDFROM', 'noreply@saturncms.net');
+    const CONFIG_EMAIL_ADMIN = '';
+    const CONFIG_EMAIL_FUNCTION = 'phpmail';
+    const CONFIG_EMAIL_SENDFROM = 'noreply@saturncms.net';
     /* Editing */
-    define('CONFIG_PAGE_APPROVALS', true);
-    define('CONFIG_MAX_TITLE_CHARS', '64');
-    define('CONFIG_MAX_PAGE_CHARS', '50000');
-    define('CONFIG_MAX_ARTICLE_CHARS', '50000');
-    define('CONFIG_MAX_REFERENCES_CHARS', '10000');
-    define('CONFIG_MAX_BLOCK_CHARS', '2000');
+    const CONFIG_PAGE_APPROVALS = true;
+    const CONFIG_MAX_TITLE_CHARS = '64';
+    const CONFIG_MAX_PAGE_CHARS = '50000';
+    const CONFIG_MAX_ARTICLE_CHARS = '50000';
+    const CONFIG_MAX_REFERENCES_CHARS = '10000';
+    const CONFIG_MAX_BLOCK_CHARS = 2000;
     /* Developer Tools */
-    define('CONFIG_DEBUG', false);
-    define('CONFIG_PHP_ERRORS', false);
+    const CONFIG_DEBUG = false;
+    const CONFIG_PHP_ERRORS = false;
     /* Global Security System */
-    define('SECURITY_ACTIVE', true);
-    define('SECURITY_MODE', 'clean');
-    define('LOGGING_ACTIVE', true);
+    const SECURITY_ACTIVE = true;
+    const SECURITY_MODE = 'clean';
+    const LOGGING_ACTIVE = true;
