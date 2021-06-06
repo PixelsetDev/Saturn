@@ -1,4 +1,5 @@
 <?php
+    require_once 'checkData.php';
     require_once 'checkInput.php';
     require_once 'checkOutput.php';
     require_once 'checksum.php';
