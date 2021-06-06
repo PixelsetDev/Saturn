@@ -21,7 +21,7 @@
     const DATABASE_NAME = '';
     const DATABASE_USERNAME = '';
     const DATABASE_PASSWORD = '';
-    const DATABASE_PREFIX = '';
+    const DATABASE_PREFIX = 'sat_';
     /* Email */
     const CONFIG_EMAIL_ADMIN = '';
     const CONFIG_EMAIL_FUNCTION = 'phpmail';
