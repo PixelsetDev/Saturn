@@ -32,6 +32,7 @@
     require_once __DIR__ . '/panel/theme.php';
     /* GUI */
     require_once __DIR__ . '/processes/gui/alerts.php';
+    require_once __DIR__ . '/processes/gui/user_profile.php';
     /* Authenticate Session */
     if(!isset($_SESSION['id'])) {header('location:'.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=true');exit;}
     else if (!isset($_SESSION['role_id'])) {header('location:' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');exit;}
