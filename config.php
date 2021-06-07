@@ -34,7 +34,6 @@
     const CONFIG_MAX_REFERENCES_CHARS = '10000';
     /* Developer Tools */
     const CONFIG_DEBUG = false;
-    const CONFIG_PHP_ERRORS = false;
     /* Global Security System */
     const SECURITY_ACTIVE = true;
     const SECURITY_MODE = 'clean';

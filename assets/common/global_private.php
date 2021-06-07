@@ -12,11 +12,6 @@
     /* Developer Tools */
     if(CONFIG_DEBUG) {
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
-        if(CONFIG_PHP_ERRORS) {
-            error_reporting(E_ALL & ~E_NOTICE);
-        } else {
-            error_reporting(0);
-        }
     }
     /* Database: Required Files */
     require_once __DIR__ . '/processes/database/get/activity.php';
