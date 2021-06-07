@@ -2,7 +2,7 @@
     ob_start();
     include_once(__DIR__.'/../../../assets/common/global_private.php');
 
-    $pageID = $_GET['pageID'];
+    $pageID = checkInput('DEFAULT', $_GET['pageID']);
 
     global $conn;
 
