@@ -11,7 +11,7 @@
                         </svg>
                     </button>
                 </div>
-                <nav :class="{'flex': open, 'hidden': !open}" class="flex-wrap flex-col flex-auto pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                <nav :class="{'flex': open, 'hidden': !open}" class="flex-wrap flex-col flex-auto pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row" aria-label="Saturn Panel Menu">
                     <?php if (get_user_roleID($_SESSION['id']) > 2 AND CONFIG_PAGE_APPROVALS == true) {echo '<div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 md:ml-4 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline">
                             <div class="flex">
