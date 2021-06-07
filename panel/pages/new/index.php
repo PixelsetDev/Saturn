@@ -7,7 +7,7 @@
             include_once(__DIR__.'/../../../assets/common/panel/theme.php');
 
             if(isset($_GET['create'])) {
-                $pageTitle = $_GET['pagetitle'];
+                $pageTitle = trim(checkInput('DEFAULT',$_POST['pagetitle']));
             } else if(isset($_POST['posted'])) {
                 $pageURL = trim(checkInput('DEFAULT',$_POST['pageurl']));
                 $pageCategory = trim(checkInput('DEFAULT',$_POST['pagecategory']));
