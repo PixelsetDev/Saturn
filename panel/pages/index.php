@@ -77,23 +77,12 @@
                                             <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                                 <div class="absolute inset-0 px-4 sm:px-6 h-full">
                                                     <p>Please select a page.</p>';
-                    $query = "select title, id from ".DATABASE_PREFIX."pages where category_id = '$i'";
-                    $rs = mysqli_query($conn,$query);
-                    $row = mysqli_fetch_assoc($rs);
-                    $o = $row['id'];
+                    $o = pageQuery_1($i);
 
-                    $query = "select title, id from ".DATABASE_PREFIX."pages where category_id = '$i' AND id = '$o'";
-                    $rs = mysqli_query($conn,$query);
-                    $row = mysqli_fetch_assoc($rs);
+                    $row = pageQuery_2($i,$o);
 
                     while ($row['title'] != null) {
-                        unset($query);
-                        unset($rs);
-                        unset($row);
-                        $query = "select title, id from ".DATABASE_PREFIX."pages where category_id = '$i' AND id = '$o'";
-
-                        $rs = mysqli_query($conn,$query);
-                        $row = mysqli_fetch_assoc($rs);
+                        $row = pageQuery_2($i,$o);
 
                         if($row['title'] != null) {
                             $status = get_page_status($o); if ($status == 'green') {$complete++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS == true){$pending++;}else{$status='green';$complete++;}} $total++;

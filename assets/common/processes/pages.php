@@ -40,3 +40,21 @@ function get_assigned_editors() {
                         $users = get_user_firstname($uid);
                     }
 }
+
+function pageQuery_1($i){
+    global $conn;
+
+    $query = "select title, id from ".DATABASE_PREFIX."pages where category_id = '$i'";
+    $rs = mysqli_query($conn,$query);
+    $row = mysqli_fetch_assoc($rs);
+
+    return $row['id'];
+}
+function pageQuery_2($i,$o) {
+    global $conn;
+
+    $query = "select title, id from ".DATABASE_PREFIX."pages where category_id = '$i' AND id = '$o'";
+    $rs = mysqli_query($conn,$query);
+
+    return mysqli_fetch_assoc($rs);
+}
