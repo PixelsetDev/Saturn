@@ -23,7 +23,7 @@
                         <button onclick="window.history.back();" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Go back
                         </button>
-                        <button onclick="location.href='<?php echo $_GET['url']; ?>';" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
+                        <button onclick="location.href='<?php echo checkInput('DEFAULT', $_GET['url']); ?>';" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Continue
                         </button>
                     </div>
