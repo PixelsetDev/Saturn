@@ -30,7 +30,7 @@
                                     else if($_GET['error'] == '500') { echo 'Internal Server Error.'; }
                                     else if($_GET['error'] == '501') { echo 'Not Implemented.'; }
                                     else if($_GET['error'] == '502') { echo 'Bad Gateway.'; }
-                                    else if($_GET['error'] == '502') { echo 'Service Unavailable.'; }
+                                    else if($_GET['error'] == '503') { echo 'Service Unavailable.'; }
                                     else if($_GET['error'] == '504') { echo 'Gateway Timeout.'; }
                                     else { echo 'Sorry, an error occurred.'; }
                                     log_console('Saturn][ERROR', $_GET['error']);
