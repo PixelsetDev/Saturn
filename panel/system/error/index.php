@@ -45,7 +45,7 @@
             <section class="py-8 px-4 text-center">
                 <div class="max-w-auto mx-auto">
                     <div class="md:max-w-lg mx-auto">
-                        <i class="fas fa-10x fa-exclamation-triangle text-red-500"></i>
+                        <i class="fas fa-10x fa-exclamation-triangle text-red-500" aria-hidden="true"></i>
                     </div>
                     <h2 class="mt-8 text-xl lg:text-5xl text-red-700"><?php echo $errorTitle; ?></h2>
                     <p class="mt-6 text-sm lg:text-base text-red-500"><?php echo $errorDescription; ?></p>

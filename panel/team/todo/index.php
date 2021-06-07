@@ -97,7 +97,7 @@
                     while($listName != NULL){
                         if((get_todo_list_status($i) == '1') AND (get_todo_list_visibility($i) == 'PUBLIC') AND (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
                             echo '<a :class="{ \'active\': tab === \'' . $i . '\' }" @click.prevent="tab = \'' . $i . '\'" class="hover:shadow-lg cursor-pointer w-96 flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-30">
-                        <i class="fas fa-list"></i>
+                        <i class="fas fa-list" aria-hidden="true"></i>
                         <span class="ml-1">'.$listName.'</span>
                     </a>';
                         }
@@ -107,7 +107,7 @@
                     unset($i,$listName);
                 ?>
                 <a :class="{ 'active': tab === 'new' }" @click.prevent="tab = 'new'" class="hover:shadow-lg cursor-pointer w-96 flex-auto flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-30">
-                    <i class="far fa-plus-square"></i>
+                    <i class="far fa-plus-square" aria-hidden="true"></i>
                     <span class="ml-1">Create New</span>
                 </a>
             </div>
@@ -126,13 +126,13 @@
                     </div>
                     <div class="flex items-center space-x-3">
                         <a href="?save='.$i.'" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
-                            Save&nbsp;<i class="far fa-save"></i>
+                            Save&nbsp;<i class="far fa-save" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:alert(\'This feature has not yet been implemented.\');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
-                            Manage&nbsp;<i class="fas fa-cogs"></i>
+                            Manage&nbsp;<i class="fas fa-cogs" aria-hidden="true"></i>
                         </a>
                         <a href="?delete=' . $i . '" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
-                            Delete&nbsp;<i class="far fa-trash-alt"></i>
+                            Delete&nbsp;<i class="far fa-trash-alt" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>';
@@ -156,12 +156,12 @@
                             if ((get_todo_list_visibility($i) == 'PUBLIC') or (get_todo_list_owner_id($i) == $_SESSION['id'])) {
                                 echo '<div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                     <div class="flex-grow">
-                        <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black"></i></span></div></
-                        <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black"></i></span></div>
+                        <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div></
+                        <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div>
                     </div>
                     <div class="flex items-center space-x-3 pr-6">
                         <a href="javascript:alert(\'This feature has not yet been implemented.\');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
-                            Add New&nbsp;<i class="far fa-plus-square"></i>
+                            Add New&nbsp;<i class="far fa-plus-square" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>';
@@ -222,7 +222,7 @@
                         <div>
                             <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                                    <i class="far fa-plus-square"></i>
+                                    <i class="far fa-plus-square" aria-hidden="true"></i>
                                 </span>
                                 Create New
                             </button>

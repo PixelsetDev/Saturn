@@ -44,7 +44,7 @@ session_start();
             <?php if($notifCount > '0') { echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_notification_id($_SESSION['id']).'" class="m-1 bg-white rounded-lg border-gray-300 border p-3 shadow-lg absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
                 <div class="flex flex-row">
                     <div class="animate-pulse px-2 bg-blue-500 rounded-full w-6 h-6 text-white text-center">
-                        <i class="fas fa-info"></i>
+                        <i class="fas fa-info" aria-hidden="true"></i>
                     </div>
                     <div class="ml-2 mr-6">
                         <div class="flex w-full"><span class="font-semibold w-11/12">'.get_notification_title($_SESSION['id']).'</span><span class="w-1/12 text-red-500">x</span></div>
@@ -90,7 +90,7 @@ session_start();
                     <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages">
                         <div class="flex items-center">
                             <span class="bg-green-500 px-3 py-2 h-10 w-10 rounded-full relative">
-                                <i class="far fa-file fa-lg text-white"></i>
+                                <i class="far fa-file fa-lg text-white" aria-hidden="true"></i>
                             </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                                 Pages
@@ -112,7 +112,7 @@ session_start();
                     <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles">
                         <div class="flex items-center">
                             <span class="bg-green-500 px-2 py-2 h-10 w-10 rounded-full relative">
-                                <i class="far fa-newspaper fa-lg text-white"></i>
+                                <i class="far fa-newspaper fa-lg text-white" aria-hidden="true"></i>
                             </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                                 Articles
@@ -135,7 +135,7 @@ session_start();
                     <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages/approvals">
                         <div class="flex items-center">
                             <span class="bg-green-500 px-2 py-2 h-10 w-10 rounded-full relative">
-                                <i class="fas fa-search fa-lg text-white"></i>
+                                <i class="fas fa-search fa-lg text-white" aria-hidden="true"></i>
                             </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                                 Pending <br class="md:hidden block">Approvals
@@ -164,7 +164,7 @@ session_start();
                 <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-gray-800 relative overflow-hidden mt-4">
                     <div class="flex items-center">
                         <span class="bg-green-500 px-3 py-2 h-10 w-10 rounded-full relative">
-                            <i class="fas fa-pencil-alt fa-lg text-white"></i>
+                            <i class="fas fa-pencil-alt fa-lg text-white" aria-hidden="true"></i>
                         </span>
                         <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                             Top Writers
@@ -208,7 +208,7 @@ session_start();
                 echo '<div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-gray-800 relative overflow-hidden mt-4">
                     <div class="flex items-center">
                         <span class="bg-green-500 px-3 py-2 h-10 w-10 rounded-full relative">
-                            <i class="fas fa-pencil-ruler fa-lg text-white"></i>
+                            <i class="fas fa-pencil-ruler fa-lg text-white" aria-hidden="true"></i>
                         </span>
                         <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                             Top Editors

@@ -26,7 +26,6 @@
                     require_once __DIR__ . '/../../../assets/common/processes/database/update/user.php';
                     if(get_user_last_login_ip($getUserRow['id']) != hash_ip($_SERVER['REMOTE_ADDR'])) {
                         echo '<meta http-equiv="refresh" content="0; url='.CONFIG_INSTALL_URL.'/panel/account/signin/verify/?username='.$getUserRow['username'].'">';
-                        exit;
                     } else {
                         $session['id']=$getUserRow['id'];$session['username']=$getUserRow['username'];$session['role_id']=$getUserRow['role_id'];
                         unset($getUserRow);
@@ -37,8 +36,8 @@
 
                         $_SESSION = $session;
                         echo '<meta http-equiv="refresh" content="0; url='.CONFIG_INSTALL_URL.'/panel/dashboard">';
-                        exit;
                     }
+                    exit;
                 }
                 unset($getUserRow['password']);
             }
@@ -95,7 +94,7 @@
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="username" class="sr-only">Username or Email Address</label>
-                                <input id="username" name="username" type="username" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Username or Email address">
+                                <input id="username" name="username" type="text" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Username or Email address">
                             </div>
                             <div>
                                 <label for="password" class="sr-only">Password</label>
@@ -121,7 +120,7 @@
                         <div>
                             <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                                    <i class="fas fa-lock"></i>
+                                    <i class="fas fa-lock" aria-hidden="true"></i>
                                 </span>
                                 Sign in
                             </button>

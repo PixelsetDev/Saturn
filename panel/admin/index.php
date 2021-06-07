@@ -92,8 +92,8 @@
                         <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5"><?php echo $rows; ?> users.</h6>
                             <p><?php echo $activerows; ?> authorised users.</p>
-                            <p><i><?php echo $pendingrows; ?> pending users.</i></p>
-                            <p><i><?php echo $bannedrows; ?> restricted users.</i></p>
+                            <p><em><?php echo $pendingrows; ?> pending users.</em></p>
+                            <p><em><?php echo $bannedrows; ?> restricted users.</em></p>
                         </div>
                     </div>
                     <?php $phpversion = phpversion(); $badServer=0; if ($phpversion < '7.4.0' OR $phpversion > '8') {$badServer++;} if (PHP_OS != 'Linux') {$badServer++;}

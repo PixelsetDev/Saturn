@@ -22,7 +22,12 @@
                     </div>
                     <div class="flex flex-wrap items-center w-3/4">
                         <div class="w-3/4 flex flex-wrap">
-                            <div><input type="text" id="fullname" name="fullname" value="<?php echo get_user_fullname($user); ?>" class="flex-grow self-center text-white font-extrabold tracking-tight text-5xl md:text-6xl w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-white font-extrabold tracking-tight text-5xl md:text-6xl w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-white"></i></span></div>
+                            <div>
+                                <input type="text" id="fullname" name="fullname" value="<?php echo get_user_fullname($user); ?>" class="flex-grow self-center text-white font-extrabold tracking-tight text-5xl md:text-6xl w-3/4 bg-gray-100 bg-opacity-50" />
+                                <span class="self-center text-white font-extrabold tracking-tight text-5xl md:text-6xl w-3/4 bg-transparent">
+                                    <i class="fas fa-pencil-alt text-white" aria-hidden="true"></i>
+                                </span>
+                            </div>
                         </div>
                         <?php if($user == $_SESSION['id']) {
                             echo'<input type="submit" id="submit" name="submit" value="Save Profile" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 text-white bg-transparent font-semibold">';
@@ -47,8 +52,8 @@
                     </ul>
                     <br>
                     <div class="">
-                        <div class="flex"><input type="text" id="bio" name="bio" value="<?php echo get_user_bio($user); ?>" class="text-base bg-gray-100 bg-opacity-50" maxlength="100"/><i class="fas fa-pencil-alt fa-lg text-black"></i></div>
-                        <div class="flex"><input type="text" id="link" name="link" value="<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2 bg-gray-100 bg-opacity-50" /><i class="fas fa-pencil-alt fa-lg text-black"></i></div>
+                        <div class="flex"><input type="text" id="bio" name="bio" value="<?php echo get_user_bio($user); ?>" class="text-base bg-gray-100 bg-opacity-50" maxlength="100"/><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
+                        <div class="flex"><input type="text" id="link" name="link" value="<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2 bg-gray-100 bg-opacity-50" /><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
                     </div>
                 </div>
             </div>
