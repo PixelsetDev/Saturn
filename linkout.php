@@ -18,7 +18,7 @@
                             External Link
                         </h1>
                         <p class="text-base text-gray-700 mt-4">
-                            You are leaving the <?php echo CONFIG_SITE_NAME; ?> website, and are about to go to <?php echo $_GET['url']; ?> where different Terms of Use and Privacy Policy will apply.
+                            You are leaving the <?php echo CONFIG_SITE_NAME; ?> website, and are about to go to <?php echo checkInput('DEFAULT', $_GET['url']); ?> where different Terms of Use and Privacy Policy will apply.
                         </p>
                         <button onclick="window.history.back();" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Go back
