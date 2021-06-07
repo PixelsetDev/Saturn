@@ -81,21 +81,11 @@
                             Sign in to your account.
                         </h2>
                         <?php
-                        if(isset($errorMsg)){
-                            echo '<br>
-                                    <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                        <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                            <h6 class="mb-2 font-semibold leading-5">'.$errorMsg.'</h6>
-                                        </div>
-                                    </div>';
-                            unset($errorMsg);
-                        } else if(isset($successMsg)){
-                                echo '<br>
-                                    <div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
-                                        <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                            <h6 class="mb-2 font-semibold leading-5">'.$successMsg.'</h6>
-                                        </div>
-                                    </div>';
+                            if(isset($errorMsg)){
+                                alert('ERROR', $errorMsg);
+                                unset($errorMsg);
+                            } else if(isset($successMsg)){
+                                alert('ERROR', $success);
                                 unset($successMsg);
                             }
                         ?>

@@ -95,23 +95,13 @@
                     Saturn accounts must be approved by the website owner before you can access them.
                 </p>
                 <?php
-                if(isset($errorMsg)){
-                    echo '<br>
-                                    <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                        <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                            <h6 class="mb-2 font-semibold leading-5">'.$errorMsg.'</h6>
-                                        </div>
-                                    </div>';
-                    unset($errorMsg);
-                } else if(isset($successMsg)){
-                    echo '<br>
-                                    <div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
-                                        <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                            <h6 class="mb-2 font-semibold leading-5">'.$successMsg.'</h6>
-                                        </div>
-                                    </div>';
-                    unset($successMsg);
-                }
+                    if(isset($errorMsg)){
+                        alert('ERROR', $errorMsg);
+                        unset($errorMsg);
+                    } else if(isset($successMsg)){
+                        alert('SUCCESS', $successMsg);
+                        unset($successMsg);
+                    }
                 ?>
             </div>
             <?php if(isset($_POST['verify'])) { echo'<form class="mt-8 space-y-6" action="'.$_SERVER['PHP_SELF'].'" method="post">

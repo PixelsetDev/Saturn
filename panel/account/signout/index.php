@@ -29,12 +29,7 @@ session_destroy();
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             Sign out.
                         </h2>
-                        <br>
-                        <div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
-                            <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                <h6 class="mb-2 font-semibold leading-5">You have been signed out.</h6>
-                            </div>
-                        </div>
+                        <?php alert('SUCCESS', 'You have been signed out.'); ?>
                     </div>
 
                     <div class="flex space-x-2">

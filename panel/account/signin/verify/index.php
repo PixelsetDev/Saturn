@@ -68,15 +68,10 @@
                             User Verification
                         </h2>
                         <?php
-                        if(isset($errorMsg)){
-                            echo '<br>
-                                            <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                                <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                                    <h6 class="mb-2 font-semibold leading-5">'.$errorMsg.'</h6>
-                                                </div>
-                                            </div>';
-                            unset($errorMsg);
-                        }
+                            if(isset($errorMsg)){
+                                alert('ERROR', $errorMsg);
+                                unset($errorMsg);
+                            }
                         ?>
                     </div>
                     <form class="mt-8 space-y-6" action="<?php echo $_SERVER['PHP_SELF']?>?username=<?php echo $username;?>" method="post">

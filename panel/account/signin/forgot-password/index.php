@@ -118,33 +118,18 @@
                             Forgot Password.
                         </h2>
                         <?php
-                        if(isset($errorMsg)){
-                            echo '<br>
-                                            <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                                <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                                    <h6 class="mb-2 font-semibold leading-5">'.$errorMsg.'</h6>
-                                                </div>
-                                            </div>';
-                            unset($errorMsg);
-                        }
-                        if(isset($infoMsg)){
-                            echo '<br>
-                                            <div class="duration-300 transform bg-blue-100 border-l-4 border-blue-500 hover:-translate-y-2">
-                                                <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                                    <h6 class="mb-2 font-semibold leading-5">'.$infoMsg.'</h6>
-                                                </div>
-                                            </div>';
-                            unset($infoMsg);
-                        }
-                        if(isset($successMsg)){
-                            echo '<br>
-                                            <div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
-                                                <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                                    <h6 class="mb-2 font-semibold leading-5">'.$successMsg.'</h6>
-                                                </div>
-                                            </div>';
-                            unset($successMsg);
-                        }
+                            if(isset($errorMsg)){
+                                alert('ERROR', $errorMsg);
+                                unset($errorMsg);
+                            }
+                            if(isset($infoMsg)){
+                                alert('INFO', $infoMsg);
+                                unset($infoMsg);
+                            }
+                            if(isset($successMsg)){
+                                alert('SUCCESS', $successMsg);
+                                unset($successMsg);
+                            }
                         ?>
                     </div>
                     <form class="mt-8 space-y-6" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
