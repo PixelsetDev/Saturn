@@ -89,7 +89,7 @@
                             }
                         ?>
                     </div>
-                    <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars(['PHP_SELF']); ?>" method="post">
+                    <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
