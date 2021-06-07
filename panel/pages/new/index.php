@@ -42,7 +42,7 @@
             </div>
         </header>
 
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <?php
                 if(isset($errorMsg)){
