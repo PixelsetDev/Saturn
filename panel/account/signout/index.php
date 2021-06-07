@@ -6,7 +6,7 @@ session_destroy();
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Sign out - Saturn Panel</title>
         <?php

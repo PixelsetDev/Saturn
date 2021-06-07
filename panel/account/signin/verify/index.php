@@ -44,7 +44,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>User Verification - Saturn Panel</title>
         <?php

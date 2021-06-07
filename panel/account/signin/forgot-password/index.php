@@ -94,7 +94,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Forgot Password - Saturn Panel</title>
         <?php

@@ -57,7 +57,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Sign in - Saturn Panel</title>
         <?php
@@ -85,7 +85,7 @@
                                 alert('ERROR', $errorMsg);
                                 unset($errorMsg);
                             } else if(isset($successMsg)){
-                                alert('ERROR', $success);
+                                alert('ERROR', $successMsg);
                                 unset($successMsg);
                             }
                         ?>
