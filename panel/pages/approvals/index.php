@@ -56,7 +56,7 @@
                 echo '<div x-data="{ open: false }">
                             <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                                 <div class="absolute inset-0 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                                    <div class="absolute inset-0 bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
                                     <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
                                         <div class="relative w-screen max-w-md">
                                             <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
