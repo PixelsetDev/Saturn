@@ -18,7 +18,7 @@ require_once __DIR__.'/../../../assets/common/global_private.php';
                 <h1 class="text-gray-900 text-3xl">Settings</h1>
                 <h2 class="text-gray-900 text-2xl pb-4">General</h2>
                 <div class="relative">
-                    <table class="invisible md:visible">
+                    <table class="invisible md:visible" aria-describedby="General Settings">
                         <tr>
                             <th scope="col">Config</th>
                             <th scope="col">Value</th>
