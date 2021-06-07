@@ -3,7 +3,7 @@
     include_once(__DIR__.'/../../../assets/common/global_private.php');
     // Delete a list
     if(isset($_GET['delete'])) {
-        $listID = $_GET['delete'];
+        $listID = checkInput('DEFAULT', $_GET['delete']);
         if(get_todo_list_owner_id($listID) == $_SESSION['id'] OR get_user_roleID($_SESSION['id']) == '4') {
             $successMsg = 'List deleted: '.get_todo_list_name($listID).'. <a href="?recover='.$listID.'" class="text-blue-500 hover:text-blue-400">Undo</a>';
             if(update_todo_list_status($listID, 0) != true) {

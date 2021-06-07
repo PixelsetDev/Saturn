@@ -7,7 +7,7 @@
     if(isset($_POST['verify'])) {
         if(!empty($_POST['code'])) {
             require_once(__DIR__ . '/../../../../assets/common/processes/database/update/user.php');
-            $username = $_GET['username'];
+            $username = checkInput('DEFAULT', $_GET['username']);
             $id = get_user_id($username);
             $dbCode = get_user_auth_code($id);
             update_user_auth_code($id, '');
@@ -33,9 +33,14 @@
             }
         }
     } else {
-        $username = $_GET['username'];
+        $username = checkInput('DEFAULT', $_GET['username']);
         $id = get_user_id($username);
-        $code = random_int(100000,999999);
+        try {
+            $code = random_int(100000, 999999);
+        } catch (Exception $e) {
+            echo 'Exception: '.$e;
+            exit;
+        }
         require_once(__DIR__ . '/../../../../assets/common/processes/database/update/user.php');
         update_user_auth_code($id, $code);
         $email = get_user_email($id);

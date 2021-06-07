@@ -11,7 +11,7 @@
     <body class="mb-8">
         <?php
             include_once(__DIR__.'/../../../assets/common/panel/navigation.php');
-            if(isset($_GET['dismissNotif'])){$nid = $_GET['dismissNotif'];update_notification_dismiss($nid);header('Location: '.CONFIG_INSTALL_URL.'/panel/account/notifications');}
+            if(isset($_GET['dismissNotif'])){$nid = checkInput('DEFAULT',$_GET['dismissNotif']);update_notification_dismiss($nid);header('Location: '.CONFIG_INSTALL_URL.'/panel/account/notifications');}
         ?>
 
         <header class="bg-white shadow">

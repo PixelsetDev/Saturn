@@ -4,7 +4,7 @@
     include_once(__DIR__.'/../../../../assets/common/global_private.php');
     include_once(__DIR__.'/../../../../assets/common/processes/gui/modals.php');
 
-    $pageID = $_GET['pageID'];
+    $pageID = checkInput('DEFAULT', $_GET['pageID']);
 
     if(empty($_SERVER['CONTENT_TYPE'])) {
         $_SERVER['CONTENT_TYPE'] = "application/x-www-form-urlencoded";
