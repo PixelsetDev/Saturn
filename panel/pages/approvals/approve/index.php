@@ -66,15 +66,11 @@
         </header>
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo $pageID; ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <?php if(isset($_GET['error'])) { echo '<br><div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                        <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                            <h6 class="mb-2 font-semibold leading-5">'.$_GET['error'].'</h6>
-                                        </div>
-                                    </div><br>';} else if(isset($_GET['success'])) { echo '<br><div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
-                                        <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                            <h6 class="mb-2 font-semibold leading-5">'.$_GET['success'].'</h6>
-                                        </div>
-                                    </div><br>';} ?>
+            <?php if(isset($_GET['error'])) {
+                alert('ERROR', $_GET['error']);
+            } else if(isset($_GET['success'])) {
+                alert('SUCCESS', $_GET['success']);
+            } ?>
             <div class="flex space-x-4 my-2">
                 <div class="w-1/2 border-2 border-<?php echo THEME_PANEL_COLOUR; ?>-200 p-2">
                     <h2 class="text-4xl mb-2 font-bold">Current / Existing Page</h2>
