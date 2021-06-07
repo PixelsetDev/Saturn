@@ -20,9 +20,9 @@ require_once __DIR__.'/../../../assets/common/global_private.php';
             <div class="relative">
                 <table class="invisible md:visible">
                     <tr>
-                        <th>Config</th>
-                        <th>Value</th>
-                        <th>Description</th>
+                        <th scope="col">Config</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Description</th>
                     </tr>
                     <tr>
                         <td><label for="DATABASE_HOST" class="self-center">Host</label></td>
