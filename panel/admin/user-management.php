@@ -34,24 +34,7 @@
                                         <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-' . THEME_PANEL_COLOUR . '-500 hover:bg-' . THEME_PANEL_COLOUR . '-400 focus:shadow-outline focus:outline-none">
                                             <i class="fas fa-cog"></i>&nbsp;Manage
                                         </button>
-                                        '.modal($value).'
-                                    </div>
-                                </div>';
-                }
-            }
-            if($empty == true) {echo 'None found.';}
-        }
-    }
-    function roleDropdown($value) {
-        echo '<select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-                                                                                        <option value="4"';if(get_user_roleID($value) == '4'){echo' selected';}echo'>Administrator</option>
-        '; if(CONFIG_PAGE_APPROVALS==true OR get_user_roleID($value) == '3'){echo'<option value="3"';if(get_user_roleID($value) == '3'){echo' selected';}echo'>Editor</option>';} echo'
-                                                                                        <option value="2"';if(get_user_roleID($value) == '2'){echo' selected';}echo'>Writer</option>
-                                                                                        <option value="0"';if(get_user_roleID($value) == '0'){echo' selected';}echo'>Restricted</option>
-                                                                                    </select>';
-    }
-    function modal($value) {
-        echo '<div class="absolute top-0 left-0 h-screen w-screen z-40" x-show="open">
+                                        <div class="absolute top-0 left-0 h-screen w-screen z-40" x-show="open">
                                             <div class="h-screen w-full z-40 inset-0 overflow-y-auto">
                                                 <div @click="open = false" class="absolute w-full h-full inset-0 bg-gray-500 opacity-75"></div>
                                                 <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -68,7 +51,9 @@
                                                             <div class="p-4">
                                                                 <form action="user-management.php" method="post">
                                                                     <div class="text-center mb-4 opacity-90">
-        '.display_user_profile_picture($value).'
+                                                                        <a href="'.get_user_profile_link($value).'" class="block relative">
+                                                                            <img alt="'.get_user_fullname($value).'" src="'.get_user_profilephoto($value).'" class="mx-auto object-cover rounded-full h-16 w-16 "/>
+                                                                        </a>
                                                                     </div>
                                                                     <div class="text-center">
                                                                         <div class="flex w-full">
@@ -78,12 +63,17 @@
                                                                             <span class="flex-grow">&nbsp;</span>
                                                                         </div>
                                                                         <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-        '.get_user_role($value).'
+            '.get_user_role($value).'
                                                                         </p>
                                                                         <p class="text-md text-gray-500 dark:text-gray-400 max-w-xs py-4 font-light">
                                                                                 <input type="text" name="userid" id="userid" value="'.$value.'" class="hidden">
                                                                                 <div class="relative inline-block w-full text-gray-700">
-        '.roleDropdown($value).'
+                                                                                    <select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
+                                                                                        <option value="4"';if(get_user_roleID($value) == '4'){echo' selected';}echo'>Administrator</option>
+                                                                                        '; if(CONFIG_PAGE_APPROVALS==true OR get_user_roleID($value) == '3'){echo'<option value="3"';if(get_user_roleID($value) == '3'){echo' selected';}echo'>Editor</option>';} echo'
+                                                                                        <option value="2"';if(get_user_roleID($value) == '2'){echo' selected';}echo'>Writer</option>
+                                                                                        <option value="0"';if(get_user_roleID($value) == '0'){echo' selected';}echo'>Restricted</option>
+                                                                                    </select>
                                                                                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                                                                         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
                                                                                 </div>
@@ -97,7 +87,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>';
+                                        </div>
+                                    </div>
+                                </div>';
+                }
+            }
+            if($empty == true) {echo 'None found.';}
+        }
     }
 ?><!DOCTYPE html>
 <html lang="en">
