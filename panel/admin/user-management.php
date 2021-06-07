@@ -4,8 +4,8 @@
     require_once __DIR__.'/../../assets/common/global_private.php';
 
     if(isset($_POST['action'])) {
-        $userid = $_POST['userid'];
-        $role = $_POST['role'];
+        $userid = checkInput('DEFAULT', $_POST['userid']);
+        $role = checkInput('DEFAULT', $_POST['role']);
         if($userid != $_SESSION['id']) {
             if(update_user_role_id($userid,$role) == true) {
                 $message = get_user_fullname($_SESSION['id']).' changed '.get_user_fullname($userid).'\'s role to '.get_user_role($userid).'.';
