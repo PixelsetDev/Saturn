@@ -6,6 +6,7 @@
             include_once(__DIR__ . '/../../assets/common/panel/vendors.php');
             include_once(__DIR__.'/../../assets/common/panel/theme.php');
             include_once(__DIR__.'/../../assets/common/processes/pages.php');
+            include_once(__DIR__.'/../../assets/common/processes/gui/pages.php');
         ?>
         <title>Pages - Saturn Panel</title>
 
@@ -98,17 +99,7 @@
                                                             <br><br>';
                         }
                         $o++;
-                    } if(get_user_roleID($_SESSION['id']) == '4') { echo '<form action="new" name="newpage" method="GET">
-                                                                <div class="w-full font-semibold inline-block py-2 px-3 uppercase rounded text-gray-900 bg-gray-100">
-                                                                    <div class="flex w-full relative space-x-3">
-                                                                        <div class="flex-grow">
-                                                                            <label for="pagetitle" class="sr-only">Page Name</label>
-                                                                            <input id="pagetitle" name="pagetitle" type="text" maxlength="100" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Page Title">
-                                                                        </div>
-                                                                        <div><input type="submit" name="create" id="create" value="CREATE NEW" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>'; } echo '<br><br><br><br>
+                    } if(get_user_roleID($_SESSION['id']) == '4') { echo display_page_new_form(); } echo '<br><br><br><br>
                                                 </div>
                                             </div>
                                             '.$key.'
