@@ -43,7 +43,7 @@
         header('location:' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');
         exit;
     }
-    else if (!isset($_SESSION['user_key']) OR ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
+    else if (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
         header('location:' . CONFIG_INSTALL_URL . '/panel/system/error/?err=gss2');
         exit;
     }
