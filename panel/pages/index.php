@@ -108,6 +108,7 @@
                                 </section>
                             </div>
                         </div>
+                        
                         <h1 class="text-xl font-bold leading-tight text-gray-900">'.$category.'</h1>
                         
                         <div class="flex">
@@ -126,7 +127,7 @@
                                         <br>
                                         <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">'; $percent = ($complete / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-400">
                                     <div style="width:'.(($complete / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                                     <div style="width:'.(($pending / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
@@ -145,10 +146,9 @@
                         unset($category);
                         $i++;
                         $category = get_page_category_name($i);
-                        echo '
-                    </div>
-                    <br><hr><br>';
-                }
+                        echo '</div>
+                        <br><hr><br>';
+                    }
                 ?>
             </div>
     </body>
