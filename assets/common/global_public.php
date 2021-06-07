@@ -13,7 +13,7 @@
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */
-    /* require_once __DIR__.'/processes/database/get/page.php'; */
+    require_once __DIR__.'/processes/database/get/page.php';
     /* Required Files */
     require_once __DIR__.'/vendors.php';
     require_once __DIR__ . '/processes/resource_loader/resource_loader.php';
