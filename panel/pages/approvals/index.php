@@ -5,6 +5,7 @@
         include_once(__DIR__.'/../../../assets/common/global_private.php');
         include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
         include_once(__DIR__.'/../../../assets/common/panel/theme.php');
+        include_once(__DIR__.'/../../../assets/common/processes/pages.php');
         ?>
         <title>Page Approvals - Saturn Panel</title>
 
@@ -40,7 +41,7 @@
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
-            if(isset($error)){
+            if(isset($errorMsg)){
                 echo '<br>
                             <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                                 <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
@@ -132,7 +133,7 @@
                 else if((($approved / $total) * 100) == 100.00) {$statusColour = 'green'; $sCol = 'green'; $status = 'No Pending Approvals';}
                 else if((($approved / $total) * 100) != 0 || (($pending / $total) * 100) != 0) {$statusColour = 'yellow'; $sCol = 'red'; $status = 'Pending Approvals';}
                 else if((($approved / $total) * 100) == 0 && (($pending / $total) * 100) == 0) {$statusColour = 'green'; $sCol = 'green'; $status = 'No Pending Approvals';}
-                else {$statusColour = 'gray'; $status = 'Unknown Status';};
+                else {$statusColour = 'gray'; $status = 'Unknown Status';}
                 echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$sCol.'-500 bg-'.$sCol.'-200">'.$status.'</span>
                                         </div>
                                         <div class="text-right">
@@ -153,42 +154,9 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="flex">
-                                <div class="container mx-auto">
-                                    Assigned Editors:
-                                    <div class="flex -space-x-1 overflow-hidden">';
-                $uid = 1;
-                $users = get_user_firstname($uid);
-                while($users != null) {
-                    if(get_user_roleID($uid) == '3' || get_user_roleID($uid) == '4') {
-                        echo'<a href="'.get_user_profile_link($uid).'" class="relative inline-block">
-                                                <img class="bg-white inline-block h-6 w-6 rounded-full ring-2 ring-white" src="'.get_user_profilephoto($uid).'" title="'.get_user_fullname($uid).'" alt="'.get_user_fullname($uid).'">
-                                                <span class="absolute bottom-0 right-0 inline-block w-2 h-2 bg-'.get_activity($uid).'-600 border-2 border-white rounded-full"></span>
-                                            </a>';
-                    }
-                    $uid++;
-                    $users = get_user_firstname($uid);
-                }
-                echo '</div>
-                                </div>
-                                <div class="container mx-auto">
-                                    Assigned Writers:
-                                    <div class="flex -space-x-1 overflow-hidden">';
-                $uid = 1;
-                $users = get_user_firstname($uid);
-                while($users != null) {
-                    if(get_user_roleID($uid) != '1' ) {
-                        echo'<a href="'.get_user_profile_link($uid).'" class="relative inline-block">
-                                                <img class="bg-white inline-block h-6 w-6 rounded-full ring-2 ring-white" src="'.get_user_profilephoto($uid).'" title="'.get_user_fullname($uid).'" alt="'.get_user_fullname($uid).'">
-                                                <span class="absolute bottom-0 right-0 inline-block w-2 h-2 bg-'.get_activity($uid).'-600 border-2 border-white rounded-full"></span>
-                                            </a>';
-                        $uid++;
-                        $users = get_user_firstname($uid);
-                    }
-                }
-                echo '</div>
-                                </div>
-                            </div>';
+                        <br>';
+                get_assigned_editors();
+                get_assigned_writers();
                 unset($category);
                 $i++;
                 $category = get_page_category_name($i);
