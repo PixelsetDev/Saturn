@@ -6,7 +6,7 @@
         if (isset($_POST['verify'])) {
             if (!empty($_POST['verify_email'])) {
                 include_once(__DIR__ . '/../../../assets/common/processes/database/get/user.php');
-                $email = $_POST['verify_email'];
+                $email = checkInput('DEFAULT', $_POST['verify_email']);
                 if (get_user_email_exists($email) == true) {
                     $errorMsg = 'A user with this email address already exists.';
                     header('Location: log.php?error='.$errorMsg);
