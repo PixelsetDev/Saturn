@@ -7,8 +7,6 @@
             include_once(__DIR__.'/../../assets/common/panel/theme.php');
         ?>
 
-        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
         <title>Saturn Panel</title>
     </head>
     <body class="mb-8">
