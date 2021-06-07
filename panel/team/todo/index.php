@@ -183,7 +183,7 @@
                         <h2 class="text-2xl">Create New</h2>
                     </div>
                 </div>
-                    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
                         <div class="rounded-md shadow-sm mb-6">
                             <div>
                                 <label for="listName" class="sr-only">List Name</label>
