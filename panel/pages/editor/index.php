@@ -54,7 +54,7 @@
         include_once(__DIR__.'/../../../assets/common/panel/theme.php');
         ?>
 
-        <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js" integrity="sha256-5RjTlnB92dAMNEPY6q0rX2AusjFwvVf1YHHikzobEss=" crossorigin="anonymous"></script>
         <title>Saturn Panel</title>
 
     </head>
