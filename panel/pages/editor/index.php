@@ -69,9 +69,9 @@
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo $pageID; ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <?php
                 if(isset($_GET['error'])) {
-                    echo alert('ERROR', $_GET['error']);
+                    alert('ERROR', $_GET['error']);
                 } else if(isset($_GET['success'])) {
-                    echo alert('SUCCESS', $_GET['success']);
+                    alert('SUCCESS', $_GET['success']);
                 }
             ?>
 
