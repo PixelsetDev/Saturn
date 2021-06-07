@@ -1,5 +1,6 @@
 <?php session_start();
     ob_start();
+
     include_once(__DIR__.'/../../../../assets/common/global_private.php');
     include_once(__DIR__.'/../../../../assets/common/processes/gui/modals.php');
 

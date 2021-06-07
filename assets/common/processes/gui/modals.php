@@ -1,4 +1,5 @@
 <?php
+
     function display_modal_sidebar($title, $contents, $footer): string {
         return '<div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                                         <div class="absolute inset-0 overflow-hidden">
