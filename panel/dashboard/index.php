@@ -56,36 +56,19 @@ session_start();
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
-            if(isset($error)){
-                echo '<div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                    <h6 class="mb-2 font-semibold leading-5">[ERROR] '.$errorMsg.'</h6>
-                                </div>
-                            </div><br>';
+            if(isset($errorMsg)){
+                alert('ERROR', $errorMsg);
+                unset($errorMsg);
             }
-            unset($errorMsg, $error);
-            if(isset($warning)){
-                echo '<div class="duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
-                                <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                    <h6 class="mb-2 font-semibold leading-5">[WARNING] '.$warningMsg.'</h6>
-                                </div>
-                            </div><br>';
+            if(isset($warningMsg)){
+                alert('WARNING', $warningMsg);
+                unset($warningMsg);
             }
-            unset($warningMsg, $warning);
             if(CONFIG_DEBUG == true) {
-                echo '<div class="flex space-x-2">
-                            <div class="duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
-                                <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                    <h6 class="mb-2 font-semibold leading-5">[WARNING] Debug mode is enabled. This is NOT recommended in production environments.</h6>
-                                </div>
-                            </div><br>';
+                alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
                 if(CONFIG_PHP_ERRORS == true) {
-                    echo '<div class="duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
-                                <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                    <h6 class="mb-2 font-semibold leading-5">[WARNING] PHP Errors are enabled. This is NOT recommended in production environments.</h6>
-                                </div>
-                            </div>';
-                } echo '</div><br>';
+                    alert('WARNING', 'PHP Errors are enabled. This is NOT recommended in production environments.');
+                }
             }
             if(get_user_roleID($_SESSION['id']) > 3) {
                 $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version=beta');
