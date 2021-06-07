@@ -42,15 +42,10 @@
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
-            if(isset($error)){
-                echo '<br>
-                            <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                    <h6 class="mb-2 font-semibold leading-5">'.$errorMsg.'</h6>
-                                </div>
-                            </div>';
-            }
-            unset($errorMsg);
+                if(isset($errorMsg)){
+                    alert('ERROR',$errorMsg);
+                }
+                unset($errorMsg);
             ?>
             <div class="px-4 py-6 sm:px-0">
                 <?php
