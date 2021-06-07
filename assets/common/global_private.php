@@ -30,22 +30,20 @@
     require_once __DIR__ . '/processes/email.php';
     require_once __DIR__ . '/processes/dashboard.php';
     require_once __DIR__ . '/processes/themes.php';
+    require_once __DIR__ . '/processes/redirect.php';
     require_once __DIR__ . '/panel/theme.php';
     /* GUI */
     require_once __DIR__ . '/processes/gui/alerts.php';
     require_once __DIR__ . '/processes/gui/user_profile.php';
     /* Authenticate Session */
     if(!isset($_SESSION['id'])) {
-        header('Location: '.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=true');
-        exit;
+        internal_redirect('/panel/account/signin/?signedout=true');
     }
     else if (!isset($_SESSION['role_id'])) {
-        header('Location: ' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');
-        exit;
+        internal_redirect('/panel/account/signin/?signedout=role');
     }
     else if (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
-        header('Location: ' . CONFIG_INSTALL_URL . '/panel/system/error/?err=gss2');
-        exit;
+        internal_redirect('/panel/system/error/?err=gss2');
     } else {
         $id = $_SESSION['id'];
         $uid = $_SESSION['id'];
