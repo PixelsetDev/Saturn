@@ -19,7 +19,7 @@
                 $data = checkData( $data, 'CSS', '<style', '&ltstyle');
                 $data = checkData( $data, 'CSS', 'style =', 'blocked =');
                 $data = checkData( $data, 'CSS', 'style=', 'blocked=');
-            } else if ($mode = 'TAGCSS') {
+            } else if ($mode == 'TAGCSS') {
                 $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
                 $data = checkData( $data, 'CSS', '<style', '&ltstyle');
             } else if ($mode == 'CSS') {
