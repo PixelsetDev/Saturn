@@ -96,10 +96,8 @@
                 </div>
             </div>
             <a href="chat" class="text-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-300">
-                <div class="mt-10 py-4 bg-<?php echo THEME_PANEL_COLOUR;?>-200 rounded-lg hover:shadow-xl" style="background-image: url('<?php echo CONFIG_INSTALL_URL;?>/assets/panel/images/background.jpg');">
-                    <center>
-                        <span class="text-2xl">Team Chat</span>
-                    </center>
+                <div class="mt-10 py-4 bg-<?php echo THEME_PANEL_COLOUR;?>-200 rounded-lg hover:shadow-xl w-full text-center" style="background-image: url('<?php echo CONFIG_INSTALL_URL;?>/assets/panel/images/background.jpg');">
+                    <span class="text-2xl">Team Chat</span>
                 </div>
             </a>
         </div>
