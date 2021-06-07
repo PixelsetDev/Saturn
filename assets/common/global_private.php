@@ -38,11 +38,9 @@
     /* Authenticate Session */
     if(!isset($_SESSION['id'])) {
         internal_redirect('/panel/account/signin/?signedout=true');
-    }
-    else if (!isset($_SESSION['role_id'])) {
+    } else if (!isset($_SESSION['role_id'])) {
         internal_redirect('/panel/account/signin/?signedout=role');
-    }
-    else if (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
+    } else if (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
         internal_redirect('/panel/system/error/?err=gss2');
     } else {
         $id = $_SESSION['id'];
