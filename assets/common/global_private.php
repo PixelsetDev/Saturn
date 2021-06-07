@@ -36,16 +36,17 @@
     require_once __DIR__ . '/processes/gui/user_profile.php';
     /* Authenticate Session */
     if(!isset($_SESSION['id'])) {
-        header('location:'.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=true');
+        header('Location: '.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=true');
         exit;
     }
     else if (!isset($_SESSION['role_id'])) {
-        header('location:' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');
+        header('Location: ' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');
         exit;
     }
     else if (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
-        header('location:' . CONFIG_INSTALL_URL . '/panel/system/error/?err=gss2');
+        header('Location: ' . CONFIG_INSTALL_URL . '/panel/system/error/?err=gss2');
         exit;
+    } else {
+        $id = $_SESSION['id'];
+        $uid = $_SESSION['id'];
     }
-    $id = $_SESSION['id'];
-    $uid = $_SESSION['id'];
