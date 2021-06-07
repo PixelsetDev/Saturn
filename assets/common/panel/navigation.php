@@ -81,6 +81,6 @@
         </div>
         <div class="flex fixed bottom-0 left-0 px-2 py-1 text-xs w-full bg-<?php echo THEME_PANEL_COLOUR; ?>-100 z-40">
             <span class="w-1/3">Saturn Panel &copy; 2021 - <?php echo date('Y'); ?> Saturn CMS</span>
-            <span class="w-1/3 text-center font-bold">Let's Make Saturn Error Free: <a href="https://saturncms.net/feedback" target="_blank" class="font-normal underline text-black">Found a problem? Let us know!</a></span>
+            <span class="w-1/3 text-center font-bold">Let's Make Saturn Error Free: <a href="https://saturncms.net/feedback" target="_blank" class="font-normal underline text-black" rel="nofollow noopener">Found a problem? Let us know!</a></span>
             <span class="w-1/3 text-right"><?php echo file_get_contents(__DIR__.'/../../../assets/common/version.txt');?></span>
         </div>

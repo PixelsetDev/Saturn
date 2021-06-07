@@ -66,7 +66,7 @@
                     <br>
                     <div class="">
                         <span class="text-base"><?php echo get_user_bio($user); ?></span>
-                        <a href="<?php echo CONFIG_INSTALL_URL; ?>/linkout.php?url=<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2" target="_blank"><?php echo get_user_website($user); ?></a>
+                        <a href="<?php echo CONFIG_INSTALL_URL; ?>/linkout.php?url=<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2" target="_blank" rel="nofollow noopener"><?php echo get_user_website($user); ?></a>
                     </div>
                 </div>
             </div>
