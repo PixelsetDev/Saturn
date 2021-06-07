@@ -27,10 +27,11 @@
     /* Required Files */
     require_once __DIR__ . '/processes/resource_loader/resource_loader.php';
     require_once __DIR__ . '/processes/email.php';
-    require_once __DIR__ . '/processes/alerts.php';
     require_once __DIR__ . '/processes/dashboard.php';
     require_once __DIR__ . '/processes/themes.php';
     require_once __DIR__ . '/panel/theme.php';
+    /* GUI */
+    require_once __DIR__ . '/processes/gui/alerts.php';
     /* Authenticate Session */
     if(!isset($_SESSION['id'])) {header('location:'.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=true');exit;}
     else if (!isset($_SESSION['role_id'])) {header('location:' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');exit;}
