@@ -74,19 +74,11 @@
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8" x-data="{ tab: '1' }">
             <?php
                 if(isset($errorMsg)){
-                echo '<div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                    <div class="p-5">
-                        <h6 class="mb-2 font-semibold leading-5">[ERROR] '.$errorMsg.'</h6>
-                    </div>
-                </div><br>';
-                unset($errorMsg);
+                    alert('ERROR',$errorMsg);
+                    unset($errorMsg);
                 }
                 if(isset($successMsg)){
-                    echo '<div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
-                        <div class="p-5">
-                            <h6 class="mb-2 font-semibold leading-5">'.$successMsg.'</h6>
-                        </div>
-                    </div><br>';
+                    alert('SUCCESS',$successMsg);
                     unset($successMsg);
                 }
             ?>
