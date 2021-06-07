@@ -9,10 +9,10 @@
      */
 
     /* General */
-    const CONFIG_INSTALL_URL = '/Saturn_BETA';
-    const CONFIG_SITE_NAME = 'Saturn on LMWN Workshop';
+    const CONFIG_INSTALL_URL = '/';
+    const CONFIG_SITE_NAME = 'Saturn';
     const CONFIG_SITE_DESCRIPTION = 'A website running the Saturn Content Management System.';
-    const CONFIG_SITE_KEYWORDS = '';
+    const CONFIG_SITE_KEYWORDS = 'saturn, cms, website';
     const CONFIG_SITE_CHARSET = 'UTF-8';
     const CONFIG_SITE_TIMEZONE = 'Europe/London';
     /* Database */
@@ -32,7 +32,6 @@
     const CONFIG_MAX_PAGE_CHARS = '50000';
     const CONFIG_MAX_ARTICLE_CHARS = '50000';
     const CONFIG_MAX_REFERENCES_CHARS = '10000';
-    const CONFIG_MAX_BLOCK_CHARS = 2000;
     /* Developer Tools */
     const CONFIG_DEBUG = false;
     const CONFIG_PHP_ERRORS = false;
