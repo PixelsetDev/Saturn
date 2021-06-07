@@ -141,7 +141,7 @@
                         if ($itemID == $i) {
                             echo '<div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                     <div class="flex-grow">
-                        <b>' . get_todo_item_title($itemID) . '</b><br>
+                        <strong>' . get_todo_item_title($itemID) . '</<br>
                         ' . get_todo_item_description($itemID) . '
                     </div>
                     <div class="flex items-center space-x-3 pr-6">
@@ -156,7 +156,7 @@
                             if ((get_todo_list_visibility($i) == 'PUBLIC') or (get_todo_list_owner_id($i) == $_SESSION['id'])) {
                                 echo '<div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                     <div class="flex-grow">
-                        <b><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black"></i></span></div></b>
+                        <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black"></i></span></div></
                         <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black"></i></span></div>
                     </div>
                     <div class="flex items-center space-x-3 pr-6">
@@ -195,21 +195,23 @@
                             </div>
                             <div>
                                 <p class="mb-2 mt-6">
-                                    <b>Privacy</b>
+                                    <strong>Privacy</strong>
                                     <a class="text-xs underline" href="javascript:alert('Public: Anybody can Read & Write.\nProtected: Anybody can Read & Only you can Write.\nPrivate: Only you can Read & Write.\n\nAdministrators can read your list regardless of this setting.');">Help</a>
                                 </p>
-                                <select required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+                                <label for="privacyList" class="sr-only">Privacy</label>
+                                <select id="privacyList" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
                                     <option value="public" selected="">Public</option>
                                     <option value="protected">Protected</option>
                                     <option value="private">Private</option>
                                 </select>
                             </div>
                             <p class="mb-2 mt-6">
-                                <b>Visibility</b>
+                                <strong>Visibility</strong>
                                 <a class="text-xs underline" href="javascript:alert('This is who the list is visible to (if Privacy is set to Public or Protected).\n\nEverybody: Everybody can see your list (unless it is set to private).\nEditors, Administrators and You: You, Edits and Administrators can see your list (unless it is set to private).\nAdministrators and You: You and Administrators can see your list.');">Help</a>
                             </p>
                             <div>
-                                <select required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+                                <label for="visibilityList" class="sr-only">Privacy</label>
+                                <select id="visibilityList" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
                                     <option value="all" selected="">Everybody</option>
                                     <option value="editors">Editors, Administrators and You</option>
                                     <option value="administrators">Administrators and You</option>
