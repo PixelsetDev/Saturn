@@ -10,8 +10,14 @@
     set_error_handler("errorHandlerError", E_ERROR);
     set_error_handler("errorHandlerWarning", E_WARNING);
     /* Developer Tools */
-    if(CONFIG_DEBUG == true) {log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');}
-    if(CONFIG_DEBUG == true) {if(CONFIG_PHP_ERRORS == true) {error_reporting(E_ALL & ~E_NOTICE);} else {error_reporting(0);}}
+    if(CONFIG_DEBUG) {
+        log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
+        if(CONFIG_PHP_ERRORS) {
+            error_reporting(E_ALL & ~E_NOTICE);
+        } else {
+            error_reporting(0);
+        }
+    }
     /* Database: Required Files */
     require_once __DIR__ . '/processes/database/get/activity.php';
     require_once __DIR__ . '/processes/database/get/notification.php';
@@ -34,7 +40,17 @@
     require_once __DIR__ . '/processes/gui/alerts.php';
     require_once __DIR__ . '/processes/gui/user_profile.php';
     /* Authenticate Session */
-    if(!isset($_SESSION['id'])) {header('location:'.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=true');exit;}
-    else if (!isset($_SESSION['role_id'])) {header('location:' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');exit;}
-    else if (!isset($_SESSION['user_key']) OR ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {header('location:' . CONFIG_INSTALL_URL . '/panel/system/error/?err=gss2');exit;}
-    $id = $_SESSION['id']; $uid = $_SESSION['id'];
+    if(!isset($_SESSION['id'])) {
+        header('location:'.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=true');
+        exit;
+    }
+    else if (!isset($_SESSION['role_id'])) {
+        header('location:' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=role');
+        exit;
+    }
+    else if (!isset($_SESSION['user_key']) OR ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
+        header('location:' . CONFIG_INSTALL_URL . '/panel/system/error/?err=gss2');
+        exit;
+    }
+    $id = $_SESSION['id'];
+    $uid = $_SESSION['id'];
