@@ -8,7 +8,7 @@
         $message = str_replace('"', "&quot;", $message);
         $query = "INSERT INTO `".DATABASE_PREFIX."` (`id`, `user_id`, `chat_id`, `status`, `message`, `datetime`) VALUES (NULL, '$id', '1', 'ACTIVE', '$message', CURRENT_TIMESTAMP);";
         $rs = mysqli_query($conn,$query);
-        header('Location: http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI].'');
+        header('Location: http://'.htmlspecialchars($_SERVER[HTTP_HOST]).htmlspecialchars($_SERVER[REQUEST_URI]).'');
     }
 ?><!DOCTYPE html>
 <html lang="en">
