@@ -29,10 +29,8 @@
             }
         } else if (isset($_POST['confirm'])) {
             if (!empty($_POST['code'])) {
-                $hashCode = $_POST['c'];
-                $hashCode = checkInput('DEFAULT', $hashCode);
-                $code = $_POST['code'];
-                $code = checkInput('DEFAULT', $code);
+                $hashCode = checkInput('DEFAULT', $_POST['c']);
+                $code = checkInput('DEFAULT', $_POST['code']);
                 $newHashCode = hash('SHA3-512', $code);
                 if ($hashCode != $newHashCode) {
                     $errorMsg = 'The verification code that you provided does not match the code that we sent.';
@@ -104,7 +102,7 @@
                     }
                 ?>
             </div>
-            <?php if(isset($_POST['verify'])) { echo'<form class="mt-8 space-y-6" action="'.$_SERVER['PHP_SELF'].'" method="post">
+            <?php if(isset($_POST['verify'])) { echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -115,7 +113,7 @@
 
                 <div>
                     <input id="c" name="c" type="text" required value="'.$hashCode.'" class="hidden" placeholder="c">
-                    <input id="email" name="email" type="text" required value="'.$_POST['verify_email'].'" class="hidden" placeholder="email">
+                    <input id="email" name="email" type="text" required value="'.checkOutput('DEFAULT',$_POST['verify_email']).'" class="hidden" placeholder="email">
                     <button type="submit" name="confirm" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                         <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                             <i class="fas fa-envelope"></i>
@@ -123,12 +121,12 @@
                         Verify Code
                     </button>
                 </div>
-            </form>'; } else if(isset($_POST['confirm'])) { echo'<form class="mt-8 space-y-6" action="'.$_SERVER['PHP_SELF'].'" method="post">
+            </form>'; } else if(isset($_POST['confirm'])) { echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
                         <label for="email_address" class="sr-only">Email Address</label>
-                        <input id="email_address" name="email_address" type="email" value="'.$_POST['email'].'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                        <input id="email_address" name="email_address" type="email" value="'.checkOutput('DEFAULT',$_POST['email']).'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
                     </div>
                     <div class="flex w-full">
                         <div class="flex-grow">
@@ -158,7 +156,7 @@
                         Request Account
                     </button>
                 </div>
-            </form>'; } else { echo'<form class="mt-8 space-y-6" action="'.$_SERVER['PHP_SELF'].'" method="post">
+            </form>'; } else { echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
