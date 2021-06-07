@@ -32,16 +32,16 @@
                     $successMsg = "Your edit has been saved.";
                     log_all('SATURN][PAGES',get_user_fullname($_SESSION['id']).' edited page with ID: '.$pageID.' ('.get_page_title($pageID).').');
                 }
-                header('Location: '.$_SERVER['PHP_SELF'].'/?pageID='.$pageID.'&success='.$successMsg);
+                header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&success='.$successMsg);
                 exit;
             } else {
                 $errorMsg = "Page requires content.";
-                header('Location: '.$_SERVER['PHP_SELF'].'/?pageID='.$pageID.'&error='.$errorMsg);
+                header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
                 exit;
             }
         } else {
             $errorMsg = "Page requires a title.";
-            header('Location: '.$_SERVER['PHP_SELF'].'/?pageID='.$pageID.'&error='.$errorMsg);
+            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
             exit;
         }
     }
