@@ -132,13 +132,13 @@
                             }
                         ?>
                     </div>
-                    <form class="mt-8 space-y-6" action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                    <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                         <?php if($done != true) { if (!isset($verified)) { echo '<div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="username" class="sr-only">Email address or Username</label>
                                 <input id="username" name="username" type="username" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email Address or Username">
                             </div>
-                        </div>'; } else { echo '<textarea id="user_id" name="user_id" style="display:none;">'.$_GET['id'].'</textarea>
+                        </div>'; } else { echo '<textarea id="user_id" name="user_id" style="display:none;">'.checkInput('DEFAULT', $_GET['id']).'</textarea>
                         <div class="rounded-t-md shadow-sm -space-y-px">
                             <div>
                                 <label for="password" class="sr-only">Password</label>
