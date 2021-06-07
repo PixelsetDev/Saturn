@@ -4,26 +4,30 @@
 
         if(SECURITY_ACTIVE == true) {
             $data = mysqli_real_escape_string($conn, $data);
-            $data = checkPHPTag($data);
-            $data = checkExternalJS($data);
-            $data = checkExternalCSS($data);
+            $data = checkData( $data, 'PHP', '<?', '&lt;?');
+            $data = checkData( $data, 'External JavaScript', '<script src=', '&lt;script src=');
+            $data = checkData( $data, 'External JavaScript', '<script src =', '&lt;script src =');
+            $data = checkData( $data, 'External CSS', '<link', '&lt;link');
             if ($mode == 'DEFAULT') {
                 $data = htmlspecialchars($data);
-                $data = checkJS($data);
-                $data = checkCSS($data);
-                $data = checkTagCSS($data);
+                $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
+                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
+                $data = checkData( $data, 'CSS', 'style =', 'blocked =');
+                $data = checkData( $data, 'CSS', 'style=', 'blocked=');
             } else if ($mode == 'HTML') {
-                $data = checkJS($data);
-                $data = checkCSS($data);
-                $data = checkTagCSS($data);
+                $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
+                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
+                $data = checkData( $data, 'CSS', 'style =', 'blocked =');
+                $data = checkData( $data, 'CSS', 'style=', 'blocked=');
             } else if ($mode = 'TAGCSS') {
-                $data = checkJS($data);
-                $data = checkCSS($data);
+                $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
+                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
             } else if ($mode == 'CSS') {
-                $data = checkJS($data);
+                $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
             } else if ($mode == 'JS') {
-                $data = checkCSS($data);
-                $data = checkTagCSS($data);
+                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
+                $data = checkData( $data, 'CSS', 'style =', 'blocked =');
+                $data = checkData( $data, 'CSS', 'style=', 'blocked=');
             }
         }
         return $data;
