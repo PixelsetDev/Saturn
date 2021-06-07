@@ -29,11 +29,11 @@
     }
     // Create a new list
     if(isset($_GET['create'])) {
-        $listOwnerID = $_SESSION['id'];
-        $listTitle = $_POST['listTitle'];
-        $listDescription = $_POST['listDescription'];
-        $listRoleID = $_POST['listRoleID'];
-        $listVisibility = $_POST['listVisibility'];
+        $listOwnerID = checkInput('DEFAULT', $_SESSION['id']);
+        $listTitle = checkInput('DEFAULT', $_POST['listTitle']);
+        $listDescription = checkInput('DEFAULT', $_POST['listDescription']);
+        $listRoleID = checkInput('DEFAULT', $_POST['listRoleID']);
+        $listVisibility = checkInput('DEFAULT', $_POST['listVisibility']);
         $createdListID = create_todo_list($listOwnerID,$listTitle,$listDescription,$listRoleID,$listVisibility);
         if($createdListID != null) {
             $successMsg = 'To-Do List created: '.get_todo_list_count().'.';
