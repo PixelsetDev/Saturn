@@ -7,6 +7,5 @@ function generate_uka_key() {
         echo 'Exception: '.$e;
         exit;
     }
-
         return $hash;
-    }
+}
