@@ -5,7 +5,7 @@
       <paths name="Saturn BETA">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="Saturn%20BETA" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="Saturn_BETA" />
           </mappings>
         </serverdata>
       </paths>
