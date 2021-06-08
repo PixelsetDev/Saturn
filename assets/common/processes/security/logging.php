@@ -29,7 +29,7 @@
         }
     }
 
-    function log_security_blocked($value): bool {
+    function log_security_blocked($value) {
         if (LOGGING_ACTIVE && SECURITY_ACTIVE && CONFIG_DEBUG) {
             echo '<script>console.log("'.date("H:i:s").' [SATURN][GSS] ';if(SECURITY_MODE=='clean'){echo'Cleaned';}else{echo'Stopped';}echo' I/O: Contained Blacklisted Item: '.$value.'.");</script>';
         }
