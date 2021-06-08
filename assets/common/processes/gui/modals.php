@@ -1,7 +1,7 @@
 <?php
 
     function display_modal_sidebar($title, $contents, $footer): string {
-        return '<div class="fixed inset-0 overflow-hidden z-40" x-show="open" @click.away="open = false">
+        return '<div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                                         <div class="absolute inset-0 overflow-hidden">
                                             <div class="absolute inset-0 bg-gray-500 bg-opacity-75"></div>
                                             <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
