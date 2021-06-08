@@ -10,7 +10,7 @@
         $_SERVER['CONTENT_TYPE'] = "application/x-www-form-urlencoded";
     }
 
-    if((get_page_pending_title($pageID) == NULL) AND (get_page_pending_content($pageID) == NULL)) {
+    if((get_page_pending_title($pageID) == NULL) && (get_page_pending_content($pageID) == NULL)) {
         header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/approvals/?error=none');
     }
 
@@ -111,7 +111,7 @@
                         <h2 class="text-2xl mb-2 font-bold my-2">
                             <span name="title" id="title" maxlength="60" class="w-full border"><?php
                                 $pageStatus = get_page_status($pageID);
-                                if ($pageStatus == 'green' OR CONFIG_PAGE_APPROVALS == false) {
+                                if ($pageStatus == 'green' || !CONFIG_PAGE_APPROVALS) {
                                     $title = get_page_title($pageID);
                                     $title = checkOutput('HTML', $title); echo $title;
                                 } else if ($pageStatus == 'yellow') {
@@ -126,7 +126,7 @@
 
                     <div class="py-6">
                         <span name="content" id="content"><?php
-                            if ($pageStatus == 'green' OR CONFIG_PAGE_APPROVALS == false) {
+                            if ($pageStatus == 'green' || !CONFIG_PAGE_APPROVALS) {
                                 $content = get_page_content($pageID);
                                 $content = checkOutput('HTML', $content); echo $content;
                             } else if ($pageStatus == 'yellow') {
@@ -141,7 +141,7 @@
                     <div class="py-6">
                         <h2 class="text-2xl font-bold mt-2">References</h2>
                         <span name="references" id="references"><?php
-                            if ($pageStatus == 'green' OR CONFIG_PAGE_APPROVALS == false) {
+                            if ($pageStatus == 'green' || !CONFIG_PAGE_APPROVALS) {
                                 $references = get_page_references($pageID);
                                 $references = checkOutput('HTML', $references); echo $references;
                             } else if ($pageStatus == 'yellow') {
