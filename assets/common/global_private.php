@@ -2,6 +2,7 @@
     ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../../config.php';
+    require_once __DIR__.'/../storage/core_checksum.php';
     require_once __DIR__.'/../../theme.php';
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Important Functions */
@@ -47,10 +48,10 @@
         $id = $_SESSION['id'];
         $uid = $_SESSION['id'];
     }
-    if(!config_validate()) {
+    if(!checksum_validate_config()) {
         echo '<div class="bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
-                                <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                    <h6 class="mb-2 font-semibold leading-5">[WARNING] Website configuration does not match checksum. <a href="https://docs.saturncms.net/website-configuration-checksum" class="underline text-xs text-black">Get help.</a></h6>
+                                <div class="p-5 border border-l-0 rounded-r shadow-sm">
+                                    <h6 class="mb-2 font-semibold leading-5">[WARNING] Website configuration does not match checksum. <a href="https://docs.saturncms.net/website-configuration-checksum" class="underline text-xs text-black" target="_blank">Get help.</a></h6>
                                 </div>
                             </div>';
     }

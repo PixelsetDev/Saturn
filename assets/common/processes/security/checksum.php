@@ -20,9 +20,21 @@
         }
     }
 
-    function config_validate(): bool {
+    function checksum_validate_config(): bool {
         if(SECURITY_ACTIVE) {
-            $new = file_get_contents(__DIR__.'/../../../../../config.php');
+            $new = file_get_contents(__DIR__.'/../../../../config.php');
             return checksum_validate($new, CONFIG_CHECKSUM);
+        } else {
+            return false;
         }
+    }
+
+    function checksum_generate_config(): bool {
+        $currentFile = file_get_contents(__DIR__.'/../../../../config.php');
+        $newChecksum = checksum_generate($currentFile);
+        $message = "<?php
+    // You shouldn't change these values. If you do, it can cause errors to appear within Saturn.
+    const CONFIG_CHECKSUM = '".$newChecksum."';";
+        $file = __DIR__.'/../../../storage/core_checksum.php';
+        return file_put_contents($file, $message, LOCK_EX);
     }
