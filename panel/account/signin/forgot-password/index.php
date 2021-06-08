@@ -36,6 +36,8 @@
             else {
                 $errorMsg = "Sorry, we couldn't find an account that matched the information you provided.";
             }
+        } else {
+            $errorMsg = 'Username cannot be empty.';
         }
     }
 
@@ -62,8 +64,7 @@
             } else {
                 $errorMsg = "Password reset code does not match.";
             }
-        }
-        else {
+        } else {
             $errorMsg = "Invalid Password Reset Code.";
         }
     }
