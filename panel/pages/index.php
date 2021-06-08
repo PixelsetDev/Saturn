@@ -86,7 +86,7 @@
                         $row = pageQuery_2($i,$o);
 
                         if($row['title'] != null) {
-                            $status = get_page_status($o); if ($status == 'green') {$complete++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS == true){$pending++;}else{$status='green';$complete++;}} $total++;
+                            $status = get_page_status($o); if ($status == 'green') {$complete++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS){$pending++;}else{$status='green';$complete++;}} $total++;
                             echo'<div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                                 <div class="flex w-full relative">
                                                                     <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>';

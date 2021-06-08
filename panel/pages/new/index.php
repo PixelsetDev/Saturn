@@ -14,7 +14,7 @@
                 $pageTemplate = trim(checkInput('DEFAULT',$_POST['pagetemplate']));
                 $pageTitle = trim(checkInput('DEFAULT',$_POST['pagetitle']));
                 $pageDescription = trim(checkInput('DEFAULT',$_POST['pagedescription']));
-                if(create_page($pageURL,$pageCategory,$pageTemplate,$pageTitle,$pageDescription) == true) {
+                if(create_page($pageURL,$pageCategory,$pageTemplate,$pageTitle,$pageDescription)) {
                     $successMsg = 'Page created. <a href="'.CONFIG_INSTALL_URL.'/panel/pages" class="text-green-500 hover:text-green-400 transition duration-200">Go Back</a>';
                     log_all('SATURN][PAGES',get_user_fullname($_SESSION['id']).' created a page ('.$_POST['pagetitle'].').');
                 }else{
