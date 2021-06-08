@@ -6,8 +6,10 @@
         $query2 = "INSERT INTO `".DATABASE_PREFIX."pages_pending` (`id`, `user_id`, `category_id`, `title`, `content`, `reference`) VALUES (NULL, '0', '".$categoryID."', NULL, NULL, NULL)";
 
         if(mysqli_query($conn, $query) && mysqli_query($conn, $query2)) {
-            return true;
+            $return = true;
         } else {
-            return false;
+            $return = false;
         }
+
+        return $return;
     }
