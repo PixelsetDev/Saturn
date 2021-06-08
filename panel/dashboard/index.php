@@ -51,7 +51,9 @@ session_start();
                         <span class="block text-gray-500">'.get_notification_content($_SESSION['id']).'</span>
                     </div>
                 </div>
-            </a>';} ?>
+            </a>';
+            }
+            ?>
         </header>
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -64,9 +66,9 @@ session_start();
                 alert('WARNING', $warningMsg);
                 unset($warningMsg);
             }
-            if(CONFIG_DEBUG == true) {
+            if(CONFIG_DEBUG) {
                 alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
-                if(CONFIG_PHP_ERRORS == true) {
+                if(CONFIG_PHP_ERRORS) {
                     alert('WARNING', 'PHP Errors are enabled. This is NOT recommended in production environments.');
                 }
             }
@@ -177,7 +179,7 @@ session_start();
                             $row = mysqli_fetch_row($result);
                             $uid = $row[0];
                             while($uid != NULL && $x != '4') {
-                                if(get_user_roleID($uid) != '0' AND get_user_roleID($uid) != '1') {
+                                if(get_user_roleID($uid) != '0' && get_user_roleID($uid) != '1') {
                                 echo '<div class="flex-grow">
                             <div class="flex flex-col items-center">
                                 <div class="relative">
@@ -235,7 +237,10 @@ session_start();
                                     '.$row[1].' Approvals
                                 </a>
                             </div>
-                        </div>';} $x++; $row = mysqli_fetch_row($result); if(isset($row[0])) {$uid = $row[0];}
+                        </div>';
+                            }
+                            $x++; $row = mysqli_fetch_row($result); if(isset($row[0])) {$uid = $row[0];
+                            }
                         } echo '</div>
                 </div>';
                 } ?>

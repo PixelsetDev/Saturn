@@ -7,7 +7,7 @@
         $userid = checkInput('DEFAULT', $_POST['userid']);
         $role = checkInput('DEFAULT', $_POST['role']);
         if($userid != $_SESSION['id']) {
-            if(update_user_role_id($userid,$role) == true) {
+            if(update_user_role_id($userid,$role)) {
                 $message = get_user_fullname($_SESSION['id']).' changed '.get_user_fullname($userid).'\'s role to '.get_user_role($userid).'.';
                 log_file('User Management',$message);
                 $successMsg = get_user_fullname($userid).'\'s role has been changed to '.get_user_role($userid).'.';
@@ -21,7 +21,7 @@
     function displayUser($rs) {
         while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
             echo "<br>";
-            foreach ($row as $key => $value) {
+            foreach ($row as $value) {
                 if (is_numeric($value)) {
                     $empty = false;
             echo '<div class="h-12">
@@ -70,7 +70,7 @@
                                                                                 <div class="relative inline-block w-full text-gray-700">
                                                                                     <select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
                                                                                         <option value="4"';if(get_user_roleID($value) == '4'){echo' selected';}echo'>Administrator</option>
-                                                                                        '; if(CONFIG_PAGE_APPROVALS==true OR get_user_roleID($value) == '3'){echo'<option value="3"';if(get_user_roleID($value) == '3'){echo' selected';}echo'>Editor</option>';} echo'
+                                                                                        '; if(CONFIG_PAGE_APPROVALS || get_user_roleID($value) == '3'){echo'<option value="3"';if(get_user_roleID($value) == '3'){echo' selected';}echo'>Editor</option>';} echo'
                                                                                         <option value="2"';if(get_user_roleID($value) == '2'){echo' selected';}echo'>Writer</option>
                                                                                         <option value="0"';if(get_user_roleID($value) == '0'){echo' selected';}echo'>Restricted</option>
                                                                                     </select>
@@ -92,7 +92,7 @@
                                 </div>';
                 }
             }
-            if($empty == true) {echo 'None found.';}
+            if($empty) {echo 'None found.';}
         }
     }
 ?><!DOCTYPE html>
@@ -144,7 +144,7 @@
                         <div class="flex-grow mr-8 w-1/3 mb-10">
                             <h1 class="text-2xl font-bold leading-tight text-<? echo THEME_PANEL_COLOUR; ?>-900">Editors</h1>
                             <p class="text-xs font-light text-<? echo THEME_PANEL_COLOUR; ?>-800">Users who can approve page edits (if enabled).</p>
-                            <?php if(CONFIG_PAGE_APPROVALS == false) { echo '<p class="text-xs font-light italic text-red-800">Approvals are disabled. <a href="javascript:alert(\'Approvals are disabled.\n\nThese users have the same rights as Writers when working on Pages, Articles and Interactive Elements.\n\nThey may have more access than writers to areas such as Team Chat and Team To-Do Lists.\')" class="underline text-red-800">What does this mean?</a></p>';} ?>
+                            <?php if(!CONFIG_PAGE_APPROVALS) { echo '<p class="text-xs font-light italic text-red-800">Approvals are disabled. <a href="javascript:alert(\'Approvals are disabled.\n\nThese users have the same rights as Writers when working on Pages, Articles and Interactive Elements.\n\nThey may have more access than writers to areas such as Team Chat and Team To-Do Lists.\')" class="underline text-red-800">What does this mean?</a></p>';} ?>
                         <?php
                             $empty = true;
 
