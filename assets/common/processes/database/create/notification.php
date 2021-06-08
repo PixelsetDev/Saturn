@@ -29,9 +29,5 @@
         } else {
             $return = false;
         }
-        if($return === true) {
-            return true;
-        } else {
-            return false;
-        }
+        return $return;
     }
