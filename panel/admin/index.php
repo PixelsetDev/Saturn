@@ -97,7 +97,15 @@
                             <p><em><?php echo $bannedrows; ?> restricted users.</em></p>
                         </div>
                     </div>
-                    <?php $phpversion = phpversion(); $badServer=0; if ($phpversion < '7.4.0' OR $phpversion > '8') {$badServer++;} if (PHP_OS != 'Linux') {$badServer++;}
+                    <?php
+                    $phpversion = phpversion(); $badServer=0;
+                    if ($phpversion < '7.4.0' || $phpversion > '8') {
+                        $badServer++;
+                    }
+                    if (PHP_OS != 'Linux') {
+                        $badServer++;
+                    }
+
                     if ($badServer == 1) {
                         echo '<div class="w-full mr-1 my-1 duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
                         <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
@@ -128,8 +136,16 @@
                 <h2 class="text-gray-900 text-2xl">Your Server</h2>
                 <p>
                     <?php
-                        if ($phpversion < '7.4.0' OR $phpversion > '8') {echo '<u>PHP Version</u>: <span class="text-red-500">'.$phpversion.'</span> <small class="text-red-900">Recommended: 7.4.0</small>';} else {echo '<u>PHP Version</u>: <span class="text-green-500">'.$phpversion.'</span>';}
-                        if (PHP_OS != 'Linux') {echo '<br><u>Operating System</u>: <span class="text-red-500">'.PHP_OS.'</span> <small class="text-red-900">Recommended: Linux</small>';} else {echo '<br><u>Operating System</u>: <span class="text-green-500">'.PHP_OS.'</span>';}
+                        if ($phpversion < '7.4.0' || $phpversion > '8') {
+                            echo '<u>PHP Version</u>: <span class="text-red-500">'.$phpversion.'</span> <small class="text-red-900">Recommended: 7.4.0</small>';
+                        } else {
+                            echo '<u>PHP Version</u>: <span class="text-green-500">'.$phpversion.'</span>';
+                        }
+                        if (PHP_OS != 'Linux') {
+                            echo '<br><u>Operating System</u>: <span class="text-red-500">'.PHP_OS.'</span> <small class="text-red-900">Recommended: Linux</small>';
+                        } else {
+                            echo '<br><u>Operating System</u>: <span class="text-green-500">'.PHP_OS.'</span>';
+                        }
                     ?>
                 </p>
                 <br>
