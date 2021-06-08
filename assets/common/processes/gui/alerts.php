@@ -1,5 +1,5 @@
 <?php
-function alert($type,$message): string {
+function alert($type,$message) {
     $message = checkOutput('DEFAULT', $message);
     if($type == 'ERROR') {
         echo '<br>
@@ -33,4 +33,5 @@ function alert($type,$message): string {
                                 </div>
                             </div>';
     }
+    return true;
 }

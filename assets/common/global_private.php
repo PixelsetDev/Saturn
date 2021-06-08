@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../../config.php';
     require_once __DIR__.'/../../theme.php';
@@ -46,3 +47,4 @@
         $id = $_SESSION['id'];
         $uid = $_SESSION['id'];
     }
+    ob_end_flush();
