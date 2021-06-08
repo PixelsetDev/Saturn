@@ -55,7 +55,7 @@
         ?>
 
         <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js" integrity="sha256-5RjTlnB92dAMNEPY6q0rX2AusjFwvVf1YHHikzobEss=" crossorigin="anonymous"></script>
-        <title>Saturn Panel</title>
+        <title>Page Editor - Saturn Panel</title>
 
     </head>
     <body class="mb-8">
