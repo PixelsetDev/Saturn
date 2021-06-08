@@ -29,9 +29,9 @@
                     alert('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
-                if(isset($warningMsg)){
-                    alert('WARNING', $warningMsg);
-                    unset($warningMsg);
+                if(isset($successMsg)){
+                    alert('SUCCESS', $successMsg);
+                    unset($successMsg);
                 }
             ?>
             <br>
