@@ -9,7 +9,7 @@
         if($userid != $_SESSION['id']) {
             if(update_user_role_id($userid,$role)) {
                 $message = get_user_fullname($_SESSION['id']).' changed '.get_user_fullname($userid).'\'s role to '.get_user_role($userid).'.';
-                log_file('User Management',$message);
+                log_file('SATURN][User Management',$message);
                 $successMsg = get_user_fullname($userid).'\'s role has been changed to '.get_user_role($userid).'.';
             } else {
                 $errorMsg = 'Unable to update user, an error has occurred.';
