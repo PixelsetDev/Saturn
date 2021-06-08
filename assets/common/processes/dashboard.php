@@ -2,11 +2,11 @@
     function display_dashboard_statistics($id){
 
         echo'<h1 class="text-3xl text-gray-700 dark:text-gray-50 mt-4">Your Statistics</h1>';
-        echo display_dashboard_edits($id,null,null);
-        if(get_user_roleID($_SESSION['id'])){echo display_dashboard_approvals($id,null,null);}
+        echo display_dashboard_edits(get_user_edits($id),'6');
+        if(get_user_roleID($_SESSION['id'])){echo display_dashboard_approvals(get_user_approvals($id),'6');}
     }
 
-    function display_dashboard_edits($id, $edits, $maxedits) {
+    function display_dashboard_edits($edits, $maxedits): string {
         $send = '<div class="flex mt-4">
                 <div class="shadow-lg rounded-xl w-full bg-white dark:bg-gray-700 relative overflow-hidden">
                     <a class="w-full h-full block">
@@ -20,14 +20,14 @@
                                 </p>
                             </div>
                             <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
-                                '.get_user_edits($id).' / 6
+                                '.$edits.' / 6
                                 <span class="text-xs text-gray-400">
                                 Edits
                                 </span>
                             </div>
                         </div>
                         <div class="w-full h-3 bg-gray-100">
-                            <div class="w-';if(get_user_edits($id) > 0){echo get_user_edits($id).'/6';}else{echo'0';} echo 'h-full text-center text-xs text-white bg-green-400">
+                            <div class="w-';if($edits > 0){echo $edits.'/'.$maxedits;}else{echo'0';} echo 'h-full text-center text-xs text-white bg-green-400">
                             </div>
                         </div>
                     </a>
@@ -46,7 +46,7 @@
         return $send;
     }
 
-    function display_dashboard_approvals($id, $edits, $maxedits) {
+    function display_dashboard_approvals($approvals, $maxapprovals): string {
         $send = '<div class="flex mt-4">
                 <div class="shadow-lg rounded-xl w-full bg-white dark:bg-gray-700 relative overflow-hidden">
                     <a class="w-full h-full block">
@@ -60,14 +60,14 @@
                                 </p>
                             </div>
                             <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
-                                '.get_user_approvals($id).' / 6
+                                '.$approvals.' / 6
                                 <span class="text-xs text-gray-400">
                                 Edits
                                 </span>
                             </div>
                         </div>
                         <div class="w-full h-3 bg-gray-100">
-                            <div class="w-';if(get_user_approvals($id)>0){echo get_user_approvals($id).'/6'; } else { echo'0'; } echo 'h-full text-center text-xs text-white bg-green-400">
+                            <div class="w-';if($approvals>0){echo $approvals.'/'.$maxapprovals; } else { echo'0'; } echo 'h-full text-center text-xs text-white bg-green-400">
                             </div>
                         </div>
                     </a>
