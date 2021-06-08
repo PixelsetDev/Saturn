@@ -1,4 +1,6 @@
 <?php
+    const DATE_FORMAT = "H:i:s";
+
     function log_all($prefix, $message) {
         $prefix = strtoupper($prefix);
         $prefix = checkOutput('DEFAULT', $prefix);
@@ -14,7 +16,7 @@
         $prefix = checkOutput('DEFAULT', $prefix);
         $message = checkOutput('DEFAULT', $message);
         if (LOGGING_ACTIVE && CONFIG_DEBUG) {
-            echo '<script>console.log("' . date("H:i:s").' ['.$prefix . '] '.$message.'");</script>';
+            echo '<script>console.log("' . date(DATE_FORMAT).' ['.$prefix . '] '.$message.'");</script>';
         }
     }
 
@@ -23,7 +25,7 @@
         $prefix = checkOutput('DEFAULT', $prefix);
         $message = checkOutput('DEFAULT', $message);
         if (LOGGING_ACTIVE === true) {
-            $message = date("H:i:s").' ['.$prefix.'] '.$message."\r\n";
+            $message = date(DATE_FORMAT).' ['.$prefix.'] '.$message."\r\n";
             $file = __DIR__.'/../../../storage/security_log.txt';
             file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
         }
@@ -31,13 +33,13 @@
 
     function log_security_blocked($value) {
         if (LOGGING_ACTIVE && SECURITY_ACTIVE && CONFIG_DEBUG) {
-            echo '<script>console.log("'.date("H:i:s").' [SATURN][GSS] ';if(SECURITY_MODE=='clean'){echo'Cleaned';}else{echo'Stopped';}echo' I/O: Contained Blacklisted Item: '.$value.'.");</script>';
+            echo '<script>console.log("'.date(DATE_FORMAT).' [SATURN][GSS] ';if(SECURITY_MODE=='clean'){echo'Cleaned';}else{echo'Stopped';}echo' I/O: Contained Blacklisted Item: '.$value.'.");</script>';
         }
     }
 
     function log_clear(): bool {
         $message = get_user_fullname($_SESSION['id']).' cleared the Security Log.';
-        $message = date("H:i:s").' [SATURN][SECURITY] '.$message."\r\n";
+        $message = date(DATE_FORMAT).' [SATURN][SECURITY] '.$message."\r\n";
         $file = __DIR__.'/../../../storage/security_log.txt';
         file_put_contents($file, $message, LOCK_EX);
         return true;
