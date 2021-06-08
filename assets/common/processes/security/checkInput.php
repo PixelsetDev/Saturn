@@ -2,7 +2,7 @@
     function checkInput($mode, $data) {
         global $conn;
 
-        if(SECURITY_ACTIVE == true) {
+        if(SECURITY_ACTIVE === true) {
             $data = mysqli_real_escape_string($conn, $data);
             $data = checkData( $data, 'PHP', '<?', '&lt;?');
             $data = checkData( $data, 'External JavaScript', '<script src=', '&lt;script src=');

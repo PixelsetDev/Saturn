@@ -1,13 +1,19 @@
 <?php
-    $foundPlugin = false;
+$foundTheme = false;
     foreach (glob(dirname(__DIR__, 4)."/themes/*.php") as $filename) {
         include_once($filename);
-        if (CONFIG_DEBUG == true) {log_console('Saturn][Resource Loader][Themes', 'Loaded Theme: '.$filename.'.');}
-        $foundPlugin = true;
+        if (CONFIG_DEBUG === true) {
+            log_console('Saturn][Resource Loader][Themes', 'Loaded Theme: '.$filename.'.');
+        }
+        $foundTheme = true;
     }
-    if($foundPlugin == true){
-        if(CONFIG_DEBUG == true){log_console('Saturn][Resource Loader][Themes', 'Theme loading complete.');}
+    if($foundTheme){
+        if(CONFIG_DEBUG === true){
+            log_console('Saturn][Resource Loader][Themes', 'Theme loading complete.');
+        }
     } else {
-        if(CONFIG_DEBUG == true){log_console('Saturn][Resource Loader][Themes', 'No themes found.');}
+        if(CONFIG_DEBUG === true){
+            log_console('Saturn][Resource Loader][Themes', 'No themes found.');
+        }
     }
-    unset($foundPlugin);unset($filename);
+    unset($foundTheme, $filename);

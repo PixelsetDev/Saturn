@@ -28,7 +28,7 @@
     }
     function errorHandlerRedirect($errcode) {
         global $errorScreen;
-        if (isset($errorScreen) == false) {
+        if (!isset($errorScreen)) {
             echo '<meta http-equiv="refresh" content="0;url=' . CONFIG_INSTALL_URL . '/error.php?error=' . $errcode . '" />';
         }
     }
