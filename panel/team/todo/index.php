@@ -4,9 +4,9 @@
     // Delete a list
     if(isset($_GET['delete'])) {
         $listID = checkInput('DEFAULT', $_GET['delete']);
-        if(get_todo_list_owner_id($listID) == $_SESSION['id'] OR get_user_roleID($_SESSION['id']) == '4') {
+        if(get_todo_list_owner_id($listID) == $_SESSION['id'] || get_user_roleID($_SESSION['id']) == '4') {
             $successMsg = 'List deleted: '.get_todo_list_name($listID).'. <a href="?recover='.$listID.'" class="text-blue-500 hover:text-blue-400">Undo</a>';
-            if(update_todo_list_status($listID, 0) != true) {
+            if(!update_todo_list_status($listID, 0)) {
                 unset($successMsg);
                 $errorMsg = 'Unable to delete To-Do List: '.get_todo_list_name($listID).' - an error occurred.';
             }
@@ -17,9 +17,9 @@
     // Recover a deleted list.
     if(isset($_GET['recover'])) {
         $listID = $_GET['recover'];
-        if(get_todo_list_owner_id($listID) == $_SESSION['id'] OR get_user_roleID($_SESSION['id']) == '4') {
+        if(get_todo_list_owner_id($listID) == $_SESSION['id'] || get_user_roleID($_SESSION['id']) == '4') {
             $successMsg = 'To-Do List recovered: '.get_todo_list_name($listID).'.';
-            if(update_todo_list_status($listID, 1) != true) {
+            if(!update_todo_list_status($listID, 1)) {
                 unset($successMsg);
                 $errorMsg = 'Unable to recover To-Do List: '.get_todo_list_name($listID).' - an error occurred.';
             }
@@ -87,7 +87,7 @@
                     $i=1;
                     $listName = get_todo_list_name($i);
                     while($listName != NULL){
-                        if((get_todo_list_status($i) == '1') AND (get_todo_list_visibility($i) == 'PUBLIC') AND (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
+                        if((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
                             echo '<a :class="{ \'active\': tab === \'' . $i . '\' }" @click.prevent="tab = \'' . $i . '\'" class="hover:shadow-lg cursor-pointer w-96 flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-30">
                         <i class="fas fa-list" aria-hidden="true"></i>
                         <span class="ml-1">'.$listName.'</span>
@@ -107,7 +107,7 @@
             $i=1;
             $listName = get_todo_list_name($i);
             while($listName != NULL){
-                if((get_todo_list_status($i) == '1') AND (get_todo_list_visibility($i) == 'PUBLIC') AND (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
+                if((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
                     $o = 1;
                     $itemName = get_todo_item_title($o);
                     echo '<div x-show="tab === \'' . $i . '\'">
@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 ';
-                            if ((get_todo_list_visibility($i) == 'PUBLIC') or (get_todo_list_owner_id($i) == $_SESSION['id'])) {
+                            if ((get_todo_list_visibility($i) == 'PUBLIC') || (get_todo_list_owner_id($i) == $_SESSION['id'])) {
                                 echo '<div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                     <div class="flex-grow">
                         <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div></
