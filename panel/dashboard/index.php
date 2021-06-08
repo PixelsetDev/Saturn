@@ -241,7 +241,7 @@ session_start();
                 } ?>
             </div>
 
-            <?php /* display_dashboard_statistics($_SESSION['id']); */ ?>
+            <?php display_dashboard_statistics($_SESSION['id']); ?>
         </div>
     </body>
 </html>
