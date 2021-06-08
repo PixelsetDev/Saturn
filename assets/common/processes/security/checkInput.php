@@ -11,23 +11,23 @@
             if ($mode == 'DEFAULT') {
                 $data = htmlspecialchars($data);
                 $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
-                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
-                $data = checkData( $data, 'CSS', 'style =', 'blocked =');
-                $data = checkData( $data, 'CSS', 'style=', 'blocked=');
+                $data = checkData( $data, 'CSS', '<css', '&ltstyle');
+                $data = checkData( $data, 'CSS', 'css =', 'blocked =');
+                $data = checkData( $data, 'CSS', 'css=', 'blocked=');
             } else if ($mode == 'HTML') {
                 $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
-                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
-                $data = checkData( $data, 'CSS', 'style =', 'blocked =');
-                $data = checkData( $data, 'CSS', 'style=', 'blocked=');
+                $data = checkData( $data, 'CSS', '<css', '&ltstyle');
+                $data = checkData( $data, 'CSS', 'css =', 'blocked =');
+                $data = checkData( $data, 'CSS', 'css=', 'blocked=');
             } else if ($mode == 'TAGCSS') {
                 $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
-                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
+                $data = checkData( $data, 'CSS', '<css', '&ltstyle');
             } else if ($mode == 'CSS') {
                 $data = checkData( $data, 'JavaScript', '<script', '&lt;script');
             } else if ($mode == 'JS') {
-                $data = checkData( $data, 'CSS', '<style', '&ltstyle');
-                $data = checkData( $data, 'CSS', 'style =', 'blocked =');
-                $data = checkData( $data, 'CSS', 'style=', 'blocked=');
+                $data = checkData( $data, 'CSS', '<css', '&ltstyle');
+                $data = checkData( $data, 'CSS', 'css =', 'blocked =');
+                $data = checkData( $data, 'CSS', 'css=', 'blocked=');
             }
         }
         return $data;

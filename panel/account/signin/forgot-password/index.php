@@ -143,7 +143,7 @@
                             </div>
                         </div>';
                             } else {
-                                echo '<textarea id="user_id" name="user_id" style="display:none;">'.checkInput('DEFAULT', $_GET['id']).'</textarea>
+                                echo '<textarea id="user_id" name="user_id" css="display:none;">'.checkInput('DEFAULT', $_GET['id']).'</textarea>
                         <div class="rounded-t-md shadow-sm -space-y-px">
                             <div>
                                 <label for="password" class="sr-only">Password</label>

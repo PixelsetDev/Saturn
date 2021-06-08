@@ -116,7 +116,7 @@
                                             if($row['user_id']==$_SESSION['id']) {
                                                 echo '
                                     <li class="w-full flex justify-end">
-                                        <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" style="max-width: 300px;">
+                                        <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" css="max-width: 300px;">
                                             <img class="h-8 w-8 rounded-full object-cover"
                                                 src="'.CONFIG_INSTALL_URL.'/assets/panel/images/icon/chat.png"
                                                 alt="'.get_user_fullname($row['user_id']).'"
@@ -130,7 +130,7 @@
                                             } else {
                                                 echo '
                                     <li class="w-full flex justify-start">
-                                        <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" style="max-width: 300px;">
+                                        <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" css="max-width: 300px;">
                                             <img class="h-8 w-8 rounded-full object-cover"
                                                 src="'.CONFIG_INSTALL_URL.'/assets/panel/images/icon/chat.png"
                                                 alt="'.get_user_fullname($row['user_id']).'"

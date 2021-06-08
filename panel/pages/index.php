@@ -131,8 +131,8 @@
                                     </div>
                                 </div> 
                                 <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-400">
-                                    <div style="width:'.(($complete / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
-                                    <div style="width:'.(($pending / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
+                                    <div css="width:'.(($complete / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                                    <div css="width:'.(($pending / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
                                 </div>
                             </div>
                             <div class="flex-none">&nbsp;&nbsp;&nbsp;</div>
