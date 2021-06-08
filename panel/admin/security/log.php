@@ -17,7 +17,7 @@
 
             <h1 class="text-gray-900 text-3xl">Security Log</h1>
             <br>
-            <iframe src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/security_log.txt" width="100%" height="75%" title="Security Log">
+            <iframe src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/security_log.txt" class="w-full h-3/4 overflow-scroll" title="Security Log">
         </div>
     </body>
 </html>
