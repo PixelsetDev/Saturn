@@ -4,5 +4,5 @@
 
         $query = "UPDATE `".DATABASE_PREFIX."notifications` SET `dismissed` = '1' WHERE `id` = ".$id;
 
-        if(mysqli_query($conn, $query)){return true;}else{return false;}
+        return mysqli_query($conn, $query);
     }

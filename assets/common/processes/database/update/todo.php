@@ -4,5 +4,5 @@
 
         $query = "UPDATE `".DATABASE_PREFIX."todo_lists` SET `status` = '".$data."' WHERE `id` = ".$id;
 
-        if(mysqli_query($conn, $query)){return true;}else{return false;}
+        return mysqli_query($conn, $query);
     }
