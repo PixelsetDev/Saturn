@@ -29,6 +29,7 @@
                 update_user_last_login_ip($id, $ip);
                 header('location:'.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=verified');
             } else {
+                log_file('SATURN][SECURITY','Failed login verify attempt by user with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
                 $errorMsg = 'Code does not match. <a href="'.$_SERVER['PHP_SELF'].'?username='.$username.'" class="text-red-500 hover:text-red-400">Click here to re-send verification code</a>.';
             }
         }
