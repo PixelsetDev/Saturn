@@ -217,10 +217,12 @@
         $rows = mysqli_num_rows($rs);
 
         if($rows == 0) {
-            return false;
+            $return = false;
         } else {
-            return true;
+            $return = true;
         }
+
+        return $return;
     }
 
     function get_user_notification_preference($id): int {
