@@ -7,7 +7,7 @@
             if (!empty($_POST['verify_email'])) {
                 include_once(__DIR__ . '/../../../assets/common/processes/database/get/user.php');
                 $email = checkInput('DEFAULT', $_POST['verify_email']);
-                if (get_user_email_exists($email) == true) {
+                if (get_user_email_exists($email)) {
                     $errorMsg = 'A user with this email address already exists.';
                     header('Location: log.php?error='.$errorMsg);
                     exit;
@@ -55,7 +55,7 @@
             $password = password_hash($password, PASSWORD_DEFAULT);
             $organisation = $_POST['organisation'];
             $organisation = checkInput('DEFAULT', $organisation);
-            if (create_user($email, $firstname, $lastname, $password, $organisation) == true) {
+            if (create_user($email, $firstname, $lastname, $password, $organisation)) {
                 $successMsg = 'Your Saturn account is now pending approval, we\'ll send you an email when you\'re ready to get started.';
             } else {
                 $errorMsg = 'Sorry there was an error, please try again later.';

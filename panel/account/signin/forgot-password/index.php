@@ -55,7 +55,7 @@
 
             if($getNumRows == 1) {
                 $serverCode = $getUserRow['auth_code'];
-                if (checksum_validate($serverCode, $userCode)==true) {
+                if (checksum_validate($serverCode, $userCode)) {
                     $infoMsg = "Please enter your new password.";
                     $verified = true;
                 } else {
@@ -134,12 +134,16 @@
                         ?>
                     </div>
                     <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-                        <?php if($done != true) { if (!isset($verified)) { echo '<div class="rounded-md shadow-sm -space-y-px">
+                        <?php if($done) {
+                            if (!isset($verified)) {
+                                echo '<div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="username" class="sr-only">Email address or Username</label>
                                 <input id="username" name="username" type="username" autocomplete="username" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email Address or Username">
                             </div>
-                        </div>'; } else { echo '<textarea id="user_id" name="user_id" style="display:none;">'.checkInput('DEFAULT', $_GET['id']).'</textarea>
+                        </div>';
+                            } else {
+                                echo '<textarea id="user_id" name="user_id" style="display:none;">'.checkInput('DEFAULT', $_GET['id']).'</textarea>
                         <div class="rounded-t-md shadow-sm -space-y-px">
                             <div>
                                 <label for="password" class="sr-only">Password</label>
@@ -149,7 +153,8 @@
                                 <label for="confirmpassword" class="sr-only">Confirm Password</label>
                                 <input id="confirmpassword" name="confirmpassword" type="password" autocomplete="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm Password">
                             </div>
-                        </div>'; }
+                        </div>';
+                            }
 
                         echo '<div>
                             <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
@@ -158,12 +163,16 @@
                                 </span>
                                 Reset Password
                             </button>
-                        </div>'; } else { echo '<a href="'.CONFIG_INSTALL_URL.'/panel/account/signin" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                        </div>';
+                        } else {
+                            echo '<a href="'.CONFIG_INSTALL_URL.'/panel/account/signin" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-lock"></i>
                                 </span>
                                 Sign in
-                            </a>';} ?>
+                            </a>';
+                        }
+                        ?>
                     </form>
                 </div>
             </div>
