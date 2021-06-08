@@ -17,6 +17,7 @@
     }
     /* Database: Required Files */
     require_once __DIR__ . '/processes/database/get/activity.php';
+    require_once __DIR__ . '/processes/database/get/articles.php';
     require_once __DIR__ . '/processes/database/get/notification.php';
     require_once __DIR__ . '/processes/database/get/page.php';
     require_once __DIR__ . '/processes/database/get/todo.php';
@@ -36,6 +37,7 @@
     require_once __DIR__ . '/panel/theme.php';
     /* GUI */
     require_once __DIR__ . '/processes/gui/alerts.php';
+    require_once __DIR__ . '/processes/gui/modals.php';
     require_once __DIR__ . '/processes/gui/user_profile.php';
     /* Authenticate Session */
     if(!isset($_SESSION['id'])) {
