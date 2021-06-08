@@ -3,7 +3,7 @@
         $prefix = strtoupper($prefix);
         $prefix = checkOutput('DEFAULT', $prefix);
         $message = checkOutput('DEFAULT', $message);
-        if (LOGGING_ACTIVE == true) {
+        if (LOGGING_ACTIVE === true) {
             log_console($prefix, $message);
             log_file($prefix, $message);
         }
@@ -22,7 +22,7 @@
         $prefix = strtoupper($prefix);
         $prefix = checkOutput('DEFAULT', $prefix);
         $message = checkOutput('DEFAULT', $message);
-        if (LOGGING_ACTIVE == true) {
+        if (LOGGING_ACTIVE === true) {
             $message = date("H:i:s").' ['.$prefix.'] '.$message."\r\n";
             $file = __DIR__.'/../../../storage/security_log.txt';
             file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
