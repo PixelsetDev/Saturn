@@ -1,5 +1,7 @@
 <?php
     function get_user_id($username) {
+        $username = checkInput('DEFAULT', $username);
+
         global $conn;
 
         $query = "SELECT `id` FROM `".DATABASE_PREFIX."users` WHERE `username` = '".$username."'";
@@ -10,6 +12,8 @@
     }
 
     function get_user_username($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `username` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -20,6 +24,8 @@
     }
 
     function get_user_firstname($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `first_name` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -30,6 +36,8 @@
     }
 
     function get_user_lastname($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `last_name` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -40,6 +48,8 @@
     }
 
     function get_user_fullname($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `first_name`, `last_name` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -49,6 +59,8 @@
     }
 
     function get_user_email($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `email` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -59,6 +71,8 @@
     }
 
     function get_user_role($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `role_id` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -77,6 +91,8 @@
     }
 
     function get_user_roleID($id): int {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `role_id` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -88,6 +104,8 @@
     }
 
     function get_user_bio($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `bio` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -99,6 +117,8 @@
     }
 
     function get_user_website($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `website` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -110,6 +130,8 @@
     }
 
     function get_user_profilephoto($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `profile_photo` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -121,6 +143,8 @@
     }
 
     function get_user_views($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `views` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -132,6 +156,8 @@
     }
 
     function get_user_edits($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `edits` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -143,6 +169,8 @@
     }
 
     function get_user_approvals($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `approvals` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -154,6 +182,8 @@
     }
 
     function get_user_page_count($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `id` FROM `".DATABASE_PREFIX."pages` WHERE `user_id` = ".$id;
@@ -163,6 +193,8 @@
     }
 
     function get_user_article_count($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `id` FROM `".DATABASE_PREFIX."articles` WHERE `author_id` = ".$id;
@@ -172,6 +204,8 @@
     }
 
     function get_user_key($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `user_key` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -183,6 +217,8 @@
     }
 
     function get_user_auth_code($id): string {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `auth_code` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -194,6 +230,8 @@
     }
 
     function get_user_last_login_ip($id): string {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `last_login_ip` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
@@ -205,10 +243,14 @@
     }
 
     function get_user_profile_link($id): string {
+        $id = checkInput('DEFAULT', $id);
+
         return CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($id);
     }
 
     function get_user_email_exists($email): bool {
+        $email = checkInput('DEFAULT', $email);
+
         global $conn;
 
         $query = "SELECT `id` FROM `".DATABASE_PREFIX."users` WHERE `email` = '".$email."'";
@@ -226,5 +268,7 @@
     }
 
     function get_user_notification_preference($id): int {
+        $id = checkInput('DEFAULT', $id);
+
         return '1';
     }

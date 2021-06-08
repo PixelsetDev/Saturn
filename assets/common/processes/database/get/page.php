@@ -1,5 +1,7 @@
 <?php
     function get_page_title($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `title` FROM `".DATABASE_PREFIX."pages` WHERE `id` = ".$id;
@@ -10,6 +12,8 @@
     }
 
     function get_page_content($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `content` FROM `".DATABASE_PREFIX."pages` WHERE `id` = ".$id;
@@ -20,6 +24,8 @@
     }
 
     function get_page_references($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `reference` FROM `".DATABASE_PREFIX."pages` WHERE `id` = ".$id;
@@ -30,6 +36,8 @@
     }
 
     function get_page_pending_title($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `title` FROM `".DATABASE_PREFIX."pages_pending` WHERE `id` = ".$id;
@@ -40,6 +48,8 @@
     }
 
     function get_page_pending_content($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `content` FROM `".DATABASE_PREFIX."pages_pending` WHERE `id` = ".$id;
@@ -50,6 +60,8 @@
     }
 
     function get_page_pending_references($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `reference` FROM `".DATABASE_PREFIX."pages_pending` WHERE `id` = ".$id;
@@ -60,6 +72,8 @@
     }
 
     function get_page_pending_user_id($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `user_id` FROM `".DATABASE_PREFIX."pages_pending` WHERE `id` = ".$id;
@@ -70,6 +84,8 @@
     }
 
     function get_page_category_name($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `name` FROM `".DATABASE_PREFIX."pages_categories` WHERE `id` = ".$id;
@@ -80,6 +96,8 @@
     }
 
     function get_page_category_id($id): string {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `category_id` FROM `".DATABASE_PREFIX."pages` WHERE `id` = ".$id;
@@ -90,6 +108,8 @@
     }
 
     function get_page_last_edit_user_id($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `id`, `user_id` FROM `".DATABASE_PREFIX."pages_history` WHERE `page_id` = '".$id."' ORDER BY `id` DESC";
@@ -100,6 +120,8 @@
     }
 
     function get_page_last_edit_timestamp($id) {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `id`, `timestamp` FROM `".DATABASE_PREFIX."pages_history` WHERE `page_id` = '".$id."' ORDER BY `id` DESC";
@@ -110,6 +132,8 @@
     }
 
     function get_page_status($id): string {
+        $id = checkInput('DEFAULT', $id);
+
         global $conn;
 
         $query = "SELECT `content` FROM `".DATABASE_PREFIX."pages` WHERE `id` = ".$id;

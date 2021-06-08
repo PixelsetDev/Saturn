@@ -1,5 +1,10 @@
 <?php
-function create_user($email,$firstname,$lastname,$password,$organisation): bool{
+function create_user($email,$firstname,$lastname,$password,$organisation): bool {
+    $email = checkInput('DEFAULT', $email);
+    $firstname = checkInput('DEFAULT', $firstname);
+    $lastname = checkInput('DEFAULT', $lastname);
+    $organisation = checkInput('DEFAULT', $organisation);
+
     global $conn;
 
     $username = strtolower($firstname).'.'.strtolower($lastname);
