@@ -33,7 +33,33 @@
                                                                 '.$yellowMsg.'
                                                                 <span class="text-green-500">Green:</span> Currently Live<br>
                                                                 <i>You can edit pending pages.</i>
-                                                            </div>'
+                                                            </div>';
+
+            if(isset($_POST['publish'])) {
+                $id = checkInput('DEFAULT', $_GET['id']);
+                if(get_article_author_id($id) == $_SESSION['id']) {
+                    if(update_article_status($id, 'PENDING')) {
+                        $successMsg = 'Article published.';
+                    } else {
+                        $errorMsg = 'An error occurred.';
+                    }
+                } else {
+                    $errorMsg = 'You can\'t publish articles that you don\'t own.';
+                }
+            }
+
+            if(isset($_POST['delete'])) {
+                $id = checkInput('DEFAULT', $_GET['id']);
+                if(get_article_author_id($id) == $_SESSION['id']) {
+                    if(update_article_status($id, 'DELETED') && update_article_content($id, '') && update_article_references($id, '')) {
+                        $successMsg = 'Article deleted.';
+                    } else {
+                        $errorMsg = 'An error occurred.';
+                    }
+                } else {
+                    $errorMsg = 'You can\'t delete articles that you don\'t own.';
+                }
+            }
         ?>
 
     </head>
@@ -52,6 +78,10 @@
                 alert('ERROR',$errorMsg);
             }
             unset($errorMsg);
+            if(isset($successMsg)){
+                alert('SUCCESS',$successMsg);
+            }
+            unset($successMsg);
             ?>
             <div class="px-4 py-6 sm:px-0">
                 <?php
@@ -59,83 +89,84 @@
                 $i=1;
                 $article = get_article_title($i);
                 while($article != null) {
-                    $percent = 0; $written = 0; $complete = 0; $pending = 0; $total = 0;
-echo '            <div name="articles">
-                                <div name="'.$article.'" id="'.$article.'">
+                    if(get_article_author_id($i) == $_SESSION['id'] && get_article_status($i) != 'DELETED') {
+                        echo '            <div>
+                                <div name="' . $article . '" id="' . $article . '">
                                     <div class="flex-0 relative pt-1 mb-2">
                                         <div class="flex items-center justify-between">
-                                            <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2">'.$article.'</h1>
+                                            <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2">' . $article . '</h1>
                                             <div>';
-                    if (get_article_status($i) == 'UNPUBLISHED') {
-                        $statusColour = 'red';
-                        $status = 'Unpublished';
-                    } else if (get_article_status($i) == 'PENDING') {
-                        $statusColour = 'yellow';
-                        $status = 'Pending';
-                    } else if (get_article_status($i) == 'REJECTED') {
-                        $statusColour = 'red';
-                        $status = 'Rejected';
-                    } else if (get_article_status($i) == 'PUBLISHED') {
-                        $statusColour = 'green';
-                        $status = 'Published';
-                    } else {
-                        $statusColour = 'gray';
-                        $status = 'Unknown Status';
-                    }
-                    echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$statusColour.'-500 bg-'.$statusColour.'-200">'.$status.'</span>
+                        if (get_article_status($i) == 'UNPUBLISHED') {
+                            $statusColour = 'red';
+                            $status = 'Unpublished';
+                        } else if (get_article_status($i) == 'PENDING') {
+                            $statusColour = 'yellow';
+                            $status = 'Pending';
+                        } else if (get_article_status($i) == 'REJECTED') {
+                            $statusColour = 'red';
+                            $status = 'Rejected';
+                        } else if (get_article_status($i) == 'PUBLISHED') {
+                            $statusColour = 'green';
+                            $status = 'Published';
+                        } else {
+                            $statusColour = 'gray';
+                            $status = 'Unknown Status';
+                        }
+                        echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-' . $statusColour . '-500 bg-' . $statusColour . '-200">' . $status . '</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-2 flex-grow flex w-30 h-8 space-x-2">
-                                        <a href="'.CONFIG_INSTALL_URL.'/panel/articles/editor/?article='.$i.'" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                        <a href="' . CONFIG_INSTALL_URL . '/panel/articles/editor/?article=' . $i . '" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;Edit
                                         </a>
                                         ';
-                    if ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === false) {
-                        echo '<form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post" x-data="{ open: false }">
-                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                        if ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === false) {
+                            echo '<form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{ open: false }">
+                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Publish
                                             </a>
-                                            '.display_modal('green','Publish Article: '.$article,'Are you sure you want to publish this article?','<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                            ' . display_modal('green', 'Publish Article: ' . $article, 'Are you sure you want to publish this article?', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                     <input type="submit" id="publish" name="publish" value="Publish Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
-                                </div>').'
+                                </div>') . '
                                         </form>';
-                    } else if ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === true) {
-                        echo '<a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                        } else if ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === true) {
+                            echo '<a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                             <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Request Publication
                                         </a>';
-                    } else {
-                        alert('ERROR', 'Unable to fetch approval status.');
-                    }
+                        } else {
+                            alert('ERROR', 'Unable to fetch approval status.');
+                        }
                         echo '          <div x-data="{open: false}">
-                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-cogs" aria-hidden="true"></i>&nbsp;Settings
                                             </a>
-                                        '.display_modal_sidebar('Article Settings: '.$article,'Are you sure you want to delete this article?','<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                        ' . display_modal_sidebar('Article Settings: ' . $article, 'Are you sure you want to delete this article?', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                     <input type="submit" id="delete" name="delete" value="Delete Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
-                                </div>').'
+                                </div>') . '
                                         </div>
-                                        <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post" x-data="{ open: false }">
-                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                        <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{ open: false }">
+                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-trash-alt" aria-hidden="true"></i>&nbsp;Delete
                                             </a>
-                                            '.display_modal('red','Delete Article: '.$article,'Are you sure you want to delete this article?','<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                            ' . display_modal('red', 'Delete Article: ' . $article, 'Are you sure you want to delete this article?', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                     <input type="submit" id="delete" name="delete" value="Delete Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
-                                </div>').'
+                                </div>') . '
                                         </form>
                                     </div>
-                                </div>';
+                                </div>
+                            </div>
+                        <hr><br>';
+                    }
                     unset($article);
                     $i++;
-                    $article = get_page_category_name($i);
-                    echo '</div>
-                                <hr><br>';
+                    $article = get_article_title($i);
                 }
                 ?>
         </div>

@@ -35,6 +35,18 @@
         return $row['reference'];
     }
 
+    function get_article_author_id($id) {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = "SELECT `author_id` FROM `".DATABASE_PREFIX."articles` WHERE `id` = ".$id;
+        $rs = mysqli_query($conn,$query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['author_id'];
+    }
+
     function get_article_status($id) {
         $id = checkInput('DEFAULT', $id);
 
