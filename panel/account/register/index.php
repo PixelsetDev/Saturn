@@ -121,7 +121,9 @@
                         Verify Code
                     </button>
                 </div>
-            </form>'; } else if(isset($_POST['confirm'])) { echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+            </form>';
+            } else if(isset($_POST['confirm'])) {
+                echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -156,7 +158,9 @@
                         Request Account
                     </button>
                 </div>
-            </form>'; } else { echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+            </form>';
+            } else {
+                echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -173,7 +177,9 @@
                         Verify Email
                     </button>
                 </div>
-            </form>'; }?>
+            </form>';
+            }
+            ?>
         </div>
     </div>
 </main>
