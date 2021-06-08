@@ -2,12 +2,18 @@
     $foundPlugin = false;
     foreach (glob(dirname(__DIR__, 4)."/plugins/*.php") as $filename) {
         include_once($filename);
-        if (CONFIG_DEBUG == true) {log_console('Saturn][Resource Loader][Plugins', 'Loaded Plugin: '.substr($filename, strpos($filename, "plugins") + 8));}
+        if (CONFIG_DEBUG === true) {
+            log_console('Saturn][Resource Loader][Plugins', 'Loaded Plugin: '.substr($filename, strpos($filename, "plugins") + 8));
+        }
         $foundPlugin = true;
     }
-    if($foundPlugin == true){
-        if(CONFIG_DEBUG == true){log_console('Saturn][Resource Loader][Plugins', 'Plugin loading complete.');}
+    if($foundPlugin){
+        if(CONFIG_DEBUG === true){
+            log_console('Saturn][Resource Loader][Plugins', 'Plugin loading complete.');
+        }
     } else {
-        if(CONFIG_DEBUG == true){log_console('Saturn][Resource Loader][Plugins', 'No plugins found.');}
+        if(CONFIG_DEBUG === true){
+            log_console('Saturn][Resource Loader][Plugins', 'No plugins found.');
+        }
     }
-    unset($foundPlugin);unset($filename);
+    unset($foundPlugin, $filename);
