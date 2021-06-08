@@ -44,6 +44,7 @@
             else {
                 unset($password, $row, $rs, $sql);
                 $errorMsg = "Username or Password is incorrect.";
+                log_file('SATURN][SECURITY','Failed login attempt by user with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
             }
         } else {
             $errorMsg = "Username or Password can not be empty.";
