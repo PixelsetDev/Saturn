@@ -28,6 +28,7 @@
     const CONFIG_EMAIL_SENDFROM = 'noreply@saturncms.net';
     /* Editing */
     const CONFIG_PAGE_APPROVALS = true;
+    const CONFIG_ARTICLE_APPROVALS = true;
     const CONFIG_MAX_TITLE_CHARS = '64';
     const CONFIG_MAX_PAGE_CHARS = '50000';
     const CONFIG_MAX_ARTICLE_CHARS = '50000';
