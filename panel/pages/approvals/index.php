@@ -18,8 +18,12 @@
                 $errorMsg = "Error: An unknown error occurred.";
             }
         }
-        if(get_user_roleID($_SESSION['id']) < 3) {header('Location: '.CONFIG_INSTALL_URL.'/panel/pages?error=permission');}
-        if(CONFIG_PAGE_APPROVALS==false) {header('Location: '.CONFIG_INSTALL_URL.'/panel/pages');}
+        if(get_user_roleID($_SESSION['id']) < 3) {
+            header('Location: '.CONFIG_INSTALL_URL.'/panel/pages?error=permission');
+        }
+        if(!CONFIG_PAGE_APPROVALS) {
+            header('Location: '.CONFIG_INSTALL_URL.'/panel/pages');
+        }
 
         $key = '
                                                             <div class="text-xs text-left absolute bottom-2 left-0 h-16 w-30 p-2 bg-gray-50 rounded">
@@ -85,11 +89,11 @@
                     $row = pageQuery_2($i,$o);
 
                     if($row['title'] != null) {
-                        $status = get_page_status($o); if($status == 'red') {$status='green';}if ($status == 'green') {$approved++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS == true){$pending++;$status='red';}else{$status='green';$approved++;}} $total++;
+                        $status = get_page_status($o); if($status == 'red') {$status='green';}if ($status == 'green') {$approved++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS){$pending++;$status='red';}else{$status='green';$approved++;}} $total++;
                         echo'<div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                                     <div class="flex w-full relative">
                                                                         <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>
-                                                                        '; if (($status == 'yellow' OR $status == 'red') AND CONFIG_PAGE_APPROVALS == true) {echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';}echo'
+                                                                        '; if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';}echo'
                                                                         <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
                                                                         <div><a href="approve/?pageID='.$o.'" class="hover:shadow-xl w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 text-'.THEME_PANEL_COLOUR.'-900 md:py-1 md:text-rg md:px-10">Approve</span></a></div>
                                                                     </div>
