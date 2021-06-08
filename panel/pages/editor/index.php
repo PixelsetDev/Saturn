@@ -15,7 +15,7 @@
                 $title = checkInput('HTML', $_POST['title']);
                 $content = checkInput('HTML',$_POST['content']);
                 $references = checkInput('HTML',$_POST['references']);
-                if (CONFIG_PAGE_APPROVALS == true) {
+                if (CONFIG_PAGE_APPROVALS) {
                     $myID = $_SESSION['id'];
                     $query = "UPDATE `".DATABASE_PREFIX."pages_pending` SET `title`='$title',`content`='$content',`reference`='$references',`user_id`='$myID' WHERE `id`='$pageID';";
                     unset($myID);
@@ -80,7 +80,7 @@
                 <p class="mb-2">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> Characters.</p>
                 <textarea name="title" id="title" maxlength="60" class="w-full border"><?php
                         $pageStatus = get_page_status($pageID);
-                        if ($pageStatus == 'green' OR $pageStatus == 'red' OR CONFIG_PAGE_APPROVALS == false) {
+                        if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $title = get_page_title($pageID);
                             $title = checkOutput('HTML', $title); echo $title;
                         } else if ($pageStatus == 'yellow') {
@@ -95,7 +95,7 @@
                 <h2 class="text-2xl font-bold mt-2">Content</h2>
                 <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS-10000; ?> Characters.</p>
                 <textarea name="content" id="content"><?php
-                        if ($pageStatus == 'green' OR $pageStatus == 'red' OR CONFIG_PAGE_APPROVALS == false) {
+                        if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $content = get_page_content($pageID);
                             $content = checkOutput('HTML', $content); echo $content;
                         } else if ($pageStatus == 'yellow') {
@@ -110,7 +110,7 @@
                 <h2 class="text-2xl font-bold mt-2">References</h2>
                 <p class="mb-2">Max. <?php echo CONFIG_MAX_REFERENCES_CHARS-2000; ?> Characters.</p>
                 <textarea name="references" id="references"><?php
-                        if ($pageStatus == 'green' OR $pageStatus == 'red' OR CONFIG_PAGE_APPROVALS == false) {
+                        if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $references = get_page_references($pageID);
                             $references = checkOutput('HTML', $references); echo $references;
                         } else if ($pageStatus == 'yellow') {
