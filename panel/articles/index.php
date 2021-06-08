@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-2 flex-grow flex w-30 h-8 space-x-2">
-                                        <a href="' . CONFIG_INSTALL_URL . '/panel/articles/editor/?article=' . $i . '" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                        <a href="' . CONFIG_INSTALL_URL . '/panel/articles/editor/?articleID=' . $i . '" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;Edit
                                         </a>
                                         ';
