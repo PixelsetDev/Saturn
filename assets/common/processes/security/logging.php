@@ -36,7 +36,7 @@
     }
 
     function log_clear(): bool {
-        $message = get_user_fullname($_SESSION['id']).' cleared the log.';
+        $message = get_user_fullname($_SESSION['id']).' cleared the Security Log.';
         $message = date("H:i:s").' [SATURN][SECURITY] '.$message."\r\n";
         $file = __DIR__.'/../../../storage/security_log.txt';
         file_put_contents($file, $message, LOCK_EX);
