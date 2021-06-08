@@ -4,9 +4,7 @@
 
         $query = "SELECT title FROM `".DATABASE_PREFIX."notifications` WHERE `user_id` = '".$user_id."' AND `dismissed` = '0'";
         $rs = mysqli_query($conn,$query);
-        $row = mysqli_num_rows($rs);
-        
-        return $row;
+        return mysqli_num_rows($rs);
     }
     
     function get_notification_id($user_id) {
