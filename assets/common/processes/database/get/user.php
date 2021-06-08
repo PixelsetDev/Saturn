@@ -45,9 +45,7 @@
         $query = "SELECT `first_name`, `last_name` FROM `".DATABASE_PREFIX."users` WHERE `id` = ".$id;
         $rs = mysqli_query($conn,$query);
         $row = mysqli_fetch_assoc($rs);
-        $fullname = $row['first_name'].' '.$row['last_name'];
-
-        return $fullname;
+        return $row['first_name'].' '.$row['last_name'];
     }
 
     function get_user_email($id) {
@@ -161,9 +159,7 @@
         $query = "SELECT `id` FROM `".DATABASE_PREFIX."pages` WHERE `user_id` = ".$id;
 
         $rs = mysqli_query($conn,$query);
-        $rows = mysqli_num_rows($rs);
-
-        return $rows;
+        return mysqli_num_rows($rs);
     }
 
     function get_user_article_count($id) {
@@ -172,9 +168,7 @@
         $query = "SELECT `id` FROM `".DATABASE_PREFIX."articles` WHERE `author_id` = ".$id;
 
         $rs = mysqli_query($conn,$query);
-        $rows = mysqli_num_rows($rs);
-
-        return $rows;
+        return mysqli_num_rows($rs);
     }
 
     function get_user_key($id) {
@@ -211,8 +205,7 @@
     }
 
     function get_user_profile_link($id): string {
-        $link = CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($id);
-        return $link;
+        return CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($id);
     }
 
     function get_user_email_exists($email): bool {
