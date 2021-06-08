@@ -13,10 +13,8 @@
         $prefix = strtoupper($prefix);
         $prefix = checkOutput('DEFAULT', $prefix);
         $message = checkOutput('DEFAULT', $message);
-        if (LOGGING_ACTIVE == true) {
-            if (CONFIG_DEBUG == true) {
-                echo '<script>console.log("' . date("H:i:s").' ['.$prefix . '] '.$message.'");</script>';
-            }
+        if (LOGGING_ACTIVE && CONFIG_DEBUG) {
+            echo '<script>console.log("' . date("H:i:s").' ['.$prefix . '] '.$message.'");</script>';
         }
     }
 
@@ -32,11 +30,7 @@
     }
 
     function log_security_blocked($value) {
-        if (LOGGING_ACTIVE == true) {
-            if (SECURITY_ACTIVE == true) {
-                if (CONFIG_DEBUG == true) {
-                    echo '<script>console.log("'.date("H:i:s").' [SATURN][GSS] ';if(SECURITY_MODE=='clean'){echo'Cleaned';}else{echo'Stopped';}echo' I/O: Contained Blacklisted Item: '.$value.'.");</script>';
-                }
-            }
+        if (LOGGING_ACTIVE && SECURITY_ACTIVE && CONFIG_DEBUG) {
+            echo '<script>console.log("'.date("H:i:s").' [SATURN][GSS] ';if(SECURITY_MODE=='clean'){echo'Cleaned';}else{echo'Stopped';}echo' I/O: Contained Blacklisted Item: '.$value.'.");</script>';
         }
     }
