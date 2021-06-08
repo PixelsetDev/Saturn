@@ -89,8 +89,10 @@
                             $status = get_page_status($o); if ($status == 'green') {$complete++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS == true){$pending++;}else{$status='green';$complete++;}} $total++;
                             echo'<div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                                 <div class="flex w-full relative">
-                                                                    <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>
-                                                                    '; if (($status == 'red')) {echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';}echo'
+                                                                    <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>';
+                                                                    if ($status == 'red') {
+                                                                        echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
+                                                                    }echo'
                                                                     <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
                                                                     <div><a href="editor/?pageID='.$o.'" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">Edit</span></a></div>
                                                                 </div>
