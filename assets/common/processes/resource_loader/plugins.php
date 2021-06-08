@@ -7,6 +7,7 @@
         }
         $foundPlugin = true;
     }
+
     if($foundPlugin){
         if(CONFIG_DEBUG === true){
             log_console('Saturn][Resource Loader][Plugins', 'Plugin loading complete.');
