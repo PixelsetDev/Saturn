@@ -178,7 +178,7 @@
                         else {
                             alert('ERROR', 'Unable to fetch approval status.');
                         }
-                        $contents = 'Article Owner: '.display_user_list('SELECTME');
+                        $contents = 'Article Owner: '.display_user_dropdown('SELECTME');
                         echo '          <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{open: false}">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-cogs" aria-hidden="true"></i>&nbsp;Settings
