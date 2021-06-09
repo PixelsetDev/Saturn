@@ -1,4 +1,5 @@
 <?php
+
     function update_article_title($id, $data): bool {
         $id = checkInput('DEFAULT', $id);
         $data = checkInput('DEFAULT', $data);

@@ -87,7 +87,6 @@
                     $errorMsg = 'You can\'t change settings for articles that you don\'t own.';
                 }
             }
-
             ?>
 
     </head>
