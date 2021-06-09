@@ -16,20 +16,20 @@
                     update_article_content($articleID, checkInput('HTML',$_POST['content'])) &&
                     update_article_references($articleID, checkInput('HTML',$_POST['references']))) {
                         $successMsg = "Your article has been saved.";
-                        header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&success='.$successMsg);
+                        header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT',$articleID).'&error='.checkOutput('DEFAULT',$successMsg));
                         log_all('SATURN][ARTICLES',get_user_fullname($_SESSION['id']).' edited page with ID: '.$articleID.' ('.get_article_title($articleID).'). The edit is pending approval.');
                 } else {
                     $errorMsg = "Unable to save edit, an error occurred.";
-                    header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&success='.$errorMsg);
+                    header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT',$articleID).'&error='.checkOutput('DEFAULT',$errorMsg));
                 }
             } else {
                 $errorMsg = "Article requires content.";
-                header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&error='.$errorMsg);
+                header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT',$articleID).'&error='.checkOutput('DEFAULT',$errorMsg));
                 exit;
             }
         } else {
             $errorMsg = "Article requires a title.";
-            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&error='.$errorMsg);
+            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT',$articleID).'&error='.checkOutput('DEFAULT',$errorMsg));
             exit;
         }
     }
