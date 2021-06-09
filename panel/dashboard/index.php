@@ -123,7 +123,7 @@ session_start();
                         <div class="flex flex-col justify-start">
                             <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
                                 <?php
-                                    $result = mysqli_query($conn,"SELECT * FROM `".DATABASE_PREFIX."articles` WHERE 1;");
+                                    $result = mysqli_query($conn,"SELECT * FROM `".DATABASE_PREFIX."articles` WHERE `author_id` = '".$_SESSION['id']."';");
                                     $rowCount = mysqli_num_rows($result);
                                     echo $rowCount;
                                 ?>
