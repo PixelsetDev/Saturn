@@ -38,7 +38,7 @@
             if(isset($_POST['publish'])) {
                 $id = checkInput('DEFAULT', $_GET['id']);
                 if(get_article_author_id($id) == $_SESSION['id']) {
-                    if(update_article_status($id, 'PENDING')) {
+                    if(update_article_status($id, 'PUBLISHED')) {
                         $successMsg = 'Article published.';
                     } else {
                         $errorMsg = 'An error occurred.';
@@ -60,7 +60,35 @@
                     $errorMsg = 'You can\'t delete articles that you don\'t own.';
                 }
             }
-        ?>
+
+            if(isset($_POST['hide'])) {
+                $id = checkInput('DEFAULT', $_GET['id']);
+                if(get_article_author_id($id) == $_SESSION['id']) {
+                    if(update_article_status($id, 'UNPUBLISHED')) {
+                        $successMsg = 'Article hidden.';
+                    } else {
+                        $errorMsg = 'An error occurred.';
+                    }
+                } else {
+                    $errorMsg = 'You can\'t hide articles that you don\'t own.';
+                }
+            }
+
+            if(isset($_POST['savesettings'])) {
+                $id = checkInput('DEFAULT', $_GET['id']);
+                $author = checkInput('DEFAULT', $_POST['users']);
+                if(get_article_author_id($id) == $_SESSION['id']) {
+                    if(update_article_author($id, $author)) {
+                        $successMsg = 'Article settings updated.';
+                    } else {
+                        $errorMsg = 'An error occurred.';
+                    }
+                } else {
+                    $errorMsg = 'You can\'t change settings for articles that you don\'t own.';
+                }
+            }
+
+            ?>
 
     </head>
     <body class="mb-8">
@@ -136,19 +164,32 @@
                             echo '<a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                             <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Request Publication
                                         </a>';
-                        } else {
-                            alert('ERROR', 'Unable to fetch approval status.');
-                        }
-                        echo '          <div x-data="{open: false}">
+                        } else if ($status == 'Published') {
+                            echo '<form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{ open: false }">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
-                                                <i class="fas fa-cogs" aria-hidden="true"></i>&nbsp;Settings
+                                                <i class="fas fa-eye-slash" aria-hidden="true"></i>&nbsp;Hide
                                             </a>
-                                        ' . display_modal_sidebar('Article Settings: ' . $article, 'Are you sure you want to delete this article?', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
-                                    <input type="submit" id="delete" name="delete" value="Delete Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
+                                            ' . display_modal('red', 'Hide Article: ' . $article, 'Are you sure you want to hide this article from readers?<br><br>It will no longer be available on the website and it\'s link will no longer work.<br>You will need to publish the article again to regain access to these features.', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <input type="submit" id="hide" name="hide" value="Hide Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
                                 </div>') . '
-                                        </div>
+                                        </form>';
+                        }
+                        else {
+                            alert('ERROR', 'Unable to fetch approval status.');
+                        }
+                        $contents = 'Article Owner: '.display_user_list('SELECTME');
+                        echo '          <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{open: false}">
+                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                                <i class="fas fa-cogs" aria-hidden="true"></i>&nbsp;Settings
+                                            </a>
+                                        ' . display_modal_sidebar('Article Settings: ' . $article, $contents, '<span class="mx-6">WARNING: Check these settings are correct before you save, saving them may cause irreversable changes.</span><div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <input type="submit" id="savesettings" name="savesettings" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-1 md:text-rg md:px-10">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
+                                </div>') . '
+                                        </form>
                                         <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{ open: false }">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-trash-alt" aria-hidden="true"></i>&nbsp;Delete

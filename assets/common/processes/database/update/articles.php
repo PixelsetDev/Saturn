@@ -42,3 +42,14 @@
 
         return mysqli_query($conn, $query);
     }
+
+    function update_article_author($id, $data): bool {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = "UPDATE `".DATABASE_PREFIX."articles` SET `author_id` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
