@@ -12,26 +12,24 @@
     if(isset($_POST['title'])) {
         if ($_POST['title'] != null) {
             if ($_POST['content'] != null) {
-                if(CONFIG_ARTICLE_APPROVALS) {
-                    update_article_status($articleID,'PENDING');
-                    update_article_title($articleID, checkInput('DEFAULT',$_POST['title']));
-                    update_article_content($articleID, checkInput('HTML',$_POST['content']));
-                    update_article_references($articleID, checkInput('HTML',$_POST['references']));
-                    log_all('SATURN][ARTICLES',get_user_fullname($_SESSION['id']).' edited page with ID: '.$articleID.' ('.get_article_title($articleID).'). The edit is pending approval.');
+                if (update_article_title($articleID, checkInput('DEFAULT',$_POST['title'])) &&
+                    update_article_content($articleID, checkInput('HTML',$_POST['content'])) &&
+                    update_article_references($articleID, checkInput('HTML',$_POST['references']))) {
+                        $successMsg = "Your article has been saved.";
+                        header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&success='.$successMsg);
+                        log_all('SATURN][ARTICLES',get_user_fullname($_SESSION['id']).' edited page with ID: '.$articleID.' ('.get_article_title($articleID).'). The edit is pending approval.');
                 } else {
-                    update_article_title($articleID, checkInput('DEFAULT',$_POST['title']));
-                    update_article_content($articleID, checkInput('HTML',$_POST['content']));
-                    update_article_references($articleID, checkInput('HTML',$_POST['references']));
-                    log_all('SATURN][ARTICLES',get_user_fullname($_SESSION['id']).' edited article with ID: '.$articleID.' ('.get_article_title($articleID).').');
+                    $errorMsg = "Unable to save edit, an error occurred.";
+                    header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&success='.$errorMsg);
                 }
             } else {
                 $errorMsg = "Article requires content.";
-                header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$articleID.'&error='.$errorMsg);
+                header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&error='.$errorMsg);
                 exit;
             }
         } else {
             $errorMsg = "Article requires a title.";
-            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$articleID.'&error='.$errorMsg);
+            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$articleID.'&error='.$errorMsg);
             exit;
         }
     }
@@ -80,7 +78,7 @@
                 <h2 class="text-2xl font-bold mt-2">Content</h2>
                 <p class="mb-2">Max. <?php echo CONFIG_MAX_ARTICLE_CHARS-10000; ?> Characters.</p>
                 <textarea name="content" id="content"><?php
-                    $content = get_article_references($articleID);
+                    $content = get_article_content($articleID);
                     $content = checkOutput('HTML', $content);
                     echo $content;
                     unset($content);
