@@ -133,8 +133,8 @@ session_start();
                 </div>
 
                 <?php if(get_user_roleID($_SESSION['id']) > 2) { ?>
-                <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-gray-800">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages/approvals">
+                <div x-data="{ open: false }" class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-gray-800">
+                    <a @click="open = true" class="cursor-pointer">
                         <div class="flex items-center">
                             <span class="bg-green-500 px-2 py-2 h-10 w-10 rounded-full relative">
                                 <i class="fas fa-search fa-lg text-white" aria-hidden="true"></i>
@@ -148,12 +148,23 @@ session_start();
                                 <?php
                                     $result = mysqli_query($conn,"SELECT `content` FROM `".DATABASE_PREFIX."pages_pending` WHERE `content` IS NOT NULL;");
                                     $rows = mysqli_num_rows($result);
-                                    echo $rows;
-                                    unset($result, $rows);
+
+                                    $result2 = mysqli_query($conn,"SELECT * FROM `".DATABASE_PREFIX."articles` WHERE `status` = 'PENDING';");
+                                    $rows2 = mysqli_num_rows($result2);
+
+                                    $finalRows = $rows + $rows2;
+                                    echo $finalRows;
+
+                                    unset($result, $result2, $rows, $rows2, $finalRows);
                                 ?>
                             </p>
                         </div>
                     </a>
+                    <?php echo display_modal('INFO', 'Approvals', 'Are you sure you want to deny all changes to this page?<br> This action cannot be undone.', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <a href="'.CONFIG_INSTALL_URL.'/panel/articles/approvals" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 md:py-1 md:text-rg md:px-10">Article Approvals</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="'.CONFIG_INSTALL_URL.'/panel/pages/approvals" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 md:py-1 md:text-rg md:px-10">Page Approvals</a>
+                                </div>'); ?>
                 </div>
                 <?php } ?>
             </div>
