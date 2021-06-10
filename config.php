@@ -4,7 +4,9 @@
      * Copyright (c) 2021 - Saturn Authors
      * saturncms.net
      *
-     * It is recommended that you edit this in the administration panel unless you know what you're doing.
+     * You should not edit this file directly as it can cause errors to occur.
+     * Please visit the Admin Panel's Website Settings page to change this file from there.
+     *
      * For help visit docs.saturncms.net
      */
 
