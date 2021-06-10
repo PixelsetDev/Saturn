@@ -1,3 +1,3 @@
 <?php
     // You shouldn't change these values. If you do, it can cause errors to appear within Saturn.
-    const CCV_CONFIG = 'b9b60783301e461d9740af1c77028af2e007dd63fd3a1ba833ecc41004f6bec0a3cfadbc22511eacf282b52709e9e57b7380fade88003299a27c16d394891dc9';
+    const CCV_CONFIG = '088f5e6deae39652ff7712dde3df569db808b274b0f4b3297bb1a56aa44c0e36f58ba0b1adb173fbb1c3054b7f7ceac77a4fc379b1b4c9c24fe040b19dfef867';
