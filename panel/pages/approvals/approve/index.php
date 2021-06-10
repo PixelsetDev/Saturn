@@ -14,6 +14,10 @@
         header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/approvals/?error=none');
     }
 
+    if(get_user_roleID($_SESSION['id']) < 3) {
+        header('Location: '.CONFIG_INSTALL_URL.'/panel/pages?error=permission');
+    }
+
     if(isset($_POST['approve'])) {
         $title = get_page_pending_title($pageID);
         $content = get_page_pending_content($pageID);
