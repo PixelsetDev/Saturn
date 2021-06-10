@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<?php session_start(); ?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-        include_once(__DIR__.'/../../../assets/common/global_private.php');
-        include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-        include_once(__DIR__.'/../../../assets/common/panel/theme.php');
+            include_once(__DIR__.'/../../../assets/common/global_private.php');
+            include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
+            include_once(__DIR__.'/../../../assets/common/panel/theme.php');
         ?>
         <title>Notifications - Saturn Panel</title>
     </head>
