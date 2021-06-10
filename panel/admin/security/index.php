@@ -7,11 +7,10 @@
     if(isset($_POST['reset-ccv'])) {
         if(ccv_reset()) {
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?successResetCCV=Core Checksum Validation was reset successfully. If the warning is still present, refresh your page.');
-            exit;
         } else {
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?errorMsg=Unable to reset Core Checksum Validation, an error occurred.');
-            exit;
         }
+        exit;
     }
 
     if(isset($_GET['successMsg'])) {
