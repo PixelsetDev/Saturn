@@ -31,7 +31,7 @@
         $rs = mysqli_query($conn,$query);
         $newEdits = get_user_edits($uid)+1;
         update_user_edits($uid, $newEdits);
-        $newApprovals = get_user_approvals($uid)+1;
+        $newApprovals = get_user_approvals($_SESSION['id'])+1;
         update_user_approvals($_SESSION['id'], $newApprovals);
         create_notification($uid, 'Edit Approved', 'Your edit for page "'.get_page_title($pageID). '" was approved by '.get_user_fullname($_SESSION['id']).'.');
         log_all('SATURN][PAGES',get_user_fullname($_SESSION['id']).' approved page edit for page ID: '.$pageID.' ('.get_page_title($pageID).') requested by '.get_user_fullname($uid).'.');
