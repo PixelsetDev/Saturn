@@ -19,10 +19,10 @@
     const CONFIG_SITE_TIMEZONE = 'Europe/London';
     /* Database */
     const DATABASE_HOST = 'localhost';
-    const DATABASE_PORT = '3306';
     const DATABASE_NAME = '';
     const DATABASE_USERNAME = '';
     const DATABASE_PASSWORD = '';
+    const DATABASE_PORT = '3306';
     const DATABASE_PREFIX = 'sat_';
     /* Email */
     const CONFIG_EMAIL_ADMIN = '';
