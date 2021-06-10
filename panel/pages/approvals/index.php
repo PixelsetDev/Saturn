@@ -18,9 +18,11 @@
                 $errorMsg = "Error: An unknown error occurred.";
             }
         }
+
         if(get_user_roleID($_SESSION['id']) < 3) {
             header('Location: '.CONFIG_INSTALL_URL.'/panel/pages?error=permission');
         }
+
         if(!CONFIG_PAGE_APPROVALS) {
             header('Location: '.CONFIG_INSTALL_URL.'/panel/pages');
         }
