@@ -36,9 +36,9 @@
                                                             </div>';
 
             if(isset($_POST['publish'])) {
-                $id = checkInput('DEFAULT', $_GET['id']);
-                if(get_article_author_id($id) == $_SESSION['id']) {
-                    if(update_article_status($id, 'PUBLISHED')) {
+                $articleID = checkInput('DEFAULT', $_GET['articleID']);
+                if(get_article_author_id($articleID) == $_SESSION['id']) {
+                    if(update_article_status($articleID, 'PUBLISHED')) {
                         $successMsg = 'Article published.';
                     } else {
                         $errorMsg = 'An error occurred.';
@@ -49,9 +49,9 @@
             }
 
             if(isset($_POST['delete'])) {
-                $id = checkInput('DEFAULT', $_GET['id']);
-                if(get_article_author_id($id) == $_SESSION['id']) {
-                    if(update_article_status($id, 'DELETED') && update_article_content($id, '') && update_article_references($id, '')) {
+                $articleID = checkInput('DEFAULT', $_GET['articleID']);
+                if(get_article_author_id($articleID) == $_SESSION['id']) {
+                    if(update_article_status($articleID, 'DELETED') && update_article_content($articleID, '') && update_article_references($articleID, '')) {
                         $successMsg = 'Article deleted.';
                     } else {
                         $errorMsg = 'An error occurred.';
@@ -62,9 +62,9 @@
             }
 
             if(isset($_POST['hide'])) {
-                $id = checkInput('DEFAULT', $_GET['id']);
-                if(get_article_author_id($id) == $_SESSION['id']) {
-                    if(update_article_status($id, 'UNPUBLISHED')) {
+                $articleID = checkInput('DEFAULT', $_GET['articleID']);
+                if(get_article_author_id($articleID) == $_SESSION['id']) {
+                    if(update_article_status($articleID, 'UNPUBLISHED')) {
                         $successMsg = 'Article hidden.';
                     } else {
                         $errorMsg = 'An error occurred.';
@@ -75,16 +75,29 @@
             }
 
             if(isset($_POST['savesettings'])) {
-                $id = checkInput('DEFAULT', $_GET['id']);
+                $articleID = checkInput('DEFAULT', $_GET['articleID']);
                 $author = checkInput('DEFAULT', $_POST['users']);
-                if(get_article_author_id($id) == $_SESSION['id']) {
-                    if(update_article_author($id, $author)) {
+                if(get_article_author_id($articleID) == $_SESSION['id']) {
+                    if(update_article_author($articleID, $author)) {
                         $successMsg = 'Article settings updated.';
                     } else {
                         $errorMsg = 'An error occurred.';
                     }
                 } else {
                     $errorMsg = 'You can\'t change settings for articles that you don\'t own.';
+                }
+            }
+
+            if(isset($_GET['request'])) {
+                $articleID = checkInput('DEFAULT', $_GET['articleID']);
+                if(get_article_author_id($articleID) == $_SESSION['id']) {
+                    if(update_article_status($articleID, 'PENDING')) {
+                        $successMsg = 'Your article has been submitted for publication.';
+                    } else {
+                        $errorMsg = 'An error occurred.';
+                    }
+                } else {
+                    $errorMsg = 'You can\'t submit articles for publication that you don\'t own.';
                 }
             }
             ?>
@@ -115,8 +128,10 @@
                 $role = get_user_roleID($_SESSION['id']);
                 $i=1;
                 $article = get_article_title($i);
+                $exists = false;
                 while($article != null) {
                     if(get_article_author_id($i) == $_SESSION['id'] && get_article_status($i) != 'DELETED') {
+                        $exists = true;
                         echo '            <div>
                                 <div name="' . $article . '" id="' . $article . '">
                                     <div class="flex-0 relative pt-1 mb-2">
@@ -148,8 +163,19 @@
                                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;Edit
                                         </a>
                                         ';
-                        if ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === false) {
-                            echo '<form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{ open: false }">
+                        if ($status == 'Published' || $status == 'Pending') {
+                            echo '<form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?articleID=' . $i . '" method="post" x-data="{ open: false }">
+                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                                <i class="fas fa-eye-slash" aria-hidden="true"></i>&nbsp;Hide
+                                            </a>
+                                            ' . display_modal('red', 'Hide Article: ' . $article, 'Are you sure you want to hide this article from readers?<br><br>It will no longer be available on the website and it\'s link will no longer work.<br>You will need to publish the article again to regain access to these features.', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <input type="submit" id="hide" name="hide" value="Hide Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
+                                </div>') . '
+                                        </form>';
+                        } else if ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === false) {
+                            echo '<form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?articleID=' . $i . '" method="post" x-data="{ open: false }">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Publish
                                             </a>
@@ -160,26 +186,15 @@
                                 </div>') . '
                                         </form>';
                         } else if ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === true) {
-                            echo '<a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                            echo '<a href="' . CONFIG_INSTALL_URL . '/panel/articles/?articleID=' . $i . '&request=true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                             <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Request Publication
                                         </a>';
-                        } else if ($status == 'Published') {
-                            echo '<form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{ open: false }">
-                                            <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
-                                                <i class="fas fa-eye-slash" aria-hidden="true"></i>&nbsp;Hide
-                                            </a>
-                                            ' . display_modal('red', 'Hide Article: ' . $article, 'Are you sure you want to hide this article from readers?<br><br>It will no longer be available on the website and it\'s link will no longer work.<br>You will need to publish the article again to regain access to these features.', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
-                                    <input type="submit" id="hide" name="hide" value="Hide Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
-                                </div>') . '
-                                        </form>';
                         }
                         else {
                             alert('ERROR', 'Unable to fetch approval status.');
                         }
                         $contents = 'Article Owner: '.display_user_dropdown('SELECTME');
-                        echo '          <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{open: false}">
+                        echo '          <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?articleID=' . $i . '" method="post" x-data="{open: false}">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-cogs" aria-hidden="true"></i>&nbsp;Settings
                                             </a>
@@ -189,7 +204,7 @@
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
                                 </div>') . '
                                         </form>
-                                        <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?id=' . $i . '" method="post" x-data="{ open: false }">
+                                        <form action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '/?articleID=' . $i . '" method="post" x-data="{ open: false }">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-trash-alt" aria-hidden="true"></i>&nbsp;Delete
                                             </a>
@@ -209,6 +224,7 @@
                     $article = get_article_title($i);
                 }
                 ?>
+            </div>
         </div>
     </body>
 </html>
