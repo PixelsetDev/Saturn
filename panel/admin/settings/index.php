@@ -1,7 +1,65 @@
 <?php
-session_start();
+    session_start();
+    ob_start();
+    require_once __DIR__.'/../../../assets/common/global_private.php';
 
-require_once __DIR__.'/../../../assets/common/global_private.php';
+    if(isset($_POST['save'])) {
+        $file = __DIR__.'/../../../config.php';
+
+        $message = "<?php
+    /*
+     * Saturn BETA 1.0.0 Configuration File
+     * Copyright (c) 2021 - Saturn Authors
+     * saturncms.net
+     *
+     * You should not edit this file directly as it can cause errors to occur.
+     * Please visit the Admin Panel's Website Settings page to change this file from there.
+     *
+     * For help visit docs.saturncms.net
+     */
+
+    /* General */
+    const CONFIG_INSTALL_URL = '';
+    const CONFIG_SITE_NAME = '".$_POST['site_name']."';
+    const CONFIG_SITE_DESCRIPTION = '".$_POST['site_description']."';
+    const CONFIG_SITE_KEYWORDS = '".$_POST['site_keywords']."';
+    const CONFIG_SITE_CHARSET = '".$_POST['site_charset']."';
+    const CONFIG_SITE_TIMEZONE = '".$_POST['site_timezone']."';
+    /* Database */
+    const DATABASE_HOST = '".$_POST['database_host']."';
+    const DATABASE_NAME = '".$_POST['database_name']."';
+    const DATABASE_USERNAME = '".$_POST['database_username']."';
+    const DATABASE_PASSWORD = '".$_POST['database_password']."';
+    const DATABASE_PORT = '".$_POST['database_port']."';
+    const DATABASE_PREFIX = '".$_POST['database_prefix']."';
+    /* Email */
+    const CONFIG_EMAIL_ADMIN = '".$_POST['email_admin']."';
+    const CONFIG_EMAIL_FUNCTION = '".$_POST['email_function']."';
+    const CONFIG_EMAIL_SENDFROM = '".$_POST['email_sendfrom']."';
+    /* Editing */
+    const CONFIG_PAGE_APPROVALS = ".$_POST['page_approvals'].";
+    const CONFIG_ARTICLE_APPROVALS = ".$_POST['article_approvals'].";
+    const CONFIG_MAX_TITLE_CHARS = '".$_POST['max_title_chars']."';
+    const CONFIG_MAX_PAGE_CHARS = '".$_POST['max_page_chars']."';
+    const CONFIG_MAX_ARTICLE_CHARS = '".$_POST['max_article_chars']."';
+    const CONFIG_MAX_REFERENCES_CHARS = '".$_POST['max_references_chars']."';
+    /* Global Security System */
+    const SECURITY_ACTIVE = ".$_POST['security_active'].";
+    const LOGGING_ACTIVE = ".$_POST['security_logging'].";
+    const SECURITY_MODE = '".$_POST['security_mode']."';
+    /* Developer Tools */
+    const CONFIG_DEBUG = ".$_POST['debug'].";";
+
+        if(file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
+            log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
+            echo'<meta http-equiv="refresh" content="0; url=index.php/?successMsg=Website settings saved successfully. If an error message appears, refresh the page.">';
+            exit;
+        } else {
+            echo'<meta http-equiv="refresh" content="0; url=index.php/?errorMsg=Unable to save website settings, an error occurred.">';
+            exit;
+        }
+    }
+    ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,16 +72,21 @@ require_once __DIR__.'/../../../assets/common/global_private.php';
         <?php require __DIR__.'/../../../assets/common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
-            <div class="grid grid-cols-2">
-                <h1 class="text-gray-900 text-3xl">Settings</h1>
-                <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
-                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                        <i class="fas fa-save" aria-hidden="true"></i>
-                    </span>
-                    Save
-                </button>
-            </div>
-            <form class="mt-8 space-y-6 w-full" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form class="w-full" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                <div class="mb-8 grid grid-cols-2">
+                    <h1 class="text-gray-900 text-3xl">Settings</h1>
+                    <input type="submit" name="save" value="Save" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
+                </div>
+            <?php
+                if(isset($_GET['errorMsg'])){
+                    alert('ERROR', $_GET['errorMsg']);
+                    unset($_GET['errorMsg']);
+                }
+                if(isset($_GET['successMsg'])){
+                    alert('SUCCESS', $_GET['successMsg']);
+                    unset($_GET['successMsg']);
+                }
+            ?>
                 <div class="mt-4">
                     <h2 class="text-gray-900 text-2xl pb-4 mb-1">General</h2>
                     <div class="grid grid-cols-2">
@@ -508,6 +571,10 @@ require_once __DIR__.'/../../../assets/common/global_private.php';
                         <input id="database_host" name="database_host" type="text" value="<?php echo DATABASE_HOST; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
+                        <label for="database_name">Database Username</label>
+                        <input id="database_name" name="database_name" type="text" value="<?php echo DATABASE_NAME; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
                         <label for="database_username">Database Username</label>
                         <input id="database_username" name="database_username" type="text" value="<?php echo DATABASE_USERNAME; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
@@ -588,8 +655,8 @@ require_once __DIR__.'/../../../assets/common/global_private.php';
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="article_approvals">Logging Active</label>
-                        <select id="article_approvals" name="article_approvals" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <label for="security_logging">Logging Active</label>
+                        <select id="security_logging" name="security_logging" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if(CONFIG_ARTICLE_APPROVALS){echo' selected';} ?>>True (Recommended)</option>
                             <option value="false"<?php if(!CONFIG_ARTICLE_APPROVALS){echo' selected';} ?>>False</option>
                         </select>
@@ -616,12 +683,7 @@ require_once __DIR__.'/../../../assets/common/global_private.php';
 
                 <div class="mt-8 grid grid-cols-2">
                     <div></div>
-                    <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
-                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                            <i class="fas fa-save" aria-hidden="true"></i>
-                        </span>
-                        Save
-                    </button>
+                    <input type="submit" name="save" value="Save" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
                 </div>
             </form>
         </div>
