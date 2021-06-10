@@ -64,3 +64,14 @@
 
         return mysqli_query($conn, $query);
     }
+
+    function update_user_last_seen($id, $data) {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = "UPDATE `".DATABASE_PREFIX."users` SET `last_seen` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
