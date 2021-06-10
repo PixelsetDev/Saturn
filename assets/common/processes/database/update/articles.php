@@ -12,8 +12,8 @@
     }
 
     function update_article_content($id, $data): bool {
-        $id = checkInput('DEFAULT', $id);
-        $data = checkInput('DEFAULT', $data);
+        $id = checkInput('HTML', $id);
+        $data = checkInput('HTML', $data);
 
         global $conn;
 
@@ -23,8 +23,8 @@
     }
 
     function update_article_references($id, $data): bool {
-        $id = checkInput('DEFAULT', $id);
-        $data = checkInput('DEFAULT', $data);
+        $id = checkInput('HTML', $id);
+        $data = checkInput('HTML', $data);
 
         global $conn;
 
