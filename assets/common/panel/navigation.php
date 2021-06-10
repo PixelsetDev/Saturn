@@ -90,7 +90,7 @@
                                 <hr>
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/notifications"><?php if($notifCount == 0){ echo 'No Notification';}else{echo $notifCount.' Notification';}if($notifCount > 1 || $notifCount == 0){echo's';}?></a><?php unset($notifCount); ?>
                                 <?php
-                                    if(get_user_roleID($id) == '4') {
+                                    if(get_user_roleID($_SESSION['id']) == '4') {
                                         echo '<hr>
                                         <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin/user-management.php">User Management</a>
                                         <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin/settings/general.php">Website Settings</a>';
