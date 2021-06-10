@@ -58,7 +58,7 @@
                             </h6>
                             <p class="mb-2 leading-5 text-<?php echo THEME_PANEL_COLOUR; ?>-700">
                                 <?php
-                                $result = mysqli_query($conn,"SELECT `content` FROM `".DATABASE_PREFIX."articles` WHERE `content` IS NOT NULL;");
+                                $result = mysqli_query($conn,"SELECT `status` FROM `".DATABASE_PREFIX."articles` WHERE `status` = 'PENDING';");
                                 $rows = mysqli_num_rows($result);
                                 echo $rows;
                                 unset($result, $rows);
