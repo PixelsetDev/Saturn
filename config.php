@@ -37,7 +37,7 @@
     const CONFIG_MAX_REFERENCES_CHARS = '10000';
     /* Global Security System */
     const SECURITY_ACTIVE = true;
-    const SECURITY_MODE = 'clean';
     const LOGGING_ACTIVE = true;
+    const SECURITY_MODE = 'clean';
     /* Developer Tools */
     const CONFIG_DEBUG = false;
