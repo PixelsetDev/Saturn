@@ -35,9 +35,9 @@
     const CONFIG_MAX_PAGE_CHARS = '50000';
     const CONFIG_MAX_ARTICLE_CHARS = '50000';
     const CONFIG_MAX_REFERENCES_CHARS = '10000';
-    /* Developer Tools */
-    const CONFIG_DEBUG = false;
     /* Global Security System */
     const SECURITY_ACTIVE = true;
     const SECURITY_MODE = 'clean';
     const LOGGING_ACTIVE = true;
+    /* Developer Tools */
+    const CONFIG_DEBUG = false;
