@@ -78,7 +78,7 @@
 
             if($password == $confirmPassword) {
                 $id = $_POST['user_id'];
-                $id = checkInput('DEFAULT', $id); echo $id;
+                $id = checkInput('DEFAULT', $id);
                 $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
 
                 $sql = "UPDATE `".DATABASE_PREFIX."users` SET `password` = '$hashedPassword' WHERE `id` = '".$id."';";
@@ -134,7 +134,7 @@
                         ?>
                     </div>
                     <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-                        <?php if($done) {
+                        <?php if(!$done) {
                             if (!isset($verified)) {
                                 echo '<div class="rounded-md shadow-sm -space-y-px">
                             <div>
