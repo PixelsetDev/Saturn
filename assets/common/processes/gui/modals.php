@@ -1,10 +1,6 @@
 <?php
 
     function display_modal_sidebar($title, $contents, $footer): string {
-        $title = checkInput('DEFAULT', $title);
-        $contents = checkInput('HTML', $contents);
-        $footer = checkInput('HTML', $footer);
-
         return '<div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                                         <div class="absolute inset-0 overflow-hidden">
                                             <div class="absolute inset-0 bg-gray-500 bg-opacity-75" @click="open=false"></div>
@@ -39,11 +35,6 @@
     }
 
     function display_modal($type, $title, $contents, $footer): string {
-        $type = checkInput('DEFAULT', $type);
-        $title = checkInput('DEFAULT', $title);
-        $contents = checkInput('HTML', $contents);
-        $footer = checkInput('HTML', $footer);
-
         if($type == 'ERROR' || $type == 'red') {
             $colour = 'red';
             $icon = 'fas fa-times';
