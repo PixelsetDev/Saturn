@@ -4,107 +4,64 @@
         echo'<h1 class="text-3xl text-gray-700 dark:text-gray-50 mt-4">Your Statistics</h1>';
 
         $edits = get_user_edits($id);
-        $approvals = get_user_approvals($id);
+        list($max,$current,$next,$colour) = getvalues_dashboard_statistics($edits);
+        echo display_dashboard_edits($edits, $max, $current, $next, $colour);
 
-        if ($edits < '10') {
-            $maxedits = '10';
+        if(get_user_roleID($_SESSION['id'])) {
+            $approvals = get_user_approvals($id);
+            list($max,$current,$next,$colour) = getvalues_dashboard_statistics($approvals);
+            echo display_dashboard_approvals($approvals, $max, $current, $next, $colour);
+        }
+    }
+    function getvalues_dashboard_statistics($value) {
+        if ($value < '10') {
+            $max = '10';
             $current = 'Beginner';
             $next = 'Explorer';
             $colour = 'red';
-        } else if ($edits < '20') {
-            $maxedits = '20';
+        } else if ($value < '20') {
+            $max = '20';
             $current = 'Explorer';
             $next = 'Junior';
             $colour = 'yellow';
-        } else if ($edits < '30') {
-            $maxedits = '30';
+        } else if ($value < '30') {
+            $max = '30';
             $current = 'Junior';
             $next = 'Experienced';
             $colour = 'green';
-        } else if ($edits < '40') {
-            $maxedits = '40';
+        } else if ($value < '40') {
+            $max = '40';
             $current = 'Experienced';
             $next = 'Senior';
             $colour = 'blue';
-        } else if ($edits < '50') {
-            $maxedits = '40';
+        } else if ($value < '50') {
+            $max = '40';
             $current = 'Senior';
             $next = 'Semi-Pro';
             $colour = 'purple';
-        } else if ($edits < '100') {
-            $maxedits = '50';
+        } else if ($value < '100') {
+            $max = '50';
             $current = 'Semi-Pro';
             $next = 'Professional';
             $colour = 'pink';
-        } else if ($edits < '200') {
-            $maxedits = '100';
+        } else if ($value < '200') {
+            $max = '100';
             $current = 'Professional';
             $next = 'Master';
             $colour = 'red';
-        } else if ($edits < '500') {
-            $maxedits = '200';
+        } else if ($value < '500') {
+            $max = '200';
             $current = 'Master';
             $next = 'Legendary';
             $colour = 'yellow';
         } else {
-            $maxedits = '500';
+            $max = '500';
             $current = 'Legendary';
             $next = 'None';
             $colour = 'green';
         }
 
-        echo display_dashboard_edits($edits, $maxedits, $current, $next, $colour);
-
-        if(get_user_roleID($_SESSION['id'])) {
-            if ($approvals < '10') {
-                $maxapprovals = '10';
-                $current = 'Beginner';
-                $next = 'Explorer';
-                $colour = 'red';
-            } else if ($approvals < '20') {
-                $maxapprovals = '20';
-                $current = 'Explorer';
-                $next = 'Junior';
-                $colour = 'yellow';
-            } else if ($approvals < '30') {
-                $maxapprovals = '30';
-                $current = 'Junior';
-                $next = 'Experienced';
-                $colour = 'green';
-            } else if ($approvals < '40') {
-                $maxapprovals = '40';
-                $current = 'Experienced';
-                $next = 'Senior';
-                $colour = 'blue';
-            } else if ($approvals < '50') {
-                $maxapprovals = '40';
-                $current = 'Senior';
-                $next = 'Semi-Pro';
-                $colour = 'purple';
-            } else if ($approvals < '100') {
-                $maxapprovals = '50';
-                $current = 'Semi-Pro';
-                $next = 'Professional';
-                $colour = 'pink';
-            } else if ($approvals < '200') {
-                $maxapprovals = '100';
-                $current = 'Professional';
-                $next = 'Master';
-                $colour = 'red';
-            } else if ($approvals < '500') {
-                $maxapprovals = '200';
-                $current = 'Master';
-                $next = 'Legendary';
-                $colour = 'yellow';
-            } else {
-                $maxapprovals = '500';
-                $current = 'Legendary';
-                $next = 'None';
-                $colour = 'green';
-            }
-
-            echo display_dashboard_approvals($approvals, $maxapprovals, $current, $next, $colour);
-        }
+        return array($max,$current,$next,$colour);
     }
 
     function display_dashboard_edits($edits, $maxedits, $current, $next, $colour): string {
