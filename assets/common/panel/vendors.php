@@ -4,6 +4,7 @@
         <meta name="keywords" content="<?php echo CONFIG_SITE_KEYWORDS; ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#111827">
+        <meta name="robots" content="noindex, nofollow" />
         <link rel="icon" type="image/png" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon.png">
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.1.4/dist/tailwind.min.css" integrity="sha256-hfMZAfOTaHPZSp5rYtEM+pqIhJ3zKdooXUrO59bFmRE=" crossorigin="anonymous">
         <link rel="stylesheet" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/css/tailwind-custom.min.css">
