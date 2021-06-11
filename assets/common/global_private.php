@@ -32,11 +32,11 @@
     /* Required Files */
     require_once __DIR__ . '/processes/resource_loader/resource_loader.php';
     require_once __DIR__ . '/processes/email.php';
-    require_once __DIR__ . '/processes/dashboard.php';
     require_once __DIR__ . '/processes/themes.php';
     require_once __DIR__ . '/processes/redirect.php';
     require_once __DIR__ . '/panel/theme.php';
     /* GUI */
+    require_once __DIR__ . '/processes/gui/dashboard.php';
     require_once __DIR__ . '/processes/gui/alerts.php';
     require_once __DIR__ . '/processes/gui/modals.php';
     require_once __DIR__ . '/processes/gui/user_profile.php';
