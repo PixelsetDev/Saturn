@@ -35,22 +35,22 @@
             $next = 'Senior';
             $colour = 'blue';
         } else if ($value < '50') {
-            $max = '40';
+            $max = '50';
             $current = 'Senior';
             $next = 'Semi-Pro';
             $colour = 'purple';
         } else if ($value < '100') {
-            $max = '50';
+            $max = '100';
             $current = 'Semi-Pro';
             $next = 'Professional';
             $colour = 'pink';
         } else if ($value < '200') {
-            $max = '100';
+            $max = '200';
             $current = 'Professional';
             $next = 'Master';
             $colour = 'red';
         } else if ($value < '500') {
-            $max = '200';
+            $max = '500';
             $current = 'Master';
             $next = 'Legendary';
             $colour = 'yellow';
