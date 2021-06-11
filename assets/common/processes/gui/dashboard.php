@@ -13,7 +13,7 @@
             echo display_dashboard_approvals($approvals, $max, $current, $next, $colour);
         }
     }
-    function getvalues_dashboard_statistics($value) {
+    function getvalues_dashboard_statistics($value): array {
         if ($value < '10') {
             $max = '10';
             $current = 'Beginner';
