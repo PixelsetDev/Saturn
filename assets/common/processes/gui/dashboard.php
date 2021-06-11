@@ -12,8 +12,8 @@
                         <a class="w-full h-full block">
                             <div class="flex items-center justify-between px-4 py-6 space-x-4">
                                 <div class="flex items-center">
-                                    <span class="rounded-full relative px-3 py-2 bg-blue-100">
-                                        <i class="fas fa-pencil-alt text-blue-500"></i>
+                                    <span class="rounded-full relative pl-3 pr-2 py-2 bg-blue-100">
+                                        <i class="fas fa-user-edit text-blue-500"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
                                         Writer Level: Beginner
@@ -27,7 +27,13 @@
                                 </div>
                             </div>
                             <div class="w-full h-3 bg-gray-100">
-                                <div class="w-';if($edits > 0){echo $edits.'/'.$maxedits;}else{echo'0';} echo 'h-full text-center text-xs text-white bg-green-400">
+                                <div class="w-';
+        if ($edits > 0) {
+            $send = $send.$edits.'/'.$maxedits;
+        } else {
+            $send = $send.'0';
+        }
+        return $send.' h-full text-center text-xs text-white bg-green-400">
                                 </div>
                             </div>
                         </a>
@@ -43,7 +49,6 @@
                         </div>
                     </div>
                 </div>';
-        return $send;
     }
 
     function display_dashboard_approvals($approvals, $maxapprovals): string {
@@ -52,8 +57,8 @@
                         <a class="w-full h-full block">
                             <div class="flex items-center justify-between px-4 py-6 space-x-4">
                                 <div class="flex items-center">
-                                    <span class="rounded-full relative px-3 py-2 bg-blue-100">
-                                        <i class="fas fa-pencil-alt text-blue-500"></i>
+                                    <span class="rounded-full relative pl-3 pr-2 py-2 bg-blue-100">
+                                        <i class="fas fa-user-check text-blue-500"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
                                         Editor Level: Beginner
@@ -67,7 +72,13 @@
                                 </div>
                             </div>
                             <div class="w-full h-3 bg-gray-100">
-                                <div class="w-';if($approvals>0){echo $approvals.'/'.$maxapprovals; } else { echo'0'; } echo 'h-full text-center text-xs text-white bg-green-400">
+                                <div class="w-';
+        if ($approvals > 0) {
+            $send = $send.$approvals.'/'.$maxapprovals;
+        } else {
+            $send = $send.'0';
+        }
+        return $send.' h-full text-center text-xs text-white bg-green-400">
                                 </div>
                             </div>
                         </a>
@@ -83,5 +94,4 @@
                         </div>
                     </div>
                 </div>';
-        return $send;
     }
