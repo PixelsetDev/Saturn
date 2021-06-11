@@ -2,7 +2,8 @@
         <meta name="description" content="<?php echo CONFIG_SITE_DESCRIPTION; ?>">
         <meta name="keywords" content="<?php echo CONFIG_SITE_KEYWORDS; ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon.png">
+        <meta name="theme-color" content="#111827">
+        <link rel="icon" type="image/png" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon.png">
         <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.1.4/dist/tailwind.min.css" integrity="sha256-hfMZAfOTaHPZSp5rYtEM+pqIhJ3zKdooXUrO59bFmRE=" crossorigin="anonymous">
         <link rel="stylesheet" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/css/tailwind-custom.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
