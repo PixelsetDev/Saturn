@@ -125,14 +125,14 @@
                     echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$statusColour.'-500 bg-'.$statusColour.'-200">'.$status.'</span>
                                     </div>
                                     <div class="text-right">
-                                        <span class="text-xs font-semibold inline-block">Written: <span class="text-xs font-semibold inline-block text-gray-600">'; $written = $complete+$pending; $percent = ($written / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
+                                        <span class="text-xs font-semibold inline-block">Written: <span class="text-xs font-semibold inline-block text-gray-600">';$written = $complete+$pending; $percent = ($written / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
                                         <br>
                                         <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">'; $percent = ($complete / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
                                     </div>
                                 </div> 
                                 <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-400">
-                                    <div css="width:'.(($complete / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
-                                    <div css="width:'.(($pending / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
+                                    <div style="width:'.(($complete / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                                    <div style="width:'.(($pending / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
                                 </div>
                             </div>
                             <div class="flex-none">&nbsp;&nbsp;&nbsp;</div>
