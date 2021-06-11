@@ -1,4 +1,5 @@
-<meta charset="<?php echo CONFIG_SITE_CHARSET; ?>">
+
+        <meta charset="<?php echo CONFIG_SITE_CHARSET; ?>">
         <meta name="description" content="<?php echo CONFIG_SITE_DESCRIPTION; ?>">
         <meta name="keywords" content="<?php echo CONFIG_SITE_KEYWORDS; ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
