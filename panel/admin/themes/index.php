@@ -58,7 +58,7 @@
                             $framework = 'question_mark';
                         }
 
-                        echo '<div class="rounded-md overflow-hidden bg-white w-52 h-52 relative hover:shadow-lg transition duration-200 flex-shrink-0">
+                        echo '<div class="rounded-md overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
                             <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto">
                                 <h3 class="text-lg mt-1 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
                                 <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$themeData->{'theme'}->{'author'}.'</p>
