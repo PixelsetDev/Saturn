@@ -1,8 +1,12 @@
 { "theme": {
     "name": "Circinus",
-    "version": "1.0.0",
+    "slug": "circinus",
     "author": "Lewis Milburn",
     "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/142_circinus_galaxy.png",
+    "version": {
+        "theme": "1.0.0",
+        "saturn": "BETA 1.0.0"
+    },
     "framework": "materialize",
     "theme-templates": {
         "name": "Homepage",
@@ -23,7 +27,7 @@
         }
     },
     "externals": {
-      "js": "<script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js' defer></script>",
-      "css": ""
+        "js": "<script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js' defer></script>",
+        "css": ""
     }
 }}

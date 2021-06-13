@@ -1,8 +1,12 @@
 { "theme": {
     "name": "Triangulum",
-    "version": "1.0.0",
+    "slug": "Triangulum",
     "author": "Lewis Milburn",
     "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/VST_snaps_a_very_detailed_view_of_the_Triangulum_Galaxy.jpg/1200px-VST_snaps_a_very_detailed_view_of_the_Triangulum_Galaxy.jpg",
+    "version": {
+        "theme": "1.0.0",
+        "saturn": "BETA 1.0.0"
+    },
     "framework": "bootstrap",
     "theme-templates": {
         "name": "Homepage",
