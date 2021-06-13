@@ -10,7 +10,7 @@
         <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
 
         <title><?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__ . '/../../../assets/common/panel/plugin.php'; ?>
 
     </head>
     <body class="bg-gray-200">
@@ -30,6 +30,39 @@
             ?>
             <br>
             <h2 class="text-gray-900 text-2xl mt-8">Installed Plugins</h2>
+            <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
+                <?php
+                $dirs = array_filter(glob(__DIR__.'/../../../plugins/*'), 'is_dir');
+                foreach ($dirs as $dir) {
+                    $json =  file_get_contents($dir.'/plugin.json');
+                    $pluginData = json_decode($json);
+
+                    $image = $pluginData->{'plugin'}->{'image'};
+                    if ($image == "") {
+                        $image = CONFIG_INSTALL_URL.'/assets/images/no-image-500x500.png';
+                    }
+
+                    $framework = $pluginData->{'plugin'}->{'framework'};
+                    if ($framework == "") {
+                        $framework = 'question_mark';
+                    }
+
+                    echo '<div class="rounded-md overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                            <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto">
+                                <h3 class="text-lg mt-1 mx-2 text-white">'.$pluginData->{'plugin'}->{'name'}.'</h3>
+                                <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$pluginData->{'plugin'}->{'author'}.'</p>
+                            </div>
+                            <div class="absolute top-0 left rounded-br-md p-1 bg-black bg-opacity-50 text-white">
+                                <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$framework.'.svg" class="w-6 h-6" alt="'.$framework.'">
+                            </div>
+                            <div class="absolute top-0 right-0 rounded-bl-md p-1 bg-black bg-opacity-50 text-white">
+                                '.$pluginData->{'plugin'}->{'version'}->{'plugin'}.'
+                            </div>
+                            <img class="w-full h-full" src="'.$image.'" alt="'.$pluginData->{'plugin'}->{'name'}.'">
+                        </div>';
+                }
+                ?>
+            </div>
             <h2 class="text-gray-900 text-2xl mt-8">Plugin Marketplace</h2>
             <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
                 <?php echo file_get_contents('https://www.marketplace.saturncms.net/plugins/embed'); ?>
