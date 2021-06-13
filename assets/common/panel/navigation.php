@@ -99,7 +99,7 @@
                                     if(get_user_roleID($_SESSION['id']) == '4') {
                                         echo '<hr>
                                         <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin/settings">Website Settings</a>
-                                        <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin/user-management.php">User Management</a>';
+                                        <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin/user-management">User Management</a>';
                                     }
                                 ?>
                                 <hr>

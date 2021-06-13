@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once __DIR__.'/../../assets/common/global_private.php';
+    require_once __DIR__ . '/../../assets/common/global_private.php';
 
     if(isset($_POST['action'])) {
         $userid = checkInput('DEFAULT', $_POST['userid']);
@@ -49,9 +49,9 @@
                                                                 </button>
                                                             </div>
                                                             <div class="p-4">
-                                                                <form action="user-management.php" method="post">
+                                                                <form action="index.php" method="post">
                                                                     <div class="text-center mb-4 opacity-90">
-                                                                        <a href="'.get_user_profile_link($value).'" class="block relative">
+                                                                        <a href="' .get_user_profile_link($value).'" class="block relative">
                                                                             <img alt="'.get_user_fullname($value).'" src="'.get_user_profilephoto($value).'" class="mx-auto object-cover rounded-full h-16 w-16 "/>
                                                                         </a>
                                                                     </div>
@@ -101,11 +101,11 @@
         <?php include __DIR__ . '/../../assets/common/panel/vendors.php'; ?>
 
         <title><?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__.'/../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__ . '/../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__.'/../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__ . '/../../assets/common/admin/navigation.php'; ?>
 
             <div class="px-8 py-4 block w-full">
                 <h1 class="text-gray-900 text-3xl">User Management</h1>
