@@ -42,12 +42,18 @@
                             $image = CONFIG_INSTALL_URL.'/assets/images/no-image-500x500.png';
                         }
 
+                        $framework = $themeData->{'theme'}->{'framework'};
+                        if ($framework == "") {
+                            $framework = 'question_mark';
+                        }
+
                         echo '<div class="bg-white w-52 h-52 relative shadow-lg hover:shadow-2xl transition duration-200">
                             <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto">
-                                <h3 class="text-lg my-2 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
+                                <h3 class="text-lg mt-1 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
+                                <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$themeData->{'theme'}->{'author'}.'</p>
                             </div>
                             <div class="absolute top-0 left rounded-br-md p-1 bg-black bg-opacity-50 text-white">
-                                <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$themeData->{'theme'}->{'framework'}.'.svg" class="w-6 h-6">
+                                <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$framework.'.svg" class="w-6 h-6">
                             </div>
                             <div class="absolute top-0 right-0 rounded-bl-md p-1 bg-black bg-opacity-50 text-white">
                                 '.$themeData->{'theme'}->{'version'}.'
