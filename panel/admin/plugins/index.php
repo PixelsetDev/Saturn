@@ -30,7 +30,10 @@
             ?>
             <br>
             <h2 class="text-gray-900 text-2xl mt-8">Installed Plugins</h2>
-            <?php listActivePlugins(); ?>
+            <h2 class="text-gray-900 text-2xl mt-8">Plugin Marketplace</h2>
+            <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
+                <?php echo file_get_contents('https://www.marketplace.saturncms.net/plugins/embed'); ?>
+            </div>
         </div>
     </body>
 </html>
