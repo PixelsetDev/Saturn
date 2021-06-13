@@ -1,4 +1,18 @@
 <?php
+
+    function listActivePlugins() {
+        $found=false;
+        foreach (glob(dirname(__DIR__, 4)."/plugins/*.php") as $filename) {
+            $plugin = substr($filename, strpos($filename, "plugins") + 8);
+            $plugin = str_replace(".php", "", $plugin);
+            echo ucfirst($plugin);
+            if($found==true) {
+                echo ', ';
+            }
+            $found=true;
+        }
+    }
+
     $foundPlugin = false;
     $prefix = 'Saturn][Resource Loader][Plugins';
     foreach (glob(dirname(__DIR__, 4)."/plugins/*.php") as $filename) {
