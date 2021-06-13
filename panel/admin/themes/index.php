@@ -3,7 +3,18 @@
     ob_start();
     require_once __DIR__ . '/../../../assets/common/global_private.php';
     require_once __DIR__ . '/../../../assets/common/processes/gui/modals.php';
+
     ob_end_flush();
+
+    function url(): string {
+        if(isset($_SERVER['HTTPS'])){
+            $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+        }
+        else{
+            $protocol = 'http';
+        }
+        return $protocol . "://" . $_SERVER['HTTP_HOST'];
+    }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,7 +41,7 @@
             ?>
             <br>
             <h2 class="text-gray-900 text-2xl mt-8">Installed Themes</h2>
-            <div class="my-6 flex space-x-6">
+            <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
                 <?php
                     $dirs = array_filter(glob(__DIR__.'/../../../themes/*'), 'is_dir');
                     foreach ($dirs as $dir) {
@@ -47,21 +58,25 @@
                             $framework = 'question_mark';
                         }
 
-                        echo '<div class="bg-white w-52 h-52 relative shadow-lg hover:shadow-2xl transition duration-200">
+                        echo '<div class="rounded-md overflow-hidden bg-white w-52 h-52 relative hover:shadow-lg transition duration-200 flex-shrink-0">
                             <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto">
                                 <h3 class="text-lg mt-1 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
                                 <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$themeData->{'theme'}->{'author'}.'</p>
                             </div>
                             <div class="absolute top-0 left rounded-br-md p-1 bg-black bg-opacity-50 text-white">
-                                <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$framework.'.svg" class="w-6 h-6">
+                                <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$framework.'.svg" class="w-6 h-6" alt="'.$framework.'">
                             </div>
                             <div class="absolute top-0 right-0 rounded-bl-md p-1 bg-black bg-opacity-50 text-white">
-                                '.$themeData->{'theme'}->{'version'}.'
+                                '.$themeData->{'theme'}->{'version'}->{'theme'}.'
                             </div>
-                            <img class="w-full h-full" src="'.$image.'">
+                            <img class="w-full h-full" src="'.$image.'" alt="'.$themeData->{'theme'}->{'name'}.'">
                         </div>';
                     }
                 ?>
+            </div>
+            <h2 class="text-gray-900 text-2xl mt-8">Theme Marketplace</h2>
+            <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
+                <?php echo file_get_contents('https://www.marketplace.saturncms.net/themes/embed'); ?>
             </div>
         </div>
     </body>
