@@ -1,7 +1,9 @@
-{ "Andromeda": {
+{ "theme": {
+    "name": "Circinus",
     "version": "1.0.0",
     "author": "Lewis Milburn",
-    "framework": "Tailwind",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/142_circinus_galaxy.png",
+    "framework": "materialize",
     "theme-templates": {
         "name": "Homepage",
         "file": "Homepage.template"
@@ -21,7 +23,7 @@
         }
     },
     "externals": {
-        "js": "<script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js' defer></script>",
-        "css": ""
+      "js": "<script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js' defer></script>",
+      "css": ""
     }
 }}

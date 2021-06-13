@@ -1,0 +1,29 @@
+{ "theme": {
+    "name": "Triangulum",
+    "version": "1.0.0",
+    "author": "Lewis Milburn",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/VST_snaps_a_very_detailed_view_of_the_Triangulum_Galaxy.jpg/1200px-VST_snaps_a_very_detailed_view_of_the_Triangulum_Galaxy.jpg",
+    "framework": "bootstrap",
+    "theme-templates": {
+        "name": "Homepage",
+        "file": "Homepage.template"
+    },
+    "theme-colours": {
+        "Dark": {
+            "file": "Dark.tc"
+        },
+        "Light": {
+            "file": "light.tc"
+        },
+        "Emerald": {
+            "file": "emerald.tc"
+        },
+        "Ocean": {
+            "file": "ocean.tc"
+        }
+    },
+    "externals": {
+        "js": "<script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js' defer></script>",
+        "css": ""
+    }
+}}
