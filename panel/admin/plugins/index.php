@@ -69,6 +69,15 @@
             <h2 class="text-gray-900 text-2xl mt-8">Plugin Marketplace</h2>
             <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll w-full">
                 <?php echo file_get_contents('https://www.marketplace.saturncms.net/plugins/embed'); ?>
+                <a href="https://marketplace.saturncms.net/plugins/?url=<?php echo url(); ?>" target="_blank">
+                    <div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                        <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20">
+                            <h3 class="text-lg mt-1 mx-2 text-white">Get more Plugins</h3>
+                            <p class="text-xs -mt-1 mb-1 mx-2 text-white">marketplace.saturncms.net</p>
+                        </div>
+                        <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="https://marketplace.saturncms.net/assets/images/sign.png" alt="Saturn Marketplace">
+                    </div>
+                </a>
             </div>
         </div>
     </body>
