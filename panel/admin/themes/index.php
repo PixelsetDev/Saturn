@@ -58,18 +58,18 @@
                             $framework = 'question_mark';
                         }
 
-                        echo '<div class="rounded-md overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
-                            <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto">
+                        echo '<div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                            <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20">
                                 <h3 class="text-lg mt-1 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
                                 <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$themeData->{'theme'}->{'author'}.'</p>
                             </div>
-                            <div class="absolute top-0 left rounded-br-md p-1 bg-black bg-opacity-50 text-white">
+                            <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
                                 <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$framework.'.svg" class="w-6 h-6" alt="'.$framework.'">
                             </div>
-                            <div class="absolute top-0 right-0 rounded-bl-md p-1 bg-black bg-opacity-50 text-white">
+                            <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
                                 '.$themeData->{'theme'}->{'version'}->{'theme'}.'
                             </div>
-                            <img class="w-full h-full" src="'.$image.'" alt="'.$themeData->{'theme'}->{'name'}.'">
+                            <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="'.$image.'" alt="'.$themeData->{'theme'}->{'name'}.'">
                         </div>';
                     }
                 ?>
