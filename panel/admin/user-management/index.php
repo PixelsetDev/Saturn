@@ -100,7 +100,7 @@
     <head>
         <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
 
-        <title><?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+        <title>User Management - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
         <?php require __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
 
     </head>

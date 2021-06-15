@@ -65,7 +65,7 @@
     <head>
         <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
 
-        <title><?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+        <title>Settings - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
         <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
     </head>
     <body class="bg-gray-200">
