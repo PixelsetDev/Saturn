@@ -38,9 +38,9 @@
                         $pluginDataJSON =  file_get_contents($pluginDir.'/plugin.json');
                         $pluginData = json_decode($pluginDataJSON);
 
-                        $image = $pluginData->{'plugin'}->{'image'};
-                        if ($image == "") {
-                            $image = CONFIG_INSTALL_URL.'/assets/images/no-image-500x500.png';
+                        $pluginImage = $pluginData->{'plugin'}->{'image'};
+                        if ($pluginImage == "") {
+                            $pluginImage = CONFIG_INSTALL_URL.'/assets/images/no-image-500x500.png';
                         }
 
                         echo '<div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
@@ -51,7 +51,7 @@
                                 <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
                                     '.$pluginData->{'plugin'}->{'version'}->{'plugin'}.'
                                 </div>
-                                <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="'.$image.'" alt="'.$pluginData->{'plugin'}->{'name'}.'">
+                                <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="'.$pluginImage.'" alt="'.$pluginData->{'plugin'}->{'name'}.'">
                             </div>';
                     }
                 ?>
