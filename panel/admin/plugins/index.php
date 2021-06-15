@@ -33,10 +33,10 @@
             <h2 class="text-gray-900 text-2xl mt-8">Installed Plugins</h2>
             <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
                 <?php
-                    $dirs = array_filter(glob(__DIR__.'/../../../plugins/*'), 'is_dir');
-                    foreach ($dirs as $dir) {
-                        $json =  file_get_contents($dir.'/plugin.json');
-                        $pluginData = json_decode($json);
+                    $pluginDirs = array_filter(glob(__DIR__.'/../../../plugins/*'), 'is_dir');
+                    foreach ($pluginDirs as $pluginDir) {
+                        $pluginDataJSON =  file_get_contents($pluginDir.'/plugin.json');
+                        $pluginData = json_decode($pluginDataJSON);
 
                         $image = $pluginData->{'plugin'}->{'image'};
                         if ($image == "") {

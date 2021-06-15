@@ -33,10 +33,10 @@
             <h2 class="text-gray-900 text-2xl mt-8">Installed Themes</h2>
             <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
                 <?php
-                    $dirs = array_filter(glob(__DIR__.'/../../../themes/*'), 'is_dir');
-                    foreach ($dirs as $dir) {
-                        $json =  file_get_contents($dir.'/theme.json');
-                        $themeData = json_decode($json);
+                $themeDirs = array_filter(glob(__DIR__.'/../../../themes/*'), 'is_dir');
+                foreach ($themeDirs as $themeDir) {
+                        $themeDataJSON =  file_get_contents($themeDir.'/theme.json');
+                        $themeData = json_decode($themeDataJSON);
 
                         $image = $themeData->{'theme'}->{'image'};
                         if ($image == "") {
