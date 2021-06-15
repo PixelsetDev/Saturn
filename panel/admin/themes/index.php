@@ -66,7 +66,7 @@
             </div>
             <h2 class="text-gray-900 text-2xl mt-8">Theme Marketplace</h2>
             <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
-                <?php echo file_get_contents('https://www.marketplace.saturncms.net/themes/embed'); ?>
+                <?php $themeURL = 'https://www.marketplace.saturncms.net/themes/embed'; echo file_get_contents($themeURL); ?>
                 <a href="https://marketplace.saturncms.net/themes/?url=<?php echo url(); ?>" target="_blank">
                     <div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
                         <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20">
