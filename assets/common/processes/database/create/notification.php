@@ -1,4 +1,5 @@
 <?php
+
     function create_notification($id, $title, $message): bool
     {
         $id = checkInput('DEFAULT', $id);
@@ -6,26 +7,26 @@
         $message = checkInput('DEFAULT', $message);
 
         // Get user notification preference
-        $type=get_user_notification_preference($id);
+        $type = get_user_notification_preference($id);
 
-        if($type == '1') {
+        if ($type == '1') {
             global $conn;
-            $query = "INSERT INTO `".DATABASE_PREFIX."notifications` (`id`, `user_id`, `dismissed`, `title`, `content`) VALUES (NULL, '".$id."', '0', '".$title."', '".$message."')";
-            if(mysqli_query($conn, $query)) {
+            $query = 'INSERT INTO `'.DATABASE_PREFIX."notifications` (`id`, `user_id`, `dismissed`, `title`, `content`) VALUES (NULL, '".$id."', '0', '".$title."', '".$message."')";
+            if (mysqli_query($conn, $query)) {
                 $return = true;
             } else {
                 $return = false;
             }
-        } else if ($type == '2') {
+        } elseif ($type == '2') {
             $email = get_user_email($id);
-            send_email($email,'Saturn Notification: '.$title, $message);
+            send_email($email, 'Saturn Notification: '.$title, $message);
             $return = true;
-        } else if($type == '3') {
+        } elseif ($type == '3') {
             global $conn;
-            $query = "INSERT INTO `".DATABASE_PREFIX."notifications` (`id`, `user_id`, `dismissed`, `title`, `content`) VALUES (NULL, '".$id."', '0', '".$title."', '".$message."')";
+            $query = 'INSERT INTO `'.DATABASE_PREFIX."notifications` (`id`, `user_id`, `dismissed`, `title`, `content`) VALUES (NULL, '".$id."', '0', '".$title."', '".$message."')";
             $email = get_user_email($id);
-            send_email($email,'Saturn Notification: '.$title, $message);
-            if(mysqli_query($conn, $query)) {
+            send_email($email, 'Saturn Notification: '.$title, $message);
+            if (mysqli_query($conn, $query)) {
                 $return = true;
             } else {
                 $return = false;
@@ -33,5 +34,6 @@
         } else {
             $return = false;
         }
+
         return $return;
     }

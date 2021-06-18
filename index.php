@@ -2,13 +2,13 @@
 <html lang="en">
     <head>
         <?php
-            include_once(__DIR__.'/assets/common/global_public.php');
+            include_once __DIR__.'/assets/common/global_public.php';
         ?>
         <title><?php echo CONFIG_SITE_NAME; ?></title>
     </head>
     <body>
         <?php
-            include_once(__DIR__.'/assets/common/navigation.php');
+            include_once __DIR__.'/assets/common/navigation.php';
         ?>
         <div class="bg-white relative w-full px-4 py-16 mx-auto md:px-24 lg:px-8 lg:py-20">
             <div class="mb-16 md:mb-0 md:max-w-xl sm:mx-auto md:text-center">

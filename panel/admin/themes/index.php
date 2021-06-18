@@ -2,29 +2,29 @@
     session_start();
     ob_start();
 
-    require_once __DIR__ . '/../../../assets/common/global_private.php';
+    require_once __DIR__.'/../../../assets/common/global_private.php';
 
     ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__.'/../../../assets/common/panel/vendors.php'; ?>
 
         <title>Themes - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__ . '/../../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
             <h1 class="text-gray-900 text-3xl">Themes</h1>
             <?php
-                if(isset($errorMsg)){
+                if (isset($errorMsg)) {
                     alert('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
-                if(isset($successMsg)){
+                if (isset($successMsg)) {
                     alert('SUCCESS', $successMsg);
                     unset($successMsg);
                 }
@@ -35,20 +35,20 @@
                 <?php
                 $themeDirs = array_filter(glob(__DIR__.'/../../../themes/*'), 'is_dir');
                 foreach ($themeDirs as $themeDir) {
-                        $themeDataJSON =  file_get_contents($themeDir.'/theme.json');
-                        $themeData = json_decode($themeDataJSON);
+                    $themeDataJSON = file_get_contents($themeDir.'/theme.json');
+                    $themeData = json_decode($themeDataJSON);
 
-                        $themeImage = $themeData->{'theme'}->{'image'};
-                        if ($themeImage == "") {
-                            $themeImage = CONFIG_INSTALL_URL.'/assets/images/no-image-500x500.png';
-                        }
+                    $themeImage = $themeData->{'theme'}->{'image'};
+                    if ($themeImage == '') {
+                        $themeImage = CONFIG_INSTALL_URL.'/assets/images/no-image-500x500.png';
+                    }
 
-                        $themeFramework = $themeData->{'theme'}->{'framework'};
-                        if ($themeFramework == "") {
-                            $themeFramework = 'question_mark';
-                        }
+                    $themeFramework = $themeData->{'theme'}->{'framework'};
+                    if ($themeFramework == '') {
+                        $themeFramework = 'question_mark';
+                    }
 
-                        echo '<div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                    echo '<div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
                             <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20">
                                 <h3 class="text-lg mt-1 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
                                 <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$themeData->{'theme'}->{'author'}.'</p>
@@ -61,7 +61,7 @@
                             </div>
                             <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="'.$themeImage.'" alt="'.$themeData->{'theme'}->{'name'}.'">
                         </div>';
-                    }
+                }
                 ?>
             </div>
             <h2 class="text-gray-900 text-2xl mt-8">Theme Marketplace</h2>

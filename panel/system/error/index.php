@@ -1,17 +1,17 @@
 <?php
     session_start();
-    if(isset($_GET['err'])) {
+    if (isset($_GET['err'])) {
         $err = checkInput('DEFAULT', $_GET['err']);
         if ($err == '404') {
             $errorTitle = 'Error 404: Page not Found.';
             $errorDescription = 'Sorry, the page you requested could not be found.';
-        } else if ($err == '403') {
+        } elseif ($err == '403') {
             $errorTitle = 'Error 403';
             $errorDescription = 'Sorry, the page you requested could not be found.';
-        } else if ($err == 'security') {
+        } elseif ($err == 'security') {
             $errorTitle = 'Security Error';
             $errorDescription = 'Sorry, our security system has detected malicious activity and has suspended Saturn CMS.<br><br>For more information please contact the website administrator.';
-        } else if ($err == 'gss2') {
+        } elseif ($err == 'gss2') {
             session_destroy();
             $errorTitle = 'Whoops!';
             $errorDescription = 'Error GSS2: We were unable to authenticate your session, this could be because you\'ve logged in from a different location.<br>To continue, please re-log into Saturn.<br><br>For more information please contact the website administrator.';
@@ -29,16 +29,16 @@
     <head>
         <title><?php echo $errorTitle; ?> - Saturn Panel</title>
         <?php
-            include_once(__DIR__.'/../../../assets/common/global_public.php');
-            include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-            include_once(__DIR__.'/../../../assets/common/panel/theme.php');
+            include_once __DIR__.'/../../../assets/common/global_public.php';
+            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
 
     </head>
     <body class="bg-gray-200">
         <header class="bg-gray-900 shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-100"><a href="<?php echo CONFIG_INSTALL_URL;?>/panel">Saturn Panel</a></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-100"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
             </div>
         </header>
         <div class="container mx-auto px-4">
