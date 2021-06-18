@@ -51,7 +51,7 @@ if (isset($_GET['error'])) {
 <html lang="en">
     <head>
 
-        <title>Error - <?php echo CONFIG_SITE_NAME; ?></title>
+        <title>Error <?php echo $error; ?> - <?php echo CONFIG_SITE_NAME; ?></title>
     </head>
     <body>
         <?php include_once __DIR__.'/assets/common/navigation.php'; ?>
