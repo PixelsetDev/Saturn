@@ -6,12 +6,12 @@
 
         $edits = get_user_edits($id);
         list($max, $current, $next, $colour) = getvalues_dashboard_statistics($edits);
-        echo display_dashboard_edits($edits, $max, $current, $next, $colour);
+        echo display_dashboard_statbox('Writer', $edits, $max, $current, $next, $colour);
 
         if (get_user_roleID($_SESSION['id'])) {
             $approvals = get_user_approvals($id);
             list($max, $current, $next, $colour) = getvalues_dashboard_statistics($approvals);
-            echo display_dashboard_approvals($approvals, $max, $current, $next, $colour);
+            echo display_dashboard_statbox('Editor', $approvals, $max, $current, $next, $colour);
         }
     }
     function getvalues_dashboard_statistics($value): array
@@ -66,44 +66,45 @@
         return [$max, $current, $next, $colour];
     }
 
-    function display_dashboard_edits($edits, $maxedits, $current, $next, $colour): string
+    function display_dashboard_statbox($type, $current, $max, $currentLevel, $next, $colour): string
     {
-        return '<div class="flex mt-4">
+        $return= '<div class="flex mt-4">
                     <div class="shadow-lg rounded-xl w-full bg-white dark:bg-gray-700 relative overflow-hidden">
                         <a class="w-full h-full block">
                             <div class="flex items-center justify-between px-4 py-6 space-x-4">
                                 <div class="flex items-center">
-                                    <span class="rounded-full relative pl-3 pr-2 py-2 bg-'.$colour.'-100">
-                                        <i class="fas fa-user-edit text-'.$colour.'-500"></i>
+                                    <span class="rounded-full relative pl-3 pr-2 py-2 bg-' . $colour . '-100">
+                                        <i class="fas fa-user-';if ($type == 'Writer'){ $return .= 'edit'; } elseif ($type == 'Editor'){ $return .='check'; } $return .= ' text-' . $colour . '-500"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
-                                        Writer Level: '.$current.'
+                                        ' . $type . ' Level: ' . $currentLevel . '
                                     </p>
                                 </div>
                                 <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
-                                    '.$edits.' / '.$maxedits.'
+                                    ' . $current . ' / ' . $max . '
                                     <span class="text-xs text-gray-400">
-                                    Edits
+                                    ';if ($type == 'Writer'){ $return .= 'Edits'; } elseif ($type == 'Editor'){ $return .='Approvals'; } $return .= '
                                     </span>
                                 </div>
                             </div>
                             <div class="w-full h-3 bg-gray-100">
-                                <div style="width:'.(($edits / $maxedits) * 100).'%" class="h-full text-center text-xs text-white bg-'.$colour.'-400">
+                                <div style="width:' . (($current / $max) * 100) . '%" class="h-full text-center text-xs text-white bg-' . $colour . '-400">
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="shadow-lg rounded-xl w-1/6 bg-white text-'.$colour.'-500 relative overflow-hidden ml-4">
+                    <div class="shadow-lg rounded-xl w-1/6 bg-white text-' . $colour . '-500 relative overflow-hidden ml-4">
                         <div class="text-center">
                             <p class="text-xl font-medium mt-4 mx-2">Next Level:</p>
-                            <p class="mt-2">'.$next.'</p>
+                            <p class="mt-2">' . $next . '</p>
                         </div>
-                        <div class="w-full h-3 bg-'.$colour.'-100 mt-3">
-                            <div class="w-full h-full text-center text-xs text-white bg-'.$colour.'-100">
+                        <div class="w-full h-3 bg-' . $colour . '-100 mt-3">
+                            <div class="w-full h-full text-center text-xs text-white bg-' . $colour . '-100">
                             </div>
                         </div>
                     </div>
                 </div>';
+        return $return;
     }
 
     function display_dashboard_approvals($approvals, $maxapprovals, $current, $next, $colour): string
