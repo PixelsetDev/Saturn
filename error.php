@@ -1,10 +1,56 @@
-<!DOCTYPE html>
+<?php
+$errorScreen = true;
+include_once __DIR__.'/assets/common/global_public.php';
+
+if (isset($_GET['error'])) {
+    $error = $_GET['error'];
+    if ($_GET['error'] == 'db_conn') {
+        $title = 'Database Error.';
+        $message = 'That\'s our bad. We\'ve logged it and will investigate the cause.';
+        log_file('Saturn][ERROR', 'A \'Database Error\' error occurred. Error code: '.$error);
+    } elseif ($error == '401' || $error == '403') {
+        $title = 'You\'re not permitted to access this page.';
+        $message = 'Error code: '.$error.'. For more information please contact the website administrator.';
+    } elseif ($error == '404') {
+        $title = 'Page not Found.';
+        $message = 'Error code: '.$error.'. If you clicked a link on our website, please contact us to let us know it\'s broken. If you typed in the page URL yourself, please check your spelling and try again.';
+    } elseif ($error == '405') {
+        $title = 'Method Not Allowed.';
+        $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
+        log_file('Saturn][ERROR', 'A \'Method Not Allowed\' error occurred. Error code: '.$error);
+    } elseif ($error == '408') {
+        $title = 'Request Timeout.';
+        $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
+        log_file('Saturn][ERROR', 'A \'Request Timeout\' error occurred. Error code: '.$error);
+    } elseif ($error == '413' || $error == '414') {
+        $title = 'Size Limit Exceeded.';
+        $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
+        log_file('Saturn][ERROR', 'A \'Size Limit Exceeded\' error occurred. Error code: '.$error);
+    } elseif ($_GET['error'] == '425') {
+        $title = 'Too Early.';
+        $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
+        log_file('Saturn][ERROR', 'A \'Too Early\' error occurred. Error code: '.$error);
+    } elseif ($_GET['error'] == '429') {
+        $title = 'Too Many Requests.';
+        $message = 'Error code: '.$error.'. Our servers are experiencing high load at this moment in time, please try again later.';
+    } elseif ($error == '500' || $error == '501' || $error == '502' || $error == '503' || $error == '504') {
+        $title = 'Server Error.';
+        $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
+        log_file('Saturn][ERROR', 'A \'Server Error\' error occurred. Error code: '.$error);
+    } else {
+        $title = 'Sorry, an error occurred.';
+        $message = 'The specified error code ('.$error.') does not appear to exist in our system\'s error handling script. We\'ve logged it and will investigate the cause.';
+        log_file('Saturn][ERROR', 'An unidentified error occurred. Error code: '.$error);
+    }
+    log_console('Saturn][ERROR', $error);
+} else {
+    $title = 'Sorry, an error occurred.';
+    $message = 'We were unable to find the cause of this error. For more information please contact the website administrator.';
+}
+?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php
-            $errorScreen = true;
-            include_once __DIR__.'/assets/common/global_public.php';
-        ?>
+
         <title>Error - <?php echo CONFIG_SITE_NAME; ?></title>
     </head>
     <body>
@@ -15,49 +61,10 @@
                 <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row justify-between items-center relative">
                     <div class="w-full mb-16 md:mb-8 text-center lg:text-left">
                         <h1 class="text-center lg:text-left text-5xl lg:text-8xl mt-12 md:mt-0 text-gray-700">
-                            Error: <?php
-                                if (isset($_GET['error'])) {
-                                    if ($_GET['error'] == 'db_conn') {
-                                        echo 'Database Error.';
-                                    } elseif ($_GET['error'] == '401') {
-                                        echo 'Unauthorized.';
-                                    } elseif ($_GET['error'] == '403') {
-                                        echo 'Access Denied.';
-                                    } elseif ($_GET['error'] == '404') {
-                                        echo 'Page not Found.';
-                                    } elseif ($_GET['error'] == '405') {
-                                        echo 'Method not Allowed.';
-                                    } elseif ($_GET['error'] == '408') {
-                                        echo 'Request Timeout.';
-                                    } elseif ($_GET['error'] == '413') {
-                                        echo 'Payload Too Large.';
-                                    } elseif ($_GET['error'] == '414') {
-                                        echo 'URI Too Long.';
-                                    } elseif ($_GET['error'] == '425') {
-                                        echo 'Too Early.';
-                                    } elseif ($_GET['error'] == '429') {
-                                        echo 'Too Many Requests.';
-                                    } elseif ($_GET['error'] == '500') {
-                                        echo 'Internal Server Error.';
-                                    } elseif ($_GET['error'] == '501') {
-                                        echo 'Not Implemented.';
-                                    } elseif ($_GET['error'] == '502') {
-                                        echo 'Bad Gateway.';
-                                    } elseif ($_GET['error'] == '503') {
-                                        echo 'Service Unavailable.';
-                                    } elseif ($_GET['error'] == '504') {
-                                        echo 'Gateway Timeout.';
-                                    } else {
-                                        echo 'Sorry, an error occurred.';
-                                    }
-                                    log_console('Saturn][ERROR', $_GET['error']);
-                                } else {
-                                    echo 'Sorry, an error occurred.';
-                                }
-                            ?>
+                            <?php echo $title; ?>
                         </h1>
                         <p class="text-base text-gray-700 mt-4">
-                            We've logged this error and will investigate it accordingly. Sorry for any inconvenience caused.
+                            <?php echo $message; ?>
                         </p>
                         <button onclick="location.href='<?php echo CONFIG_INSTALL_URL; ?>';" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Go back home
