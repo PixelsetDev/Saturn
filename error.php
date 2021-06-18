@@ -3,7 +3,7 @@ $errorScreen = true;
 include_once __DIR__.'/assets/common/global_public.php';
 
 if (isset($_GET['error'])) {
-    $error = $_GET['error'];
+    $error = checkInput('DEFAULT', $_GET['error']);
     if ($_GET['error'] == 'db_conn') {
         $title = 'Database Error.';
         $message = 'That\'s our bad. We\'ve logged it and will investigate the cause.';
