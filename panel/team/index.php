@@ -1,4 +1,32 @@
-<?php session_start(); ?><!DOCTYPE html>
+<?php
+session_start();
+
+function listUsers($role) {
+    global $conn;
+    $found = false;
+
+    $query = "SELECT `id`, `first_name` FROM `".DATABASE_PREFIX."users` WHERE `role_id` = '".$role."' ORDER BY `first_name`";
+    $rs = mysqli_query($conn, $query);
+
+    while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
+        echo '<br>';
+        foreach ($row as $key => $value) {
+            if (is_numeric($value)) {
+                echo'<div>
+                                <a href="'.get_user_profile_link($value).'" class="relative inline-block">
+                                    <img class="inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
+                                    <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity($value).'-600 border-2 border-white rounded-full"></span>
+                                </a>
+                                <b>'.get_user_fullname($value).'</b>
+                            </div>';
+                $found = true;
+            }
+        }
+    }
+    if($found == false) {
+        echo '<p class="mt-6">None found.</p>';
+    }
+}?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
@@ -23,70 +51,19 @@
                 <div class="flex-auto mr-8 w-1/3">
                     <h1 class="text-2xl font-bold leading-tight text-gray-900">Administration</h1>
                     <?php
-
-                        $query = 'SELECT `id`, `first_name` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '4' ORDER BY `first_name`";
-                        $rs = mysqli_query($conn, $query);
-
-                        while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
-                            echo '<br>';
-                            foreach ($row as $key => $value) {
-                                if (is_numeric($value)) {
-                                    echo'<div>
-                            <a href="'.get_user_profile_link($value).'" class="relative inline-block">
-                                <img class="inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
-                                <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity($value).'-600 border-2 border-white rounded-full"></span>
-                            </a>
-                            <b>'.get_user_fullname($value).'</b>
-                        </div>';
-                                }
-                            }
-                        }
+                        listUsers('4');
                     ?>
                 </div>
                 <div class="flex-auto mr-8 w-1/3">
                     <h1 class="text-2xl font-bold leading-tight text-gray-900">Editors</h1>
                     <?php
-
-                    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '3'";
-                    $rs = mysqli_query($conn, $query);
-
-                    while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
-                        echo '<br>';
-                        foreach ($row as $key => $value) {
-                            if (is_numeric($value)) {
-                                echo'<div>
-                            <a href="'.get_user_profile_link($value).'" class="relative inline-block">
-                                <img class="inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
-                                <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity($value).'-600 border-2 border-white rounded-full"></span>
-                            </a>
-                            <b>'.get_user_fullname($value).'</b>
-                        </div>';
-                            }
-                        }
-                    }
+                        listUsers('3');
                     ?>
                 </div>
                 <div class="flex-auto mr-8 w-1/3">
                     <h1 class="text-2xl font-bold leading-tight text-gray-900">Writers</h1>
                     <?php
-
-                    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '2'";
-                    $rs = mysqli_query($conn, $query);
-
-                    while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
-                        echo '<br>';
-                        foreach ($row as $key => $value) {
-                            if (is_numeric($value)) {
-                                echo'<div>
-                            <a href="'.get_user_profile_link($value).'" class="relative inline-block">
-                                <img class="inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
-                                <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity($value).'-600 border-2 border-white rounded-full"></span>
-                            </a>
-                            <b>'.get_user_fullname($value).'</b>
-                        </div>';
-                            }
-                        }
-                    }
+                        listUsers('2');
                     ?>
                 </div>
             </div>
