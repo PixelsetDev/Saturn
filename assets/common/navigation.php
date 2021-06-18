@@ -3,12 +3,12 @@
                 <div class="max-w-7xl mx-auto px-8">
                     <div class="flex items-center justify-between h-16">
                         <div class="w-full justify-between flex items-center">
-                            <a class="flex-shrink-0" href="<?php echo CONFIG_INSTALL_URL;?>">
-                                <img class="h-10 w-auto" src="<?php echo CONFIG_INSTALL_URL;?>/assets/images/logo.png" alt="GeolHistory"/>
+                            <a class="flex-shrink-0" href="<?php echo CONFIG_INSTALL_URL; ?>">
+                                <img class="h-10 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" alt="GeolHistory"/>
                             </a>
                             <div class="hidden md:block">
                                 <div class="ml-10 flex items-baseline space-x-4">
-                                    <a class="text-gray-300 hover:text-gray-200 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="<?php echo CONFIG_INSTALL_URL;?>">
+                                    <a class="text-gray-300 hover:text-gray-200 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="<?php echo CONFIG_INSTALL_URL; ?>">
                                         Home
                                     </a>
                                 </div>

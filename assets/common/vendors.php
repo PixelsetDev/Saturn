@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="<?php $url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; echo $url;?>">
+<meta property="og:url" content="<?php $url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; echo $url; ?>">
 <meta property="og:title" content="<?php echo CONFIG_SITE_NAME; ?>">
 <meta property="og:description" content="<?php echo CONFIG_SITE_DESCRIPTION; ?>">
 <meta property="og:image" content="<?php echo 'https://'.$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE; ?>">

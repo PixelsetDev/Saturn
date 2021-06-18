@@ -2,23 +2,23 @@
 <html lang="en">
     <head>
         <?php
-            include_once(__DIR__.'/../../assets/common/global_private.php');
-            include_once(__DIR__ . '/../../assets/common/panel/vendors.php');
-            include_once(__DIR__.'/../../assets/common/panel/theme.php');
-            include_once(__DIR__.'/../../assets/common/processes/pages.php');
-            include_once(__DIR__.'/../../assets/common/processes/gui/pages.php');
+            include_once __DIR__.'/../../assets/common/global_private.php';
+            include_once __DIR__.'/../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../assets/common/panel/theme.php';
+            include_once __DIR__.'/../../assets/common/processes/pages.php';
+            include_once __DIR__.'/../../assets/common/processes/gui/pages.php';
         ?>
         <title>Pages - Saturn Panel</title>
 
         <?php
-            if(isset($_GET['error'])) {
+            if (isset($_GET['error'])) {
                 $error = $_GET['error'];
                 if ($error == 'permission') {
-                    $errorMsg = "Error: You do not have the required permissions to do that.";
-                } else if ($error == 'new') {
-                    $errorMsg = "Error: There was a problem creating a new page.";
+                    $errorMsg = 'Error: You do not have the required permissions to do that.';
+                } elseif ($error == 'new') {
+                    $errorMsg = 'Error: There was a problem creating a new page.';
                 } else {
-                    $errorMsg = "Error: An unknown error occurred.";
+                    $errorMsg = 'Error: An unknown error occurred.';
                 }
             }
 
@@ -33,7 +33,7 @@
 
     </head>
     <body class="mb-8">
-        <?php include_once(__DIR__.'/../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../assets/common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -43,18 +43,22 @@
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
-                if(isset($errorMsg)){
-                    alert('ERROR',$errorMsg);
+                if (isset($errorMsg)) {
+                    alert('ERROR', $errorMsg);
                 }
                 unset($errorMsg);
             ?>
             <div class="px-4 py-6 sm:px-0">
                 <?php
                 $role = get_user_roleID($_SESSION['id']);
-                $i=1;
+                $i = 1;
                 $category = get_page_category_name($i);
-                while($category != null) {
-                    $percent = 0; $written = 0; $complete = 0; $pending = 0; $total = 0;
+                while ($category != null) {
+                    $percent = 0;
+                    $written = 0;
+                    $complete = 0;
+                    $pending = 0;
+                    $total = 0;
                     echo '<div x-data="{ open: false }">
                         <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                             <div class="absolute inset-0 overflow-hidden">
@@ -80,28 +84,52 @@
                                                     <p>Please select a page.</p>';
                     $o = pageQuery_1($i);
 
-                    $row = pageQuery_2($i,$o);
+                    $row = pageQuery_2($i, $o);
 
                     while ($row['title'] != null) {
-                        $row = pageQuery_2($i,$o);
+                        $row = pageQuery_2($i, $o);
 
-                        if($row['title'] != null) {
-                            $status = get_page_status($o); if ($status == 'green') {$complete++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS){$pending++;}else{$status='green';$complete++;}} $total++;
+                        if ($row['title'] != null) {
+                            $status = get_page_status($o);
+                            if ($status == 'green') {
+                                $complete++;
+                            } elseif ($status == 'yellow') {
+                                if (CONFIG_PAGE_APPROVALS) {
+                                    $pending++;
+                                } else {
+                                    $status = 'green';
+                                    $complete++;
+                                }
+                            }
+                            $total++;
                             echo'<div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                                 <div class="flex w-full relative">
                                                                     <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>';
-                                                                    if ($status == 'red') {
-                                                                        echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
-                                                                    }echo'
+                            if ($status == 'red') {
+                                echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
+                            }
+                            echo'
                                                                     <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
                                                                     <div><a href="editor/?pageID='.$o.'" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">Edit</span></a></div>
                                                                 </div>
-                                                                <div class="text-xs normal-case font-normal text-gray-400 italic">'; if($status=='yellow'){echo 'Pending approval request from '.get_user_fullname(get_page_pending_user_id($o)).'.';}else if($status=='red'){echo'This page has not been edited by anyone yet.';}else{echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($o)).' at '.get_page_last_edit_timestamp($row['id']).'.';}echo'</div>
+                                                                <div class="text-xs normal-case font-normal text-gray-400 italic">';
+                            if ($status == 'yellow') {
+                                echo 'Pending approval request from '.get_user_fullname(get_page_pending_user_id($o)).'.';
+                            } elseif ($status == 'red') {
+                                echo'This page has not been edited by anyone yet.';
+                            } else {
+                                echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($o)).' at '.get_page_last_edit_timestamp($row['id']).'.';
+                            }
+                            echo'</div>
                                                             </div>
                                                             <br><br>';
                         }
                         $o++;
-                    } if(get_user_roleID($_SESSION['id']) == '4') { echo display_page_new_form(); } echo '<br><br><br><br>
+                    }
+                    if (get_user_roleID($_SESSION['id']) == '4') {
+                        echo display_page_new_form();
+                    }
+                    echo '<br><br><br><br>
                                                 </div>
                                             </div>
                                             '.$key.'
@@ -117,17 +145,43 @@
                             <div class="flex-grow h-16 relative pt-1">
                                 <div class="flex mb-2 items-center justify-between">
                                     <div>';
-                    if (is_nan($complete / $total) * 100) {$statusColour = 'gray'; $status = 'No Pages';}
-                    else if((($complete / $total) * 100) == 100.00) {$statusColour = 'green'; $status = 'Complete';}
-                    else if((($complete / $total) * 100) != 0 || (($pending / $total) * 100) != 0) {$statusColour = 'yellow'; $status = 'In Progress';}
-                    else if((($complete / $total) * 100) == 0 && (($pending / $total) * 100) == 0) {$statusColour = 'red'; $status = 'Not Started';}
-                    else {$statusColour = 'gray'; $status = 'Unknown Status';}
+                    if (is_nan($complete / $total) * 100) {
+                        $statusColour = 'gray';
+                        $status = 'No Pages';
+                    } elseif ((($complete / $total) * 100) == 100.00) {
+                        $statusColour = 'green';
+                        $status = 'Complete';
+                    } elseif ((($complete / $total) * 100) != 0 || (($pending / $total) * 100) != 0) {
+                        $statusColour = 'yellow';
+                        $status = 'In Progress';
+                    } elseif ((($complete / $total) * 100) == 0 && (($pending / $total) * 100) == 0) {
+                        $statusColour = 'red';
+                        $status = 'Not Started';
+                    } else {
+                        $statusColour = 'gray';
+                        $status = 'Unknown Status';
+                    }
                     echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$statusColour.'-500 bg-'.$statusColour.'-200">'.$status.'</span>
                                     </div>
                                     <div class="text-right">
-                                        <span class="text-xs font-semibold inline-block">Written: <span class="text-xs font-semibold inline-block text-gray-600">';$written = $complete+$pending; $percent = ($written / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
+                                        <span class="text-xs font-semibold inline-block">Written: <span class="text-xs font-semibold inline-block text-gray-600">';
+                    $written = $complete + $pending;
+                    $percent = ($written / $total) * 100;
+                    if (is_nan($percent)) {
+                        echo'N/A';
+                    } else {
+                        echo number_format((float) $percent, 2, '.', '').'%';
+                    }
+                    echo '</span></span>
                                         <br>
-                                        <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">'; $percent = ($complete / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
+                                        <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">';
+                    $percent = ($complete / $total) * 100;
+                    if (is_nan($percent)) {
+                        echo'N/A';
+                    } else {
+                        echo number_format((float) $percent, 2, '.', '').'%';
+                    }
+                    echo '</span></span>
                                     </div>
                                 </div> 
                                 <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-400">
@@ -143,14 +197,14 @@
                             </div>
                         </div>
                         <br>';
-                        get_assigned_editors();
-                        get_assigned_writers();
-                        unset($category);
-                        $i++;
-                        $category = get_page_category_name($i);
-                        echo '</div>
+                    get_assigned_editors();
+                    get_assigned_writers();
+                    unset($category);
+                    $i++;
+                    $category = get_page_category_name($i);
+                    echo '</div>
                         <br><hr><br>';
-                    }
+                }
                 ?>
             </div>
     </body>

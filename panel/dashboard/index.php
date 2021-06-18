@@ -4,44 +4,51 @@ session_start();
 <html lang="en">
     <head>
         <?php
-            include_once(__DIR__.'/../../assets/common/global_private.php');
-            include_once(__DIR__ . '/../../assets/common/panel/vendors.php');
-            include_once(__DIR__.'/../../assets/common/panel/theme.php');
+            include_once __DIR__.'/../../assets/common/global_private.php';
+            include_once __DIR__.'/../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../assets/common/panel/theme.php';
             $id = $_SESSION['id'];
         ?>
         <title>Saturn Panel</title>
 
         <?php
-            if(isset($_GET['dismissNotif'])){$nid = $_GET['dismissNotif'];update_notification_dismiss($nid);header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard');}
-            if(isset($_GET['error'])) {
+            if (isset($_GET['dismissNotif'])) {
+                $nid = $_GET['dismissNotif'];
+                update_notification_dismiss($nid);
+                header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard');
+            }
+            if (isset($_GET['error'])) {
                 $error = $_GET['error'];
                 if ($error == 'permission') {
-                    $errorMsg = "You do not have the required permissions to do that.";
-                } else if ($error == 'no_user') {
-                    $errorMsg = "User not found.";
+                    $errorMsg = 'You do not have the required permissions to do that.';
+                } elseif ($error == 'no_user') {
+                    $errorMsg = 'User not found.';
                 } else {
-                    $errorMsg = "An unknown error occurred.";
+                    $errorMsg = 'An unknown error occurred.';
                 }
             }
-            if(isset($_GET['warning'])) {
+            if (isset($_GET['warning'])) {
                 $error = $_GET['warning'];
                 if ($error == 'permission') {
-                    $errorMsg = "You do not have the required permissions to do that.";
+                    $errorMsg = 'You do not have the required permissions to do that.';
                 } else {
-                    $warningMsg = "An unknown warning occurred.";
+                    $warningMsg = 'An unknown warning occurred.';
                 }
             }
         ?>
 
     </head>
     <body class="mb-14">
-        <?php include_once(__DIR__.'/../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../assets/common/panel/navigation.php'; ?>
 
-        <header class="bg-white shadow relative <?php $notifCount = get_notification_count($_SESSION['id']); if($notifCount > '0'){echo 'pb-28 md:pb-1'; } ?>">
+        <header class="bg-white shadow relative <?php $notifCount = get_notification_count($_SESSION['id']); if ($notifCount > '0') {
+            echo 'pb-28 md:pb-1';
+        } ?>">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight text-gray-900">Dashboard</h1>
             </div>
-            <?php if($notifCount > '0') { echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_notification_id($_SESSION['id']).'" class="m-1 bg-white rounded-lg border-gray-300 border p-3 shadow-lg absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
+            <?php if ($notifCount > '0') {
+            echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_notification_id($_SESSION['id']).'" class="m-1 bg-white rounded-lg border-gray-300 border p-3 shadow-lg absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
                 <div class="flex flex-row">
                     <div class="animate-pulse px-2 bg-blue-500 rounded-full w-6 h-6 text-white text-center">
                         <i class="fas fa-info" aria-hidden="true"></i>
@@ -52,27 +59,27 @@ session_start();
                     </div>
                 </div>
             </a>';
-            }
+        }
             ?>
         </header>
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
-            if(isset($errorMsg)){
+            if (isset($errorMsg)) {
                 alert('ERROR', $errorMsg);
                 unset($errorMsg);
             }
-            if(isset($warningMsg)){
+            if (isset($warningMsg)) {
                 alert('WARNING', $warningMsg);
                 unset($warningMsg);
             }
-            if(CONFIG_DEBUG) {
+            if (CONFIG_DEBUG) {
                 alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
-                if(CONFIG_PHP_ERRORS) {
+                if (CONFIG_PHP_ERRORS) {
                     alert('WARNING', 'PHP Errors are enabled. This is NOT recommended in production environments.');
                 }
             }
-            if(get_user_roleID($_SESSION['id']) > 3) {
+            if (get_user_roleID($_SESSION['id']) > 3) {
                 $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version=beta');
                 $localVersion = file_get_contents(__DIR__.'/../../assets/common/version.txt');
                 if ($remoteVersion != $localVersion) {
@@ -101,7 +108,7 @@ session_start();
                         <div class="flex flex-col justify-start">
                             <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
                                 <?php
-                                    $result = mysqli_query($conn,"SELECT * FROM `".DATABASE_PREFIX."pages` WHERE 1;");
+                                    $result = mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE 1;');
                                     $rowCount = mysqli_num_rows($result);
                                     echo $rowCount;
                                 ?>
@@ -123,7 +130,7 @@ session_start();
                         <div class="flex flex-col justify-start">
                             <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
                                 <?php
-                                    $result = mysqli_query($conn,"SELECT * FROM `".DATABASE_PREFIX."articles` WHERE `author_id` = '".$_SESSION['id']."';");
+                                    $result = mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX."articles` WHERE `author_id` = '".$_SESSION['id']."';");
                                     $rowCount = mysqli_num_rows($result);
                                     echo $rowCount;
                                 ?>
@@ -132,7 +139,7 @@ session_start();
                     </a>
                 </div>
 
-                <?php if(get_user_roleID($_SESSION['id']) > 2) { ?>
+                <?php if (get_user_roleID($_SESSION['id']) > 2) { ?>
                 <div x-data="{ open: false }" class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-gray-800">
                     <a @click="open = true" class="cursor-pointer">
                         <div class="flex items-center">
@@ -146,10 +153,10 @@ session_start();
                         <div class="flex flex-col justify-start">
                             <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
                                 <?php
-                                    $result = mysqli_query($conn,"SELECT `content` FROM `".DATABASE_PREFIX."pages_pending` WHERE `content` IS NOT NULL;");
+                                    $result = mysqli_query($conn, 'SELECT `content` FROM `'.DATABASE_PREFIX.'pages_pending` WHERE `content` IS NOT NULL;');
                                     $rows = mysqli_num_rows($result);
 
-                                    $result2 = mysqli_query($conn,"SELECT * FROM `".DATABASE_PREFIX."articles` WHERE `status` = 'PENDING';");
+                                    $result2 = mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX."articles` WHERE `status` = 'PENDING';");
                                     $rows2 = mysqli_num_rows($result2);
 
                                     $finalRows = $rows + $rows2;
@@ -170,7 +177,7 @@ session_start();
             </div>
             <div class="flex flex-wrap space-x-4">
                 <?php
-                    $result = mysqli_query($conn,"SELECT `id`, `edits` FROM `".DATABASE_PREFIX."users` WHERE 1 ORDER BY edits;");
+                    $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY edits;');
                     $row = mysqli_fetch_row($result);
                     $uid = $row[0];
                 ?>
@@ -185,13 +192,13 @@ session_start();
                     </div>
                     <div class="flex space-x-4">
                         <?php
-                            $x=0;
-                            $result = mysqli_query($conn,"SELECT `id`, `edits` FROM `".DATABASE_PREFIX."users` WHERE 1 ORDER BY edits DESC;");
+                            $x = 0;
+                            $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY edits DESC;');
                             $row = mysqli_fetch_row($result);
                             $uid = $row[0];
-                            while($uid != NULL && $x != '4') {
-                                if(get_user_roleID($uid) != '0' && get_user_roleID($uid) != '1') {
-                                echo '<div class="flex-grow">
+                            while ($uid != null && $x != '4') {
+                                if (get_user_roleID($uid) != '0' && get_user_roleID($uid) != '1') {
+                                    echo '<div class="flex-grow">
                             <div class="flex flex-col items-center">
                                 <div class="relative">
                                     <a href="'.get_user_profile_link($uid).'" class="block relative">
@@ -201,24 +208,34 @@ session_start();
                                 <a href="'.get_user_profile_link($uid).'" class="text-gray-600 dark:text-gray-400 text-xs mt-2">
                                     '.get_user_fullname($uid).'
                                 </a>
-                                <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';if (get_user_edits($uid) == '0') { echo 'red'; } else if (get_user_edits($uid) < '6') { echo 'yellow'; } else { echo 'green'; } echo'-500 rounded-full p-1">
+                                <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';
+                                    if (get_user_edits($uid) == '0') {
+                                        echo 'red';
+                                    } elseif (get_user_edits($uid) < '6') {
+                                        echo 'yellow';
+                                    } else {
+                                        echo 'green';
+                                    }
+                                    echo'-500 rounded-full p-1">
                                     '.$row[1].' Edits
                                 </a>
                             </div>
                         </div>';
                                 }
                                 $row = mysqli_fetch_row($result);
-                                if(isset($row[0])) {$uid = $row[0];}
+                                if (isset($row[0])) {
+                                    $uid = $row[0];
+                                }
                                 $x++;
                             }
                         ?>
                     </div>
                 </div><?php
-                if(get_user_roleID($id) > '2') {
-                    $result = mysqli_query($conn,"SELECT `id`, `edits` FROM `".DATABASE_PREFIX."users` WHERE 1 ORDER BY edits;");
+                if (get_user_roleID($id) > '2') {
+                    $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY edits;');
                     $row = mysqli_fetch_row($result);
                     $uid = $row[0];
-                echo '<div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-gray-800 relative overflow-hidden mt-4">
+                    echo '<div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-gray-800 relative overflow-hidden mt-4">
                     <div class="flex items-center">
                         <span class="bg-green-500 px-3 py-2 h-10 w-10 rounded-full relative">
                             <i class="fas fa-pencil-ruler fa-lg text-white" aria-hidden="true"></i>
@@ -228,13 +245,13 @@ session_start();
                         </p>
                     </div>
                     <div class="flex space-x-4">';
-                        $x=0;
-                        $result = mysqli_query($conn,"SELECT `id`, `approvals` FROM `".DATABASE_PREFIX."users` WHERE 1 ORDER BY approvals DESC;");
-                        $row = mysqli_fetch_row($result);
-                        $uid = $row[0];
-                        while($uid != NULL && $x != '4') {
-                            if (get_user_roleID($uid) > '2') {
-                                echo '<div class="flex-grow">
+                    $x = 0;
+                    $result = mysqli_query($conn, 'SELECT `id`, `approvals` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY approvals DESC;');
+                    $row = mysqli_fetch_row($result);
+                    $uid = $row[0];
+                    while ($uid != null && $x != '4') {
+                        if (get_user_roleID($uid) > '2') {
+                            echo '<div class="flex-grow">
                             <div class="flex flex-col items-center">
                                 <div class="relative">
                                     <a href="'.get_user_profile_link($uid).'" class="block relative">
@@ -244,15 +261,27 @@ session_start();
                                 <a href="'.get_user_profile_link($uid).'" class="text-gray-600 dark:text-gray-400 text-xs mt-2">
                                     '.get_user_fullname($uid).'
                                 </a>
-                                <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';if (get_user_approvals($uid) == '0') { echo 'red'; } else if (get_user_approvals($uid) < '6') { echo 'yellow'; } else { echo 'green'; } echo'-500 rounded-full p-1">
+                                <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';
+                            if (get_user_approvals($uid) == '0') {
+                                echo 'red';
+                            } elseif (get_user_approvals($uid) < '6') {
+                                echo 'yellow';
+                            } else {
+                                echo 'green';
+                            }
+                            echo'-500 rounded-full p-1">
                                     '.$row[1].' Approvals
                                 </a>
                             </div>
                         </div>';
-                            }
-                            $x++; $row = mysqli_fetch_row($result); if(isset($row[0])) {$uid = $row[0];
-                            }
-                        } echo '</div>
+                        }
+                        $x++;
+                        $row = mysqli_fetch_row($result);
+                        if (isset($row[0])) {
+                            $uid = $row[0];
+                        }
+                    }
+                    echo '</div>
                 </div>';
                 } ?>
             </div>

@@ -1,10 +1,10 @@
 <?php
     session_start();
-    require_once __DIR__ . '/../../../assets/common/global_private.php';
-    require_once __DIR__ . '/../../../assets/common/processes/gui/modals.php';
+    require_once __DIR__.'/../../../assets/common/global_private.php';
+    require_once __DIR__.'/../../../assets/common/processes/gui/modals.php';
 
-    if(isset($_POST['clear'])) {
-        if(log_clear()) {
+    if (isset($_POST['clear'])) {
+        if (log_clear()) {
             $successMsg = 'Log cleared.';
         } else {
             $errorMsg = 'Unbale to clear the log, an error occured.';
@@ -13,23 +13,23 @@
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__.'/../../../assets/common/panel/vendors.php'; ?>
 
         <title>Security Log - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__ . '/../../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
             <h1 class="text-gray-900 text-3xl">Security Log</h1>
             <?php
-                if(isset($errorMsg)){
+                if (isset($errorMsg)) {
                     alert('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
-                if(isset($successMsg)){
+                if (isset($successMsg)) {
                     alert('SUCCESS', $successMsg);
                     unset($successMsg);
                 }
@@ -38,7 +38,7 @@
             <iframe src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/security_log.txt?cache=<?php try {
                 echo random_int('0000', '9999');
             } catch (Exception $e) {
-                echo alert('ERROR',$e);
+                echo alert('ERROR', $e);
             } ?>" class="w-full h-3/4 overflow-scroll" title="Security Log"></iframe>
             <div x-data="{open:false}">
                 <a @click="open = true" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer flex w-1/6 items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">Clear Log</a>

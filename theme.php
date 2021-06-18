@@ -1,4 +1,5 @@
 <?php
+
     /* Website Theme */
     const THEME_NAME = 'Andromeda';
     /* Panel Theme */

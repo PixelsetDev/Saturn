@@ -1,27 +1,27 @@
 <?php session_start();
-    include_once(__DIR__.'/../../../assets/common/global_private.php');
-    if(isset($_POST['message'])) {
+    include_once __DIR__.'/../../../assets/common/global_private.php';
+    if (isset($_POST['message'])) {
         $query = "SET time_zone='".CONFIG_TIMEZONE."';";
-        $rs = mysqli_query($conn,$query);
+        $rs = mysqli_query($conn, $query);
 
         $message = $_POST['message'];
-        $message = str_replace('"', "&quot;", $message);
-        $query = "INSERT INTO `".DATABASE_PREFIX."` (`id`, `user_id`, `chat_id`, `status`, `message`, `datetime`) VALUES (NULL, '$id', '1', 'ACTIVE', '$message', CURRENT_TIMESTAMP);";
-        $rs = mysqli_query($conn,$query);
+        $message = str_replace('"', '&quot;', $message);
+        $query = 'INSERT INTO `'.DATABASE_PREFIX."` (`id`, `user_id`, `chat_id`, `status`, `message`, `datetime`) VALUES (NULL, '$id', '1', 'ACTIVE', '$message', CURRENT_TIMESTAMP);";
+        $rs = mysqli_query($conn, $query);
         header('Location: http://'.htmlspecialchars($_SERVER[HTTP_HOST]).htmlspecialchars($_SERVER[REQUEST_URI]).'');
     }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-        include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-        include_once(__DIR__.'/../../../assets/common/panel/theme.php');
+        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
 
         <title>Saturn Panel</title>
     </head>
     <body>
-        <?php include_once(__DIR__.'/../../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
 
         <div class="w-screen">
             <div class="grid grid-cols-3 min-w-full border rounded" style="min-height: 80vh;">
@@ -48,7 +48,7 @@
                                 <a class="hover:bg-gray-100 border-b border-gray-300 px-3 py-2 cursor-pointer flex items-center text-sm focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
                                     <div class="rounded-full bg-<?php echo THEME_PANEL_COLOUR; ?>-200 px-1 py-1">
                                         <img class="h-8 w-8 rounded-full object-cover"
-                                             src="<?php echo CONFIG_INSTALL_URL;?>/assets/panel/images/icon/chat.png"
+                                             src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon/chat.png"
                                              alt=""
                                         />
                                     </div>
@@ -56,8 +56,8 @@
                                         <div class="flex justify-between">
                                             <span class="block ml-2 font-semibold text-base text-gray-600" x-text="item.chat_name"></span>
                                             <?php
-                                                $query = "SELECT * FROM `".DATABASE_PREFIX."chats_messages` WHERE `chat_id` = '1' ORDER BY `id` DESC";
-                                                $rs = mysqli_query($conn,$query);
+                                                $query = 'SELECT * FROM `'.DATABASE_PREFIX."chats_messages` WHERE `chat_id` = '1' ORDER BY `id` DESC";
+                                                $rs = mysqli_query($conn, $query);
                                                 $row = mysqli_fetch_assoc($rs);
                                                 echo '<span class="block ml-2 text-sm text-gray-600">Last Message: '.$row['datetime'].'</span>';
                                             ?>
@@ -98,7 +98,7 @@
                         <div class="flex items-center border-b border-gray-300 pl-3 py-3">
                             <div class="rounded-full bg-<?php echo THEME_PANEL_COLOUR; ?>-200 px-1 py-1">
                                 <img class="h-8 w-8 rounded-full object-cover"
-                                     src="<?php echo CONFIG_INSTALL_URL;?>/assets/panel/images/icon/chat.png"
+                                     src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon/chat.png"
                                      alt=""
                                 />
                             </div>
@@ -107,13 +107,13 @@
                         <div id="chat" class="w-full overflow-y-scroll p-10 relative" style="height: 700px;" ref="toolbarChat">
                             <ul>
                                     <?php
-                                    $query = "SELECT * FROM `".DATABASE_PREFIX."chats_messages` WHERE `chat_id` = '1' ORDER BY `id` ASC";
-                                    $rs = mysqli_query($conn,$query);
+                                    $query = 'SELECT * FROM `'.DATABASE_PREFIX."chats_messages` WHERE `chat_id` = '1' ORDER BY `id` ASC";
+                                    $rs = mysqli_query($conn, $query);
                                     $i = 0;
-                                    while($row = mysqli_fetch_assoc($rs)){
+                                    while ($row = mysqli_fetch_assoc($rs)) {
                                         $i++;
                                         if ($row['status'] == 'ACTIVE') {
-                                            if($row['user_id']==$_SESSION['id']) {
+                                            if ($row['user_id'] == $_SESSION['id']) {
                                                 echo '
                                     <li class="w-full flex justify-end">
                                         <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" css="max-width: 300px;">
@@ -122,8 +122,8 @@
                                                 alt="'.get_user_fullname($row['user_id']).'"
                                             />
                                             <div class="ml-2">
-                                                <span class="block">'.$row['message'] .'</span>
-                                                <span class="block text-xs text-right">'.$row['datetime'] .'</span>
+                                                <span class="block">'.$row['message'].'</span>
+                                                <span class="block text-xs text-right">'.$row['datetime'].'</span>
                                             </div>
                                         </div>
                                     </li>';
@@ -136,8 +136,8 @@
                                                 alt="'.get_user_fullname($row['user_id']).'"
                                             />
                                             <div class="ml-2">
-                                                <span class="block">'.$row['message'] .'</span>
-                                                <span class="block text-xs text-right">'.get_user_fullname($row['user_id']).' '.$row['datetime'] .'</span>
+                                                <span class="block">'.$row['message'].'</span>
+                                                <span class="block text-xs text-right">'.get_user_fullname($row['user_id']).' '.$row['datetime'].'</span>
                                             </div>
                                         </div>
                                     </li>';

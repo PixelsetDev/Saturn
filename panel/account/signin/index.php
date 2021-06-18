@@ -1,33 +1,35 @@
 <?php
     session_start();
 
-    include_once(__DIR__ . '/../../../assets/common/global_public.php');
+    include_once __DIR__.'/../../../assets/common/global_public.php';
 
-    if(isset($_POST['login']) || isset($_GET['login'])) {
-        if(!empty($_POST['username']) && !empty($_POST['password'])) {
+    if (isset($_POST['login']) || isset($_GET['login'])) {
+        if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = trim($_POST['username']);
             $password = trim($_POST['password']);
             $username = checkInput('DEFAULT', $username);
             $password = checkInput('DEFAULT', $password);
 
-            $sql = "SELECT * FROM `".DATABASE_PREFIX."users` WHERE `email` = '".$username."' OR `username` = '".$username."';";
-            $rs = mysqli_query($conn,$sql);
+            $sql = 'SELECT * FROM `'.DATABASE_PREFIX."users` WHERE `email` = '".$username."' OR `username` = '".$username."';";
+            $rs = mysqli_query($conn, $sql);
             $getNumRows = mysqli_num_rows($rs);
             $getUserRow = mysqli_fetch_assoc($rs);
 
             if (password_verify($password, $getUserRow['password'])) {
                 unset($password);
-                if($getUserRow['role_id'] == '1') {
+                if ($getUserRow['role_id'] == '1') {
                     $errorMsg = "Your account has not been approved by a site administrator yet. We'll send you an email when we're ready for you to sign in.";
-                } else if($getUserRow['role_id'] == '0') {
-                    $errorMsg = "Your account has been restricted. If you require access, please contact your administrator.";
+                } elseif ($getUserRow['role_id'] == '0') {
+                    $errorMsg = 'Your account has been restricted. If you require access, please contact your administrator.';
                 } else {
-                    require_once __DIR__ . '/../../../assets/common/processes/database/get/user.php';
-                    require_once __DIR__ . '/../../../assets/common/processes/database/update/user.php';
-                    if(get_user_last_login_ip($getUserRow['id']) != hash_ip($_SERVER['REMOTE_ADDR'])) {
+                    require_once __DIR__.'/../../../assets/common/processes/database/get/user.php';
+                    require_once __DIR__.'/../../../assets/common/processes/database/update/user.php';
+                    if (get_user_last_login_ip($getUserRow['id']) != hash_ip($_SERVER['REMOTE_ADDR'])) {
                         echo '<meta http-equiv="refresh" content="0; url='.CONFIG_INSTALL_URL.'/panel/account/signin/verify/?username='.$getUserRow['username'].'">';
                     } else {
-                        $session['id']=$getUserRow['id'];$session['username']=$getUserRow['username'];$session['role_id']=$getUserRow['role_id'];
+                        $session['id'] = $getUserRow['id'];
+                        $session['username'] = $getUserRow['username'];
+                        $session['role_id'] = $getUserRow['role_id'];
                         unset($getUserRow);
 
                         $newKey = generate_uka_key();
@@ -40,22 +42,29 @@
                     exit;
                 }
                 unset($getUserRow['password']);
-            }
-            else {
+            } else {
                 unset($password, $row, $rs, $sql);
-                $errorMsg = "Username or Password is incorrect.";
-                log_file('SATURN][SECURITY','Failed login attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
+                $errorMsg = 'Username or Password is incorrect.';
+                log_file('SATURN][SECURITY', 'Failed login attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
             }
         } else {
-            $errorMsg = "Username or Password can not be empty.";
+            $errorMsg = 'Username or Password can not be empty.';
         }
     }
 
-    if(isset($_GET['signedout'])) {
-        if($_GET['signedout'] == 'true') {$errorMsg = "You need to sign in to access this area.";}
-        if($_GET['signedout'] == 'role') {$errorMsg = "You need to sign in to access this area.<br>Error GSS1";}
-        if($_GET['signedout'] == 'key') {$errorMsg = "You need to sign in to access this area.<br>Error GSS2";}
-        if($_GET['signedout'] == 'verified') {$successMsg = "Your IP has been verified. You may now sign in to Saturn.";}
+    if (isset($_GET['signedout'])) {
+        if ($_GET['signedout'] == 'true') {
+            $errorMsg = 'You need to sign in to access this area.';
+        }
+        if ($_GET['signedout'] == 'role') {
+            $errorMsg = 'You need to sign in to access this area.<br>Error GSS1';
+        }
+        if ($_GET['signedout'] == 'key') {
+            $errorMsg = 'You need to sign in to access this area.<br>Error GSS2';
+        }
+        if ($_GET['signedout'] == 'verified') {
+            $successMsg = 'Your IP has been verified. You may now sign in to Saturn.';
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -63,15 +72,15 @@
     <head>
         <title>Sign in - Saturn Panel</title>
         <?php
-            include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-            include_once(__DIR__ . '/../../../assets/common/panel/theme.php');
+            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
 
     </head>
     <body>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL;?>/panel">Saturn Panel</a></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
             </div>
         </header>
         <main>
@@ -83,10 +92,10 @@
                             Sign in to your account.
                         </h2>
                         <?php
-                            if(isset($errorMsg)){
+                            if (isset($errorMsg)) {
                                 alert('ERROR', $errorMsg);
                                 unset($errorMsg);
-                            } else if(isset($successMsg)){
+                            } elseif (isset($successMsg)) {
                                 alert('ERROR', $successMsg);
                                 unset($successMsg);
                             }

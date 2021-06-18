@@ -1,48 +1,48 @@
 <?php session_start();
     ob_start();
 
-    include_once(__DIR__.'/../../../../assets/common/global_private.php');
-    include_once(__DIR__.'/../../../../assets/common/processes/gui/modals.php');
+    include_once __DIR__.'/../../../../assets/common/global_private.php';
+    include_once __DIR__.'/../../../../assets/common/processes/gui/modals.php';
 
     $articleID = checkInput('DEFAULT', $_GET['articleID']);
 
-    if(empty($_SERVER['CONTENT_TYPE'])) {
-        $_SERVER['CONTENT_TYPE'] = "application/x-www-form-urlencoded";
+    if (empty($_SERVER['CONTENT_TYPE'])) {
+        $_SERVER['CONTENT_TYPE'] = 'application/x-www-form-urlencoded';
     }
 
-    if(get_article_status($articleID) != 'PENDING') {
+    if (get_article_status($articleID) != 'PENDING') {
         header('Location: '.CONFIG_INSTALL_URL.'/panel/articles/approvals/?error=none');
     }
 
-    if(get_user_roleID($_SESSION['id']) < 3) {
+    if (get_user_roleID($_SESSION['id']) < 3) {
         header('Location: '.CONFIG_INSTALL_URL.'/panel/pages?error=permission');
     }
 
     $uid = get_article_author_id($articleID);
 
-    if(isset($_POST['approve'])) {
+    if (isset($_POST['approve'])) {
         update_article_status($articleID, 'PUBLISHED');
 
-        $newEdits = get_user_edits($uid)+1;
+        $newEdits = get_user_edits($uid) + 1;
         update_user_edits($uid, $newEdits);
 
-        $newApprovals = get_user_approvals($_SESSION['id'])+1;
+        $newApprovals = get_user_approvals($_SESSION['id']) + 1;
         update_user_approvals($_SESSION['id'], $newApprovals);
 
-        create_notification($uid, 'Publication Approved', 'Your publication request for article "'.get_article_title($articleID). '" was approved by '.get_user_fullname($_SESSION['id']).'.');
+        create_notification($uid, 'Publication Approved', 'Your publication request for article "'.get_article_title($articleID).'" was approved by '.get_user_fullname($_SESSION['id']).'.');
 
-        log_all('SATURN][ARTICLES',get_user_fullname($_SESSION['id']).' approved article publication request for article ID: '.$articleID.' ('.get_page_title($articleID).') requested by '.get_user_fullname($uid).'.');
+        log_all('SATURN][ARTICLES', get_user_fullname($_SESSION['id']).' approved article publication request for article ID: '.$articleID.' ('.get_page_title($articleID).') requested by '.get_user_fullname($uid).'.');
         header('Location: '.CONFIG_INSTALL_URL.'/panel/articles/approvals');
         exit;
-    } else if(isset($_POST['deny'])) {
+    } elseif (isset($_POST['deny'])) {
         update_article_status($articleID, 'REJECTED');
 
-        $newApprovals = get_user_approvals($_SESSION['id'])+1;
+        $newApprovals = get_user_approvals($_SESSION['id']) + 1;
         update_user_approvals($_SESSION['id'], $newApprovals);
 
-        create_notification($uid, 'Publication Request not Approved', 'Your publication request for article "'.get_article_title($articleID). '" was not approved.');
+        create_notification($uid, 'Publication Request not Approved', 'Your publication request for article "'.get_article_title($articleID).'" was not approved.');
 
-        log_all('SATURN][ARTICLES',get_user_fullname($_SESSION['id']).' denied article publication request for article ID: '.$articleID.' ('.get_article_title($articleID).') requested by '.get_user_fullname($uid).'.');
+        log_all('SATURN][ARTICLES', get_user_fullname($_SESSION['id']).' denied article publication request for article ID: '.$articleID.' ('.get_article_title($articleID).') requested by '.get_user_fullname($uid).'.');
         header('Location: '.CONFIG_INSTALL_URL.'/panel/articles/approvals');
         exit;
     }
@@ -51,14 +51,14 @@
 <html lang="en">
     <head>
         <?php
-            include_once(__DIR__ . '/../../../../assets/common/panel/vendors.php');
-            include_once(__DIR__.'/../../../../assets/common/panel/theme.php');
+            include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../../../assets/common/panel/theme.php';
         ?>
 
         <title>Article Approvals - Saturn Panel</title>
     </head>
     <body class="mb-8">
-        <?php include_once(__DIR__.'/../../../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../../../assets/common/panel/navigation.php'; ?>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight text-gray-900">Article Approval: <?php echo get_article_title($articleID); ?></h1>
@@ -67,11 +67,11 @@
         </header>
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?articleID=<?php echo $articleID; ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <?php if(isset($_GET['error'])) {
-                alert('ERROR', $_GET['error']);
-            } else if(isset($_GET['success'])) {
-                alert('SUCCESS', $_GET['success']);
-            } ?>
+            <?php if (isset($_GET['error'])) {
+            alert('ERROR', $_GET['error']);
+        } elseif (isset($_GET['success'])) {
+            alert('SUCCESS', $_GET['success']);
+        } ?>
             <div class="flex space-x-4 my-2">
                 <div class="w-full border-2 border-<?php echo THEME_PANEL_COLOUR; ?>-200 p-2">
                     <h2 class="text-4xl mb-2 font-bold">Pending Publication</h2>

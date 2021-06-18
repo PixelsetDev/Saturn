@@ -1,11 +1,11 @@
 <?php
     session_start();
     ob_start();
-    require_once __DIR__ . '/../../../assets/common/global_private.php';
-    require_once __DIR__ . '/../../../assets/common/processes/gui/modals.php';
+    require_once __DIR__.'/../../../assets/common/global_private.php';
+    require_once __DIR__.'/../../../assets/common/processes/gui/modals.php';
 
-    if(isset($_POST['reset-ccv'])) {
-        if(ccv_reset()) {
+    if (isset($_POST['reset-ccv'])) {
+        if (ccv_reset()) {
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?successResetCCV=Core Checksum Validation was reset successfully. If the warning is still present, refresh your page.');
         } else {
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?errorMsg=Unable to reset Core Checksum Validation, an error occurred.');
@@ -13,12 +13,12 @@
         exit;
     }
 
-    if(isset($_GET['successMsg'])) {
+    if (isset($_GET['successMsg'])) {
         $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
-    } else if (isset($_GET['successResetCCV'])) {
+    } elseif (isset($_GET['successResetCCV'])) {
         $successMsg = checkInput('DEFAULT', $_GET['successResetCCV']);
         log_file('SATURN][SECURITY', 'WARNING: '.get_user_fullname($_SESSION['id']).' reset the Core Checksum Validation values.');
-    } else if (isset($_GET['errorMsg'])) {
+    } elseif (isset($_GET['errorMsg'])) {
         $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
     }
 
@@ -26,23 +26,23 @@ ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__.'/../../../assets/common/panel/vendors.php'; ?>
 
         <title>Security - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__ . '/../../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
             <h1 class="text-gray-900 text-3xl">Security Management</h1>
             <?php
-            if(isset($errorMsg)){
+            if (isset($errorMsg)) {
                 alert('ERROR', $errorMsg);
                 unset($errorMsg);
             }
-            if(isset($successMsg)){
+            if (isset($successMsg)) {
                 alert('SUCCESS', $successMsg);
                 unset($successMsg);
             }
@@ -50,14 +50,14 @@ ob_end_flush();
             <br>
             <h2 class="text-gray-900 text-2xl mt-8">Core Checksum Validation</h2>
             <?php
-            $issue=0;
-            if(!ccv_validate('CONFIG')) {
-            echo '<br><div class="duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
+            $issue = 0;
+            if (!ccv_validate('CONFIG')) {
+                echo '<br><div class="duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
                 <div class="p-5 border border-l-0 rounded-r shadow-sm">
                     <h6 class="mb-2 font-semibold leading-5">[WARNING] Website configuration does not match checksum. <a href="https://docs.saturncms.net/website-configuration-checksum" class="underline text-xs text-black" target="_blank">Get help.</a></h6>
                 </div>
             </div><br>';
-            $issue = $issue+1;
+                $issue = $issue + 1;
             }
             echo $issue.' issues found.';
             ?>

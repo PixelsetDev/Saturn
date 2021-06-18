@@ -2,39 +2,39 @@
 <html lang="en">
     <head>
         <?php
-            include_once(__DIR__.'/../../../assets/common/global_private.php');
-            include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-            include_once(__DIR__.'/../../../assets/common/panel/theme.php');
+            include_once __DIR__.'/../../../assets/common/global_private.php';
+            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../../assets/common/panel/theme.php';
 
-            if(isset($_GET['create'])) {
-                $pageTitle = trim(checkInput('DEFAULT',$_POST['pagetitle']));
-            } else if(isset($_POST['posted'])) {
-                $pageURL = trim(checkInput('DEFAULT',$_POST['pageurl']));
-                $pageCategory = trim(checkInput('DEFAULT',$_POST['pagecategory']));
-                $pageTemplate = trim(checkInput('DEFAULT',$_POST['pagetemplate']));
-                $pageTitle = trim(checkInput('DEFAULT',$_POST['pagetitle']));
-                $pageDescription = trim(checkInput('DEFAULT',$_POST['pagedescription']));
-                if(create_page($pageURL,$pageCategory,$pageTemplate,$pageTitle,$pageDescription)) {
+            if (isset($_GET['create'])) {
+                $pageTitle = trim(checkInput('DEFAULT', $_POST['pagetitle']));
+            } elseif (isset($_POST['posted'])) {
+                $pageURL = trim(checkInput('DEFAULT', $_POST['pageurl']));
+                $pageCategory = trim(checkInput('DEFAULT', $_POST['pagecategory']));
+                $pageTemplate = trim(checkInput('DEFAULT', $_POST['pagetemplate']));
+                $pageTitle = trim(checkInput('DEFAULT', $_POST['pagetitle']));
+                $pageDescription = trim(checkInput('DEFAULT', $_POST['pagedescription']));
+                if (create_page($pageURL, $pageCategory, $pageTemplate, $pageTitle, $pageDescription)) {
                     $successMsg = 'Page created. <a href="'.CONFIG_INSTALL_URL.'/panel/pages" class="text-green-500 hover:text-green-400 transition duration-200">Go Back</a>';
-                    log_all('SATURN][PAGES',get_user_fullname($_SESSION['id']).' created a page ('.$_POST['pagetitle'].').');
-                }else{
+                    log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' created a page ('.$_POST['pagetitle'].').');
+                } else {
                     $errorMsg = 'Page not created. <a href="'.CONFIG_INSTALL_URL.'/panel/pages" class="text-red-500 hover:text-red-400 transition duration-200">Go Back</a>';
-                    log_all('SATURN][ERROR',get_user_fullname($_SESSION['id']).' attempted to create a page but an error occurred.');
+                    log_all('SATURN][ERROR', get_user_fullname($_SESSION['id']).' attempted to create a page but an error occurred.');
                 }
             } else {
                 header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?error=new');
                 exit;
             }
 
-            if(!isset($pageTitle)) {
-                $pageTitle = NULL;
+            if (!isset($pageTitle)) {
+                $pageTitle = null;
             }
         ?>
 
         <title>New Page (<?php echo $pageTitle; ?>) - Saturn Panel</title>
     </head>
     <body class="mb-8">
-        <?php include_once(__DIR__.'/../../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -45,20 +45,22 @@
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <?php
-                if(isset($errorMsg)){
+                if (isset($errorMsg)) {
                     echo '<div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                                     <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
                                         <h6 class="mb-2 font-semibold leading-5">[ERROR] '.$errorMsg.'</h6>
                                     </div>
-                                </div><br>'; exit;
+                                </div><br>';
+                    exit;
                 }
                 unset($errorMsg);
-                if(isset($successMsg)){
+                if (isset($successMsg)) {
                     echo '<div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
                                     <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
                                         <h6 class="mb-2 font-semibold leading-5">'.$successMsg.'</h6>
                                     </div>
-                                </div><br>'; exit;
+                                </div><br>';
+                    exit;
                 }
                 unset($successMsg);
                 ?>
@@ -90,9 +92,9 @@
                             <label for="pagecategory" class="sr-only self-center">Page Category</label>
                             <select name="pagecategory" id="pagecategory" class="flex-grow w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
                     <?php
-                        $i=1;
+                        $i = 1;
                         $category = get_page_category_name($i);
-                        while($category != null) {
+                        while ($category != null) {
                             echo '<option value="'.get_page_category_id($i).'">'.$category.'</option>';
                             $i++;
                             $category = get_page_category_name($i);

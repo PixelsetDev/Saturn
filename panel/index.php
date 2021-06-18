@@ -3,16 +3,16 @@
     <head>
         <title>Saturn Panel</title>
         <?php
-            include_once(__DIR__.'/../assets/common/global_public.php');
-            include_once(__DIR__ . '/../assets/common/panel/vendors.php');
-            include_once(__DIR__.'/../assets/common/panel/theme.php');
+            include_once __DIR__.'/../assets/common/global_public.php';
+            include_once __DIR__.'/../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../assets/common/panel/theme.php';
         ?>
 
     </head>
     <body>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-500"><a href="<?php echo CONFIG_INSTALL_URL;?>/panel">Saturn Panel</a></h1>
+                <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-500"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
             </div>
         </header>
         <main>
@@ -29,7 +29,7 @@
                                 <p class="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
                                     <?php echo CONFIG_SITE_DESCRIPTION; ?>
                                 </p>
-                                <a href="<?php echo CONFIG_INSTALL_URL;?>/panel/account/register" aria-label="" class="inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">
+                                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/register" aria-label="" class="inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">
                                     Register
                                     <svg class="inline-block w-3 ml-2" fill="currentColor" viewBox="0 0 12 12">
                                         <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z"></path>
