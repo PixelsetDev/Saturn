@@ -37,7 +37,7 @@
             $next = 'Semi-Pro';
             $colour = 'purple';
         }
-        if(isset($colour)) {
+        if (isset($colour)) {
             $max = ceil($value / 10) * 10;
         } else {
             if ($value < '100') {
