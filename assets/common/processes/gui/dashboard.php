@@ -1,55 +1,57 @@
 <?php
-    function display_dashboard_statistics($id){
 
+    function display_dashboard_statistics($id)
+    {
         echo'<h1 class="text-3xl text-gray-700 dark:text-gray-50 mt-4">Your Statistics</h1>';
 
         $edits = get_user_edits($id);
-        list($max,$current,$next,$colour) = getvalues_dashboard_statistics($edits);
+        list($max, $current, $next, $colour) = getvalues_dashboard_statistics($edits);
         echo display_dashboard_edits($edits, $max, $current, $next, $colour);
 
-        if(get_user_roleID($_SESSION['id'])) {
+        if (get_user_roleID($_SESSION['id'])) {
             $approvals = get_user_approvals($id);
-            list($max,$current,$next,$colour) = getvalues_dashboard_statistics($approvals);
+            list($max, $current, $next, $colour) = getvalues_dashboard_statistics($approvals);
             echo display_dashboard_approvals($approvals, $max, $current, $next, $colour);
         }
     }
-    function getvalues_dashboard_statistics($value): array {
+    function getvalues_dashboard_statistics($value): array
+    {
         if ($value < '10') {
             $max = '10';
             $current = 'Beginner';
             $next = 'Explorer';
             $colour = 'red';
-        } else if ($value < '20') {
+        } elseif ($value < '20') {
             $max = '20';
             $current = 'Explorer';
             $next = 'Junior';
             $colour = 'yellow';
-        } else if ($value < '30') {
+        } elseif ($value < '30') {
             $max = '30';
             $current = 'Junior';
             $next = 'Experienced';
             $colour = 'green';
-        } else if ($value < '40') {
+        } elseif ($value < '40') {
             $max = '40';
             $current = 'Experienced';
             $next = 'Senior';
             $colour = 'blue';
-        } else if ($value < '50') {
+        } elseif ($value < '50') {
             $max = '50';
             $current = 'Senior';
             $next = 'Semi-Pro';
             $colour = 'purple';
-        } else if ($value < '100') {
+        } elseif ($value < '100') {
             $max = '100';
             $current = 'Semi-Pro';
             $next = 'Professional';
             $colour = 'pink';
-        } else if ($value < '200') {
+        } elseif ($value < '200') {
             $max = '200';
             $current = 'Professional';
             $next = 'Master';
             $colour = 'red';
-        } else if ($value < '500') {
+        } elseif ($value < '500') {
             $max = '500';
             $current = 'Master';
             $next = 'Legendary';
@@ -61,10 +63,11 @@
             $colour = 'green';
         }
 
-        return array($max,$current,$next,$colour);
+        return [$max, $current, $next, $colour];
     }
 
-    function display_dashboard_edits($edits, $maxedits, $current, $next, $colour): string {
+    function display_dashboard_edits($edits, $maxedits, $current, $next, $colour): string
+    {
         return '<div class="flex mt-4">
                     <div class="shadow-lg rounded-xl w-full bg-white dark:bg-gray-700 relative overflow-hidden">
                         <a class="w-full h-full block">
@@ -103,7 +106,8 @@
                 </div>';
     }
 
-    function display_dashboard_approvals($approvals, $maxapprovals, $current, $next, $colour): string {
+    function display_dashboard_approvals($approvals, $maxapprovals, $current, $next, $colour): string
+    {
         return '<div class="flex mt-4">
                     <div class="shadow-lg rounded-xl w-full bg-white dark:bg-gray-700 relative overflow-hidden">
                         <a class="w-full h-full block">

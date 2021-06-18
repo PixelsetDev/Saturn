@@ -1,5 +1,5 @@
 <?php
-    if(get_user_roleID($_SESSION['id']) != '4') {
+    if (get_user_roleID($_SESSION['id']) != '4') {
         header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard/?error=permission');
     } ?><nav class="bg-<?php echo THEME_PANEL_COLOUR; ?>-900 shadow-xl z-40" aria-label="Saturn Admin Panel Menu">
             <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -41,8 +41,8 @@
                             </div>
                             <nav aria-label="Saturn Admin Panel Mobile Menu">
                                 <ul class="space-y-4">
-                                    <li><a href="<?php echo CONFIG_INSTALL_URL;?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Dashboard</a></li>
-                                    <li><a href="<?php echo CONFIG_INSTALL_URL;?>" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
+                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Dashboard</a></li>
+                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
                                 </ul>
                             </nav>
                         </div>

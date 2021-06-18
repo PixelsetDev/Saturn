@@ -1,11 +1,11 @@
 <?php
-    include_once(__DIR__ . '/../../../assets/common/global_public.php');
-    if(isset($_GET['error'])) {
+    include_once __DIR__.'/../../../assets/common/global_public.php';
+    if (isset($_GET['error'])) {
         $errorMsg = $_GET['error'];
     } else {
         if (isset($_POST['verify'])) {
             if (!empty($_POST['verify_email'])) {
-                include_once(__DIR__ . '/../../../assets/common/processes/database/get/user.php');
+                include_once __DIR__.'/../../../assets/common/processes/database/get/user.php';
                 $email = checkInput('DEFAULT', $_POST['verify_email']);
                 if (get_user_email_exists($email)) {
                     $errorMsg = 'A user with this email address already exists.';
@@ -20,14 +20,14 @@
                     }
                     $code = checkInput('DEFAULT', $code);
                     $hashCode = hash('SHA3-512', $code);
-                    $message = 'Your Saturn Verification Code is: "' . $code . '". Please enter this code into Saturn to proceed.';
+                    $message = 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.';
                     send_email($email, 'Saturn Verification Code', $message);
                     $successMsg = 'Please check your email and do not exit this page.';
                 }
             } else {
                 $errorMsg = 'Email address must not be blank.';
             }
-        } else if (isset($_POST['confirm'])) {
+        } elseif (isset($_POST['confirm'])) {
             if (!empty($_POST['code'])) {
                 $hashCode = checkInput('DEFAULT', $_POST['c']);
                 $code = checkInput('DEFAULT', $_POST['code']);
@@ -42,8 +42,8 @@
                 header('Location: index.php?error='.$errorMsg);
                 exit;
             }
-        } else if (isset($_POST['register'])) {
-            include_once(__DIR__ . '/../../../assets/common/processes/database/create/user.php');
+        } elseif (isset($_POST['register'])) {
+            include_once __DIR__.'/../../../assets/common/processes/database/create/user.php';
             $email = $_POST['email_address'];
             $email = checkInput('DEFAULT', $email);
             $firstname = $_POST['firstname'];
@@ -70,15 +70,15 @@
 <head>
     <title>Register - Saturn Panel</title>
     <?php
-    include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-    include_once(__DIR__ . '/../../../assets/common/panel/theme.php');
+    include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+    include_once __DIR__.'/../../../assets/common/panel/theme.php';
     ?>
 
 </head>
 <body>
 <header class="bg-white shadow">
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL;?>/panel">Saturn Panel</a></h1>
+        <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
     </div>
 </header>
 <main>
@@ -93,16 +93,17 @@
                     Saturn accounts must be approved by the website owner before you can access them.
                 </p>
                 <?php
-                    if(isset($errorMsg)){
+                    if (isset($errorMsg)) {
                         alert('ERROR', $errorMsg);
                         unset($errorMsg);
-                    } else if(isset($successMsg)){
+                    } elseif (isset($successMsg)) {
                         alert('SUCCESS', $successMsg);
                         unset($successMsg);
                     }
                 ?>
             </div>
-            <?php if(isset($_POST['verify'])) { echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+            <?php if (isset($_POST['verify'])) {
+                    echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -113,7 +114,7 @@
 
                 <div>
                     <input id="c" name="c" type="text" required value="'.$hashCode.'" class="hidden" placeholder="c">
-                    <input id="email" name="email" type="text" required value="'.checkOutput('DEFAULT',$_POST['verify_email']).'" class="hidden" placeholder="email">
+                    <input id="email" name="email" type="text" required value="'.checkOutput('DEFAULT', $_POST['verify_email']).'" class="hidden" placeholder="email">
                     <button type="submit" name="confirm" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                         <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                             <i class="fas fa-envelope"></i>
@@ -122,13 +123,13 @@
                     </button>
                 </div>
             </form>';
-            } else if(isset($_POST['confirm'])) {
-                echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+                } elseif (isset($_POST['confirm'])) {
+                    echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
                         <label for="email_address" class="sr-only">Email Address</label>
-                        <input id="email_address" name="email_address" type="email" value="'.checkOutput('DEFAULT',$_POST['email']).'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                        <input id="email_address" name="email_address" type="email" value="'.checkOutput('DEFAULT', $_POST['email']).'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
                     </div>
                     <div class="flex w-full">
                         <div class="flex-grow">
@@ -159,8 +160,8 @@
                     </button>
                 </div>
             </form>';
-            } else {
-                echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+                } else {
+                    echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                 <input type="hidden" name="remember" value="true">
                 <div class="rounded-md shadow-sm -space-y-px">
                     <div>
@@ -178,7 +179,7 @@
                     </button>
                 </div>
             </form>';
-            }
+                }
             ?>
         </div>
     </div>

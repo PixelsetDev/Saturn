@@ -1,6 +1,7 @@
 <?php
 
-    function display_modal_sidebar($title, $contents, $footer): string {
+    function display_modal_sidebar($title, $contents, $footer): string
+    {
         return '<div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                                         <div class="absolute inset-0 overflow-hidden">
                                             <div class="absolute inset-0 bg-gray-500 bg-opacity-75" @click="open=false"></div>
@@ -34,26 +35,28 @@
                                     </div>';
     }
 
-    function display_modal($type, $title, $contents, $footer): string {
-        if($type == 'ERROR' || $type == 'red') {
+    function display_modal($type, $title, $contents, $footer): string
+    {
+        if ($type == 'ERROR' || $type == 'red') {
             $colour = 'red';
             $icon = 'fas fa-times';
-        } else if ($type == 'WARNING' || $type == 'yellow') {
+        } elseif ($type == 'WARNING' || $type == 'yellow') {
             $colour = 'yellow';
             $icon = 'fas fa-exclamation';
-        } else if ($type == 'SUCCESS' || $type == 'green') {
+        } elseif ($type == 'SUCCESS' || $type == 'green') {
             $colour = 'green';
             $icon = 'fas fa-check';
-        } else if ($type == 'INFO' || $type == 'blue') {
+        } elseif ($type == 'INFO' || $type == 'blue') {
             $colour = 'blue';
             $icon = 'fas fa-info';
-        } else if ($type == 'NOTIFICATION' || $type == 'gray') {
+        } elseif ($type == 'NOTIFICATION' || $type == 'gray') {
             $colour = 'gray';
             $icon = 'far fa-bell';
         } else {
             $colour = 'gray';
             $icon = 'fas fa-info';
         }
+
         return '<div x-show="open" @click.away="open = false" class="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                             <div class="fixed inset-0 bg-gray-500 bg-opacity-75" aria-hidden="true" @click="open=false"></div>

@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__ . '/../../../assets/common/global_public.php');
+include_once __DIR__.'/../../../assets/common/global_public.php';
 
 session_start();
 session_destroy();
@@ -10,15 +10,15 @@ session_destroy();
     <head>
         <title>Sign out - Saturn Panel</title>
         <?php
-        include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-        include_once(__DIR__ . '/../../../assets/common/panel/theme.php');
+        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
 
     </head>
     <body>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL;?>/panel">Saturn Panel</a></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
             </div>
         </header>
         <main>

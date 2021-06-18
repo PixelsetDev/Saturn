@@ -2,28 +2,28 @@
 <html lang="en">
     <head>
         <?php
-        include_once(__DIR__.'/../../../assets/common/global_private.php');
-        include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-        include_once(__DIR__.'/../../../assets/common/panel/theme.php');
-        include_once(__DIR__.'/../../../assets/common/processes/pages.php');
+        include_once __DIR__.'/../../../assets/common/global_private.php';
+        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../../assets/common/panel/theme.php';
+        include_once __DIR__.'/../../../assets/common/processes/pages.php';
         ?>
         <title>Page Approvals - Saturn Panel</title>
 
         <?php
-        if(isset($_GET['error'])) {
+        if (isset($_GET['error'])) {
             $error = $_GET['error'];
             if ($error == 'none') {
-                $errorMsg = "The page you selected has no pending approvals.";
+                $errorMsg = 'The page you selected has no pending approvals.';
             } else {
-                $errorMsg = "Error: An unknown error occurred.";
+                $errorMsg = 'Error: An unknown error occurred.';
             }
         }
 
-        if(get_user_roleID($_SESSION['id']) < 3) {
+        if (get_user_roleID($_SESSION['id']) < 3) {
             header('Location: '.CONFIG_INSTALL_URL.'/panel/pages?error=permission');
         }
 
-        if(!CONFIG_PAGE_APPROVALS) {
+        if (!CONFIG_PAGE_APPROVALS) {
             header('Location: '.CONFIG_INSTALL_URL.'/panel/pages');
         }
 
@@ -37,7 +37,7 @@
 
     </head>
     <body class="mb-8">
-        <?php include_once(__DIR__.'/../../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -47,18 +47,21 @@
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
-            if(isset($errorMsg)){
-                alert('ERROR',$errorMsg);
+            if (isset($errorMsg)) {
+                alert('ERROR', $errorMsg);
             }
             unset($errorMsg);
             ?>
             <div class="px-4 py-6 sm:px-0">
             <?php
             $role = get_user_roleID($_SESSION['id']);
-            $i=1;
+            $i = 1;
             $category = get_page_category_name($i);
-            while($category != null) {
-                $percent = 0; $approved = 0; $pending = 0; $total = 0;
+            while ($category != null) {
+                $percent = 0;
+                $approved = 0;
+                $pending = 0;
+                $total = 0;
                 echo '<div x-data="{ open: false }">
                             <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                                 <div class="absolute inset-0 overflow-hidden">
@@ -85,26 +88,52 @@
 
                 $o = pageQuery_1($i);
 
-                $row = pageQuery_2($i,$o);
+                $row = pageQuery_2($i, $o);
 
                 while ($row['title'] != null) {
-                    $row = pageQuery_2($i,$o);
+                    $row = pageQuery_2($i, $o);
 
-                    if($row['title'] != null) {
-                        $status = get_page_status($o); if($status == 'red') {$status='green';}if ($status == 'green') {$approved++;} else if ($status == 'yellow') {if(CONFIG_PAGE_APPROVALS){$pending++;$status='red';}else{$status='green';$approved++;}} $total++;
+                    if ($row['title'] != null) {
+                        $status = get_page_status($o);
+                        if ($status == 'red') {
+                            $status = 'green';
+                        }
+                        if ($status == 'green') {
+                            $approved++;
+                        } elseif ($status == 'yellow') {
+                            if (CONFIG_PAGE_APPROVALS) {
+                                $pending++;
+                                $status = 'red';
+                            } else {
+                                $status = 'green';
+                                $approved++;
+                            }
+                        }
+                        $total++;
                         echo'<div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                                     <div class="flex w-full relative">
                                                                         <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>
-                                                                        '; if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';}echo'
+                                                                        ';
+                        if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {
+                            echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
+                        }
+                        echo'
                                                                         <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
                                                                         <div><a href="approve/?pageID='.$o.'" class="hover:shadow-xl w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 text-'.THEME_PANEL_COLOUR.'-900 md:py-1 md:text-rg md:px-10">Approve</span></a></div>
                                                                     </div>
-                                                                    <div class="text-xs normal-case font-normal text-gray-400 italic">'; if($status=='red'){echo 'Approval request from '.get_user_fullname(get_page_pending_user_id($o));}else{echo 'No pending approval requests.';}echo'</div>
+                                                                    <div class="text-xs normal-case font-normal text-gray-400 italic">';
+                        if ($status == 'red') {
+                            echo 'Approval request from '.get_user_fullname(get_page_pending_user_id($o));
+                        } else {
+                            echo 'No pending approval requests.';
+                        }
+                        echo'</div>
                                                                 </div>
                                                                 <br><br>';
                     }
                     $o++;
-                } echo '
+                }
+                echo '
                                                         <br><br><br><br>
                                                     </div>
                                                 </div>
@@ -120,17 +149,45 @@
                                 <div class="flex-grow h-16 relative pt-1">
                                     <div class="flex mb-2 items-center justify-between">
                                         <div>';
-                if (is_nan($approved / $total) * 100) {$statusColour = 'gray'; $status = 'No Pages';}
-                else if((($approved / $total) * 100) == 100.00) {$statusColour = 'green'; $sCol = 'green'; $status = 'No Pending Approvals';}
-                else if((($approved / $total) * 100) != 0 || (($pending / $total) * 100) != 0) {$statusColour = 'yellow'; $sCol = 'red'; $status = 'Pending Approvals';}
-                else if((($approved / $total) * 100) == 0 && (($pending / $total) * 100) == 0) {$statusColour = 'green'; $sCol = 'green'; $status = 'No Pending Approvals';}
-                else {$statusColour = 'gray'; $status = 'Unknown Status';}
+                if (is_nan($approved / $total) * 100) {
+                    $statusColour = 'gray';
+                    $status = 'No Pages';
+                } elseif ((($approved / $total) * 100) == 100.00) {
+                    $statusColour = 'green';
+                    $sCol = 'green';
+                    $status = 'No Pending Approvals';
+                } elseif ((($approved / $total) * 100) != 0 || (($pending / $total) * 100) != 0) {
+                    $statusColour = 'yellow';
+                    $sCol = 'red';
+                    $status = 'Pending Approvals';
+                } elseif ((($approved / $total) * 100) == 0 && (($pending / $total) * 100) == 0) {
+                    $statusColour = 'green';
+                    $sCol = 'green';
+                    $status = 'No Pending Approvals';
+                } else {
+                    $statusColour = 'gray';
+                    $status = 'Unknown Status';
+                }
                 echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$sCol.'-500 bg-'.$sCol.'-200">'.$status.'</span>
                                         </div>
                                         <div class="text-right">
-                                            <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">'; $percent = ($approved / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
+                                            <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">';
+                $percent = ($approved / $total) * 100;
+                if (is_nan($percent)) {
+                    echo'N/A';
+                } else {
+                    echo number_format((float) $percent, 2, '.', '').'%';
+                }
+                echo '</span></span>
                                             <br>
-                                            <span class="text-xs font-semibold inline-block">Pending: <span class="text-xs font-semibold inline-block text-gray-600">'; $percent = ($pending / $total) * 100; if (is_nan($percent)) { echo'N/A'; } else { echo number_format((float)$percent, 2, '.', '').'%';} echo '</span></span>
+                                            <span class="text-xs font-semibold inline-block">Pending: <span class="text-xs font-semibold inline-block text-gray-600">';
+                $percent = ($pending / $total) * 100;
+                if (is_nan($percent)) {
+                    echo'N/A';
+                } else {
+                    echo number_format((float) $percent, 2, '.', '').'%';
+                }
+                echo '</span></span>
                                         </div>
                                     </div>
                                     <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-400">

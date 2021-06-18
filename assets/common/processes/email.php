@@ -1,14 +1,16 @@
 <?php
-    function send_email($email, $subject, $message) {
+
+    function send_email($email, $subject, $message)
+    {
         if (CONFIG_EMAIL_FUNCTION == 'phpmail') {
             $to = $email;
-            if(!isset($to)) {
+            if (!isset($to)) {
                 echo 'Email error: No recipient.';
                 exit;
             }
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= "From: ".CONFIG_EMAIL_SENDFROM . "\r\n";
+            $headers = 'MIME-Version: 1.0'."\r\n";
+            $headers .= 'Content-type:text/html;charset=UTF-8'."\r\n";
+            $headers .= 'From: '.CONFIG_EMAIL_SENDFROM."\r\n";
             $contents = '<html lang="en">
     <head>
         <title>'.$subject.'</title>
@@ -22,8 +24,8 @@
         <div class="mt-20 text-xs italic">This message was sent because you have an account registered with a Saturn installation at "'.CONFIG_SITE_NAME.'". You may be able to opt-out of these emails in your user settings.</div>
     </body>
 </html>';
-            mail($to,$subject,$contents,$headers);
-        } else if (CONFIG_EMAIL_FUNCTION == 'smtp') {
+            mail($to, $subject, $contents, $headers);
+        } elseif (CONFIG_EMAIL_FUNCTION == 'smtp') {
             echo 'SMTP is not implemented.';
         }
     }

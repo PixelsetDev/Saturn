@@ -3,7 +3,7 @@
     ob_start();
     require_once __DIR__.'/../../../assets/common/global_private.php';
 
-    if(isset($_POST['save'])) {
+    if (isset($_POST['save'])) {
         $file = __DIR__.'/../../../config.php';
 
         $message = "<?php
@@ -37,20 +37,20 @@
     const CONFIG_EMAIL_FUNCTION = '".$_POST['email_function']."';
     const CONFIG_EMAIL_SENDFROM = '".$_POST['email_sendfrom']."';
     /* Editing */
-    const CONFIG_PAGE_APPROVALS = ".$_POST['page_approvals'].";
-    const CONFIG_ARTICLE_APPROVALS = ".$_POST['article_approvals'].";
+    const CONFIG_PAGE_APPROVALS = ".$_POST['page_approvals'].';
+    const CONFIG_ARTICLE_APPROVALS = '.$_POST['article_approvals'].";
     const CONFIG_MAX_TITLE_CHARS = '".$_POST['max_title_chars']."';
     const CONFIG_MAX_PAGE_CHARS = '".$_POST['max_page_chars']."';
     const CONFIG_MAX_ARTICLE_CHARS = '".$_POST['max_article_chars']."';
     const CONFIG_MAX_REFERENCES_CHARS = '".$_POST['max_references_chars']."';
     /* Global Security System */
-    const SECURITY_ACTIVE = ".$_POST['security_active'].";
-    const LOGGING_ACTIVE = ".$_POST['security_logging'].";
+    const SECURITY_ACTIVE = ".$_POST['security_active'].';
+    const LOGGING_ACTIVE = '.$_POST['security_logging'].";
     const SECURITY_MODE = '".$_POST['security_mode']."';
     /* Developer Tools */
-    const CONFIG_DEBUG = ".$_POST['debug'].";";
+    const CONFIG_DEBUG = ".$_POST['debug'].';';
 
-        if(file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
+        if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
             echo'<meta http-equiv="refresh" content="0; url=index.php/?successMsg=Website settings saved successfully. If an error message appears, refresh the page.">';
             exit;
@@ -59,26 +59,11 @@
             exit;
         }
     }
-
-    function timezone_dropdown(): string
-    {
-        $selected = CONFIG_SITE_TIMEZONE;
-        $OptionsArray = timezone_identifiers_list();
-        $select = '<select id="site_timezone" name="site_timezone" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm">';
-        while (list ($key, $row) = each($OptionsArray)) {
-            $select .= '<option value="' . $row . '"';
-            $select .= ($row == $selected ? ' selected' : '');
-            $select .= '>' . $row . '</option>';
-        }  // endwhile;
-        $select .= '</select>';
-        return $select;
-    }
-
     ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__.'/../../../assets/common/panel/vendors.php'; ?>
 
         <title>Settings - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
         <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
@@ -93,11 +78,11 @@
                     <input type="submit" name="save" value="Save" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
                 </div>
             <?php
-                if(isset($_GET['errorMsg'])){
+                if (isset($_GET['errorMsg'])) {
                     alert('ERROR', $_GET['errorMsg']);
                     unset($_GET['errorMsg']);
                 }
-                if(isset($_GET['successMsg'])){
+                if (isset($_GET['successMsg'])) {
                     alert('SUCCESS', $_GET['successMsg']);
                     unset($_GET['successMsg']);
                 }
@@ -187,15 +172,23 @@
                     <div class="grid grid-cols-2">
                         <label for="page_approvals">Page Approvals</label>
                         <select id="page_approvals" name="page_approvals" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option value="true"<?php if(CONFIG_PAGE_APPROVALS){echo' selected';} ?>>True</option>
-                            <option value="false"<?php if(!CONFIG_PAGE_APPROVALS){echo' selected';} ?>>False</option>
+                            <option value="true"<?php if (CONFIG_PAGE_APPROVALS) {
+                echo' selected';
+            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_PAGE_APPROVALS) {
+                echo' selected';
+            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="article_approvals">Article Approvals</label>
                         <select id="article_approvals" name="article_approvals" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option value="true"<?php if(CONFIG_ARTICLE_APPROVALS){echo' selected';} ?>>True</option>
-                            <option value="false"<?php if(!CONFIG_ARTICLE_APPROVALS){echo' selected';} ?>>False</option>
+                            <option value="true"<?php if (CONFIG_ARTICLE_APPROVALS) {
+                echo' selected';
+            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_ARTICLE_APPROVALS) {
+                echo' selected';
+            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -221,22 +214,34 @@
                     <div class="grid grid-cols-2">
                         <label for="security_active">Security Active</label>
                         <select id="security_active" name="security_active" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option value="true"<?php if(SECURITY_ACTIVE){echo' selected';} ?>>True (Recommended)</option>
-                            <option value="false"<?php if(!SECURITY_ACTIVE){echo' selected';} ?>>False</option>
+                            <option value="true"<?php if (SECURITY_ACTIVE) {
+                echo' selected';
+            } ?>>True (Recommended)</option>
+                            <option value="false"<?php if (!SECURITY_ACTIVE) {
+                echo' selected';
+            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="security_logging">Logging Active</label>
                         <select id="security_logging" name="security_logging" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option value="true"<?php if(CONFIG_ARTICLE_APPROVALS){echo' selected';} ?>>True (Recommended)</option>
-                            <option value="false"<?php if(!CONFIG_ARTICLE_APPROVALS){echo' selected';} ?>>False</option>
+                            <option value="true"<?php if (CONFIG_ARTICLE_APPROVALS) {
+                echo' selected';
+            } ?>>True (Recommended)</option>
+                            <option value="false"<?php if (!CONFIG_ARTICLE_APPROVALS) {
+                echo' selected';
+            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="security_mode">Security Mode</label>
                         <select id="security_mode" name="security_mode" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option value="clean"<?php if(SECURITY_MODE == 'clean'){echo' selected';} ?>>Clean (Recommended)</option>
-                            <option value="halt"<?php if(SECURITY_MODE == 'halt'){echo' selected';} ?>>Halt</option>
+                            <option value="clean"<?php if (SECURITY_MODE == 'clean') {
+                echo' selected';
+            } ?>>Clean (Recommended)</option>
+                            <option value="halt"<?php if (SECURITY_MODE == 'halt') {
+                echo' selected';
+            } ?>>Halt</option>
                         </select>
                     </div>
                 </div>
@@ -246,8 +251,12 @@
                     <div class="grid grid-cols-2">
                         <label for="debug">Debug Mode</label>
                         <select id="debug" name="debug" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option value="true"<?php if(CONFIG_DEBUG){echo' selected';} ?>>True</option>
-                            <option value="false"<?php if(!CONFIG_DEBUG){echo' selected';} ?>>False</option>
+                            <option value="true"<?php if (CONFIG_DEBUG) {
+                echo' selected';
+            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_DEBUG) {
+                echo' selected';
+            } ?>>False</option>
                         </select>
                     </div>
                 </div>

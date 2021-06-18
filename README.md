@@ -6,5 +6,6 @@ Saturn is a powerful content management system for publishers, educators and eve
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=LMWNWeb_Saturn&metric=security_rating)](https://sonarcloud.io/dashboard?id=LMWNWeb_Saturn)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=LMWNWeb_Saturn&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=LMWNWeb_Saturn)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=LMWNWeb_Saturn&metric=alert_status)](https://sonarcloud.io/dashboard?id=LMWNWeb_Saturn)
+[![StyleCI](https://github.styleci.io/repos/374477121/shield?branch=master)](https://github.styleci.io/repos/374477121?branch=master)
 
 # This repo is a work-in-progress, many areas of it do not work yet.

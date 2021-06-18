@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <?php
-            include_once(__DIR__.'/../../../assets/common/global_private.php');
-            include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-            include_once(__DIR__.'/../../../assets/common/panel/theme.php');
+            include_once __DIR__.'/../../../assets/common/global_private.php';
+            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../../assets/common/panel/theme.php';
             $user = get_user_id($_GET['u']);
-            if($user == null) {
+            if ($user == null) {
                 header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard/?error=no_user');
             }
         ?>
@@ -15,7 +15,7 @@
 
     </head>
     <body class="mb-6">
-        <?php include_once(__DIR__.'/../../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div class="w-full h-48" style="background: url('<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/background.jpg');">
                 <div class="max-w-7xl flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
@@ -29,22 +29,22 @@
                             <?php
                                 if (get_user_roleID($user) == '4') {
                                     echo'<span class="self-center h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-red-500 text-white bg-transparent font-semibold">Administrator</span>';
-                                } else if (get_user_roleID($user) == '3') {
+                                } elseif (get_user_roleID($user) == '3') {
                                     echo'<span class="self-center h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-yellow-600 text-white bg-transparent font-semibold">Editor</span>';
-                                } else if (get_user_roleID($user) == '2') {
+                                } elseif (get_user_roleID($user) == '2') {
                                     echo'<span class="self-center h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-yellow-300 text-black bg-transparent font-semibold">Writer</span>';
-                                } else if (get_user_roleID($user) == '1') {
+                                } elseif (get_user_roleID($user) == '1') {
                                     echo'<span class="self-center h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 text-white bg-transparent font-semibold">Pending</span>';
-                                } else if (get_user_roleID($user) == '0') {
+                                } elseif (get_user_roleID($user) == '0') {
                                     echo'<span class="self-center h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-purple-500 text-white bg-transparent font-semibold">Restricted</span>';
-                                } else if (get_user_roleID($user) == '-1') {
+                                } elseif (get_user_roleID($user) == '-1') {
                                     echo'<span class="self-center h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-black text-white bg-transparent font-semibold">Deleted</span>';
                                 }
                             ?>
                         </div>
-                        <?php if($user == $_SESSION['id']) {
-                            echo'<a href="edit" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 hover:shadow-xl text-white bg-transparent font-semibold">Edit Profile</a>';
-                        } ?>
+                        <?php if ($user == $_SESSION['id']) {
+                                echo'<a href="edit" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 hover:shadow-xl text-white bg-transparent font-semibold">Edit Profile</a>';
+                            } ?>
                     </div>
                 </div>
             </div>
@@ -58,10 +58,10 @@
                             <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_edits($user); ?> </span> Edits</span>
                         </li>
                         <?php if (get_user_roleID($user) > 2 && get_user_roleID($_SESSION['id']) > 2) {
-                            echo '<li class="mr-4">
+                                echo '<li class="mr-4">
                             <span class="block text-base flex"><span class="font-bold mr-2">'.get_user_approvals($user).' </span> Approvals</span>
                         </li>';
-                        } ?>
+                            } ?>
                     </ul>
                     <br>
                     <div class="">

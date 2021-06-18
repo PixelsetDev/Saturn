@@ -1,15 +1,15 @@
 <?php
     session_start();
 
-    require_once __DIR__ . '/../../../assets/common/global_private.php';
+    require_once __DIR__.'/../../../assets/common/global_private.php';
 
-    if(isset($_POST['action'])) {
+    if (isset($_POST['action'])) {
         $userid = checkInput('DEFAULT', $_POST['userid']);
         $role = checkInput('DEFAULT', $_POST['role']);
-        if($userid != $_SESSION['id']) {
-            if(update_user_role_id($userid,$role)) {
+        if ($userid != $_SESSION['id']) {
+            if (update_user_role_id($userid, $role)) {
                 $message = get_user_fullname($_SESSION['id']).' changed '.get_user_fullname($userid).'\'s role to '.get_user_role($userid).'.';
-                log_file('SATURN][User Management',$message);
+                log_file('SATURN][User Management', $message);
                 $successMsg = get_user_fullname($userid).'\'s role has been changed to '.get_user_role($userid).'.';
             } else {
                 $errorMsg = 'Unable to update user, an error has occurred.';
@@ -18,20 +18,21 @@
             $errorMsg = 'To prevent accidental locking-out of accounts, you\'re not currently able to change your own role, sorry for any inconvenience caused. To change information such as your display name, <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/edit" class="text-black underline">please click here</a>.';
         }
     }
-    function displayUser($rs) {
+    function displayUser($rs)
+    {
         while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
-            echo "<br>";
+            echo '<br>';
             foreach ($row as $value) {
                 if (is_numeric($value)) {
                     $empty = false;
-            echo '<div class="h-12">
+                    echo '<div class="h-12">
                                     <a href="'.get_user_profile_link($value).'" class="relative inline-block float-left mr-4 z-30">
                                         <img class="z-10 inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
                                         <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity($value).'-600 border-2 border-gray-200 rounded-full"></span>
                                     </a>
                                     <div class="font-bold h-full" x-data="{ open: false }">
-                                        <span class="self-start block">' . get_user_fullname($value) . '</span>
-                                        <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-' . THEME_PANEL_COLOUR . '-500 hover:bg-' . THEME_PANEL_COLOUR . '-400 focus:shadow-outline focus:outline-none">
+                                        <span class="self-start block">'.get_user_fullname($value).'</span>
+                                        <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-'.THEME_PANEL_COLOUR.'-500 hover:bg-'.THEME_PANEL_COLOUR.'-400 focus:shadow-outline focus:outline-none">
                                             <i class="fas fa-cog"></i>&nbsp;Manage
                                         </button>
                                         <div class="absolute top-0 left-0 h-screen w-screen z-40" x-show="open">
@@ -51,7 +52,7 @@
                                                             <div class="p-4">
                                                                 <form action="index.php" method="post">
                                                                     <div class="text-center mb-4 opacity-90">
-                                                                        <a href="' .get_user_profile_link($value).'" class="block relative">
+                                                                        <a href="'.get_user_profile_link($value).'" class="block relative">
                                                                             <img alt="'.get_user_fullname($value).'" src="'.get_user_profilephoto($value).'" class="mx-auto object-cover rounded-full h-16 w-16 "/>
                                                                         </a>
                                                                     </div>
@@ -69,10 +70,30 @@
                                                                                 <input type="text" name="userid" id="userid" value="'.$value.'" class="hidden">
                                                                                 <div class="relative inline-block w-full text-gray-700">
                                                                                     <select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-                                                                                        <option value="4"';if(get_user_roleID($value) == '4'){echo' selected';}echo'>Administrator</option>
-                                                                                        '; if(CONFIG_PAGE_APPROVALS || get_user_roleID($value) == '3'){echo'<option value="3"';if(get_user_roleID($value) == '3'){echo' selected';}echo'>Editor</option>';} echo'
-                                                                                        <option value="2"';if(get_user_roleID($value) == '2'){echo' selected';}echo'>Writer</option>
-                                                                                        <option value="0"';if(get_user_roleID($value) == '0'){echo' selected';}echo'>Restricted</option>
+                                                                                        <option value="4"';
+                    if (get_user_roleID($value) == '4') {
+                        echo' selected';
+                    }
+                    echo'>Administrator</option>
+                                                                                        ';
+                    if (CONFIG_PAGE_APPROVALS || get_user_roleID($value) == '3') {
+                        echo'<option value="3"';
+                        if (get_user_roleID($value) == '3') {
+                            echo' selected';
+                        }
+                        echo'>Editor</option>';
+                    }
+                    echo'
+                                                                                        <option value="2"';
+                    if (get_user_roleID($value) == '2') {
+                        echo' selected';
+                    }
+                    echo'>Writer</option>
+                                                                                        <option value="0"';
+                    if (get_user_roleID($value) == '0') {
+                        echo' selected';
+                    }
+                    echo'>Restricted</option>
                                                                                     </select>
                                                                                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                                                                         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
@@ -92,26 +113,28 @@
                                 </div>';
                 }
             }
-            if($empty) {echo 'None found.';}
+            if ($empty) {
+                echo 'None found.';
+            }
         }
     }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__.'/../../../assets/common/panel/vendors.php'; ?>
 
         <title>User Management - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__ . '/../../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__.'/../../../assets/common/admin/navigation.php'; ?>
 
             <div class="px-8 py-4 block w-full">
                 <h1 class="text-gray-900 text-3xl">User Management</h1>
                 <div class="w-full mx-auto py-6">
                     <?php
-                    if(isset($errorMsg)){
+                    if (isset($errorMsg)) {
                         echo '<div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2 mt-2">
                                     <div class="p-5 border border-l-0 rounded-r shadow-sm">
                                         <h6 class="mb-2 font-semibold leading-5">[ERROR] '.$errorMsg.'</h6>
@@ -119,7 +142,7 @@
                                 </div><br>';
                     }
                     unset($errorMsg);
-                    if(isset($successMsg)){
+                    if (isset($successMsg)) {
                         echo '<div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2 mt-2">
                                     <div class="p-5 border border-l-0 rounded-r shadow-sm">
                                         <h6 class="mb-2 font-semibold leading-5">'.$successMsg.'</h6>
@@ -130,62 +153,64 @@
                     ?>
                     <div class="w-full px-0 py-6 flex flex-wrap">
                         <div class="flex-grow mr-8 w-1/3 mb-8">
-                            <h1 class="text-2xl font-bold leading-tight text-<? echo THEME_PANEL_COLOUR; ?>-900">Administrators</h1>
-                            <p class="text-xs font-light text-<? echo THEME_PANEL_COLOUR; ?>-800">Manage all aspects of the site.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Administrators</h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Manage all aspects of the site.</p>
                             <?php
                             $empty = true;
 
-                            $query = "SELECT `id`, `first_name` FROM `".DATABASE_PREFIX."users` WHERE `role_id` = '4' ORDER BY `first_name`";
-                            $rs = mysqli_query($conn,$query);
-
-                            displayUser($rs);
-                            ?>
-                        </div>
-                        <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<? echo THEME_PANEL_COLOUR; ?>-900">Editors</h1>
-                            <p class="text-xs font-light text-<? echo THEME_PANEL_COLOUR; ?>-800">Users who can approve page edits (if enabled).</p>
-                            <?php if(!CONFIG_PAGE_APPROVALS) { echo '<p class="text-xs font-light italic text-red-800">Approvals are disabled. <a href="javascript:alert(\'Approvals are disabled.\n\nThese users have the same rights as Writers when working on Pages, Articles and Interactive Elements.\n\nThey may have more access than writers to areas such as Team Chat and Team To-Do Lists.\')" class="underline text-red-800">What does this mean?</a></p>';} ?>
-                        <?php
-                            $empty = true;
-
-                            $query = "SELECT `id` FROM `" . DATABASE_PREFIX . "users` WHERE `role_id` = '3'";
+                            $query = 'SELECT `id`, `first_name` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '4' ORDER BY `first_name`";
                             $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<? echo THEME_PANEL_COLOUR; ?>-900">Writers</h1>
-                            <p class="text-xs font-light text-<? echo THEME_PANEL_COLOUR; ?>-800">Users who can edit content on your Saturn site.</p>
-                            <?php
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Editors</h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users who can approve page edits (if enabled).</p>
+                            <?php if (!CONFIG_PAGE_APPROVALS) {
+                                echo '<p class="text-xs font-light italic text-red-800">Approvals are disabled. <a href="javascript:alert(\'Approvals are disabled.\n\nThese users have the same rights as Writers when working on Pages, Articles and Interactive Elements.\n\nThey may have more access than writers to areas such as Team Chat and Team To-Do Lists.\')" class="underline text-red-800">What does this mean?</a></p>';
+                            } ?>
+                        <?php
                             $empty = true;
 
-                            $query = "SELECT `id` FROM `".DATABASE_PREFIX."users` WHERE `role_id` = '2'";
-                            $rs = mysqli_query($conn,$query);
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '3'";
+                            $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<? echo THEME_PANEL_COLOUR; ?>-900">Restricted</h1>
-                            <p class="text-xs font-light text-<? echo THEME_PANEL_COLOUR; ?>-800">Users who can not access Saturn.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Writers</h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users who can edit content on your Saturn site.</p>
                             <?php
                             $empty = true;
 
-                            $query = "SELECT `id` FROM `".DATABASE_PREFIX."users` WHERE `role_id` = '0'";
-                            $rs = mysqli_query($conn,$query);
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '2'";
+                            $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<? echo THEME_PANEL_COLOUR; ?>-900">Pending</h1>
-                            <p class="text-xs font-light text-<? echo THEME_PANEL_COLOUR; ?>-800">Users waiting to have their account approved by an administrator.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Restricted</h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users who can not access Saturn.</p>
                             <?php
                             $empty = true;
 
-                            $query = "SELECT `id` FROM `".DATABASE_PREFIX."users` WHERE `role_id` = '1'";
-                            $rs = mysqli_query($conn,$query);
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '0'";
+                            $rs = mysqli_query($conn, $query);
+
+                            displayUser($rs);
+                            ?>
+                        </div>
+                        <div class="flex-grow mr-8 w-1/3 mb-10">
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Pending</h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users waiting to have their account approved by an administrator.</p>
+                            <?php
+                            $empty = true;
+
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '1'";
+                            $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
                             ?>

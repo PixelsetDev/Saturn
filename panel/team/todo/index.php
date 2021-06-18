@@ -1,12 +1,12 @@
 <?php session_start();
     // Include required files
-    include_once(__DIR__.'/../../../assets/common/global_private.php');
+    include_once __DIR__.'/../../../assets/common/global_private.php';
     // Delete a list
-    if(isset($_GET['delete'])) {
+    if (isset($_GET['delete'])) {
         $listID = checkInput('DEFAULT', $_GET['delete']);
-        if(get_todo_list_owner_id($listID) == $_SESSION['id'] || get_user_roleID($_SESSION['id']) == '4') {
+        if (get_todo_list_owner_id($listID) == $_SESSION['id'] || get_user_roleID($_SESSION['id']) == '4') {
             $successMsg = 'List deleted: '.get_todo_list_name($listID).'. <a href="?recover='.$listID.'" class="text-blue-500 hover:text-blue-400">Undo</a>';
-            if(!update_todo_list_status($listID, 0)) {
+            if (!update_todo_list_status($listID, 0)) {
                 unset($successMsg);
                 $errorMsg = 'Unable to delete To-Do List: '.get_todo_list_name($listID).' - an error occurred.';
             }
@@ -15,11 +15,11 @@
         }
     }
     // Recover a deleted list.
-    if(isset($_GET['recover'])) {
+    if (isset($_GET['recover'])) {
         $listID = $_GET['recover'];
-        if(get_todo_list_owner_id($listID) == $_SESSION['id'] || get_user_roleID($_SESSION['id']) == '4') {
+        if (get_todo_list_owner_id($listID) == $_SESSION['id'] || get_user_roleID($_SESSION['id']) == '4') {
             $successMsg = 'To-Do List recovered: '.get_todo_list_name($listID).'.';
-            if(!update_todo_list_status($listID, 1)) {
+            if (!update_todo_list_status($listID, 1)) {
                 unset($successMsg);
                 $errorMsg = 'Unable to recover To-Do List: '.get_todo_list_name($listID).' - an error occurred.';
             }
@@ -28,42 +28,42 @@
         }
     }
     // Create a new list
-    if(isset($_GET['create'])) {
+    if (isset($_GET['create'])) {
         $listOwnerID = checkInput('DEFAULT', $_SESSION['id']);
         $listTitle = checkInput('DEFAULT', $_POST['listTitle']);
         $listDescription = checkInput('DEFAULT', $_POST['listDescription']);
         $listRoleID = checkInput('DEFAULT', $_POST['listRoleID']);
         $listVisibility = checkInput('DEFAULT', $_POST['listVisibility']);
-        $createdListID = create_todo_list($listOwnerID,$listTitle,$listDescription,$listRoleID,$listVisibility);
-        if($createdListID != null) {
+        $createdListID = create_todo_list($listOwnerID, $listTitle, $listDescription, $listRoleID, $listVisibility);
+        if ($createdListID != null) {
             $successMsg = 'To-Do List created: '.get_todo_list_count().'.';
         } else {
             $errorMsg = 'Unable to create the To-Do List. Please try again later.';
         }
     }
     // Save a list
-    if(isset($_GET['save'])) {
+    if (isset($_GET['save'])) {
         $errorMsg = 'This function has not been implemented yet.';
     }
     // Add an item to the list
-    if(isset($_GET['add_item'])) {
+    if (isset($_GET['add_item'])) {
         $errorMsg = 'This function has not been implemented yet.';
     }
     // Save the manage section of a list
-    if(isset($_GET['save_manage'])) {
+    if (isset($_GET['save_manage'])) {
         $errorMsg = 'This function has not been implemented yet.';
     }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-        include_once(__DIR__ . '/../../../assets/common/panel/vendors.php');
-        include_once(__DIR__.'/../../../assets/common/panel/theme.php');
+        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
         <title>Team To-Do - Saturn Panel</title>
     </head>
     <body class="mb-8">
-        <?php include_once(__DIR__.'/../../../assets/common/panel/navigation.php'); ?>
+        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -73,22 +73,22 @@
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8" x-data="{ tab: '1' }">
             <?php
-                if(isset($errorMsg)){
-                    alert('ERROR',$errorMsg);
+                if (isset($errorMsg)) {
+                    alert('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
-                if(isset($successMsg)){
-                    alert('SUCCESS',$successMsg);
+                if (isset($successMsg)) {
+                    alert('SUCCESS', $successMsg);
                     unset($successMsg);
                 }
             ?>
             <div class="my-2 py-4 flex space-x-6 overflow-x-auto">
                 <?php
-                    $i=1;
+                    $i = 1;
                     $listName = get_todo_list_name($i);
-                    while($listName != NULL){
-                        if((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
-                            echo '<a :class="{ \'active\': tab === \'' . $i . '\' }" @click.prevent="tab = \'' . $i . '\'" class="hover:shadow-lg cursor-pointer w-96 flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-30">
+                    while ($listName != null) {
+                        if ((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
+                            echo '<a :class="{ \'active\': tab === \''.$i.'\' }" @click.prevent="tab = \''.$i.'\'" class="hover:shadow-lg cursor-pointer w-96 flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-30">
                         <i class="fas fa-list" aria-hidden="true"></i>
                         <span class="ml-1">'.$listName.'</span>
                     </a>';
@@ -104,37 +104,37 @@
                 </a>
             </div>
             <?php
-            $i=1;
+            $i = 1;
             $listName = get_todo_list_name($i);
-            while($listName != NULL){
-                if((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
+            while ($listName != null) {
+                if ((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
                     $o = 1;
                     $itemName = get_todo_item_title($o);
-                    echo '<div x-show="tab === \'' . $i . '\'">
+                    echo '<div x-show="tab === \''.$i.'\'">
                 <div class="flex space-x-6 pb-6 pt-1">
                     <div class="flex-grow">
-                        <h2 class="text-2xl">' . $listName . '</h2>
-                        <p class="">' . get_user_fullname(get_todo_list_owner_id($i)) . '\'s list.</p>
+                        <h2 class="text-2xl">'.$listName.'</h2>
+                        <p class="">'.get_user_fullname(get_todo_list_owner_id($i)).'\'s list.</p>
                     </div>
                     <div class="flex items-center space-x-3">
-                        <a href="?save='.$i.'" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
+                        <a href="?save='.$i.'" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:text-rg">
                             Save&nbsp;<i class="far fa-save" aria-hidden="true"></i>
                         </a>
-                        <a href="javascript:alert(\'This feature has not yet been implemented.\');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
+                        <a href="javascript:alert(\'This feature has not yet been implemented.\');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:text-rg">
                             Manage&nbsp;<i class="fas fa-cogs" aria-hidden="true"></i>
                         </a>
-                        <a href="?delete=' . $i . '" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
+                        <a href="?delete='.$i.'" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:text-rg">
                             Delete&nbsp;<i class="far fa-trash-alt" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>';
-                    while ($itemName != NULL) {
+                    while ($itemName != null) {
                         $itemID = get_todo_item_list_id($o);
                         if ($itemID == $i) {
                             echo '<div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                     <div class="flex-grow">
-                        <strong>' . get_todo_item_title($itemID) . '</<br>
-                        ' . get_todo_item_description($itemID) . '
+                        <strong>'.get_todo_item_title($itemID).'</<br>
+                        '.get_todo_item_description($itemID).'
                     </div>
                     <div class="flex items-center space-x-3 pr-6">
                         <input type="checkbox" id="listItem" name="listItem" value="1" ';
@@ -152,7 +152,7 @@
                         <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div>
                     </div>
                     <div class="flex items-center space-x-3 pr-6">
-                        <a href="javascript:alert(\'This feature has not yet been implemented.\');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-' . THEME_PANEL_COLOUR . '-700 bg-' . THEME_PANEL_COLOUR . '-100 hover:bg-' . THEME_PANEL_COLOUR . '-200 transition-all duration-200 md:text-rg">
+                        <a href="javascript:alert(\'This feature has not yet been implemented.\');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:text-rg">
                             Add New&nbsp;<i class="far fa-plus-square" aria-hidden="true"></i>
                         </a>
                     </div>
