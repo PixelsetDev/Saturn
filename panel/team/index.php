@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-function listUsers($role) {
+function listUsers($role)
+{
     global $conn;
     $found = false;
 
-    $query = "SELECT `id`, `first_name` FROM `".DATABASE_PREFIX."users` WHERE `role_id` = '".$role."' ORDER BY `first_name`";
+    $query = 'SELECT `id`, `first_name` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '".$role."' ORDER BY `first_name`";
     $rs = mysqli_query($conn, $query);
 
     while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
@@ -23,7 +24,7 @@ function listUsers($role) {
             }
         }
     }
-    if($found == false) {
+    if ($found == false) {
         echo '<p class="mt-6">None found.</p>';
     }
 }?><!DOCTYPE html>

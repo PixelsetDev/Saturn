@@ -51,7 +51,9 @@ if (isset($_GET['error'])) {
 <html lang="en">
     <head>
 
-        <title>Error<?php if(isset($error)) {echo ' '.checkOutput('DEFAULT', $error);} ?> - <?php echo CONFIG_SITE_NAME; ?></title>
+        <title>Error<?php if (isset($error)) {
+    echo ' '.checkOutput('DEFAULT', $error);
+} ?> - <?php echo CONFIG_SITE_NAME; ?></title>
     </head>
     <body>
         <?php include_once __DIR__.'/assets/common/navigation.php'; ?>
