@@ -51,7 +51,7 @@ if (isset($_GET['error'])) {
 <html lang="en">
     <head>
 
-        <title>Error <?php echo $error; ?> - <?php echo CONFIG_SITE_NAME; ?></title>
+        <title>Error<?php if(isset($error)) {echo ' '.checkOutput('DEFAULT', $error);} ?> - <?php echo CONFIG_SITE_NAME; ?></title>
     </head>
     <body>
         <?php include_once __DIR__.'/assets/common/navigation.php'; ?>
@@ -61,10 +61,10 @@ if (isset($_GET['error'])) {
                 <div class="container mx-auto px-6 flex flex-col-reverse lg:flex-row justify-between items-center relative">
                     <div class="w-full mb-16 md:mb-8 text-center lg:text-left">
                         <h1 class="text-center lg:text-left text-5xl lg:text-8xl mt-12 md:mt-0 text-gray-700">
-                            <?php echo $title; ?>
+                            <?php echo checkOutput('DEFAULT', $title); ?>
                         </h1>
                         <p class="text-base text-gray-700 mt-4">
-                            <?php echo $message; ?>
+                            <?php echo checkOutput('DEFAULT', $message); ?>
                         </p>
                         <button onclick="location.href='<?php echo CONFIG_INSTALL_URL; ?>';" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Go back home
