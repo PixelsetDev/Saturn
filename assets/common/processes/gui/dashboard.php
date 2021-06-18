@@ -17,50 +17,23 @@
     function getvalues_dashboard_statistics($value): array
     {
         if ($value < '10') {
-            $max = '10';
-            $current = 'Beginner';
-            $next = 'Explorer';
-            $colour = 'red';
+            $max = '10'; $current = 'Beginner'; $next = 'Explorer'; $colour = 'red';
         } elseif ($value < '20') {
-            $max = '20';
-            $current = 'Explorer';
-            $next = 'Junior';
-            $colour = 'yellow';
+            $max = '20'; $current = 'Explorer'; $next = 'Junior'; $colour = 'yellow';
         } elseif ($value < '30') {
-            $max = '30';
-            $current = 'Junior';
-            $next = 'Experienced';
-            $colour = 'green';
+            $max = '30'; $current = 'Junior'; $next = 'Experienced'; $colour = 'green';
         } elseif ($value < '40') {
-            $max = '40';
-            $current = 'Experienced';
-            $next = 'Senior';
-            $colour = 'blue';
+            $max = '40'; $current = 'Experienced'; $next = 'Senior'; $colour = 'blue';
         } elseif ($value < '50') {
-            $max = '50';
-            $current = 'Senior';
-            $next = 'Semi-Pro';
-            $colour = 'purple';
+            $max = '50'; $current = 'Senior'; $next = 'Semi-Pro'; $colour = 'purple';
         } elseif ($value < '100') {
-            $max = '100';
-            $current = 'Semi-Pro';
-            $next = 'Professional';
-            $colour = 'pink';
+            $max = '100'; $current = 'Semi-Pro'; $next = 'Professional'; $colour = 'pink';
         } elseif ($value < '200') {
-            $max = '200';
-            $current = 'Professional';
-            $next = 'Master';
-            $colour = 'red';
+            $max = '200'; $current = 'Professional'; $next = 'Master'; $colour = 'red';
         } elseif ($value < '500') {
-            $max = '500';
-            $current = 'Master';
-            $next = 'Legendary';
-            $colour = 'yellow';
+            $max = '500'; $current = 'Master'; $next = 'Legendary'; $colour = 'yellow';
         } else {
-            $max = '500';
-            $current = 'Legendary';
-            $next = 'None';
-            $colour = 'green';
+            $max = '500'; $current = 'Legendary'; $next = 'None'; $colour = 'green';
         }
 
         return [$max, $current, $next, $colour];
