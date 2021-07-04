@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The following versions of Saturn are currenlty supported and will receive future Security Updated.
+The following versions of Saturn are currently supported and will receive future Security Updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
