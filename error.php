@@ -15,7 +15,7 @@ if (isset($_GET['error'])) {
         $title = 'Page not Found.';
         $message = 'Error code: '.$error.'. If you clicked a link on our website, please contact us to let us know it\'s broken. If you typed in the page URL yourself, please check your spelling and try again.';
     } elseif ($error == '405') {
-        $title = 'Method Not Allowed.';
+        $title = 'Method not Allowed.';
         $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
         log_file('Saturn][ERROR', 'A \'Method Not Allowed\' error occurred. Error code: '.$error);
     } elseif ($error == '408') {
