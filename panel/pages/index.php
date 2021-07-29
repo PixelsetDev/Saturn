@@ -205,6 +205,7 @@
                     echo '</div>
                         <br><hr><br>';
                 }
+                echo display_category_new_form();
                 ?>
             </div>
     </body>
