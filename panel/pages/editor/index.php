@@ -54,8 +54,8 @@
         include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
 
-        <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js" integrity="sha256-5RjTlnB92dAMNEPY6q0rX2AusjFwvVf1YHHikzobEss=" crossorigin="anonymous"></script>
         <title>Page Editor - Saturn Panel</title>
+        <script src="<?php echo CONFIG_INSTALL_URL; ?>/assets/js/editor.js"></script>
 
     </head>
     <body class="mb-8">
@@ -78,7 +78,7 @@
             <div class="py-6">
                 <h2 class="text-2xl mb-2 font-bold my-2">Title</h2>
                 <p class="mb-2">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> Characters.</p>
-                <textarea name="title" id="title" maxlength="60" class="w-full border"><?php
+                <textarea name="title" id="title" class="title" maxlength="<?php echo CONFIG_MAX_TITLE_CHARS; ?>" class="w-full border"><?php
                         $pageStatus = get_page_status($pageID);
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $title = get_page_title($pageID);
@@ -93,10 +93,25 @@
                 ?></textarea>
             </div>
 
+            <script>
+                ClassicEditor
+                    .create(document.querySelector('.title'),{
+                        toolbar:{items: ['undo','redo']},
+                        language:'en-gb',
+                        licenseKey: '',
+                    })
+                    .then( editor => {window.editor = editor;})
+                    .catch( error => {
+                        console.error('[ERROR][SATURN] 003: Occurred in instance \'.title\'. Please report the following error on https://saturncms.net/report-error with the CKE5 build id and the error stack trace. CKE5 Build id: 82xe5t2x22wm-w2zoc189x0t1');
+                        console.error(error);
+                        alert('[ERROR][SATURN] 003: See console for more information.');
+                    } );
+            </script>
+
             <div class="py-6">
                 <h2 class="text-2xl font-bold mt-2">Content</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS - 10000; ?> Characters.</p>
-                <textarea name="content" id="content"><?php
+                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/5); ?> Characters.</p>
+                <textarea name="content" id="content" class="content" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/5); ?>" ><?php
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $content = get_page_content($pageID);
                             $content = checkOutput('HTML', $content);
@@ -110,10 +125,26 @@
                 ?></textarea>
             </div>
 
+            <script>
+                ClassicEditor
+                    .create(document.querySelector('.content'),{
+                        toolbar:{items: ['heading','|','bold','italic','underline','strikethrough','link','|','bulletedList','numberedList','|','outdent','indent','|','subscript','superscript','|','insertTable','mediaEmbed','undo','redo']},
+                        language:'en-gb',
+                        table:{contentToolbar:['tableColumn','tableRow','mergeTableCells']},
+                        licenseKey: '',
+                    })
+                    .then( editor => {window.editor = editor;})
+                    .catch( error => {
+                        console.error('[ERROR][SATURN] 003: Occurred in instance \'.content\'. Please report the following error on https://saturncms.net/report-error with the CKE5 build id and the error stack trace. CKE5 Build id: 82xe5t2x22wm-w2zoc189x0t1');
+                        console.error(error);
+                        alert('[ERROR][SATURN] 003: See console for more information.');
+                    } );
+            </script>
+
             <div class="py-6">
                 <h2 class="text-2xl font-bold mt-2">References</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_REFERENCES_CHARS - 2000; ?> Characters.</p>
-                <textarea name="references" id="references"><?php
+                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/10); ?> Characters.</p>
+                <textarea name="references" id="references" class="references" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/10); ?>"><?php
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $references = get_page_references($pageID);
                             $references = checkOutput('HTML', $references);
@@ -127,6 +158,21 @@
                 ?></textarea>
             </div>
 
+            <script>
+                ClassicEditor
+                    .create(document.querySelector('.references'),{
+                        toolbar:{items: ['bold','italic','underline','strikethrough','link','|','bulletedList','numberedList','subscript','superscript','|','undo','redo']},
+                        language:'en-gb',
+                        licenseKey: '',
+                    })
+                    .then( editor => {window.editor = editor;})
+                    .catch( error => {
+                        console.error('[ERROR][SATURN] 003: Occurred in instance \'.references\'. Please report the following error on https://saturncms.net/report-error with the CKE5 build id and the error stack trace. CKE5 Build id: 82xe5t2x22wm-w2zoc189x0t1');
+                        console.error(error);
+                        alert('[ERROR][SATURN] 003: See console for more information.');
+                    } );
+            </script>
+
             <div class="flex space-x-4">
                 <input type="submit" id="submit" name="submit" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-1 md:text-rg md:px-10">
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages" class="transition-all duration-200 hover:shadow-lg w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
@@ -134,20 +180,5 @@
                 </a>
             </div>
         </form>
-
-        <script>
-            ClassicEditor
-                .create( document.querySelector( '#content' ) )
-                .catch( error => {
-                    console.error( error );
-                } );
-        </script>
-        <script>
-            ClassicEditor
-                .create( document.querySelector( '#references' ) )
-                .catch( error => {
-                    console.error( error );
-                } );
-        </script>
     </body>
 </html>
