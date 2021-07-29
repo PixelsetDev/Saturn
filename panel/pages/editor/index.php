@@ -109,8 +109,8 @@
 
             <div class="py-6">
                 <h2 class="text-2xl font-bold mt-2">Content</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/5); ?> Characters.</p>
-                <textarea name="content" id="content" class="content" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/5); ?>" ><?php
+                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 5); ?> Characters.</p>
+                <textarea name="content" id="content" class="content" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 5); ?>" ><?php
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $content = get_page_content($pageID);
                             $content = checkOutput('HTML', $content);
@@ -142,8 +142,8 @@
 
             <div class="py-6">
                 <h2 class="text-2xl font-bold mt-2">References</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/10); ?> Characters.</p>
-                <textarea name="references" id="references" class="references" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS-(CONFIG_MAX_PAGE_CHARS/10); ?>"><?php
+                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 10); ?> Characters.</p>
+                <textarea name="references" id="references" class="references" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 10); ?>"><?php
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $references = get_page_references($pageID);
                             $references = checkOutput('HTML', $references);
