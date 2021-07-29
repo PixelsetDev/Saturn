@@ -96,7 +96,6 @@
             <script>
                 ClassicEditor
                     .create(document.querySelector('.title'),{
-                        toolbar:{items: ['undo','redo']},
                         language:'en-gb',
                         licenseKey: '',
                     })
