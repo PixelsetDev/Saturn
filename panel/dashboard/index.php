@@ -75,9 +75,6 @@ session_start();
             }
             if (CONFIG_DEBUG) {
                 alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
-                if (CONFIG_PHP_ERRORS) {
-                    alert('WARNING', 'PHP Errors are enabled. This is NOT recommended in production environments.');
-                }
             }
             if (get_user_roleID($_SESSION['id']) > 3) {
                 $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version=beta');
