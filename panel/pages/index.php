@@ -80,8 +80,7 @@
                                                 </h2>
                                             </div>
                                             <div class="mt-6 relative flex-1 px-4 sm:px-6">
-                                                <div class="absolute inset-0 px-4 sm:px-6 h-full">
-                                                    <p>Please select a page.</p>';
+                                                <div class="absolute inset-0 px-4 sm:px-6 h-full">';
                     $o = pageQuery_1($i);
 
                     $row = pageQuery_2($i, $o);
@@ -109,7 +108,7 @@
                                 echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
                             }
                             echo'
-                                                                    <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
+                                                                    <div class="flex-grow mr-2 self-center">'.get_page_title($o);if($o==get_page_category_id($i)){echo' <i class="fas fa-home" aria-hidden="true"></i>';} echo'</div>
                                                                     <div><a href="editor/?pageID='.$o.'" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">Edit</span></a></div>
                                                                 </div>
                                                                 <div class="text-xs normal-case font-normal text-gray-400 italic">';
