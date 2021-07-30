@@ -36,6 +36,6 @@
     {
         global $errorScreen;
         if (!isset($errorScreen)) {
-            echo '<meta http-equiv="refresh" content="0;url='.CONFIG_INSTALL_URL.'/error.php?error='.$errcode.'" />';
+            echo '<meta http-equiv="refresh" content="0;url=//'.$_SERVER['HTTP_HOST'].CONFIG_INSTALL_URL.'/error.php?error='.$errcode.'" />';
         }
     }
