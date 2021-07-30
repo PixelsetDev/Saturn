@@ -43,3 +43,6 @@
     const SECURITY_MODE = 'clean';
     /* Developer Tools */
     const CONFIG_DEBUG = false;
+    /* Permissions */
+    const PERMISSION_CREATE_CATEGORY = '4';
+    const PERMISSION_CREATE_PAGE = '4';
