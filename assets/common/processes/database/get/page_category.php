@@ -1,5 +1,7 @@
 <?php
-    function get_page_category_homepage($id) {
+
+    function get_page_category_homepage($id)
+    {
         $id = checkInput('DEFAULT', $id);
 
         global $conn;

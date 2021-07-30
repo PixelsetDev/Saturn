@@ -1,7 +1,8 @@
 <?php
+
 function display_page_new_form(): string
-    {
-        return '<form action="'.CONFIG_INSTALL_URL.'/panel/pages/new" name="newpage" method="GET">
+{
+    return '<form action="'.CONFIG_INSTALL_URL.'/panel/pages/new" name="newpage" method="GET">
                                                                     <div class="w-full font-semibold inline-block py-2 px-3 uppercase rounded text-gray-900 bg-gray-100">
                                                                         <div class="flex w-full relative space-x-3">
                                                                             <div class="flex-grow">
@@ -12,7 +13,7 @@ function display_page_new_form(): string
                                                                         </div>
                                                                     </div>
                                                                 </form>';
-    }
+}
 function display_category_new_form(): string
 {
     return '<form action="'.CONFIG_INSTALL_URL.'/panel/pages/new" name="newcategory" method="GET">
