@@ -1,5 +1,6 @@
 <?php
 
+    require_once 'activation.php';
     require_once 'checkData.php';
     require_once 'checkInput.php';
     require_once 'checkOutput.php';

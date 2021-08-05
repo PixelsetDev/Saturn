@@ -146,7 +146,7 @@
                 <div class="flex">
                     <h2 class="flex space-x-2 text-gray-900 text-2xl relative" x-data="{ tooltip: false }">
                         <span>Activation</span>
-                        <?php if ($activation_key != '0' && $activation_key_url == $_SERVER['HTTP_HOST']) { ?>
+                        <?php if ($activation_key == '1' && $activation_key_url == $_SERVER['HTTP_HOST']) { ?>
                         <i class="fas fa-check text-green-500" aria-hidden="true" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"></i>
                         <div class="mx-1 w-18" x-cloak x-show.transition.origin.top="tooltip">
                             <div class="bg-black text-white text-xs rounded py-1 px-2 right-0 bottom-full opacity-75">

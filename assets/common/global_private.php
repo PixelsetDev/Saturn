@@ -54,5 +54,6 @@
         $uid = $_SESSION['id'];
     }
     ccv_validate_all();
+    echo activation_validate();
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
     ob_end_flush();
