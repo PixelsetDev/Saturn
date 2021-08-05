@@ -139,6 +139,51 @@
                     } ?>
                 </div>
                 <br>
+                <?php
+                $activation_key = file_get_contents("https://link.saturncms.net/?key_status=".CONFIG_ACTIVATION_KEY);
+                $activation_key_url = file_get_contents("https://link.saturncms.net/?key_registered_url=".CONFIG_ACTIVATION_KEY);
+                ?>
+                <div class="flex">
+                    <h2 class="flex space-x-2 text-gray-900 text-2xl relative" x-data="{ tooltip: false }">
+                        <span>Activation</span>
+                        <?php if ($activation_key != '0' && $activation_key_url == $_SERVER['HTTP_HOST']) { ?>
+                        <i class="fas fa-check text-green-500" aria-hidden="true" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"></i>
+                        <div class="mx-1 w-18" x-cloak x-show.transition.origin.top="tooltip">
+                            <div class="bg-black text-white text-xs rounded py-1 px-2 right-0 bottom-full opacity-75">
+                                Activated
+                            </div>
+                        </div>
+                        <?php } else { ?>
+                        <i class="fas fa-times text-red-500" aria-hidden="true" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false"></i>
+                        <div class="mx-1 w-22" x-cloak x-show.transition.origin.top="tooltip">
+                            <div class="bg-black text-white text-xs rounded py-1 px-2 right-0 bottom-full opacity-75">
+                                Not Activated
+                            </div>
+                        </div>
+                    <?php } ?>
+                    </h2>
+                </div>
+                <p>
+                    <?php
+                    if ($activation_key == '1') {
+                        echo '<u>Activation Key</u>: '.CONFIG_ACTIVATION_KEY.' <small class="text-green-500">Valid</small>';
+                    } else {
+                        echo '<u>Activation Key</u>: '.CONFIG_ACTIVATION_KEY.' <small class="text-red-500">Invalid</small>';
+                    }
+                    ?>
+                    <br>
+                    <?php
+                    if ($activation_key_url == $_SERVER['HTTP_HOST']) {
+                        echo '<u>Installed URL</u>: '.$_SERVER['HTTP_HOST'].' <small class="text-green-500">Valid</small>';
+                    } else {
+                        if (strpos($activation_key_url, 'Activation Error') !== false) {
+                            $activation_key_url = 'No URL Found';
+                        }
+                        echo '<u>Installed URL</u>: '.$_SERVER['HTTP_HOST'].' <small class="text-red-500">Invalid (Registered to '.$activation_key_url.')</small>';
+                    }
+                    ?>
+                </p>
+                <br>
                 <h2 class="text-gray-900 text-2xl">Your Server</h2>
                 <p>
                     <?php
