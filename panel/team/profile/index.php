@@ -78,14 +78,14 @@
                 <?php
                 $query = "SELECT `title`, `url` FROM `gh_pages` WHERE `user_id` = '".$user."'";
 
-                $rs = mysqli_query($conn,$query);
-                $resultset = array();
+                $rs = mysqli_query($conn, $query);
+                $resultset = [];
                 while ($row = mysqli_fetch_array($rs)) {
                     $resultset[] = $row;
                 }
 
-                foreach ($resultset as $result){
-                ?>
+                foreach ($resultset as $result) {
+                    ?>
                 <a href="<?php echo $result[1]; ?>" target="_blank" class="relative flex-none" style="width:300px; height:300px">
                     <iframe src="<?php echo $result[1]; ?>?access_method=saturn_iframe_preview" class="cursor-pointer relative flex-none" style="width:300px; height:300px"></iframe>
                     <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-25 px-2 py-1"><?php echo $result[0]; ?></div>
@@ -100,13 +100,13 @@
                 <?php
                 $query = "SELECT `title` FROM `gh_articles` WHERE `author_id` = '".$user."'";
 
-                $rs = mysqli_query($conn,$query);
-                $resultset = array();
+                $rs = mysqli_query($conn, $query);
+                $resultset = [];
                 while ($row = mysqli_fetch_array($rs)) {
                     $resultset[] = $row;
                 }
 
-                foreach ($resultset as $result){
+                foreach ($resultset as $result) {
                     ?>
                     <a href="/" target="_blank" class="relative flex-none" style="width:300px; height:300px">
                         <div class="cursor-pointer relative flex-none">
