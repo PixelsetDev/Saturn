@@ -70,7 +70,9 @@
                     </div>
                 </a>
             </div>
-            <?php } else { alert('ERROR','The Saturn Marketplace will not work if your installation is not activated.'); } ?>
+            <?php } else {
+                    alert('ERROR', 'The Saturn Marketplace will not work if your installation is not activated.');
+                } ?>
         </div>
     </body>
 </html>

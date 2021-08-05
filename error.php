@@ -13,7 +13,7 @@ if (isset($_GET['error'])) {
         $message = 'Error code: '.$error.'. For more information please contact the website administrator.';
     } elseif ($error == '404') {
         $title = 'Page not Found.';
-        $message = "Error code: ".$error.". If you clicked a link on our website, please contact us to let us know it's broken. If you typed in the page URL yourself, please check your spelling and try again.";
+        $message = 'Error code: '.$error.". If you clicked a link on our website, please contact us to let us know it's broken. If you typed in the page URL yourself, please check your spelling and try again.";
     } elseif ($error == '405') {
         $title = 'Method Not Allowed.';
         $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
@@ -47,8 +47,8 @@ if (isset($_GET['error'])) {
     $title = 'Sorry, an error occurred.';
     $message = 'We were unable to find the cause of this error. For more information please contact the website administrator.';
 }
-if(strpos($_SERVER['REQUEST_URI'], 'access_method=saturn_iframe_preview')) {
-?><!DOCTYPE html>
+if (strpos($_SERVER['REQUEST_URI'], 'access_method=saturn_iframe_preview')) {
+    ?><!DOCTYPE html>
 <html lang="en">
 <body class="bg-red-700 p-4">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="3 3 16 16" width="25%"><defs><linearGradient gradientUnits="userSpaceOnUse" y2="-2.623" x2="0" y1="986.67"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#ffffff"/></linearGradient><linearGradient id="0" gradientUnits="userSpaceOnUse" y1="986.67" x2="0" y2="-2.623"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#ffffff"/></linearGradient><linearGradient gradientUnits="userSpaceOnUse" x2="1" x1="0" xlink:href="#0"/></defs><g transform="matrix(2 0 0 2-11-2071.72)"><path transform="translate(7 1037.36)" d="m4 0c-2.216 0-4 1.784-4 4 0 2.216 1.784 4 4 4 2.216 0 4-1.784 4-4 0-2.216-1.784-4-4-4" fill="#ffffff"/><path d="m11.906 1041.46l.99-.99c.063-.062.094-.139.094-.229 0-.09-.031-.166-.094-.229l-.458-.458c-.063-.062-.139-.094-.229-.094-.09 0-.166.031-.229.094l-.99.99-.99-.99c-.063-.062-.139-.094-.229-.094-.09 0-.166.031-.229.094l-.458.458c-.063.063-.094.139-.094.229 0 .09.031.166.094.229l.99.99-.99.99c-.063.062-.094.139-.094.229 0 .09.031.166.094.229l.458.458c.063.063.139.094.229.094.09 0 .166-.031.229-.094l.99-.99.99.99c.063.063.139.094.229.094.09 0 .166-.031.229-.094l.458-.458c.063-.062.094-.139.094-.229 0-.09-.031-.166-.094-.229l-.99-.99" fill="#B91C1C"/></g></svg>
@@ -65,7 +65,9 @@ if(strpos($_SERVER['REQUEST_URI'], 'access_method=saturn_iframe_preview')) {
 <html lang="en">
 <head>
 
-    <title>Error<?php if(isset($error)) {echo ' '.checkOutput('DEFAULT', $error);} ?> - <?php echo CONFIG_SITE_NAME; ?></title>
+    <title>Error<?php if (isset($error)) {
+        echo ' '.checkOutput('DEFAULT', $error);
+    } ?> - <?php echo CONFIG_SITE_NAME; ?></title>
 </head>
 <body>
 <?php include_once __DIR__.'/assets/common/navigation.php'; ?>

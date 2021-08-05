@@ -140,8 +140,8 @@
                 </div>
                 <br>
                 <?php
-                $activation_key = file_get_contents("https://link.saturncms.net/?key_status=".CONFIG_ACTIVATION_KEY);
-                $activation_key_url = file_get_contents("https://link.saturncms.net/?key_registered_url=".CONFIG_ACTIVATION_KEY);
+                $activation_key = file_get_contents('https://link.saturncms.net/?key_status='.CONFIG_ACTIVATION_KEY);
+                $activation_key_url = file_get_contents('https://link.saturncms.net/?key_registered_url='.CONFIG_ACTIVATION_KEY);
                 ?>
                 <div class="flex">
                     <h2 class="flex space-x-2 text-gray-900 text-2xl relative" x-data="{ tooltip: false }">
