@@ -65,6 +65,7 @@
                 ?>
             </div>
             <h2 class="text-gray-900 text-2xl mt-8">Theme Marketplace</h2>
+            <?php if (activation_validate()) { ?>
             <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
                 <?php $themeURL = 'https://www.marketplace.saturncms.net/themes/embed'; echo file_get_contents($themeURL); ?>
                 <a href="https://marketplace.saturncms.net/themes/?url=<?php echo url(); ?>" target="_blank">
@@ -77,6 +78,7 @@
                     </div>
                 </a>
             </div>
+            <?php } else { alert('ERROR','The Saturn Marketplace will not work if your installation is not activated.'); } ?>
         </div>
     </body>
 </html>
