@@ -129,7 +129,7 @@
                         }
                         $o++;
                     }
-                    if (get_user_roleID($_SESSION['id']) == '4') {
+                    if (PERMISSION_CREATE_PAGE >= get_user_roleID($_SESSION['id'])) {
                         echo display_page_new_form();
                     }
                     echo '<br><br><br><br>
@@ -208,7 +208,9 @@
                     echo '</div>
                         <br><hr><br>';
                 }
-                echo display_category_new_form();
+                if(PERMISSION_CREATE_CATEGORY >= get_user_roleID($_SESSION['id'])) {
+                    echo display_category_new_form();
+                }
                 ?>
             </div>
     </body>
