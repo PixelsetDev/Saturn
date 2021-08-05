@@ -1,15 +1,16 @@
-<?php session_start();
+<?php ob_start(); session_start();
     include_once __DIR__.'/../../../assets/common/global_private.php';
     if (isset($_POST['message'])) {
-        $query = "SET time_zone='".CONFIG_TIMEZONE."';";
+        $query = "SET time_zone='".CONFIG_SITE_TIMEZONE."';";
         $rs = mysqli_query($conn, $query);
 
         $message = $_POST['message'];
         $message = str_replace('"', '&quot;', $message);
-        $query = 'INSERT INTO `'.DATABASE_PREFIX."` (`id`, `user_id`, `chat_id`, `status`, `message`, `datetime`) VALUES (NULL, '$id', '1', 'ACTIVE', '$message', CURRENT_TIMESTAMP);";
+        $query = "INSERT INTO `".DATABASE_PREFIX."chats_messages` (`id`, `user_id`, `chat_id`, `status`, `message`, `datetime`) VALUES (NULL, '".$_SESSION['id']."', '1', 'ACTIVE', '".$message."', CURRENT_TIMESTAMP);";
         $rs = mysqli_query($conn, $query);
-        header('Location: http://'.htmlspecialchars($_SERVER[HTTP_HOST]).htmlspecialchars($_SERVER[REQUEST_URI]).'');
+        header('Location: http://'.htmlspecialchars($_SERVER['HTTP_HOST']).htmlspecialchars($_SERVER['REQUEST_URI']).'');
     }
+    ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
