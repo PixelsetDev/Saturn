@@ -74,41 +74,55 @@
             </div>
             <div class="border-b border-gray-300 my-6"></div>
             <h1 class="text-2xl"><?php echo get_user_page_count($user); ?> Pages</h1>
-            <article class="mt-5 grid grid-cols-3 gap-10 overflow-x-scroll">
-                <div class="cursor-pointer relative" style="width:300px; height:300px">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
-                         class="w-full h-full object-cover"
-                         alt="No Image" />
-                </div>
-                <div class="cursor-pointer relative" style="width:300px; height:300px">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
-                         class="w-full h-full object-cover"
-                         alt="No Image" />
-                </div>
-                <div class="cursor-pointer relative" style="width:300px; height:300px">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
-                         class="w-full h-full object-cover"
-                         alt="No Image" />
-                </div>
+            <article class="mt-5 flex space-x-4 overflow-x-scroll">
+                <?php
+                $query = "SELECT `title`, `url` FROM `gh_pages` WHERE `user_id` = '".$user."'";
+
+                $rs = mysqli_query($conn,$query);
+                $resultset = array();
+                while ($row = mysqli_fetch_array($rs)) {
+                    $resultset[] = $row;
+                }
+
+                foreach ($resultset as $result){
+                ?>
+                <a href="/<?php echo $result[1]; ?>" target="_blank" class="relative flex-none" style="width:300px; height:300px">
+                    <div class="cursor-pointer relative flex-none">
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
+                            class="w-full h-full object-cover"
+                            alt="<?php echo $result[0]; ?>" />
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-25 px-2 py-1"><?php echo $result[0]; ?></div>
+                </a>
+                <?php
+                }
+                ?>
             </article>
             <div class="border-b border-gray-300 my-6"></div>
             <h1 class="text-2xl"><?php echo get_user_article_count($user); ?> Articles</h1>
             <article class="mt-5 grid grid-cols-3 gap-10 overflow-x-scroll">
-                <div class="cursor-pointer relative" style="width:300px; height:300px">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
-                         class="w-full h-full object-cover"
-                         alt="No Image" />
-                </div>
-                <div class="cursor-pointer relative" style="width:300px; height:300px">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
-                         class="w-full h-full object-cover"
-                         alt="No Image" />
-                </div>
-                <div class="cursor-pointer relative" style="width:300px; height:300px">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
-                         class="w-full h-full object-cover"
-                         alt="No Image" />
-                </div>
+                <?php
+                $query = "SELECT `title` FROM `gh_articles` WHERE `author_id` = '".$user."'";
+
+                $rs = mysqli_query($conn,$query);
+                $resultset = array();
+                while ($row = mysqli_fetch_array($rs)) {
+                    $resultset[] = $row;
+                }
+
+                foreach ($resultset as $result){
+                    ?>
+                    <a href="/" target="_blank" class="relative flex-none" style="width:300px; height:300px">
+                        <div class="cursor-pointer relative flex-none">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
+                                 class="w-full h-full object-cover"
+                                 alt="<?php echo $result[0]; ?>" />
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-25 px-2 py-1"><?php echo $result[0]; ?></div>
+                    </a>
+                    <?php
+                }
+                ?>
             </article>
         </div>
     </body>
