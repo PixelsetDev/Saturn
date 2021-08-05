@@ -12,7 +12,7 @@
      */
 
     /* General */
-    const CONFIG_INSTALL_URL = '/';
+    const CONFIG_INSTALL_URL = '';
     const CONFIG_ACTIVATION_KEY = '';
     const CONFIG_SITE_NAME = 'Saturn';
     const CONFIG_SITE_DESCRIPTION = 'A website running the Saturn Content Management System.';
