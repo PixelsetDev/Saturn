@@ -86,12 +86,8 @@
 
                 foreach ($resultset as $result){
                 ?>
-                <a href="/<?php echo $result[1]; ?>" target="_blank" class="relative flex-none" style="width:300px; height:300px">
-                    <div class="cursor-pointer relative flex-none">
-                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/no-image-500x500.png"
-                            class="w-full h-full object-cover"
-                            alt="<?php echo $result[0]; ?>" />
-                    </div>
+                <a href="<?php echo $result[1]; ?>" target="_blank" class="relative flex-none" style="width:300px; height:300px">
+                    <iframe src="<?php echo $result[1]; ?>?access_method=saturn_iframe_preview" class="cursor-pointer relative flex-none" style="width:300px; height:300px"></iframe>
                     <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-25 px-2 py-1"><?php echo $result[0]; ?></div>
                 </a>
                 <?php
