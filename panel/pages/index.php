@@ -129,7 +129,7 @@
                         }
                         $o++;
                     }
-                    if (PERMISSION_CREATE_PAGE >= get_user_roleID($_SESSION['id'])) {
+                    if(get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
                         echo display_page_new_form();
                     }
                     echo '<br><br><br><br>
@@ -208,7 +208,7 @@
                     echo '</div>
                         <br><hr><br>';
                 }
-                if(PERMISSION_CREATE_CATEGORY >= get_user_roleID($_SESSION['id'])) {
+                if(get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_CATEGORY) {
                     echo display_category_new_form();
                 }
                 ?>
