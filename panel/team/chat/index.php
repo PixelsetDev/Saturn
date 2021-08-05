@@ -118,10 +118,12 @@
                                                 echo '
                                     <li class="w-full flex justify-end">
                                         <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" css="max-width: 300px;">
-                                            <img class="h-8 w-8 rounded-full object-cover"
-                                                src="'.CONFIG_INSTALL_URL.'/assets/panel/images/icon/chat.png"
-                                                alt="'.get_user_fullname($row['user_id']).'"
-                                            />
+                                            <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($row['user_id']).'">
+                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                    src="'.get_user_profilephoto($row['user_id']).'"
+                                                    alt="'.get_user_fullname($row['user_id']).'"
+                                                />
+                                            </a>
                                             <div class="ml-2">
                                                 <span class="block">'.$row['message'].'</span>
                                                 <span class="block text-xs text-right">'.$row['datetime'].'</span>
@@ -132,10 +134,12 @@
                                                 echo '
                                     <li class="w-full flex justify-start">
                                         <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" css="max-width: 300px;">
-                                            <img class="h-8 w-8 rounded-full object-cover"
-                                                src="'.CONFIG_INSTALL_URL.'/assets/panel/images/icon/chat.png"
-                                                alt="'.get_user_fullname($row['user_id']).'"
-                                            />
+                                            <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($row['user_id']).'">
+                                                <img class="h-8 w-8 rounded-full object-cover"
+                                                    src="'.get_user_profilephoto($row['user_id']).'"
+                                                    alt="'.get_user_fullname($row['user_id']).'"
+                                                />
+                                            </a>
                                             <div class="ml-2">
                                                 <span class="block">'.$row['message'].'</span>
                                                 <span class="block text-xs text-right">'.get_user_fullname($row['user_id']).' '.$row['datetime'].'</span>
