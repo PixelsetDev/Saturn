@@ -24,5 +24,5 @@
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
 
-        return $row['notifications_saturn'];
+        return $row['notifications_email'];
     }
