@@ -162,48 +162,6 @@
         return $row['profile_photo'];
     }
 
-    function get_user_views($id)
-    {
-        $id = checkInput('DEFAULT', $id);
-
-        global $conn;
-
-        $query = 'SELECT `views` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
-
-        return $row['views'];
-    }
-
-    function get_user_edits($id)
-    {
-        $id = checkInput('DEFAULT', $id);
-
-        global $conn;
-
-        $query = 'SELECT `edits` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
-
-        return $row['edits'];
-    }
-
-    function get_user_approvals($id)
-    {
-        $id = checkInput('DEFAULT', $id);
-
-        global $conn;
-
-        $query = 'SELECT `approvals` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
-
-        return $row['approvals'];
-    }
-
     function get_user_page_count($id)
     {
         $id = checkInput('DEFAULT', $id);
@@ -303,5 +261,12 @@
     {
         $id = checkInput('DEFAULT', $id);
 
-        return '1';
+        global $conn;
+
+        $query = 'SELECT `email_notifications` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['last_login_ip'];
     }

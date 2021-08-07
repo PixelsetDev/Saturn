@@ -54,14 +54,14 @@
                 <div class="ml-10">
                     <ul class="flex justify-content-around items-center">
                         <li class="mr-4">
-                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_views($user); ?> </span> Views</span>
+                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_views($user); ?> </span> Views</span>
                         </li>
                         <li class="mr-4">
-                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_edits($user); ?> </span> Edits</span>
+                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_edits($user); ?> </span> Edits</span>
                         </li>
                         <?php if (get_user_roleID($user) > 2 && get_user_roleID($_SESSION['id']) > 2) {
                                 echo '<li class="mr-4">
-                            <span class="block text-base flex"><span class="font-bold mr-2">'.get_user_approvals($user).' </span> Approvals</span>
+                            <span class="block text-base flex"><span class="font-bold mr-2">'.get_user_statistics_approvals($user).' </span> Approvals</span>
                         </li>';
                             } ?>
                     </ul>

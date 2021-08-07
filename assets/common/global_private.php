@@ -23,6 +23,8 @@
     require_once __DIR__.'/processes/database/get/page.php';
     require_once __DIR__.'/processes/database/get/todo.php';
     require_once __DIR__.'/processes/database/get/user.php';
+    require_once __DIR__.'/processes/database/get/user_settings.php';
+    require_once __DIR__.'/processes/database/get/user_statistics.php';
     require_once __DIR__.'/processes/database/update/articles.php';
     require_once __DIR__.'/processes/database/update/notification.php';
     require_once __DIR__.'/processes/database/update/user.php';

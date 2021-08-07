@@ -55,14 +55,14 @@ if(isset($_POST['save'])) {
                 <div class="ml-10">
                     <ul class="flex justify-content-around items-center">
                         <li class="mr-4">
-                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_views($user); ?> </span> Views</span>
+                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_views($user); ?> </span> Views</span>
                         </li>
                         <li class="mr-4">
-                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_edits($user); ?> </span> Edits</span>
+                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_edits($user); ?> </span> Edits</span>
                         </li>
                         <?php if (get_user_roleID($user) > 2 && get_user_roleID($_SESSION['id']) > 2) {
             echo '<li class="mr-4">
-                                    <span class="block text-base flex"><span class="font-bold mr-2">'.get_user_approvals($user).' </span> Approvals</span>
+                                    <span class="block text-base flex"><span class="font-bold mr-2">'.get_user_statistics_approvals($user).' </span> Approvals</span>
                                 </li>';
         } ?>
                     </ul>
@@ -72,6 +72,17 @@ if(isset($_POST['save'])) {
                         <div class="flex"><input type="text" id="link" name="link" value="<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2 bg-gray-100 bg-opacity-50" /><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
                     </div>
                 </div>
+            </div>
+            <div class="border-b border-gray-300 my-6"></div>
+            <h1 class="text-2xl">Your Preferences</h1>
+            <h1 class="text-xl">Notifications</h1>
+            <div class="flex space-x-2">
+                <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" class="self-center" checked disabled>
+                <span class="self-center">Saturn Notifications</span>
+            </div>
+            <div class="flex space-x-2">
+                <input type="checkbox" name="notificationsEmail" id="notificationsEmail" class="self-center">
+                <span class="self-center">Email Notifications</span>
             </div>
         </form>
     </body>

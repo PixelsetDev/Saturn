@@ -4,12 +4,12 @@
     {
         echo'<h1 class="text-3xl text-gray-700 dark:text-gray-50 mt-4">Your Statistics</h1>';
 
-        $edits = get_user_edits($id);
+        $edits = get_user_statistics_edits($id);
         list($max, $current, $next, $colour) = getvalues_dashboard_statistics($edits);
         echo display_dashboard_statbox('Writer', $edits, $max, $current, $next, $colour);
 
         if (get_user_roleID($_SESSION['id'])) {
-            $approvals = get_user_approvals($id);
+            $approvals = get_user_statistics_approvals($id);
             list($max, $current, $next, $colour) = getvalues_dashboard_statistics($approvals);
             echo display_dashboard_statbox('Editor', $approvals, $max, $current, $next, $colour);
         }

@@ -206,9 +206,9 @@ session_start();
                                     '.get_user_fullname($uid).'
                                 </a>
                                 <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';
-                                    if (get_user_edits($uid) == '0') {
+                                    if (get_user_statistics_edits($uid) == '0') {
                                         echo 'red';
-                                    } elseif (get_user_edits($uid) < '6') {
+                                    } elseif (get_user_statistics_edits($uid) < '6') {
                                         echo 'yellow';
                                     } else {
                                         echo 'green';
@@ -259,9 +259,9 @@ session_start();
                                     '.get_user_fullname($uid).'
                                 </a>
                                 <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';
-                            if (get_user_approvals($uid) == '0') {
+                            if (get_user_statistics_approvals($uid) == '0') {
                                 echo 'red';
-                            } elseif (get_user_approvals($uid) < '6') {
+                            } elseif (get_user_statistics_approvals($uid) < '6') {
                                 echo 'yellow';
                             } else {
                                 echo 'green';

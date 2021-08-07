@@ -23,10 +23,10 @@
     if (isset($_POST['approve'])) {
         update_article_status($articleID, 'PUBLISHED');
 
-        $newEdits = get_user_edits($uid) + 1;
+        $newEdits = get_user_statistics_edits($uid) + 1;
         update_user_edits($uid, $newEdits);
 
-        $newApprovals = get_user_approvals($_SESSION['id']) + 1;
+        $newApprovals = get_user_statistics_approvals($_SESSION['id']) + 1;
         update_user_approvals($_SESSION['id'], $newApprovals);
 
         create_notification($uid, 'Publication Approved', 'Your publication request for article "'.get_article_title($articleID).'" was approved by '.get_user_fullname($_SESSION['id']).'.');
@@ -37,7 +37,7 @@
     } elseif (isset($_POST['deny'])) {
         update_article_status($articleID, 'REJECTED');
 
-        $newApprovals = get_user_approvals($_SESSION['id']) + 1;
+        $newApprovals = get_user_statistics_approvals($_SESSION['id']) + 1;
         update_user_approvals($_SESSION['id'], $newApprovals);
 
         create_notification($uid, 'Publication Request not Approved', 'Your publication request for article "'.get_article_title($articleID).'" was not approved.');

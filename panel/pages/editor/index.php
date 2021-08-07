@@ -27,7 +27,7 @@
                     $rs = mysqli_query($conn, $query);
                     $query = 'INSERT INTO `'.DATABASE_PREFIX."pages_history` (`id`, `page_id`, `user_id`, `timestamp`) VALUES (NULL, '".$pageID."','".$_SESSION['id']."', CURRENT_TIMESTAMP)";
                     $rs = mysqli_query($conn, $query);
-                    $newEdits = get_user_edits($_SESSION['id']) + 1;
+                    $newEdits = get_user_statistics_edits($_SESSION['id']) + 1;
                     update_user_edits($_SESSION['id'], $newEdits);
                     $successMsg = 'Your edit has been saved.';
                     log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' edited page with ID: '.$pageID.' ('.get_page_title($pageID).').');
