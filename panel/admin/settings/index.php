@@ -116,7 +116,9 @@
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="site_timezone">Site Timezone</label>
-                        <?php echo timezone_dropdown(); ?>
+                        <select id="site_charset" name="site_charset" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="Europe/London">Europe/London</option>
+                        </select>
                     </div>
                 </div>
 
