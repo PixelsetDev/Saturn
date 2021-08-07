@@ -17,13 +17,13 @@
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */
+    require_once __DIR__.'/processes/database/get/user_settings.php'; // Must be first rf loaded in this section!
     require_once __DIR__.'/processes/database/get/activity.php';
     require_once __DIR__.'/processes/database/get/articles.php';
     require_once __DIR__.'/processes/database/get/notification.php';
     require_once __DIR__.'/processes/database/get/page.php';
     require_once __DIR__.'/processes/database/get/todo.php';
     require_once __DIR__.'/processes/database/get/user.php';
-    require_once __DIR__.'/processes/database/get/user_settings.php';
     require_once __DIR__.'/processes/database/get/user_statistics.php';
     require_once __DIR__.'/processes/database/update/articles.php';
     require_once __DIR__.'/processes/database/update/notification.php';

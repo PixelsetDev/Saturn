@@ -25,6 +25,12 @@ if(isset($_POST['save'])) {
     } else {
         update_user_settings_notifications_email($user,'0');
     }
+
+    if(isset($_POST['privacyAbbreviateSurname'])) {
+        update_user_settings_privacy_abbreviate_surname($user,'1');
+    } else {
+        update_user_settings_privacy_abbreviate_surname($user,'0');
+    }
 }
 
 ?><!DOCTYPE html>
@@ -50,7 +56,11 @@ if(isset($_POST['save'])) {
                     <div class="flex flex-wrap items-center w-3/4">
                         <div class="w-3/4 flex flex-wrap">
                             <div>
-                                <input type="text" id="fullname" name="fullname" value="<?php echo get_user_fullname($user); ?>" class="flex-grow self-center text-white font-extrabold tracking-tight text-5xl md:text-6xl w-3/4 bg-gray-100 bg-opacity-50" />
+                                <input type="text" id="fullname" name="fullname" value="<?php
+                                $query = 'SELECT `first_name`, `last_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$user;
+                                $rs = mysqli_query($conn, $query);
+                                $row = mysqli_fetch_assoc($rs); echo $row['first_name'].' '.$row['last_name'];
+                                ?>" class="flex-grow self-center text-white font-extrabold tracking-tight text-5xl md:text-6xl w-3/4 bg-gray-100 bg-opacity-50" />
                                 <span class="self-center text-white font-extrabold tracking-tight text-5xl md:text-6xl w-3/4 bg-transparent">
                                     <i class="fas fa-pencil-alt text-white" aria-hidden="true"></i>
                                 </span>
@@ -109,17 +119,18 @@ if(isset($_POST['save'])) {
                         <span class="self-center">Email Notifications</span>
                     </div>
                 </div>
-                <div name="notifications">
+                <div name="security">
                     <h1 class="text-xl mt-4">Security</h1>
-                    <?php
-                    if(get_user_settings_notifications_email($user)=='0' && get_user_settings_notifications_saturn($user)=='0') {
-                        alert('INFO','You must have at least one notification preference enabled. We have enabled Saturn notifications to ensure you stay up to date with relevant information regarding your account.');
-                        update_user_settings_notifications_saturn($user,'1');
-                    }
-                    ?>
                     <div class="flex space-x-2 mt-2">
                         <input type="checkbox" name="security2FA" id="security2FA" value="true" class="self-center"<?php if (false) { echo ' checked'; } ?> disabled>
                         <span class="self-center">Two Factor Authentication</span>
+                    </div>
+                </div>
+                <div name="privacy">
+                    <h1 class="text-xl mt-4">Privacy</h1>
+                    <div class="flex space-x-2 mt-2">
+                        <input type="checkbox" name="privacyAbbreviateSurname" id="privacyAbbreviateSurname" value="true" class="self-center"<?php if (get_user_settings_privacy_abbreviate_surname($user)) { echo ' checked'; } ?>>
+                        <span class="self-center">Abbreviate Surname</span>
                     </div>
                 </div>
             </div>

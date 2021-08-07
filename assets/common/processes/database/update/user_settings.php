@@ -22,3 +22,15 @@
 
         return mysqli_query($conn, $query);
     }
+
+    function update_user_settings_privacy_abbreviate_surname($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users_settings` SET `privacy_abbreviate_surname` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
