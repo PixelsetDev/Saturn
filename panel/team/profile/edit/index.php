@@ -14,6 +14,17 @@ if(isset($_POST['save'])) {
     update_user_website($user,$link);
     update_user_firstname($user,$namearray[0]);
     update_user_lastname($user,$namearray[1]);
+
+    if(isset($_POST['notificationsSaturn'])) {
+        update_user_settings_notifications_saturn($user,'1');
+    } else {
+        update_user_settings_notifications_saturn($user,'0');
+    }
+    if(isset($_POST['notificationsEmail'])) {
+        update_user_settings_notifications_email($user,'1');
+    } else {
+        update_user_settings_notifications_email($user,'0');
+    }
 }
 
 ?><!DOCTYPE html>
@@ -75,13 +86,19 @@ if(isset($_POST['save'])) {
             </div>
             <div class="border-b border-gray-300 my-6"></div>
             <h1 class="text-2xl">Your Preferences</h1>
-            <h1 class="text-xl">Notifications</h1>
-            <div class="flex space-x-2">
-                <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" class="self-center" checked disabled>
+            <h1 class="text-xl mt-4">Notifications</h1>
+            <?php
+            if(get_user_settings_notifications_email($user)=='0' && get_user_settings_notifications_saturn($user)=='0') {
+                alert('INFO','You must have at least one notification preference enabled. We have enabled Saturn notifications to ensure you stay up to date with relevant information regarding your account.');
+                update_user_settings_notifications_saturn($user,'1');
+            }
+            ?>
+            <div class="flex space-x-2 mt-2">
+                <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" value="true" class="self-center"<?php if (get_user_settings_notifications_saturn($user)) { echo ' checked'; } ?>>
                 <span class="self-center">Saturn Notifications</span>
             </div>
             <div class="flex space-x-2">
-                <input type="checkbox" name="notificationsEmail" id="notificationsEmail" class="self-center">
+                <input type="checkbox" name="notificationsEmail" id="notificationsEmail" value="true" class="self-center"<?php if (get_user_settings_notifications_email($user)) { echo ' checked'; } ?>>
                 <span class="self-center">Email Notifications</span>
             </div>
         </form>
