@@ -1,5 +1,53 @@
 <?php
 
+    function update_user_firstname($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `first_name` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
+
+    function update_user_lastname($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `last_name` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
+
+    function update_user_bio($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `bio` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
+
+    function update_user_website($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `website` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
+
     function update_user_edits($id, $data)
     {
         $id = checkInput('DEFAULT', $id);
