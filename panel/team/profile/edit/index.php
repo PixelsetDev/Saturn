@@ -85,21 +85,43 @@ if(isset($_POST['save'])) {
                 </div>
             </div>
             <div class="border-b border-gray-300 my-6"></div>
-            <h1 class="text-2xl">Your Preferences</h1>
-            <h1 class="text-xl mt-4">Notifications</h1>
-            <?php
-            if(get_user_settings_notifications_email($user)=='0' && get_user_settings_notifications_saturn($user)=='0') {
-                alert('INFO','You must have at least one notification preference enabled. We have enabled Saturn notifications to ensure you stay up to date with relevant information regarding your account.');
-                update_user_settings_notifications_saturn($user,'1');
-            }
-            ?>
-            <div class="flex space-x-2 mt-2">
-                <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" value="true" class="self-center"<?php if (get_user_settings_notifications_saturn($user)) { echo ' checked'; } ?>>
-                <span class="self-center">Saturn Notifications</span>
+            <div class="flex">
+                <h1 class="text-2xl">Your Preferences</h1>
+                <?php if ($user == $_SESSION['id']) {
+                    echo'<input type="submit" id="save" name="save" value="Save" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 text-white bg-transparent font-semibold">';
+                } ?>
             </div>
-            <div class="flex space-x-2">
-                <input type="checkbox" name="notificationsEmail" id="notificationsEmail" value="true" class="self-center"<?php if (get_user_settings_notifications_email($user)) { echo ' checked'; } ?>>
-                <span class="self-center">Email Notifications</span>
+            <div class="flex flex-wrap space-x-16">
+                <div name="notifications">
+                    <h1 class="text-xl mt-4">Notifications</h1>
+                    <?php
+                    if(get_user_settings_notifications_email($user)=='0' && get_user_settings_notifications_saturn($user)=='0') {
+                        alert('INFO','You must have at least one notification preference enabled. We have enabled Saturn notifications to ensure you stay up to date with relevant information regarding your account.');
+                        update_user_settings_notifications_saturn($user,'1');
+                    }
+                    ?>
+                    <div class="flex space-x-2 mt-2">
+                        <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" value="true" class="self-center"<?php if (get_user_settings_notifications_saturn($user)) { echo ' checked'; } ?>>
+                        <span class="self-center">Saturn Notifications</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <input type="checkbox" name="notificationsEmail" id="notificationsEmail" value="true" class="self-center"<?php if (get_user_settings_notifications_email($user)) { echo ' checked'; } ?>>
+                        <span class="self-center">Email Notifications</span>
+                    </div>
+                </div>
+                <div name="notifications">
+                    <h1 class="text-xl mt-4">Security</h1>
+                    <?php
+                    if(get_user_settings_notifications_email($user)=='0' && get_user_settings_notifications_saturn($user)=='0') {
+                        alert('INFO','You must have at least one notification preference enabled. We have enabled Saturn notifications to ensure you stay up to date with relevant information regarding your account.');
+                        update_user_settings_notifications_saturn($user,'1');
+                    }
+                    ?>
+                    <div class="flex space-x-2 mt-2">
+                        <input type="checkbox" name="security2FA" id="security2FA" value="true" class="self-center"<?php if (false) { echo ' checked'; } ?> disabled>
+                        <span class="self-center">Two Factor Authentication</span>
+                    </div>
+                </div>
             </div>
         </form>
     </body>
