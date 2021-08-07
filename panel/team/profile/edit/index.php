@@ -128,9 +128,16 @@ if(isset($_POST['save'])) {
                 </div>
                 <div name="privacy">
                     <h1 class="text-xl mt-4">Privacy</h1>
-                    <div class="flex space-x-2 mt-2">
-                        <input type="checkbox" name="privacyAbbreviateSurname" id="privacyAbbreviateSurname" value="true" class="self-center"<?php if (get_user_settings_privacy_abbreviate_surname($user)) { echo ' checked'; } ?>>
-                        <span class="self-center">Abbreviate Surname</span>
+                    <div class="flex space-x-2 mt-2" x-data="{ tooltip: false }">
+                        <input x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" type="checkbox" name="privacyAbbreviateSurname" id="privacyAbbreviateSurname" value="true" class="self-center"<?php if (get_user_settings_privacy_abbreviate_surname($user)) { echo ' checked'; } ?>>
+                        <span class="self-center flex space-x-2 relative">
+                            <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">Abbreviate Surname</span>
+                            <div class="mx-1 w-18" x-cloak x-show.transition.origin.top="tooltip">
+                                <div class="bg-black text-white text-xs rounded py-1 px-2 right-0 bottom-full opacity-75">
+                                    This setting will ask Saturn to only show the first letter of your last name.
+                                </div>
+                            </div>
+                        </span>
                     </div>
                 </div>
             </div>
