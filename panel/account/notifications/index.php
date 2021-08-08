@@ -1,8 +1,17 @@
-<?php session_start(); ?><!DOCTYPE html>
+<?php
+session_start();
+ob_start();
+include_once __DIR__.'/../../../assets/common/global_private.php';
+if (isset($_GET['dismissNotif'])) {
+    $nid = checkInput('DEFAULT', $_GET['dismissNotif']);
+    update_notification_dismiss($nid);
+    header('Location: '.CONFIG_INSTALL_URL.'/panel/account/notifications');
+}
+ob_end_flush();
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../../assets/common/global_private.php';
             include_once __DIR__.'/../../../assets/common/panel/vendors.php';
             include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
@@ -11,11 +20,6 @@
     <body class="mb-8">
         <?php
             include_once __DIR__.'/../../../assets/common/panel/navigation.php';
-            if (isset($_GET['dismissNotif'])) {
-                $nid = checkInput('DEFAULT', $_GET['dismissNotif']);
-                update_notification_dismiss($nid);
-                header('Location: '.CONFIG_INSTALL_URL.'/panel/account/notifications');
-            }
         ?>
 
         <header class="bg-white shadow">
@@ -25,23 +29,87 @@
         </header>
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 relative py-6">
+            <h1 class="text-2xl leading-tight text-gray-900 my-8">New Notifications</h1>
             <?php
-                $notifCount = get_notification_count($_SESSION['id']);
-                if ($notifCount > '0') {
-                    echo'<a href="'.CONFIG_INSTALL_URL.'/panel/account/notifications/?dismissNotif='.get_notification_id($_SESSION['id']).'" class="m-1 bg-white rounded-lg border-gray-300 border p-3 shadow-lg max-w-sm md:max-w-xl max-h-20 overflow-y-scroll absolute top-0 left-0">
-                <div class="flex flex-row">
-                    <div class="animate-pulse px-2 bg-blue-500 rounded-full w-6 h-6 text-white text-center">
-                        <i class="fas fa-info"></i>
+                $result = $conn->query("SELECT id FROM `".DATABASE_PREFIX."notifications` WHERE `dismissed`='0' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.";");
+                if($result->num_rows>0) {
+                    while ($row = $result->fetch_object()) {
+                        foreach ($row as $r){
+                            ?>
+            <div class="flex space-x-4 mb-8">
+                <?php
+                if(strpos(get_notification_title($r),'not Approved') !== false) {
+                    ?>
+                    <div class="bg-red-100 rounded-full w-20 h-20">
+                        <center><i class="far fa-thumbs-down fa-2x my-6 text-red-500 text-center"></i></center>
                     </div>
-                    <div class="ml-2 mr-6">
-                        <div class="flex w-full"><span class="font-semibold w-11/12">'.get_notification_title($_SESSION['id']).'</span><span class="w-1/12 text-red-500">x</span></div>
-                        <span class="block text-gray-500">'.get_notification_content($_SESSION['id']).'</span>
+                    <?php
+                } else if(strpos(get_notification_title($r),'Approved') !== false) {
+                    ?>
+                    <div class="bg-green-100 rounded-full w-20 h-20">
+                        <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center"></i></center>
                     </div>
-                </div>
-            </a>';
+                    <?php
                 } else {
-                    echo'<p>You don\'t have any notifications.</p>';
+                    ?>
+                    <div class="bg-gray-100 rounded-full w-20 h-20">
+                        <center><i class="far fa-bell fa-2x my-6 text-gray-500 text-center"></i></center>
+                    </div>
+                    <?php
                 }
+                ?>
+                <div>
+                    <h2 class="text-xl"><?php echo get_notification_title($r); ?></h2>
+                    <p><?php echo get_notification_content($r);?></p>
+                    <p class="text-xs"><?php echo get_notification_timestamp($r);?></p>
+                    <hr>
+                    <a class="underline hover:text-blue-500 transition duration-200" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/notifications/?dismissNotif=<?php echo $r;?>">Dismiss</a>
+                </div>
+            </div>
+            <?php
+                        }
+                    }
+                } else { echo 'None found.'; }
+            ?>
+            <h1 class="text-2xl leading-tight text-gray-900 my-8">Dismissed Notifications</h1>
+            <?php
+                $rs = $conn->query("SELECT id FROM `".DATABASE_PREFIX."notifications` WHERE `dismissed`='1' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.";");
+                if($rs->num_rows>0){
+                while ($row2 = $rs->fetch_object()) {
+                    foreach ($row2 as $r2){
+                        ?>
+                        <div class="flex space-x-4 mb-8">
+                            <?php
+                                if(strpos(get_notification_title($r2),'not Approved') !== false) {
+                            ?>
+                            <div class="bg-red-100 rounded-full w-20 h-20">
+                                <center><i class="far fa-thumbs-down fa-2x my-6 text-red-500 text-center"></i></center>
+                            </div>
+                            <?php
+                                } else if(strpos(get_notification_title($r2),'Approved') !== false) {
+                            ?>
+                            <div class="bg-green-100 rounded-full w-20 h-20">
+                                <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center"></i></center>
+                            </div>
+                            <?php
+                                } else {
+                            ?>
+                            <div class="bg-gray-100 rounded-full w-20 h-20">
+                                <center><i class="far fa-bell fa-2x my-6 text-gray-500 text-center"></i></center>
+                            </div>
+                            <?php
+                                }
+                            ?>
+                            <div>
+                                <h2 class="text-xl"><?php echo get_notification_title($r2); ?></h2>
+                                <p><?php echo get_notification_content($r2);?></p>
+                                <p class="text-xs"><?php echo get_notification_timestamp($r2);?></p>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                    }
+                } else { echo 'None found.'; }
             ?>
         </div>
     </body>
