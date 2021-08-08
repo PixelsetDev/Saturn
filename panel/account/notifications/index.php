@@ -31,27 +31,27 @@ ob_end_flush();
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 relative py-6">
             <h1 class="text-2xl leading-tight text-gray-900 my-8">New Notifications</h1>
             <?php
-                $result = $conn->query("SELECT id FROM `".DATABASE_PREFIX."notifications` WHERE `dismissed`='0' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.";");
-                if($result->num_rows>0) {
+                $result = $conn->query('SELECT id FROM `'.DATABASE_PREFIX."notifications` WHERE `dismissed`='0' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.';');
+                if ($result->num_rows > 0) {
                     while ($row = $result->fetch_object()) {
-                        foreach ($row as $r){
+                        foreach ($row as $r) {
                             ?>
             <div class="flex space-x-4 mb-8">
                 <?php
-                if(strpos(get_notification_title($r),'not Approved') !== false) {
+                if (strpos(get_notification_title($r), 'not Approved') !== false) {
                     ?>
                     <div class="bg-red-100 rounded-full w-20 h-20">
                         <center><i class="far fa-thumbs-down fa-2x my-6 text-red-500 text-center"></i></center>
                     </div>
                     <?php
-                } else if(strpos(get_notification_title($r),'Approved') !== false) {
+                } elseif (strpos(get_notification_title($r), 'Approved') !== false) {
                     ?>
                     <div class="bg-green-100 rounded-full w-20 h-20">
                         <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center"></i></center>
                     </div>
                 <?php
-                } else if(strpos(get_notification_title($r),'role') !== false) {
-                ?>
+                } elseif (strpos(get_notification_title($r), 'role') !== false) {
+                    ?>
                     <div class="bg-gray-100 rounded-full w-20 h-20">
                         <center><i class="far fa-address-card fa-2x my-6 text-gray-500 text-center"></i></center>
                     </div>
@@ -62,66 +62,68 @@ ob_end_flush();
                         <center><i class="far fa-bell fa-2x my-6 text-gray-500 text-center"></i></center>
                     </div>
                     <?php
-                }
-                ?>
+                } ?>
                 <div>
                     <h2 class="text-xl"><?php echo get_notification_title($r); ?></h2>
-                    <p><?php echo get_notification_content($r);?></p>
-                    <p class="text-xs"><?php echo get_notification_timestamp($r);?></p>
+                    <p><?php echo get_notification_content($r); ?></p>
+                    <p class="text-xs"><?php echo get_notification_timestamp($r); ?></p>
                     <hr>
-                    <a class="underline hover:text-blue-500 transition duration-200" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/notifications/?dismissNotif=<?php echo $r;?>">Dismiss</a>
+                    <a class="underline hover:text-blue-500 transition duration-200" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/notifications/?dismissNotif=<?php echo $r; ?>">Dismiss</a>
                 </div>
             </div>
             <?php
                         }
                     }
-                } else { echo 'None found.'; }
+                } else {
+                    echo 'None found.';
+                }
             ?>
             <h1 class="text-2xl leading-tight text-gray-900 my-8">Dismissed Notifications</h1>
             <?php
-                $rs = $conn->query("SELECT id FROM `".DATABASE_PREFIX."notifications` WHERE `dismissed`='1' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.";");
-                if($rs->num_rows>0){
-                while ($row2 = $rs->fetch_object()) {
-                    foreach ($row2 as $r2){
-                        ?>
+                $rs = $conn->query('SELECT id FROM `'.DATABASE_PREFIX."notifications` WHERE `dismissed`='1' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.';');
+                if ($rs->num_rows > 0) {
+                    while ($row2 = $rs->fetch_object()) {
+                        foreach ($row2 as $r2) {
+                            ?>
                         <div class="flex space-x-4 mb-8">
                             <?php
-                                if(strpos(get_notification_title($r2),'not Approved') !== false) {
-                            ?>
+                                if (strpos(get_notification_title($r2), 'not Approved') !== false) {
+                                    ?>
                             <div class="bg-red-100 rounded-full w-20 h-20">
                                 <center><i class="far fa-thumbs-down fa-2x my-6 text-red-500 text-center"></i></center>
                             </div>
                             <?php
-                                } else if(strpos(get_notification_title($r2),'Approved') !== false) {
-                            ?>
+                                } elseif (strpos(get_notification_title($r2), 'Approved') !== false) {
+                                    ?>
                             <div class="bg-green-100 rounded-full w-20 h-20">
                                 <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center"></i></center>
                             </div>
                             <?php
-                                } else if(strpos(get_notification_title($r2),'role') !== false) {
-                            ?>
+                                } elseif (strpos(get_notification_title($r2), 'role') !== false) {
+                                    ?>
                             <div class="bg-gray-100 rounded-full w-20 h-20">
                                 <center><i class="far fa-address-card fa-2x my-6 text-gray-500 text-center"></i></center>
                             </div>
                             <?php
                                 } else {
-                            ?>
+                                    ?>
                             <div class="bg-gray-100 rounded-full w-20 h-20">
                                 <center><i class="far fa-bell fa-2x my-6 text-gray-500 text-center"></i></center>
                             </div>
                             <?php
-                                }
-                            ?>
+                                } ?>
                             <div>
                                 <h2 class="text-xl"><?php echo get_notification_title($r2); ?></h2>
-                                <p><?php echo get_notification_content($r2);?></p>
-                                <p class="text-xs"><?php echo get_notification_timestamp($r2);?></p>
+                                <p><?php echo get_notification_content($r2); ?></p>
+                                <p class="text-xs"><?php echo get_notification_timestamp($r2); ?></p>
                             </div>
                         </div>
                         <?php
                         }
                     }
-                } else { echo 'None found.'; }
+                } else {
+                    echo 'None found.';
+                }
             ?>
         </div>
     </body>
