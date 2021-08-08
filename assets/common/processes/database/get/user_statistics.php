@@ -1,4 +1,5 @@
 <?php
+
     function get_user_statistics_views($id)
     {
         $id = checkInput('DEFAULT', $id);

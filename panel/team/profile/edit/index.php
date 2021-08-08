@@ -3,33 +3,33 @@
 include_once __DIR__.'/../../../../assets/common/global_private.php';
 $user = $_SESSION['id'];
 
-if(isset($_POST['save'])) {
+if (isset($_POST['save'])) {
     $bio = str_ireplace('\\', '', $_POST['bio']); // Fixes issue of many backwards slashes appearing.
     $bio = checkInput('DEFAULT', $bio);
     $link = checkInput('DEFAULT', $_POST['link']);
     $fullname = checkInput('DEFAULT', $_POST['fullname']);
     $namearray = explode(' ', $fullname, 2);
 
-    update_user_bio($user,$bio);
-    update_user_website($user,$link);
-    update_user_firstname($user,$namearray[0]);
-    update_user_lastname($user,$namearray[1]);
+    update_user_bio($user, $bio);
+    update_user_website($user, $link);
+    update_user_firstname($user, $namearray[0]);
+    update_user_lastname($user, $namearray[1]);
 
-    if(isset($_POST['notificationsSaturn'])) {
-        update_user_settings_notifications_saturn($user,'1');
+    if (isset($_POST['notificationsSaturn'])) {
+        update_user_settings_notifications_saturn($user, '1');
     } else {
-        update_user_settings_notifications_saturn($user,'0');
+        update_user_settings_notifications_saturn($user, '0');
     }
-    if(isset($_POST['notificationsEmail'])) {
-        update_user_settings_notifications_email($user,'1');
+    if (isset($_POST['notificationsEmail'])) {
+        update_user_settings_notifications_email($user, '1');
     } else {
-        update_user_settings_notifications_email($user,'0');
+        update_user_settings_notifications_email($user, '0');
     }
 
-    if(isset($_POST['privacyAbbreviateSurname'])) {
-        update_user_settings_privacy_abbreviate_surname($user,'1');
+    if (isset($_POST['privacyAbbreviateSurname'])) {
+        update_user_settings_privacy_abbreviate_surname($user, '1');
     } else {
-        update_user_settings_privacy_abbreviate_surname($user,'0');
+        update_user_settings_privacy_abbreviate_surname($user, '0');
     }
 }
 
@@ -67,8 +67,8 @@ if(isset($_POST['save'])) {
                             </div>
                         </div>
                         <?php if ($user == $_SESSION['id']) {
-            echo'<input type="submit" id="save" name="save" value="Save Profile" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 text-white bg-transparent font-semibold">';
-        } ?>
+                                    echo'<input type="submit" id="save" name="save" value="Save Profile" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 text-white bg-transparent font-semibold">';
+                                } ?>
                     </div>
                 </div>
             </div>
@@ -82,10 +82,10 @@ if(isset($_POST['save'])) {
                             <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_edits($user); ?> </span> Edits</span>
                         </li>
                         <?php if (get_user_roleID($user) > 2 && get_user_roleID($_SESSION['id']) > 2) {
-            echo '<li class="mr-4">
+                                    echo '<li class="mr-4">
                                     <span class="block text-base flex"><span class="font-bold mr-2">'.get_user_statistics_approvals($user).' </span> Approvals</span>
                                 </li>';
-        } ?>
+                                } ?>
                     </ul>
                     <br>
                     <div class="">
@@ -98,38 +98,46 @@ if(isset($_POST['save'])) {
             <div class="flex">
                 <h1 class="text-2xl">Your Preferences</h1>
                 <?php if ($user == $_SESSION['id']) {
-                    echo'<input type="submit" id="save" name="save" value="Save" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 text-white bg-transparent font-semibold">';
-                } ?>
+                                    echo'<input type="submit" id="save" name="save" value="Save" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 text-white bg-transparent font-semibold">';
+                                } ?>
             </div>
             <div class="flex flex-wrap space-x-16">
                 <div name="notifications">
                     <h1 class="text-xl mt-4">Notifications</h1>
                     <?php
-                    if(get_user_settings_notifications_email($user)=='0' && get_user_settings_notifications_saturn($user)=='0') {
-                        alert('INFO','You must have at least one notification preference enabled. We have enabled Saturn notifications to ensure you stay up to date with relevant information regarding your account.');
-                        update_user_settings_notifications_saturn($user,'1');
+                    if (get_user_settings_notifications_email($user) == '0' && get_user_settings_notifications_saturn($user) == '0') {
+                        alert('INFO', 'You must have at least one notification preference enabled. We have enabled Saturn notifications to ensure you stay up to date with relevant information regarding your account.');
+                        update_user_settings_notifications_saturn($user, '1');
                     }
                     ?>
                     <div class="flex space-x-2 mt-2">
-                        <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" value="true" class="self-center"<?php if (get_user_settings_notifications_saturn($user)) { echo ' checked'; } ?>>
+                        <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" value="true" class="self-center"<?php if (get_user_settings_notifications_saturn($user)) {
+                        echo ' checked';
+                    } ?>>
                         <span class="self-center">Saturn Notifications</span>
                     </div>
                     <div class="flex space-x-2">
-                        <input type="checkbox" name="notificationsEmail" id="notificationsEmail" value="true" class="self-center"<?php if (get_user_settings_notifications_email($user)) { echo ' checked'; } ?>>
+                        <input type="checkbox" name="notificationsEmail" id="notificationsEmail" value="true" class="self-center"<?php if (get_user_settings_notifications_email($user)) {
+                        echo ' checked';
+                    } ?>>
                         <span class="self-center">Email Notifications</span>
                     </div>
                 </div>
                 <div name="security">
                     <h1 class="text-xl mt-4">Security</h1>
                     <div class="flex space-x-2 mt-2">
-                        <input type="checkbox" name="security2FA" id="security2FA" value="true" class="self-center"<?php if (false) { echo ' checked'; } ?> disabled>
+                        <input type="checkbox" name="security2FA" id="security2FA" value="true" class="self-center"<?php if (false) {
+                        echo ' checked';
+                    } ?> disabled>
                         <span class="self-center">Two Factor Authentication</span>
                     </div>
                 </div>
                 <div name="privacy">
                     <h1 class="text-xl mt-4">Privacy</h1>
                     <div class="flex space-x-2 mt-2" x-data="{ tooltip: false }">
-                        <input x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" type="checkbox" name="privacyAbbreviateSurname" id="privacyAbbreviateSurname" value="true" class="self-center"<?php if (get_user_settings_privacy_abbreviate_surname($user)) { echo ' checked'; } ?>>
+                        <input x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" type="checkbox" name="privacyAbbreviateSurname" id="privacyAbbreviateSurname" value="true" class="self-center"<?php if (get_user_settings_privacy_abbreviate_surname($user)) {
+                        echo ' checked';
+                    } ?>>
                         <span class="self-center flex space-x-2 relative">
                             <span x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false">Abbreviate Surname</span>
                             <div class="mx-1 w-18" x-cloak x-show.transition.origin.top="tooltip">
