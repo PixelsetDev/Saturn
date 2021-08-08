@@ -51,7 +51,8 @@
 
         if (get_user_settings_privacy_abbreviate_surname($id)) {
             $lastname = $row['last_name'];
-            return substr($lastname,0);
+
+            return substr($lastname, 0);
         } else {
             return $row['last_name'];
         }
@@ -69,7 +70,8 @@
 
         if (get_user_settings_privacy_abbreviate_surname($id)) {
             $lastname = $row['last_name'];
-            $lastname = substr($lastname,0,1);
+            $lastname = substr($lastname, 0, 1);
+
             return $row['first_name'].' '.$lastname;
         } else {
             return $row['first_name'].' '.$row['last_name'];
