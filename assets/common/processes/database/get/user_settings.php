@@ -1,4 +1,5 @@
 <?php
+
     function get_user_settings_notifications_saturn($id)
     {
         $id = checkInput('DEFAULT', $id);
