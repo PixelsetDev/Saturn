@@ -279,9 +279,9 @@
 
         if ($saturn == true && $email == false) {
             return '1';
-        } else if ($saturn == false && $email == true) {
+        } elseif ($saturn == false && $email == true) {
             return '2';
-        } else if ($saturn == true && $email == true) {
+        } elseif ($saturn == true && $email == true) {
             return '3';
         }
     }
