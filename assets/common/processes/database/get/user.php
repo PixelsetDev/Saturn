@@ -274,12 +274,14 @@
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        $saturn = get_user_settings_notifications_saturn($id);
+        $email = get_user_settings_notifications_email($id);
 
-        $query = 'SELECT `email_notifications` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
-
-        return $row['last_login_ip'];
+        if ($saturn == true && $email == false) {
+            return '1';
+        } else if ($saturn == false && $email == true) {
+            return '2';
+        } else if ($saturn == true && $email == true) {
+            return '3';
+        }
     }
