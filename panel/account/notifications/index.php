@@ -49,6 +49,12 @@ ob_end_flush();
                     <div class="bg-green-100 rounded-full w-20 h-20">
                         <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center"></i></center>
                     </div>
+                <?php
+                } else if(strpos(get_notification_title($r),'role') !== false) {
+                ?>
+                    <div class="bg-gray-100 rounded-full w-20 h-20">
+                        <center><i class="far fa-address-card fa-2x my-6 text-gray-500 text-center"></i></center>
+                    </div>
                     <?php
                 } else {
                     ?>
@@ -90,6 +96,12 @@ ob_end_flush();
                             ?>
                             <div class="bg-green-100 rounded-full w-20 h-20">
                                 <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center"></i></center>
+                            </div>
+                            <?php
+                                } else if(strpos(get_notification_title($r2),'role') !== false) {
+                            ?>
+                            <div class="bg-gray-100 rounded-full w-20 h-20">
+                                <center><i class="far fa-address-card fa-2x my-6 text-gray-500 text-center"></i></center>
                             </div>
                             <?php
                                 } else {

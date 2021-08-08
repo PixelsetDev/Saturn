@@ -7,12 +7,17 @@
         $userid = checkInput('DEFAULT', $_POST['userid']);
         $role = checkInput('DEFAULT', $_POST['role']);
         if ($userid != $_SESSION['id']) {
-            if (update_user_role_id($userid, $role)) {
-                $message = get_user_fullname($_SESSION['id']).' changed '.get_user_fullname($userid).'\'s role to '.get_user_role($userid).'.';
-                log_file('SATURN][User Management', $message);
-                $successMsg = get_user_fullname($userid).'\'s role has been changed to '.get_user_role($userid).'.';
-            } else {
-                $errorMsg = 'Unable to update user, an error has occurred.';
+            $prevRole = get_user_roleID($userid);
+            $prevRoleName = get_user_role($userid);
+            if ($prevRole != $role) {
+                if (update_user_role_id($userid, $role)) {
+                    $message = get_user_fullname($_SESSION['id']).' changed '.get_user_fullname($userid).'\'s role to '.get_user_role($userid).'.';
+                    log_file('SATURN][User Management', $message);
+                    create_notification($userid,'Your role has been updated.','Your role has been updated. Previously you were '.$prevRoleName.', now you are '.get_user_role($userid).'.');
+                    $successMsg = get_user_fullname($userid).'\'s role has been changed to '.get_user_role($userid).'.';
+                } else {
+                    $errorMsg = 'Unable to update user, an error has occurred.';
+                }
             }
         } else {
             $errorMsg = 'To prevent accidental locking-out of accounts, you\'re not currently able to change your own role, sorry for any inconvenience caused. To change information such as your display name, <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/edit" class="text-black underline">please click here</a>.';
