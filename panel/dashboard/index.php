@@ -164,7 +164,7 @@ session_start();
                             </p>
                         </div>
                     </a>
-                    <?php echo display_modal('INFO', 'Approvals', 'Are you sure you want to deny all changes to this page?<br> This action cannot be undone.', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                    <?php echo display_modal('INFO', 'Approvals', 'Please select a format to view approvals for.', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                     <a href="'.CONFIG_INSTALL_URL.'/panel/articles/approvals" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 md:py-1 md:text-rg md:px-10">Article Approvals</a>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a href="'.CONFIG_INSTALL_URL.'/panel/pages/approvals" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 md:py-1 md:text-rg md:px-10">Page Approvals</a>
@@ -174,7 +174,7 @@ session_start();
             </div>
             <div class="flex flex-wrap space-x-4">
                 <?php
-                    $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY edits;');
+                    $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statisticcs` WHERE 1 ORDER BY edits;');
                     $row = mysqli_fetch_row($result);
                     $uid = $row[0];
                 ?>
@@ -190,7 +190,7 @@ session_start();
                     <div class="flex space-x-4">
                         <?php
                             $x = 0;
-                            $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY edits DESC;');
+                            $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits DESC;');
                             $row = mysqli_fetch_row($result);
                             $uid = $row[0];
                             while ($uid != null && $x != '4') {
@@ -229,7 +229,7 @@ session_start();
                     </div>
                 </div><?php
                 if (get_user_roleID($id) > '2') {
-                    $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY edits;');
+                    $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits;');
                     $row = mysqli_fetch_row($result);
                     $uid = $row[0];
                     echo '<div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-gray-800 relative overflow-hidden mt-4">
@@ -243,7 +243,7 @@ session_start();
                     </div>
                     <div class="flex space-x-4">';
                     $x = 0;
-                    $result = mysqli_query($conn, 'SELECT `id`, `approvals` FROM `'.DATABASE_PREFIX.'users` WHERE 1 ORDER BY approvals DESC;');
+                    $result = mysqli_query($conn, 'SELECT `id`, `approvals` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY approvals DESC;');
                     $row = mysqli_fetch_row($result);
                     $uid = $row[0];
                     while ($uid != null && $x != '4') {
