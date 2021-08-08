@@ -41,3 +41,17 @@
 
         return $row['privacy_abbreviate_surname'];
     }
+
+    function get_user_settings_security_2fa($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `security_2fa` FROM `'.DATABASE_PREFIX.'users_settings` WHERE `id` = '.$id;
+
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['security_2fa'];
+    }

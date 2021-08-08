@@ -31,6 +31,12 @@ if (isset($_POST['save'])) {
     } else {
         update_user_settings_privacy_abbreviate_surname($user, '0');
     }
+
+    if (isset($_POST['security2FA'])) {
+        update_user_settings_security_2fa($user, '1');
+    } else {
+        update_user_settings_security_2fa($user, '0');
+    }
 }
 
 ?><!DOCTYPE html>
@@ -126,9 +132,9 @@ if (isset($_POST['save'])) {
                 <div name="security">
                     <h1 class="text-xl mt-4">Security</h1>
                     <div class="flex space-x-2 mt-2">
-                        <input type="checkbox" name="security2FA" id="security2FA" value="true" class="self-center"<?php if (false) {
+                        <input type="checkbox" name="security2FA" id="security2FA" value="true" class="self-center"<?php if (get_user_settings_security_2fa($user)) {
                         echo ' checked';
-                    } ?> disabled>
+                    } ?>>
                         <span class="self-center">Two Factor Authentication</span>
                     </div>
                 </div>

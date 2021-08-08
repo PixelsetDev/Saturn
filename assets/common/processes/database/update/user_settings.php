@@ -35,3 +35,15 @@
 
         return mysqli_query($conn, $query);
     }
+
+    function update_user_settings_security_2fa($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users_settings` SET `security_2fa` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
