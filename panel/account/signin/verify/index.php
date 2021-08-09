@@ -51,7 +51,7 @@
         update_user_auth_code($id, $code);
         $email = get_user_email($id);
         send_email($email, CONFIG_SITE_NAME.' - Saturn Verification Code', 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.');
-        if(isset($_GET['type'])) {
+        if (isset($_GET['type'])) {
             if ($_GET['type'] == '1') {
                 $infoMsg = "We've detected that you're attempting to sign in from a new location. To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
             } else {
