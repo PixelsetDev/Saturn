@@ -17,11 +17,12 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="w-full h-auto bg-gray-100 py-1 px-4 mb-4">
-            <img src="https://service.lmwn.co.uk/brandkit/saturn/logo.png" class="w-1/2" alt="Saturn">
+        <div class="w-full h-auto bg-gray-100 py-2 px-4 mb-4 flex">
+            <img src="https://service.lmwn.co.uk/brandkit/saturn/logo.png" class="w-1/4 h-auto float-left" alt="Saturn">
+            <span class="flex-grow text-right self-center text-4xl">'.CONFIG_SITE_NAME.'</span>
         </div>
-        <div>'.$message.'</div>
-        <div class="mt-20 text-xs italic">This message was sent because you have an account registered with a Saturn installation at "'.CONFIG_SITE_NAME.'". You may be able to opt-out of these emails in your user settings.</div>
+        <div class="py-2 px-4">'.$message.'</div>
+        <div class="py-20 px-4 text-xs italic">This message was sent because you have an account registered with a Saturn installation at "'.CONFIG_SITE_NAME.'". You may be able to opt-out of these emails in your user settings.</div>
     </body>
 </html>';
             mail($to, $subject, $contents, $headers);
