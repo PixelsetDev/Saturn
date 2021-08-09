@@ -1,11 +1,14 @@
 <?php
-session_start();
-?><!DOCTYPE html>
+    session_start();
+    ob_start();
+    include_once __DIR__.'/../../assets/common/global_private.php';
+    include_once __DIR__.'/../../assets/common/panel/vendors.php';
+    if($_SESSION['2FA_verified'] == true OR get_user_settings_security_2fa($_SESSION['id']) == false) {
+?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../assets/common/global_private.php';
-            include_once __DIR__.'/../../assets/common/panel/vendors.php';
             include_once __DIR__.'/../../assets/common/panel/theme.php';
             $id = $_SESSION['id'];
         ?>
@@ -287,3 +290,9 @@ session_start();
         </div>
     </body>
 </html>
+<?php
+    } else {
+        header('Location: '.CONFIG_INSTALL_URL.'/panel/account/signin/verify?type=2&username='.get_user_username($_SESSION['id']));
+    }
+    ob_end_flush();
+?>

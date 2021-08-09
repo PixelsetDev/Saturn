@@ -15,26 +15,37 @@
             update_user_auth_code($id, '');
 
             if ($_POST['code'] == $dbCode) {
-                $sql = 'SELECT * FROM `'.DATABASE_PREFIX."users` WHERE `email` = '".$username."' OR `username` = '".$username."';";
-                $rs = mysqli_query($conn, $sql);
-                $getUserRow = mysqli_fetch_assoc($rs);
+                if(isset($_GET['type'])) {
+                    if ($_GET['type'] == '1') {
+                        $sql = 'SELECT * FROM `' . DATABASE_PREFIX . "users` WHERE `email` = '" . $username . "' OR `username` = '" . $username . "';";
+                        $rs = mysqli_query($conn, $sql);
+                        $getUserRow = mysqli_fetch_assoc($rs);
 
-                $session['id'] = $getUserRow['id'];
-                $session['username'] = $getUserRow['username'];
-                $session['role_id'] = $getUserRow['role_id'];
-                unset($getUserRow);
+                        $session['id'] = $getUserRow['id'];
+                        $session['username'] = $getUserRow['username'];
+                        $session['role_id'] = $getUserRow['role_id'];
+                        unset($getUserRow);
 
-                $newKey = generate_uka_key();
-                update_user_key($session['id'], $newKey);
-                $session['user_key'] = $newKey;
+                        $newKey = generate_uka_key();
+                        update_user_key($session['id'], $newKey);
+                        $session['user_key'] = $newKey;
 
-                $_SESSION = $session;
-                $ip = hash_ip($_SERVER['REMOTE_ADDR']);
-                update_user_last_login_ip($id, $ip);
-                header('location:'.CONFIG_INSTALL_URL.'/panel/account/signin/?signedout=verified');
+                        $_SESSION = $session;
+                        $ip = hash_ip($_SERVER['REMOTE_ADDR']);
+                        update_user_last_login_ip($id, $ip);
+                        header('location:' . CONFIG_INSTALL_URL . '/panel/account/signin/?signedout=verified');
+                    } elseif ($_GET['type'] == '2') {
+                        $_SESSION['2FA_verified'] = true;
+
+                        $newKey = generate_uka_key();
+                        update_user_key($_SESSION['id'], $newKey);
+                        $_SESSION['user_key'] = $newKey;
+                        header('location:' . CONFIG_INSTALL_URL . '/panel/dashboard');
+                    }
+                }
             } else {
                 log_file('SATURN][SECURITY', 'Failed login verification attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
-                $errorMsg = 'Code does not match. <a href="'.$_SERVER['PHP_SELF'].'?username='.$username.'" class="text-red-500 hover:text-red-400">Click here to re-send verification code</a>.';
+                $errorMsg = 'Code does not match. To get a new code please refresh the page.';
             }
         }
     } else {
@@ -54,6 +65,8 @@
         if(isset($_GET['type'])) {
             if ($_GET['type'] == '1') {
                 $infoMsg = "We've detected that you're attempting to sign in from a new location. To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
+            } elseif ($_GET['type'] == '2') {
+                $infoMsg = "To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
             } else {
                 $errorMsg = "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you.";
                 $infoMsg = "To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
@@ -85,7 +98,13 @@
                         <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             <?php
-                            echo 'User Verification';
+                                if(isset($_GET['type'])) {
+                                    if ($_GET['type'] == '2') {
+                                        echo 'Two Factor Authentication';
+                                    } else {
+                                        echo 'User Verification';
+                                    }
+                                }
                             ?>
                         </h2>
                         <?php
@@ -99,7 +118,7 @@
                             }
                         ?>
                     </div>
-                    <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>?username=<?php echo checkOutput('DEFAULT', $username); ?>" method="post">
+                    <form class="mt-8 space-y-6" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>?type=<?php echo checkOutput('DEFAULT', $_GET['type']); ?>&username=<?php echo checkOutput('DEFAULT', $username); ?>" method="post">
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
