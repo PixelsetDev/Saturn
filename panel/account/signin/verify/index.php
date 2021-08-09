@@ -1,7 +1,9 @@
 <?php
+    ob_start();
+    session_start();
+
     include_once __DIR__.'/../../../../assets/common/global_public.php';
 
-    session_start();
     require_once __DIR__.'/../../../../assets/common/processes/database/get/user.php';
 
     if (isset($_POST['verify'])) {
@@ -49,8 +51,16 @@
         update_user_auth_code($id, $code);
         $email = get_user_email($id);
         send_email($email, CONFIG_SITE_NAME.' - Saturn Verification Code', 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.');
-        $errorMsg = 'We\'ve detected that you\'re attempting to sign in from a new location. To help us keep your account secure please enter the security code we\'ve sent to your email address in the box below.';
+        if(isset($_GET['type'])) {
+            if ($_GET['type'] == '1') {
+                $infoMsg = "We've detected that you're attempting to sign in from a new location. To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
+            } else {
+                $errorMsg = "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you.";
+                $infoMsg = "To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
+            }
+        }
     }
+    ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,12 +84,18 @@
                     <div>
                         <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                            User Verification
+                            <?php
+                            echo 'User Verification';
+                            ?>
                         </h2>
                         <?php
                             if (isset($errorMsg)) {
                                 alert('ERROR', $errorMsg);
                                 unset($errorMsg);
+                            }
+                            if (isset($infoMsg)) {
+                                alert('INFO', $infoMsg);
+                                unset($infoMsg);
                             }
                         ?>
                     </div>
