@@ -31,6 +31,7 @@
                         $session['id'] = $getUserRow['id'];
                         $session['username'] = $getUserRow['username'];
                         $session['role_id'] = $getUserRow['role_id'];
+                        $session['2fa_verified'] = false;
                         unset($getUserRow);
 
                         $newKey = generate_uka_key();
