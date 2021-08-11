@@ -91,7 +91,7 @@
         return $row['email'];
     }
 
-    function get_user_role($id)
+    function get_user_role($id): int
     {
         $id = checkInput('DEFAULT', $id);
 
@@ -278,16 +278,18 @@
         $email = get_user_settings_notifications_email($id);
 
         if ($saturn && !$email && CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
-            return '1';
+            $return = '1';
         } elseif (!$saturn && $email && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-            return '2';
+            $return = '2';
         } elseif ($saturn && $email) {
             if (CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                return '3';
+                $return = '3';
             } elseif (!CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                return '2';
+                $return = '2';
             } elseif (CONFIG_ALLOW_SATURN_NOTIFICATIONS && !CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                return '1';
+                $return = '1';
             }
         }
+
+        return $return;
     }
