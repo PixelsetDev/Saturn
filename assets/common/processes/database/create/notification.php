@@ -25,7 +25,7 @@
             $return = true;
         } elseif ($type == '3') {
             global $conn;
-            $query = "INSERT INTO `".DATABASE_PREFIX."notifications` (`id`, `user_id`, `dismissed`, `title`, `content`, `timestamp`) VALUES (NULL, '".$id."', '0', '".$title."', '".$message."', current_timestamp());";
+            $query = 'INSERT INTO `'.DATABASE_PREFIX."notifications` (`id`, `user_id`, `dismissed`, `title`, `content`, `timestamp`) VALUES (NULL, '".$id."', '0', '".$title."', '".$message."', current_timestamp());";
             $email = get_user_email($id);
             $dbSuccess = mysqli_query($conn, $query);
             $emailSuccess = send_email($email, 'Saturn Notification: '.$title, $message);
@@ -33,10 +33,10 @@
                 $return = true;
             } else {
                 if (!$dbSuccess) {
-                    log_file('SATURN][Database','ERROR: Unable to run SQL Query: '.$query);
+                    log_file('SATURN][Database', 'ERROR: Unable to run SQL Query: '.$query);
                 }
-                if(!$emailSuccess) {
-                    log_file('SATURN][Email','ERROR: Unable to send email from notification.php, please check your email settings in config.php');
+                if (!$emailSuccess) {
+                    log_file('SATURN][Email', 'ERROR: Unable to send email from notification.php, please check your email settings in config.php');
                 }
                 $return = false;
             }
