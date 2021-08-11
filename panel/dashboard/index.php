@@ -3,7 +3,7 @@
     ob_start();
     include_once __DIR__.'/../../assets/common/global_private.php';
     include_once __DIR__.'/../../assets/common/panel/vendors.php';
-    if ($_SESSION['2FA_verified'] == true or get_user_settings_security_2fa($_SESSION['id']) == false) {
+    if ($_SESSION['2FA_verified'] || !get_user_settings_security_2fa($_SESSION['id'])) {
         ?>
 <!DOCTYPE html>
 <html lang="en">

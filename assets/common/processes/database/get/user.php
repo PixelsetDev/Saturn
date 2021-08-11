@@ -277,11 +277,11 @@
         $saturn = get_user_settings_notifications_saturn($id);
         $email = get_user_settings_notifications_email($id);
 
-        if ($saturn == true && $email == false && CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
+        if ($saturn && !$email && CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
             return '1';
-        } elseif ($saturn == false && $email == true && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
+        } elseif (!$saturn && $email && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
             return '2';
-        } elseif ($saturn == true && $email == true) {
+        } elseif ($saturn && $email) {
             if (CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
                 return '3';
             } elseif (!CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
