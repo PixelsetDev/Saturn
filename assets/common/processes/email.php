@@ -26,14 +26,13 @@
         <div class="py-20 px-4 text-xs italic">This message was sent because you have an account registered with a Saturn installation at "'.CONFIG_SITE_NAME.'". You may be able to opt-out of these emails in your user settings.</div>
     </body>
 </html>';
-            if (mail($to, $subject, $contents, $headers)) {
-                return true;
-            } else {
-                return false;
-            }
+            return mail($to, $subject, $contents, $headers);
         } elseif (CONFIG_EMAIL_FUNCTION == 'smtp') {
             echo 'SMTP is not implemented.';
 
             return false;
+        } else {
+            echo 'FATAL ERROR: Email function not specified correctly, please check your config.php file and visit docs.saturncms.net for help.';
+            exit;
         }
     }
