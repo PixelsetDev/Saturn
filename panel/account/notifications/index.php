@@ -40,26 +40,26 @@ ob_end_flush();
                 <?php
                 if (strpos(get_notification_title($r), 'not Approved') !== false) {
                     ?>
-                    <div class="bg-red-100 rounded-full w-20 h-20">
-                        <center><i class="far fa-thumbs-down fa-2x my-6 text-red-500 text-center" aria-hidden="true"></i></center>
+                    <div class="bg-red-100 rounded-full w-20 h-20 text-center">
+                        <i class="far fa-thumbs-down fa-2x my-6 text-red-500" aria-hidden="true"></i>
                     </div>
                     <?php
                 } elseif (strpos(get_notification_title($r), 'Approved') !== false) {
                     ?>
-                    <div class="bg-green-100 rounded-full w-20 h-20">
-                        <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center" aria-hidden="true"></i></center>
+                    <div class="bg-green-100 rounded-full w-20 h-20 text-center">
+                        <i class="far fa-thumbs-up fa-2x my-6 text-green-500" aria-hidden="true"></i>
                     </div>
-                <?php
+                    <?php
                 } elseif (strpos(get_notification_title($r), 'role') !== false) {
                     ?>
-                    <div class="bg-gray-100 rounded-full w-20 h-20">
-                        <center><i class="far fa-address-card fa-2x my-6 text-gray-500 text-center" aria-hidden="true"></i></center>
+                    <div class="bg-gray-100 rounded-full w-20 h-20 text-center">
+                        <i class="far fa-address-card fa-2x my-6 text-gray-500" aria-hidden="true"></i>
                     </div>
                     <?php
                 } else {
                     ?>
-                    <div class="bg-gray-100 rounded-full w-20 h-20">
-                        <center><i class="far fa-bell fa-2x my-6 text-gray-500 text-center" aria-hidden="true"></i></center>
+                    <div class="bg-gray-100 rounded-full w-20 h-20 text-center">
+                        <i class="far fa-bell fa-2x my-6 text-gray-500" aria-hidden="true"></i>
                     </div>
                     <?php
                 } ?>
@@ -89,26 +89,26 @@ ob_end_flush();
                             <?php
                                 if (strpos(get_notification_title($r2), 'not Approved') !== false) {
                                     ?>
-                            <div class="bg-red-100 rounded-full w-20 h-20">
-                                <center><i class="far fa-thumbs-down fa-2x my-6 text-red-500 text-center" aria-hidden="true"></i></center>
+                            <div class="bg-red-100 rounded-full w-20 h-20 text-center">
+                                <i class="far fa-thumbs-down fa-2x my-6 text-red-500" aria-hidden="true"></i>
                             </div>
                             <?php
                                 } elseif (strpos(get_notification_title($r2), 'Approved') !== false) {
                                     ?>
-                            <div class="bg-green-100 rounded-full w-20 h-20">
-                                <center><i class="far fa-thumbs-up fa-2x my-6 text-green-500 text-center" aria-hidden="true"></i></center>
+                            <div class="bg-green-100 rounded-full w-20 h-20 text-center">
+                                <i class="far fa-thumbs-up fa-2x my-6 text-green-500" aria-hidden="true"></i>
                             </div>
                             <?php
                                 } elseif (strpos(get_notification_title($r2), 'role') !== false) {
                                     ?>
-                            <div class="bg-gray-100 rounded-full w-20 h-20">
-                                <center><i class="far fa-address-card fa-2x my-6 text-gray-500 text-center" aria-hidden="true"></i></center>
+                            <div class="bg-gray-100 rounded-full w-20 h-20 text-center">
+                                <i class="far fa-address-card fa-2x my-6 text-gray-500" aria-hidden="true"></i>
                             </div>
                             <?php
                                 } else {
                                     ?>
-                            <div class="bg-gray-100 rounded-full w-20 h-20">
-                                <center><i class="far fa-bell fa-2x my-6 text-gray-500 text-center" aria-hidden="true"></i></center>
+                            <div class="bg-gray-100 rounded-full w-20 h-20 text-center">
+                                <i class="far fa-bell fa-2x my-6 text-gray-500" aria-hidden="true"></i>
                             </div>
                             <?php
                                 } ?>
