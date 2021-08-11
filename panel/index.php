@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
-if(isset($_SESSION['id'])) {
+if (isset($_SESSION['id'])) {
     include_once __DIR__.'/../assets/common/global_public.php';
     header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard');
 }

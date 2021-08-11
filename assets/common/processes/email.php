@@ -6,6 +6,7 @@
             $to = $email;
             if (!isset($to)) {
                 echo 'Email error: No recipient.';
+
                 return false;
             }
             $headers = 'MIME-Version: 1.0'."\r\n";
@@ -32,6 +33,7 @@
             }
         } elseif (CONFIG_EMAIL_FUNCTION == 'smtp') {
             echo 'SMTP is not implemented.';
+
             return false;
         }
     }
