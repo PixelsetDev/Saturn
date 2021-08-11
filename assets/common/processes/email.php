@@ -1,12 +1,12 @@
 <?php
 
-    function send_email($email, $subject, $message)
+    function send_email($email, $subject, $message): bool
     {
         if (CONFIG_EMAIL_FUNCTION == 'phpmail') {
             $to = $email;
             if (!isset($to)) {
                 echo 'Email error: No recipient.';
-                exit;
+                return false;
             }
             $headers = 'MIME-Version: 1.0'."\r\n";
             $headers .= 'Content-type:text/html;charset=UTF-8'."\r\n";
@@ -25,8 +25,13 @@
         <div class="py-20 px-4 text-xs italic">This message was sent because you have an account registered with a Saturn installation at "'.CONFIG_SITE_NAME.'". You may be able to opt-out of these emails in your user settings.</div>
     </body>
 </html>';
-            mail($to, $subject, $contents, $headers);
+            if (mail($to, $subject, $contents, $headers)) {
+                return true;
+            } else {
+                return false;
+            }
         } elseif (CONFIG_EMAIL_FUNCTION == 'smtp') {
             echo 'SMTP is not implemented.';
+            return false;
         }
     }
