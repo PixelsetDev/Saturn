@@ -1,0 +1,37 @@
+{ "theme": {
+  "name": "Andromeda",
+  "slug": "andromeda",
+  "author": "Lewis Milburn",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Andromeda_Galaxy_560mm_FL.jpg/1200px-Andromeda_Galaxy_560mm_FL.jpg",
+  "version": {
+    "theme": "1.0.0",
+    "saturn": "BETA 1.0.0"
+  },
+  "framework": "tailwind",
+  "templates": {
+    "1": {
+      "name": "Homepage",
+      "file": "Homepage.template",
+      "page_default": "false"
+    },
+    "DEFAULT": {
+      "name": "Default",
+      "file": "default.template",
+      "page_default": "true"
+    }
+  },
+  "theme-colours": {
+    "Dark": {
+      "file": "Dark.tc"
+    },
+    "Light": {
+      "file": "light.tc"
+    },
+    "Emerald": {
+      "file": "emerald.tc"
+    },
+    "Ocean": {
+      "file": "ocean.tc"
+    }
+  }
+}}
