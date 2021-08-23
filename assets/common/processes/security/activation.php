@@ -9,5 +9,6 @@
         } else {
             $return = false;
         }
+
         return $return;
     }

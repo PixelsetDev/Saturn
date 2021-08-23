@@ -63,4 +63,3 @@ function pageQuery_2($i, $o)
 
     return mysqli_fetch_assoc($rs);
 }
-?>
