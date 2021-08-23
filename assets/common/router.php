@@ -241,20 +241,15 @@ class Router
         }
         elseif (stripos($fn, '@') !== false) {
             list($controller, $method) = explode('@', $fn);
-
-            // Adjust controller class if namespace has been set
             if ($this->getNamespace() !== '') {
                 $controller = $this->getNamespace() . '\\' . $controller;
             }
-
             try {
                 $reflectedMethod = new \ReflectionMethod($controller, $method);
-                // Make sure it's callable
                 if ($reflectedMethod->isPublic() && (!$reflectedMethod->isAbstract())) {
                     if ($reflectedMethod->isStatic()) {
                         forward_static_call_array(array($controller, $method), $params);
                     } else {
-                        // Make sure we have an instance, because a non-static method must not be called statically
                         if (\is_string($controller)) {
                             $controller = new $controller();
                         }
@@ -262,51 +257,28 @@ class Router
                     }
                 }
             } catch (\ReflectionException $reflectionException) {
-                // The controller class is not available or the class does not have the method $method
+
             }
         }
     }
 
-    /**
-     * Define the current relative URI.
-     *
-     * @return string
-     */
     public function getCurrentUri()
     {
-        // Get the current Request URI and remove rewrite base path from it (= allows one to run the router in a sub folder)
         $uri = substr(rawurldecode($_SERVER['REQUEST_URI']), strlen($this->getBasePath()));
-
-        // Don't take query params into account on the URL
         if (strstr($uri, '?')) {
             $uri = substr($uri, 0, strpos($uri, '?'));
         }
-
-        // Remove trailing slash + enforce a slash at the start
         return '/' . trim($uri, '/');
     }
 
-    /**
-     * Return server base Path, and define it if isn't defined.
-     *
-     * @return string
-     */
     public function getBasePath()
     {
-        // Check if server base path is defined, if not define it.
         if ($this->serverBasePath === null) {
             $this->serverBasePath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)) . '/';
         }
-
         return $this->serverBasePath;
     }
 
-    /**
-     * Explicilty sets the server base path. To be used when your entry script path differs from your entry URLs.
-     * @see https://github.com/bramus/router/issues/82#issuecomment-466956078
-     *
-     * @param string
-     */
     public function setBasePath($serverBasePath)
     {
         $this->serverBasePath = $serverBasePath;
