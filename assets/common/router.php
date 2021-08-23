@@ -231,8 +231,6 @@ class Router
                 }
             }
         }
-
-        // Return the number of routes handled
         return $numHandled;
     }
 
@@ -241,10 +239,7 @@ class Router
         if (is_callable($fn)) {
             call_user_func_array($fn, $params);
         }
-
-        // If not, check the existence of special parameters
         elseif (stripos($fn, '@') !== false) {
-            // Explode segments of given route
             list($controller, $method) = explode('@', $fn);
 
             // Adjust controller class if namespace has been set
