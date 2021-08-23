@@ -1,7 +1,7 @@
 <?php
 
     /* Website Theme */
-    const THEME_NAME = 'Andromeda';
+    const THEME_SLUG = 'andromeda';
     /* Panel Theme */
     const THEME_PANEL_FONT = 'Questrial'; /* Google Font Name */
     const THEME_PANEL_COLOUR = 'gray';
