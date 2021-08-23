@@ -110,8 +110,7 @@
             while ($listName != null) {
                 if ((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
                     $o = 1;
-                    $itemName = get_todo_item_title($o);
-                    ?>
+                    $itemName = get_todo_item_title($o); ?>
         </div>
         <div x-show="tab === '<?php echo $i; ?>'">
             <div>
@@ -136,7 +135,7 @@
                     while ($itemName != null) {
                         $itemID = get_todo_item_list_id($o);
                         if ($itemID == $i) {
-                ?>
+                            ?>
                 <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                     <div class="flex-grow">
                         <strong><?php echo get_todo_item_title($itemID); ?></<br>
@@ -146,8 +145,7 @@
                         <input type="checkbox" id="listItem" name="listItem" value="1"<?php
                             if (get_todo_item_status($itemID) == '1') {
                                 echo ' checked ';
-                            }
-                        ?>>
+                            } ?>>
                     </div>
                 </div>
                 <?php if ((get_todo_list_visibility($i) == 'PUBLIC') || (get_todo_list_owner_id($i) == $_SESSION['id'])) { ?>
@@ -167,8 +165,7 @@
                         $o++;
                         $itemName = get_todo_item_title($o);
                     }
-                }
-                ?>
+                } ?>
             </div>
         </div>
             <?php
