@@ -15,12 +15,12 @@ if (isset($_POST['save'])) {
     update_user_firstname($user, $namearray[0]);
     update_user_lastname($user, $namearray[1]);
 
-    if (isset($_POST['notificationsSaturn'])) {
+    if (isset($_POST['notificationsSaturn']) && CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
         update_user_settings_notifications_saturn($user, '1');
     } else {
         update_user_settings_notifications_saturn($user, '0');
     }
-    if (isset($_POST['notificationsEmail'])) {
+    if (isset($_POST['notificationsEmail']) && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
         update_user_settings_notifications_email($user, '1');
     } else {
         update_user_settings_notifications_email($user, '0');
@@ -116,18 +116,22 @@ if (isset($_POST['save'])) {
                         update_user_settings_notifications_saturn($user, '1');
                     }
                     ?>
+                    <?php if (CONFIG_ALLOW_SATURN_NOTIFICATIONS) { ?>
                     <div class="flex space-x-2 mt-2">
                         <input type="checkbox" name="notificationsSaturn" id="notificationsSaturn" value="true" class="self-center"<?php if (get_user_settings_notifications_saturn($user)) {
                         echo ' checked';
                     } ?>>
                         <span class="self-center">Saturn Notifications</span>
                     </div>
+                    <?php } ?>
+                    <?php if (CONFIG_ALLOW_EMAIL_NOTIFICATIONS) { ?>
                     <div class="flex space-x-2">
                         <input type="checkbox" name="notificationsEmail" id="notificationsEmail" value="true" class="self-center"<?php if (get_user_settings_notifications_email($user)) {
                         echo ' checked';
                     } ?>>
                         <span class="self-center">Email Notifications</span>
                     </div>
+                    <?php } ?>
                 </div>
                 <div name="security">
                     <h1 class="text-xl mt-4">Security</h1>

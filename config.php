@@ -37,6 +37,10 @@
     const CONFIG_MAX_PAGE_CHARS = '50000';
     const CONFIG_MAX_ARTICLE_CHARS = '50000';
     const CONFIG_MAX_REFERENCES_CHARS = '10000';
+    /* Notifications */
+    const CONFIG_NOTIFICATIONS_LIMIT = '50';
+    const CONFIG_ALLOW_SATURN_NOTIFICATIONS = true;
+    const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = true;
     /* Global Security System */
     const SECURITY_ACTIVE = true;
     const LOGGING_ACTIVE = true;

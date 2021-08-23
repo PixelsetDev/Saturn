@@ -1,9 +1,16 @@
-<!DOCTYPE html>
+<?php
+ob_start();
+session_start();
+if (isset($_SESSION['id'])) {
+    include_once __DIR__.'/../assets/common/global_public.php';
+    header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard');
+}
+ob_end_flush();
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Saturn Panel</title>
         <?php
-            include_once __DIR__.'/../assets/common/global_public.php';
             include_once __DIR__.'/../assets/common/panel/vendors.php';
             include_once __DIR__.'/../assets/common/panel/theme.php';
         ?>
@@ -43,11 +50,11 @@
                                     </h3>
                                     <form method="post" action="account/signin/?login=true">
                                         <div class="mb-1 sm:mb-2">
-                                            <label for="email" class="inline-block mb-1 font-medium">Username or Email Address</label>
+                                            <label for="username" class="inline-block mb-1 font-medium">Username or Email Address</label>
                                             <input
                                                     placeholder="me@example.com"
                                                     required=""
-                                                    type="username"
+                                                    type="text"
                                                     class="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                                                     id="username"
                                                     name="username"

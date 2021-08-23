@@ -6,6 +6,7 @@
 
     if (isset($_POST['reset-ccv'])) {
         if (ccv_reset()) {
+            log_file('SATURN][SECURITY', 'WARNING: '.get_user_fullname($_SESSION['id']).' reset the Core Checksum Validation values.');
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?successResetCCV=Core Checksum Validation was reset successfully.');
         } else {
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?errorMsg=Unable to reset Core Checksum Validation, an error occurred.');
@@ -17,7 +18,6 @@
         $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
     } elseif (isset($_GET['successResetCCV'])) {
         $successMsg = checkInput('DEFAULT', $_GET['successResetCCV']);
-        log_file('SATURN][SECURITY', 'WARNING: '.get_user_fullname($_SESSION['id']).' reset the Core Checksum Validation values.');
     } elseif (isset($_GET['errorMsg'])) {
         $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
     }

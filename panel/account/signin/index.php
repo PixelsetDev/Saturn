@@ -23,13 +23,15 @@
                     $errorMsg = 'Your account has been restricted. If you require access, please contact your administrator.';
                 } else {
                     require_once __DIR__.'/../../../assets/common/processes/database/get/user.php';
+                    require_once __DIR__.'/../../../assets/common/processes/database/get/user_settings.php';
                     require_once __DIR__.'/../../../assets/common/processes/database/update/user.php';
                     if (get_user_last_login_ip($getUserRow['id']) != hash_ip($_SERVER['REMOTE_ADDR'])) {
-                        echo '<meta http-equiv="refresh" content="0; url='.CONFIG_INSTALL_URL.'/panel/account/signin/verify/?username='.$getUserRow['username'].'">';
+                        echo '<meta http-equiv="refresh" content="0; url='.CONFIG_INSTALL_URL.'/panel/account/signin/verify/?type=1&username='.$getUserRow['username'].'">';
                     } else {
                         $session['id'] = $getUserRow['id'];
                         $session['username'] = $getUserRow['username'];
                         $session['role_id'] = $getUserRow['role_id'];
+                        $session['2FA_verified'] = false;
                         unset($getUserRow);
 
                         $newKey = generate_uka_key();
@@ -96,7 +98,7 @@
                                 alert('ERROR', $errorMsg);
                                 unset($errorMsg);
                             } elseif (isset($successMsg)) {
-                                alert('ERROR', $successMsg);
+                                alert('SUCCESS', $successMsg);
                                 unset($successMsg);
                             }
                         ?>
