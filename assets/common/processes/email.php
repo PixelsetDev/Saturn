@@ -26,6 +26,7 @@
         <div class="py-20 px-4 text-xs italic">This message was sent because you have an account registered with a Saturn installation at "'.CONFIG_SITE_NAME.'". You may be able to opt-out of these emails in your user settings.</div>
     </body>
 </html>';
+
             return mail($to, $subject, $contents, $headers);
         } elseif (CONFIG_EMAIL_FUNCTION == 'smtp') {
             echo 'SMTP is not implemented.';
