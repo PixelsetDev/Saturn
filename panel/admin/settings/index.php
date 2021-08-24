@@ -7,8 +7,9 @@
         $file = __DIR__.'/../../../config.php';
 
         $message = "<?php
+
     /*
-     * Saturn BETA 1.0.0 Configuration File
+     * Saturn Configuration File
      * Copyright (c) 2021 - Saturn Authors
      * saturncms.net
      *
@@ -19,7 +20,8 @@
      */
 
     /* General */
-    const CONFIG_INSTALL_URL = '';
+    const CONFIG_INSTALL_URL = '".CONFIG_INSTALL_URL."';
+    const CONFIG_ACTIVATION_KEY = '".$_POST['activation_key']."';
     const CONFIG_SITE_NAME = '".$_POST['site_name']."';
     const CONFIG_SITE_DESCRIPTION = '".$_POST['site_description']."';
     const CONFIG_SITE_KEYWORDS = '".$_POST['site_keywords']."';
@@ -43,12 +45,19 @@
     const CONFIG_MAX_PAGE_CHARS = '".$_POST['max_page_chars']."';
     const CONFIG_MAX_ARTICLE_CHARS = '".$_POST['max_article_chars']."';
     const CONFIG_MAX_REFERENCES_CHARS = '".$_POST['max_references_chars']."';
+    /* Notifications */
+    const CONFIG_NOTIFICATIONS_LIMIT = '".$_POST['notifications_limit']."';
+    const CONFIG_ALLOW_SATURN_NOTIFICATIONS = ".$_POST['saturn_notifications'].";
+    const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = ".$_POST['email_notifications'].";
     /* Global Security System */
-    const SECURITY_ACTIVE = ".$_POST['security_active'].';
-    const LOGGING_ACTIVE = '.$_POST['security_logging'].";
+    const SECURITY_ACTIVE = ".$_POST['security_active'].";
+    const LOGGING_ACTIVE = ".$_POST['security_logging'].";
     const SECURITY_MODE = '".$_POST['security_mode']."';
     /* Developer Tools */
-    const CONFIG_DEBUG = ".$_POST['debug'].';';
+    const CONFIG_DEBUG = ".$_POST['debug'].";
+    /* Permissions */
+    const PERMISSION_CREATE_CATEGORY = '".PERMISSION_CREATE_CATEGORY."';
+    const PERMISSION_CREATE_PAGE = '".PERMISSION_CREATE_PAGE."';";
 
         if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
@@ -120,6 +129,10 @@
                             <option value="Europe/London">Europe/London</option>
                         </select>
                     </div>
+                    <div class="grid grid-cols-2">
+                        <label for="activation_key">Activation Key</label>
+                        <input id="activation_key" name="activation_key" type="text" value="<?php echo CONFIG_ACTIVATION_KEY; ?>" class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
                 </div>
 
                 <div class="mt-4">
@@ -159,13 +172,42 @@
                     <div class="grid grid-cols-2">
                         <label for="email_function">Email Function</label>
                         <select id="email_function" name="email_function" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option value="phpmail" selected>phpmail (Recommended)</option>
-                            <option disabled>SMTP (Coming Soon)</option>
+                            <option value="phpmail" selected>phpmail</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="email_sendfrom">Email Sendfrom</label>
                         <input id="email_sendfrom" name="email_sendfrom" type="text" value="<?php echo CONFIG_EMAIL_SENDFROM; ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Notifications</h2>
+                    <div class="grid grid-cols-2">
+                        <label for="notifications_limit">Notifications Limit</label>
+                        <input id="notifications_limit" name="notifications_limit" type="number" value="<?php echo CONFIG_NOTIFICATIONS_LIMIT; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="saturn_notifications">Allow Saturn Notifications</label>
+                        <select id="saturn_notifications" name="saturn_notifications" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
+                            <option value="false"<?php if (!CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
+                                echo' selected';
+                            } ?>>False</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="email_notifications">Allow Email Notifications</label>
+                        <select id="email_notifications" name="email_notifications" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
+                            <option value="false"<?php if (!CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
+                                echo' selected';
+                            } ?>>False</option>
+                        </select>
                     </div>
                 </div>
 
