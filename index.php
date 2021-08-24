@@ -20,7 +20,7 @@ $router = new \Saturn\Router\Router();
 // Error Handler
 $router->set404(function () {
     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
-    echo '404, route not found!';
+    require_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/assets/common/processes/error/404.php';
 });
 
 // Panel 404
