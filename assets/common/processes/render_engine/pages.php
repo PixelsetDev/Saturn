@@ -32,6 +32,13 @@ function replacedata($pageOutput, $pageData): string
     $pageOutput = str_replace('{{data:content}}', $pageData['content'], $pageOutput);
     $pageOutput = str_replace('{{data:author:name}}', $pageData['author']['id'], $pageOutput);
     $pageOutput = str_replace('{{section:navigation}}', $pageData['section']['navigation'], $pageOutput);
+    // Config values
+    $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
+    $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);
+    $pageOutput = str_replace('{{config:sitename}}', CONFIG_SITE_NAME, $pageOutput);
+    $pageOutput = str_replace('{{config:description}}', CONFIG_SITE_DESCRIPTION, $pageOutput);
+    $pageOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $pageOutput);
+    $pageOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $pageOutput);
 
     return str_replace('{{section:footer}}', $pageData['section']['footer'], $pageOutput);
 }
