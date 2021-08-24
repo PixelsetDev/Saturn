@@ -1,6 +1,6 @@
 <?php
 
-    const DATE_FORMAT = 'H:i:s';
+    const DATE_FORMAT = 'Y/m/d H:i:s';
 
     function log_all($prefix, $message)
     {
