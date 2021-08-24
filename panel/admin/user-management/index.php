@@ -33,7 +33,7 @@
                     echo '<div class="h-12">
                                     <a href="'.get_user_profile_link($value).'" class="relative inline-block float-left mr-4 z-30">
                                         <img class="z-10 inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
-                                        <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity($value).'-600 border-2 border-gray-200 rounded-full"></span>
+                                        <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity_colour($value).'-600 border-2 border-gray-200 rounded-full"></span>
                                     </a>
                                     <div class="font-bold h-full" x-data="{ open: false }">
                                         <span class="self-start block">'.get_user_fullname($value).'</span>

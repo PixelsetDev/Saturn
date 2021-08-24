@@ -16,7 +16,7 @@ function listUsers($role)
                 echo'<div>
                                 <a href="'.get_user_profile_link($value).'" id="'.$key.'" class="relative inline-block">
                                     <img class="inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
-                                    <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity($value).'-600 border-2 border-white rounded-full"></span>
+                                    <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity_colour($value).'-600 border-2 border-white rounded-full"></span>
                                 </a>
                                 <b>'.get_user_fullname($value).'</b>
                             </div>';
