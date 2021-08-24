@@ -47,11 +47,11 @@ if (isset($_POST['save'])) {
     const CONFIG_MAX_REFERENCES_CHARS = '".CONFIG_MAX_REFERENCES_CHARS."';
     /* Notifications */
     const CONFIG_NOTIFICATIONS_LIMIT = '".CONFIG_NOTIFICATIONS_LIMIT."';
-    const CONFIG_ALLOW_SATURN_NOTIFICATIONS = ".CONFIG_ALLOW_SATURN_NOTIFICATIONS.";
-    const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = ".CONFIG_ALLOW_EMAIL_NOTIFICATIONS.";
+    const CONFIG_ALLOW_SATURN_NOTIFICATIONS = ".CONFIG_ALLOW_SATURN_NOTIFICATIONS.';
+    const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = '.CONFIG_ALLOW_EMAIL_NOTIFICATIONS.';
     /* Global Security System */
-    const SECURITY_ACTIVE = ".SECURITY_ACTIVE.";
-    const LOGGING_ACTIVE = ".LOGGING_ACTIVE.";
+    const SECURITY_ACTIVE = '.SECURITY_ACTIVE.';
+    const LOGGING_ACTIVE = '.LOGGING_ACTIVE.";
     const SECURITY_MODE = '".SECURITY_MODE."';
     /* Developer Tools */
     const CONFIG_DEBUG = ".CONFIG_DEBUG.";
@@ -102,17 +102,29 @@ ob_end_flush();
                 <div class="grid grid-cols-2">
                     <label for="PERMISSION_CREATE_CATEGORY">Create Category</label>
                     <select id="PERMISSION_CREATE_CATEGORY" name="PERMISSION_CREATE_CATEGORY" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                        <option value="2"<?php if (PERMISSION_CREATE_CATEGORY=='2') { echo ' selected'; } ?>>Not Restricted: Administrators, Edits and Writers.</option>
-                        <option value="3"<?php if (PERMISSION_CREATE_CATEGORY=='3') { echo ' selected'; } ?>>Restricted: Administrators and Editors Only</option>
-                        <option value="4"<?php if (PERMISSION_CREATE_CATEGORY=='4') { echo ' selected'; } ?>>Restricted: Administrators Only</option>
+                        <option value="2"<?php if (PERMISSION_CREATE_CATEGORY == '2') {
+            echo ' selected';
+        } ?>>Not Restricted: Administrators, Edits and Writers.</option>
+                        <option value="3"<?php if (PERMISSION_CREATE_CATEGORY == '3') {
+            echo ' selected';
+        } ?>>Restricted: Administrators and Editors Only</option>
+                        <option value="4"<?php if (PERMISSION_CREATE_CATEGORY == '4') {
+            echo ' selected';
+        } ?>>Restricted: Administrators Only</option>
                     </select>
                 </div>
                 <div class="grid grid-cols-2">
                     <label for="PERMISSION_CREATE_PAGE">Create Page</label>
                     <select id="PERMISSION_CREATE_PAGE" name="PERMISSION_CREATE_PAGE" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                        <option value="2"<?php if (PERMISSION_CREATE_PAGE=='3') { echo ' selected'; } ?>>Not Restricted: Administrators, Edits and Writers.</option>
-                        <option value="3"<?php if (PERMISSION_CREATE_PAGE=='3') { echo ' selected'; } ?>>Restricted: Administrators and Editors Only</option>
-                        <option value="4"<?php if (PERMISSION_CREATE_PAGE=='4') { echo ' selected'; } ?>>Restricted: Administrators Only</option>
+                        <option value="2"<?php if (PERMISSION_CREATE_PAGE == '3') {
+            echo ' selected';
+        } ?>>Not Restricted: Administrators, Edits and Writers.</option>
+                        <option value="3"<?php if (PERMISSION_CREATE_PAGE == '3') {
+            echo ' selected';
+        } ?>>Restricted: Administrators and Editors Only</option>
+                        <option value="4"<?php if (PERMISSION_CREATE_PAGE == '4') {
+            echo ' selected';
+        } ?>>Restricted: Administrators Only</option>
                     </select>
                 </div>
             </div>
