@@ -1,6 +1,4 @@
 <?php
-include_once __DIR__.'/../../../assets/common/global_public.php';
-
 session_start();
 session_destroy();
 
@@ -10,6 +8,7 @@ session_destroy();
     <head>
         <title>Sign out - Saturn Panel</title>
         <?php
+        include_once __DIR__.'/../../../assets/common/global_public.php';
         include_once __DIR__.'/../../../assets/common/panel/vendors.php';
         include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
