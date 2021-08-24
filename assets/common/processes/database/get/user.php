@@ -293,3 +293,16 @@
 
         return $return;
     }
+
+    function get_user_last_seen($id): string
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `last_seen` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['last_seen'];
+    }

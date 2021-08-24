@@ -1,14 +1,26 @@
 <?php
-
-    function get_activity($id): string
+    function get_last_activity_time($id): string
     {
-        $date = strtotime('2012-03-08 16:02:35');
-        $now = time();
+        $id = checkInput('DEFAULT', $id);
 
+        $date = strtotime(get_user_last_seen($id));
+        $now = time();
         return $now - $date;
     }
 
     function get_activity_colour($id): string
     {
-        return 'blue';
+        $id = checkInput('DEFAULT', $id);
+
+        $lastActivity = get_last_activity_time($id);
+
+        if ($lastActivity <= '1800') {
+            return 'green'; // Online
+        } else if ($lastActivity > '1800' && $lastActivity <= '3600') {
+            return 'yellow'; // Idle
+        } else if ($lastActivity > '3600') {
+            return 'red'; // Offline
+        } else {
+            return 'blue'; // Unknown result
+        }
     }
