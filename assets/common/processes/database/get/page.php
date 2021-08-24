@@ -39,6 +39,19 @@
         return $row['reference'];
     }
 
+    function get_page_template($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `template` FROM `'.DATABASE_PREFIX.'pages` WHERE `id` = '.$id;
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['template'];
+    }
+
     function get_page_pending_title($id)
     {
         $id = checkInput('DEFAULT', $id);

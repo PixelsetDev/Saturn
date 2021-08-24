@@ -39,8 +39,9 @@ function replacedata($pageOutput, $pageData): string
 $pageID = get_page_id_from_url($pageuri);
 
 $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/theme.json'));
-$file = $data->theme->templates->DEFAULT->file;
-$pageOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.$file);
+
+$file = strtolower(get_page_template($pageID));
+$pageOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.$file.'.template');
 
 $pageData = getdata($pageID);
 echo replacedata($pageOutput, $pageData);

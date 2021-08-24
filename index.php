@@ -44,11 +44,6 @@ $router->before('GET', '/.*', function () {
     header('X-Powered-By: saturn/router');
 });
 
-// Homepage
-$router->get('/', function () {
-    echo '<h1>saturn/router</h1><p>Router started.</p>';
-});
-
 $router->get('/panel', function () {
     require_once __DIR__.'/panel/index.php';
 });
@@ -65,6 +60,11 @@ if ($result->num_rows > 0) {
         }
     }
 }
+
+// Homepage
+$router->get('/', function () {
+    echo '<h1>saturn/router</h1><p>Router started.</p>';
+});
 
 // Subrouting
 $router->mount('/articles', function () use ($router) {
