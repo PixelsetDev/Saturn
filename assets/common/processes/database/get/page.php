@@ -156,6 +156,19 @@
         return $row['timestamp'];
     }
 
+    function get_page_url($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `url` FROM `'.DATABASE_PREFIX."pages` WHERE `id` = '".$id."';";
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['url'];
+    }
+
     function get_page_status($id): string
     {
         $id = checkInput('DEFAULT', $id);
