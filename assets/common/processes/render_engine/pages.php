@@ -15,7 +15,8 @@ function get_page_id_from_url($uri)
     return $row['id'];
 }
 
-function getdata($pageID): array {
+function getdata($pageID): array
+{
     $pageData['title'] = get_page_title($pageID);
     $pageData['content'] = get_page_content($pageID);
     $pageData['author']['id'] = get_page_last_edit_user_id($pageID);
@@ -25,11 +26,13 @@ function getdata($pageID): array {
     return $pageData;
 }
 
-function replacedata($pageOutput, $pageData): string {
+function replacedata($pageOutput, $pageData): string
+{
     $pageOutput = str_replace('{{data:title}}', $pageData['title'], $pageOutput);
     $pageOutput = str_replace('{{data:content}}', $pageData['content'], $pageOutput);
     $pageOutput = str_replace('{{data:author:name}}', $pageData['author']['id'], $pageOutput);
     $pageOutput = str_replace('{{section:navigation}}', $pageData['section']['navigation'], $pageOutput);
+
     return str_replace('{{section:footer}}', $pageData['section']['footer'], $pageOutput);
 }
 

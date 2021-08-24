@@ -15,8 +15,8 @@ namespace Saturn\Router;
  */
 class Router
 {
-    private $afterRoutes = array();
-    private $beforeRoutes = array();
+    private $afterRoutes = [];
+    private $beforeRoutes = [];
     protected $notFoundCallback = [];
     private $baseRoute = '';
     private $requestedMethod = '';
@@ -25,27 +25,27 @@ class Router
 
     public function before($methods, $pattern, $fn)
     {
-        $pattern = $this->baseRoute . '/' . trim($pattern, '/');
+        $pattern = $this->baseRoute.'/'.trim($pattern, '/');
         $pattern = $this->baseRoute ? rtrim($pattern, '/') : $pattern;
 
         foreach (explode('|', $methods) as $method) {
-            $this->beforeRoutes[$method][] = array(
+            $this->beforeRoutes[$method][] = [
                 'pattern' => $pattern,
-                'fn' => $fn,
-            );
+                'fn'      => $fn,
+            ];
         }
     }
 
     public function match($methods, $pattern, $fn)
     {
-        $pattern = $this->baseRoute . '/' . trim($pattern, '/');
+        $pattern = $this->baseRoute.'/'.trim($pattern, '/');
         $pattern = $this->baseRoute ? rtrim($pattern, '/') : $pattern;
 
         foreach (explode('|', $methods) as $method) {
-            $this->afterRoutes[$method][] = array(
+            $this->afterRoutes[$method][] = [
                 'pattern' => $pattern,
-                'fn' => $fn,
-            );
+                'fn'      => $fn,
+            ];
         }
     }
 
@@ -91,9 +91,10 @@ class Router
         call_user_func($fn);
         $this->baseRoute = $curBaseRoute;
     }
+
     public function getRequestHeaders()
     {
-        $headers = array();
+        $headers = [];
         if (function_exists('getallheaders')) {
             $headers = getallheaders();
             if ($headers !== false) {
@@ -103,7 +104,7 @@ class Router
 
         foreach ($_SERVER as $name => $value) {
             if ((substr($name, 0, 5) == 'HTTP_') || ($name == 'CONTENT_TYPE') || ($name == 'CONTENT_LENGTH')) {
-                $headers[str_replace(array(' ', 'Http'), array('-', 'HTTP'), ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
+                $headers[str_replace([' ', 'Http'], ['-', 'HTTP'], ucwords(strtolower(str_replace('_', ' ', substr($name, 5)))))] = $value;
             }
         }
 
@@ -116,11 +117,9 @@ class Router
         if ($_SERVER['REQUEST_METHOD'] == 'HEAD') {
             ob_start();
             $method = 'GET';
-        }
-
-        elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $headers = $this->getRequestHeaders();
-            if (isset($headers['X-HTTP-Method-Override']) && in_array($headers['X-HTTP-Method-Override'], array('PUT', 'DELETE', 'PATCH'))) {
+            if (isset($headers['X-HTTP-Method-Override']) && in_array($headers['X-HTTP-Method-Override'], ['PUT', 'DELETE', 'PATCH'])) {
                 $method = $headers['X-HTTP-Method-Override'];
             }
         }
@@ -152,8 +151,7 @@ class Router
         }
         if ($numHandled === 0) {
             $this->trigger404($this->afterRoutes[$this->requestedMethod]);
-        }
-        else {
+        } else {
             if ($callback && is_callable($callback)) {
                 $callback();
             }
@@ -161,6 +159,7 @@ class Router
         if ($_SERVER['REQUEST_METHOD'] == 'HEAD') {
             ob_end_clean();
         }
+
         return $numHandled !== 0;
     }
 
@@ -173,10 +172,10 @@ class Router
         }
     }
 
-    public function trigger404($match = null){
+    public function trigger404($match = null)
+    {
         $numHandled = 0;
-        if (count($this->notFoundCallback) > 0)
-        {
+        if (count($this->notFoundCallback) > 0) {
             foreach ($this->notFoundCallback as $route_pattern => $route_callable) {
                 $matches = [];
                 $is_match = $this->patternMatches($route_pattern, $this->getCurrentUri(), $matches, PREG_OFFSET_CAPTURE);
@@ -188,16 +187,17 @@ class Router
                                 return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
                             }
                         }
+
                         return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
                     }, $matches, array_keys($matches));
                     $this->invoke($route_callable);
-                    ++$numHandled;
+                    $numHandled++;
                 }
             }
-            if($numHandled == 0 and $this->notFoundCallback['/']) {
+            if ($numHandled == 0 and $this->notFoundCallback['/']) {
                 $this->invoke($this->notFoundCallback['/']);
             } elseif ($numHandled == 0) {
-                header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+                header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
             }
         }
     }
@@ -205,7 +205,8 @@ class Router
     private function patternMatches($pattern, $uri, &$matches, $flags)
     {
         $pattern = preg_replace('/\/{(.*?)}/', '/(.*?)', $pattern);
-        return boolval(preg_match_all('#^' . $pattern . '$#', $uri, $matches, PREG_OFFSET_CAPTURE));
+
+        return boolval(preg_match_all('#^'.$pattern.'$#', $uri, $matches, PREG_OFFSET_CAPTURE));
     }
 
     private function handle($routes, $quitAfterRun = false)
@@ -222,42 +223,43 @@ class Router
                             return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
                         }
                     }
+
                     return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
                 }, $matches, array_keys($matches));
                 $this->invoke($route['fn'], $params);
-                ++$numHandled;
+                $numHandled++;
                 if ($quitAfterRun) {
                     break;
                 }
             }
         }
+
         return $numHandled;
     }
 
-    private function invoke($fn, $params = array())
+    private function invoke($fn, $params = [])
     {
         if (is_callable($fn)) {
             call_user_func_array($fn, $params);
-        }
-        elseif (stripos($fn, '@') !== false) {
+        } elseif (stripos($fn, '@') !== false) {
             list($controller, $method) = explode('@', $fn);
             if ($this->getNamespace() !== '') {
-                $controller = $this->getNamespace() . '\\' . $controller;
+                $controller = $this->getNamespace().'\\'.$controller;
             }
+
             try {
                 $reflectedMethod = new \ReflectionMethod($controller, $method);
                 if ($reflectedMethod->isPublic() && (!$reflectedMethod->isAbstract())) {
                     if ($reflectedMethod->isStatic()) {
-                        forward_static_call_array(array($controller, $method), $params);
+                        forward_static_call_array([$controller, $method], $params);
                     } else {
                         if (\is_string($controller)) {
                             $controller = new $controller();
                         }
-                        call_user_func_array(array($controller, $method), $params);
+                        call_user_func_array([$controller, $method], $params);
                     }
                 }
             } catch (\ReflectionException $reflectionException) {
-
             }
         }
     }
@@ -268,14 +270,16 @@ class Router
         if (strstr($uri, '?')) {
             $uri = substr($uri, 0, strpos($uri, '?'));
         }
-        return '/' . trim($uri, '/');
+
+        return '/'.trim($uri, '/');
     }
 
     public function getBasePath()
     {
         if ($this->serverBasePath === null) {
-            $this->serverBasePath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)) . '/';
+            $this->serverBasePath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)).'/';
         }
+
         return $this->serverBasePath;
     }
 
