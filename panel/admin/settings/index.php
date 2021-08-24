@@ -47,11 +47,11 @@
     const CONFIG_MAX_REFERENCES_CHARS = '".$_POST['max_references_chars']."';
     /* Notifications */
     const CONFIG_NOTIFICATIONS_LIMIT = '".$_POST['notifications_limit']."';
-    const CONFIG_ALLOW_SATURN_NOTIFICATIONS = ".$_POST['saturn_notifications'].";
-    const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = ".$_POST['email_notifications'].";
+    const CONFIG_ALLOW_SATURN_NOTIFICATIONS = ".$_POST['saturn_notifications'].';
+    const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = '.$_POST['email_notifications'].';
     /* Global Security System */
-    const SECURITY_ACTIVE = ".$_POST['security_active'].";
-    const LOGGING_ACTIVE = ".$_POST['security_logging'].";
+    const SECURITY_ACTIVE = '.$_POST['security_active'].';
+    const LOGGING_ACTIVE = '.$_POST['security_logging'].";
     const SECURITY_MODE = '".$_POST['security_mode']."';
     /* Developer Tools */
     const CONFIG_DEBUG = ".$_POST['debug'].";
@@ -191,22 +191,22 @@
                         <label for="saturn_notifications">Allow Saturn Notifications</label>
                         <select id="saturn_notifications" name="saturn_notifications" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
-                                echo' selected';
-                            } ?>>True (Recommended)</option>
+                echo' selected';
+            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
-                                echo' selected';
-                            } ?>>False</option>
+                echo' selected';
+            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="email_notifications">Allow Email Notifications</label>
                         <select id="email_notifications" name="email_notifications" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                                echo' selected';
-                            } ?>>True (Recommended)</option>
+                echo' selected';
+            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                                echo' selected';
-                            } ?>>False</option>
+                echo' selected';
+            } ?>>False</option>
                         </select>
                     </div>
                 </div>
