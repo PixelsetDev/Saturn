@@ -8,18 +8,6 @@
     "saturn": "BETA 1.0.0"
   },
   "framework": "tailwind",
-  "templates": {
-    "1": {
-      "name": "Homepage",
-      "file": "Homepage.template",
-      "page_default": "false"
-    },
-    "DEFAULT": {
-      "name": "Default",
-      "file": "default.template",
-      "page_default": "true"
-    }
-  },
   "theme-colours": {
     "Dark": {
       "file": "Dark.tc"

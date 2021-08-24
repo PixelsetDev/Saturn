@@ -13,10 +13,11 @@
         {{section:navigation}}
                 <div class="flex mt-20">
                     <div class="max-w-7xl mx-4 pb-6 lg:pt-6 sm:px-6 lg:px-8">
-                        <div x-data="{ open: true }" class="flex">
+                        <div class="flex">
                             <div class="flex-grow z-10">
                                 <div class="flex">
                                     <div class="w-3/4 flex-grow text-justify">
+                                        <h1 class="text-5xl">{{data:title}}</h1>
                                         {{data:content}}
                                     </div>
                                 </div>

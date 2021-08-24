@@ -8,7 +8,7 @@
                     </a>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a class="text-gray-300 hover:text-gray-200 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="<?php echo CONFIG_INSTALL_URL; ?>">
+                            <a class="text-gray-300 hover:text-gray-200 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/">
                                 Home
                             </a>
                         </div>
