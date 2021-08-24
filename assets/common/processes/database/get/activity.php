@@ -15,12 +15,14 @@
         $lastActivity = get_last_activity_time($id);
 
         if ($lastActivity <= '1800') {
-            return 'green'; // Online
+            $colour = 'green'; // Online
         } else if ($lastActivity > '1800' && $lastActivity <= '3600') {
-            return 'yellow'; // Idle
+            $colour = 'yellow'; // Idle
         } else if ($lastActivity > '3600') {
-            return 'red'; // Offline
+            $colour = 'red'; // Offline
         } else {
-            return 'blue'; // Unknown result
+            $colour = 'blue'; // Unknown result
         }
+
+        return $colour;
     }
