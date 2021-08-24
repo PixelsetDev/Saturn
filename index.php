@@ -4,7 +4,6 @@ ob_start();
 /**
  * @author      LMWN <contact@lmwn.co.uk>
  * @copyright   Copyright (c), 2021 LMWN & Lewis Milburn
- * @license     Apache License
  *
  * This file is a modified version of the demo router provided by https://github.com/bramus/router.
  */
