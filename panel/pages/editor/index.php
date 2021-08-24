@@ -61,8 +61,9 @@
     <body class="mb-8">
         <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
         <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">Page Editor: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
+            <div class="py-6 px-4 sm:px-6 lg:px-8 flex max-w-7xl w-7xl mx-auto">
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow">Page Editor: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
+                <a href="<?php echo get_page_url($pageID); ?>" target="_blank" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 underline transition duration-200">View live <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
             </div>
         </header>
 
