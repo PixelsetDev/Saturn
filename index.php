@@ -43,10 +43,6 @@ $router->before('GET', '/.*', function () {
     header('X-Powered-By: saturn/router');
 });
 
-$router->get('/panel', function () {
-    require_once __DIR__.'/panel/index.php';
-});
-
 $result = $conn->query('SELECT `url`  FROM `'.DATABASE_PREFIX.'pages` WHERE 1 ORDER BY `id` DESC');
 
 if ($result->num_rows > 0) {
@@ -62,7 +58,7 @@ if ($result->num_rows > 0) {
 
 // Homepage
 $router->get('/', function () {
-    echo '<h1>saturn/router</h1><p>Router started.</p>';
+    echo '<h1>Saturn</h1><p>Whoops, we were unable to locate a file to render for the homepage. Please allocate a homepage in the Saturn Panel.</p>';
 });
 
 // Subrouting
