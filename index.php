@@ -12,9 +12,8 @@ $filename = __DIR__.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
 if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
-
-require_once __DIR__.'/assets/common/router.php';
 require_once __DIR__.'/assets/common/global_public.php';
+require_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/router.php';
 $router = new \Saturn\Router\Router();
 
 // Error Handler
