@@ -9,7 +9,7 @@
     if (empty($_SERVER['CONTENT_TYPE'])) {
         $_SERVER['CONTENT_TYPE'] = 'application/x-www-form-urlencoded';
     }
-    if (isset($_POST['title'])) {
+    if (isset($_POST['submit'])) {
         if ($_POST['title'] != null) {
             if ($_POST['content'] != null) {
                 $title = checkInput('HTML', $_POST['title']);
@@ -45,6 +45,13 @@
             exit;
         }
     }
+
+    if (isset($_POST['submitSettings'])) {
+        update_page_description($pageID, $_POST['settings_page_description']);
+        update_page_category($pageID, $_POST['settings_page_category']);
+        update_page_template($pageID, $_POST['settings_page_template']);
+        update_page_url($pageID, $_POST['settings_page_url']);
+    }
     ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
@@ -78,7 +85,7 @@
                 </div>
             </header>
             <?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?>
-            <form action="index.php" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
+            <form action="index.php?pageID=<?php echo $pageID; ?>" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                 <div class="absolute inset-0 overflow-hidden">
                     <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="open = false"></div>
                     <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
