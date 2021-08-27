@@ -39,7 +39,7 @@
                                     <div class="font-bold h-full" x-data="{ open: false }">
                                         <span class="self-start block"><?php echo get_user_fullname($value); ?></span>
                                         <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
-                                            <i class="fas fa-cog"></i>&nbsp;Manage
+                                            <i class="fas fa-cog" aria-hidden="true"></i>&nbsp;Manage
                                         </button>
                                         <div class="absolute top-0 left-0 h-screen w-screen z-40" x-show="open">
                                             <div class="h-screen w-full z-40 inset-0 overflow-y-auto">
