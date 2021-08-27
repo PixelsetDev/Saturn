@@ -62,11 +62,10 @@ if (isset($_POST['save'])) {
     if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
         log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
         echo'<meta http-equiv="refresh" content="0; url=index.php/?successMsg=Website permissions saved successfully. If an error message appears, refresh the page.">';
-        exit;
     } else {
         echo'<meta http-equiv="refresh" content="0; url=index.php/?errorMsg=Unable to save website permissions, an error occurred.">';
-        exit;
     }
+    exit;
 }
 ob_end_flush();
 ?><!DOCTYPE html>
