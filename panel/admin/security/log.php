@@ -35,7 +35,7 @@
                 }
             ?>
             <br>
-            <iframe src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/security_log.txt?cache=<?php try {
+            <iframe src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/security.log?cache=<?php try {
                 echo random_int('0000', '9999');
             } catch (Exception $e) {
                 echo alert('ERROR', $e);
