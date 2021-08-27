@@ -27,6 +27,7 @@
     require_once __DIR__.'/processes/database/get/todo.php';
     require_once __DIR__.'/processes/database/update/articles.php';
     require_once __DIR__.'/processes/database/update/notification.php';
+    require_once __DIR__.'/processes/database/update/page.php';
     require_once __DIR__.'/processes/database/update/user.php';
     require_once __DIR__.'/processes/database/update/user_settings.php';
     require_once __DIR__.'/processes/database/create/notification.php';
