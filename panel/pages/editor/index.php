@@ -112,13 +112,13 @@
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_category">Page Template</label>
                                         <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                                            <option value="" selected>History</option>
+                                            <option value="1" selected>History</option>
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_template">Page Template</label>
                                         <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                                            <option value="DEFAULT">DEFAULT</option>
+                                            <option value="DEFAULT" selected>DEFAULT</option>
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
