@@ -7,7 +7,7 @@ if (isset($_GET['error'])) {
     if ($_GET['error'] == 'db_conn') {
         $title = 'Database Error.';
         $message = 'That\'s our bad. We\'ve logged it and will investigate the cause.';
-        log_file('Saturn][ERROR', 'A \'Database Error\' error occurred. Error code: '.$error);
+        log_error('ERROR', 'A \'Database Error\' error occurred. Error code: '.$error);
     } elseif ($error == '401' || $error == '403') {
         $title = 'You\'re not permitted to access this page.';
         $message = 'Error code: '.$error.'. For more information please contact the website administrator.';
@@ -17,30 +17,30 @@ if (isset($_GET['error'])) {
     } elseif ($error == '405') {
         $title = 'Method Not Allowed.';
         $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
-        log_file('Saturn][ERROR', 'A \'Method Not Allowed\' error occurred. Error code: '.$error);
+        log_error('ERROR', 'A \'Method Not Allowed\' error occurred. Error code: '.$error);
     } elseif ($error == '408') {
         $title = 'Request Timeout.';
         $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
-        log_file('Saturn][ERROR', 'A \'Request Timeout\' error occurred. Error code: '.$error);
+        log_error('ERROR', 'A \'Request Timeout\' error occurred. Error code: '.$error);
     } elseif ($error == '413' || $error == '414') {
         $title = 'Size Limit Exceeded.';
         $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
-        log_file('Saturn][ERROR', 'A \'Size Limit Exceeded\' error occurred. Error code: '.$error);
+        log_error('ERROR', 'A \'Size Limit Exceeded\' error occurred. Error code: '.$error);
     } elseif ($_GET['error'] == '425') {
         $title = 'Too Early.';
         $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
-        log_file('Saturn][ERROR', 'A \'Too Early\' error occurred. Error code: '.$error);
+        log_error('ERROR', 'A \'Too Early\' error occurred. Error code: '.$error);
     } elseif ($_GET['error'] == '429') {
         $title = 'Too Many Requests.';
         $message = 'Error code: '.$error.'. Our servers are experiencing high load at this moment in time, please try again later.';
     } elseif ($error == '500' || $error == '501' || $error == '502' || $error == '503' || $error == '504') {
         $title = 'Server Error.';
         $message = 'Error code: '.$error.'. That\'s our bad. We\'ve logged it and will investigate the cause.';
-        log_file('Saturn][ERROR', 'A \'Server Error\' error occurred. Error code: '.$error);
+        log_error('ERROR', 'A \'Server Error\' error occurred. Error code: '.$error);
     } else {
         $title = 'Sorry, an error occurred.';
         $message = 'The specified error code ('.$error.') does not appear to exist in our system\'s error handling script. We\'ve logged it and will investigate the cause.';
-        log_file('Saturn][ERROR', 'An unidentified error occurred. Error code: '.$error);
+        log_error('ERROR', 'An unidentified error occurred. Error code: '.$error);
     }
     log_console('Saturn][ERROR', $error);
 } else {
@@ -67,6 +67,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'access_method=saturn_iframe_preview')) {
 } else { ?><!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php include_once __DIR__.'/assets/common/vendors.php'; ?>
 
     <title>Error<?php if (isset($error)) {
         echo ' '.checkOutput('DEFAULT', $error);

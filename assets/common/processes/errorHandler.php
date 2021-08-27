@@ -27,9 +27,9 @@
     function errorHandler($errno, $errstr, $type, $colour)
     {
         if (CONFIG_DEBUG) {
-            echo '<div class="duration-300 transform bg-'.$colour.'-100 border-l-4 border-'.$colour.'-500">
+            echo '<div class="duration-300 transform bg-' . $colour . '-100 border-l-4 border-' . $colour . '-500">
                                 <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
-                                    <h6 class="mb-2 font-semibold leading-5">['.date('H:i').']['.$type.']['.$errno.'] <span class="font-medium">'.$errstr.'</span></h6>
+                                    <h6 class="mb-2 font-semibold leading-5">[' . date('H:i') . '][' . $type . '][' . $errno . '] <span class="font-medium">' . $errstr . '</span></h6>
                                 </div>
                             </div>';
         }
@@ -51,7 +51,7 @@
 
         if (LOGGING_ACTIVE === true) {
             $message = date(DATE_FORMAT).' ['.$type.'] '.$message."\r\n";
-            $file = __DIR__.'/../../../storage/error.log';
+            $file = __DIR__.'/../../../storage/logs/errors.txt';
             file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
         }
     }
