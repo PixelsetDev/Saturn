@@ -85,7 +85,7 @@
                 </div>
             </header>
             <?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?>
-            <form action="index.php?pageID=<?php echo checkInput('DEFAULT',$pageID); ?>" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
+            <form action="index.php?pageID=<?php echo checkInput('DEFAULT', $pageID); ?>" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                 <div class="absolute inset-0 overflow-hidden">
                     <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="open = false"></div>
                     <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
@@ -135,7 +135,7 @@
             <?php } ?>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo checkInput('DEFAULT',$pageID); ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo checkInput('DEFAULT', $pageID); ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <?php
                 if (isset($_GET['error'])) {
                     alert('ERROR', $_GET['error']);
