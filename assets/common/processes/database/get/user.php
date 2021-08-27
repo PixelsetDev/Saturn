@@ -97,7 +97,7 @@
 
         global $conn;
 
-        $query = 'SELECT `role_id` FROM `' . DATABASE_PREFIX . 'users` WHERE `id` = ' . $id;
+        $query = 'SELECT `role_id` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
         $q = $row['role_id'];
