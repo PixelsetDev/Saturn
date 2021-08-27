@@ -30,8 +30,7 @@
             echo '<br>';
             foreach ($row as $value) {
                 if (is_numeric($value)) {
-                    $empty = false;
-                    ?>
+                    $empty = false; ?>
                     <div class="h-12">
                                     <a href="<?php echo get_user_profile_link($value); ?>" class="relative inline-block float-left mr-4 z-30">
                                         <img class="z-10 inline-block object-cover w-12 h-12 rounded-full" src="<?php echo get_user_profilephoto($value); ?>" alt="<?php echo get_user_fullname($value); ?>">

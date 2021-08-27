@@ -1,4 +1,5 @@
 <?php
+
     function update_page_description($id, $data): bool
     {
         $id = checkInput('DEFAULT', $id);
