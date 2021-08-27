@@ -60,12 +60,73 @@
     </head>
     <body class="mb-8">
         <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
-        <header class="bg-white shadow">
-            <div class="py-6 px-4 sm:px-6 lg:px-8 flex max-w-7xl w-7xl mx-auto">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow">Page Editor: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
-                <a href="<?php echo get_page_url($pageID); ?>" target="_blank" rel="noopener" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 underline transition duration-200">View live <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-            </div>
-        </header>
+        <div<?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?> x-data="{ open: false }"<?php } ?>>
+            <header class="bg-white shadow">
+                <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">
+                    <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow">Page Editor: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
+                    <br class="md:hidden block">
+                    <span class="self-center flex space-x-6 text-right">
+                        <a href="<?php echo get_page_url($pageID); ?>" target="_blank" rel="noopener" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 underline transition duration-200">
+                            View live <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        </a>
+                        <?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?>
+                        <a @click="open = true" target="_blank" rel="noopener" class="cursor-pointer text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 underline transition duration-200">
+                            Page Settings <i class="fas fa-cogs" aria-hidden="true"></i>
+                        </a>
+                        <?php } ?>
+                    </span>
+                </div>
+            </header>
+            <?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?>
+            <form action="index.php" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="open = false"></div>
+                    <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
+                        <div class="relative w-screen max-w-md">
+                            <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
+                                <button @click="open = false" class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                                    <span class="sr-only">Close panel</span>
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                                <div class="px-4 sm:px-6">
+                                    <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
+                                        Page Settings
+                                    </h2>
+                                </div>
+                                <div class="mt-6 relative flex-1 px-4 sm:px-6">
+                                    <div class="mb-2">
+                                        <label for="settings_page_description" class="self-center">Page Description</label><br>
+                                        <textarea id="settings_page_description" name="settings_page_description" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"><?php echo get_page_description($pageID); ?></textarea>
+                                    </div>
+                                    <div class="grid grid-cols-2 mb-2">
+                                        <label for="settings_page_category">Page Template</label>
+                                        <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                            <option value="" selected>History</option>
+                                        </select>
+                                    </div>
+                                    <div class="grid grid-cols-2 mb-2">
+                                        <label for="settings_page_template">Page Template</label>
+                                        <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                            <option value="DEFAULT">DEFAULT</option>
+                                        </select>
+                                    </div>
+                                    <div class="grid grid-cols-2 mb-2">
+                                        <label for="settings_page_url" class="self-center">Page URL</label>
+                                        <input id="settings_page_url" name="settings_page_url" type="text" value="<?php echo get_page_url($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" />
+                                    </div>
+                                    <input type="submit" id="submitSettings" name="submitSettings" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </form>
+            <?php } ?>
+        </div>
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo $pageID; ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <?php
