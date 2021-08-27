@@ -51,16 +51,16 @@ $router->mount('/rss', function () use ($router) {
     $router->get('/', function () {
         ?>
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
             <head>
-                <title>RSS Feeds</title>
+                <title>RSS Feeds - <?php echo CONFIG_SITE_NAME; ?></title>
                 <?php include_once __DIR__.'/assets/common/vendors.php'; ?>
             </head>
             <body>
                 <div class="p-2">
                     <section class="mb-10">
-                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="w-1/4 mx-auto">
-                        <h1 class="text-4xl w-full text-center">RSS Feeds</h1>
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="w-1/4 mx-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
+                        <h1 class="text-4xl w-full text-center"><?php echo CONFIG_SITE_NAME; ?> RSS Feeds</h1>
                     </section>
                     <?php $current_url = "feed://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
                     <section>
