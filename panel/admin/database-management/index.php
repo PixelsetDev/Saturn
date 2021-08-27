@@ -3,23 +3,23 @@ session_start();
 require_once __DIR__.'/../../../assets/common/global_private.php';
 require_once __DIR__.'/../../../assets/common/processes/gui/modals.php';
 
-function optimise_tables(): bool {
-
+function optimise_tables(): bool
+{
     global $conn;
 
-    $query1 = "OPTIMIZE TABLE `".DATABASE_PREFIX."articles`";
-    $query2 = "OPTIMIZE TABLE `".DATABASE_PREFIX."chats_messages`";
-    $query3 = "OPTIMIZE TABLE `".DATABASE_PREFIX."notifications`";
-    $query4 = "OPTIMIZE TABLE `".DATABASE_PREFIX."pages`";
-    $query5 = "OPTIMIZE TABLE `".DATABASE_PREFIX."pages_authors`";
-    $query6 = "OPTIMIZE TABLE `".DATABASE_PREFIX."pages_history`";
-    $query7 = "OPTIMIZE TABLE `".DATABASE_PREFIX."pages_pending`";
-    $query8 = "OPTIMIZE TABLE `".DATABASE_PREFIX."pages_statistics`";
-    $query9 = "OPTIMIZE TABLE `".DATABASE_PREFIX."todo_items`";
-    $query10 = "OPTIMIZE TABLE `".DATABASE_PREFIX."todo_lists`";
-    $query11 = "OPTIMIZE TABLE `".DATABASE_PREFIX."users`";
-    $query12 = "OPTIMIZE TABLE `".DATABASE_PREFIX."users_settings`";
-    $query13 = "OPTIMIZE TABLE `".DATABASE_PREFIX."users_statistics`";
+    $query1 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'articles`';
+    $query2 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'chats_messages`';
+    $query3 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'notifications`';
+    $query4 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages`';
+    $query5 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_authors`';
+    $query6 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_history`';
+    $query7 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_pending`';
+    $query8 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_statistics`';
+    $query9 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_items`';
+    $query10 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_lists`';
+    $query11 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users`';
+    $query12 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_settings`';
+    $query13 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_statistics`';
 
     if (
         mysqli_query($conn, $query1) &&
@@ -43,7 +43,7 @@ function optimise_tables(): bool {
 }
 
 if (isset($_GET['action'])) {
-    if($_GET['action'] == 'optimise') {
+    if ($_GET['action'] == 'optimise') {
         if (optimise_tables()) {
             $successMsg = 'Tables optimised.';
         } else {
