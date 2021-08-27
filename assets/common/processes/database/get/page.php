@@ -169,6 +169,19 @@
         return $row['url'];
     }
 
+    function get_page_description($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `description` FROM `'.DATABASE_PREFIX."pages` WHERE `id` = '".$id."';";
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['description'];
+    }
+
     function get_page_status($id): string
     {
         $id = checkInput('DEFAULT', $id);
