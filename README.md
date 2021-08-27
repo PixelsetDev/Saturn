@@ -8,7 +8,7 @@ Saturn is a powerful content management system for publishers, educators and eve
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=LMWNWeb_Saturn&metric=alert_status)](https://sonarcloud.io/dashboard?id=LMWNWeb_Saturn)
 [![StyleCI](https://github.styleci.io/repos/374477121/shield?branch=master)](https://github.styleci.io/repos/374477121?branch=master)
 
-## Saturn Router
-The Saturn router is fast and powerful, it allows us to save space and complexity by serving all your public-facing webpages from only two files! It handles rendering, themeing, errors and more.
+## How does Saturn display pages?
+Saturn uses the backend (shown in this repo) to display pages using the Saturn Router and Render Engine, meaning that we don't need to hard-code any frontend of your website. The Saturn router is fast and powerful, it allows us to save space and complexity by serving all your public-facing webpages from only two files! It handles rendering, themeing, errors and more.
 
 # This repo is a work-in-progress, many areas of it do not work yet.
