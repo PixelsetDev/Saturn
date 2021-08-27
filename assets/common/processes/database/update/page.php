@@ -18,7 +18,7 @@
 
         global $conn;
 
-        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `description` = '".$data."' WHERE `id` = ".$id;
+        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `category` = '".$data."' WHERE `id` = ".$id;
 
         return mysqli_query($conn, $query);
     }
@@ -30,7 +30,7 @@
 
         global $conn;
 
-        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `description` = '".$data."' WHERE `id` = ".$id;
+        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `template` = '".$data."' WHERE `id` = ".$id;
 
         return mysqli_query($conn, $query);
     }
@@ -42,7 +42,7 @@
 
         global $conn;
 
-        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `description` = '".$data."' WHERE `id` = ".$id;
+        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `url` = '".$data."' WHERE `id` = ".$id;
 
         return mysqli_query($conn, $query);
     }
