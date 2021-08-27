@@ -58,8 +58,7 @@
                     $written = 0;
                     $complete = 0;
                     $pending = 0;
-                    $total = 0;
-                    ?>
+                    $total = 0; ?>
                     <div x-data="{ open: false }">
                         <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                             <div class="absolute inset-0 overflow-hidden">
@@ -85,25 +84,24 @@
                                                     <?php
                                                         $o = pageQuery_1($i);
 
-                                                        $row = pageQuery_2($i, $o);
+                    $row = pageQuery_2($i, $o);
 
-                                                        while ($row['title'] != null) {
-                                                            $row = pageQuery_2($i, $o);
+                    while ($row['title'] != null) {
+                        $row = pageQuery_2($i, $o);
 
-                                                            if ($row['title'] != null) {
-                                                                $status = get_page_status($o);
-                                                                if ($status == 'green') {
-                                                                    $complete++;
-                                                                } elseif ($status == 'yellow') {
-                                                                    if (CONFIG_PAGE_APPROVALS) {
-                                                                        $pending++;
-                                                                    } else {
-                                                                        $status = 'green';
-                                                                        $complete++;
-                                                                    }
-                                                                }
-                                                                $total++;
-                                                        ?>
+                        if ($row['title'] != null) {
+                            $status = get_page_status($o);
+                            if ($status == 'green') {
+                                $complete++;
+                            } elseif ($status == 'yellow') {
+                                if (CONFIG_PAGE_APPROVALS) {
+                                    $pending++;
+                                } else {
+                                    $status = 'green';
+                                    $complete++;
+                                }
+                            }
+                            $total++; ?>
                                                         <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                             <div class="flex w-full relative">
                                                                 <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full"></div>
@@ -130,16 +128,15 @@
                                                             } else {
                                                                 echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($o)).' at '.get_page_last_edit_timestamp($row['id']).'.';
                                                             }
-                                                            echo'</div>
+                            echo'</div>
                                                                                             </div>
                                                                                             <br><br>';
-                                                        }
-                                                        $o++;
-                                                    }
-                                                    if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
-                                                        echo display_page_new_form();
-                                                    }
-                                                    ?>
+                        }
+                        $o++;
+                    }
+                    if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
+                        echo display_page_new_form();
+                    } ?>
                                                     <br><br><br><br>
                                                 </div>
                                             </div>
@@ -165,8 +162,7 @@
                             } else {
                                 $statusColour = 'gray';
                                 $status = 'Unknown Status';
-                            }
-                        ?>
+                            } ?>
                         <div class="flex w-full space-x-4">
                             <div class="flex w-full">
                                 <div class="flex-grow">
@@ -180,13 +176,12 @@
                                             <span class="text-xs font-semibold inline-block text-gray-600">
                                                 <?php echo
                                                     $written = $complete + $pending;
-                                                    $percent = ($written / $total) * 100;
-                                                    if (is_nan($percent)) {
-                                                        echo'N/A';
-                                                    } else {
-                                                        echo number_format((float) $percent, 2, '.', '').'%';
-                                                    }
-                                                    ?>
+                    $percent = ($written / $total) * 100;
+                    if (is_nan($percent)) {
+                        echo'N/A';
+                    } else {
+                        echo number_format((float) $percent, 2, '.', '').'%';
+                    } ?>
                                             </span>
                                         </span>
                                         <br>
@@ -195,12 +190,11 @@
                                             <span class="text-xs font-semibold inline-block text-gray-600">
                                             <?php
                                                 $percent = ($complete / $total) * 100;
-                                                if (is_nan($percent)) {
-                                                    echo'N/A';
-                                                } else {
-                                                    echo number_format((float) $percent, 2, '.', '').'%';
-                                                }
-                                            ?>
+                    if (is_nan($percent)) {
+                        echo'N/A';
+                    } else {
+                        echo number_format((float) $percent, 2, '.', '').'%';
+                    } ?>
                                             </span>
                                         </span>
                                     </div>
@@ -214,18 +208,17 @@
                         </div>
                         <div class="flex float-right h-auto relative w-full mt-3">
                             <div class="overflow-hidden h-1.5 text-xs flex rounded bg-red-400 w-full">
-                                <div style="width:<?php echo (($complete / $total) * 100) ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
-                                <div style="width:<?php echo (($pending / $total) * 100) ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
+                                <div style="width:<?php echo($complete / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                                <div style="width:<?php echo($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
                             </div>
                         </div>
                         <br>
                         <?php
                             get_assigned_editors();
-                            get_assigned_writers();
-                            unset($category);
-                            $i++;
-                            $category = get_page_category_name($i);
-                        ?>
+                    get_assigned_writers();
+                    unset($category);
+                    $i++;
+                    $category = get_page_category_name($i); ?>
                     </div>
                 <br><hr><br>
                 <?php
