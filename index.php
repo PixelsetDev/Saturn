@@ -43,6 +43,55 @@ $router->before('GET', '/.*', function () {
     header('X-Powered-By: saturn/router');
 });
 
+/**
+ * RSS Feeds
+ */
+$router->mount('/rss', function () use ($router) {
+    //rss
+    $router->get('/', function () {
+        ?>
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>RSS Feeds</title>
+                <?php include_once __DIR__.'/assets/common/vendors.php'; ?>
+            </head>
+            <body>
+                <div class="p-2">
+                    <section class="mb-10">
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="w-1/4 mx-auto">
+                        <h1 class="text-4xl w-full text-center">RSS Feeds</h1>
+                    </section>
+                    <?php $current_url = "feed://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
+                    <section>
+                        <div class="mb-2">
+                            <h1 class="text-2xl">Articles</h1>
+                            <p>Link: <a href="<?php echo $current_url; ?>/articles"><?php echo $current_url; ?>/articles</a></p>
+                        </div>
+                        <div class="mb-2">
+                            <h1 class="text-2xl">Page Updates</h1>
+                            <p>Link: <a href="<?php echo $current_url; ?>/page-updates"><?php echo $current_url; ?>/page-updates</a></p>
+                        </div>
+                    </section>
+                </div>
+            </body>
+        </html>
+        <?php
+    });
+    //rss/articles
+    $router->get('/articles', function () {
+        ?>
+
+        <?php
+    });
+    //rss/pagehistory
+    $router->get('/page-updates', function () {
+        ?>
+
+        <?php
+    });
+});
+
 $result = $conn->query('SELECT `url`  FROM `'.DATABASE_PREFIX.'pages` WHERE 1 ORDER BY `id` DESC');
 
 if ($result->num_rows > 0) {
