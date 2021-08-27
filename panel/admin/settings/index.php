@@ -57,7 +57,8 @@
     const CONFIG_DEBUG = ".$_POST['debug'].";
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '".PERMISSION_CREATE_CATEGORY."';
-    const PERMISSION_CREATE_PAGE = '".PERMISSION_CREATE_PAGE."';";
+    const PERMISSION_CREATE_PAGE = '".PERMISSION_CREATE_PAGE."';
+    const PERMISSION_EDIT_PAGE_SETTINGS = '".PERMISSION_EDIT_PAGE_SETTINGS."';";
 
         if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
