@@ -44,7 +44,7 @@ $router->before('GET', '/.*', function () {
 });
 
 /**
- * RSS Feeds
+ * RSS Feeds.
  */
 $router->mount('/rss', function () use ($router) {
     //rss
@@ -62,7 +62,7 @@ $router->mount('/rss', function () use ($router) {
                         <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="w-1/4 mx-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
                         <h1 class="text-4xl w-full text-center"><?php echo CONFIG_SITE_NAME; ?> RSS Feeds</h1>
                     </section>
-                    <?php $current_url = "feed://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
+                    <?php $current_url = 'feed://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
                     <section>
                         <div class="mb-2">
                             <h1 class="text-2xl">Articles</h1>
