@@ -91,7 +91,7 @@
         return $row['email'];
     }
 
-    function get_user_role($id): int
+    function get_user_role($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
