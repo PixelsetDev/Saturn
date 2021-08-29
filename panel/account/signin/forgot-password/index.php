@@ -54,7 +54,7 @@
         if ($getNumRows == 1) {
             $status = 1;
         } else {
-            $sql = 'UPDATE `' . DATABASE_PREFIX . "users` SET `auth_code` = '' WHERE `id` = '" . $userData['id'] . "';";
+            $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
             $rs = mysqli_query($conn, $sql);
 
             $errorMsg = 'The code you provided does not match our records. For security purposes we have de-validated your security code, please generate a new one by completing the form again.';
@@ -73,23 +73,23 @@
         if ($getNumRows == 1) {
             if (isset($_POST['password']) && isset($_POST['confirmpassword'])) {
                 if ($_POST['password'] == $_POST['confirmpassword']) {
-                        $userData = mysqli_fetch_assoc($rs);
+                    $userData = mysqli_fetch_assoc($rs);
 
-                        echo $userData['id'];
+                    echo $userData['id'];
 
-                        $password = trim($_POST['password']);
-                        $password = checkInput('DEFAULT', $password);
+                    $password = trim($_POST['password']);
+                    $password = checkInput('DEFAULT', $password);
 
-                        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                        $sql = 'UPDATE `' . DATABASE_PREFIX . "users` SET `password` = '$hashedPassword' WHERE `id` = '" . $userData['id'] . "';";
-                        $rs = mysqli_query($conn, $sql);
+                    $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `password` = '$hashedPassword' WHERE `id` = '".$userData['id']."';";
+                    $rs = mysqli_query($conn, $sql);
 
-                        $sql = 'UPDATE `' . DATABASE_PREFIX . "users` SET `auth_code` = '' WHERE `id` = '" . $userData['id'] . "';";
-                        $rs = mysqli_query($conn, $sql);
+                    $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
+                    $rs = mysqli_query($conn, $sql);
 
-                        $successMsg = 'Password changed successfully.<br>You can now log in using your new credentials.';
-                        $status = 2;
+                    $successMsg = 'Password changed successfully.<br>You can now log in using your new credentials.';
+                    $status = 2;
                 } else {
                     $errorMsg = 'The password and confirmed password provided does not match. You can try again by clicking the link in your email.';
                     $status = 0;
@@ -98,7 +98,7 @@
                 $errorMsg = 'You did not enter a password and confirmed password. You can try again by clicking the link in your email.';
             }
         } else {
-            $sql = 'UPDATE `' . DATABASE_PREFIX . "users` SET `auth_code` = '' WHERE `id` = '" . $userData['id'] . "';";
+            $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
             $rs = mysqli_query($conn, $sql);
 
             $errorMsg = 'Sorry, we were unable to determine what account the data you entered belongs to. For security purposes we have de-validated your security code, please generate a new one by completing the form again.';
@@ -195,7 +195,7 @@
                         </a>
 <?php
     } else {
-        alert('ERROR','An error has occurred, please try again later.');
+        alert('ERROR', 'An error has occurred, please try again later.');
     }
 ?>
                     </form>
