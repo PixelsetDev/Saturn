@@ -55,3 +55,16 @@
 
         return $row['security_2fa'];
     }
+
+    function get_user_accepted_terms($id): bool
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `accepted_terms` FROM `'.DATABASE_PREFIX.'users_settings` WHERE `id` = '.$id;
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['accepted_terms'];
+    }
