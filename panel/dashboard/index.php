@@ -41,10 +41,11 @@
     </head>
     <body class="mb-14">
         <?php
-        if (CONFIG_WELCOME_SCREEN) {
+        if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN) {
             if (isset($_GET['acceptTerms'])) {
                 if ($_GET['acceptTerms'] == 'true') {
                     update_user_accepted_terms($_SESSION['id'], true);
+                    alert('ERROR',"Please try again.");
                 }
             }
         ?>
