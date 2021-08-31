@@ -41,6 +41,9 @@
     const CONFIG_NOTIFICATIONS_LIMIT = '50';
     const CONFIG_ALLOW_SATURN_NOTIFICATIONS = true;
     const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = true;
+    /* Welcome Screen */
+    const CONFIG_WELCOME_SCREEN = true;
+    const CONFIG_WELCOME_SCREEN_SHOW_TERMS = true;
     /* Global Security System */
     const SECURITY_ACTIVE = true;
     const LOGGING_ACTIVE = true;
