@@ -30,7 +30,7 @@
         $message = checkOutput('DEFAULT', $message);
         if (LOGGING_ACTIVE === true) {
             $message = date(DATE_FORMAT).' ['.$prefix.'] '.$message."\r\n";
-            $file = __DIR__ . '/../../../storage/security.txt';
+            $file = __DIR__.'/../../../storage/security.txt';
             file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
         }
     }
@@ -51,16 +51,18 @@
     function log_clear($type): bool
     {
         if ($type == 'SECURITY') {
-            $message = get_user_fullname($_SESSION['id']) . ' cleared the Security Log.';
-            $message = date(DATE_FORMAT) . ' [SATURN][SECURITY] ' . $message . "\r\n";
-            $file = __DIR__ . '/../../../storage/logs/security.txt';
+            $message = get_user_fullname($_SESSION['id']).' cleared the Security Log.';
+            $message = date(DATE_FORMAT).' [SATURN][SECURITY] '.$message."\r\n";
+            $file = __DIR__.'/../../../storage/logs/security.txt';
             file_put_contents($file, $message, LOCK_EX);
+
             return true;
-        } else if ($type == 'ERROR') {
-            $message = get_user_fullname($_SESSION['id']) . ' cleared the Error Log.';
-            $message = date(DATE_FORMAT) . ' [NOTICE] ' . $message . "\r\n";
-            $file = __DIR__ . '/../../../storage/logs/errors.txt';
+        } elseif ($type == 'ERROR') {
+            $message = get_user_fullname($_SESSION['id']).' cleared the Error Log.';
+            $message = date(DATE_FORMAT).' [NOTICE] '.$message."\r\n";
+            $file = __DIR__.'/../../../storage/logs/errors.txt';
             file_put_contents($file, $message, LOCK_EX);
+
             return true;
         } else {
             return false;
