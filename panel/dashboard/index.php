@@ -40,6 +40,111 @@
 
     </head>
     <body class="mb-14">
+        <?php
+        if (CONFIG_WELCOME_SCREEN) {
+            if (isset($_GET['acceptTerms'])) {
+                if ($_GET['acceptTerms'] == 'true') {
+                    update_user_accepted_terms($_SESSION['id'], true);
+                }
+            }
+        ?>
+        <header class="bg-white shadow relative">
+            <div class="py-6 px-4 sm:px-6 lg:px-8 flex w-full">
+                <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900 flex-grow">Welcome to Saturn</h1>
+                <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="h-8 w-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
+            </div>
+        </header>
+        <form method="POST" action="index.php" class="py-6 px-4 sm:px-6 lg:px-8">
+            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
+                Hey <?php echo get_user_firstname($_SESSION['id']); ?>, welcome to Saturn. Since it's your first time using Saturn we've got a few things to go through with you before you can get started.<br>
+            </p>
+            <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">About You</h2>
+            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
+                Everyone on Saturn has an account that keeps track of who you are, your account is <?php echo get_user_username($_SESSION['id']); ?>. You can change account information in your profile settings which can be accessed by clicking on your name in the menu. There's also a number of personal settings that can be changed there too, so it's worth checking it out.<br>
+                <br>
+                <div class="grid grid-cols-2">
+                    <div>
+                        <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
+                            Your role is <?php echo get_user_role($_SESSION['id']); ?>. This means that you can:
+                        </p>
+                        <ul class="list-disc ml-4 text-<?php echo THEME_PANEL_COLOUR; ?>-700">
+                            <li>Write Pages and Articles.</li>
+                            <?php
+                            if (get_user_role($_SESSION['id'] >= '3')) {
+                                ?>
+                                <li>Approve Pages and Articles.</li>
+                                <?php
+                            }
+                            if (get_user_role($_SESSION['id'] >= '4')) {
+                                ?>
+                                <li>Manage the Website's Core Settings</li>
+                                <li>Manage the the Users and their permissions.</li>
+                                <?php
+                            }
+                            ?>
+                            <li>Join the Team Chat and Socialise with Team Members.</li>
+                            <li>and so much more!</li>
+                        </ul>
+                    </div>
+                    <div class="md:block hidden">
+                        <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50 mx-10">
+                            This is your Profile, you can edit this later in Saturn.
+                        </p>
+                        <div class="mx-10 rounded-md shadow-xl p-4">
+                            <img class="rounded-full h-16 w-16 inline m-1" src="<?php echo get_user_profilephoto($_SESSION['id']); ?>" alt="<?php echo get_user_fullname($_SESSION['id']); ?>">
+                            <h3 class="text-xl font-bold inline"><?php echo get_user_fullname($_SESSION['id']); ?></h3>
+                            <p class="mt-4">
+                                <?php echo get_user_bio($_SESSION['id']); ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </p>
+            <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Personal Settings and Preferences</h2>
+            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
+                We've got a number of personal preferences and settings available for you. You're able to find and change these in your profile edit / profile settings page by clicking on your name in the main menu. You can set how and where you get notifications, if you'd like two-factor authentication and abbreviate your surname for further privacy. At the moment you get notifications in the Saturn dashboard, but you can get email notifications by enabling them in your profile settings.
+            </p>
+            <?php
+                if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
+                $output = json_decode(file_get_contents(__DIR__.'/../../assets/storage/terms.json'));
+                if ($output->data->termsandconditions != null) {
+            ?>
+            <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Terms and Conditions</h2>
+            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
+                These are the Terms and Conditions of the Saturn System set out by your website administrator, you'll need to read these before you can continue.<br>
+                By clicking the continue button at the bottom of the screen, you accept these Terms and Conditions.
+            </p>
+            <div class="w-full h-1/2 shadow-xl overflow-y-scroll text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 border p-4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100">
+                <?php echo $output->data->termsandconditions; ?>
+            </div>
+            <?php
+                } if ($output->data->privacypolicy != null) {
+            ?>
+            <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Privacy Policy</h2>
+            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
+                This is the Privacy Policy your website administrator has created. You can also see how Saturn manages your data at <a href="https://www.saturncms.net/privacy" class="underline" rel="noopener" target="_blank">saturncms.net/privacy</a>, you'll need to read these before you can continue.<br>
+                By clicking the continue button at the bottom of the screen, you accept this Privacy Policy.
+            </p>
+            <div class="w-full h-1/2 shadow-xl overflow-y-scroll text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 border p-4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100">
+                <?php echo $output->data->privacypolicy; ?>
+            </div>
+            <?php } ?>
+            <?php } ?>
+            <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Let's go!</h2>
+            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
+                You're all set and ready to go! If you need any further help you can reach out to your Website Administrator via Email here: <a href="mailto:<?php echo CONFIG_EMAIL_ADMIN; ?>" class="underline" rel="noopener"><?php echo CONFIG_EMAIL_ADMIN; ?></a> or read the Saturn Documentation at <a href="https://docs.saturncms.net" class="underline" rel="noopener" target="_blank">https://docs.saturncms.net</a>
+            </p>
+            <a href="?acceptTerms=true" class="mt-10 hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                    <i class="fas fa-check"></i>
+                </span>
+                Continue
+            </a>
+        </form>
+        <?php
+            exit;
+            }
+        ?>
         <?php include_once __DIR__.'/../../assets/common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow relative <?php $notifCount = get_notification_count($_SESSION['id']);
@@ -83,7 +188,7 @@
             if ($remoteVersion != $localVersion) {
                 echo '<br>
                     <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                        <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
                             <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
                         </div>
