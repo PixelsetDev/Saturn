@@ -45,10 +45,9 @@
             if (isset($_GET['acceptTerms'])) {
                 if ($_GET['acceptTerms'] == 'true') {
                     update_user_accepted_terms($_SESSION['id'], true);
-                    alert('ERROR',"Please try again.");
+                    alert('ERROR', 'Please try again.');
                 }
-            }
-        ?>
+            } ?>
         <header class="bg-white shadow relative">
             <div class="py-6 px-4 sm:px-6 lg:px-8 flex w-full">
                 <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900 flex-grow">Welcome to Saturn</h1>
@@ -76,13 +75,12 @@
                                 <li>Approve Pages and Articles.</li>
                                 <?php
                             }
-                            if (get_user_role($_SESSION['id'] >= '4')) {
-                                ?>
+            if (get_user_role($_SESSION['id'] >= '4')) {
+                ?>
                                 <li>Manage the Website's Core Settings</li>
                                 <li>Manage the the Users and their permissions.</li>
                                 <?php
-                            }
-                            ?>
+            } ?>
                             <li>Join the Team Chat and Socialise with Team Members.</li>
                             <li>and so much more!</li>
                         </ul>
@@ -107,9 +105,9 @@
             </p>
             <?php
                 if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
-                $output = json_decode(file_get_contents(__DIR__.'/../../assets/storage/terms.json'));
-                if ($output->data->termsandconditions != null) {
-            ?>
+                    $output = json_decode(file_get_contents(__DIR__.'/../../assets/storage/terms.json'));
+                    if ($output->data->termsandconditions != null) {
+                        ?>
             <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Terms and Conditions</h2>
             <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
                 These are the Terms and Conditions of the Saturn System set out by your website administrator, you'll need to read these before you can continue.<br>
@@ -119,8 +117,9 @@
                 <?php echo $output->data->termsandconditions; ?>
             </div>
             <?php
-                } if ($output->data->privacypolicy != null) {
-            ?>
+                    }
+                    if ($output->data->privacypolicy != null) {
+                        ?>
             <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Privacy Policy</h2>
             <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
                 This is the Privacy Policy your website administrator has created. You can also see how Saturn manages your data at <a href="https://www.saturncms.net/privacy" class="underline" rel="noopener" target="_blank">saturncms.net/privacy</a>, you'll need to read these before you can continue.<br>
@@ -129,8 +128,10 @@
             <div class="w-full h-1/2 shadow-xl overflow-y-scroll text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 border p-4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100">
                 <?php echo $output->data->privacypolicy; ?>
             </div>
-            <?php } ?>
-            <?php } ?>
+            <?php
+                    } ?>
+            <?php
+                } ?>
             <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Let's go!</h2>
             <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
                 You're all set and ready to go! If you need any further help you can reach out to your Website Administrator via Email here: <a href="mailto:<?php echo CONFIG_EMAIL_ADMIN; ?>" class="underline" rel="noopener"><?php echo CONFIG_EMAIL_ADMIN; ?></a> or read the Saturn Documentation at <a href="https://docs.saturncms.net" class="underline" rel="noopener" target="_blank">https://docs.saturncms.net</a>
@@ -144,8 +145,7 @@
         </form>
         <?php
             exit;
-            }
-        ?>
+        } ?>
         <?php include_once __DIR__.'/../../assets/common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow relative <?php $notifCount = get_notification_count($_SESSION['id']);
