@@ -48,7 +48,8 @@
         return mysqli_query($conn, $query);
     }
 
-    function update_user_accepted_terms($id, $data) {
+    function update_user_accepted_terms($id, $data)
+    {
         $id = checkInput('DEFAULT', $id);
         $data = checkInput('DEFAULT', $data);
 
