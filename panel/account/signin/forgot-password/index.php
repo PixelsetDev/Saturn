@@ -79,7 +79,6 @@
 
                     $password = trim($_POST['password']);
                     $password = checkInput('DEFAULT', $password);
-
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
                     $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `password` = '$hashedPassword' WHERE `id` = '".$userData['id']."';";
