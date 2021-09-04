@@ -23,22 +23,23 @@
             $errorMsg = 'To prevent accidental locking-out of accounts, you\'re not currently able to change your own role, sorry for any inconvenience caused. To change information such as your display name, <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/edit" class="text-black underline">please click here</a>.';
         }
     }
+
     function displayUser($rs)
     {
         while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
             echo '<br>';
             foreach ($row as $value) {
                 if (is_numeric($value)) {
-                    $empty = false;
-                    echo '<div class="h-12">
-                                    <a href="'.get_user_profile_link($value).'" class="relative inline-block float-left mr-4 z-30">
-                                        <img class="z-10 inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
-                                        <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity_colour($value).'-600 border-2 border-gray-200 rounded-full"></span>
+                    $empty = false; ?>
+                    <div class="h-12">
+                                    <a href="<?php echo get_user_profile_link($value); ?>" class="relative inline-block float-left mr-4 z-30">
+                                        <img class="z-10 inline-block object-cover w-12 h-12 rounded-full" src="<?php echo get_user_profilephoto($value); ?>" alt="<?php echo get_user_fullname($value); ?>">
+                                        <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-<?php echo get_activity_colour($value); ?>-600 border-2 border-gray-200 rounded-full"></span>
                                     </a>
                                     <div class="font-bold h-full" x-data="{ open: false }">
-                                        <span class="self-start block">'.get_user_fullname($value).'</span>
-                                        <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-'.THEME_PANEL_COLOUR.'-500 hover:bg-'.THEME_PANEL_COLOUR.'-400 focus:shadow-outline focus:outline-none">
-                                            <i class="fas fa-cog"></i>&nbsp;Manage
+                                        <span class="self-start block"><?php echo get_user_fullname($value); ?></span>
+                                        <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
+                                            <i class="fas fa-cog" aria-hidden="true"></i>&nbsp;Manage
                                         </button>
                                         <div class="absolute top-0 left-0 h-screen w-screen z-40" x-show="open">
                                             <div class="h-screen w-full z-40 inset-0 overflow-y-auto">
@@ -57,25 +58,25 @@
                                                             <div class="p-4">
                                                                 <form action="index.php" method="post">
                                                                     <div class="text-center mb-4 opacity-90">
-                                                                        <a href="'.get_user_profile_link($value).'" class="block relative">
-                                                                            <img alt="'.get_user_fullname($value).'" src="'.get_user_profilephoto($value).'" class="mx-auto object-cover rounded-full h-16 w-16 "/>
+                                                                        <a href="<?php echo get_user_profile_link($value); ?>" class="block relative">
+                                                                            <img alt="<?php echo get_user_fullname($value); ?>" src="<?php echo get_user_profilephoto($value); ?>" class="mx-auto object-cover rounded-full h-16 w-16 "/>
                                                                         </a>
                                                                     </div>
                                                                     <div class="text-center">
                                                                         <div class="flex w-full">
                                                                             <span class="flex-grow">&nbsp;</span>
-                                                                            <input type="text" name="firstname" class="text-2xl text-gray-800 dark:text-white w-1/3 inline text-right mr-2" value="'.get_user_firstname($value).'">
-                                                                            <input type="text" name="lastname" class="text-2xl text-gray-800 dark:text-white w-1/3 inline" value="'.get_user_lastname($value).'">
+                                                                            <input type="text" name="firstname" class="text-2xl text-gray-800 dark:text-white w-1/3 inline text-right mr-2" value="<?php echo get_user_firstname($value); ?>">
+                                                                            <input type="text" name="lastname" class="text-2xl text-gray-800 dark:text-white w-1/3 inline" value="<?php echo get_user_lastname($value); ?>">
                                                                             <span class="flex-grow">&nbsp;</span>
                                                                         </div>
                                                                         <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-            '.get_user_role($value).'
+                                                                            <?php echo get_user_role($value); ?>
                                                                         </p>
                                                                         <p class="text-md text-gray-500 dark:text-gray-400 max-w-xs py-4 font-light">
-                                                                                <input type="text" name="userid" id="userid" value="'.$value.'" class="hidden">
+                                                                                <input type="text" name="userid" id="userid" value="<?php echo $value; ?>" class="hidden">
                                                                                 <div class="relative inline-block w-full text-gray-700">
                                                                                     <select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-                                                                                        <option value="4"';
+                                                                                        <option value="4"<?php
                     if (get_user_roleID($value) == '4') {
                         echo' selected';
                     }
@@ -98,13 +99,13 @@
                     if (get_user_roleID($value) == '0') {
                         echo' selected';
                     }
-                    echo'>Restricted</option>
+                    echo'>Restricted</option>'; ?>
                                                                                     </select>
                                                                                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                                                                         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
                                                                                 </div>
                                                                             </div>
-                                                                            <input type="Submit" name="action" value="Save" class="mouse-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-'.THEME_PANEL_COLOUR.'-500 hover:bg-'.THEME_PANEL_COLOUR.'-400 focus:shadow-outline focus:outline-none">
+                                                                            <input type="Submit" name="action" value="Save" class="mouse-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
                                                                         </p>
                                                                     </div>
                                                                 </form>
@@ -115,7 +116,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>';
+                                </div>
+                <?php
                 }
             }
             if ($empty) {
@@ -163,7 +165,8 @@
                             <?php
                             $empty = true;
 
-                            $query = 'SELECT `id`, `first_name` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '4' ORDER BY `first_name`";
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '4' ORDER BY `first_name`;";
+
                             $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
@@ -178,7 +181,7 @@
                         <?php
                             $empty = true;
 
-                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '3'";
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '3';";
                             $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
@@ -190,7 +193,7 @@
                             <?php
                             $empty = true;
 
-                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '2'";
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '2';";
                             $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
@@ -202,7 +205,7 @@
                             <?php
                             $empty = true;
 
-                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '0'";
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '0';";
                             $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);
@@ -214,7 +217,7 @@
                             <?php
                             $empty = true;
 
-                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '1'";
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '1';";
                             $rs = mysqli_query($conn, $query);
 
                             displayUser($rs);

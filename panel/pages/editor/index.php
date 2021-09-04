@@ -9,7 +9,7 @@
     if (empty($_SERVER['CONTENT_TYPE'])) {
         $_SERVER['CONTENT_TYPE'] = 'application/x-www-form-urlencoded';
     }
-    if (isset($_POST['title'])) {
+    if (isset($_POST['submit'])) {
         if ($_POST['title'] != null) {
             if ($_POST['content'] != null) {
                 $title = checkInput('HTML', $_POST['title']);
@@ -45,6 +45,13 @@
             exit;
         }
     }
+
+    if (isset($_POST['submitSettings'])) {
+        update_page_description($pageID, $_POST['settings_page_description']);
+        update_page_category($pageID, $_POST['settings_page_category']);
+        update_page_template($pageID, $_POST['settings_page_template']);
+        update_page_url($pageID, $_POST['settings_page_url']);
+    }
     ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
@@ -78,7 +85,7 @@
                 </div>
             </header>
             <?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?>
-            <form action="index.php" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
+            <form action="index.php?pageID=<?php echo checkInput('DEFAULT', $pageID); ?>" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                 <div class="absolute inset-0 overflow-hidden">
                     <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="open = false"></div>
                     <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
@@ -105,13 +112,13 @@
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_category">Page Template</label>
                                         <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                                            <option value="" selected>History</option>
+                                            <option value="1" selected>History</option>
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_template">Page Template</label>
                                         <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                                            <option value="DEFAULT">DEFAULT</option>
+                                            <option value="DEFAULT" selected>DEFAULT</option>
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
@@ -128,7 +135,7 @@
             <?php } ?>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo $pageID; ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo checkInput('DEFAULT', $pageID); ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <?php
                 if (isset($_GET['error'])) {
                     alert('ERROR', $_GET['error']);

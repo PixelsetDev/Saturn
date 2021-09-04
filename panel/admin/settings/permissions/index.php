@@ -131,14 +131,14 @@ ob_end_flush();
                     <label for="PERMISSION_EDIT_PAGE_SETTINGS">Edit Page Setting</label>
                     <select id="PERMISSION_EDIT_PAGE_SETTINGS" name="PERMISSION_EDIT_PAGE_SETTINGS" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                         <option value="2"<?php if (PERMISSION_EDIT_PAGE_SETTINGS == '3') {
-                            echo ' selected';
-                        } ?>>Not Restricted: Administrators, Edits and Writers.</option>
+            echo ' selected';
+        } ?>>Not Restricted: Administrators, Edits and Writers.</option>
                         <option value="3"<?php if (PERMISSION_EDIT_PAGE_SETTINGS == '3') {
-                            echo ' selected';
-                        } ?>>Restricted: Administrators and Editors Only</option>
+            echo ' selected';
+        } ?>>Restricted: Administrators and Editors Only</option>
                         <option value="4"<?php if (PERMISSION_EDIT_PAGE_SETTINGS == '4') {
-                            echo ' selected';
-                        } ?>>Restricted: Administrators Only</option>
+            echo ' selected';
+        } ?>>Restricted: Administrators Only</option>
                     </select>
                 </div>
             </div>

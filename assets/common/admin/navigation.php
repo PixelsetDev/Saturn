@@ -89,6 +89,7 @@
                             </div>
                         </div>
                     </div>
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/database-management'; ?>">Database Management</a>
                     <span class="fixed bottom-0 text-xs text-<?php echo THEME_PANEL_COLOUR; ?>-600">Saturn Panel &copy; 2021 - <?php echo date('Y'); ?> Saturn CMS</span>
                 </nav>
             </div>

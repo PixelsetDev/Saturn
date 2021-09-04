@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once __DIR__.'/../../assets/common/global_private.php';
 
 function listUsers($role)
 {
@@ -31,7 +32,6 @@ function listUsers($role)
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../assets/common/global_private.php';
             include_once __DIR__.'/../../assets/common/panel/vendors.php';
             include_once __DIR__.'/../../assets/common/panel/theme.php';
         ?>

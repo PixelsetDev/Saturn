@@ -47,3 +47,15 @@
 
         return mysqli_query($conn, $query);
     }
+
+    function update_user_accepted_terms($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users_settings` SET `accepted_terms` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
