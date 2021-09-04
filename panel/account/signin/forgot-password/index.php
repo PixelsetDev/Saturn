@@ -155,7 +155,7 @@
                         <div>
                             <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                                    <i class="fas fa-unlock"></i>
+                                    <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
                                 Reset Password
                             </button>
@@ -180,7 +180,7 @@
                         <div>
                             <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                                    <i class="fas fa-unlock"></i>
+                                    <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
                                 Reset Password
                             </button>
@@ -188,7 +188,7 @@
 <?php } elseif ($status == 2) { ?>
                         <a href="'.CONFIG_INSTALL_URL.'/panel/account/signin" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                                <i class="fas fa-lock"></i>
+                                <i class="fas fa-lock" aria-hidden="true"></i>
                             </span>
                             Sign in
                         </a>
