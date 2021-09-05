@@ -8,9 +8,9 @@
  *
  * @return bool
  */
-function alert($type, $message): bool
+function alert($type, $message): string
 {
-    $message = checkOutput('DEFAULT', $message);
+    $message = checkOutput('HTML', $message);
     $message = stripslashes($message);
 
     if ($type == 'ERROR') {
@@ -64,9 +64,9 @@ function alert($type, $message): bool
  *
  * @return bool
  */
-function static_alert($type, $message): bool
+function static_alert($type, $message): string
 {
-    $message = checkOutput('DEFAULT', $message);
+    $message = checkOutput('HTML', $message);
     $message = stripslashes($message);
 
     if ($type == 'ERROR') {
