@@ -44,7 +44,7 @@
     /* Welcome Screen */
     const CONFIG_WELCOME_SCREEN = true;
     const CONFIG_WELCOME_SCREEN_SHOW_TERMS = true;
-    /* Global Security System */
+    /* Security */
     const SECURITY_ACTIVE = true;
     const SECURITY_MODE = 'clean';
     const LOGGING_ACTIVE = true;
