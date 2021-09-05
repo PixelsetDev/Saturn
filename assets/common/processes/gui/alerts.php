@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * alert(type,message) Creates an alert box.
+ *
+ * @param $type
+ * @param $message
+ * @return bool
+ */
 function alert($type, $message): bool
 {
     $message = checkOutput('DEFAULT', $message);
@@ -41,6 +48,13 @@ function alert($type, $message): bool
     return true;
 }
 
+/**
+ * static_alert(type,message) Creates an alert box that does not move on hover.
+ *
+ * @param $type
+ * @param $message
+ * @return bool
+ */
 function static_alert($type, $message): bool
 {
     $message = checkOutput('DEFAULT', $message);
