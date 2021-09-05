@@ -131,15 +131,15 @@
                         </h2>
                         <?php
                         if (isset($errorMsg)) {
-                            alert('ERROR', $errorMsg);
+                            echo alert('ERROR', $errorMsg);
                             unset($errorMsg);
                         }
                         if (isset($infoMsg)) {
-                            alert('INFO', $infoMsg);
+                            echo alert('INFO', $infoMsg);
                             unset($infoMsg);
                         }
                         if (isset($successMsg)) {
-                            alert('SUCCESS', $successMsg);
+                            echo alert('SUCCESS', $successMsg);
                             unset($successMsg);
                         }
                         ?>
@@ -194,7 +194,7 @@
                         </a>
 <?php
     } else {
-        alert('ERROR', 'An error has occurred, please try again later.');
+        echo alert('ERROR', 'An error has occurred, please try again later.');
     }
 ?>
                     </form>

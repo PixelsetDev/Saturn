@@ -109,11 +109,11 @@
                         </h2>
                         <?php
                             if (isset($errorMsg)) {
-                                alert('ERROR', $errorMsg);
+                                echo alert('ERROR', $errorMsg);
                                 unset($errorMsg);
                             }
                             if (isset($infoMsg)) {
-                                alert('INFO', $infoMsg);
+                                echo alert('INFO', $infoMsg);
                                 unset($infoMsg);
                             }
                         ?>
