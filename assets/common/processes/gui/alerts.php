@@ -5,6 +5,7 @@
  *
  * @param $type
  * @param $message
+ *
  * @return bool
  */
 function alert($type, $message): bool
@@ -53,6 +54,7 @@ function alert($type, $message): bool
  *
  * @param $type
  * @param $message
+ *
  * @return bool
  */
 function static_alert($type, $message): bool
