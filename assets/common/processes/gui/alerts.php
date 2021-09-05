@@ -1,6 +1,6 @@
 <?php
 
-function alert($type, $message)
+function alert($type, $message): bool
 {
     $message = checkOutput('DEFAULT', $message);
     $message = stripslashes($message);
@@ -41,9 +41,11 @@ function alert($type, $message)
     return true;
 }
 
-function static_alert($type, $message)
+function static_alert($type, $message): bool
 {
     $message = checkOutput('DEFAULT', $message);
+    $message = stripslashes($message);
+
     if ($type == 'ERROR') {
         echo '<div class="bg-red-100 border-l-4 border-red-500">
                                 <div class="p-5 border border-l-0 rounded-r shadow-sm">
