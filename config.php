@@ -54,4 +54,4 @@
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '4';
     const PERMISSION_CREATE_PAGE = '4';
-    const PERMISSION_EDIT_PAGE_SETTINGS = '4';
+    const PERMISSION_EDIT_PAGE_SETTINGS = '3';
