@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon.png">
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.1.4/dist/tailwind.min.css" integrity="sha256-hfMZAfOTaHPZSp5rYtEM+pqIhJ3zKdooXUrO59bFmRE=" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.js" integrity="sha256-9R44V6iCmVV7oDivSSvnPm4oYYirH6gC7ft09IS4j+o=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <meta name="theme-color" content="#111827">
+        <title>{{data:title}}</title>
+    </head>
+    <body>
+        {{section:navigation}}
+        <div class="mb-6">
+                    <div class="relative flex flex-col-reverse pt-16 lg:pt-0 lg:flex-col lg:pb-0">
+                        <div class="relative z-10">
+                                <div class="absolute inset-x-0 bottom-0 z-20">
+                                    <svg viewBox="0 0 1440 320" fill="currentColor" class="w-full -mb-28 md:block hidden text-white" preserveAspectRatio="none">
+                                        <path d="M0,160L48,181.3C96,203,192,245,288,266.7C384,288,480,288,576,282.7C672,277,768,267,864,229.3C960,192,1056,128,1152,90.7C1248,53,1344,43,1392,37.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                                    </svg>
+                                </div>
+                                <video autoplay="" loop="" muted="" playsinline="" class="">
+                                    <source src="/assets/videos/homepage_1.mp4?v=1" type="video/mp4">            </video>
+                                    <img
+                                                                    class="absolute inset-x-0 bottom-0 -top-6 sm:-top-52 lg:-bottom-50 w-full"
+                                                                    src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_Vice_Admiral_of_Red_1805_to_1864.png" alt="{{data:title}}"
+                                                                />
+                                <div class="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 my-28">
+                                    <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center self-center" style="height:300px;">
+                                        <br><img src="/assets/images/logo.min.png?v=1" alt="GeolHistory" class="self-center">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inset-y-0 top-0 right-0 z-0 w-full px-4 mx-auto md:px-0 lg:pr-0 lg:mx-0 lg:absolute xl:px-0">
+                                <svg class="absolute bottom-0 hidden h-full text-white transform lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
+                                    <path d="M50 0H100L50 100H0L50 0Z"></path>
+                                </svg>
+
+                                Image &copy; {{data:image:credit}} ({{data:image:license}})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="max-w-7xl mx-4 pb-6 lg:pt-6 sm:px-6 lg:px-8">
+                        <div x-data="{ open: true }" class="flex">
+                            <div class="flex-grow z-10">
+                                <div class="flex">
+                                    <div class="w-3/4 flex-grow text-justify">
+                                        {{data:content}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {{section:footer}}
+    </body>
+</html>
