@@ -3,6 +3,8 @@
 function alert($type, $message)
 {
     $message = checkOutput('DEFAULT', $message);
+    $message = stripslashes($message);
+
     if ($type == 'ERROR') {
         echo '<br>
                             <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
