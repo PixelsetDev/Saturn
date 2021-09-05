@@ -113,24 +113,13 @@ $router->get('/', function () {
 // Subrouting
 $router->mount('/articles', function () use ($router) {
 
-    // will result in '/movies'
     $router->get('/', function () {
-        echo 'Articles overview';
+        require_once __DIR__.'/assets/common/processes/render_engine/articles.php';
     });
 
-    // will result in '/movies'
-    $router->post('/', function () {
-        echo 'Add article';
-    });
-
-    // will result in '/movies/id'
     $router->get('/(\d+)', function ($id) {
-        echo 'Article id '.htmlentities($id);
-    });
-
-    // will result in '/movies/id'
-    $router->put('/(\d+)', function ($id) {
-        echo 'Update movie id '.htmlentities($id);
+        $articleID = htmlspecialchars($id);
+        require_once __DIR__.'/assets/common/processes/render_engine/articles.php';
     });
 });
 
