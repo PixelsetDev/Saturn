@@ -48,7 +48,7 @@
     const SECURITY_ACTIVE = true;
     const SECURITY_MODE = 'clean';
     const LOGGING_ACTIVE = true;
-    const LOGGING_ALERTS_AUTOLOG = true;
+    const LOGGING_AUTOLOG = false;
     /* Developer Tools */
     const CONFIG_DEBUG = false;
     /* Permissions */
