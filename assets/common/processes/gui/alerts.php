@@ -21,7 +21,9 @@ function alert($type, $message): string
                                     <h6 class="p-3 font-semibold leading-5">'.$message.'</h6>
                                 </div>
                             </div>';
-        if (LOGGING_AUTOLOG) { log_file('AUTOLOG][ALERT:ERROR',$message); }
+        if (LOGGING_AUTOLOG) {
+            log_file('AUTOLOG][ALERT:ERROR', $message);
+        }
     } elseif ($type == 'WARNING') {
         $alert = '<br><div class="duration-300 transform bg-yellow-50 border-l-4 border-yellow-500 hover:-translate-y-2">
                                 <div class="p-2 border border-l-0 rounded-r shadow-sm flex">
@@ -29,7 +31,9 @@ function alert($type, $message): string
                                     <h6 class="p-3 font-semibold leading-5">'.$message.'</h6>
                                 </div>
                             </div>';
-        if (LOGGING_AUTOLOG) { log_file('AUTOLOG][ALERT:WARNING',$message); }
+        if (LOGGING_AUTOLOG) {
+            log_file('AUTOLOG][ALERT:WARNING', $message);
+        }
     } elseif ($type == 'SUCCESS') {
         $alert = '<br><div class="duration-300 transform bg-green-50 border-l-4 border-green-500 hover:-translate-y-2">
                                 <div class="p-2 border border-l-0 rounded-r shadow-sm flex">
@@ -76,7 +80,9 @@ function static_alert($type, $message): string
                                     <h6 class="p-3 font-semibold leading-5">'.$message.'</h6>
                                 </div>
                             </div>';
-        if (LOGGING_AUTOLOG) { log_file('AUTOLOG][ALERT:ERROR',$message); }
+        if (LOGGING_AUTOLOG) {
+            log_file('AUTOLOG][ALERT:ERROR', $message);
+        }
     } elseif ($type == 'WARNING') {
         $alert = '<div class="bg-yellow-50 border-l-4 border-yellow-500">
                                 <div class="p-2 border border-l-0 rounded-r shadow-sm flex">
@@ -84,7 +90,9 @@ function static_alert($type, $message): string
                                     <h6 class="p-3 font-semibold leading-5">'.$message.'</h6>
                                 </div>
                             </div>';
-        if (LOGGING_AUTOLOG) { log_file('AUTOLOG][ALERT:WARNING',$message); }
+        if (LOGGING_AUTOLOG) {
+            log_file('AUTOLOG][ALERT:WARNING', $message);
+        }
     } elseif ($type == 'SUCCESS') {
         $alert = '<div class="bg-green-50 border-l-4 border-green-500">
                                 <div class="p-2 border border-l-0 rounded-r shadow-sm flex">
