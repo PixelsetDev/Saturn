@@ -2,7 +2,6 @@
     session_start();
     ob_start();
     include_once __DIR__.'/../../assets/common/global_private.php';
-    include_once __DIR__.'/../../assets/common/panel/vendors.php';
     if ($_SESSION['2FA_verified'] || !get_user_settings_security_2fa($_SESSION['id'])) {
         ?>
 <!DOCTYPE html>
@@ -14,6 +13,7 @@
         <title>Saturn Panel</title>
 
         <?php
+        include_once __DIR__.'/../../assets/common/panel/vendors.php';
             if (isset($_GET['dismissNotif'])) {
                 $nid = $_GET['dismissNotif'];
                 update_notification_dismiss($nid);
