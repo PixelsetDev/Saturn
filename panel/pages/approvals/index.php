@@ -48,7 +48,7 @@
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
             if (isset($errorMsg)) {
-                alert('ERROR', $errorMsg);
+                echo alert('ERROR', $errorMsg);
             }
             unset($errorMsg);
             ?>
@@ -112,13 +112,18 @@
                         $total++;
                         echo'<div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                                     <div class="flex w-full relative">
-                                                                        <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>
-                                                                        ';
-                        if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {
-                            echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
-                        }
-                        echo'
-                                                                        <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
+                                                                        <div class="flex-grow">
+                                                                            <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>
+                                                                            ';
+                            if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {
+                                echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
+                            }
+                            echo'
+                                                                            <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
+                                                                            <div class="text-xs normal-case font-normal">
+                                                                                '.get_page_description($o).'
+                                                                            </div>
+                                                                        </div>
                                                                         <div><a href="approve/?pageID='.$o.'" class="hover:shadow-xl w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 text-'.THEME_PANEL_COLOUR.'-900 md:py-1 md:text-rg md:px-10">Approve</span></a></div>
                                                                     </div>
                                                                     <div class="text-xs normal-case font-normal text-gray-400 italic">';
