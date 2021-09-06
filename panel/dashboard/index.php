@@ -45,7 +45,7 @@
             if (isset($_GET['acceptTerms'])) {
                 if ($_GET['acceptTerms'] == 'true') {
                     update_user_accepted_terms($_SESSION['id'], true);
-                    alert('ERROR', 'Please try again.');
+                    echo alert('ERROR', 'Please try again.');
                 }
             } ?>
         <header class="bg-white shadow relative">
@@ -173,15 +173,15 @@
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
             if (isset($errorMsg)) {
-                alert('ERROR', $errorMsg);
+                echo alert('ERROR', $errorMsg);
                 unset($errorMsg);
             }
         if (isset($warningMsg)) {
-            alert('WARNING', $warningMsg);
+            echo alert('WARNING', $warningMsg);
             unset($warningMsg);
         }
         if (CONFIG_DEBUG) {
-            alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
+            echo alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
         }
         if (get_user_roleID($_SESSION['id']) > 3) {
             $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version=beta');

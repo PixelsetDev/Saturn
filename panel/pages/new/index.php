@@ -46,23 +46,13 @@
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <?php
                 if (isset($errorMsg)) {
-                    echo '<div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                                    <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                        <h6 class="mb-2 font-semibold leading-5">[ERROR] '.$errorMsg.'</h6>
-                                    </div>
-                                </div><br>';
-                    exit;
+                    echo alert('ERROR',$errorMsg);
+                    unset($errorMsg);
                 }
-                unset($errorMsg);
                 if (isset($successMsg)) {
-                    echo '<div class="duration-300 transform bg-green-100 border-l-4 border-green-500 hover:-translate-y-2">
-                                    <div class="h-full p-5 border border-l-0 rounded-r shadow-sm">
-                                        <h6 class="mb-2 font-semibold leading-5">'.$successMsg.'</h6>
-                                    </div>
-                                </div><br>';
-                    exit;
+                    echo alert('SUCCESS',$successMsg);
+                    unset($successMsg);
                 }
-                unset($successMsg);
                 ?>
                 <div class="px-4 py-6 sm:px-0">
                     <div class="flex space-x-2 mb-2">
