@@ -104,14 +104,19 @@
                             $total++; ?>
                                                         <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                             <div class="flex w-full relative">
-                                                                <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full"></div>
-                                                                <?php if ($status == 'red') { ?>
-                                                                    <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
-                                                                <?php } ?>
-                                                                <div class="flex-grow mr-2 self-center"><?php echo get_page_title($o); ?>
-                                                                <?php if ($o == get_page_category_id($i)) { ?>
-                                                                    <i class="fas fa-home" aria-hidden="true"></i>
-                                                                <?php } ?>
+                                                                <div class="flex-grow">
+                                                                    <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full"></div>
+                                                                    <?php if ($status == 'red') { ?>
+                                                                        <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
+                                                                    <?php } ?>
+                                                                    <div class="flex-grow mr-2 self-center"><?php echo get_page_title($o); ?>
+                                                                    <?php if ($o == get_page_category_id($i)) { ?>
+                                                                        <i class="fas fa-home" aria-hidden="true"></i>
+                                                                    <?php } ?>
+                                                                    </div>
+                                                                    <div class="text-xs normal-case font-normal">
+                                                                        <?php echo get_page_description($o); ?>
+                                                                    </div>
                                                                 </div>
                                                                 <div>
                                                                     <a href="editor/?pageID=<?php echo $o; ?>" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
