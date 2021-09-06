@@ -3,13 +3,13 @@
 /**
  * alert(type,message,static) Creates an alert box.
  *
- * @param $type
- * @param $message
+ * @param string $type
+ * @param string $message
  * @param false $static
  *
  * @return string
  */
-function alert($type, $message, bool $static = false): string
+function alert(string $type = 'NOTIFICATION', string $message = '', bool $static = false): string
 {
     $message = checkOutput('HTML', $message);
     $message = stripslashes($message);
@@ -54,7 +54,7 @@ function alert($type, $message, bool $static = false): string
                                     <h6 class="p-3 font-semibold leading-5">'.$message.'</h6>
                                 </div>
                             </div>';
-    } elseif (!$static) {
+    } elseif ($type == 'NOTIFICATION' && !$static) {
         $alert .= '<div class="duration-300 transform bg-gray-50 border-l-4 border-gray-500 hover:-translate-y-2">
                                 <div class="p-2 border border-l-0 rounded-r shadow-sm flex">
                                     <i class="px-2 fas fa-bell text-gray-500 fa-2x self-center" aria-hidden="true"></i>
