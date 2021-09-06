@@ -112,7 +112,6 @@ $router->get('/', function () {
 
 // Subrouting
 $router->mount('/articles', function () use ($router) {
-
     $router->get('/', function () {
         require_once __DIR__.'/assets/common/processes/render_engine/articles.php';
     });
