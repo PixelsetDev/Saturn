@@ -1,4 +1,4 @@
-<div class="z-40 absolute top-0 left-0 right-0" x-data="{ open: false }">
+<div class="z-40" x-data="{ open: false }">
     <nav class="bg-gray-900 shadow-lg">
         <div class="max-w-7xl mx-auto px-8">
             <div class="flex items-center justify-between h-16">
