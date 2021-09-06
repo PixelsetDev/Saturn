@@ -110,7 +110,7 @@
                                                                         <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
                                                                     <?php } ?>
                                                                     <div class="flex-grow mr-2 self-center"><?php echo get_page_title($o); ?>
-                                                                    <?php if ($o == get_page_category_id($i)) { ?>
+                                                                    <?php if ($o == get_page_category_homepage($i)) { ?>
                                                                         <i class="fas fa-home" aria-hidden="true"></i>
                                                                     <?php } ?>
                                                                     </div>
