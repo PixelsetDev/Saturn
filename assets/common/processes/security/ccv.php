@@ -29,6 +29,6 @@
     function ccv_validate_all()
     {
         if (!ccv_validate('CONFIG') && !isset($_GET['successResetCCV'])) {
-            echo alert('WARNING','CCV: Website configuration does not match checksum. <a href="https://docs.saturncms.net/website-configuration-checksum" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>',true);
+            echo alert('WARNING', 'CCV: Website configuration does not match checksum. <a href="https://docs.saturncms.net/website-configuration-checksum" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
         }
     }
