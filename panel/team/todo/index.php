@@ -28,7 +28,7 @@
         }
     }
     // Create a new list
-    if (isset($_GET['create'])) {
+    if (isset($_POST['create'])) {
         $listOwnerID = checkInput('DEFAULT', $_SESSION['id']);
         $listTitle = checkInput('DEFAULT', $_POST['listTitle']);
         $listDescription = checkInput('DEFAULT', $_POST['listDescription']);
@@ -62,23 +62,23 @@
         ?>
         <title>Team To-Do - Saturn Panel</title>
     </head>
-    <body class="mb-8">
+    <div class="mb-8">
         <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">To-Do</h1>
+                <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">To-Do</h1>
             </div>
         </header>
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8" x-data="{ tab: '1' }">
             <?php
                 if (isset($errorMsg)) {
-                    alert('ERROR', $errorMsg);
+                    echo alert('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
                 if (isset($successMsg)) {
-                    alert('SUCCESS', $successMsg);
+                    echo alert('SUCCESS', $successMsg);
                     unset($successMsg);
                 }
             ?>
@@ -108,124 +108,124 @@
             $i = 1;
             $listName = get_todo_list_name($i);
             while ($listName != null) {
-                if ((get_todo_list_status($i) == '1') && (get_todo_list_visibility($i) == 'PUBLIC') && (get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
+                if ((get_todo_list_owner_id($i) == $_SESSION['id'] && get_todo_list_status($i) == '1') || (get_todo_list_status($i) == '1' && get_todo_list_visibility($i) == 'PUBLIC' && get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
                     $o = 1;
                     $itemName = get_todo_item_title($o); ?>
-        </div>
-        <div x-show="tab === '<?php echo $i; ?>'">
-            <div>
-                <div class="flex space-x-6 pb-6 pt-1">
-                    <div class="flex-grow">
-                        <h2 class="text-2xl"><?php echo $listName; ?></h2>
-                        <p class=""><?php echo get_user_fullname(get_todo_list_owner_id($i)); ?>'s list.</p>
+            <div x-show="tab === '<?php echo $i; ?>'">
+                <div>
+                    <div class="flex space-x-6 pb-6 pt-1">
+                        <div class="flex-grow">
+                            <h2 class="text-2xl"><?php echo $listName; ?></h2>
+                            <p class=""><?php echo get_user_fullname(get_todo_list_owner_id($i)); ?>'s list.</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <a href="?save=<?php echo $i; ?>" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
+                                Save&nbsp;<i class="far fa-save" aria-hidden="true"></i>
+                            </a>
+                            <a href="javascript:alert('This feature has not yet been implemented.');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
+                                Manage&nbsp;<i class="fas fa-cogs" aria-hidden="true"></i>
+                            </a>
+                            <a href="?delete=<?php echo $i; ?>" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
+                                Delete&nbsp;<i class="far fa-trash-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <a href="?save=<?php echo $i; ?>" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
-                            Save&nbsp;<i class="far fa-save" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:alert('This feature has not yet been implemented.');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
-                            Manage&nbsp;<i class="fas fa-cogs" aria-hidden="true"></i>
-                        </a>
-                        <a href="?delete=<?php echo $i; ?>" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
-                            Delete&nbsp;<i class="far fa-trash-alt" aria-hidden="true"></i>
-                        </a>
+                    <?php
+                        while ($itemName != null) {
+                            $itemID = get_todo_item_list_id($o);
+                            if ($itemID == $i) {
+                                ?>
+                    <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
+                        <div class="flex-grow">
+                            <strong><?php echo get_todo_item_title($itemID); ?></strong><br>
+                            <?php echo get_todo_item_description($itemID); ?>
+                        </div>
+                        <div class="flex items-center space-x-3 pr-6">
+                            <input type="checkbox" id="listItem" name="listItem" value="1"<?php
+                                if (get_todo_item_status($itemID) == '1') {
+                                    echo ' checked ';
+                                } ?>>
+                        </div>
                     </div>
-                </div>
-                <?php
-                    while ($itemName != null) {
-                        $itemID = get_todo_item_list_id($o);
-                        if ($itemID == $i) {
-                            ?>
-                <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
-                    <div class="flex-grow">
-                        <strong><?php echo get_todo_item_title($itemID); ?></<br>
-                        <?php echo get_todo_item_description($itemID); ?>
+                    <?php if ((get_todo_list_visibility($i) == 'PUBLIC') || (get_todo_list_owner_id($i) == $_SESSION['id'])) { ?>
+                    <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
+                        <div class="flex-grow">
+                            <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div></strong>
+                            <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div>
+                        </div>
+                        <div class="flex items-center space-x-3 pr-6">
+                            <a href="javascript:alert('This feature has not yet been implemented.');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
+                                Add New&nbsp;<i class="far fa-plus-square" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex items-center space-x-3 pr-6">
-                        <input type="checkbox" id="listItem" name="listItem" value="1"<?php
-                            if (get_todo_item_status($itemID) == '1') {
-                                echo ' checked ';
-                            } ?>>
-                    </div>
-                </div>
-                <?php if ((get_todo_list_visibility($i) == 'PUBLIC') || (get_todo_list_owner_id($i) == $_SESSION['id'])) { ?>
-                <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
-                    <div class="flex-grow">
-                        <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div></
-                        <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-gray-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div>
-                    </div>
-                    <div class="flex items-center space-x-3 pr-6">
-                        <a href="javascript:alert('This feature has not yet been implemented.');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
-                            Add New&nbsp;<i class="far fa-plus-square" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-                <?php            }
+                    <?php            }
+                            }
+                            $o++;
+                            $itemName = get_todo_item_title($o);
                         }
-                        $o++;
-                        $itemName = get_todo_item_title($o);
-                    }
-                } ?>
-            </div>
-        </div>
-            <?php
-                $i++;
-                $listName = get_todo_list_name($i);
-            }
-            unset($i,$listName);
-            ?>
-        <div x-show="tab === 'new'">
-            <div>
-                <div class="flex space-x-6 pb-6">
-                    <div class="flex-grow">
-                        <h2 class="text-2xl">Create New</h2>
-                    </div>
+                    } ?>
                 </div>
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
-                        <div class="rounded-md shadow-sm mb-6">
-                            <div>
-                                <label for="listName" class="sr-only">List Name</label>
-                                <input id="listName" name="listName" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="To-Do List Name">
-                            </div>
-                            <div>
-                                <label for="listDescription" class="sr-only">List Description</label>
-                                <input id="listDescription" name="listDescription" type="text" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Description">
-                            </div>
-                            <div>
+            </div>
+                <?php
+                    $i++;
+                    $listName = get_todo_list_name($i);
+                }
+                unset($i,$listName);
+                ?>
+            <div x-show="tab === 'new'">
+                <div>
+                    <div class="flex space-x-6 pb-6">
+                        <div class="flex-grow">
+                            <h2 class="text-2xl">Create New</h2>
+                        </div>
+                    </div>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
+                            <div class="rounded-md shadow-sm mb-6">
+                                <div>
+                                    <label for="listName" class="sr-only">List Name</label>
+                                    <input id="listName" name="listName" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 rounded-t-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="To-Do List Name">
+                                </div>
+                                <div>
+                                    <label for="listDescription" class="sr-only">List Description</label>
+                                    <input id="listDescription" name="listDescription" type="text" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Description">
+                                </div>
+                                <div>
+                                    <p class="mb-2 mt-6">
+                                        <strong>Privacy</strong>
+                                        <a class="text-xs underline" href="javascript:alert('Public: Anybody can Read & Write.\nProtected: Anybody can Read & Only you can Write.\nPrivate: Only you can Read & Write.\n\nAdministrators can read your list regardless of this setting.');">Help</a>
+                                    </p>
+                                    <label for="privacyList" class="sr-only">Privacy</label>
+                                    <select id="privacyList" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                        <option value="public" selected="">Public</option>
+                                        <option value="protected">Protected</option>
+                                        <option value="private">Private</option>
+                                    </select>
+                                </div>
                                 <p class="mb-2 mt-6">
-                                    <strong>Privacy</strong>
-                                    <a class="text-xs underline" href="javascript:alert('Public: Anybody can Read & Write.\nProtected: Anybody can Read & Only you can Write.\nPrivate: Only you can Read & Write.\n\nAdministrators can read your list regardless of this setting.');">Help</a>
+                                    <strong>Visibility</strong>
+                                    <a class="text-xs underline" href="javascript:alert('This is who the list is visible to (if Privacy is set to Public or Protected).\n\nEverybody: Everybody can see your list (unless it is set to private).\nEditors, Administrators and You: You, Edits and Administrators can see your list (unless it is set to private).\nAdministrators and You: You and Administrators can see your list.');">Help</a>
                                 </p>
-                                <label for="privacyList" class="sr-only">Privacy</label>
-                                <select id="privacyList" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
-                                    <option value="public" selected="">Public</option>
-                                    <option value="protected">Protected</option>
-                                    <option value="private">Private</option>
-                                </select>
+                                <div>
+                                    <label for="visibilityList" class="sr-only">Privacy</label>
+                                    <select id="visibilityList" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                        <option value="all" selected="">Everybody</option>
+                                        <option value="editors">Editors, Administrators and You</option>
+                                        <option value="administrators">Administrators and You</option>
+                                    </select>
+                                </div>
                             </div>
-                            <p class="mb-2 mt-6">
-                                <strong>Visibility</strong>
-                                <a class="text-xs underline" href="javascript:alert('This is who the list is visible to (if Privacy is set to Public or Protected).\n\nEverybody: Everybody can see your list (unless it is set to private).\nEditors, Administrators and You: You, Edits and Administrators can see your list (unless it is set to private).\nAdministrators and You: You and Administrators can see your list.');">Help</a>
-                            </p>
-                            <div>
-                                <label for="visibilityList" class="sr-only">Privacy</label>
-                                <select id="visibilityList" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
-                                    <option value="all" selected="">Everybody</option>
-                                    <option value="editors">Editors, Administrators and You</option>
-                                    <option value="administrators">Administrators and You</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <div>
-                            <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
-                                <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                                    <i class="far fa-plus-square" aria-hidden="true"></i>
-                                </span>
-                                Create New
-                            </button>
-                        </div>
-                    </form>
+                            <div>
+                                <button type="submit" name="create" id="create" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
+                                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                                        <i class="far fa-plus-square" aria-hidden="true"></i>
+                                    </span>
+                                    Create New
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
