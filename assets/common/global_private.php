@@ -21,6 +21,7 @@
     require_once __DIR__.'/processes/database/get/user_statistics.php';
     require_once __DIR__.'/processes/database/get/user_settings.php'; // Must be first rf loaded in this section!
     require_once __DIR__.'/processes/database/get/activity.php';
+    require_once __DIR__.'/processes/database/get/announcement.php';
     require_once __DIR__.'/processes/database/get/articles.php';
     require_once __DIR__.'/processes/database/get/notification.php';
     require_once __DIR__.'/processes/database/get/page.php';
@@ -65,3 +66,6 @@
     }
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
     ob_end_flush();
+    if (get_announcement_panel_active() == true) {
+        echo alert(get_announcement_panel_type(),'<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(),true);
+    }
