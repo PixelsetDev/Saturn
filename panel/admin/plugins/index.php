@@ -21,11 +21,11 @@
             <h1 class="text-gray-900 text-3xl">Plugins</h1>
             <?php
                 if (isset($errorMsg)) {
-                    alert('ERROR', $errorMsg);
+                    echo alert('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
                 if (isset($successMsg)) {
-                    alert('SUCCESS', $successMsg);
+                    echo alert('SUCCESS', $successMsg);
                     unset($successMsg);
                 }
             ?>

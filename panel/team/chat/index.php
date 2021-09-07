@@ -172,6 +172,7 @@
                                 aria-placeholder="Message"
                                 placeholder="Message"
                                 required
+                                maxlength="255"
                                 class="py-2 mx-3 pl-5 block w-full rounded-full bg-gray-100 outline-none focus:text-gray-700"
                             />
                             <button class="outline-none focus:outline-none" type="submit">

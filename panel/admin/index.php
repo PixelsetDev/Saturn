@@ -19,7 +19,7 @@
                 <?php
                     if (isset($_GET['error'])) {
                         $error = checkInput('DEFAULT', $_GET['error']);
-                        alert('ERROR', $error);
+                        echo alert('ERROR', $error);
                     }
                 ?>
 

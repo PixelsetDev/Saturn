@@ -89,11 +89,11 @@
                 </div>
             <?php
                 if (isset($_GET['errorMsg'])) {
-                    alert('ERROR', $_GET['errorMsg']);
+                    echo alert('ERROR', $_GET['errorMsg']);
                     unset($_GET['errorMsg']);
                 }
                 if (isset($_GET['successMsg'])) {
-                    alert('SUCCESS', $_GET['successMsg']);
+                    echo alert('SUCCESS', $_GET['successMsg']);
                     unset($_GET['successMsg']);
                 }
             ?>

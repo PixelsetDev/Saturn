@@ -68,9 +68,9 @@
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?articleID=<?php echo $articleID; ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <?php if (isset($_GET['error'])) {
-            alert('ERROR', $_GET['error']);
+            echo alert('ERROR', $_GET['error']);
         } elseif (isset($_GET['success'])) {
-            alert('SUCCESS', $_GET['success']);
+            echo alert('SUCCESS', $_GET['success']);
         } ?>
             <div class="flex space-x-4 my-2">
                 <div class="w-full border-2 border-<?php echo THEME_PANEL_COLOUR; ?>-200 p-2">

@@ -94,10 +94,10 @@
                 </p>
                 <?php
                     if (isset($errorMsg)) {
-                        alert('ERROR', $errorMsg);
+                        echo alert('ERROR', $errorMsg);
                         unset($errorMsg);
                     } elseif (isset($successMsg)) {
-                        alert('SUCCESS', $successMsg);
+                        echo alert('SUCCESS', $successMsg);
                         unset($successMsg);
                     }
                 ?>

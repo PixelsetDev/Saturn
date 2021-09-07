@@ -61,11 +61,11 @@
             <h1 class="text-gray-900 text-3xl mt-10">Error Log</h1>
             <?php
             if (isset($errorMsg)) {
-                alert('ERROR', $errorMsg);
+                echo alert('ERROR', $errorMsg);
                 unset($errorMsg);
             }
             if (isset($successMsg)) {
-                alert('SUCCESS', $successMsg);
+                echo alert('SUCCESS', $successMsg);
                 unset($successMsg);
             }
             ?>
