@@ -23,5 +23,5 @@
     require_once __DIR__.'/processes/email.php';
     require_once __DIR__.'/processes/gui/alerts.php';
     if (get_announcement_website_active() == true) {
-        echo alert(get_announcement_website_type(),'<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(),true);
+        echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
     }

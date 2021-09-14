@@ -14,11 +14,11 @@
 
         <?php
         include_once __DIR__.'/../../assets/common/panel/vendors.php';
-            if (isset($_GET['dismissNotif'])) {
-                $nid = $_GET['dismissNotif'];
-                update_notification_dismiss($nid);
-                header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard');
-            }
+        if (isset($_GET['dismissNotif'])) {
+            $nid = $_GET['dismissNotif'];
+            update_notification_dismiss($nid);
+            header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard');
+        }
         if (isset($_GET['error'])) {
             $error = $_GET['error'];
             if ($error == 'permission') {
