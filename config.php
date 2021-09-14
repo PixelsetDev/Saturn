@@ -47,6 +47,7 @@
     /* Security */
     const SECURITY_ACTIVE = true;
     const SECURITY_MODE = 'clean';
+    const SECURITY_USE_HTTPS = true;
     const LOGGING_ACTIVE = true;
     const LOGGING_AUTOLOG = false;
     /* Developer Tools */
