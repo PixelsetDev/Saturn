@@ -21,8 +21,7 @@ function optimise_tables(): bool
     $query12 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_settings`';
     $query13 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_statistics`';
 
-    if (
-        mysqli_query($conn, $query1) &&
+    return mysqli_query($conn, $query1) &&
         mysqli_query($conn, $query2) &&
         mysqli_query($conn, $query3) &&
         mysqli_query($conn, $query4) &&
@@ -34,12 +33,7 @@ function optimise_tables(): bool
         mysqli_query($conn, $query10) &&
         mysqli_query($conn, $query11) &&
         mysqli_query($conn, $query12) &&
-        mysqli_query($conn, $query13)
-    ) {
-        return true;
-    } else {
-        return false;
-    }
+        mysqli_query($conn, $query13);
 }
 
 if (isset($_GET['action'])) {
