@@ -1,5 +1,5 @@
 <?php
-
+    ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../../config.php';
     require_once __DIR__.'/../../theme.php';
@@ -22,6 +22,13 @@
     require_once __DIR__.'/processes/resource_loader/resource_loader.php';
     require_once __DIR__.'/processes/email.php';
     require_once __DIR__.'/processes/gui/alerts.php';
+    /* Require HTTPS */
+    if($_SERVER["HTTPS"] != "on")
+    {
+        header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+        exit();
+    }
     if (get_announcement_website_active() == true) {
         echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
     }
+    ob_end_flush();
