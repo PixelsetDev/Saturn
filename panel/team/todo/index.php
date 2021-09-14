@@ -164,13 +164,13 @@
                             $o++;
                             $itemName = get_todo_item_title($o);
                         }
-                    } ?>
+                } ?>
                 </div>
             </div>
                 <?php
                     $i++;
-                    $listName = get_todo_list_name($i);
-                }
+                $listName = get_todo_list_name($i);
+            }
                 unset($i,$listName);
                 ?>
             <div x-show="tab === 'new'">

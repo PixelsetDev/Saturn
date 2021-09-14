@@ -5,7 +5,7 @@
  *
  * @param string $type
  * @param string $message
- * @param false $static
+ * @param false  $static
  *
  * @return string
  */

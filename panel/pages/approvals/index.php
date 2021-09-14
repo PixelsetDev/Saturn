@@ -115,10 +115,10 @@
                                                                         <div class="flex-grow">
                                                                             <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>
                                                                             ';
-                            if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {
-                                echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
-                            }
-                            echo'
+                        if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {
+                            echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
+                        }
+                        echo'
                                                                             <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
                                                                             <div class="text-xs normal-case font-normal">
                                                                                 '.get_page_description($o).'

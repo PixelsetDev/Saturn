@@ -61,11 +61,11 @@
     }
     ccv_validate_all();
     if (!activation_validate()) {
-        echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>',true);
+        echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>', true);
         log_console('SATURN][ACTIVATION', 'Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel.');
     }
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
     ob_end_flush();
     if (get_announcement_panel_active() == true) {
-        echo alert(get_announcement_panel_type(),'<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(),true);
+        echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
     }

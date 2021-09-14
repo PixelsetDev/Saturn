@@ -1,4 +1,5 @@
 <?php
+
     function get_announcement_panel_active(): bool
     {
         global $conn;
