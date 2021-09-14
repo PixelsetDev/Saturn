@@ -42,11 +42,9 @@
     <body class="mb-14">
         <?php
         if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN) {
-            if (isset($_GET['acceptTerms'])) {
-                if ($_GET['acceptTerms'] == 'true') {
-                    update_user_accepted_terms($_SESSION['id'], true);
-                    echo alert('ERROR', 'Please try again.');
-                }
+            if (isset($_GET['acceptTerms']) && $_GET['acceptTerms'] == 'true') {
+                update_user_accepted_terms($_SESSION['id'], true);
+                echo alert('ERROR', 'Please try again.');
             } ?>
         <header class="bg-white shadow relative">
             <div class="py-6 px-4 sm:px-6 lg:px-8 flex w-full">
