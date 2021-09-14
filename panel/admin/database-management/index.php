@@ -36,13 +36,11 @@ function optimise_tables(): bool
         mysqli_query($conn, $query13);
 }
 
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'optimise') {
-        if (optimise_tables()) {
-            $successMsg = 'Tables optimised.';
-        } else {
-            $errorMsg = 'Unable to optimise the database, an error occurred.';
-        }
+if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
+    if (optimise_tables()) {
+        $successMsg = 'Tables optimised.';
+    } else {
+        $errorMsg = 'Unable to optimise the database, an error occurred.';
     }
 }
 ?><!DOCTYPE html>
