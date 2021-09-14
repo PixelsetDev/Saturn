@@ -75,7 +75,7 @@
 
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
 
-    if (get_announcement_panel_active() == true) {
+    if (get_announcement_panel_active()) {
         echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
     }
 

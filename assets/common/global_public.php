@@ -28,7 +28,7 @@
         header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
         exit();
     }
-    if (get_announcement_website_active() == true) {
+    if (get_announcement_website_active()) {
         echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
     }
     ob_end_flush();
