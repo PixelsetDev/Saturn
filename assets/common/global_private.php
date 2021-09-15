@@ -28,6 +28,7 @@
     require_once __DIR__.'/processes/database/get/page_category.php';
     require_once __DIR__.'/processes/database/get/todo.php';
     require_once __DIR__.'/processes/database/update/articles.php';
+    require_once __DIR__.'/processes/database/update/announcement.php';
     require_once __DIR__.'/processes/database/update/notification.php';
     require_once __DIR__.'/processes/database/update/page.php';
     require_once __DIR__.'/processes/database/update/user.php';
