@@ -4,9 +4,9 @@
         $query = "SET time_zone='".CONFIG_SITE_TIMEZONE."';";
         $rs = mysqli_query($conn, $query);
 
-        $message = $_POST['message'];
+        $message = checkInput('DEFAULT', $_POST['message']);
         $message = str_replace('"', '&quot;', $message);
-        $query = 'INSERT INTO `'.DATABASE_PREFIX."chats_messages` (`id`, `user_id`, `chat_id`, `status`, `message`, `datetime`) VALUES (NULL, '".$_SESSION['id']."', '1', 'ACTIVE', '".$message."', CURRENT_TIMESTAMP);";
+        $query = 'INSERT INTO `'.DATABASE_PREFIX."chats_messages` (`id`, `user_id`, `chat_id`, `status`, `message`, `datetime`) VALUES (NULL, '".checkInput('DEFAULT', $_SESSION['id'])."', '1', 'ACTIVE', '".$message."', CURRENT_TIMESTAMP);";
         $rs = mysqli_query($conn, $query);
         header('Location: http://'.htmlspecialchars($_SERVER['HTTP_HOST']).htmlspecialchars($_SERVER['REQUEST_URI']).'');
     }
