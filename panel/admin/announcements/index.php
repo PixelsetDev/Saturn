@@ -67,11 +67,11 @@
                 <br>
                 <div class="grid grid-cols-2">
                     <label for="panel_title">Title</label>
-                    <input id="panel_title" name="panel_title" type="text" value="<?php echo get_announcement_panel_title(); ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    <input id="panel_title" name="panel_title" type="text" maxlength="50" value="<?php echo get_announcement_panel_title(); ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                 </div>
                 <div class="grid grid-cols-2">
                     <label for="panel_message">Message</label>
-                    <input id="panel_message" name="panel_message" type="text" value="<?php echo get_announcement_panel_message(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    <input id="panel_message" name="panel_message" type="text" maxlength="255" value="<?php echo get_announcement_panel_message(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                 </div>
                 <br>
                 <div class="grid grid-cols-2">
@@ -105,11 +105,11 @@
                 <br>
                 <div class="grid grid-cols-2">
                     <label for="website_title">Title</label>
-                    <input id="website_title" name="website_title" type="text" value="<?php echo get_announcement_panel_title(); ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    <input id="website_title" name="website_title" type="text" maxlength="50" value="<?php echo get_announcement_panel_title(); ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                 </div>
                 <div class="grid grid-cols-2">
                     <label for="website_message">Message</label>
-                    <input id="website_message" name="website_message" type="text" value="<?php echo get_announcement_panel_message(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    <input id="website_message" name="website_message" type="text" maxlength="255" value="<?php echo get_announcement_panel_message(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                 </div>
                 <br>
                 <div class="grid grid-cols-2">
