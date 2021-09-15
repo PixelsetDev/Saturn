@@ -133,19 +133,19 @@
                 <div class="grid grid-cols-2">
                     <label for="website_type">Announcement Style</label>
                     <select id="website_type" name="website_type" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                        <option value="NOTIFICATION"<?php if (get_announcement_panel_type() == 'NOTIFICATION') {
+                        <option value="NOTIFICATION"<?php if (get_announcement_website_type() == 'NOTIFICATION') {
                 echo ' selected';
             } ?>>Notification (Default)</option>
-                        <option value="INFO"<?php if (get_announcement_panel_type() == 'INFO') {
+                        <option value="INFO"<?php if (get_announcement_website_type() == 'INFO') {
                 echo ' selected';
             } ?>>Information</option>
-                        <option value="SUCCESS"<?php if (get_announcement_panel_type() == 'SUCCESS') {
+                        <option value="SUCCESS"<?php if (get_announcement_website_type() == 'SUCCESS') {
                 echo ' selected';
             } ?>>Success</option>
-                        <option value="WARNING"<?php if (get_announcement_panel_type() == 'WARNING') {
+                        <option value="WARNING"<?php if (get_announcement_website_type() == 'WARNING') {
                 echo ' selected';
             } ?>>Warning</option>
-                        <option value="ERROR"<?php if (get_announcement_panel_type() == 'ERROR') {
+                        <option value="ERROR"<?php if (get_announcement_website_type() == 'ERROR') {
                 echo ' selected';
             } ?>>Error</option>
                     </select>
