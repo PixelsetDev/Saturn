@@ -1,4 +1,5 @@
 <?php
+
     function update_announcement_active($id, $data): bool
     {
         $id = checkInput('DEFAULT', $id);
