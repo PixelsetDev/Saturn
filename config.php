@@ -48,6 +48,8 @@
     const SECURITY_ACTIVE = true;
     const SECURITY_MODE = 'clean';
     const SECURITY_USE_HTTPS = true;
+    const SECURITY_DEFAULT_HASH = 'sha3-512';
+    const SECURITY_CHECKSUM_HASH = 'sha512';
     const LOGGING_ACTIVE = true;
     const LOGGING_AUTOLOG = false;
     /* Developer Tools */
