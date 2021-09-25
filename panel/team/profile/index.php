@@ -4,7 +4,7 @@
     include_once __DIR__.'/../../../assets/common/global_private.php';
     include_once __DIR__.'/../../../assets/common/panel/vendors.php';
     include_once __DIR__.'/../../../assets/common/panel/theme.php';
-    $user = get_user_id(checkInput('DEFAULT', $_GET['u']));
+    if (!isset($user)) { $user = get_user_id(checkInput('DEFAULT', $_GET['u'])); }
     if ($user == null || $user == '') {
         header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard/?error=no_user');
     }
@@ -45,7 +45,7 @@
                             ?>
                         </div>
                         <?php if ($user == $_SESSION['id']) {
-                                echo'<a href="edit" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 hover:shadow-xl text-white bg-transparent font-semibold">Edit Profile</a>';
+                                echo'<a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/edit" class="cursor-pointer h-7 px-3 ml-3 outline-none border-transparent text-center rounded border bg-blue-500 hover:bg-blue-600 hover:shadow-xl text-white bg-transparent font-semibold">Edit Profile</a>';
                             } ?>
                     </div>
                 </div>
