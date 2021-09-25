@@ -57,7 +57,7 @@
         if (delete_page($pageID)) {
             header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?success=deleted');
         } else {
-            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error=Unable to delete the page.');
+            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.htmlspecialchars($pageID).'&error=Unable to delete the page.');
         }
         exit;
     }
