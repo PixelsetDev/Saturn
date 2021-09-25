@@ -384,6 +384,19 @@
             </div>
 
             <?php display_dashboard_statistics($_SESSION['id']); ?>
+
+            <div class="flex mt-4 space-x-4">
+                <div class="flex-grow shadow-lg rounded-xl w-1/6 bg-white text-<?php echo THEME_PANEL_COLOUR; ?>-500 relative overflow-hidden">
+                    <div class="text-center">
+                        <p class="text-xl font-medium mt-4 mx-2">Your Total Views:</p>
+                        <p class="mt-2"><?php echo get_user_statistics_views($_SESSION['id']); ?></p>
+                    </div>
+                    <div class="w-full h-3 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 mt-3">
+                        <div class="w-full h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-100">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
