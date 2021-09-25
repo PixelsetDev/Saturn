@@ -21,6 +21,12 @@
                     $errorMsg = 'Error: An unknown error occurred.';
                 }
             }
+            if (isset($_GET['success'])) {
+                $error = $_GET['success'];
+                if ($error == 'deleted') {
+                    $errorMsg = 'The page has been deleted.';
+                }
+            }
 
             $key = '
                                                         <div class="text-xs text-left absolute bottom-2 left-0 h-16 w-30 p-2 bg-gray-50 rounded">

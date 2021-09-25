@@ -52,6 +52,15 @@
         update_page_template($pageID, $_POST['settings_page_template']);
         update_page_url($pageID, $_POST['settings_page_url']);
     }
+
+    if (isset($_POST['deletePage'])) {
+        if (delete_page($pageID)) {
+            header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard/?success=deleted');
+        } else {
+            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error=Unable to delete the page.');
+        }
+        exit;
+    }
     ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
@@ -126,6 +135,18 @@
                                         <input id="settings_page_url" name="settings_page_url" type="text" value="<?php echo get_page_url($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" />
                                     </div>
                                     <input type="submit" id="submitSettings" name="submitSettings" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">
+
+                                    <div class="mt-12 rounded border border-red-500 p-4" x-data="{open:false}">
+                                        <h3 class="font-bold text-red-500 pb-4">Danger Zone</h3>
+                                        <form action="index.php" method="POST">
+                                            <a @click="open = true" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">Approve Changes</a>
+                                            <?php echo display_modal('red', 'Delete Page', 'Are you sure you want to delete this page?<br> <u>This action cannot be undone.</u>', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <input type="submit" id="deletePage" name="deletePage" value="Delete Page" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
+                                </div>'); ?>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
