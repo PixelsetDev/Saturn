@@ -4,7 +4,9 @@
     include_once __DIR__.'/../../../assets/common/global_private.php';
     include_once __DIR__.'/../../../assets/common/panel/vendors.php';
     include_once __DIR__.'/../../../assets/common/panel/theme.php';
-    if (!isset($user)) { $user = get_user_id(checkInput('DEFAULT', $_GET['u'])); }
+    if (!isset($user)) {
+        $user = get_user_id(checkInput('DEFAULT', $_GET['u']));
+    }
     if ($user == null || $user == '') {
         header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard/?error=no_user');
     }
