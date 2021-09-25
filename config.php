@@ -19,6 +19,8 @@
     const CONFIG_SITE_KEYWORDS = 'saturn, cms, website';
     const CONFIG_SITE_CHARSET = 'UTF-8';
     const CONFIG_SITE_TIMEZONE = 'Europe/London';
+    /* Users and Accounts */
+    const CONFIG_REGISTRATION_ENABLED = true;
     /* Database */
     const DATABASE_HOST = 'localhost';
     const DATABASE_NAME = '';
