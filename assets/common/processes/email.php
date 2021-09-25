@@ -11,7 +11,7 @@
             if (CONFIG_EMAIL_FUNCTION == 'phpmail') {
                 $to = $email;
                 if (!isset($to)) {
-                    echo 'Email error: No recipient.';
+                    echo alert('Email error: No recipient.');
 
                     return false;
                 }
