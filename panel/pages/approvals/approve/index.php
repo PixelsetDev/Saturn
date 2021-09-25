@@ -63,11 +63,18 @@
     <body class="mb-8">
         <?php include_once __DIR__.'/../../../../assets/common/panel/navigation.php'; ?>
         <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">Page Approval: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
-                <p>Requested by <?php echo get_user_fullname(get_page_pending_user_id($pageID)); ?>.</p>
+            <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow">Page Approval: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
+                <br class="md:hidden block">
+                <span class="self-center flex space-x-6 text-right">
+                    <a href="<?php echo get_page_url($pageID); ?>" target="_blank" rel="noopener" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 underline transition duration-200">
+                        View live <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                    </a>
+                </span>
             </div>
         </header>
+
+        <p class="max-w-7xl mx-auto pt-6 px-4 sm:px-6 lg:px-8">Requested by <?php echo get_user_fullname(get_page_pending_user_id($pageID)); ?>.</p>
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>/?pageID=<?php echo $pageID; ?>" method="POST" class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <?php if (isset($_GET['error'])) {
