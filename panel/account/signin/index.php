@@ -123,7 +123,7 @@
                                 </a>
                             </div><?php if (CONFIG_REGISTRATION_ENABLED) { ?>
                             <div class="text-sm">
-                                <a href="<?php echo CONFIG_INSTALL_URL;?>/panel/account/register" class="font-medium text-blue-700 hover:text-blue-500">
+                                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/register" class="font-medium text-blue-700 hover:text-blue-500">
                                     Register
                                 </a>
                             </div><?php } ?>
