@@ -1,79 +1,77 @@
 <?php
     include_once __DIR__.'/../../../assets/common/global_public.php';
     if (CONFIG_REGISTRATION_ENABLED) {
-    if (isset($_GET['error'])) {
-        $errorMsg = $_GET['error'];
-    } else {
-        if (isset($_POST['verify'])) {
-            if (!empty($_POST['verify_email'])) {
-                include_once __DIR__.'/../../../assets/common/processes/database/get/user.php';
-                $email = checkInput('DEFAULT', $_POST['verify_email']);
-                if (get_user_email_exists($email)) {
-                    $errorMsg = 'A user with this email address already exists.';
-                    header('Location: log.php?error='.$errorMsg);
-                    exit;
-                } else {
-                    try {
-                        $code = random_int(100000, 999999);
-                    } catch (Exception $e) {
-                        $errorMsg = 'An error occurred whilst generating a code. Please try again later.';
-                        $code = '[ERROR] Please try again.';
+        if (isset($_GET['error'])) {
+            $errorMsg = $_GET['error'];
+        } else {
+            if (isset($_POST['verify'])) {
+                if (!empty($_POST['verify_email'])) {
+                    include_once __DIR__.'/../../../assets/common/processes/database/get/user.php';
+                    $email = checkInput('DEFAULT', $_POST['verify_email']);
+                    if (get_user_email_exists($email)) {
+                        $errorMsg = 'A user with this email address already exists.';
+                        header('Location: log.php?error='.$errorMsg);
+                        exit;
+                    } else {
+                        try {
+                            $code = random_int(100000, 999999);
+                        } catch (Exception $e) {
+                            $errorMsg = 'An error occurred whilst generating a code. Please try again later.';
+                            $code = '[ERROR] Please try again.';
+                        }
+                        $code = checkInput('DEFAULT', $code);
+                        $hashCode = hash('SHA3-512', $code);
+                        $message = 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.';
+                        send_email($email, 'Saturn Verification Code', $message);
+                        $successMsg = 'Please check your email and do not exit this page.';
                     }
-                    $code = checkInput('DEFAULT', $code);
-                    $hashCode = hash('SHA3-512', $code);
-                    $message = 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.';
-                    send_email($email, 'Saturn Verification Code', $message);
-                    $successMsg = 'Please check your email and do not exit this page.';
+                } else {
+                    $errorMsg = 'Email address must not be blank.';
                 }
-            } else {
-                $errorMsg = 'Email address must not be blank.';
-            }
-        } elseif (isset($_POST['confirm'])) {
-            if (!empty($_POST['code'])) {
-                $hashCode = checkInput('DEFAULT', $_POST['c']);
-                $code = checkInput('DEFAULT', $_POST['code']);
-                $newHashCode = hash('SHA3-512', $code);
-                if ($hashCode != $newHashCode) {
-                    $errorMsg = 'The verification code that you provided does not match the code that we sent.';
+            } elseif (isset($_POST['confirm'])) {
+                if (!empty($_POST['code'])) {
+                    $hashCode = checkInput('DEFAULT', $_POST['c']);
+                    $code = checkInput('DEFAULT', $_POST['code']);
+                    $newHashCode = hash('SHA3-512', $code);
+                    if ($hashCode != $newHashCode) {
+                        $errorMsg = 'The verification code that you provided does not match the code that we sent.';
+                        header('Location: index.php?error='.$errorMsg);
+                        exit;
+                    }
+                } else {
+                    $errorMsg = 'Code must not be blank.';
                     header('Location: index.php?error='.$errorMsg);
                     exit;
                 }
-            } else {
-                $errorMsg = 'Code must not be blank.';
-                header('Location: index.php?error='.$errorMsg);
-                exit;
+            } elseif (isset($_POST['register'])) {
+                include_once __DIR__.'/../../../assets/common/processes/database/create/user.php';
+                $email = $_POST['email_address'];
+                $email = checkInput('DEFAULT', $email);
+                $firstname = $_POST['firstname'];
+                $firstname = checkInput('DEFAULT', $firstname);
+                $lastname = $_POST['lastname'];
+                $lastname = checkInput('DEFAULT', $lastname);
+                $password = $_POST['password'];
+                $password = checkInput('DEFAULT', $password);
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                $organisation = $_POST['organisation'];
+                $organisation = checkInput('DEFAULT', $organisation);
+                if (create_user($email, $firstname, $lastname, $password, $organisation)) {
+                    $successMsg = 'Your Saturn account is now pending approval, we\'ll send you an email when you\'re ready to get started.';
+                } else {
+                    $errorMsg = 'Sorry there was an error, please try again later.';
+                    header('Location: index.php?error='.$errorMsg);
+                    exit;
+                }
             }
-        } elseif (isset($_POST['register'])) {
-            include_once __DIR__.'/../../../assets/common/processes/database/create/user.php';
-            $email = $_POST['email_address'];
-            $email = checkInput('DEFAULT', $email);
-            $firstname = $_POST['firstname'];
-            $firstname = checkInput('DEFAULT', $firstname);
-            $lastname = $_POST['lastname'];
-            $lastname = checkInput('DEFAULT', $lastname);
-            $password = $_POST['password'];
-            $password = checkInput('DEFAULT', $password);
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $organisation = $_POST['organisation'];
-            $organisation = checkInput('DEFAULT', $organisation);
-            if (create_user($email, $firstname, $lastname, $password, $organisation)) {
-                $successMsg = 'Your Saturn account is now pending approval, we\'ll send you an email when you\'re ready to get started.';
-            } else {
-                $errorMsg = 'Sorry there was an error, please try again later.';
-                header('Location: index.php?error='.$errorMsg);
-                exit;
-            }
-        }
-    }
-?>
+        } ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Register - Saturn Panel</title>
         <?php
         include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../assets/common/panel/theme.php';
-        ?>
+        include_once __DIR__.'/../../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body>
@@ -100,11 +98,10 @@
                             } elseif (isset($successMsg)) {
                                 echo alert('SUCCESS', $successMsg);
                                 unset($successMsg);
-                            }
-                        ?>
+                            } ?>
                     </div>
                     <?php if (isset($_POST['verify'])) {
-                            echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+                                echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
@@ -124,8 +121,8 @@
                             </button>
                         </div>
                     </form>';
-                        } elseif (isset($_POST['confirm'])) {
-                            echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+                            } elseif (isset($_POST['confirm'])) {
+                                echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
@@ -161,8 +158,8 @@
                             </button>
                         </div>
                     </form>';
-                        } else {
-                            echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
+                            } else {
+                                echo'<form class="mt-8 space-y-6" action="'.htmlspecialchars($_SERVER['PHP_SELF']).'" method="post">
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
@@ -180,14 +177,14 @@
                             </button>
                         </div>
                     </form>';
-                        }
-                    ?>
+                            } ?>
                 </div>
             </div>
         </main>
     </body>
 </html>
-<?php } else { ?>
+<?php
+    } else { ?>
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -216,7 +213,7 @@
                             Saturn accounts must be approved by the website owner before you can access them.
                         </p>
                         <?php
-                        echo alert('ERROR','Sorry, registration is currently closed.');
+                        echo alert('ERROR', 'Sorry, registration is currently closed.');
 
                         if (isset($errorMsg)) {
                             echo alert('ERROR', $errorMsg);
