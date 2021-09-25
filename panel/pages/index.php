@@ -22,9 +22,9 @@
                 }
             }
             if (isset($_GET['success'])) {
-                $error = $_GET['success'];
-                if ($error == 'deleted') {
-                    $errorMsg = 'The page has been deleted.';
+                $success = $_GET['success'];
+                if ($success == 'deleted') {
+                    $successMsg = 'The page has been deleted.';
                 }
             }
 
@@ -49,10 +49,14 @@
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <?php
-                if (isset($errorMsg)) {
-                    echo alert('ERROR', $errorMsg);
-                }
-                unset($errorMsg);
+            if (isset($errorMsg)) {
+                echo alert('ERROR', $errorMsg);
+            }
+            unset($errorMsg);
+            if (isset($successMsg)) {
+                echo alert('SUCCESS', $successMsg);
+            }
+            unset($successMsg);
             ?>
             <div class="px-4 py-6 sm:px-0">
                 <?php
