@@ -99,7 +99,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="w-full h-3 bg-gray-100">
+                            <div class="w-full h-3 bg-gray-100 absolute bottom-0">
                                 <div style="width:'.(($current / $max) * 100).'%" class="h-full text-center text-xs text-white bg-'.$colour.'-400">
                                 </div>
                             </div>
