@@ -39,7 +39,7 @@ function optimise_tables(): bool
 if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
     if (optimise_tables()) {
         $successMsg = 'Tables optimised.';
-        log_file('Saturn',get_user_fullname($_SESSION['id']).' optimised the database tables.');
+        log_file('Saturn', get_user_fullname($_SESSION['id']).' optimised the database tables.');
     } else {
         $errorMsg = 'Unable to optimise the database, an error occurred.';
     }
