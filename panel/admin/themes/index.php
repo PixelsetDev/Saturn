@@ -81,6 +81,21 @@
             <?php } else {
                     alert('ERROR', 'The Saturn Marketplace will not work if your installation is not activated.');
                 } ?>
+            <h2 class="text-gray-900 text-2xl mt-8">Website Assets</h2>
+            <div class="flex my-6 space-x-4">
+                <div class="w-1/6 p-4 relative overflow-hidden rounded bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL;?>/assets/images/icon.png" class="self-center">
+                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded bg-opacity-50">Icon</p>
+                </div>
+                <div class="w-1/6 p-4 relative overflow-hidden rounded bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL;?>/assets/images/logo.png" class="self-center">
+                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded bg-opacity-50">Logo</p>
+                </div>
+                <div class="w-1/6 p-4 relative overflow-hidden rounded bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL;?>/assets/images/defaultprofile.png" class="self-center">
+                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded bg-opacity-50">Default Profile Picture</p>
+                </div>
+            </div>
         </div>
     </body>
 </html>
