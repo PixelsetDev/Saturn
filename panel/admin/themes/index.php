@@ -84,15 +84,15 @@
             <h2 class="text-gray-900 text-2xl mt-8">Website Assets</h2>
             <div class="flex my-6 space-x-4">
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/icon.png" class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL;?>/assets/images/icon.png" class="self-center">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/icon.png" class="self-center">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Icon</p>
                 </a>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/logo.png"  class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL;?>/assets/images/logo.png" class="self-center">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="self-center">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Logo</p>
                 </a>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/defaultprofile.png"  class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL;?>/assets/images/defaultprofile.png" class="self-center">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/defaultprofile.png" class="self-center">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Default Profile Picture</p>
                 </a>
             </div>
