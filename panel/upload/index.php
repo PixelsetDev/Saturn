@@ -45,11 +45,11 @@
                 if ($height <= $_GET['maxHeight']) {
                     $allowUpload = true;
                 } else {
-                    echo alert('WARNING', 'This image is larger than the maximum height allowed. Your image height: ' . $height . '; Maximum allowed: ' . $_GET['maxHeight'], true);
+                    echo alert('WARNING', 'This image is larger than the maximum height allowed. Your image height: ' . $height . '; Maximum allowed: ' . checkInput('DEFAULT', $_GET['maxHeight']), true);
                     $allowUpload = false;
                 }
             } else {
-                echo alert('WARNING', 'This image is larger than the maximum width allowed. Your image width: ' . $width . '; Maximum allowed: '.$_GET['maxWidth'], true);
+                echo alert('WARNING', 'This image is larger than the maximum width allowed. Your image width: ' . $width . '; Maximum allowed: '.checkInput('DEFAULT', $_GET['maxWidth']), true);
                 $allowUpload = false;
             }
         }
@@ -57,7 +57,7 @@
         // Upload file.
         if ($allowUpload) {
             if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploadDirectory)) {
-                echo alert('SUCCESS', "The file " . basename($_FILES['uploaded_file']['name']) . " has been uploaded", true);
+                echo alert('SUCCESS', "The file " . checkInput('DEFAULT', basename($_FILES['uploaded_file']['name'])) . " has been uploaded", true);
                 $uploaded = true;
                 $uploadedTo = basename($_FILES['uploaded_file']['name']);
             } else {
