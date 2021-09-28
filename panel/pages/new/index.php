@@ -1,13 +1,12 @@
-<?php session_start(); ?><!DOCTYPE html>
+<?php session_start(); ob_start(); ?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
             include_once __DIR__.'/../../../assets/common/global_private.php';
             include_once __DIR__.'/../../../assets/common/panel/vendors.php';
             include_once __DIR__.'/../../../assets/common/panel/theme.php';
-
             if (isset($_GET['create'])) {
-                $pageTitle = trim(checkInput('DEFAULT', $_POST['pagetitle']));
+                $pageTitle = trim(checkInput('DEFAULT', $_GET['pagetitle']));
             } elseif (isset($_POST['posted'])) {
                 $pageURL = trim(checkInput('DEFAULT', $_POST['pageurl']));
                 $pageCategory = trim(checkInput('DEFAULT', $_POST['pagecategory']));
@@ -29,6 +28,7 @@
             if (!isset($pageTitle)) {
                 $pageTitle = null;
             }
+            ob_end_flush();
         ?>
 
         <title>New Page (<?php echo $pageTitle; ?>) - Saturn Panel</title>
