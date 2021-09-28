@@ -43,11 +43,11 @@
                 if ($height <= $_GET['maxHeight']) {
                     $allowUpload = true;
                 } else {
-                    echo alert('WARNING', 'This image is larger than the maximum height allowed. Your image height: '.$height.'; Maximum allowed: '.$_GET['maxHeight'], true);
+                    echo alert('WARNING', 'This image is larger than the maximum height allowed. Your image height: '.$height.'; Maximum allowed: '.checkInput('DEFAULT', $_GET['maxHeight']), true);
                     $allowUpload = false;
                 }
             } else {
-                echo alert('WARNING', 'This image is larger than the maximum width allowed. Your image width: '.$width.'; Maximum allowed: '.$_GET['maxWidth'], true);
+                echo alert('WARNING', 'This image is larger than the maximum width allowed. Your image width: '.$width.'; Maximum allowed: '.checkInput('DEFAULT', $_GET['maxWidth']), true);
                 $allowUpload = false;
             }
         }
