@@ -55,7 +55,7 @@
         // Upload file.
         if ($allowUpload) {
             if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploadDirectory)) {
-                echo alert('SUCCESS', 'The file '.basename($_FILES['uploaded_file']['name']).' has been uploaded', true);
+                echo alert('SUCCESS', 'The file '.checkInput('DEFAULT', basename($_FILES['uploaded_file']['name'])).' has been uploaded', true);
                 $uploaded = true;
                 $uploadedTo = basename($_FILES['uploaded_file']['name']);
             } else {
@@ -64,10 +64,9 @@
             }
 
             if (isset($_GET['renameTo'])) {
-                if (!rename($uploadDirectory, str_replace(basename($_FILES['uploaded_file']['name']), '', $uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']))) {
+                if (!rename($uploadDirectory, $_FILES['uploaded_file']['name'].checkInput('DEFAULT', $_GET['renameTo']))) {
                     echo alert('WARNING', 'Unable to rename file.', true);
                     $uploaded = false;
-                    echo $uploadDirectory.' - '.str_replace(basename($_FILES['uploaded_file']['name']), '', $uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']);
                 } else {
                     $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
                 }
@@ -78,7 +77,7 @@
 
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
-                header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.checkInput('DEFAULT', $uploadedTo));
+                header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace(basename($_FILES['uploaded_file']['name']), '', $uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']));
             }
         } else {
             echo alert('ERROR', 'File not uploaded.', true);
@@ -95,7 +94,7 @@
             include_once __DIR__.'/../../assets/common/panel/theme.php';
         ?>
 
-        <title>Saturn Panel</title>
+        <title>File Upload - Saturn Panel</title>
     </head>
     <body class="mb-8">
         <?php if (!isset($_GET['embed'])) {
