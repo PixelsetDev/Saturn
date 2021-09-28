@@ -28,6 +28,9 @@
                     echo alert('SUCCESS', $successMsg);
                     unset($successMsg);
                 }
+                if (isset($_GET['uploadedTo'])) {
+                    echo alert('INFO', 'Your website asset has been updated. Please note, you may need to clear your cache before it appears across the site.<br>You can do this on Windows by clicking \'Ctrl + F5\', or MacOS by clicking \'Opt + Cmd + E\'');
+                }
             ?>
             <br>
             <h2 class="text-gray-900 text-2xl mt-8">Installed Themes</h2>
@@ -83,16 +86,16 @@
                 } ?>
             <h2 class="text-gray-900 text-2xl mt-8">Website Assets</h2>
             <div class="flex my-6 space-x-4">
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/icon.png" class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/icon.png" class="self-center" alt="Icon">
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=icon.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes" class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/icon.png?id=<?php echo rand(0000,9999); ?>" class="self-center" alt="Icon">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Icon</p>
                 </a>
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/logo.png"  class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="self-center" alt="Logo">
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=logo.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight="  class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png?id=<?php echo rand(0000,9999); ?>" class="self-center" alt="Logo">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Logo</p>
                 </a>
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/defaultprofile.png"  class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/defaultprofile.png" class="self-center" alt="Default Profile Picture">
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=defaultprofile.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes"  class="w-1/6 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/defaultprofile.png?id=<?php echo rand(0000,9999); ?>" class="self-center" alt="Default Profile Picture">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Default Profile Picture</p>
                 </a>
             </div>
