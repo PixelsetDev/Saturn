@@ -22,10 +22,8 @@
         }
 
         // Check if directory exists and create it if it does not.
-        if (!file_exists($uploadDirectory)) {
-            if (!mkdir($uploadDirectory, 0744)) {
-                echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/BETA-1.0.0/warnings/#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
-            }
+        if (!file_exists($uploadDirectory) && !mkdir($uploadDirectory, 0744)) {
+            echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/BETA-1.0.0/warnings/#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
         }
 
         // Check if directory can be written to.
