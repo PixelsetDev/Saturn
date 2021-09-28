@@ -70,7 +70,7 @@
             }
 
             if (isset($_GET['renameTo'])) {
-                if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'],'',$uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']))) {
+                if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'], '', $uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']))) {
                     echo alert('WARNING', 'Unable to rename file.', true);
                     $uploaded = false;
                 } else {
