@@ -79,8 +79,8 @@
             } else {
                 $path = $_FILES['uploaded_file']['name'];
                 $ext = pathinfo($path, PATHINFO_EXTENSION);
-                $rand = rand(000000000000,999999999999);
-                if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'],'',$uploadDirectory).$rand.'.'.$ext)) {
+                $rand = rand(000000000000, 999999999999);
+                if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'], '', $uploadDirectory).$rand.'.'.$ext)) {
                     echo alert('WARNING', 'Unable to rename file.', true);
                     $uploaded = false;
                 } else {
@@ -94,9 +94,9 @@
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
                 if (isset($_GET['renameTo'])) {
-                    header('Location: ' . checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])));
+                    header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])));
                 } else {
-                    header('Location: ' . checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . $rand . '.' . $ext));
+                    header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).$rand.'.'.$ext));
                 }
             }
         } else {
