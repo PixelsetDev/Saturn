@@ -6,18 +6,23 @@
 
     if (!empty($_FILES['uploaded_file'])) {
         if (isset($_GET['uploadTo'])) {
-            $uploadDirectory = __DIR__.'/../../'.checkInput('DEFAULT', $_GET['uploadTo']);
+            $uploadDirectory = __DIR__.'/../..'.checkInput('DEFAULT', $_GET['uploadTo']);
+            $uploadedToDirectory = '/../..'.checkInput('DEFAULT', $_GET['uploadTo']);
         } else {
             if (isset($_GET['type'])) {
                 if ($_GET['type'] == 'image') {
                     $uploadDirectory = __DIR__.'/../../assets/images/uploads/';
+                    $uploadedToDirectory = '/../../assets/images/uploads/';
                 } elseif ($_GET['type'] == 'video') {
                     $uploadDirectory = __DIR__.'/../../assets/videos/uploads/';
+                    $uploadedToDirectory = '/../../assets/videos/uploads/';
                 } else {
                     $uploadDirectory = __DIR__.'/../../assets/storage/uploads/';
+                    $uploadedToDirectory = '/../../assets/storage/uploads/';
                 }
             } else {
                 $uploadDirectory = __DIR__.'/../../assets/storage/uploads/';
+                $uploadedToDirectory = '/../../assets/storage/uploads/';
             }
         }
 
@@ -75,7 +80,7 @@
 
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
-                header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.checkInput('DEFAULT', str_replace(basename($_FILES['uploaded_file']['name']), '', $uploadDirectory).$_GET['renameTo']));
+                header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace('/..','',checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])));
             }
         } else {
             echo alert('ERROR', 'File not uploaded.', true);
