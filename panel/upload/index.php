@@ -10,7 +10,15 @@
         if (isset($_GET['uploadTo'])) {
             $uploadDirectory = __DIR__ . '/../../' . checkInput('DEFAULT', $_GET['uploadTo']);
         } else {
-            $uploadDirectory = __DIR__ . '/../../assets/storage/uploads/';
+            if (isset($_GET['type'])) {
+                if ($_GET['type'] == 'image') {
+                    $uploadDirectory = __DIR__ . '/../../assets/images/uploads/';
+                } else if ($_GET['type'] == 'video') {
+                    $uploadDirectory = __DIR__ . '/../../assets/videos/uploads/';
+                } else {
+                    $uploadDirectory = __DIR__ . '/../../assets/storage/uploads/';
+                }
+            }
         }
 
         // Check if directory exists and create it if it does not.
