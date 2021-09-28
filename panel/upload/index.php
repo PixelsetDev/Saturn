@@ -75,7 +75,7 @@
 
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
-                header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace(basename($_FILES['uploaded_file']['name']), '', $uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']));
+                header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.checkInput('DEFAULT', str_replace(basename($_FILES['uploaded_file']['name']), '', $uploadDirectory).$_GET['renameTo']));
             }
         } else {
             echo alert('ERROR', 'File not uploaded.', true);
