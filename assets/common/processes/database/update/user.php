@@ -131,3 +131,15 @@
 
         return mysqli_query($conn, $query);
     }
+
+    function update_user_profilephoto($id, $data)
+    {
+        $id = checkInput('DEFAULT', $id);
+        $data = checkInput('DEFAULT', $data);
+
+        global $conn;
+
+        $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `profile_photo` = '".$data."' WHERE `id` = ".$id;
+
+        return mysqli_query($conn, $query);
+    }
