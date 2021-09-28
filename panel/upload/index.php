@@ -127,9 +127,10 @@
             </div>
         </header>
 
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <form enctype="multipart/form-data" action="" method="POST" class="flex space-x-4">
+        <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <form enctype="multipart/form-data" action="" method="POST" class="md:flex md:space-x-4">
                 <input type="file" name="uploaded_file" class="flex-grow border rounded-md border-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:border-<?php echo THEME_PANEL_COLOUR; ?>-300 text-<?php echo THEME_PANEL_COLOUR; ?>-700 py-1 px-8 transition duration-200">
+                <br class="md:hidden block"><br class="md:hidden block">
                 <input type="submit" value="Upload" class="rounded-md bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 text-<?php echo THEME_PANEL_COLOUR; ?>-700 py-2 px-8 transition duration-200">
             </form>
             <?php
