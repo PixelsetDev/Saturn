@@ -18,6 +18,8 @@
                 } else {
                     $uploadDirectory = __DIR__ . '/../../assets/storage/uploads/';
                 }
+            } else {
+                $uploadDirectory = __DIR__ . '/../../assets/storage/uploads/';
             }
         }
 
