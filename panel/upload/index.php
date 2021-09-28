@@ -27,7 +27,7 @@
         }
 
         // Check if directory exists and create it if it does not.
-        if (!file_exists($uploadDirectory) && !mkdir($uploadDirectory, 0744)) {
+        if (!file_exists($uploadDirectory) && !mkdir($uploadDirectory, 0755)) {
             echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/BETA-1.0.0/warnings/#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
         }
 
@@ -80,7 +80,11 @@
 
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
-                header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace('/..','',checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])));
+                if (isset($_GET['renameTo'])) {
+                    header('Location: ' . checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])));
+                } else {
+                    header('Location: ' . checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_FILES['uploaded_file']['name'])));
+                }
             }
         } else {
             echo alert('ERROR', 'File not uploaded.', true);
