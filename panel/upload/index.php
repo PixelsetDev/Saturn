@@ -13,6 +13,9 @@
                 if ($_GET['type'] == 'image') {
                     $uploadDirectory = __DIR__.'/../../assets/images/uploads/';
                     $uploadedToDirectory = '/../../assets/images/uploads/';
+                } elseif ($_GET['type'] == 'profilepicture') {
+                    $uploadDirectory = __DIR__.'/../../assets/images/profile-pictures/';
+                    $uploadedToDirectory = '/../../assets/images/profile-pictures/';
                 } elseif ($_GET['type'] == 'video') {
                     $uploadDirectory = __DIR__.'/../../assets/videos/uploads/';
                     $uploadedToDirectory = '/../../assets/videos/uploads/';
@@ -73,6 +76,16 @@
                 } else {
                     $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
                 }
+            } else {
+                $path = $_FILES['uploaded_file']['name'];
+                $ext = pathinfo($path, PATHINFO_EXTENSION);
+                $rand = rand(000000000000,999999999999);
+                if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'],'',$uploadDirectory).$rand.'.'.$ext)) {
+                    echo alert('WARNING', 'Unable to rename file.', true);
+                    $uploaded = false;
+                } else {
+                    $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
+                }
             }
         } else {
             $uploaded = false;
@@ -83,7 +96,7 @@
                 if (isset($_GET['renameTo'])) {
                     header('Location: ' . checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])));
                 } else {
-                    header('Location: ' . checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_FILES['uploaded_file']['name'])));
+                    header('Location: ' . checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . $rand . '.' . $ext));
                 }
             }
         } else {
