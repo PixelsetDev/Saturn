@@ -36,30 +36,54 @@
         }
         $uploadDirectory = $uploadDirectory . basename( $_FILES['uploaded_file']['name']);
 
-        // Upload file.
-        if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploadDirectory)) {
-            echo alert('SUCCESS', "The file " . basename($_FILES['uploaded_file']['name']) . " has been uploaded", true);
-            $uploaded = true;
-            $uploadedTo = basename($_FILES['uploaded_file']['name']);
-        } else {
-            echo alert('ERROR', 'There was an error uploading the file, please try again later or check warnings for more information.', true);
-            $uploaded = false;
+        $allowUpload = true;
+
+        // Check if file can be uploaded.
+        if ($_GET['type'] == 'image' && isset($_GET['maxWidth']) && isset($_GET['maxHeight'])) {
+            list ($width, $height, $type, $attr) = getimagesize($_FILES['uploaded_file']['tmp_name']);
+            if ($width <= $_GET['maxWidth']) {
+                if ($height <= $_GET['maxHeight']) {
+                    $allowUpload = true;
+                } else {
+                    echo alert('WARNING', 'This image is larger than the maximum height allowed. Your image height: ' . $height . '; Maximum allowed: ' . $_GET['maxHeight'], true);
+                    $allowUpload = false;
+                }
+            } else {
+                echo alert('WARNING', 'This image is larger than the maximum width allowed. Your image width: ' . $width . '; Maximum allowed: '.$_GET['maxWidth'], true);
+                $allowUpload = false;
+            }
         }
 
-        if (isset($_GET['renameTo'])) {
-            if (!rename($uploadDirectory, str_replace(basename($_FILES['uploaded_file']['name']), "", $uploadDirectory) . checkInput('DEFAULT', $_GET['renameTo']))) {
-                echo alert('WARNING', 'Unable to rename file.', true);
-                $uploaded = false;
-                echo $uploadDirectory .' - '. str_replace(basename($_FILES['uploaded_file']['name']), "", $uploadDirectory) . checkInput('DEFAULT', $_GET['renameTo']);
+        // Upload file.
+        if ($allowUpload) {
+            if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploadDirectory)) {
+                echo alert('SUCCESS', "The file " . basename($_FILES['uploaded_file']['name']) . " has been uploaded", true);
+                $uploaded = true;
+                $uploadedTo = basename($_FILES['uploaded_file']['name']);
             } else {
-                $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
+                echo alert('ERROR', 'There was an error uploading the file, please try again later or check warnings for more information.', true);
+                $uploaded = false;
             }
+
+            if (isset($_GET['renameTo'])) {
+                if (!rename($uploadDirectory, str_replace(basename($_FILES['uploaded_file']['name']), "", $uploadDirectory) . checkInput('DEFAULT', $_GET['renameTo']))) {
+                    echo alert('WARNING', 'Unable to rename file.', true);
+                    $uploaded = false;
+                    echo $uploadDirectory . ' - ' . str_replace(basename($_FILES['uploaded_file']['name']), "", $uploadDirectory) . checkInput('DEFAULT', $_GET['renameTo']);
+                } else {
+                    $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
+                }
+            }
+        } else {
+            $uploaded = false;
         }
 
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
                 header ('Location: '.checkInput('DEFAULT', $_GET['redirectTo']) . '/?uploadedTo=' . checkInput('DEFAULT', $uploadedTo));
             }
+        } else {
+            echo alert('ERROR', 'File not uploaded.', true);
         }
     }
 
@@ -90,6 +114,11 @@
                 <input type="submit" value="Upload" class="rounded-md bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 text-<?php echo THEME_PANEL_COLOUR; ?>-700 py-2 px-8 transition duration-200">
             </form>
             <?php
+                if ($_GET['type'] == 'image' && isset($_GET['maxWidth']) && isset($_GET['maxHeight'])) {
+            ?>
+            <h1 class="text-2xl text-<?php echo THEME_PANEL_COLOUR; ?>-700">Image Restrictions</h1>
+            <p class="text-<?php echo THEME_PANEL_COLOUR; ?>-700">This file must be a valid image. It must be no bigger than <?php echo checkOutput('DEFAULT',$_GET['maxWidth']); ?> x <?php echo checkOutput('DEFAULT',$_GET['maxHeight']); ?> (width x height).</p>
+            <?php }
                 $output = json_decode(file_get_contents(__DIR__.'/../../assets/storage/terms.json'));
                 if ($output->data->fileuploadinfo != null || $output->data->fileuploadinfo != '') {
             ?>
