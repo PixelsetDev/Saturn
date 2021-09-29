@@ -7,9 +7,8 @@ $user = $_SESSION['id'];
 if (isset($_GET['uploadedTo'])) {
     $donePFP = true;
     if (get_user_profilephoto($_SESSION['id']) != '/assets/images/defaultprofile.png' && !unlink(__DIR__.'/../../../../'.get_user_profilephoto($_SESSION['id']))) {
-            echo alert('WARNING', 'Warning: Unable to delete old profile picture. This may cause problems if storage becomes low.', true);
-            $donePFP = false;
-        }
+        echo alert('WARNING', 'Warning: Unable to delete old profile picture. This may cause problems if storage becomes low.', true);
+        $donePFP = false;
     }
     if (!update_user_profilephoto($_SESSION['id'], checkInput('DEFAULT', $_GET['uploadedTo']))) {
         echo alert('WARNING', 'Warning: Unable to update to new profile picture. Your old profile picture may have already been deleted.', true);
