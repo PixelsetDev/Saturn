@@ -102,7 +102,8 @@
                         echo 'No Notification';
                     } else {
                         echo $notifCount.' Notification';
-                    } if ($notifCount > 1 || $notifCount == 0) {
+                    }
+                    if ($notifCount > 1 || $notifCount == 0) {
                         echo's';
                     }?></a><?php unset($notifCount); ?>
                                 <?php
