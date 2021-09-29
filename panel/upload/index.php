@@ -19,20 +19,20 @@
         } else {
             if (isset($_GET['type'])) {
                 if ($_GET['type'] == 'image') {
-                    $uploadDirectory = __DIR__ . $imageUploadLocation;
+                    $uploadDirectory = __DIR__.$imageUploadLocation;
                     $uploadedToDirectory = $imageUploadLocation;
                 } elseif ($_GET['type'] == 'profilepicture') {
-                    $uploadDirectory = __DIR__ . $profilepictureUploadLocation;
+                    $uploadDirectory = __DIR__.$profilepictureUploadLocation;
                     $uploadedToDirectory = $profilepictureUploadLocation;
                 } elseif ($_GET['type'] == 'video') {
-                    $uploadDirectory = __DIR__ . $videoUploadLocation;
+                    $uploadDirectory = __DIR__.$videoUploadLocation;
                     $uploadedToDirectory = $videoUploadLocation;
                 } else {
-                    $uploadDirectory = __DIR__ . $defaultUploadLocation;
+                    $uploadDirectory = __DIR__.$defaultUploadLocation;
                     $uploadedToDirectory = $defaultUploadLocation;
                 }
             } else {
-                $uploadDirectory = __DIR__ . $defaultUploadLocation;
+                $uploadDirectory = __DIR__.$defaultUploadLocation;
                 $uploadedToDirectory = $defaultUploadLocation;
             }
         }
