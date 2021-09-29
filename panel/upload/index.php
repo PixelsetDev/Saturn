@@ -8,10 +8,10 @@
 
         /* File Uploads Location Config */
         /* Changing this won't affect already existing uploads. */
-        $defaultUploadLocation = '/../../assets/storage/uploads/';
-        $imageUploadLocation = '/../../assets/storage/uploads/images/';
-        $profilepictureUploadLocation = '/../../assets/storage/uploads/images/profile-pictures/';
-        $videoUploadLocation = '/../../assets/storage/uploads/videos/';
+        $defaultUploadLocation = '/../../assets/files/uploads/';
+        $imageUploadLocation = '/../../assets/images/uploads/';
+        $profilepictureUploadLocation = '/../../assets/images/profile-pictures/';
+        $videoUploadLocation = '/../../assets/videos/uploads/';
 
         if (isset($_GET['uploadTo'])) {
             $uploadDirectory = __DIR__.'/../..'.checkInput('DEFAULT', $_GET['uploadTo']);
