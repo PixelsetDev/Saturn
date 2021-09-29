@@ -256,7 +256,7 @@ class Router
                     }
                 }
             } catch (\ReflectionException $reflectionException) {
-                echo 'Render Engine: Fatal Exception: ' . $reflectionException . '. For help please email contact@saturncms.net';
+                echo 'Render Engine: Fatal Exception: '.$reflectionException.'. For help please email contact@saturncms.net';
             }
         }
     }
