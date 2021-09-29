@@ -182,10 +182,8 @@ class Router
                 if ($is_match) {
                     $matches = array_slice($matches, 1);
                     $params = array_map(function ($match, $index) use ($matches) {
-                        if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
-                            if ($matches[$index + 1][0][1] > -1) {
-                                return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
-                            }
+                        if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0]) && $matches[$index + 1][0][1] > -1) {
+                            return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
                         }
 
                         return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
@@ -218,10 +216,8 @@ class Router
             if ($is_match) {
                 $matches = array_slice($matches, 1);
                 $params = array_map(function ($match, $index) use ($matches) {
-                    if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
-                        if ($matches[$index + 1][0][1] > -1) {
-                            return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
-                        }
+                    if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0]) && $matches[$index + 1][0][1] > -1) {
+                        return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
                     }
 
                     return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
@@ -260,6 +256,7 @@ class Router
                     }
                 }
             } catch (\ReflectionException $reflectionException) {
+                echo 'Render Engine: Fatal Exception: ' . $reflectionException . '. For help please email contact@saturncms.net';
             }
         }
     }
