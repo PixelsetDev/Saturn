@@ -45,7 +45,7 @@
                 }
             } else {
                 log_file('SATURN][SECURITY', 'Failed login verification attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
-                $errorMsg = 'Code does not match. To get a new code please refresh the page.';
+                $errorMsg = 'Code does not match. A new code has been sent to your email address.';
             }
         }
     } else {
