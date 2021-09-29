@@ -150,15 +150,15 @@
             if ($uploaded) {
                 echo '<h1 class="text-2xl text-<?php echo THEME_PANEL_COLOUR; ?>-700">Your file:</h1>';
                 if (isset($_GET['renameTo'])) {
-                    echo '<iframe class="w-full h-1/2" src="' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])) . '">' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])) . '</iframe>';
+                    echo '<iframe class="w-full h-1/2" src="'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])).'">'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])).'</iframe>';
                 } else {
-                    echo '<iframe class="w-full h-1/2" src="' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . $rand . '.' . $ext) . '">' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . $rand . '.' . $ext) . '</iframe>';
+                    echo '<iframe class="w-full h-1/2" src="'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).$rand.'.'.$ext).'">'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).$rand.'.'.$ext).'</iframe>';
                 }
             }
             ?>
             <?php
                 if ($_GET['type'] == 'image' && isset($_GET['maxWidth']) && isset($_GET['maxHeight'])) {
-            ?>
+                    ?>
             <h1 class="text-2xl text-<?php echo THEME_PANEL_COLOUR; ?>-700">Image Restrictions</h1>
             <p class="text-<?php echo THEME_PANEL_COLOUR; ?>-700">This file must be a valid image. It must be no bigger than <?php echo checkOutput('DEFAULT', $_GET['maxWidth']); ?> x <?php echo checkOutput('DEFAULT', $_GET['maxHeight']); ?> (width x height).</p>
             <?php
