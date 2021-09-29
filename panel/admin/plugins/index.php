@@ -1,9 +1,9 @@
 <?php
     session_start();
+
     ob_start();
-
     require_once __DIR__.'/../../../assets/common/global_private.php';
-
+    require_once __DIR__.'/../../../assets/common/admin/global.php';
     ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,9 @@
 <?php
     session_start();
+    ob_start();
     require_once __DIR__.'/../../assets/common/global_private.php';
+    require_once __DIR__.'/../../assets/common/admin/global.php';
+    ob_end_flush();
     $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version=beta');
     $localVersion = file_get_contents(__DIR__.'/../../assets/common/version.txt');
 ?><!DOCTYPE html>

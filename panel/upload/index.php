@@ -69,7 +69,6 @@
         // Upload file.
         if ($allowUpload) {
             if (move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $uploadDirectory)) {
-                echo alert('SUCCESS', 'The file '.checkInput('DEFAULT', basename($_FILES['uploaded_file']['name'])).' has been uploaded', true);
                 $uploaded = true;
                 $uploadedTo = basename($_FILES['uploaded_file']['name']);
             } else {
@@ -105,6 +104,12 @@
                     header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])));
                 } else {
                     header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'/?uploadedTo='.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).$rand.'.'.$ext));
+                }
+            } else {
+                if (isset($_GET['renameTo'])) {
+                    echo alert('SUCCESS', 'The file '.checkInput('DEFAULT', basename($_FILES['uploaded_file']['name'])).' has been uploaded to: <a class="underline" target="_blank" href="'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])).'">'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])).' <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>', true);
+                } else {
+                    echo alert('SUCCESS', 'The file '.checkInput('DEFAULT', basename($_FILES['uploaded_file']['name'])).' has been uploaded to: <a class="underline" target="_blank" href="'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).$rand.'.'.$ext).'">'.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).$rand.'.'.$ext).' <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>', true);
                 }
             }
         } else {
@@ -142,8 +147,18 @@
                 <input type="submit" value="Upload" class="rounded-md bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 text-<?php echo THEME_PANEL_COLOUR; ?>-700 py-2 px-8 transition duration-200">
             </form>
             <?php
+            if ($uploaded) {
+                echo '<h1 class="text-2xl text-<?php echo THEME_PANEL_COLOUR; ?>-700">Your file:</h1>';
+                if (isset($_GET['renameTo'])) {
+                    echo '<iframe class="w-full h-1/2" src="' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])) . '">' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . checkInput('DEFAULT', $_GET['renameTo'])) . '</iframe>';
+                } else {
+                    echo '<iframe class="w-full h-1/2" src="' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . $rand . '.' . $ext) . '">' . str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory) . $rand . '.' . $ext) . '</iframe>';
+                }
+            }
+            ?>
+            <?php
                 if ($_GET['type'] == 'image' && isset($_GET['maxWidth']) && isset($_GET['maxHeight'])) {
-                    ?>
+            ?>
             <h1 class="text-2xl text-<?php echo THEME_PANEL_COLOUR; ?>-700">Image Restrictions</h1>
             <p class="text-<?php echo THEME_PANEL_COLOUR; ?>-700">This file must be a valid image. It must be no bigger than <?php echo checkOutput('DEFAULT', $_GET['maxWidth']); ?> x <?php echo checkOutput('DEFAULT', $_GET['maxHeight']); ?> (width x height).</p>
             <?php
