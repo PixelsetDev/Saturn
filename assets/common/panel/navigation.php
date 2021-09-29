@@ -18,44 +18,46 @@
                     </button>
                 </div>
                 <nav :class="{'flex': open, 'hidden': !open}" class="flex-wrap flex-col flex-auto pb-2 lg:pb-0 hidden lg:flex lg:justify-end lg:flex-row" aria-label="Saturn Panel Menu">
-                    <?php
-                        if (get_user_roleID($_SESSION['id']) > 2 && CONFIG_PAGE_APPROVALS) {
-                            echo '<div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
-                            <button @click="open = !open" class="self-center text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline">
+                    <?php if (get_user_roleID($_SESSION['id']) > 2 && CONFIG_PAGE_APPROVALS) { ?>
+                        <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
+                            <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                                 <div class="flex">
                                     <span>Pages</span>
-                                    <svg fill="currentColor" viewBox="0 0 20 20" :class="{\'rotate-180\': open, \'rotate-0\': !open}" class="self-center inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform lg:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                    <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="self-center inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform lg:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </div>
                             </button>
                             <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-lg shadow-lg lg:w-48 z-50">
-                                <div class="px-2 py-2 bg-'.THEME_PANEL_COLOUR.'-800 rounded-lg shadow w-60">
-                                    <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/pages">Editor</a>
-                                    <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/pages/approvals">Approvals</a>
+                                <div class="px-2 py-2 bg-<?php echo THEME_PANEL_COLOUR; ?>-800 rounded-lg shadow w-60">
+                                    <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages">Editor</a>
+                                    <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages/approvals">Approvals</a>
                                 </div>
                             </div>
-                        </div>';
-                        } else {
-                            echo'<a class="self-center text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/pages">Pages</a>';
+                        </div>
+                        <?php } else { ?>
+                        <a class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages">Pages</a>
+                        <?php
                         }
                         if (get_user_roleID($_SESSION['id']) > 2 && CONFIG_ARTICLE_APPROVALS) {
-                            echo '<div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
-                                <button @click="open = !open" class="self-center text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline">
+                        ?>
+                            <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
+                                <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                                     <div class="flex">
                                         <span>Articles</span>
-                                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{\'rotate-180\': open, \'rotate-0\': !open}" class="self-center inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform lg:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="self-center inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform lg:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                     </div>
                                 </button>
                                 <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-lg shadow-lg lg:w-48 z-50">
-                                    <div class="px-2 py-2 bg-'.THEME_PANEL_COLOUR.'-800 rounded-lg shadow w-60">
-                                        <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/articles">Editor</a>
-                                        <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/articles/approvals">Approvals</a>
+                                    <div class="px-2 py-2 bg-<?php echo THEME_PANEL_COLOUR; ?>-800 rounded-lg shadow w-60">
+                                        <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles">Editor</a>
+                                        <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles/approvals">Approvals</a>
                                     </div>
                                 </div>
-                            </div>';
+                            </div>
+                    <?php
                         } else {
-                            echo'<a class="self-center text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/articles">Articles</a>';
-                        }
                     ?>
+                            <a class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles">Articles</a>
+                    <?php } ?>
                     <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                             <div class="flex">
@@ -108,11 +110,11 @@
                     }?></a><?php unset($notifCount); ?>
                                 <?php
                                     if (get_user_roleID($_SESSION['id']) == '4') {
-                                        echo '<hr>
-                                        <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin">Admin Panel</a>
-                                        <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin/settings">Website Settings</a>
-                                        <a class="block text-'.THEME_PANEL_COLOUR.'-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-'.THEME_PANEL_COLOUR.'-700 focus:bg-'.THEME_PANEL_COLOUR.'-700 focus:outline-none focus:shadow-outline" href="'.CONFIG_INSTALL_URL.'/panel/admin/user-management">User Management</a>';
-                                    }
+                                        ?>
+                                        <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin">Admin Panel</a>
+                                        <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/settings">Website Settings</a>
+                                        <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/user-management">User Management</a>';
+                                    <?php }
                                 ?>
                                 <hr>
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/signout">Sign Out</a>
