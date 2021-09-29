@@ -2,6 +2,8 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/assets/common/global_public.php';
 
+const THEME_DIRECTORY = '/themes/';
+
 function get_page_id_from_url($uri)
 {
     $uri = checkInput('HTML', $uri);
@@ -17,11 +19,12 @@ function get_page_id_from_url($uri)
 
 function getdata($pageID): array
 {
+
     $pageData['title'] = get_page_title($pageID);
     $pageData['content'] = get_page_content($pageID);
     $pageData['author']['id'] = get_page_last_edit_user_id($pageID);
-    $pageData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/navigation.template');
-    $pageData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/footer.template');
+    $pageData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.template');
+    $pageData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.template');
 
     return $pageData;
 }
@@ -45,10 +48,10 @@ function replacedata($pageOutput, $pageData): string
 
 $pageID = get_page_id_from_url($pageuri);
 
-$data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/theme.json'));
+$data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/theme.json'));
 
 $file = strtolower(get_page_template($pageID));
-$pageOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.$file.'.template');
+$pageOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/'.$file.'.template');
 
 $pageData = getdata($pageID);
 echo replacedata($pageOutput, $pageData);
