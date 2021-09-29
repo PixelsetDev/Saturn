@@ -5,27 +5,35 @@
     include_once __DIR__.'/../../assets/common/global_private.php';
 
     if (!empty($_FILES['uploaded_file'])) {
+
+        /* File Uploads Location Config */
+        /* Changing this won't affect already existing uploads. */
+        $defaultUploadLocation = '/../../assets/storage/uploads/';
+        $imageUploadLocation = '/../../assets/storage/uploads/';
+        $profilepictureUploadLocation = '/../../assets/storage/uploads/';
+        $videoUploadLocation = '/../../assets/storage/uploads/';
+
         if (isset($_GET['uploadTo'])) {
             $uploadDirectory = __DIR__.'/../..'.checkInput('DEFAULT', $_GET['uploadTo']);
             $uploadedToDirectory = '/../..'.checkInput('DEFAULT', $_GET['uploadTo']);
         } else {
             if (isset($_GET['type'])) {
                 if ($_GET['type'] == 'image') {
-                    $uploadDirectory = __DIR__.'/../../assets/images/uploads/';
-                    $uploadedToDirectory = '/../../assets/images/uploads/';
+                    $uploadDirectory = __DIR__ . $imageUploadLocation;
+                    $uploadedToDirectory = $imageUploadLocation;
                 } elseif ($_GET['type'] == 'profilepicture') {
-                    $uploadDirectory = __DIR__.'/../../assets/images/profile-pictures/';
-                    $uploadedToDirectory = '/../../assets/images/profile-pictures/';
+                    $uploadDirectory = __DIR__ . $profilepictureUploadLocation;
+                    $uploadedToDirectory = $profilepictureUploadLocation;
                 } elseif ($_GET['type'] == 'video') {
-                    $uploadDirectory = __DIR__.'/../../assets/videos/uploads/';
-                    $uploadedToDirectory = '/../../assets/videos/uploads/';
+                    $uploadDirectory = __DIR__ . $videoUploadLocation;
+                    $uploadedToDirectory = $videoUploadLocation;
                 } else {
-                    $uploadDirectory = __DIR__.'/../../assets/storage/uploads/';
-                    $uploadedToDirectory = '/../../assets/storage/uploads/';
+                    $uploadDirectory = __DIR__ . $defaultUploadLocation;
+                    $uploadedToDirectory = $defaultUploadLocation;
                 }
             } else {
-                $uploadDirectory = __DIR__.'/../../assets/storage/uploads/';
-                $uploadedToDirectory = '/../../assets/storage/uploads/';
+                $uploadDirectory = __DIR__ . $defaultUploadLocation;
+                $uploadedToDirectory = $defaultUploadLocation;
             }
         }
 
