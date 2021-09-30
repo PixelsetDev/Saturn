@@ -4,8 +4,6 @@ Saturn is a powerful content management system for publishers, educators and eve
 ## How does Saturn display pages?
 Saturn uses the backend (shown in this repo) to display pages using the Saturn Router and Render Engine, meaning that we don't need to hard-code any frontend of your website. The Saturn router is fast and powerful, it allows us to save space and complexity by serving all your public-facing webpages from only two files! It handles rendering, themeing, errors and more.
 
-# This repo is a work-in-progress, many areas of it do not work yet.
-
 ## Statistics
 ### Code Quality
 [![CodeFactor](https://www.codefactor.io/repository/github/lmwnweb/saturn/badge?s=f64b48d218619ac47c05eea3e8f85106d1fb4c9c)](https://www.codefactor.io/repository/github/lmwnweb/saturn)
