@@ -19,7 +19,6 @@ function get_page_id_from_url($uri)
 
 function getdata($pageID): array
 {
-
     $pageData['title'] = get_page_title($pageID);
     $pageData['content'] = get_page_content($pageID);
     $pageData['author']['id'] = get_page_last_edit_user_id($pageID);

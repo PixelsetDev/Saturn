@@ -131,13 +131,12 @@
                 $exists = false;
                 while ($article != null) {
                     if (get_article_author_id($i) == $_SESSION['id'] && get_article_status($i) != 'DELETED') {
-                        $exists = true;
-                        echo '            <div>
-                                <div name="'.$article.'" id="'.$article.'">
+                        $exists = true; ?>  <div>
+                                <div name="<?php echo $article; ?>" id="<?php echo $article; ?>">
                                     <div class="flex-0 relative pt-1 mb-2">
                                         <div class="flex items-center justify-between">
-                                            <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2">'.$article.'</h1>
-                                            <div>';
+                                            <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2"><?php echo $article; ?></h1>
+                                            <div><?php
                         if (get_article_status($i) == 'UNPUBLISHED') {
                             $statusColour = 'red';
                             $status = 'Unpublished';
@@ -153,16 +152,15 @@
                         } else {
                             $statusColour = 'gray';
                             $status = 'Unknown Status';
-                        }
-                        echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$statusColour.'-500 bg-'.$statusColour.'-200">'.$status.'</span>
+                        } ?><span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-<?php echo $statusColour; ?>-500 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-2 flex-grow flex w-30 h-8 space-x-2">
-                                        <a href="'.CONFIG_INSTALL_URL.'/panel/articles/editor/?articleID='.$i.'" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                        <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles/editor/?articleID=<?php echo $i; ?>" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                             <i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;Edit
                                         </a>
-                                        ';
+                                        <?php
                         if ($status == 'Published' || $status == 'Pending') {
                             echo '<form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{ open: false }">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">

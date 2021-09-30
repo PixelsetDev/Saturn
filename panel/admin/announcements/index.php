@@ -1,8 +1,8 @@
 <?php
     session_start();
     ob_start();
-
     require_once __DIR__.'/../../../assets/common/global_private.php';
+    require_once __DIR__.'/../../../assets/common/admin/global.php';
 
     if (isset($_POST['save'])) {
         if (update_announcement_active('1', checkInput('DEFAULT', $_POST['panel_active'])) &&

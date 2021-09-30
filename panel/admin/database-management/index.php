@@ -1,6 +1,11 @@
 <?php
 session_start();
+
+ob_start();
 require_once __DIR__.'/../../../assets/common/global_private.php';
+require_once __DIR__.'/../../../assets/common/admin/global.php';
+ob_end_flush();
+
 require_once __DIR__.'/../../../assets/common/processes/gui/modals.php';
 
 function optimise_tables(): bool

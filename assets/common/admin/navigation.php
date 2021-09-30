@@ -1,7 +1,4 @@
-<?php
-    if (get_user_roleID($_SESSION['id']) != '4') {
-        header('Location: '.CONFIG_INSTALL_URL.'/panel/dashboard/?error=permission');
-    } ?><nav class="bg-<?php echo THEME_PANEL_COLOUR; ?>-900 shadow-xl z-40" aria-label="Saturn Admin Panel Menu">
+<nav class="bg-<?php echo THEME_PANEL_COLOUR; ?>-900 shadow-xl z-40" aria-label="Saturn Admin Panel Menu">
             <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div class="relative flex items-center justify-between">
                     <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin" aria-label="Saturn" title="Saturn" class="inline-flex items-center">
