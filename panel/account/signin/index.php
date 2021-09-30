@@ -68,7 +68,7 @@
             $successMsg = 'Your IP has been verified. You may now sign in to Saturn.';
         }
         if ($_GET['signedout'] == 'permission') {
-            $successMsg = 'You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.';
+            $errorMsg = 'You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.';
         }
     }
 ?>
