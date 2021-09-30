@@ -17,17 +17,9 @@
         $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `first_name`='Banned',`last_name`='User',`email`=NULL,`password`=NULL,`user_key`=NULL,`last_login_ip`=NULL,`auth_code`=NULL,`role_id`='0',`bio`=NULL,`organisation`=NULL,`website`=NULL,`profile_photo`='/assets/images/defaultprofile.png' WHERE id = ".$id;
 
         if (SECURITY_USE_GSS) {
-            if (mysqli_query($conn, $query) && file_get_contents('https://link.saturncms.net/gss/?instruction=publish_ban&key='.CONFIG_ACTIVATION_KEY.'&domain='.$_SERVER['HTTP_HOST'].'&ip='.$ip.'&reason='.$reason)) {
-                return true;
-            } else {
-                return false;
-            }
+            return mysqli_query($conn, $query) && file_get_contents('https://link.saturncms.net/gss/?instruction=publish_ban&key='.CONFIG_ACTIVATION_KEY.'&domain='.$_SERVER['HTTP_HOST'].'&ip='.$ip.'&reason='.$reason);
         } else {
-            if (mysqli_query($conn, $query)) {
-                return true;
-            } else {
-                return false;
-            }
+            return mysqli_query($conn, $query);
         }
     }
 
