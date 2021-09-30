@@ -61,6 +61,9 @@
         $id = $_SESSION['id'];
         $uid = $_SESSION['id'];
     }
+    if (get_user_roleID($uid) < 2) {
+        internal_redirect('/panel/account/signin/?signedout=permission');
+    }
     /* Require HTTPS */
     if ($_SERVER['HTTPS'] != 'on' && SECURITY_USE_HTTPS) {
         header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
