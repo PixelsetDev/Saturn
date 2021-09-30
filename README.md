@@ -21,7 +21,6 @@ Saturn uses the backend (shown in this repo) to display pages using the Saturn R
 [![GitHub forks](https://badgen.net/github/forks/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/network/)
 [![GitHub stars](https://badgen.net/github/stars/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/stargazers/)
 [![GitHub issues](https://badgen.net/github/issues/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/issues/)
-[![GitHub issues](https://badgen.net/github/issues/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/issues/)
 [![GitHub version](https://badge.fury.io/gh/LMWNWeb%2FSaturn.svg)](https://github.com/LMWNWeb/Saturn)
 [![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=LMWNWeb/Saturn)](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=LMWNWeb/Saturn)
 [![Stargazers over time](https://starchart.cc/LMWNWeb/Saturn.svg)](https://starchart.cc/LMWNWeb/Saturn)
