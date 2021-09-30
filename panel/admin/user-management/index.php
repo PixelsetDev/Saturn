@@ -26,6 +26,14 @@
         }
     }
 
+    if (isset($_POST['ban'])) {
+        if (ban_user(checkInput('DEFAULT',$_POST['ban_user_id']),checkInput('DEFAULT',$_POST['reason']))) {
+            $successMsg = 'User banned.';
+        } else {
+            $errorMsg = 'Unable to ban user.';
+        }
+    }
+
     function displayUser($rs)
     {
         while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
@@ -74,6 +82,17 @@
                                                                         <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
                                                                             <?php echo get_user_role($value); ?>
                                                                         </p>
+                                                                        <?php if (SECURITY_USE_GSS && (check_gss_bans(get_user_last_login_ip($value)) != 'false')) { ?>
+                                                                        <p class="text-red-500 dark:text-red-200 font-light pt-4">
+                                                                            This user is on the Saturn Global Security System Alert List.
+                                                                        </p>
+                                                                            <p class="text-sm text-red-500 dark:text-red-200 font-light">
+                                                                                Reason: <?php echo get_gss_ban_reason(get_user_last_login_ip($value))?>
+                                                                            </p>
+                                                                            <p class="text-sm text-red-200 dark:text-red-500 font-light">
+                                                                                <a class="text-red-300 hover:text-red-200 underline" href="https://saturncms.net/security/alert-list" target="_blank">Click here to learn more or get help. <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></a>
+                                                                            </p>
+                                                                        <?php } ?>
                                                                         <p class="text-md text-gray-500 dark:text-gray-400 max-w-xs py-4 font-light">
                                                                                 <input type="text" name="userid" id="userid" value="<?php echo $value; ?>" class="hidden">
                                                                                 <div class="relative inline-block w-full text-gray-700">
@@ -107,7 +126,7 @@
                                                                                         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
                                                                                 </div>
                                                                             </div>
-                                                                            <input type="Submit" name="action" value="Save" class="mouse-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
+                                                                            <input type="Submit" name="action" value="Save" class="cursor-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
                                                                         </p>
                                                                     </div>
                                                                 </form>
@@ -202,6 +221,18 @@
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Pending</h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users waiting to have their account approved by an administrator.</p>
+                            <?php
+                            $empty = true;
+
+                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '1';";
+                            $rs = mysqli_query($conn, $query);
+
+                            displayUser($rs);
+                            ?>
+                        </div>
+                        <div class="flex-grow mr-8 w-1/3 mb-10">
                             <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Restricted</h1>
                             <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users who can not access Saturn.</p>
                             <?php
@@ -214,16 +245,28 @@
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Pending</h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users waiting to have their account approved by an administrator.</p>
-                            <?php
-                            $empty = true;
+                            <h1 class="text-2xl font-bold leading-tight text-red-900">Ban User</h1>
+                            <p class="text-xs font-light text-red-800">Warning: This action cannot be undone. Banning users will delete all their personal information.</p>
+                            <form action="" method="POST" name="ban">
+                                <select name="ban_user_id" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
+                                    <option value="NULL" disabled selected>Please select one. Warning: This action cannot be undone.</option>
+                                <?php
+                                $empty = true;
 
-                            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` = '1';";
-                            $rs = mysqli_query($conn, $query);
+                                $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `role_id` <> '0' AND `role_id` <> '1';";
+                                $rs = mysqli_query($conn, $query);
 
-                            displayUser($rs);
-                            ?>
+                                while ($row = mysqli_fetch_array($rs, MYSQLI_ASSOC)) {
+                                    foreach ($row as $value) {
+                                        ?>
+                                    <option value="<?php echo $value; ?>"><?php echo get_user_fullname($value); ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                <input type="text" name="reason" required class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Reason (Required)" />
+                                <input type="Submit" name="ban" value="Ban" class="cursor-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none">
+                            </form>
                         </div>
                     </div>
                 </div>
