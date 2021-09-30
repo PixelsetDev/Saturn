@@ -112,7 +112,7 @@
                     }
                     echo'
                                                                                         <option value="2"';
-                    if (get_user_roleID($value) == '2') {
+                    if (get_user_roleID($value) == '2' || get_user_roleID($value) == '1') {
                         echo' selected';
                     }
                     echo'>Writer</option>
