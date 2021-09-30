@@ -90,7 +90,7 @@
                                                                                 Reason: <?php echo get_gss_ban_reason(get_user_last_login_ip($value))?>
                                                                             </p>
                                                                             <p class="text-sm text-red-200 dark:text-red-500 font-light">
-                                                                                <a class="text-red-300 hover:text-red-200 underline" href="https://saturncms.net/security/alert-list" target="_blank">Click here to learn more or get help. <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></a>
+                                                                                <a class="text-red-300 hover:text-red-200 underline" href="https://saturncms.net/security/alert-list" target="_blank">Click here to learn more or get help. <i class="fas fa-external-link-alt fa-xs" aria-hidden="true" rel="noopener"></i></a>
                                                                             </p>
                                                                         <?php } ?>
                                                                         <p class="text-md text-gray-500 dark:text-gray-400 max-w-xs py-4 font-light">
