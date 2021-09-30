@@ -13,3 +13,16 @@ Saturn is a powerful content management system for publishers, educators and eve
 Saturn uses the backend (shown in this repo) to display pages using the Saturn Router and Render Engine, meaning that we don't need to hard-code any frontend of your website. The Saturn router is fast and powerful, it allows us to save space and complexity by serving all your public-facing webpages from only two files! It handles rendering, themeing, errors and more.
 
 # This repo is a work-in-progress, many areas of it do not work yet.
+
+## Statistics
+[![Github all releases](https://img.shields.io/github/downloads/LMWNWeb/Saturn/total.svg)](https://GitHub.com/lewmilburn/Particle-CSS/releases/)
+[![GitHub latest commit](https://badgen.net/github/last-commit/LMWNWeb/Saturn)](https://GitHub.com/LMWNWeb/Saturn/commit/)
+[![GitHub license](https://badgen.net/github/license/LMWNWeb/Saturn)](https://github.com/LMWNWeb/Saturn/blob/master/LICENSE)
+[![GitHub forks](https://badgen.net/github/forks/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/network/)
+[![GitHub stars](https://img.shields.io/github/stars/LMWNWeb/Saturn.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/LMWNWeb/Saturn/stargazers/)
+[![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=LMWNWeb/Saturn)](https://www.apiseven.com/en/contributor-graph?chart=contributorOverTime&repo=Naereen/badges)
+[![Stargazers over time](https://starchart.cc/LMWN/badges.svg)](https://starchart.cc/LMWN/badges)
+[![GitHub issues](https://badgen.net/github/issues/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/issues/)
+[![GitHub issues](https://badgen.net/github/issues/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/issues/)
+[![Only 32 Kb](https://badge-size.herokuapp.com/LMWNWeb/Saturn/master/strapdown.min.js)](https://github.com/LMWNWeb/Saturn/blob/master/strapdown.min.js)
+[![GitHub version](https://badge.fury.io/gh/LMWNWeb%2FSaturn.svg)](https://github.com/LMWNWeb/Saturn)
