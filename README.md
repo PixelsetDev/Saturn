@@ -19,7 +19,7 @@ Saturn uses the backend (shown in this repo) to display pages using the Saturn R
 [![GitHub latest commit](https://badgen.net/github/last-commit/LMWNWeb/Saturn)](https://GitHub.com/LMWNWeb/Saturn/commit/)
 [![GitHub license](https://badgen.net/github/license/LMWNWeb/Saturn)](https://github.com/LMWNWeb/Saturn/blob/master/LICENSE)
 [![GitHub forks](https://badgen.net/github/forks/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/network/)
-[![GitHub stars](https://img.shields.io/github/stars/LMWNWeb/Saturn.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/LMWNWeb/Saturn/stargazers/)
+[![GitHub stars](https://badgen.net/github/stars/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/stargazers/)
 [![GitHub issues](https://badgen.net/github/issues/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/issues/)
 [![GitHub issues](https://badgen.net/github/issues/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/issues/)
 [![GitHub version](https://badge.fury.io/gh/LMWNWeb%2FSaturn.svg)](https://github.com/LMWNWeb/Saturn)
