@@ -50,21 +50,24 @@
                         $themeFramework = 'question_mark';
                     }
 
-                    echo '<div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
-                            <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20">
-                                <h3 class="text-lg mt-1 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
-                                <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$themeData->{'theme'}->{'author'}.'</p>
-                            </div>
-                            <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
-                                <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$themeFramework.'.svg" class="w-6 h-6" alt="'.$themeFramework.'">
-                            </div>
-                            <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
-                                '.$themeData->{'theme'}->{'version'}->{'theme'}.'
-                            </div>
-                            <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="'.$themeImage.'" alt="'.$themeData->{'theme'}->{'name'}.'">
-                        </div>';
-                }
-                ?>
+                    ?>
+                <a href="settings?slug=<?php echo $themeData->{'theme'}->{'slug'}; ?>" class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                    <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
+                        <div class="flex-grow">
+                            <h3 class="text-lg mt-1 mx-2 text-white"><?php echo $themeData->{'theme'}->{'name'}; ?></h3>
+                            <p class="text-xs -mt-1 mb-1 mx-2 text-white">By <?php echo $themeData->{'theme'}->{'author'}; ?></p>
+                        </div>
+                        <?php if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) { ?><p class="text-xs text-white">ACTIVE</p><?php } ?>
+                    </div>
+                    <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/icons/<?php echo $themeFramework; ?>.svg" class="w-6 h-6" alt="<?php echo $themeFramework; ?>">
+                    </div>
+                    <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
+                        <?php echo $themeData->{'theme'}->{'version'}->{'theme'}; ?>
+                    </div>
+                    <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="<?php echo $themeImage; ?>" alt="<?php echo $themeData->{'theme'}->{'name'};?>">
+                </a>
+                <?php }?>
             </div>
             <h2 class="text-gray-900 text-2xl mt-8">Theme Marketplace</h2>
             <?php if (activation_validate()) { ?>
