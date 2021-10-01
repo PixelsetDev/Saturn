@@ -112,6 +112,7 @@
                                 <?php
                                     if (get_user_roleID($_SESSION['id']) == '4') {
                                         ?>
+                                        <hr>
                                         <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin">Admin Panel</a>
                                         <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/settings">Website Settings</a>
                                         <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/user-management">User Management</a>
