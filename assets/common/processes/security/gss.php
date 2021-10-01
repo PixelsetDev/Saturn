@@ -25,7 +25,7 @@
 
     function check_gss_bans($ip, $hashed = true): string
     {
-        if ($hashed == false) {
+        if (!$hashed) {
             $ip = hash_ip($ip);
         }
 
@@ -34,7 +34,7 @@
 
     function get_gss_ban_reason($ip, $hashed = true): string
     {
-        if ($hashed == false) {
+        if (!$hashed) {
             $ip = hash_ip($ip);
         }
 
