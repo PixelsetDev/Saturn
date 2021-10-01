@@ -17,14 +17,17 @@
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */
+    // Create
     require_once __DIR__.'/processes/database/create/notification.php';
     require_once __DIR__.'/processes/database/create/todo.php';
     require_once __DIR__.'/processes/database/create/user.php';
     require_once __DIR__.'/processes/database/create/page.php';
+    // Delete
     require_once __DIR__.'/processes/database/delete/page.php';
-    require_once __DIR__.'/processes/database/get/user.php';
-    require_once __DIR__.'/processes/database/get/user_statistics.php';
-    require_once __DIR__.'/processes/database/get/user_settings.php'; // Must be first rf loaded in this section!
+    // Get
+    require_once __DIR__.'/processes/database/get/user.php'; // User info must be loaded first.
+    require_once __DIR__.'/processes/database/get/user_statistics.php'; // User info must be loaded first.
+    require_once __DIR__.'/processes/database/get/user_settings.php'; // User info must be loaded first.
     require_once __DIR__.'/processes/database/get/activity.php';
     require_once __DIR__.'/processes/database/get/announcement.php';
     require_once __DIR__.'/processes/database/get/articles.php';
@@ -32,10 +35,12 @@
     require_once __DIR__.'/processes/database/get/page.php';
     require_once __DIR__.'/processes/database/get/page_category.php';
     require_once __DIR__.'/processes/database/get/todo.php';
+    // Update
     require_once __DIR__.'/processes/database/update/articles.php';
     require_once __DIR__.'/processes/database/update/announcement.php';
     require_once __DIR__.'/processes/database/update/notification.php';
     require_once __DIR__.'/processes/database/update/page.php';
+    require_once __DIR__.'/processes/database/update/todo.php';
     require_once __DIR__.'/processes/database/update/user.php';
     require_once __DIR__.'/processes/database/update/user_settings.php';
     /* Required Files */
