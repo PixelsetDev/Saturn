@@ -23,8 +23,9 @@
 
         global $conn;
 
-        $query = "INSERT INTO `".DATABASE_PREFIX."todo_items` (`id`, `list_id`, `title`, `description`, `status`) VALUES (NULL, '".$listID."', '".$title."', '".$description."', '0')";
+        $query = 'INSERT INTO `'.DATABASE_PREFIX."todo_items` (`id`, `list_id`, `title`, `description`, `status`) VALUES (NULL, '".$listID."', '".$title."', '".$description."', '0')";
 
         var_dump($query);
+
         return mysqli_query($conn, $query);
     }

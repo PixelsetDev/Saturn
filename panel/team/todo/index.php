@@ -57,8 +57,8 @@ ob_start();
     }
     // Add an item to the list
     if (isset($_GET['add_item'])) {
-        $listID = checkInput('DEFAULT',$_GET['add_item']);
-        if (create_todo_item($listID, checkInput('DEFAULT',$_POST['newItemTitle']), checkInput('DEFAULT',$_POST['newItemDescription']))) {
+        $listID = checkInput('DEFAULT', $_GET['add_item']);
+        if (create_todo_item($listID, checkInput('DEFAULT', $_POST['newItemTitle']), checkInput('DEFAULT', $_POST['newItemDescription']))) {
             internal_redirect('/panel/team/todo');
             exit;
         } else {
@@ -126,7 +126,7 @@ ob_start();
             $listName = get_todo_list_name($i);
             while ($listName != null) {
                 if ((get_todo_list_owner_id($i) == $_SESSION['id'] && get_todo_list_status($i) == '1') || (get_todo_list_status($i) == '1' && get_todo_list_visibility($i) == 'PUBLIC' && get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
-                   ?>
+                    ?>
             <div x-show="tab === '<?php echo $i; ?>'">
                 <div>
                     <div class="flex space-x-6 pb-6 pt-1">
@@ -145,11 +145,11 @@ ob_start();
                     </div>
                     <?php
                         $o = 1;
-                        $itemName = get_todo_item_title($o);
-                        while ($itemName != null) {
-                            $listID = get_todo_item_list_id($o);
-                            if ($listID == $i) {
-                                ?>
+                    $itemName = get_todo_item_title($o);
+                    while ($itemName != null) {
+                        $listID = get_todo_item_list_id($o);
+                        if ($listID == $i) {
+                            ?>
                     <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                         <div class="flex-grow">
                             <strong><?php echo get_todo_item_title($o); ?></strong><br>
@@ -163,14 +163,14 @@ ob_start();
                         </form>
                     </div>
                     <?php
-                            }
-                            $o++;
-                            $itemName = get_todo_item_title($o);
                         }
+                        $o++;
+                        $itemName = get_todo_item_title($o);
+                    }
                 } ?>
 
                     <?php if ((get_todo_list_visibility($i) == 'PUBLIC') || (get_todo_list_owner_id($i) == $_SESSION['id'])) { ?>
-                    <form action="index.php?add_item=<?php echo $i;?>" method="post" name="add_item" class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
+                    <form action="index.php?add_item=<?php echo $i; ?>" method="post" name="add_item" class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                         <div class="flex-grow">
                             <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div></strong>
                             <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div>
