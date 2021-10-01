@@ -4,7 +4,7 @@ ob_start();
 require_once __DIR__.'/../../../../assets/common/global_private.php';
 require_once __DIR__.'/../../../../assets/common/admin/global.php';
 ob_end_flush();
-$slug = checkInput('DEFAULT',$_GET['slug']);
+$slug = checkInput('DEFAULT', $_GET['slug']);
 $themeDataJSON = file_get_contents(__DIR__.'/../../../../themes/'.$slug.'/theme.json');
 $themeData = json_decode($themeDataJSON);
 
@@ -13,7 +13,7 @@ if (isset($_GET['activate'])) {
 
     $message = "<?php
     /* Website Theme */
-    const THEME_SLUG = '".checkInput('DEFAULT',$_GET['slug'])."';
+    const THEME_SLUG = '".checkInput('DEFAULT', $_GET['slug'])."';
     const THEME_COLOUR_SCHEME = 'Light';
     const THEME_FONT = '".THEME_FONT."'; /* Google Font Name */
     /* Panel Theme */
