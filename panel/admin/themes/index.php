@@ -48,9 +48,7 @@
                     $themeFramework = $themeData->{'theme'}->{'framework'};
                     if ($themeFramework == '') {
                         $themeFramework = 'question_mark';
-                    }
-
-                    ?>
+                    } ?>
                 <a href="settings?slug=<?php echo $themeData->{'theme'}->{'slug'}; ?>" class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
                     <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
                         <div class="flex-grow">
@@ -65,9 +63,10 @@
                     <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
                         <?php echo $themeData->{'theme'}->{'version'}->{'theme'}; ?>
                     </div>
-                    <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="<?php echo $themeImage; ?>" alt="<?php echo $themeData->{'theme'}->{'name'};?>">
+                    <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="<?php echo $themeImage; ?>" alt="<?php echo $themeData->{'theme'}->{'name'}; ?>">
                 </a>
-                <?php }?>
+                <?php
+                }?>
             </div>
             <h2 class="text-gray-900 text-2xl mt-8">Theme Marketplace</h2>
             <?php if (activation_validate()) { ?>
