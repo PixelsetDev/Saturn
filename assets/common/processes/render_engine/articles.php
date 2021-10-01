@@ -15,7 +15,9 @@ function getdata($articleID): array
 
 function replacedata($articleOutput, $articleData): string
 {
-    if (CONFIG_DEBUG) { $starttime = microtime(true); }
+    if (CONFIG_DEBUG) {
+        $starttime = microtime(true);
+    }
     $articleOutput = str_replace('{{data:title}}', $articleData['title'], $articleOutput);
     $articleOutput = str_replace('{{data:content}}', $articleData['content'], $articleOutput);
     $articleOutput = str_replace('{{data:author:name}}', $articleData['author']['id'], $articleOutput);
@@ -28,7 +30,9 @@ function replacedata($articleOutput, $articleData): string
     $articleOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $articleOutput);
     $articleOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $articleOutput);
 
-    if (CONFIG_DEBUG) { log_console('Saturn][Resource Loader][G-Tags', 'Converted 10 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.'); }
+    if (CONFIG_DEBUG) {
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 10 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+    }
 
     return str_replace('{{section:footer}}', $articleData['section']['footer'], $articleOutput);
 }
