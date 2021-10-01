@@ -74,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
+                    <!--<div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                             <div class="flex">
                                 <span>More</span>
@@ -86,7 +86,7 @@
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="">Coming Soon</a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                             <div class="flex">
