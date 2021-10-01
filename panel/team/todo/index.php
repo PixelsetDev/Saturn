@@ -1,4 +1,5 @@
 <?php session_start();
+ob_start();
     // Include required files
     include_once __DIR__.'/../../../assets/common/global_private.php';
     // Delete a list
@@ -43,16 +44,32 @@
     }
     // Save a list
     if (isset($_GET['save'])) {
-        $errorMsg = 'This function has not been implemented yet.';
+        $itemID = checkInput('DEFAULT', $_GET['save']);
+        if (get_todo_item_status($itemID) == '1') {
+            if (!update_todo_item_status($itemID, '0')) {
+                $errorMsg = 'Unable to update todo item. A database error occurred.';
+            }
+        } else {
+            if (!update_todo_item_status($itemID, '1')) {
+                $errorMsg = 'Unable to update todo item. A database error occurred.';
+            }
+        }
     }
     // Add an item to the list
     if (isset($_GET['add_item'])) {
-        $errorMsg = 'This function has not been implemented yet.';
+        $listID = checkInput('DEFAULT',$_GET['add_item']);
+        if (create_todo_item($listID, checkInput('DEFAULT',$_POST['newItemTitle']), checkInput('DEFAULT',$_POST['newItemDescription']))) {
+            internal_redirect('/panel/team/todo');
+            exit;
+        } else {
+            $errorMsg = 'Unable to create todo item. An error occurred.';
+        }
     }
     // Save the manage section of a list
     if (isset($_GET['save_manage'])) {
         $errorMsg = 'This function has not been implemented yet.';
     }
+    ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -109,8 +126,7 @@
             $listName = get_todo_list_name($i);
             while ($listName != null) {
                 if ((get_todo_list_owner_id($i) == $_SESSION['id'] && get_todo_list_status($i) == '1') || (get_todo_list_status($i) == '1' && get_todo_list_visibility($i) == 'PUBLIC' && get_todo_list_role_id($i) <= get_user_roleID($_SESSION['id']))) {
-                    $o = 1;
-                    $itemName = get_todo_item_title($o); ?>
+                   ?>
             <div x-show="tab === '<?php echo $i; ?>'">
                 <div>
                     <div class="flex space-x-6 pb-6 pt-1">
@@ -119,9 +135,6 @@
                             <p class=""><?php echo get_user_fullname(get_todo_list_owner_id($i)); ?>'s list.</p>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <a href="?save=<?php echo $i; ?>" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
-                                Save&nbsp;<i class="far fa-save" aria-hidden="true"></i>
-                            </a>
                             <a href="javascript:alert('This feature has not yet been implemented.');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
                                 Manage&nbsp;<i class="fas fa-cogs" aria-hidden="true"></i>
                             </a>
@@ -131,40 +144,44 @@
                         </div>
                     </div>
                     <?php
+                        $o = 1;
+                        $itemName = get_todo_item_title($o);
                         while ($itemName != null) {
-                            $itemID = get_todo_item_list_id($o);
-                            if ($itemID == $i) {
+                            $listID = get_todo_item_list_id($o);
+                            if ($listID == $i) {
                                 ?>
                     <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
                         <div class="flex-grow">
-                            <strong><?php echo get_todo_item_title($itemID); ?></strong><br>
-                            <?php echo get_todo_item_description($itemID); ?>
+                            <strong><?php echo get_todo_item_title($o); ?></strong><br>
+                            <?php echo get_todo_item_description($o); ?>
                         </div>
-                        <div class="flex items-center space-x-3 pr-6">
-                            <input type="checkbox" id="listItem" name="listItem" value="1"<?php
-                                if (get_todo_item_status($itemID) == '1') {
-                                    echo ' checked ';
+                        <form action="index.php?save=<?php echo $o; ?>" method="POST" class="flex items-center space-x-3 pr-6">
+                            <input type="checkbox" id="listItem" name="listItem" onChange="this.form.submit()" <?php
+                                if (get_todo_item_status($o) == '1') {
+                                    echo ' checked';
                                 } ?>>
-                        </div>
+                        </form>
                     </div>
-                    <?php if ((get_todo_list_visibility($i) == 'PUBLIC') || (get_todo_list_owner_id($i) == $_SESSION['id'])) { ?>
-                    <div class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
-                        <div class="flex-grow">
-                            <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div></strong>
-                            <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div>
-                        </div>
-                        <div class="flex items-center space-x-3 pr-6">
-                            <a href="javascript:alert('This feature has not yet been implemented.');" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
-                                Add New&nbsp;<i class="far fa-plus-square" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <?php            }
+                    <?php
                             }
                             $o++;
                             $itemName = get_todo_item_title($o);
                         }
                 } ?>
+
+                    <?php if ((get_todo_list_visibility($i) == 'PUBLIC') || (get_todo_list_owner_id($i) == $_SESSION['id'])) { ?>
+                    <form action="index.php?add_item=<?php echo $i;?>" method="post" name="add_item" class="py-1 sm:py-4 flex space-x-6 border rounded px-2 sm:px-6 mb-2">
+                        <div class="flex-grow">
+                            <strong><div><input type="text" id="newItemTitle" name="newItemTitle" placeholder="Title" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black font-extrabold tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div></strong>
+                            <div><input type="text" id="newItemDescription" name="newItemDescription" placeholder="Description" class="flex-grow self-center text-black tracking-tight w-3/4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 bg-opacity-50" /><span class="self-center text-black tracking-tight w-3/4 bg-transparent"><i class="fas fa-pencil-alt text-black" aria-hidden="true"></i></span></div>
+                        </div>
+                        <div class="flex items-center space-x-3 pr-6">
+                            <button type="submit" name="add_item" id="add_item" class="py-1 px-2 hover:shadow-lg cursor-pointer w-full flex items-center justify-center text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:text-rg">
+                                Add New&nbsp;<i class="far fa-plus-square" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <?php } ?>
                 </div>
             </div>
                 <?php
