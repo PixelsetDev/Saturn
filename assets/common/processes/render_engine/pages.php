@@ -30,7 +30,9 @@ function getdata($pageID): array
 
 function replacedata($pageOutput, $pageData): string
 {
-    if (CONFIG_DEBUG) { $starttime = microtime(true); }
+    if (CONFIG_DEBUG) {
+        $starttime = microtime(true);
+    }
     $pageOutput = str_replace('{{data:title}}', $pageData['title'], $pageOutput);
     $pageOutput = str_replace('{{data:content}}', $pageData['content'], $pageOutput);
     $pageOutput = str_replace('{{data:author:name}}', $pageData['author']['id'], $pageOutput);
@@ -43,7 +45,9 @@ function replacedata($pageOutput, $pageData): string
     $pageOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $pageOutput);
     $pageOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $pageOutput);
 
-    if (CONFIG_DEBUG) { log_console('Saturn][Resource Loader][G-Tags', 'Converted 10 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.'); }
+    if (CONFIG_DEBUG) {
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 10 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+    }
 
     return str_replace('{{section:footer}}', $pageData['section']['footer'], $pageOutput);
 }
