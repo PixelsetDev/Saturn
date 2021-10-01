@@ -1,0 +1,19 @@
+{ "theme": {
+  "name": "Circinus",
+  "slug": "circinus",
+  "author": "Lewis Milburn",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/142_circinus_galaxy.png",
+  "version": {
+    "theme": "1.0.0",
+    "saturn": "BETA 1.0.0"
+  },
+  "framework": "materialize",
+  "theme-colours": {
+    "Dark": {
+      "file": "Dark.tc"
+    },
+    "Light": {
+      "file": "light.tc"
+    }
+  }
+}}

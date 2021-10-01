@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.js" integrity="sha256-9R44V6iCmVV7oDivSSvnPm4oYYirH6gC7ft09IS4j+o=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <meta name="theme-color" content="#111827">
+        <title>{{data:title}}</title>
+    </head>
+    <body>
+        {{section:navigation}}
+        <div class="mb-6">
+                    <div class="relative flex flex-col-reverse pt-16 lg:pt-0 lg:flex-col lg:pb-0">
+                        <div class="inset-y-0 top-0 right-0 z-0 w-full max-w-xl px-4 mx-auto md:px-0 lg:pr-0 lg:mx-0 lg:w-7/12 lg:max-w-full lg:absolute xl:px-0">
+                            <svg class="absolute left-0 hidden h-full text-white transform -translate-x-1/2 lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
+                                <path d="M50 0H100L50 100H0L50 0Z"></path>
+                            </svg>
+                            <img
+                                class="object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
+                                src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_Vice_Admiral_of_Red_1805_to_1864.png" alt="{{data:title}}"
+                            />
+                            Image &copy; {{data:image:credit}} ({{data:image:license}})
+                        </div>
+                        <div class="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
+                            <div class="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
+                                <h2 class="lg:mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none mt-4 lg:mt-0">
+                                    {{data:title}}
+                                </h2>
+                                <p class="pr-5 lg:mb-4 text-base text-gray-700 md:text-lg">By {{data:author:name}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="max-w-7xl mx-4 pb-6 lg:pt-6 sm:px-6 lg:px-8">
+                        <div x-data="{ open: true }" class="flex">
+                            <div class="flex-grow z-10">
+                                <div class="flex">
+                                    <div class="w-3/4 flex-grow text-justify">
+                                        {{data:content}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {{section:footer}}
+    </body>
+</html>
