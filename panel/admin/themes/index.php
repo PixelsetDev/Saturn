@@ -3,10 +3,10 @@
     ob_start();
     require_once __DIR__.'/../../../assets/common/global_private.php';
     require_once __DIR__.'/../../../assets/common/admin/global.php';
-    ob_end_flush();
+
     if (isset($_GET['download'])) {
         $download_url = $_GET['download'];
-        $delete = "yes";
+        $delete = true;
 
         $file = __DIR__."/../../../themes/download.zip";
         $script = basename($_SERVER['PHP_SELF']);
@@ -20,24 +20,33 @@
         $zip = new ZipArchive;
         $res = $zip->open($file);
 
-        if ($res === TRUE) {
+        if ($res) {
             $zip->extractTo($path);
             $zip->close();
 
             $successMsg = "The theme was downloaded and installed successfully.";
-            if ($delete == "yes")
-            {
+            if ($delete) {
                 if (!unlink($file)) {
-                    $warningMsg = 'Archive was extracted but not deleted';
+                    $warningMsg = 'Archive was extracted but not deleted. This could mean the theme was not downloaded.';
+                    internal_redirect('/panel/admin/themes?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
                 }
             } else {
-                $warningMsg = 'Archive was extracted but not deleted';
+                $warningMsg = 'Archive was extracted but not deleted.';
+                internal_redirect('/panel/admin/themes?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
             }
-
+            internal_redirect('/panel/admin/themes?successMsg='.$successMsg);
         } else {
             $errorMsg = "Theme could not be downloaded. Couldn't open $file.";
+            internal_redirect('/panel/admin/themes?errorMsg='.$errorMsg);
         }
+        exit;
     }
+
+    ob_end_flush();
+
+    if (isset($_GET['successMsg'])) { $successMsg = checkInput('DEFAULT', $_GET['successMsg']); }
+    if (isset($_GET['warningMsg'])) { $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']); }
+    if (isset($_GET['errorMsg'])) { $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']); }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
