@@ -19,7 +19,6 @@
     /* Database: Required Files */
     // Create
     require_once __DIR__.'/processes/database/create/notification.php';
-    require_once __DIR__.'/processes/database/create/todo.php';
     require_once __DIR__.'/processes/database/create/user.php';
     require_once __DIR__.'/processes/database/create/page.php';
     // Delete
@@ -34,13 +33,11 @@
     require_once __DIR__.'/processes/database/get/notification.php';
     require_once __DIR__.'/processes/database/get/page.php';
     require_once __DIR__.'/processes/database/get/page_category.php';
-    require_once __DIR__.'/processes/database/get/todo.php';
     // Update
     require_once __DIR__.'/processes/database/update/articles.php';
     require_once __DIR__.'/processes/database/update/announcement.php';
     require_once __DIR__.'/processes/database/update/notification.php';
     require_once __DIR__.'/processes/database/update/page.php';
-    require_once __DIR__.'/processes/database/update/todo.php';
     require_once __DIR__.'/processes/database/update/user.php';
     require_once __DIR__.'/processes/database/update/user_settings.php';
     /* Required Files */
