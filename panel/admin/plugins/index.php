@@ -10,7 +10,7 @@
         if (strpos($download_url, 'marketplace.saturncms.net') !== false) {
             $delete = true;
 
-            $file = __DIR__ . "/../../../plugins/download.zip";
+            $file = __DIR__.'/../../../plugins/download.zip';
             $script = basename($_SERVER['PHP_SELF']);
 
             // Download file
@@ -19,40 +19,46 @@
             // Extract
             $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
 
-            $zip = new ZipArchive;
+            $zip = new ZipArchive();
             $res = $zip->open($file);
 
             if ($res) {
                 $zip->extractTo($path);
                 $zip->close();
 
-                $successMsg = "The plugin was downloaded and installed successfully.";
+                $successMsg = 'The plugin was downloaded and installed successfully.';
                 if ($delete) {
                     if (!unlink($file)) {
                         $warningMsg = 'Archive was extracted but not deleted. This could mean the plugin was not downloaded.';
-                        internal_redirect('/panel/admin/plugins?successMsg=' . $successMsg . '&warningMsg=' . $warningMsg);
+                        internal_redirect('/panel/admin/plugins?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
                     }
                 } else {
                     $warningMsg = 'Archive was extracted but not deleted.';
-                    internal_redirect('/panel/admin/plugins?successMsg=' . $successMsg . '&warningMsg=' . $warningMsg);
+                    internal_redirect('/panel/admin/plugins?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
                 }
-                internal_redirect('/panel/admin/plugins?successMsg=' . $successMsg);
+                internal_redirect('/panel/admin/plugins?successMsg='.$successMsg);
             } else {
                 $errorMsg = "Plugin could not be downloaded. Couldn't open $file.";
-                internal_redirect('/panel/admin/plugins?errorMsg=' . $errorMsg);
+                internal_redirect('/panel/admin/plugins?errorMsg='.$errorMsg);
             }
         } else {
-            $errorMsg = "Attempted download from untrusted domain blocked.";
-            internal_redirect('/panel/admin/plugins?errorMsg=' . $errorMsg);
+            $errorMsg = 'Attempted download from untrusted domain blocked.';
+            internal_redirect('/panel/admin/plugins?errorMsg='.$errorMsg);
         }
         exit;
     }
 
     ob_end_flush();
 
-    if (isset($_GET['successMsg'])) { $successMsg = checkInput('DEFAULT', $_GET['successMsg']); }
-    if (isset($_GET['warningMsg'])) { $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']); }
-    if (isset($_GET['errorMsg'])) { $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']); }
+    if (isset($_GET['successMsg'])) {
+        $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
+    }
+    if (isset($_GET['warningMsg'])) {
+        $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']);
+    }
+    if (isset($_GET['errorMsg'])) {
+        $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
+    }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
