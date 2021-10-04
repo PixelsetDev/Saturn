@@ -6,45 +6,12 @@
     require_once __DIR__.'/../../../assets/common/admin/global.php';
 
     if (isset($_GET['download'])) {
-        $download_url = checkInput('DEFAULT', $_GET['download']);
-        if (strpos($download_url, 'marketplace.saturncms.net') !== false) {
-            $delete = true;
-
-            $file = __DIR__.'/../../../plugins/download.zip';
-            $script = basename($_SERVER['PHP_SELF']);
-
-            // Download file
-            file_put_contents($file, fopen($download_url, 'r'));
-
-            // Extract
-            $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
-
-            $zip = new ZipArchive();
-            $res = $zip->open($file);
-
-            if ($res) {
-                $zip->extractTo($path);
-                $zip->close();
-
-                $successMsg = 'The plugin was downloaded and installed successfully.';
-                if ($delete) {
-                    if (!unlink($file)) {
-                        $warningMsg = 'Archive was extracted but not deleted. This could mean the plugin was not downloaded.';
-                        internal_redirect('/panel/admin/plugins?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
-                    }
-                } else {
-                    $warningMsg = 'Archive was extracted but not deleted.';
-                    internal_redirect('/panel/admin/plugins?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
-                }
-                internal_redirect('/panel/admin/plugins?successMsg='.$successMsg);
-            } else {
-                $errorMsg = "Plugin could not be downloaded. Couldn't open $file.";
-                internal_redirect('/panel/admin/plugins?errorMsg='.$errorMsg);
-            }
+        if (marketplace_download_zip(checkInput('DEFAULT', $_GET['download']), '/../../../../plugins/download.zip')) {
+            internal_redirect('/panel/admin/plugins?successMsg=The plugin was downloaded and installed successfully.');
         } else {
-            $errorMsg = 'Attempted download from untrusted domain blocked.';
-            internal_redirect('/panel/admin/plugins?errorMsg='.$errorMsg);
+            internal_redirect('/panel/admin/plugins?errorMsg=An error occurred whilst downloading the plugin.');
         }
+
         exit;
     }
 
@@ -52,9 +19,6 @@
 
     if (isset($_GET['successMsg'])) {
         $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
-    }
-    if (isset($_GET['warningMsg'])) {
-        $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']);
     }
     if (isset($_GET['errorMsg'])) {
         $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
