@@ -24,10 +24,45 @@ if (isset($_GET['activate'])) {
 
     if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
         log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
-        $successMsg = 'Theme activated.';
+        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Theme activated.');
     } else {
-        $errorMsg = 'Theme could not be activated.';
+        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Theme could not be activated.');
     }
+    exit;
+}
+
+if (isset($_GET['uninstall_confirm'])) {
+    if ($slug == THEME_SLUG) {
+        $errorMsg = 'You can\'t uninstall an active theme.';
+    } else {
+        $dir = __DIR__.'/../../../../themes/'.$slug;
+        if(is_dir($dir)) {
+            array_map('unlink', glob("$dir/*.*"));
+            if (rmdir($dir)) {
+                internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Uninstalled successfully.');
+            } else {
+                internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: The file or directory could not be deleted.');
+            }
+        } else {
+            internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: The file or directory could not be found.');
+        }
+    }
+    exit;
+}
+
+if (isset($_GET['uninstall'])) {
+    if ($slug == THEME_SLUG) {
+        $errorMsg = 'You can\'t uninstall an active theme.';
+    } else {
+        $infoMsg = 'Please confirm you\'d like to uninstall this theme by clicking the uninstall button again.';
+    }
+}
+
+if (isset($_GET['errorMsg'])) {
+    $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
+}
+if (isset($_GET['successMsg'])) {
+    $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
 }
 ?><!DOCTYPE html>
 <html lang="en">
@@ -52,12 +87,17 @@ if (isset($_GET['activate'])) {
                 echo alert('SUCCESS', $successMsg);
                 unset($successMsg);
             }
+            if (isset($infoMsg)) {
+                echo alert('INFO', $infoMsg);
+                unset($infoMsg);
+            }
             ?>
             <br>
             <div class="flex">
                 <h2 class="flex-grow text-gray-900 text-2xl mt-8">Theme Settings: <?php echo $themeData->{'theme'}->{'name'}; ?></h2>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes" class="underline text-red-900 hover:text-red-800 text-2xl mt-8">Back</a>
             </div>
+            <?php if (isset($themeData->{'theme'}->{'slug'})) { ?>
             <div class="grid grid-cols-2 mt-4">
                 <div>
                     <h3 class="text-xl">Make Active Theme</h3>
@@ -71,7 +111,30 @@ if (isset($_GET['activate'])) {
                     <h3 class="text-xl">Author Information</h3>
                     <p>Author: <?php echo $themeData->{'theme'}->{'author'}; ?></p>
                 </div>
+                <div class="mt-6">
+                    <h3 class="text-xl">Uninstall</h3>
+                    <?php if (isset($_GET['uninstall'])) { ?>
+                        <?php if ($slug == THEME_SLUG) { ?>
+                            <p>You can't uninstall this theme as it is currently active and being used by the render engine, please activate another theme before uninstalling this one.</p>
+                        <?php } else { ?>
+                            <a href="index.php?slug=<?php echo $slug; ?>&uninstall_confirm=true" class="underline">WARNING: This action cannot be undone. Are you sure? Click here to confirm.</a>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <?php if ($slug == THEME_SLUG) { ?>
+                            <p>You can't uninstall this theme as it is currently active, please change the active theme before uninstalling this theme.</p>
+                        <?php } else { ?>
+                            <a href="index.php?slug=<?php echo $slug; ?>&uninstall=true" class="underline">Click here to uninstall.</a>
+                        <?php } ?>
+                    <?php } ?>
+                </div>
             </div>
+            <?php } else { ?>
+            <div class="grid grid-cols-2 mt-4">
+                <div>
+                    <h3 class="text-xl">Theme not found.</h3>
+                </div>
+            </div>
+            <?php }?>
         </div>
     </body>
 </html>
