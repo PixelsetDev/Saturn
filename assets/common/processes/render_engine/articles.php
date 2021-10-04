@@ -7,8 +7,8 @@ function getdata($articleID): array
     $articleData['title'] = get_article_title($articleID);
     $articleData['content'] = get_article_content($articleID);
     $articleData['author']['id'] = get_article_author_id($articleID);
-    $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/navigation.template');
-    $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/footer.template');
+    $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/navigation.tt');
+    $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/footer.tt');
 
     return $articleData;
 }
@@ -39,7 +39,7 @@ function replacedata($articleOutput, $articleData): string
 
 $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/theme.json'));
 
-$articleOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/article.template');
+$articleOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/article.tt');
 
 $articleData = getdata($articleID);
 echo replacedata($articleOutput, $articleData);

@@ -22,8 +22,8 @@ function getdata($pageID): array
     $pageData['title'] = get_page_title($pageID);
     $pageData['content'] = get_page_content($pageID);
     $pageData['author']['id'] = get_page_last_edit_user_id($pageID);
-    $pageData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.template');
-    $pageData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.template');
+    $pageData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
+    $pageData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
 
     return $pageData;
 }
