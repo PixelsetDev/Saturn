@@ -14,6 +14,7 @@
     set_error_handler('errorHandlerWarning', E_WARNING);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
+        error_reporting('E_ALL');
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */
@@ -82,7 +83,11 @@
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
 
     if (get_announcement_panel_active()) {
-        echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
+        if (get_announcement_panel_link() != null && get_announcement_panel_link() != '') {
+            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message().' - For more information <a href="'.get_announcement_panel_link().'" class="underline">please click here</a>.', true);
+        } else {
+            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
+        }
     }
 
     ob_end_flush();
