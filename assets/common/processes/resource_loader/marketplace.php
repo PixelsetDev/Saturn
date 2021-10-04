@@ -4,10 +4,11 @@ function marketplace_download_zip($download_url, $download_to, $delete_zip = tru
 {
     $download_url = checkInput('DEFAULT', $download_url);
     $download_to = checkInput('DEFAULT', $download_to);
-    if (!is_bool($delete_zip)) { $delete_zip = checkInput('DEFAULT', $delete_zip); }
+    if (!is_bool($delete_zip)) {
+        $delete_zip = checkInput('DEFAULT', $delete_zip);
+    }
     if (strpos($download_url, 'marketplace.saturncms.net') !== false) {
-
-        $file = __DIR__ . $download_to;
+        $file = __DIR__.$download_to;
         $script = basename($_SERVER['PHP_SELF']);
 
         // Download file
