@@ -6,7 +6,7 @@
     require_once __DIR__.'/../../../assets/common/admin/global.php';
 
     if (isset($_GET['download'])) {
-        $download_url = $_GET['download'];
+        $download_url = checkInput('DEFAULT', $_GET['download']);
         if (strpos($download_url, 'marketplace.saturncms.net') !== false) {
             $delete = true;
 
