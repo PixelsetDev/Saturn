@@ -177,32 +177,6 @@
         return $row['profile_photo'];
     }
 
-    function get_user_page_count($id)
-    {
-        $id = checkInput('DEFAULT', $id);
-
-        global $conn;
-
-        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'pages` WHERE `user_id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-
-        return mysqli_num_rows($rs);
-    }
-
-    function get_user_article_count($id)
-    {
-        $id = checkInput('DEFAULT', $id);
-
-        global $conn;
-
-        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'articles` WHERE `author_id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-
-        return mysqli_num_rows($rs);
-    }
-
     function get_user_key($id)
     {
         $id = checkInput('DEFAULT', $id);
@@ -259,6 +233,26 @@
         global $conn;
 
         $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `email` = '".$email."'";
+
+        $rs = mysqli_query($conn, $query);
+        $rows = mysqli_num_rows($rs);
+
+        if ($rows == 0) {
+            $return = false;
+        } else {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+    function get_username_exists($username): bool
+    {
+        $username = checkInput('DEFAULT', $username);
+
+        global $conn;
+
+        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `username` = '".$username."'";
 
         $rs = mysqli_query($conn, $query);
         $rows = mysqli_num_rows($rs);
