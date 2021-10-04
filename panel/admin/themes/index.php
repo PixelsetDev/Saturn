@@ -6,53 +6,52 @@
 
     if (isset($_GET['download'])) {
         $download_url = $_GET['download'];
-        $delete = true;
+        if (strpos($download_url, 'marketplace.saturncms.net') !== false) {
+            $delete = true;
 
-        $file = __DIR__.'/../../../themes/download.zip';
-        $script = basename($_SERVER['PHP_SELF']);
+            $file = __DIR__."/../../../themes/download.zip";
+            $script = basename($_SERVER['PHP_SELF']);
 
-        // Download file
-        file_put_contents($file, fopen($download_url, 'r'));
+            // Download file
+            file_put_contents($file, fopen($download_url, 'r'));
 
-        // Extract
-        $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
+            // Extract
+            $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
 
-        $zip = new ZipArchive();
-        $res = $zip->open($file);
+            $zip = new ZipArchive;
+            $res = $zip->open($file);
 
-        if ($res) {
-            $zip->extractTo($path);
-            $zip->close();
+            if ($res) {
+                $zip->extractTo($path);
+                $zip->close();
 
-            $successMsg = 'The theme was downloaded and installed successfully.';
-            if ($delete) {
-                if (!unlink($file)) {
-                    $warningMsg = 'Archive was extracted but not deleted. This could mean the theme was not downloaded.';
+                $successMsg = "The theme was downloaded and installed successfully.";
+                if ($delete) {
+                    if (!unlink($file)) {
+                        $warningMsg = 'Archive was extracted but not deleted. This could mean the theme was not downloaded.';
+                        internal_redirect('/panel/admin/themes?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
+                    }
+                } else {
+                    $warningMsg = 'Archive was extracted but not deleted.';
                     internal_redirect('/panel/admin/themes?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
                 }
+                internal_redirect('/panel/admin/themes?successMsg='.$successMsg);
             } else {
-                $warningMsg = 'Archive was extracted but not deleted.';
-                internal_redirect('/panel/admin/themes?successMsg='.$successMsg.'&warningMsg='.$warningMsg);
+                $errorMsg = "Theme could not be downloaded. Couldn't open $file.";
+                internal_redirect('/panel/admin/themes?errorMsg='.$errorMsg);
             }
-            internal_redirect('/panel/admin/themes?successMsg='.$successMsg);
         } else {
-            $errorMsg = "Theme could not be downloaded. Couldn't open $file.";
-            internal_redirect('/panel/admin/themes?errorMsg='.$errorMsg);
+            $errorMsg = "Attempted download from untrusted domain blocked.";
+            internal_redirect('/panel/admin/plugins?errorMsg=' . $errorMsg);
         }
         exit;
     }
 
     ob_end_flush();
 
-    if (isset($_GET['successMsg'])) {
-        $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
-    }
-    if (isset($_GET['warningMsg'])) {
-        $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']);
-    }
-    if (isset($_GET['errorMsg'])) {
-        $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
-    }
+    if (isset($_GET['successMsg'])) { $successMsg = checkInput('DEFAULT', $_GET['successMsg']); }
+    if (isset($_GET['warningMsg'])) { $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']); }
+    if (isset($_GET['errorMsg'])) { $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']); }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
