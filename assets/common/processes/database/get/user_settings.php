@@ -68,3 +68,27 @@
 
         return $row['accepted_terms'];
     }
+
+    function get_user_notification_preference($id): int
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        $saturn = get_user_settings_notifications_saturn($id);
+        $email = get_user_settings_notifications_email($id);
+
+        if ($saturn && !$email && CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
+            $return = '1';
+        } elseif (!$saturn && $email && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
+            $return = '2';
+        } elseif ($saturn && $email) {
+            if (CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
+                $return = '3';
+            } elseif (!CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
+                $return = '2';
+            } elseif (CONFIG_ALLOW_SATURN_NOTIFICATIONS && !CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
+                $return = '1';
+            }
+        }
+
+        return $return;
+    }
