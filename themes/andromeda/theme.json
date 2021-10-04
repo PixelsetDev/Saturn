@@ -14,12 +14,6 @@
     },
     "Light": {
       "file": "light.tc"
-    },
-    "Emerald": {
-      "file": "emerald.tc"
-    },
-    "Ocean": {
-      "file": "ocean.tc"
     }
   }
 }}
