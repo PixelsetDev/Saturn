@@ -32,20 +32,24 @@ if (isset($_GET['activate'])) {
 }
 
 if (isset($_GET['uninstall_confirm'])) {
-    if ($slug == THEME_SLUG) {
-        $errorMsg = 'You can\'t uninstall an active theme.';
-    } else {
-        $dir = __DIR__.'/../../../../themes/'.$slug;
-        if (is_dir($dir)) {
-            array_map('unlink', glob("$dir/*.*"));
-            if (rmdir($dir)) {
-                internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Uninstalled successfully.');
-            } else {
-                internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: The file or directory could not be deleted.');
-            }
+    if ($slug === $themeData->{'theme'}->{'slug'}) {
+        if ($slug == THEME_SLUG) {
+            $errorMsg = 'You can\'t uninstall an active theme.';
         } else {
-            internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: The file or directory could not be found.');
+            $dir = __DIR__ . '/../../../../themes/' . $slug;
+            if (is_dir($dir)) {
+                array_map('unlink', glob("$dir/*.*"));
+                if (rmdir($dir)) {
+                    internal_redirect('/panel/admin/themes/settings/?slug=' . $slug . '&successMsg=Uninstalled successfully.');
+                } else {
+                    internal_redirect('/panel/admin/themes/settings/?slug=' . $slug . '&errorMsg=Unable to uninstall: The file or directory could not be deleted.');
+                }
+            } else {
+                internal_redirect('/panel/admin/themes/settings/?slug=' . $slug . '&errorMsg=Unable to uninstall: The file or directory could not be found.');
+            }
         }
+    } else {
+        internal_redirect('/panel/admin/themes/settings/?slug=' . $slug . '&errorMsg=Unable to uninstall: Invalid slug.');
     }
     exit;
 }
