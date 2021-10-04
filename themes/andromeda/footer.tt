@@ -3,7 +3,7 @@
         <div class="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
             <div class="md:max-w-md lg:col-span-2">
                 <a href="/" aria-label="Go home" title="Saturn" class="inline-flex items-center">
-                    <img src="/assets/images/logo.png" alt="Saturn" width="25%">
+                    <img src="{{image:logo}}" alt="Saturn" width="25%">
                 </a>
                 <div class="mt-4 lg:max-w-sm">
                     <p class="mt-4 text-sm text-gray-200">
