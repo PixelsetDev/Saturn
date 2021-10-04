@@ -6,7 +6,7 @@
                     </a>
                     <ul class="flex items-center hidden space-x-8 lg:flex">
                         <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Control Panel</a></li>
-                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
+                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
                     </ul>
                     <!-- Mobile menu -->
                     <div class="lg:hidden" x-data="{ open: false }">
