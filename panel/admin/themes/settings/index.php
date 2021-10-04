@@ -36,7 +36,7 @@ if (isset($_GET['uninstall_confirm'])) {
         $errorMsg = 'You can\'t uninstall an active theme.';
     } else {
         $dir = __DIR__.'/../../../../themes/'.$slug;
-        if(is_dir($dir)) {
+        if (is_dir($dir)) {
             array_map('unlink', glob("$dir/*.*"));
             if (rmdir($dir)) {
                 internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Uninstalled successfully.');
