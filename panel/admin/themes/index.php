@@ -3,19 +3,15 @@
     ob_start();
     require_once __DIR__.'/../../../assets/common/global_private.php';
     require_once __DIR__.'/../../../assets/common/admin/global.php';
-
     if (isset($_GET['download'])) {
         if (marketplace_download_zip(checkInput('DEFAULT', $_GET['download']), '/../../../../themes/download.zip')) {
             internal_redirect('/panel/admin/themes?successMsg=The theme was downloaded and installed successfully.');
         } else {
             internal_redirect('/panel/admin/themes?errorMsg=An error occurred whilst downloading the theme.');
         }
-
         exit;
     }
-
     ob_end_flush();
-
     if (isset($_GET['successMsg'])) {
         $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
     }

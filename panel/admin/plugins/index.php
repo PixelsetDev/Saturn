@@ -1,22 +1,17 @@
 <?php
     session_start();
-
     ob_start();
     require_once __DIR__.'/../../../assets/common/global_private.php';
     require_once __DIR__.'/../../../assets/common/admin/global.php';
-
     if (isset($_GET['download'])) {
         if (marketplace_download_zip(checkInput('DEFAULT', $_GET['download']), '/../../../../plugins/download.zip')) {
             internal_redirect('/panel/admin/plugins?successMsg=The plugin was downloaded and installed successfully.');
         } else {
             internal_redirect('/panel/admin/plugins?errorMsg=An error occurred whilst downloading the plugin.');
         }
-
         exit;
     }
-
     ob_end_flush();
-
     if (isset($_GET['successMsg'])) {
         $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
     }
