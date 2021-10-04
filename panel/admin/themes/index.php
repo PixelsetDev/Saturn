@@ -8,7 +8,7 @@
         $download_url = $_GET['download'];
         $delete = true;
 
-        $file = __DIR__."/../../../themes/download.zip";
+        $file = __DIR__.'/../../../themes/download.zip';
         $script = basename($_SERVER['PHP_SELF']);
 
         // Download file
@@ -17,14 +17,14 @@
         // Extract
         $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
 
-        $zip = new ZipArchive;
+        $zip = new ZipArchive();
         $res = $zip->open($file);
 
         if ($res) {
             $zip->extractTo($path);
             $zip->close();
 
-            $successMsg = "The theme was downloaded and installed successfully.";
+            $successMsg = 'The theme was downloaded and installed successfully.';
             if ($delete) {
                 if (!unlink($file)) {
                     $warningMsg = 'Archive was extracted but not deleted. This could mean the theme was not downloaded.';
@@ -44,9 +44,15 @@
 
     ob_end_flush();
 
-    if (isset($_GET['successMsg'])) { $successMsg = checkInput('DEFAULT', $_GET['successMsg']); }
-    if (isset($_GET['warningMsg'])) { $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']); }
-    if (isset($_GET['errorMsg'])) { $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']); }
+    if (isset($_GET['successMsg'])) {
+        $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
+    }
+    if (isset($_GET['warningMsg'])) {
+        $warningMsg = checkInput('DEFAULT', $_GET['warningMsg']);
+    }
+    if (isset($_GET['errorMsg'])) {
+        $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
+    }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
