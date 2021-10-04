@@ -4,6 +4,40 @@
     require_once __DIR__.'/../../../assets/common/global_private.php';
     require_once __DIR__.'/../../../assets/common/admin/global.php';
     ob_end_flush();
+    if (isset($_GET['download'])) {
+        $download_url = $_GET['download'];
+        $delete = "yes";
+
+        $file = __DIR__."/../../../themes/download.zip";
+        $script = basename($_SERVER['PHP_SELF']);
+
+        // Download file
+        file_put_contents($file, fopen($download_url, 'r'));
+
+        // Extract
+        $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
+
+        $zip = new ZipArchive;
+        $res = $zip->open($file);
+
+        if ($res === TRUE) {
+            $zip->extractTo($path);
+            $zip->close();
+
+            $successMsg = "The theme was downloaded and installed successfully.";
+            if ($delete == "yes")
+            {
+                if (!unlink($file)) {
+                    $warningMsg = 'Archive was extracted but not deleted';
+                }
+            } else {
+                $warningMsg = 'Archive was extracted but not deleted';
+            }
+
+        } else {
+            $errorMsg = "Theme could not be downloaded. Couldn't open $file.";
+        }
+    }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,6 +60,10 @@
                 if (isset($successMsg)) {
                     echo alert('SUCCESS', $successMsg);
                     unset($successMsg);
+                }
+                if (isset($warningMsg)) {
+                    echo alert('WARNING', $warningMsg);
+                    unset($warningMsg);
                 }
                 if (isset($_GET['uploadedTo'])) {
                     echo alert('INFO', 'Your website asset has been updated. Please note, you may need to clear your cache before it appears across the site.<br>You can do this on Windows by clicking \'Ctrl + F5\', or MacOS by clicking \'Opt + Cmd + E\'');
