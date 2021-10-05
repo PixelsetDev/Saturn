@@ -6,7 +6,7 @@
                             <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn" class="flex-none w-40 h-auto">
                         </a>
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/" title="<?php echo CONFIG_SITE_NAME; ?>" class="w-40 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
                         </a>
                     </div>
                     <div class="flex-grow">&nbsp;</div>

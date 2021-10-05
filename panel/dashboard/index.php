@@ -49,7 +49,7 @@
         <header class="bg-white shadow relative">
             <div class="py-6 px-4 sm:px-6 lg:px-8 flex w-full">
                 <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900 flex-grow">Welcome to Saturn</h1>
-                <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="h-8 w-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
+                <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png" class="h-8 w-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
             </div>
         </header>
         <form method="POST" action="index.php" class="py-6 px-4 sm:px-6 lg:px-8">
