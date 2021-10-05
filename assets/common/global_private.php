@@ -17,17 +17,6 @@
         error_reporting('E_ALL');
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
-    /* Authenticate Session */
-    if (!isset($_SESSION['id'])) {
-        internal_redirect('/panel/account/signin/?signedout=true');
-    } elseif (!isset($_SESSION['role_id'])) {
-        internal_redirect('/panel/account/signin/?signedout=role');
-    } elseif (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
-        internal_redirect('/panel/system/error/?err=gss2');
-    } else {
-        $id = $_SESSION['id'];
-        $uid = $_SESSION['id'];
-    }
     /* Database: Required Files */
     // Create
     require_once __DIR__.'/processes/database/create/notification.php';
@@ -64,6 +53,17 @@
     require_once __DIR__.'/processes/gui/alerts.php';
     require_once __DIR__.'/processes/gui/modals.php';
     require_once __DIR__.'/processes/gui/user_profile.php';
+    /* Authenticate Session */
+    if (!isset($_SESSION['id'])) {
+        internal_redirect('/panel/account/signin/?signedout=true');
+    } elseif (!isset($_SESSION['role_id'])) {
+        internal_redirect('/panel/account/signin/?signedout=role');
+    } elseif (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
+        internal_redirect('/panel/system/error/?err=gss2');
+    } else {
+        $id = $_SESSION['id'];
+        $uid = $_SESSION['id'];
+    }
     if (get_user_roleID($uid) < 2) {
         internal_redirect('/panel/account/signin/?signedout=permission');
     }
