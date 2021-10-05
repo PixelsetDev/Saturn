@@ -1,6 +1,6 @@
 <?php
 
-    function get_page_category_name($id)
+    function get_page_category_name($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
@@ -26,7 +26,7 @@
         return $row['category_id'];
     }
 
-    function get_page_category_homepage($id)
+    function get_page_category_homepage($id): int
     {
         $id = checkInput('DEFAULT', $id);
 
