@@ -6,7 +6,7 @@
 
         global $conn;
 
-        $query = 'SELECT `name` FROM `'.DATABASE_PREFIX.'pages_categories` WHERE `id` = '.$id;
+        $query = 'SELECT `name` FROM `'.DATABASE_PREFIX."pages_categories` WHERE `id` = '".$id."'";
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
 
@@ -19,7 +19,7 @@
 
         global $conn;
 
-        $query = 'SELECT `category_id` FROM `'.DATABASE_PREFIX.'pages` WHERE `id` = '.$id;
+        $query = 'SELECT `category_id` FROM `'.DATABASE_PREFIX."pages` WHERE `id` = '".$id."'";
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
 
