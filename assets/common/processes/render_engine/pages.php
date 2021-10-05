@@ -71,7 +71,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
         if (CONFIG_DEBUG) {
             $cdn_css = '';
             $cdn_js = '';
-            log_console('Saturn][Resource Loader][G-Tags','Unable to load framework or a framework may not be assigned.');
+            log_console('Saturn][Resource Loader][G-Tags', 'Unable to load framework or a framework may not be assigned.');
         }
     }
     $pageOutput = str_replace('{{cdn:css}}', $cdn_css, $pageOutput);
