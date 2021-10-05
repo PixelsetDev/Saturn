@@ -12,7 +12,7 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
 require_once __DIR__.'/assets/common/global_public.php';
-require_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/router.php';
+require_once 'router.php';
 $router = new \Saturn\Router\Router();
 
 // Error Handler
@@ -24,7 +24,7 @@ $router->set404(function () {
 // Panel 404
 $router->set404('/panel(/.*)?', function () {
     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
-    echo 'PANEL: Error 404';
+    require_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/panel/system/error.php';
 });
 
 $router->set404('/api(/.*)?', function () {
