@@ -4,9 +4,10 @@
     if (mysqli_connect_errno($conn)) {
         ?>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <img src="/assets/images/logo.png" class="mx-auto w-1/6">
+        <img src="/assets/images/logo.png" class="mx-auto w-1/6 mt-6">
         <p class="w-full text-center text-xl font-bold mt-8">Saturn Error Recovery.</p>
         <p class="w-full text-center">Sorry, an fatal error has occurred whilst trying to display this page and Saturn was unable to recover.</p>
+        <p class="w-full text-center">This should not affect any saved data.</p>
         <?php if (!CONFIG_DEBUG) { ?>
         <div class="duration-300 transform bg-red-100 border-l-4 border-red-500 mt-32 mx-32">
             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
