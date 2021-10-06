@@ -52,7 +52,11 @@
             <div class="my-6">
                 <?php
                     if (get_announcement_panel_active()) {
-                        echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
+                        if (get_announcement_panel_link() != null && get_announcement_panel_link() != '') {
+                            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message().' - For more information <a href="'.get_announcement_panel_link().'" class="underline">please click here</a>.', true);
+                        } else {
+                            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
+                        }
                     }
                 ?>
             </div>
@@ -75,7 +79,11 @@
                 </div>
                 <div class="grid grid-cols-2">
                     <label for="panel_message">Message</label>
-                    <input id="panel_message" name="panel_message" type="text" maxlength="255" value="<?php echo get_announcement_panel_message(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    <input id="panel_message" name="panel_message" type="text" maxlength="255" value="<?php echo get_announcement_panel_message(); ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                </div>
+                <div class="grid grid-cols-2">
+                    <label for="panel_link">Link</label>
+                    <input id="panel_link" name="panel_link" type="text" maxlength="255" value="<?php echo get_announcement_panel_link(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                 </div>
                 <br>
                 <div class="grid grid-cols-2">
@@ -104,7 +112,11 @@
             <div class="my-6">
             <?php
                 if (get_announcement_website_active()) {
-                    echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
+                    if (get_announcement_website_link() != null && get_announcement_website_link() != '') {
+                        echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message().' - For more information <a href="'.get_announcement_website_link().'" class="underline">please click here</a>.', true);
+                    } else {
+                        echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
+                    }
                 }
             ?>
             </div>
@@ -123,11 +135,15 @@
                 <br>
                 <div class="grid grid-cols-2">
                     <label for="website_title">Title</label>
-                    <input id="website_title" name="website_title" type="text" maxlength="50" value="<?php echo get_announcement_panel_title(); ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    <input id="website_title" name="website_title" type="text" maxlength="50" value="<?php echo get_announcement_website_title(); ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                 </div>
                 <div class="grid grid-cols-2">
                     <label for="website_message">Message</label>
-                    <input id="website_message" name="website_message" type="text" maxlength="255" value="<?php echo get_announcement_panel_message(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    <input id="website_message" name="website_message" type="text" maxlength="255" value="<?php echo get_announcement_website_message(); ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                </div>
+                <div class="grid grid-cols-2">
+                    <label for="website_link">Link</label>
+                    <input id="website_link" name="website_link" type="text" maxlength="255" value="<?php echo get_announcement_website_link(); ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                 </div>
                 <br>
                 <div class="grid grid-cols-2">

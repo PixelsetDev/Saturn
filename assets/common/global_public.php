@@ -30,6 +30,10 @@
         exit();
     }
     if (get_announcement_website_active()) {
-        echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
+        if (get_announcement_website_link() != null && get_announcement_website_link() != '') {
+            echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message().' - For more information <a href="'.get_announcement_website_link().'" class="underline">please click here</a>.', true);
+        } else {
+            echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
+        }
     }
     ob_end_flush();
