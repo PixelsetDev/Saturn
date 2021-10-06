@@ -5,6 +5,11 @@
     require_once __DIR__.'/../../config.php';
     require_once __DIR__.'/../storage/core_checksum.php';
     require_once __DIR__.'/../../theme.php';
+    // Saturn Info
+    $saturnInfo = json_decode(file_get_contents(__DIR__.'/../saturn.json'));
+    define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
+    define('SATURN_STORAGE_DIRECTORY', $saturnInfo->{'saturn'}->{'storagedir'});
+    unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Important Functions */
     require_once __DIR__.'/processes/database/connect.php';
@@ -76,7 +81,7 @@
     ccv_validate_all();
 
     if (!activation_validate()) {
-        echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>', true);
+        echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>', true);
         log_console('SATURN][ACTIVATION', 'Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel.');
     }
 
