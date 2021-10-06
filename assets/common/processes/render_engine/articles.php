@@ -19,29 +19,29 @@ function replacedata($articleOutput, $articleData): string
         $starttime = microtime(true);
     }
     // Sections
-    $pageOutput = str_replace('{{section:navigation}}', $pageData['section']['navigation'], $pageOutput);
-    $pageOutput = str_replace('{{section:footer}}', $pageData['section']['footer'], $pageOutput);
+    $articleOutput = str_replace('{{section:navigation}}', $articleData['section']['navigation'], $articleOutput);
+    $articleOutput = str_replace('{{section:footer}}', $articleData['section']['footer'], $articleOutput);
     // Data
-    $pageOutput = str_replace('{{data:title}}', $pageData['title'], $pageOutput);
-    $pageOutput = str_replace('{{data:content}}', $pageData['content'], $pageOutput);
-    $pageOutput = str_replace('{{data:author:name}}', $pageData['author']['id'], $pageOutput);
+    $articleOutput = str_replace('{{data:title}}', $articleData['title'], $articleOutput);
+    $articleOutput = str_replace('{{data:content}}', $articleData['content'], $articleOutput);
+    $articleOutput = str_replace('{{data:author:name}}', $articleData['author']['id'], $articleOutput);
     // Config values
-    $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
-    $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);
-    $pageOutput = str_replace('{{config:sitename}}', CONFIG_SITE_NAME, $pageOutput);
-    $pageOutput = str_replace('{{config:description}}', CONFIG_SITE_DESCRIPTION, $pageOutput);
-    $pageOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $pageOutput);
-    $pageOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $pageOutput);
+    $articleOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $articleOutput);
+    $articleOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $articleOutput);
+    $articleOutput = str_replace('{{config:sitename}}', CONFIG_SITE_NAME, $articleOutput);
+    $articleOutput = str_replace('{{config:description}}', CONFIG_SITE_DESCRIPTION, $articleOutput);
+    $articleOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $articleOutput);
+    $articleOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $articleOutput);
     // Images
-    $pageOutput = str_replace('{{image:logo}}', '/assets/images/logo.png', $pageOutput);
-    $pageOutput = str_replace('{{image:icon}}', '/assets/images/icon.png', $pageOutput);
+    $articleOutput = str_replace('{{image:logo}}', '/assets/images/logo.png', $articleOutput);
+    $articleOutput = str_replace('{{image:icon}}', '/assets/images/icon.png', $articleOutput);
     // Colours
-    $pageOutput = str_replace('{{theme:colour:text}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:bg}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbarbg}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbartext}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footerbg}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footertext}}', '', $pageOutput);
+    $articleOutput = str_replace('{{theme:colour:text}}', '', $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:bg}}', '', $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbarbg}}', '', $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbartext}}', '', $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footerbg}}', '', $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footertext}}', '', $articleOutput);
     // CDN
     if ($themeData->{'theme'}->{'framework'} == 'tailwind') {
         $cdn_css = 'https://unpkg.com/tailwindcss@2.2.16/dist/tailwind.min.css';
@@ -59,16 +59,16 @@ function replacedata($articleOutput, $articleData): string
             log_console('Saturn][Resource Loader][G-Tags', 'Unable to load framework or a framework may not be assigned.');
         }
     }
-    $pageOutput = str_replace('{{cdn:css}}', $cdn_css, $pageOutput);
-    $pageOutput = str_replace('{{cdn:js}}', $cdn_js, $pageOutput);
+    $articleOutput = str_replace('{{cdn:css}}', $cdn_css, $articleOutput);
+    $articleOutput = str_replace('{{cdn:js}}', $cdn_js, $articleOutput);
     // Config
-    $pageOutput = str_replace('{{config:slug}}', THEME_SLUG, $pageOutput);
-    $pageOutput = str_replace('{{config:name}}', $themeData->{'theme'}->{'name'}, $pageOutput);
-    $pageOutput = str_replace('{{config:colourscheme}}', THEME_COLOUR_SCHEME, $pageOutput);
-    $pageOutput = str_replace('{{config:font}}', THEME_FONT, $pageOutput);
-    $pageOutput = str_replace('{{config:panelfont}}', THEME_PANEL_FONT, $pageOutput);
-    $pageOutput = str_replace('{{config:panelcolour}}', THEME_PANEL_COLOUR, $pageOutput);
-    $pageOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $pageOutput);
+    $articleOutput = str_replace('{{config:slug}}', THEME_SLUG, $articleOutput);
+    $articleOutput = str_replace('{{config:name}}', $themeData->{'theme'}->{'name'}, $articleOutput);
+    $articleOutput = str_replace('{{config:colourscheme}}', THEME_COLOUR_SCHEME, $articleOutput);
+    $articleOutput = str_replace('{{config:font}}', THEME_FONT, $articleOutput);
+    $articleOutput = str_replace('{{config:panelfont}}', THEME_PANEL_FONT, $articleOutput);
+    $articleOutput = str_replace('{{config:panelcolour}}', THEME_PANEL_COLOUR, $articleOutput);
+    $articleOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $articleOutput);
 
     if (CONFIG_DEBUG) {
         log_console('Saturn][Resource Loader][G-Tags', 'Converted 28 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
