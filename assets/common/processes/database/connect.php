@@ -26,7 +26,7 @@
             MYSQLI_CONNECT_ERRNO(<?php echo mysqli_connect_errno($conn); ?>) - <?php echo mysqli_connect_error($conn); ?>
         </p>
         <?php } ?>
-        <a href="https://saturncms.net" target="_blank"><img src="/assets/panel/images/saturn.png" class="mx-auto w-32 mt-96"></a>
+        <a href="https://saturncms.net" target="_blank" rel="noopener"><img src="/assets/panel/images/saturn.png" class="mx-auto w-32 mt-96"></a>
         <p class="w-full text-center text-xs">Powered by Saturn</p>
 <?php
         exit;
