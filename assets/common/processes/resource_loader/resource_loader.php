@@ -4,5 +4,4 @@
         log_console('Saturn][Resource Loader', 'RERL has started.');
     }
     require_once 'marketplace.php';
-    require_once 'plugins.php';
     require_once 'themes.php';
