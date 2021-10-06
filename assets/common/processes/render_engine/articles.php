@@ -13,7 +13,7 @@ function getdata($articleID): array
     return $articleData;
 }
 
-function replacedata($articleOutput, $articleData): string
+function replacedata($articleOutput, $articleData, $themeData): string
 {
     if (CONFIG_DEBUG) {
         $starttime = microtime(true);
@@ -77,9 +77,9 @@ function replacedata($articleOutput, $articleData): string
     return str_replace('{{section:footer}}', $articleData['section']['footer'], $articleOutput);
 }
 
-$data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/theme.json'));
+$data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/theme.json'));
 
 $articleOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/article.tt');
 
 $articleData = getdata($articleID);
-echo replacedata($articleOutput, $articleData);
+echo replacedata($articleOutput, $articleData, $data);
