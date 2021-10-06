@@ -33,8 +33,8 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $articleOutput);
     $articleOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $articleOutput);
     // Images
-    $articleOutput = str_replace('{{image:logo}}', '/assets/images/logo.png', $articleOutput);
-    $articleOutput = str_replace('{{image:icon}}', '/assets/images/icon.png', $articleOutput);
+    $articleOutput = str_replace('{{image:logo}}', '/assets/storage/images/logo.png', $articleOutput);
+    $articleOutput = str_replace('{{image:icon}}', '/assets/storage/images/icon.png', $articleOutput);
     // Colours
     $articleOutput = str_replace('{{theme:colour:text}}', '', $articleOutput);
     $articleOutput = str_replace('{{theme:colour:bg}}', '', $articleOutput);

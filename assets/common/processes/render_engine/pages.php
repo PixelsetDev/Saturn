@@ -48,8 +48,8 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $pageOutput);
     $pageOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $pageOutput);
     // Images
-    $pageOutput = str_replace('{{image:logo}}', '/assets/images/logo.png', $pageOutput);
-    $pageOutput = str_replace('{{image:icon}}', '/assets/images/icon.png', $pageOutput);
+    $pageOutput = str_replace('{{image:logo}}', '/assets/storage/images/logo.png', $pageOutput);
+    $pageOutput = str_replace('{{image:icon}}', '/assets/storage/images/icon.png', $pageOutput);
     // Colours
     $pageOutput = str_replace('{{theme:colour:text}}', '', $pageOutput);
     $pageOutput = str_replace('{{theme:colour:bg}}', '', $pageOutput);
