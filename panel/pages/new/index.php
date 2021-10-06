@@ -9,7 +9,7 @@
                 $pageTitle = trim(checkInput('DEFAULT', $_GET['pagetitle']));
             } elseif (isset($_POST['posted'])) {
                 $pageURL = trim(checkInput('DEFAULT', $_POST['pageurl']));
-                $pageURL = str_replace(" ", "-", $pageURL);
+                $pageURL = str_replace(' ', '-', $pageURL);
                 $pageCategory = trim(checkInput('DEFAULT', $_POST['pagecategory']));
                 $pageTemplate = trim(checkInput('DEFAULT', $_POST['pagetemplate']));
                 $pageTitle = trim(checkInput('DEFAULT', $_POST['pagetitle']));
@@ -74,7 +74,7 @@
                         <h1 class="text-xl w-1/6 self-center">Page URL</h1>
                         <div class="flex-grow">
                             <label for="pageurl" class="sr-only self-center">Page Title</label>
-                            <input id="pageurl" name="pageurl" type="text" value="<?php echo str_replace(" ", "-", '/'.strtolower(get_page_category_name(1)).'/'.strtolower($pageTitle)); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-lg" placeholder="Page URL">
+                            <input id="pageurl" name="pageurl" type="text" value="<?php echo str_replace(' ', '-', '/'.strtolower(get_page_category_name(1)).'/'.strtolower($pageTitle)); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-lg" placeholder="Page URL">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
@@ -87,11 +87,12 @@
                         $i = 1;
                         $category = get_page_category_name($i);
                         while ($category != null) {
-                            echo '<option value="' . get_page_category_id($i) . '">' . $category . '</option>';
+                            echo '<option value="'.get_page_category_id($i).'">'.$category.'</option>';
                             $i++;
                             $category = get_page_category_name($i);
                         }
-                    } catch(Exception $e) {}
+                    } catch (Exception $e) {
+                    }
                     ?>
                             </select>
                         </div>
