@@ -215,7 +215,7 @@
                     <div class="md:h-screen h-auto md:w-1/3">
                         <br class="md:hidden block">
                         <h2 class="text-gray-900 text-2xl">News</h2>
-                        <iframe src="https://link.saturncms.net/news" class="h-1/2"></iframe>
+                        <iframe src="https://link.saturncms.net/news" class="h-1/2" title="News"></iframe>
                     </div>
                 </div>
             </div>
