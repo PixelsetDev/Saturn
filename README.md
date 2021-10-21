@@ -6,6 +6,7 @@ Saturn uses the backend (shown in this repo) to display pages using the Saturn R
 
 ## Statistics
 ### Code Quality
+Code Quality is measured using CodeFactor.io and SonarCloud, it allows us to instantly detect and measure security issues, reliability ratings and code style ratings. It helps influence the way we build Saturn, to be faster, more maintainable and more secure than ever before.
 [![CodeFactor](https://www.codefactor.io/repository/github/lmwnweb/saturn/badge?s=f64b48d218619ac47c05eea3e8f85106d1fb4c9c)](https://www.codefactor.io/repository/github/lmwnweb/saturn)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=LMWNWeb_Saturn&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=LMWNWeb_Saturn)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=LMWNWeb_Saturn&metric=security_rating)](https://sonarcloud.io/dashboard?id=LMWNWeb_Saturn)
