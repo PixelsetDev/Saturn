@@ -1,4 +1,6 @@
 <?php
+
+    const INSTALLER_CONFIG_FILE = 'installer_config.json';
 function downloadSaturnFile($downloadUrl, $downloadTo, $deleteArchive = true): bool
 {
     $downloadUrl = htmlspecialchars($downloadUrl);
@@ -55,7 +57,7 @@ if (isset($_POST['submit'])) {
         'db_pass'          => $_POST['db_pass'],
         'db_prefix'        => $_POST['db_prefix'],
     ]);
-    $fp = fopen('installer_config.json', 'w');
+    $fp = fopen(INSTALLER_CONFIG_FILE, 'w');
     fwrite($fp, $array);
     fclose($fp);
 }
@@ -332,7 +334,7 @@ if (isset($_POST['submit'])) {
                                 This should only take a few moments.
                             </p>
                             <i class="far fa-sync-alt fa-spin"></i><br><span class="text-xs">';
-                $data = json_decode(file_get_contents('installer_config.json'));
+                $data = json_decode(file_get_contents(INSTALLER_CONFIG_FILE));
                 $conn = mysqli_connect($data->db_host, $data->db_user, $data->db_pass, $data->db_name, $data->db_port);
                 if (mysqli_errno($conn)) {
                     echo mysqli_error($conn);
@@ -586,14 +588,14 @@ if (isset($_POST['submit'])) {
                     return true;
                 }
                 if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
-                    if (!unlink('installer_config.json')) {
-                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the installer_config.json file immediately.';
+                    if (!unlink(INSTALLER_CONFIG_FILE)) {
+                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the '.INSTALLER_CONFIG_FILE.' file immediately.';
                         exit;
                     }
                     header('Location: /');
                 } else {
-                    if (!unlink('installer_config.json')) {
-                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the installer_config.json file immediately.';
+                    if (!unlink(INSTALLER_CONFIG_FILE)) {
+                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the '.INSTALLER_CONFIG_FILE.' file immediately.';
                         exit;
                     }
                     echo 'Unable to update config, please delete all files in root folder and try again.';
