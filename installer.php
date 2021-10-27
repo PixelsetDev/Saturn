@@ -95,10 +95,10 @@ if (isset($_POST['submit'])) {
         <div class="page-wrapper z-40 sm:block hidden">
             <div class="absolute bottom-0 right-0">
                 <a href="https://saturncms.net/feedback" target="_blank" rel="noopener" class="relative group flex" title="Feedback">
-                    <i class="fad fa-comments-alt m-2 text-lg"></i>
+                    <i class="fad fa-comments-alt m-2 text-lg" aria-hidden="true"></i>
                 </a>
                 <a href="https://docs.saturncms.net/0.1.0/installation" target="_blank" rel="noopener" lass="relative group flex" title="Installation Guide">
-                    <i class="fad fa-question-circle m-2 text-lg"></i>
+                    <i class="fad fa-question-circle m-2 text-lg" aria-hidden="true"></i>
                 </a>
             </div>
             <?php if (isset($_GET['error'])) {
