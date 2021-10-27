@@ -1,28 +1,23 @@
 <?php
-function download($download_url, $download_to, $delete_zip = true): bool
+function downloadSaturnFile($downloadUrl, $downloadTo, $deleteArchive = true): bool
 {
-    $download_url = htmlspecialchars($download_url);
-    $download_to = htmlspecialchars($download_to);
-    if (!is_bool($delete_zip)) {
-        $delete_zip = htmlspecialchars($delete_zip);
+    $downloadUrl = htmlspecialchars($downloadUrl);
+    $downloadTo = htmlspecialchars($downloadTo);
+    if (!is_bool($deleteArchive)) {
+        $deleteArchive = htmlspecialchars($deleteArchive);
     }
-    if (strpos($download_url, 'saturncms.net') !== false) {
-        $file = __DIR__.$download_to;
-
-        // Download file
-        file_put_contents($file, fopen($download_url, 'r'));
-
-        // Extract
-        $path = pathinfo(realpath($file), PATHINFO_DIRNAME);
-
-        $zip = new ZipArchive();
-        $res = $zip->open($file);
+    if (strpos($downloadUrl, 'saturncms.net') !== false) {
+        $installFile = __DIR__.$downloadTo;
+        file_put_contents($installFile, fopen($downloadUrl, 'r'));
+        $path = pathinfo(realpath($installFile), PATHINFO_DIRNAME);
+        $archive = new ZipArchive();
+        $res = $archive->open($installFile);
 
         if ($res) {
-            $zip->extractTo($path);
-            $zip->close();
-            if ($delete_zip) {
-                if (!unlink($file)) {
+            $archive->extractTo($path);
+            $archive->close();
+            if ($deleteArchive) {
+                if (!unlink($installFile)) {
                     $complete = false;
                 } else {
                     $complete = true;
@@ -36,7 +31,6 @@ function download($download_url, $download_to, $delete_zip = true): bool
     } else {
         $complete = false;
     }
-
     return $complete;
 }
 
@@ -308,7 +302,7 @@ if (isset($_POST['submit'])) {
                                 This should only take a few moments.
                             </p>
                             <i class="far fa-sync-alt fa-spin"></i>';
-                if (download('https://saturncms.net/download/0.1.0.zip', '/saturn.zip')) {
+                if (downloadSaturnFile('https://saturncms.net/download/0.1.0.zip', '/saturn.zip')) {
                     header('Location: installer.php?step=createdb');
                     exit;
                 } else {
