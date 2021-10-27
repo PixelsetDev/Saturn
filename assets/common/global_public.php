@@ -1,4 +1,5 @@
 <?php
+
     ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../../config.php';

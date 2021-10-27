@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__.'/update/articles.php';
 require_once __DIR__.'/update/announcement.php';
 require_once __DIR__.'/update/notification.php';
