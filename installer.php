@@ -40,27 +40,27 @@ function download($download_url, $download_to, $delete_zip = true): bool
     return $complete;
 }
 
-if(isset($_POST['submit'])) {
-    $array = json_encode(array(
-        'WARNING' => 'This file contains insecure passwords. It should automatically delete itself after installation, but if it is still here please delete it yourself.',
-        'activation' => $_POST['activation'],
-        'site_name' => $_POST['site_name'],
+if (isset($_POST['submit'])) {
+    $array = json_encode([
+        'WARNING'          => 'This file contains insecure passwords. It should automatically delete itself after installation, but if it is still here please delete it yourself.',
+        'activation'       => $_POST['activation'],
+        'site_name'        => $_POST['site_name'],
         'site_description' => $_POST['site_description'],
-        'site_timezone' => $_POST['site_timezone'],
-        'site_charset' => $_POST['site_charset'],
-        'email_sendfrom' => $_POST['email_sendfrom'],
-        'user_email' => $_POST['user_email'],
-        'user_username' => $_POST['user_username'],
-        'user_password' => password_hash($_POST['user_password'],PASSWORD_DEFAULT),
-        'user_firstname' => $_POST['user_firstname'],
-        'user_lastname' => $_POST['user_lastname'],
-        'db_host' => $_POST['db_host'],
-        'db_name' => $_POST['db_name'],
-        'db_port' => $_POST['db_port'],
-        'db_user' => $_POST['db_user'],
-        'db_pass' => $_POST['db_pass'],
-        'db_prefix' => $_POST['db_prefix']
-    ));
+        'site_timezone'    => $_POST['site_timezone'],
+        'site_charset'     => $_POST['site_charset'],
+        'email_sendfrom'   => $_POST['email_sendfrom'],
+        'user_email'       => $_POST['user_email'],
+        'user_username'    => $_POST['user_username'],
+        'user_password'    => password_hash($_POST['user_password'], PASSWORD_DEFAULT),
+        'user_firstname'   => $_POST['user_firstname'],
+        'user_lastname'    => $_POST['user_lastname'],
+        'db_host'          => $_POST['db_host'],
+        'db_name'          => $_POST['db_name'],
+        'db_port'          => $_POST['db_port'],
+        'db_user'          => $_POST['db_user'],
+        'db_pass'          => $_POST['db_pass'],
+        'db_prefix'        => $_POST['db_prefix'],
+    ]);
     $fp = fopen('installer_config.json', 'w');
     fwrite($fp, $array);
     fclose($fp);
@@ -102,7 +102,7 @@ if(isset($_POST['submit'])) {
                 </a>
             </div>
             <?php if (isset($_GET['error'])) {
-                echo '<div class="flex h-screen">
+    echo '<div class="flex h-screen">
                         <div class="m-auto text-white text-center">
                             <h1 class="text-3xl md:text-5xl">
                                 Sorry, an error occurred.
@@ -114,9 +114,11 @@ if(isset($_POST['submit'])) {
                                 Retry
                             </a>
                         </div>
-                    </div>'; exit;
-            }
-            if (!isset($_GET['step'])) { echo '<div class="flex h-screen">
+                    </div>';
+    exit;
+}
+            if (!isset($_GET['step'])) {
+                echo '<div class="flex h-screen">
                         <div class="m-auto text-white text-center">
                             <center><img src="https://brand.lmwn.co.uk/saturn/logo.png" class="w-1/4 mb-6" alt="Saturn"></center>
                             <h1 class="text-3xl md:text-5xl">
@@ -128,7 +130,9 @@ if(isset($_POST['submit'])) {
                             <br>
                             <span class="text-xs">Installer for Saturn V0.1.0</span>
                         </div>
-                    </div>'; } else if ($_GET['step'] == 'setup' ){ echo '<div class="h-screen max-w-7xl">
+                    </div>';
+            } elseif ($_GET['step'] == 'setup') {
+                echo '<div class="h-screen max-w-7xl">
                         <div class="overflow-scroll my-28 h-5/6 m-auto text-white text-center bg-white bg-opacity-10 px-10 py-10 rounded-md overflow-y-scroll">
                             <form action="installer.php?step=check" method="POST" x-data="{ tab: \'activate\' }">
                                 <center><img src="https://brand.lmwn.co.uk/saturn/logo.png" class="w-1/4 mb-6" alt="Saturn"></center>
@@ -257,7 +261,7 @@ if(isset($_POST['submit'])) {
                                         </div>
                                         <div class="flex">
                                             <label for="db_prefix" class="text-base w-1/4">Prefix <a title="A value added to the start of the database\'s tables to group them to Saturn. Saturn has automatically generated a recommended value for this item." class="text-xs border-b-2 border-dotted">?</a></label>
-                                            <input id="db_prefix" name="db_prefix" type="text" autocomplete="db_prefix" class="appearance-none rounded-none rounded-b-md relative block w-3/4 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="" value="'.substr(str_shuffle(str_repeat("abcdefghijklmnopqrstuvwxyz", 3)), 0, 3).'_">
+                                            <input id="db_prefix" name="db_prefix" type="text" autocomplete="db_prefix" class="appearance-none rounded-none rounded-b-md relative block w-3/4 px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="" value="'.substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz', 3)), 0, 3).'_">
                                         </div>
                                     </div>
                                     <style>form:invalid [type=submit] { background-color: rgba(239, 68, 68); } form:valid [type=submit] { background-color: rgba(16, 185, 129); }</style>
@@ -268,7 +272,9 @@ if(isset($_POST['submit'])) {
                                 </div>
                             </form>
                         </div>
-                    </div>'; } else if ($_GET['step'] == 'check') { echo '<div class="h-screen">
+                    </div>';
+            } elseif ($_GET['step'] == 'check') {
+                echo '<div class="h-screen">
                         <div class="overflow-scroll my-28 h-5/6 m-auto text-white text-center bg-white bg-opacity-10 px-10 py-10 rounded-md overflow-y-scroll">
                             <center><img src="https://brand.lmwn.co.uk/saturn/logo.png" class="w-1/4 mb-6" alt="Saturn"></center>
                             <h1 class="text-3xl md:text-5xl my-10">
@@ -279,7 +285,7 @@ if(isset($_POST['submit'])) {
                             </p>
                             <i class="far fa-sync-alt fa-spin"></i>
                             <span class="text-base"><br>';
-                $con = mysqli_connect($_POST['db_host'],$_POST['db_user'],$_POST['db_pass'],$_POST['db_name']);
+                $con = mysqli_connect($_POST['db_host'], $_POST['db_user'], $_POST['db_pass'], $_POST['db_name']);
                 echo'-->';
                 // Check connection
                 if (mysqli_connect_errno()) {
@@ -289,7 +295,9 @@ if(isset($_POST['submit'])) {
                     exit;
                 }
                 echo '</span></div>
-                    </div>'; } else if ($_GET['step'] == 'install') { echo '
+                    </div>';
+            } elseif ($_GET['step'] == 'install') {
+                echo '
                     <div class="h-screen">
                         <div class="overflow-scroll my-28 h-5/6 m-auto text-white text-center bg-white bg-opacity-10 px-10 py-10 rounded-md overflow-y-scroll">
                             <center><img src="https://brand.lmwn.co.uk/saturn/logo.png" class="w-1/4 mb-6" alt="Saturn"></center>
@@ -300,14 +308,15 @@ if(isset($_POST['submit'])) {
                                 This should only take a few moments.
                             </p>
                             <i class="far fa-sync-alt fa-spin"></i>';
-                if(download('https://saturncms.net/download/0.1.0.zip','/saturn.zip')) {
+                if (download('https://saturncms.net/download/0.1.0.zip', '/saturn.zip')) {
                     header('Location: installer.php?step=createdb');
                     exit;
                 } else {
                     header('Location: installer.php?step=failed');
                     exit;
                 }
-            } else if ($_GET['step'] == 'failed') { echo '
+            } elseif ($_GET['step'] == 'failed') {
+                echo '
                     <div class="h-screen">
                         <div class="overflow-scroll my-28 h-5/6 m-auto text-white text-center bg-white bg-opacity-10 px-10 py-10 rounded-md overflow-y-scroll">
                             <center><img src="https://brand.lmwn.co.uk/saturn/logo.png" class="w-1/4 mb-6" alt="Saturn"></center>
@@ -317,7 +326,8 @@ if(isset($_POST['submit'])) {
                             <p class="text-base mb-10">
                                 Unable to install Saturn. Please ensure installer.php has the required permissions and try again.
                             </p>';
-            } else if ($_GET['step'] == 'createdb') { echo '
+            } elseif ($_GET['step'] == 'createdb') {
+                echo '
                     <div class="h-screen">
                         <div class="overflow-scroll my-28 h-5/6 m-auto text-white text-center bg-white bg-opacity-10 px-10 py-10 rounded-md overflow-y-scroll">
                             <center><img src="https://brand.lmwn.co.uk/saturn/logo.png" class="w-1/4 mb-6" alt="Saturn"></center>
@@ -329,9 +339,11 @@ if(isset($_POST['submit'])) {
                             </p>
                             <i class="far fa-sync-alt fa-spin"></i><br><span class="text-xs">';
                 $data = json_decode(file_get_contents('installer_config.json'));
-                $conn = mysqli_connect($data->db_host,$data->db_user,$data->db_pass,$data->db_name,$data->db_port);
-                if(mysqli_errno($conn)) {echo mysqli_error($conn);}
-                $query="CREATE TABLE `".$data->db_prefix."announcements` (
+                $conn = mysqli_connect($data->db_host, $data->db_user, $data->db_pass, $data->db_name, $data->db_port);
+                if (mysqli_errno($conn)) {
+                    echo mysqli_error($conn);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix."announcements` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `active` tinyint(1) NOT NULL DEFAULT 0,
             `title` varchar(50) DEFAULT NULL,
@@ -340,12 +352,18 @@ if(isset($_POST['submit'])) {
             `type` varchar(12) NOT NULL DEFAULT 'NOTIFICATION',
            PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE ANNOUNCEMENTS'; var_dump($query); }
-                $query="INSERT INTO `".$data->db_prefix."announcements` (`id`, `active`, `title`, `message`, `link`, `type`) VALUES
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE ANNOUNCEMENTS';
+                    var_dump($query);
+                }
+                $query = 'INSERT INTO `'.$data->db_prefix."announcements` (`id`, `active`, `title`, `message`, `link`, `type`) VALUES
         (1, 1, 'Welcome to Saturn', 'Welcome to your new Saturn installation.', 'https://saturncms.net', 'NOTIFICATION'),
         (2, 0, 'Announcement', 'x', 'https://saturncms.net', 'NOTIFICATION');";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: INSERT INTO ANNOUNCEMENTS'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."articles` (
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: INSERT INTO ANNOUNCEMENTS';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix."articles` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `author_id` int(11) NOT NULL,
           `title` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT 'New Article',
@@ -354,8 +372,11 @@ if(isset($_POST['submit'])) {
           `status` varchar(11) CHARACTER SET latin1 NOT NULL DEFAULT 'UNPUBLISHED',
            PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE ARTICLES'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."chats_messages` (
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE ARTICLES';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix.'chats_messages` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) DEFAULT NULL,
           `chat_id` int(11) DEFAULT NULL,
@@ -363,9 +384,12 @@ if(isset($_POST['submit'])) {
           `message` varchar(255) DEFAULT NULL,
           `datetime` datetime DEFAULT current_timestamp(),
            PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE CHATS MESSAGES'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."notifications` (
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE CHATS MESSAGES';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix.'notifications` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) DEFAULT NULL,
           `dismissed` int(11) DEFAULT 0,
@@ -373,9 +397,12 @@ if(isset($_POST['submit'])) {
           `content` varchar(255) DEFAULT NULL,
           `timestamp` datetime NOT NULL DEFAULT current_timestamp(),
            PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE NOTIFICATIONS'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."pages` (
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE NOTIFICATIONS';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix."pages` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) NOT NULL,
           `category_id` int(11) DEFAULT NULL,
@@ -387,29 +414,44 @@ if(isset($_POST['submit'])) {
           `reference` varchar(10000) DEFAULT NULL,
            PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE PAGES'; var_dump($query); }
-                $query="INSERT INTO `".$data->db_prefix."pages` (`id`, `user_id`, `category_id`, `url`, `template`, `title`, `description`, `content`, `reference`) VALUES
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE PAGES';
+                    var_dump($query);
+                }
+                $query = 'INSERT INTO `'.$data->db_prefix."pages` (`id`, `user_id`, `category_id`, `url`, `template`, `title`, `description`, `content`, `reference`) VALUES
         (1, 1, 1, '/', 'HOMEPAGE', 'Home', 'Home', '<p>Welcome to Saturn!</p>', '');";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."pages_categories` (
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix.'pages_categories` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `name` varchar(50) NOT NULL,
           `homepage_id` int(11) NOT NULL,
            PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE PAGES CATEGORIES'; var_dump($query); }
-                $query="INSERT INTO `".$data->db_prefix."pages_categories` (`id`, `name`, `homepage_id`) VALUES
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE PAGES CATEGORIES';
+                    var_dump($query);
+                }
+                $query = 'INSERT INTO `'.$data->db_prefix."pages_categories` (`id`, `name`, `homepage_id`) VALUES
         (1, 'Site Home', 1);";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES CATEGORIES'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."pages_history` (
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES CATEGORIES';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix.'pages_history` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `page_id` int(11) NOT NULL,
           `user_id` int(11) NOT NULL,
           `timestamp` datetime NOT NULL,
            PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE PAGES HISTORY'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."pages_pending` (
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE PAGES HISTORY';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix.'pages_pending` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) NOT NULL,
           `category_id` int(11) DEFAULT NULL,
@@ -417,12 +459,18 @@ if(isset($_POST['submit'])) {
           `content` varchar(50000) DEFAULT NULL,
           `reference` varchar(10000) DEFAULT NULL,
            PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE PAGES PENDING'; var_dump($query); }
-                $query="INSERT INTO `".$data->db_prefix."pages_pending` (`id`, `user_id`, `category_id`, `title`, `content`, `reference`) VALUES
-        (1, 0, 1, NULL, NULL, NULL);";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES PENDING'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."users` (
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE PAGES PENDING';
+                    var_dump($query);
+                }
+                $query = 'INSERT INTO `'.$data->db_prefix.'pages_pending` (`id`, `user_id`, `category_id`, `title`, `content`, `reference`) VALUES
+        (1, 0, 1, NULL, NULL, NULL);';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES PENDING';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix."users` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `username` varchar(101) DEFAULT NULL,
           `first_name` varchar(50) NOT NULL,
@@ -441,8 +489,11 @@ if(isset($_POST['submit'])) {
           `profile_photo` varchar(20000) NOT NULL DEFAULT '/assets/storage/images/defaultprofile.png',
            PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE USERS'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."users_settings` (
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE USERS';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix.'users_settings` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `notifications_saturn` tinyint(1) NOT NULL DEFAULT 1,
           `notifications_email` tinyint(1) NOT NULL DEFAULT 0,
@@ -450,20 +501,29 @@ if(isset($_POST['submit'])) {
           `security_2fa` tinyint(1) NOT NULL DEFAULT 0,
           `accepted_terms` tinyint(1) NOT NULL DEFAULT 0,
            PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE USER SETTINGS'; var_dump($query); }
-                $query="CREATE TABLE `".$data->db_prefix."users_statistics` (
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE USER SETTINGS';
+                    var_dump($query);
+                }
+                $query = 'CREATE TABLE `'.$data->db_prefix.'users_statistics` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `views` int(11) NOT NULL DEFAULT 0,
           `edits` int(11) NOT NULL DEFAULT 0,
           `approvals` int(11) NOT NULL DEFAULT 0,
            PRIMARY KEY (`id`)
-        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: CREATE USER STATISTICS'; var_dump($query); }
+        ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: CREATE USER STATISTICS';
+                    var_dump($query);
+                }
                 echo'</span>';
 
-                $query="INSERT INTO `".$data->db_prefix."users` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `user_key`, `last_login_ip`, `auth_code`, `role_id`, `last_seen`, `first_login`, `bio`, `organisation`, `website`, `profile_photo`) VALUES (NULL, '".$data->user_username."', '".$data->user_firstname."', '".$data->user_lastname."', '".$data->user_email."', '".$data->user_password."', NULL, NULL, NULL, '4', current_timestamp(), '1', NULL, NULL, NULL, '/assets/storage/images/defaultprofile.png')";
-                if(!mysqli_query($conn,$query)) { echo '<br><br>UNABLE TO QUERY: INSERT USER'; var_dump($query); }
+                $query = 'INSERT INTO `'.$data->db_prefix."users` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `user_key`, `last_login_ip`, `auth_code`, `role_id`, `last_seen`, `first_login`, `bio`, `organisation`, `website`, `profile_photo`) VALUES (NULL, '".$data->user_username."', '".$data->user_firstname."', '".$data->user_lastname."', '".$data->user_email."', '".$data->user_password."', NULL, NULL, NULL, '4', current_timestamp(), '1', NULL, NULL, NULL, '/assets/storage/images/defaultprofile.png')";
+                if (!mysqli_query($conn, $query)) {
+                    echo '<br><br>UNABLE TO QUERY: INSERT USER';
+                    var_dump($query);
+                }
 
                 $file = __DIR__.'/config.php';
                 $message = "<?php
@@ -527,17 +587,20 @@ if(isset($_POST['submit'])) {
             const PERMISSION_CREATE_CATEGORY = '4';
             const PERMISSION_CREATE_PAGE = '4';
             const PERMISSION_EDIT_PAGE_SETTINGS = '3';";
-                function ccv_reset() {
+                function ccv_reset()
+                {
                     return true;
                 }
                 if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
-                    if(!unlink('installer_config.json')) {
-                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the installer_config.json file immediately.';exit;
+                    if (!unlink('installer_config.json')) {
+                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the installer_config.json file immediately.';
+                        exit;
                     }
                     header('Location: /');
                 } else {
-                    if(!unlink('installer_config.json')) {
-                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the installer_config.json file immediately.';exit;
+                    if (!unlink('installer_config.json')) {
+                        echo 'Saturn has installed. WARNING: Unable to delete installer config data. '.$data->warning.'. Please delete the installer_config.json file immediately.';
+                        exit;
                     }
                     echo 'Unable to update config, please delete all files in root folder and try again.';
                 }
