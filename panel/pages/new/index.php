@@ -9,6 +9,7 @@
                 $pageTitle = trim(checkInput('DEFAULT', $_GET['pagetitle']));
             } elseif (isset($_POST['posted'])) {
                 $pageURL = trim(checkInput('DEFAULT', $_POST['pageurl']));
+                $pageURL = str_replace(' ', '-', $pageURL);
                 $pageCategory = trim(checkInput('DEFAULT', $_POST['pagecategory']));
                 $pageTemplate = trim(checkInput('DEFAULT', $_POST['pagetemplate']));
                 $pageTitle = trim(checkInput('DEFAULT', $_POST['pagetitle']));
@@ -73,7 +74,7 @@
                         <h1 class="text-xl w-1/6 self-center">Page URL</h1>
                         <div class="flex-grow">
                             <label for="pageurl" class="sr-only self-center">Page Title</label>
-                            <input id="pageurl" name="pageurl" type="text" value="<?php echo '/'.strtolower(get_page_category_name(1)).'/'.strtolower($pageTitle); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-lg" placeholder="Page URL">
+                            <input id="pageurl" name="pageurl" type="text" value="<?php echo str_replace(' ', '-', '/'.strtolower(get_page_category_name(1)).'/'.strtolower($pageTitle)); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-lg" placeholder="Page URL">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
@@ -82,6 +83,7 @@
                             <label for="pagecategory" class="sr-only self-center">Page Category</label>
                             <select name="pagecategory" id="pagecategory" class="flex-grow w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
                     <?php
+                    try {
                         $i = 1;
                         $category = get_page_category_name($i);
                         while ($category != null) {
@@ -89,6 +91,8 @@
                             $i++;
                             $category = get_page_category_name($i);
                         }
+                    } catch (Exception $e) {
+                    }
                     ?>
                             </select>
                         </div>

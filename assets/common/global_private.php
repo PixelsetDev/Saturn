@@ -5,6 +5,11 @@
     require_once __DIR__.'/../../config.php';
     require_once __DIR__.'/../storage/core_checksum.php';
     require_once __DIR__.'/../../theme.php';
+    // Saturn Info
+    $saturnInfo = json_decode(file_get_contents(__DIR__.'/../saturn.json'));
+    define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
+    define('SATURN_STORAGE_DIRECTORY', $saturnInfo->{'saturn'}->{'storagedir'});
+    unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Important Functions */
     require_once __DIR__.'/processes/database/connect.php';
@@ -14,24 +19,27 @@
     set_error_handler('errorHandlerWarning', E_WARNING);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
+        error_reporting('E_ALL');
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */
+    // Create
     require_once __DIR__.'/processes/database/create/notification.php';
-    require_once __DIR__.'/processes/database/create/todo.php';
     require_once __DIR__.'/processes/database/create/user.php';
     require_once __DIR__.'/processes/database/create/page.php';
+    // Delete
     require_once __DIR__.'/processes/database/delete/page.php';
-    require_once __DIR__.'/processes/database/get/user.php';
-    require_once __DIR__.'/processes/database/get/user_statistics.php';
-    require_once __DIR__.'/processes/database/get/user_settings.php'; // Must be first rf loaded in this section!
+    // Get
+    require_once __DIR__.'/processes/database/get/user.php'; // User info must be loaded first.
+    require_once __DIR__.'/processes/database/get/user_statistics.php'; // User info must be loaded first.
+    require_once __DIR__.'/processes/database/get/user_settings.php'; // User info must be loaded first.
     require_once __DIR__.'/processes/database/get/activity.php';
     require_once __DIR__.'/processes/database/get/announcement.php';
     require_once __DIR__.'/processes/database/get/articles.php';
     require_once __DIR__.'/processes/database/get/notification.php';
     require_once __DIR__.'/processes/database/get/page.php';
     require_once __DIR__.'/processes/database/get/page_category.php';
-    require_once __DIR__.'/processes/database/get/todo.php';
+    // Update
     require_once __DIR__.'/processes/database/update/articles.php';
     require_once __DIR__.'/processes/database/update/announcement.php';
     require_once __DIR__.'/processes/database/update/notification.php';
@@ -61,6 +69,9 @@
         $id = $_SESSION['id'];
         $uid = $_SESSION['id'];
     }
+    if (get_user_roleID($uid) < 2) {
+        internal_redirect('/panel/account/signin/?signedout=permission');
+    }
     /* Require HTTPS */
     if ($_SERVER['HTTPS'] != 'on' && SECURITY_USE_HTTPS) {
         header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
@@ -70,14 +81,18 @@
     ccv_validate_all();
 
     if (!activation_validate()) {
-        echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>', true);
+        echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>', true);
         log_console('SATURN][ACTIVATION', 'Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel.');
     }
 
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
 
     if (get_announcement_panel_active()) {
-        echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
+        if (get_announcement_panel_link() != null && get_announcement_panel_link() != '') {
+            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message().' - For more information <a href="'.get_announcement_panel_link().'" class="underline">please click here</a>.', true);
+        } else {
+            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
+        }
     }
 
     ob_end_flush();

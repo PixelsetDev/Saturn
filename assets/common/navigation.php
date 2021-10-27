@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between h-16">
                 <div class="w-full justify-between flex items-center">
                     <a class="flex-shrink-0" href="<?php echo CONFIG_INSTALL_URL; ?>">
-                        <img class="h-10 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" alt="GeolHistory"/>
+                        <img class="h-10 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png" alt="GeolHistory"/>
                     </a>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">

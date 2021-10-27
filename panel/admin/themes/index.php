@@ -3,6 +3,20 @@
     ob_start();
     require_once __DIR__.'/../../../assets/common/global_private.php';
     require_once __DIR__.'/../../../assets/common/admin/global.php';
+    if (isset($_GET['successMsg'])) {
+        $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
+    }
+    if (isset($_GET['errorMsg'])) {
+        $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
+    }
+    if (isset($_GET['download'])) {
+        if (marketplace_download_zip(checkInput('DEFAULT', $_GET['download']), '/../../../../themes/download.zip')) {
+            internal_redirect('/panel/admin/themes?successMsg=The theme was downloaded and installed successfully.');
+        } else {
+            internal_redirect('/panel/admin/themes?errorMsg=An error occurred whilst downloading the theme.');
+        }
+        exit;
+    }
     ob_end_flush();
 ?><!DOCTYPE html>
 <html lang="en">
@@ -27,6 +41,10 @@
                     echo alert('SUCCESS', $successMsg);
                     unset($successMsg);
                 }
+                if (isset($warningMsg)) {
+                    echo alert('WARNING', $warningMsg);
+                    unset($warningMsg);
+                }
                 if (isset($_GET['uploadedTo'])) {
                     echo alert('INFO', 'Your website asset has been updated. Please note, you may need to clear your cache before it appears across the site.<br>You can do this on Windows by clicking \'Ctrl + F5\', or MacOS by clicking \'Opt + Cmd + E\'');
                 }
@@ -48,23 +66,25 @@
                     $themeFramework = $themeData->{'theme'}->{'framework'};
                     if ($themeFramework == '') {
                         $themeFramework = 'question_mark';
-                    }
-
-                    echo '<div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
-                            <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20">
-                                <h3 class="text-lg mt-1 mx-2 text-white">'.$themeData->{'theme'}->{'name'}.'</h3>
-                                <p class="text-xs -mt-1 mb-1 mx-2 text-white">By '.$themeData->{'theme'}->{'author'}.'</p>
-                            </div>
-                            <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
-                                <img src="'.CONFIG_INSTALL_URL.'/assets/images/icons/'.$themeFramework.'.svg" class="w-6 h-6" alt="'.$themeFramework.'">
-                            </div>
-                            <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
-                                '.$themeData->{'theme'}->{'version'}->{'theme'}.'
-                            </div>
-                            <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="'.$themeImage.'" alt="'.$themeData->{'theme'}->{'name'}.'">
-                        </div>';
-                }
-                ?>
+                    } ?>
+                <a href="settings?slug=<?php echo $themeData->{'theme'}->{'slug'}; ?>" class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                    <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
+                        <div class="flex-grow">
+                            <h3 class="text-lg mt-1 mx-2 text-white"><?php echo $themeData->{'theme'}->{'name'}; ?></h3>
+                            <p class="text-xs -mt-1 mb-1 mx-2 text-white">By <?php echo $themeData->{'theme'}->{'author'}; ?></p>
+                        </div>
+                        <?php if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) { ?><p class="text-xs text-white">ACTIVE</p><?php } ?>
+                    </div>
+                    <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/icons/<?php echo $themeFramework; ?>.svg" class="w-6 h-6" alt="<?php echo $themeFramework; ?>">
+                    </div>
+                    <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
+                        <?php echo $themeData->{'theme'}->{'version'}->{'theme'}; ?>
+                    </div>
+                    <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="<?php echo $themeImage; ?>" alt="<?php echo $themeData->{'theme'}->{'name'}; ?>">
+                </a>
+                <?php
+                }?>
             </div>
             <h2 class="text-gray-900 text-2xl mt-8">Theme Marketplace</h2>
             <?php if (activation_validate()) { ?>
@@ -86,15 +106,15 @@
             <h2 class="text-gray-900 text-2xl mt-8">Website Assets</h2>
             <div class="flex my-6 space-x-4">
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=icon.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/icon.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Icon">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/icon.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Icon">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Icon</p>
                 </a>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=logo.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=200&maxWidth=1000"  class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Logo">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Logo">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Logo</p>
                 </a>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=defaultprofile.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400"  class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/defaultprofile.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Default Profile Picture">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/defaultprofile.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Default Profile Picture">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Default Profile Picture</p>
                 </a>
             </div>

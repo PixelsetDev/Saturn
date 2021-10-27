@@ -49,7 +49,7 @@
         <header class="bg-white shadow relative">
             <div class="py-6 px-4 sm:px-6 lg:px-8 flex w-full">
                 <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900 flex-grow">Welcome to Saturn</h1>
-                <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" class="h-8 w-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
+                <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png" class="h-8 w-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
             </div>
         </header>
         <form method="POST" action="index.php" class="py-6 px-4 sm:px-6 lg:px-8">
@@ -182,9 +182,8 @@
             echo alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
         }
         if (get_user_roleID($_SESSION['id']) > 3) {
-            $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version=beta');
-            $localVersion = file_get_contents(__DIR__.'/../../assets/common/version.txt');
-            if ($remoteVersion != $localVersion) {
+            $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
+            if ($remoteVersion != SATURN_VERSION) {
                 echo '<br>
                     <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                         <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">

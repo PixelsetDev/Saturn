@@ -41,3 +41,29 @@
 
         return $row['approvals'];
     }
+
+    function get_user_page_count($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'pages` WHERE `user_id` = '.$id;
+
+        $rs = mysqli_query($conn, $query);
+
+        return mysqli_num_rows($rs);
+    }
+
+    function get_user_article_count($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'articles` WHERE `author_id` = '.$id;
+
+        $rs = mysqli_query($conn, $query);
+
+        return mysqli_num_rows($rs);
+    }

@@ -1,8 +1,8 @@
 <?php
 session_start();
 ob_start();
-require_once __DIR__.'/../../../assets/common/global_private.php';
-require_once __DIR__.'/../../../assets/common/admin/global.php';
+require_once __DIR__.'/../../../../assets/common/global_private.php';
+require_once __DIR__.'/../../../../assets/common/admin/global.php';
 
 if (isset($_POST['save'])) {
     $file = __DIR__.'/../../../../config.php';
@@ -28,6 +28,8 @@ if (isset($_POST['save'])) {
     const CONFIG_SITE_KEYWORDS = '".CONFIG_SITE_KEYWORDS."';
     const CONFIG_SITE_CHARSET = '".CONFIG_SITE_CHARSET."';
     const CONFIG_SITE_TIMEZONE = '".CONFIG_SITE_TIMEZONE."';
+    /* Users and Accounts */
+    const CONFIG_REGISTRATION_ENABLED = ".CONFIG_REGISTRATION_ENABLED.";
     /* Database */
     const DATABASE_HOST = '".DATABASE_HOST."';
     const DATABASE_NAME = '".DATABASE_NAME."';
@@ -50,22 +52,30 @@ if (isset($_POST['save'])) {
     const CONFIG_NOTIFICATIONS_LIMIT = '".CONFIG_NOTIFICATIONS_LIMIT."';
     const CONFIG_ALLOW_SATURN_NOTIFICATIONS = ".CONFIG_ALLOW_SATURN_NOTIFICATIONS.';
     const CONFIG_ALLOW_EMAIL_NOTIFICATIONS = '.CONFIG_ALLOW_EMAIL_NOTIFICATIONS.';
-    /* Global Security System */
-    const SECURITY_ACTIVE = '.SECURITY_ACTIVE.';
-    const LOGGING_ACTIVE = '.LOGGING_ACTIVE.";
+    /* Welcome Screen */
+    const CONFIG_WELCOME_SCREEN = '.CONFIG_WELCOME_SCREEN.';
+    const CONFIG_WELCOME_SCREEN_SHOW_TERMS = '.CONFIG_WELCOME_SCREEN_SHOW_TERMS.';
+    /* Security */
+    const SECURITY_ACTIVE = '.SECURITY_ACTIVE.";
     const SECURITY_MODE = '".SECURITY_MODE."';
+    const SECURITY_USE_HTTPS = ".SECURITY_USE_HTTPS.';
+    const SECURITY_USE_GSS = '.SECURITY_USE_GSS.";
+    const SECURITY_DEFAULT_HASH = '".SECURITY_DEFAULT_HASH."';
+    const SECURITY_CHECKSUM_HASH = '".SECURITY_CHECKSUM_HASH."';
+    const LOGGING_ACTIVE = ".LOGGING_ACTIVE.';
+    const LOGGING_AUTOLOG = '.LOGGING_AUTOLOG.';
     /* Developer Tools */
-    const CONFIG_DEBUG = ".CONFIG_DEBUG.";
+    const CONFIG_DEBUG = '.CONFIG_DEBUG.";
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '".$_POST['PERMISSION_CREATE_CATEGORY']."';
     const PERMISSION_CREATE_PAGE = '".$_POST['PERMISSION_CREATE_PAGE']."';
     const PERMISSION_EDIT_PAGE_SETTINGS = '".$_POST['PERMISSION_EDIT_PAGE_SETTINGS']."';";
 
     if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
-        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Permissions.');
-        echo'<meta http-equiv="refresh" content="0; url=index.php/?successMsg=Website permissions saved successfully. If an error message appears, refresh the page.">';
+        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
+        internal_redirect('/panel/admin/settings/permissions?successMsg=Website settings saved successfully. You may need to refresh the page to see changes. If an error message appears, refresh the page.');
     } else {
-        echo'<meta http-equiv="refresh" content="0; url=index.php/?errorMsg=Unable to save website permissions, an error occurred.">';
+        internal_redirect('/panel/admin/settings/permissions?errorMsg=Unable to save website settings, an error occurred.');
     }
     exit;
 }

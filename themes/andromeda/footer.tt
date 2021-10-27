@@ -3,10 +3,11 @@
         <div class="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
             <div class="md:max-w-md lg:col-span-2">
                 <a href="/" aria-label="Go home" title="Saturn" class="inline-flex items-center">
-                    <img src="/assets/images/logo.png" alt="Saturn" width="25%">
+                    <img src="{{image:logo}}" alt="{{config:sitename}}" width="25%">
                 </a>
                 <div class="mt-4 lg:max-w-sm">
                     <p class="mt-4 text-sm text-gray-200">
+                        Thank you for using Andromeda. You can change your footer in your theme settings.<br>
                         Saturn is licensed under the <a href="/LICENSE" target="_blank">Apache License</a><br><br>
                     </p>
                 </div>
@@ -35,7 +36,7 @@
         </div>
         <div class="flex flex-col justify-between pt-5 pb-10 border-t sm:flex-row">
             <p class="text-sm text-gray-400">
-                &copy; Copyright 2021 Saturn.<br>
+                &copy; Copyright 2021 Saturn. Designed by Lewis Milburn.<br>
             </p>
             <div class="flex items-center mt-4 space-x-4 sm:mt-0">
                 <a href="https://twitter.com/lmwnweb" alt="Twitter" target="_blank" class="text-gray-500 transition-colors duration-300 hover:text-gray-600" rel="noreferrer">

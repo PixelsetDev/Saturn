@@ -131,8 +131,7 @@
                 $exists = false;
                 while ($article != null) {
                     if (get_article_author_id($i) == $_SESSION['id'] && get_article_status($i) != 'DELETED') {
-                        $exists = true;
-                        ?>  <div>
+                        $exists = true; ?>  <div>
                                 <div name="<?php echo $article; ?>" id="<?php echo $article; ?>">
                                     <div class="flex-0 relative pt-1 mb-2">
                                         <div class="flex items-center justify-between">
@@ -153,8 +152,7 @@
                         } else {
                             $statusColour = 'gray';
                             $status = 'Unknown Status';
-                        }
-                        ?><span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-<?php echo $statusColour; ?>-500 bg-<?php echo $statusColour;?>-200"><?php echo $status; ?></span>
+                        } ?><span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-<?php echo $statusColour; ?>-500 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
                                             </div>
                                         </div>
                                     </div>

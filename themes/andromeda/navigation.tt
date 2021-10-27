@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between h-16">
                 <div class="w-full justify-between flex items-center">
                     <a class="flex-shrink-0" href="/">
-                        <img class="h-10 w-auto" src="/assets/images/logo.png" alt="Saturn"/>
+                        <img class="h-10 w-auto" src="{{image:logo}}" alt="{{config:sitename}}"/>
                     </a>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">

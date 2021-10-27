@@ -26,7 +26,7 @@
                         </button>
                     </div>
                     <div class="block w-full mx-auto md:mt-0 relative max-w-md lg:max-w-2xl">
-                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/error.svg" alt="Error Image" />
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/error.svg" alt="Error Image" />
                     </div>
                 </div>
             </div>

@@ -177,32 +177,6 @@
         return $row['profile_photo'];
     }
 
-    function get_user_page_count($id)
-    {
-        $id = checkInput('DEFAULT', $id);
-
-        global $conn;
-
-        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'pages` WHERE `user_id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-
-        return mysqli_num_rows($rs);
-    }
-
-    function get_user_article_count($id)
-    {
-        $id = checkInput('DEFAULT', $id);
-
-        global $conn;
-
-        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'articles` WHERE `author_id` = '.$id;
-
-        $rs = mysqli_query($conn, $query);
-
-        return mysqli_num_rows($rs);
-    }
-
     function get_user_key($id)
     {
         $id = checkInput('DEFAULT', $id);
@@ -272,25 +246,21 @@
         return $return;
     }
 
-    function get_user_notification_preference($id): int
+    function get_username_exists($username): bool
     {
-        $id = checkInput('DEFAULT', $id);
+        $username = checkInput('DEFAULT', $username);
 
-        $saturn = get_user_settings_notifications_saturn($id);
-        $email = get_user_settings_notifications_email($id);
+        global $conn;
 
-        if ($saturn && !$email && CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
-            $return = '1';
-        } elseif (!$saturn && $email && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-            $return = '2';
-        } elseif ($saturn && $email) {
-            if (CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                $return = '3';
-            } elseif (!CONFIG_ALLOW_SATURN_NOTIFICATIONS && CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                $return = '2';
-            } elseif (CONFIG_ALLOW_SATURN_NOTIFICATIONS && !CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                $return = '1';
-            }
+        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `username` = '".$username."'";
+
+        $rs = mysqli_query($conn, $query);
+        $rows = mysqli_num_rows($rs);
+
+        if ($rows == 0) {
+            $return = false;
+        } else {
+            $return = true;
         }
 
         return $return;

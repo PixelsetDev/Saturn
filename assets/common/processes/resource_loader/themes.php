@@ -1,21 +1,14 @@
 <?php
 
-    $foundTheme = false;
-    $prefix = 'Saturn][Resource Loader][Themes';
-    foreach (glob(dirname(__DIR__, 4).'/themes/*.php') as $filename) {
-        include_once $filename;
-        if (CONFIG_DEBUG === true) {
-            log_console($prefix, 'Loaded Theme: '.$filename.'.');
-        }
-        $foundTheme = true;
-    }
-    if ($foundTheme) {
-        if (CONFIG_DEBUG === true) {
-            log_console($prefix, 'Theme loading complete.');
+    $themeDataJSON = file_get_contents(__DIR__.'/../../../../themes/'.THEME_SLUG.'/theme.json');
+    $themeData = json_decode($themeDataJSON);
+    if ($themeData->{'theme'}->{'name'} != null || $themeData->{'theme'}->{'name'} != '') {
+        if (CONFIG_DEBUG) {
+            log_console('SATURN][RESOURCE LOADER][THEMES', 'Loaded theme: '.$themeData->{'theme'}->{'name'});
         }
     } else {
-        if (CONFIG_DEBUG === true) {
-            log_console($prefix, 'No themes found.');
+        if (CONFIG_DEBUG) {
+            log_console('SATURN][RESOURCE LOADER][THEMES', 'Unable to load theme: '.THEME_SLUG);
         }
+        echo alert('ERROR', 'Unable to load theme: '.THEME_SLUG);
     }
-    unset($foundTheme, $filename);

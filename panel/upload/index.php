@@ -8,10 +8,10 @@
 
         /* File Uploads Location Config */
         /* Changing this won't affect already existing uploads. */
-        $defaultUploadLocation = '/../../assets/files/uploads/';
-        $imageUploadLocation = '/../../assets/images/uploads/';
-        $profilepictureUploadLocation = '/../../assets/images/profile-pictures/';
-        $videoUploadLocation = '/../../assets/videos/uploads/';
+        $defaultUploadLocation = '/../../assets/storage/uploads/';
+        $imageUploadLocation = '/../../assets/storage/images/uploads/';
+        $profilepictureUploadLocation = '/../../assets/storage/images/profile-pictures/';
+        $videoUploadLocation = '/../../assets/storage/videos/uploads/';
 
         if (isset($_GET['uploadTo'])) {
             $uploadDirectory = __DIR__.'/../..'.checkInput('DEFAULT', $_GET['uploadTo']);
@@ -39,12 +39,12 @@
 
         // Check if directory exists and create it if it does not.
         if (!file_exists($uploadDirectory) && !mkdir($uploadDirectory, 0755)) {
-            echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/BETA-1.0.0/warnings/#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
+            echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
         }
 
         // Check if directory can be written to.
         if (!is_writable($uploadDirectory)) {
-            echo alert('WARNING', 'You don\'t have the required permissions to write in this directory. <a href="https://docs.saturncms.net/BETA-1.0.0/warnings/#no-directory-write-permissions" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
+            echo alert('WARNING', 'You don\'t have the required permissions to write in this directory. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#no-directory-write-permissions" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
         }
         $uploadDirectory = $uploadDirectory.basename($_FILES['uploaded_file']['name']);
 

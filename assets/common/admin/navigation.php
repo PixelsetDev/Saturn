@@ -6,7 +6,7 @@
                     </a>
                     <ul class="flex items-center hidden space-x-8 lg:flex">
                         <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Control Panel</a></li>
-                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
+                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
                     </ul>
                     <!-- Mobile menu -->
                     <div class="lg:hidden" x-data="{ open: false }">
@@ -63,7 +63,6 @@
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/announcements'; ?>">Announcements</a>
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/user-management'; ?>">User Management</a>
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/themes'; ?>">Themes</a>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/plugins'; ?>">Plugins</a>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg bg-transparent focus:text-white hover:text-white :focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 md:block focus:outline-none focus:shadow-outline">
                             <span>Security</span>

@@ -6,7 +6,7 @@
                             <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn" class="flex-none w-40 h-auto">
                         </a>
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/" title="<?php echo CONFIG_SITE_NAME; ?>" class="w-40 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
                         </a>
                     </div>
                     <div class="flex-grow">&nbsp;</div>
@@ -38,7 +38,7 @@
                         <?php
                         }
                         if (get_user_roleID($_SESSION['id']) > 2 && CONFIG_ARTICLE_APPROVALS) {
-                        ?>
+                            ?>
                             <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                                 <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                                     <div class="flex">
@@ -55,9 +55,10 @@
                             </div>
                     <?php
                         } else {
-                    ?>
+                            ?>
                             <a class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles">Articles</a>
-                    <?php } ?>
+                    <?php
+                        } ?>
                     <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                             <div class="flex">
@@ -69,11 +70,10 @@
                             <div class="px-2 py-2 bg-<?php echo THEME_PANEL_COLOUR; ?>-800 rounded-lg shadow w-60">
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/team">Team Members</a>
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/team/chat">Team Chat</a>
-                                <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/team/todo">Team To-do List</a>
                             </div>
                         </div>
                     </div>
-                    <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
+                    <!--<div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                             <div class="flex">
                                 <span>More</span>
@@ -85,13 +85,13 @@
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="">Coming Soon</a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline">
                             <div class="flex">
                                 <div class="flex"><div class="relative"><img alt="<?php echo get_user_fullname($_SESSION['id']).'" src="'.get_user_profilephoto($_SESSION['id']); ?>" class=" bg-white mx-auto object-cover rounded-full h-10 w-10 "/><?php $notifCount = get_notification_count($_SESSION['id']); if ($notifCount > 0) {
-                        echo '<div class="absolute px-1 h-4 bg-red-500 rounded-full top-0 right-0 text-xs">'.$notifCount.'</div>';
-                    } ?></div><span class="self-center">&nbsp;<?php echo get_user_fullname($_SESSION['id']); ?><br><span class="font-light"><?php /* echo get_user_role($_SESSION['id']); For some reason, enabling this crashes everything. */ ?></span></span></div>
+                            echo '<div class="absolute px-1 h-4 bg-red-500 rounded-full top-0 right-0 text-xs">'.$notifCount.'</div>';
+                        } ?></div><span class="self-center">&nbsp;<?php echo get_user_fullname($_SESSION['id']); ?><br><span class="font-light"><?php /* echo get_user_role($_SESSION['id']); For some reason, enabling this crashes everything. */ ?></span></span></div>
                                 <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="self-center inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform lg:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                             </div>
                         </button>
@@ -101,20 +101,22 @@
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/team/profile/edit">Account Settings</a>
                                 <hr>
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/notifications"><?php if ($notifCount == 0) {
-                        echo 'No Notification';
-                    } else {
-                        echo $notifCount.' Notification';
-                    }
+                            echo 'No Notification';
+                        } else {
+                            echo $notifCount.' Notification';
+                        }
                     if ($notifCount > 1 || $notifCount == 0) {
                         echo's';
                     }?></a><?php unset($notifCount); ?>
                                 <?php
                                     if (get_user_roleID($_SESSION['id']) == '4') {
                                         ?>
+                                        <hr>
                                         <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin">Admin Panel</a>
                                         <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/settings">Website Settings</a>
-                                        <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/user-management">User Management</a>';
-                                    <?php }
+                                        <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/user-management">User Management</a>
+                                    <?php
+                                    }
                                 ?>
                                 <hr>
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/signout">Sign Out</a>
