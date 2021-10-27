@@ -1,4 +1,5 @@
 <?php
+
     ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../../config.php';
@@ -50,14 +51,16 @@
     } elseif (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
         internal_redirect('/panel/system/error/?err=gss2');
     } else {
-        $id = $_SESSION['id']; $uid = $_SESSION['id'];
+        $id = $_SESSION['id'];
+        $uid = $_SESSION['id'];
     }
     if (get_user_roleID($uid) < 2) {
         internal_redirect('/panel/account/signin/?signedout=permission');
     }
     /* Require HTTPS */
     if ($_SERVER['HTTPS'] != 'on' && SECURITY_USE_HTTPS) {
-        header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); exit();
+        header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+        exit();
     }
     /* Validate CCV */
     ccv_validate_all();
