@@ -24,28 +24,13 @@
     }
     /* Database: Required Files */
     // Create
-    require_once __DIR__.'/processes/database/create/notification.php';
-    require_once __DIR__.'/processes/database/create/user.php';
-    require_once __DIR__.'/processes/database/create/page.php';
+    require_once __DIR__.'/processes/database/create.php';
     // Delete
     require_once __DIR__.'/processes/database/delete/page.php';
     // Get
-    require_once __DIR__.'/processes/database/get/user.php'; // User info must be loaded first.
-    require_once __DIR__.'/processes/database/get/user_statistics.php'; // User info must be loaded first.
-    require_once __DIR__.'/processes/database/get/user_settings.php'; // User info must be loaded first.
-    require_once __DIR__.'/processes/database/get/activity.php';
-    require_once __DIR__.'/processes/database/get/announcement.php';
-    require_once __DIR__.'/processes/database/get/articles.php';
-    require_once __DIR__.'/processes/database/get/notification.php';
-    require_once __DIR__.'/processes/database/get/page.php';
-    require_once __DIR__.'/processes/database/get/page_category.php';
+    require_once __DIR__.'/processes/database/get.php';
     // Update
-    require_once __DIR__.'/processes/database/update/articles.php';
-    require_once __DIR__.'/processes/database/update/announcement.php';
-    require_once __DIR__.'/processes/database/update/notification.php';
-    require_once __DIR__.'/processes/database/update/page.php';
-    require_once __DIR__.'/processes/database/update/user.php';
-    require_once __DIR__.'/processes/database/update/user_settings.php';
+    require_once __DIR__.'/processes/database/update.php';
     /* Required Files */
     require_once __DIR__.'/processes/resource_loader/resource_loader.php';
     require_once __DIR__.'/processes/email.php';
