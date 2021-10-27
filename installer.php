@@ -1,6 +1,9 @@
 <?php
-
+    // Consts
     const INSTALLER_CONFIG_FILE = 'installer_config.json';
+    const CREATE_COMMAND = 'CREATE TABLE';
+    const INSERT_COMMAND = 'INSERT INTO';
+
 function downloadSaturnFile($downloadUrl, $downloadTo, $deleteArchive = true): bool
 {
     $downloadUrl = htmlspecialchars($downloadUrl);
@@ -339,7 +342,7 @@ if (isset($_POST['submit'])) {
                 if (mysqli_errno($conn)) {
                     echo mysqli_error($conn);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix."announcements` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix."announcements` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `active` tinyint(1) NOT NULL DEFAULT 0,
             `title` varchar(50) DEFAULT NULL,
@@ -352,14 +355,14 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE ANNOUNCEMENTS';
                     var_dump($query);
                 }
-                $query = 'INSERT INTO `'.$data->db_prefix."announcements` (`id`, `active`, `title`, `message`, `link`, `type`) VALUES
+                $query = INSERT_COMMAND.' `'.$data->db_prefix."announcements` (`id`, `active`, `title`, `message`, `link`, `type`) VALUES
         (1, 1, 'Welcome to Saturn', 'Welcome to your new Saturn installation.', 'https://saturncms.net', 'NOTIFICATION'),
         (2, 0, 'Announcement', 'x', 'https://saturncms.net', 'NOTIFICATION');";
                 if (!mysqli_query($conn, $query)) {
                     echo '<br><br>UNABLE TO QUERY: INSERT INTO ANNOUNCEMENTS';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix."articles` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix."articles` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `author_id` int(11) NOT NULL,
           `title` varchar(100) CHARACTER SET latin1 NOT NULL DEFAULT 'New Article',
@@ -372,7 +375,7 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE ARTICLES';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix.'chats_messages` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix.'chats_messages` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) DEFAULT NULL,
           `chat_id` int(11) DEFAULT NULL,
@@ -385,7 +388,7 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE CHATS MESSAGES';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix.'notifications` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix.'notifications` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) DEFAULT NULL,
           `dismissed` int(11) DEFAULT 0,
@@ -398,7 +401,7 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE NOTIFICATIONS';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix."pages` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix."pages` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) NOT NULL,
           `category_id` int(11) DEFAULT NULL,
@@ -414,13 +417,13 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE PAGES';
                     var_dump($query);
                 }
-                $query = 'INSERT INTO `'.$data->db_prefix."pages` (`id`, `user_id`, `category_id`, `url`, `template`, `title`, `description`, `content`, `reference`) VALUES
+                $query = INSERT_COMMAND.' `'.$data->db_prefix."pages` (`id`, `user_id`, `category_id`, `url`, `template`, `title`, `description`, `content`, `reference`) VALUES
         (1, 1, 1, '/', 'HOMEPAGE', 'Home', 'Home', '<p>Welcome to Saturn!</p>', '');";
                 if (!mysqli_query($conn, $query)) {
                     echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix.'pages_categories` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix.'pages_categories` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `name` varchar(50) NOT NULL,
           `homepage_id` int(11) NOT NULL,
@@ -430,13 +433,13 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE PAGES CATEGORIES';
                     var_dump($query);
                 }
-                $query = 'INSERT INTO `'.$data->db_prefix."pages_categories` (`id`, `name`, `homepage_id`) VALUES
+                $query = INSERT_INTO.' `'.$data->db_prefix."pages_categories` (`id`, `name`, `homepage_id`) VALUES
         (1, 'Site Home', 1);";
                 if (!mysqli_query($conn, $query)) {
                     echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES CATEGORIES';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix.'pages_history` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix.'pages_history` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `page_id` int(11) NOT NULL,
           `user_id` int(11) NOT NULL,
@@ -447,7 +450,7 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE PAGES HISTORY';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix.'pages_pending` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix.'pages_pending` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `user_id` int(11) NOT NULL,
           `category_id` int(11) DEFAULT NULL,
@@ -460,13 +463,13 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE PAGES PENDING';
                     var_dump($query);
                 }
-                $query = 'INSERT INTO `'.$data->db_prefix.'pages_pending` (`id`, `user_id`, `category_id`, `title`, `content`, `reference`) VALUES
+                $query = INSERT_COMMAND.' `'.$data->db_prefix.'pages_pending` (`id`, `user_id`, `category_id`, `title`, `content`, `reference`) VALUES
         (1, 0, 1, NULL, NULL, NULL);';
                 if (!mysqli_query($conn, $query)) {
                     echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES PENDING';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix."users` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix."users` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `username` varchar(101) DEFAULT NULL,
           `first_name` varchar(50) NOT NULL,
@@ -489,7 +492,7 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE USERS';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix.'users_settings` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix.'users_settings` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `notifications_saturn` tinyint(1) NOT NULL DEFAULT 1,
           `notifications_email` tinyint(1) NOT NULL DEFAULT 0,
@@ -502,7 +505,7 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE USER SETTINGS';
                     var_dump($query);
                 }
-                $query = 'CREATE TABLE `'.$data->db_prefix.'users_statistics` (
+                $query = CREATE_COMMAND.' `'.$data->db_prefix.'users_statistics` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `views` int(11) NOT NULL DEFAULT 0,
           `edits` int(11) NOT NULL DEFAULT 0,
@@ -515,7 +518,7 @@ if (isset($_POST['submit'])) {
                 }
                 echo'</span>';
 
-                $query = 'INSERT INTO `'.$data->db_prefix."users` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `user_key`, `last_login_ip`, `auth_code`, `role_id`, `last_seen`, `first_login`, `bio`, `organisation`, `website`, `profile_photo`) VALUES (NULL, '".$data->user_username."', '".$data->user_firstname."', '".$data->user_lastname."', '".$data->user_email."', '".$data->user_password."', NULL, NULL, NULL, '4', current_timestamp(), '1', NULL, NULL, NULL, '/assets/storage/images/defaultprofile.png')";
+                $query = INSERT_COMMAND.' `'.$data->db_prefix."users` (`id`, `username`, `first_name`, `last_name`, `email`, `password`, `user_key`, `last_login_ip`, `auth_code`, `role_id`, `last_seen`, `first_login`, `bio`, `organisation`, `website`, `profile_photo`) VALUES (NULL, '".$data->user_username."', '".$data->user_firstname."', '".$data->user_lastname."', '".$data->user_email."', '".$data->user_password."', NULL, NULL, NULL, '4', current_timestamp(), '1', NULL, NULL, NULL, '/assets/storage/images/defaultprofile.png')";
                 if (!mysqli_query($conn, $query)) {
                     echo '<br><br>UNABLE TO QUERY: INSERT USER';
                     var_dump($query);
