@@ -50,27 +50,22 @@
     } elseif (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
         internal_redirect('/panel/system/error/?err=gss2');
     } else {
-        $id = $_SESSION['id'];
-        $uid = $_SESSION['id'];
+        $id = $_SESSION['id']; $uid = $_SESSION['id'];
     }
     if (get_user_roleID($uid) < 2) {
         internal_redirect('/panel/account/signin/?signedout=permission');
     }
     /* Require HTTPS */
     if ($_SERVER['HTTPS'] != 'on' && SECURITY_USE_HTTPS) {
-        header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-        exit();
+        header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); exit();
     }
     /* Validate CCV */
     ccv_validate_all();
-
     if (!activation_validate()) {
         echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>', true);
         log_console('SATURN][ACTIVATION', 'Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel.');
     }
-
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
-
     if (get_announcement_panel_active()) {
         if (get_announcement_panel_link() != null && get_announcement_panel_link() != '') {
             echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message().' - For more information <a href="'.get_announcement_panel_link().'" class="underline">please click here</a>.', true);
@@ -78,5 +73,4 @@
             echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
         }
     }
-
     ob_end_flush();
