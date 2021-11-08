@@ -37,6 +37,7 @@ function downloadSaturnFile($downloadUrl, $downloadTo, $deleteArchive = true): b
     } else {
         $complete = false;
     }
+
     return $complete;
 }
 
