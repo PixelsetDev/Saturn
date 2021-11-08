@@ -1,5 +1,5 @@
 <?php
-    // Consts
+    // Settings
     const VERSION = '0.1.0';
     const INSTALLER_CONFIG_FILE = 'installer_config.json';
     const CREATE_COMMAND = 'CREATE TABLE';
