@@ -1,5 +1,6 @@
 <?php
     // Consts
+    const VERSION = '0.1.0';
     const INSTALLER_CONFIG_FILE = 'installer_config.json';
     const CREATE_COMMAND = 'CREATE TABLE';
     const INSERT_COMMAND = 'INSERT INTO';
@@ -96,7 +97,7 @@ if (isset($_POST['submit'])) {
                 <a href="https://saturncms.net/feedback" target="_blank" rel="noopener" class="relative group flex" title="Feedback">
                     <i class="fad fa-comments-alt m-2 text-lg" aria-hidden="true"></i>
                 </a>
-                <a href="https://docs.saturncms.net/0.1.0/installation" target="_blank" rel="noopener" lass="relative group flex" title="Installation Guide">
+                <a href="https://docs.saturncms.net/0.1.0/installation" target="_blank" rel="noopener" class="relative group flex" title="Installation Guide">
                     <i class="fad fa-question-circle m-2 text-lg" aria-hidden="true"></i>
                 </a>
             </div>
@@ -307,7 +308,7 @@ if (isset($_POST['submit'])) {
                                 This should only take a few moments.
                             </p>
                             <i class="far fa-sync-alt fa-spin"></i>';
-                if (downloadSaturnFile('https://saturncms.net/download/0.1.0.zip', '/saturn.zip')) {
+                if (downloadSaturnFile('https://saturncms.net/download/'.VERSION.'.zip', '/saturn.zip')) {
                     header('Location: installer.php?step=createdb');
                     exit;
                 } else {
@@ -433,7 +434,7 @@ if (isset($_POST['submit'])) {
                     echo '<br><br>UNABLE TO QUERY: CREATE PAGES CATEGORIES';
                     var_dump($query);
                 }
-                $query = INSERT_INTO.' `'.$data->db_prefix."pages_categories` (`id`, `name`, `homepage_id`) VALUES
+                $query = INSERT_COMMAND.' `'.$data->db_prefix."pages_categories` (`id`, `name`, `homepage_id`) VALUES
         (1, 'Site Home', 1);";
                 if (!mysqli_query($conn, $query)) {
                     echo '<br><br>UNABLE TO QUERY: INSERT INTO PAGES CATEGORIES';
