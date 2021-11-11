@@ -3,12 +3,12 @@
     <head>
         <?php
             $errorScreen = true;
-            include_once __DIR__ . '/assets/common/global_public.php';
+            include_once __DIR__.'/assets/common/global_public.php';
         ?>
         <title><?php echo CONFIG_SITE_NAME; ?></title>
     </head>
     <body>
-        <?php include_once __DIR__ . '/assets/common/navigation.php'; ?>
+        <?php include_once __DIR__.'/assets/common/navigation.php'; ?>
 
         <main class="bg-white relative overflow-hidden h-screen relative">
             <div class="container mx-auto h-screen pt-32 md:pt-0 px-6 z-10 flex items-center justify-between">
