@@ -51,12 +51,25 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{image:logo}}', '/assets/storage/images/logo.png', $pageOutput);
     $pageOutput = str_replace('{{image:icon}}', '/assets/storage/images/icon.png', $pageOutput);
     // Colours
-    $pageOutput = str_replace('{{theme:colour:text}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:bg}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbarbg}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbartext}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footerbg}}', '', $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footertext}}', '', $pageOutput);
+    $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
+    $cd = json_decode($cd);
+    $pageOutput = str_replace('{{theme:colour:text}}', $cd->colours->text, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:bg}}', $cd->colours->bg, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:link}}', $cd->colours->link, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:link:hover}}', $cd->colours->link->hover, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:link:focus}}', $cd->colours->link_focus, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:navbar:bg}}', $cd->colours->navbar->bg->default, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:navbar:text}}', $cd->colours->navbar->text->default, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:navbar:bg:hover}}', $cd->colours->navbar->bg->hover, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:navbar:text:hover}}', $cd->colours->navbar->text->hover, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:navbar:bg:focus}}', $cd->colours->navbar->bg->focus, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:navbar:text:focus}}', $cd->colours->navbar->text->focus, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:footer:bg}}', $cd->colours->footer->bg->default, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:footer:text}}', $cd->colours->footer->text->default, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:footer:bg:hover}}', $cd->colours->footer->bg->hover, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:footer:text:hover}}', $cd->colours->footer->text->hover, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:footer:bg:focus}}', $cd->colours->footer->bg->focus, $pageOutput);
+    $pageOutput = str_replace('{{theme:colour:footer:text:focus}}', $cd->colours->footer->text->focus, $pageOutput);
     // CDN
     if ($themeData->{'theme'}->{'framework'} == 'tailwind') {
         $cdn_css = 'https://unpkg.com/tailwindcss@2.2.16/dist/tailwind.min.css';

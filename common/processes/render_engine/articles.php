@@ -2,6 +2,8 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/common/global_public.php';
 
+const THEME_DIRECTORY = '/themes/';
+
 function getdata($articleID): array
 {
     $articleData['title'] = get_article_title($articleID);
@@ -36,12 +38,25 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{image:logo}}', '/assets/storage/images/logo.png', $articleOutput);
     $articleOutput = str_replace('{{image:icon}}', '/assets/storage/images/icon.png', $articleOutput);
     // Colours
-    $articleOutput = str_replace('{{theme:colour:text}}', '', $articleOutput);
-    $articleOutput = str_replace('{{theme:colour:bg}}', '', $articleOutput);
-    $articleOutput = str_replace('{{theme:colour:navbarbg}}', '', $articleOutput);
-    $articleOutput = str_replace('{{theme:colour:navbartext}}', '', $articleOutput);
-    $articleOutput = str_replace('{{theme:colour:footerbg}}', '', $articleOutput);
-    $articleOutput = str_replace('{{theme:colour:footertext}}', '', $articleOutput);
+    $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
+    $cd = json_decode($cd);
+    $articleOutput = str_replace('{{theme:colour:text}}', $cd->colours->text, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:bg}}', $cd->colours->bg, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:link}}', $cd->colours->link, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:link:hover}}', $cd->colours->link->hover, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:link:focus}}', $cd->colours->link_focus, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbar:bg}}', $cd->colours->navbar->bg->default, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbar:text}}', $cd->colours->navbar->text->default, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbar:bg:hover}}', $cd->colours->navbar->bg->hover, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbar:text:hover}}', $cd->colours->navbar->text->hover, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbar:bg:focus}}', $cd->colours->navbar->bg->focus, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:navbar:text:focus}}', $cd->colours->navbar->text->focus, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footer:bg}}', $cd->colours->footer->bg->default, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footer:text}}', $cd->colours->footer->text->default, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footer:bg:hover}}', $cd->colours->footer->bg->hover, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footer:text:hover}}', $cd->colours->footer->text->hover, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footer:bg:focus}}', $cd->colours->footer->bg->focus, $articleOutput);
+    $articleOutput = str_replace('{{theme:colour:footer:text:focus}}', $cd->colours->footer->text->focus, $articleOutput);
     // CDN
     if ($themeData->{'theme'}->{'framework'} == 'tailwind') {
         $cdn_css = 'https://unpkg.com/tailwindcss@2.2.16/dist/tailwind.min.css';

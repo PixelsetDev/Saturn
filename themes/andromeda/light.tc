@@ -1,0 +1,33 @@
+{ "colours": {
+  "bg": "bg-white",
+  "text": "text-black",
+  "navbar": {
+    "bg": {
+        "default": "bg-gray-900",
+        "hover": "bg-gray-900",
+        "focus": "bg-gray-900"
+    },
+    "text": {
+        "default": "bg-gray-300",
+        "hover": "bg-gray-200",
+        "focus": "bg-gray-200"
+    }
+  },
+  "footer": {
+    "bg": {
+        "default": "bg-gray-900",
+        "hover": "bg-gray-900",
+        "focus": "bg-gray-900"
+    },
+    "text": {
+        "default": "bg-gray-300",
+        "hover": "bg-gray-200",
+        "focus": "bg-gray-200"
+    }
+  },
+  "link": {
+    "default": "bg-gray-900",
+    "hover": "bg-gray-900",
+    "focus": "bg-gray-900"
+  }
+}}

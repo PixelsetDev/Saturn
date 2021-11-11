@@ -1,5 +1,5 @@
 <div class="z-40" x-data="{ open: false }">
-    <nav class="bg-gray-900 shadow-lg">
+    <nav class="{{}} shadow-lg">
         <div class="max-w-7xl mx-auto px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="w-full justify-between flex items-center">
