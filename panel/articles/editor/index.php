@@ -1,6 +1,6 @@
 <?php session_start();
     ob_start();
-    include_once __DIR__ . '/../../../assets/common/global_private.php';
+    include_once __DIR__.'/../../../assets/common/global_private.php';
 
     $articleID = checkInput('DEFAULT', $_GET['articleID']);
 
@@ -38,8 +38,8 @@
 <html lang="en">
     <head>
         <?php
-        include_once __DIR__ . '/../../../assets/common/panel/vendors.php';
-        include_once __DIR__ . '/../../../assets/common/panel/theme.php';
+        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
 
         <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js" integrity="sha256-5RjTlnB92dAMNEPY6q0rX2AusjFwvVf1YHHikzobEss=" crossorigin="anonymous"></script>
@@ -47,7 +47,7 @@
 
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__ . '/../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight text-gray-900">Article Editor: <?php $title = get_article_title($articleID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>

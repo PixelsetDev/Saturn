@@ -1,8 +1,8 @@
 <?php session_start();
     ob_start();
 
-    include_once __DIR__ . '/../../../../assets/common/global_private.php';
-    include_once __DIR__ . '/../../../../assets/common/processes/gui/modals.php';
+    include_once __DIR__.'/../../../../assets/common/global_private.php';
+    include_once __DIR__.'/../../../../assets/common/processes/gui/modals.php';
 
     $articleID = checkInput('DEFAULT', $_GET['articleID']);
 
@@ -51,14 +51,14 @@
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__ . '/../../../../assets/common/panel/vendors.php';
-            include_once __DIR__ . '/../../../../assets/common/panel/theme.php';
+            include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../../../assets/common/panel/theme.php';
         ?>
 
         <title>Article Approvals - Saturn Panel</title>
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__ . '/../../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../../assets/common/panel/navigation.php'; ?>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight text-gray-900">Article Approval: <?php echo get_article_title($articleID); ?></h1>
