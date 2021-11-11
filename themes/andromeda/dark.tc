@@ -1,6 +1,6 @@
 { "colours": {
-  "text": "text-black",
-  "bg": "bg-white",
+  "text": "text-white",
+  "bg": "bg-gray-800",
   "navbar": {
     "text": {
       "default": "text-white",

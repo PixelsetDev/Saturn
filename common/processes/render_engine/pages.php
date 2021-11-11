@@ -53,23 +53,41 @@ function replacedata($pageOutput, $pageData, $themeData): string
     // Colours
     $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
     $cd = json_decode($cd);
-    $pageOutput = str_replace('{{theme:colour:text}}', $cd->colours->text, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:bg}}', $cd->colours->bg, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:link}}', $cd->colours->link, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:link:hover}}', $cd->colours->link->hover, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:link:focus}}', $cd->colours->link_focus, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbar:bg}}', $cd->colours->navbar->bg->default, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbar:text}}', $cd->colours->navbar->text->default, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbar:bg:hover}}', $cd->colours->navbar->bg->hover, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbar:text:hover}}', $cd->colours->navbar->text->hover, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbar:bg:focus}}', $cd->colours->navbar->bg->focus, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:navbar:text:focus}}', $cd->colours->navbar->text->focus, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footer:bg}}', $cd->colours->footer->bg->default, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footer:text}}', $cd->colours->footer->text->default, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footer:bg:hover}}', $cd->colours->footer->bg->hover, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footer:text:hover}}', $cd->colours->footer->text->hover, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footer:bg:focus}}', $cd->colours->footer->bg->focus, $pageOutput);
-    $pageOutput = str_replace('{{theme:colour:footer:text:focus}}', $cd->colours->footer->text->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:text}}', $cd->colours->text, $pageOutput);
+    $pageOutput = str_replace('{{colour:bg}}', $cd->colours->bg, $pageOutput);
+    $pageOutput = str_replace('{{colour:link}}', $cd->colours->link->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:link:hover}}', $cd->colours->link->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:link:focus}}', $cd->colours->link->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:text}}', $cd->colours->navbar->text->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:text:hover}}', $cd->colours->navbar->text->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:text:focus}}', $cd->colours->navbar->text->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:bg}}', $cd->colours->navbar->bg->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:bg:hover}}', $cd->colours->navbar->bg->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:bg:focus}}', $cd->colours->navbar->bg->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:button:text}}', $cd->colours->navbar->button->text->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:button:text:hover}}', $cd->colours->navbar->button->text->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:button:text:focus}}', $cd->colours->navbar->button->text->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:button:bg}}', $cd->colours->navbar->button->bg->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:button:bg:hover}}', $cd->colours->navbar->button->bg->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:navbar:button:bg:focus}}', $cd->colours->navbar->button->bg->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:text}}', $cd->colours->footer->text->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:text:hover}}', $cd->colours->footer->text->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:text:focus}}', $cd->colours->footer->text->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:button:text}}', $cd->colours->footer->button->text->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:button:text:hover}}', $cd->colours->footer->button->text->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:button:text:focus}}', $cd->colours->footer->button->text->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:button:bg}}', $cd->colours->footer->button->bg->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:button:bg:hover}}', $cd->colours->footer->button->bg->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:button:bg:focus}}', $cd->colours->footer->button->bg->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:bg}}', $cd->colours->footer->bg->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:bg:hover}}', $cd->colours->footer->bg->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:footer:bg:focus}}', $cd->colours->footer->bg->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:button:text}}', $cd->colours->button->text->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:button:text:hover}}', $cd->colours->button->text->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:button:text:focus}}', $cd->colours->button->text->focus, $pageOutput);
+    $pageOutput = str_replace('{{colour:button:bg}}', $cd->colours->button->bg->default, $pageOutput);
+    $pageOutput = str_replace('{{colour:button:bg:hover}}', $cd->colours->button->bg->hover, $pageOutput);
+    $pageOutput = str_replace('{{colour:button:bg:focus}}', $cd->colours->button->bg->focus, $pageOutput);
     // CDN
     if ($themeData->{'theme'}->{'framework'} == 'tailwind') {
         $cdn_css = 'https://unpkg.com/tailwindcss@2.2.16/dist/tailwind.min.css';
@@ -99,9 +117,8 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $pageOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', 'Converted 28 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 57 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
-
     return $pageOutput;
 }
 

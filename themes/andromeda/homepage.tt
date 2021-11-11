@@ -9,7 +9,7 @@
         <meta name="theme-color" content="#111827">
         <title>{{data:title}}</title>
     </head>
-    <body>
+    <body class="{{colour:bg}} {{colour:text}}">
         {{section:navigation}}
                 <div class="flex mt-20">
                     <div class="max-w-7xl mx-4 pb-6 lg:pt-6 sm:px-6 lg:px-8">
