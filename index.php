@@ -11,20 +11,20 @@ $filename = __DIR__.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
 if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
-require_once __DIR__.'/assets/common/global_public.php';
+require_once __DIR__ . '/common/global_public.php';
 require_once 'router.php';
 $router = new \Saturn\Router\Router();
 
 // Error Handler
 $router->set404(function () {
     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
-    require_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/assets/common/processes/error/404.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . CONFIG_INSTALL_URL . '/common/processes/error/404.php';
 });
 
 // Panel 404
 $router->set404('/panel(/.*)?', function () {
     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
-    require_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/panel/system/error.php';
+    require_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/panel/system/error/index.php';
 });
 
 $router->set404('/api(/.*)?', function () {
@@ -54,12 +54,12 @@ $router->mount('/rss', function () use ($router) {
         <html lang="en">
             <head>
                 <title>RSS Feeds - <?php echo CONFIG_SITE_NAME; ?></title>
-                <?php include_once __DIR__.'/assets/common/vendors.php'; ?>
+                <?php include_once __DIR__ . '/common/vendors.php'; ?>
             </head>
             <body>
                 <div class="p-2">
                     <section class="mb-10">
-                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png" class="w-1/4 mx-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" class="w-1/4 mx-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
                         <h1 class="text-4xl w-full text-center"><?php echo CONFIG_SITE_NAME; ?> RSS Feeds</h1>
                     </section>
                     <?php $current_url = 'feed://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
@@ -99,7 +99,7 @@ if ($result->num_rows > 0) {
         foreach ($row as $page_uri) {
             $router->get($page_uri, function () {
                 $pageuri = $_SERVER['REQUEST_URI'];
-                require_once __DIR__.'/assets/common/processes/render_engine/pages.php';
+                require_once __DIR__ . '/common/processes/render_engine/pages.php';
             });
         }
     }
@@ -113,12 +113,12 @@ $router->get('/', function () {
 // Subrouting
 $router->mount('/articles', function () use ($router) {
     $router->get('/', function () {
-        require_once __DIR__.'/assets/common/processes/render_engine/articles.php';
+        require_once __DIR__ . '/common/processes/render_engine/articles.php';
     });
 
     $router->get('/(\d+)', function ($id) {
         $articleID = htmlspecialchars($id);
-        require_once __DIR__.'/assets/common/processes/render_engine/articles.php';
+        require_once __DIR__ . '/common/processes/render_engine/articles.php';
     });
 });
 

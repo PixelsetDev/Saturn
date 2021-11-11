@@ -1,5 +1,5 @@
 <?php
-    include_once __DIR__.'/../../../../assets/common/global_public.php';
+    include_once __DIR__ . '/../../../../assets/common/global_public.php';
 
     session_start();
 
@@ -110,15 +110,20 @@
     <head>
         <title>Forgot Password - Saturn Panel</title>
         <?php
-        include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../../assets/common/panel/theme.php';
+        include_once __DIR__ . '/../../../../assets/common/panel/vendors.php';
+        include_once __DIR__ . '/../../../../assets/common/panel/theme.php';
         ?>
 
     </head>
     <body>
+        <?php
+        include_once __DIR__ . '/../../../../assets/common/panel/vendors.php';
+        ?>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
+                <h1 class="text-3xl font-bold leading-tight">
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900">Saturn Panel</a>
+                </h1>
             </div>
         </header>
         <main>
@@ -153,7 +158,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                            <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
@@ -178,7 +183,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                            <button type="submit" name="login" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
@@ -186,7 +191,7 @@
                             </button>
                         </div>
 <?php } elseif ($status == 2) { ?>
-                        <a href="'.CONFIG_INSTALL_URL.'/panel/account/signin" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                        <a href="'.CONFIG_INSTALL_URL.'/panel/account/signin" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <i class="fas fa-lock" aria-hidden="true"></i>
                             </span>

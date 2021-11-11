@@ -1,5 +1,4 @@
 <?php
-
     /* Website Theme */
     const THEME_SLUG = 'andromeda';
     const THEME_COLOUR_SCHEME = 'andromeda';

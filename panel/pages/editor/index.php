@@ -1,6 +1,6 @@
 <?php session_start();
     ob_start();
-    include_once __DIR__.'/../../../assets/common/global_private.php';
+    include_once __DIR__ . '/../../../assets/common/global_private.php';
 
     $pageID = checkInput('DEFAULT', $_GET['pageID']);
 
@@ -66,8 +66,8 @@
 <html lang="en">
     <head>
         <?php
-        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../assets/common/panel/theme.php';
+        include_once __DIR__ . '/../../../assets/common/panel/vendors.php';
+        include_once __DIR__ . '/../../../assets/common/panel/theme.php';
         ?>
 
         <title>Page Editor - Saturn Panel</title>
@@ -75,7 +75,7 @@
 
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__ . '/../../../assets/common/panel/navigation.php'; ?>
         <div<?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?> x-data="{ open: false }"<?php } ?>>
             <header class="bg-white shadow">
                 <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">

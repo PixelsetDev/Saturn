@@ -1,8 +1,8 @@
 <?php
     session_start();
     ob_start();
-    require_once __DIR__.'/../../../assets/common/global_private.php';
-    require_once __DIR__.'/../../../assets/common/admin/global.php';
+    require_once __DIR__ . '/../../../assets/common/global_private.php';
+    require_once __DIR__ . '/../../../assets/common/admin/global.php';
     if (isset($_GET['successMsg'])) {
         $successMsg = checkInput('DEFAULT', $_GET['successMsg']);
     }
@@ -21,14 +21,14 @@
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__.'/../../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__ . '/../../../assets/common/panel/vendors.php'; ?>
 
         <title>Themes - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__.'/../../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__ . '/../../../assets/common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
             <h1 class="text-gray-900 text-3xl">Themes</h1>
@@ -106,15 +106,15 @@
             <h2 class="text-gray-900 text-2xl mt-8">Website Assets</h2>
             <div class="flex my-6 space-x-4">
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=icon.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/icon.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Icon">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/icon.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Icon">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Icon</p>
                 </a>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=logo.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=200&maxWidth=1000"  class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Logo">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Logo">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Logo</p>
                 </a>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/assets/images/&renameTo=defaultprofile.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400"  class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/defaultprofile.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Default Profile Picture">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/defaultprofile.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Default Profile Picture">
                     <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Default Profile Picture</p>
                 </a>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/assets/common/global_public.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/common/global_public.php';
 
 const THEME_DIRECTORY = '/themes/';
 

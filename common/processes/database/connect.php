@@ -4,7 +4,7 @@
     if (mysqli_connect_errno($conn)) {
         ?>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <img src="/assets/storage/images/logo.png" class="mx-auto w-1/6 mt-6" alt="<?php echo CONFIG_SITE_NAME; ?>">
+        <img src="/storage/images/logo.png" class="mx-auto w-1/6 mt-6" alt="<?php echo CONFIG_SITE_NAME; ?>">
         <p class="w-full text-center text-xl font-bold mt-8">Saturn Error Recovery.</p>
         <p class="w-full text-center">Sorry, an fatal error has occurred whilst trying to display this page and Saturn was unable to recover.</p>
         <p class="w-full text-center">This should not affect any saved data.</p>

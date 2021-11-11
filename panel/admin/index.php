@@ -1,21 +1,21 @@
 <?php
     session_start();
     ob_start();
-    require_once __DIR__.'/../../assets/common/global_private.php';
-    require_once __DIR__.'/../../assets/common/admin/global.php';
+    require_once __DIR__ . '/../../assets/common/global_private.php';
+    require_once __DIR__ . '/../../assets/common/admin/global.php';
     ob_end_flush();
     $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__.'/../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__ . '/../../assets/common/panel/vendors.php'; ?>
 
         <title><?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__.'/../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__ . '/../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__.'/../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__ . '/../../assets/common/admin/navigation.php'; ?>
 
             <div class="px-8 py-4 w-full">
                 <?php

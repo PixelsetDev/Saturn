@@ -6,7 +6,7 @@
                             <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn" class="flex-none w-40 h-auto">
                         </a>
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/" title="<?php echo CONFIG_SITE_NAME; ?>" class="w-40 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
                         </a>
                     </div>
                     <div class="flex-grow">&nbsp;</div>
@@ -129,5 +129,5 @@
         <div class="flex fixed bottom-0 left-0 px-2 py-1 text-xs w-full bg-<?php echo THEME_PANEL_COLOUR; ?>-100 z-40">
             <span class="w-1/3">Saturn Panel &copy; 2021 - <?php echo date('Y'); ?> Saturn CMS</span>
             <span class="w-1/3 text-center font-bold">Let's Make Saturn Error Free: <a href="https://saturncms.net/feedback" target="_blank" class="font-normal underline text-black" rel="nofollow noopener">Found a problem? Let us know!</a></span>
-            <span class="w-1/3 text-right"><?php echo file_get_contents(__DIR__.'/../../../assets/common/version.txt'); ?></span>
+            <span class="w-1/3 text-right"><?php echo file_get_contents(__DIR__ . '/../../../assets/common/version.txt'); ?></span>
         </div>

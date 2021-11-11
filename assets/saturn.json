@@ -1,6 +1,6 @@
 {
   "saturn": {
     "version": "0.1.0",
-    "storagedir": "/assets/storage"
+    "storagedir": "/storage"
   }
 }

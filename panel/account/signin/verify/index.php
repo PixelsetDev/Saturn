@@ -2,13 +2,13 @@
     ob_start();
     session_start();
 
-    include_once __DIR__.'/../../../../assets/common/global_public.php';
+    include_once __DIR__ . '/../../../../assets/common/global_public.php';
 
-    require_once __DIR__.'/../../../../assets/common/processes/database/get/user.php';
+    require_once __DIR__ . '/../../../../assets/common/processes/database/get/user.php';
 
     if (isset($_POST['verify'])) {
         if (!empty($_POST['code'])) {
-            require_once __DIR__.'/../../../../assets/common/processes/database/update/user.php';
+            require_once __DIR__ . '/../../../../assets/common/processes/database/update/user.php';
             $username = checkInput('DEFAULT', $_GET['username']);
             $id = get_user_id($username);
             $dbCode = get_user_auth_code($id);
@@ -58,7 +58,7 @@
             echo 'Exception: '.$e;
             exit;
         }
-        require_once __DIR__.'/../../../../assets/common/processes/database/update/user.php';
+        require_once __DIR__ . '/../../../../assets/common/processes/database/update/user.php';
         update_user_auth_code($id, $code);
         $email = get_user_email($id);
         send_email($email, CONFIG_SITE_NAME.' - Saturn Verification Code', 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.');
@@ -80,15 +80,17 @@
     <head>
         <title>User Verification - Saturn Panel</title>
         <?php
-        include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../../assets/common/panel/theme.php';
+        include_once __DIR__ . '/../../../../assets/common/panel/vendors.php';
+        include_once __DIR__ . '/../../../../assets/common/panel/theme.php';
         ?>
 
     </head>
     <body>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
+                <h1 class="text-3xl font-bold leading-tight">
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900">Saturn Panel</a>
+                </h1>
             </div>
         </header>
         <main>
@@ -128,7 +130,7 @@
                         </div>
 
                         <div>
-                            <button type="submit" name="verify" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                            <button type="submit" name="verify" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                                         <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                             <i class="fas fa-lock" aria-hidden="true"></i>
                                         </span>

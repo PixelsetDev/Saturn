@@ -2,19 +2,19 @@
 
     ob_start();
     /* Load Configuration */
-    require_once __DIR__.'/../../config.php';
-    require_once __DIR__.'/../storage/core_checksum.php';
-    require_once __DIR__.'/../../theme.php';
+    require_once __DIR__ . '/../config.php';
+    require_once __DIR__ . '/../storage/core_checksum.php';
+    require_once __DIR__ . '/../theme.php';
     // Saturn Info
-    $saturnInfo = json_decode(file_get_contents(__DIR__.'/../saturn.json'));
+    $saturnInfo = json_decode(file_get_contents(__DIR__ . '/../assets/saturn.json'));
     define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
     define('SATURN_STORAGE_DIRECTORY', $saturnInfo->{'saturn'}->{'storagedir'});
     unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Important Functions */
-    require_once __DIR__.'/processes/database/connect.php';
-    require_once __DIR__.'/processes/security/security.php';
-    require_once __DIR__.'/processes/errorHandler.php';
+    require_once __DIR__ . '/processes/database/connect.php';
+    require_once __DIR__ . '/processes/security/security.php';
+    require_once __DIR__ . '/processes/errorHandler.php';
     set_error_handler('errorHandlerError', E_ERROR);
     set_error_handler('errorHandlerWarning', E_WARNING);
     /* Developer Tools */
@@ -24,25 +24,25 @@
     }
     /* Database: Required Files */
     // Create
-    require_once __DIR__.'/processes/database/create.php';
+    require_once __DIR__ . '/processes/database/create.php';
     // Delete
-    require_once __DIR__.'/processes/database/delete/page.php';
+    require_once __DIR__ . '/processes/database/delete/page.php';
     // Get
-    require_once __DIR__.'/processes/database/get.php';
+    require_once __DIR__ . '/processes/database/get.php';
     // Update
-    require_once __DIR__.'/processes/database/update.php';
+    require_once __DIR__ . '/processes/database/update.php';
     /* Required Files */
-    require_once __DIR__.'/processes/resource_loader/resource_loader.php';
-    require_once __DIR__.'/processes/email.php';
-    require_once __DIR__.'/processes/link.php';
-    require_once __DIR__.'/processes/themes.php';
-    require_once __DIR__.'/processes/redirect.php';
-    require_once __DIR__.'/panel/theme.php';
+    require_once __DIR__ . '/processes/resource_loader/resource_loader.php';
+    require_once __DIR__ . '/processes/email.php';
+    require_once __DIR__ . '/processes/link.php';
+    require_once __DIR__ . '/processes/themes.php';
+    require_once __DIR__ . '/processes/redirect.php';
+    require_once __DIR__ . '/panel/theme.php';
     /* GUI */
-    require_once __DIR__.'/processes/gui/dashboard.php';
-    require_once __DIR__.'/processes/gui/alerts.php';
-    require_once __DIR__.'/processes/gui/modals.php';
-    require_once __DIR__.'/processes/gui/user_profile.php';
+    require_once __DIR__ . '/processes/gui/dashboard.php';
+    require_once __DIR__ . '/processes/gui/alerts.php';
+    require_once __DIR__ . '/processes/gui/modals.php';
+    require_once __DIR__ . '/processes/gui/user_profile.php';
     /* Authenticate Session */
     if (!isset($_SESSION['id'])) {
         internal_redirect('/panel/account/signin/?signedout=true');

@@ -2,7 +2,7 @@
     session_start();
     ob_start();
 
-    include_once __DIR__.'/../../assets/common/global_private.php';
+    include_once __DIR__ . '/../../assets/common/global_private.php';
 
     if (!empty($_FILES['uploaded_file'])) {
 
@@ -123,15 +123,15 @@
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../assets/common/panel/theme.php';
+            include_once __DIR__ . '/../../assets/common/panel/vendors.php';
+            include_once __DIR__ . '/../../assets/common/panel/theme.php';
         ?>
 
         <title>File Upload - Saturn Panel</title>
     </head>
     <body class="mb-8">
         <?php if (!isset($_GET['embed'])) {
-            include_once __DIR__.'/../../assets/common/panel/navigation.php';
+            include_once __DIR__ . '/../../assets/common/panel/navigation.php';
         } ?>
 
         <header class="bg-white shadow">
@@ -163,7 +163,7 @@
             <p class="text-<?php echo THEME_PANEL_COLOUR; ?>-700">This file must be a valid image. It must be no bigger than <?php echo checkOutput('DEFAULT', $_GET['maxWidth']); ?> x <?php echo checkOutput('DEFAULT', $_GET['maxHeight']); ?> (width x height).</p>
             <?php
                 }
-                $output = json_decode(file_get_contents(__DIR__.'/../../assets/storage/terms.json'));
+                $output = json_decode(file_get_contents(__DIR__ . '/../../assets/storage/terms.json'));
                 if ($output->data->fileuploadinfo != null || $output->data->fileuploadinfo != '') {
                     ?>
             <h1 class="text-2xl text-<?php echo THEME_PANEL_COLOUR; ?>-700">File Upload Information</h1>

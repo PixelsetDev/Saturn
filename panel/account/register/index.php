@@ -1,12 +1,12 @@
 <?php
-    include_once __DIR__.'/../../../assets/common/global_public.php';
+    include_once __DIR__ . '/../../../assets/common/global_public.php';
     if (CONFIG_REGISTRATION_ENABLED) {
         if (isset($_GET['error'])) {
             $errorMsg = $_GET['error'];
         } else {
             if (isset($_POST['verify'])) {
                 if (!empty($_POST['verify_email'])) {
-                    include_once __DIR__.'/../../../assets/common/processes/database/get/user.php';
+                    include_once __DIR__ . '/../../../assets/common/processes/database/get/user.php';
                     $email = checkInput('DEFAULT', $_POST['verify_email']);
                     if (get_user_email_exists($email)) {
                         $errorMsg = 'A user with this email address already exists.';
@@ -44,7 +44,7 @@
                     exit;
                 }
             } elseif (isset($_POST['register'])) {
-                include_once __DIR__.'/../../../assets/common/processes/database/create/user.php';
+                include_once __DIR__ . '/../../../assets/common/processes/database/create/user.php';
                 $email = $_POST['email_address'];
                 $email = checkInput('DEFAULT', $email);
                 $firstname = $_POST['firstname'];
@@ -70,8 +70,8 @@
     <head>
         <title>Register - Saturn Panel</title>
         <?php
-        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../assets/common/panel/theme.php'; ?>
+        include_once __DIR__ . '/../../../assets/common/panel/vendors.php';
+        include_once __DIR__ . '/../../../assets/common/panel/theme.php'; ?>
 
     </head>
     <body>
@@ -190,8 +190,8 @@
         <head>
             <title>Register - Saturn Panel</title>
             <?php
-            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../../assets/common/panel/theme.php';
+            include_once __DIR__ . '/../../../assets/common/panel/vendors.php';
+            include_once __DIR__ . '/../../../assets/common/panel/theme.php';
             ?>
 
         </head>

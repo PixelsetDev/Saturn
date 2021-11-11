@@ -1,5 +1,5 @@
 <?php ob_start(); session_start();
-    include_once __DIR__.'/../../../assets/common/global_private.php';
+    include_once __DIR__ . '/../../../assets/common/global_private.php';
     if (isset($_POST['message'])) {
         $query = "SET time_zone='".CONFIG_SITE_TIMEZONE."';";
         $rs = mysqli_query($conn, $query);
@@ -15,14 +15,14 @@
 <html lang="en">
     <head>
         <?php
-        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../assets/common/panel/theme.php';
+        include_once __DIR__ . '/../../../assets/common/panel/vendors.php';
+        include_once __DIR__ . '/../../../assets/common/panel/theme.php';
         ?>
 
         <title>Saturn Panel</title>
     </head>
     <body>
-        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__ . '/../../../assets/common/panel/navigation.php'; ?>
 
         <div class="w-screen">
             <div class="grid grid-cols-3 min-w-full border rounded" style="min-height: 80vh;">
