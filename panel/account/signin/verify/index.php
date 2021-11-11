@@ -2,13 +2,13 @@
     ob_start();
     session_start();
 
-    include_once __DIR__ . '/../../../../assets/common/global_public.php';
+    include_once __DIR__.'/../../../../assets/common/global_public.php';
 
-    require_once __DIR__ . '/../../../../assets/common/processes/database/get/user.php';
+    require_once __DIR__.'/../../../../assets/common/processes/database/get/user.php';
 
     if (isset($_POST['verify'])) {
         if (!empty($_POST['code'])) {
-            require_once __DIR__ . '/../../../../assets/common/processes/database/update/user.php';
+            require_once __DIR__.'/../../../../assets/common/processes/database/update/user.php';
             $username = checkInput('DEFAULT', $_GET['username']);
             $id = get_user_id($username);
             $dbCode = get_user_auth_code($id);
@@ -58,7 +58,7 @@
             echo 'Exception: '.$e;
             exit;
         }
-        require_once __DIR__ . '/../../../../assets/common/processes/database/update/user.php';
+        require_once __DIR__.'/../../../../assets/common/processes/database/update/user.php';
         update_user_auth_code($id, $code);
         $email = get_user_email($id);
         send_email($email, CONFIG_SITE_NAME.' - Saturn Verification Code', 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.');
@@ -80,8 +80,8 @@
     <head>
         <title>User Verification - Saturn Panel</title>
         <?php
-        include_once __DIR__ . '/../../../../assets/common/panel/vendors.php';
-        include_once __DIR__ . '/../../../../assets/common/panel/theme.php';
+        include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../../../assets/common/panel/theme.php';
         ?>
 
     </head>

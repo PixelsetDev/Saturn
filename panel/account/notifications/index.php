@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-include_once __DIR__ . '/../../../assets/common/global_private.php';
+include_once __DIR__.'/../../../assets/common/global_private.php';
 if (isset($_GET['dismissNotif'])) {
     $nid = checkInput('DEFAULT', $_GET['dismissNotif']);
     update_notification_dismiss($nid);
@@ -12,14 +12,14 @@ ob_end_flush();
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__ . '/../../../assets/common/panel/vendors.php';
-            include_once __DIR__ . '/../../../assets/common/panel/theme.php';
+            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
+            include_once __DIR__.'/../../../assets/common/panel/theme.php';
         ?>
         <title>Notifications - Saturn Panel</title>
     </head>
     <body class="mb-8">
         <?php
-            include_once __DIR__ . '/../../../assets/common/panel/navigation.php';
+            include_once __DIR__.'/../../../assets/common/panel/navigation.php';
         ?>
 
         <header class="bg-white shadow">
