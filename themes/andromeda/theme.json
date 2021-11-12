@@ -10,7 +10,7 @@
   "framework": "tailwind",
   "theme-colours": {
     "Dark": {
-      "file": "Dark.tc"
+      "file": "dark.tc"
     },
     "Light": {
       "file": "light.tc"
