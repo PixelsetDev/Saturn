@@ -122,6 +122,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     if (CONFIG_DEBUG) {
         log_console('Saturn][Resource Loader][G-Tags', 'Converted 60 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
+
     return $pageOutput;
 }
 

@@ -92,7 +92,7 @@
                             $category = get_page_category_name($i);
                         }
                     } catch (Exception $e) {
-                        errorHandlerError('','An error occurred.');
+                        errorHandlerError('', 'An error occurred.');
                     }
                     ?>
                             </select>
