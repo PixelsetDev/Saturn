@@ -36,10 +36,10 @@ function replacedata($pageOutput, $pageData, $themeData): string
     // Sections
     $pageOutput = str_replace('{{section:navigation}}', $pageData['section']['navigation'], $pageOutput);
     $pageOutput = str_replace('{{section:footer}}', $pageData['section']['footer'], $pageOutput);
-    // Data
-    $pageOutput = str_replace('{{data:title}}', $pageData['title'], $pageOutput);
-    $pageOutput = str_replace('{{data:content}}', $pageData['content'], $pageOutput);
-    $pageOutput = str_replace('{{data:author:name}}', $pageData['author']['id'], $pageOutput);
+    // Page Data
+    $pageOutput = str_replace('{{page:title}}', $pageData['title'], $pageOutput);
+    $pageOutput = str_replace('{{page:content}}', $pageData['content'], $pageOutput);
+    $pageOutput = str_replace('{{page:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
     // Config values
     $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
     $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);

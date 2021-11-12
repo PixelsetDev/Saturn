@@ -23,10 +23,10 @@ function replacedata($articleOutput, $articleData, $themeData): string
     // Sections
     $articleOutput = str_replace('{{section:navigation}}', $articleData['section']['navigation'], $articleOutput);
     $articleOutput = str_replace('{{section:footer}}', $articleData['section']['footer'], $articleOutput);
-    // Data
-    $articleOutput = str_replace('{{data:title}}', $articleData['title'], $articleOutput);
-    $articleOutput = str_replace('{{data:content}}', $articleData['content'], $articleOutput);
-    $articleOutput = str_replace('{{data:author:name}}', $articleData['author']['id'], $articleOutput);
+    // Article Data
+    $articleOutput = str_replace('{{article:title}}', $articleData['title'], $articleOutput);
+    $articleOutput = str_replace('{{article:content}}', $articleData['content'], $articleOutput);
+    $articleOutput = str_replace('{{article:author:name}}', get_user_fullname($articleData['author']['id']), $articleOutput);
     // Config values
     $articleOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $articleOutput);
     $articleOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $articleOutput);
@@ -38,8 +38,6 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{image:logo}}', '/assets/storage/images/logo.png', $articleOutput);
     $articleOutput = str_replace('{{image:icon}}', '/assets/storage/images/icon.png', $articleOutput);
     // Colours
-    $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
-    $cd = json_decode($cd);
     $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
     $cd = json_decode($cd);
     $articleOutput = str_replace('{{colour:text}}', $cd->colours->text, $articleOutput);

@@ -25,6 +25,7 @@
     require_once __DIR__.'/processes/database/get/announcement.php';
     require_once __DIR__.'/processes/database/get/articles.php';
     require_once __DIR__.'/processes/database/get/page.php';
+    require_once __DIR__.'/processes/database/get/user_settings.php';
     require_once __DIR__.'/processes/database/get/user.php';
     /* Required Files */
     require_once __DIR__.'/processes/resource_loader/resource_loader.php';

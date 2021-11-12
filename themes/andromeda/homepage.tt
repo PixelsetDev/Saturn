@@ -7,7 +7,7 @@
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.js" integrity="sha256-9R44V6iCmVV7oDivSSvnPm4oYYirH6gC7ft09IS4j+o=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
         <meta name="theme-color" content="#111827">
-        <title>{{data:title}}</title>
+        <title>{{page:title}} - {{config:sitename}}</title>
     </head>
     <body class="{{colour:bg}} {{colour:text}}">
         {{section:navigation}}
@@ -17,8 +17,10 @@
                             <div class="flex-grow z-10">
                                 <div class="flex">
                                     <div class="w-3/4 flex-grow text-justify">
-                                        <h1 class="text-5xl">{{data:title}}</h1>
-                                        {{data:content}}
+                                        <h1 class="text-5xl">{{page:title}}</h1>
+                                        {{page:content}}<br>
+                                        <br>
+                                        Page by {{page:author:name}}
                                     </div>
                                 </div>
                             </div>
