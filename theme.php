@@ -2,7 +2,7 @@
 
     /* Website Theme */
     const THEME_SLUG = 'andromeda';
-    const THEME_COLOUR_SCHEME = 'dark';
+    const THEME_COLOUR_SCHEME = 'light';
     const THEME_FONT = 'Questrial'; /* Google Font Name */
     /* Panel Theme */
     const THEME_PANEL_FONT = 'Questrial'; /* Google Font Name */
