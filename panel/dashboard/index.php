@@ -1,19 +1,19 @@
 <?php
     session_start();
     ob_start();
-    include_once __DIR__.'/../../assets/common/global_private.php';
+    include_once __DIR__.'/../../common/global_private.php';
     if ($_SESSION['2FA_verified'] || !get_user_settings_security_2fa($_SESSION['id'])) {
         ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../assets/common/panel/theme.php';
+            include_once __DIR__.'/../../common/panel/theme.php';
         $id = $_SESSION['id']; ?>
         <title>Saturn Panel</title>
 
         <?php
-        include_once __DIR__.'/../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../common/panel/vendors.php';
         if (isset($_GET['dismissNotif'])) {
             $nid = $_GET['dismissNotif'];
             update_notification_dismiss($nid);
@@ -144,7 +144,7 @@
         <?php
             exit;
         } ?>
-        <?php include_once __DIR__.'/../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow relative <?php $notifCount = get_notification_count($_SESSION['id']);
         if ($notifCount > '0') {
