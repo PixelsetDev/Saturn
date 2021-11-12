@@ -7,7 +7,7 @@
         <script defer src="{{cdn:js}}"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
         <meta name="theme-color" content="#111827">
-        <title>{{data:title}}</title>
+        <title>{{page:title}}</title>
     </head>
     <body>
         {{section:navigation}}
@@ -19,16 +19,16 @@
                             </svg>
                             <img
                                 class="object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
-                                src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_Vice_Admiral_of_Red_1805_to_1864.png" alt="{{data:title}}"
+                                src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_Vice_Admiral_of_Red_1805_to_1864.png" alt="{{page:title}}"
                             />
-                            Image &copy; {{data:image:credit}} ({{data:image:license}})
+                            Image &copy; {{page:image:credit}} ({{page:image:license}})
                         </div>
                         <div class="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
                             <div class="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
                                 <h2 class="lg:mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none mt-4 lg:mt-0">
-                                    {{data:title}}
+                                    {{page:title}}
                                 </h2>
-                                <p class="pr-5 lg:mb-4 text-base text-gray-700 md:text-lg">By {{data:author:name}}</p>
+                                <p class="pr-5 lg:mb-4 text-base text-gray-700 md:text-lg">By {{page:author:name}}</p>
                             </div>
 
                         </div>
@@ -36,11 +36,11 @@
                 </div>
                 <div class="flex">
                     <div class="max-w-7xl mx-4 pb-6 lg:pt-6 sm:px-6 lg:px-8">
-                        <div x-data="{ open: true }" class="flex">
+                        <div x-page="{ open: true }" class="flex">
                             <div class="flex-grow z-10">
                                 <div class="flex">
                                     <div class="w-3/4 flex-grow text-justify">
-                                        {{data:content}}
+                                        {{page:content}}
                                     </div>
                                 </div>
                             </div>
