@@ -214,8 +214,8 @@
                     </div>
                     <div class="md:h-screen h-auto md:w-1/3">
                         <br class="md:hidden block">
-                        <h2 class="text-gray-900 text-2xl">News</h2>
-                        <iframe src="https://link.saturncms.net/news" class="h-1/2" title="News"></iframe>
+                        <h2 class="text-gray-900 text-2xl px-2">News</h2>
+                        <iframe src="https://link.saturncms.net/news" class="h-1/2 border border-black rounded-md shadow-lg" title="News"></iframe>
                     </div>
                 </div>
             </div>
