@@ -82,13 +82,14 @@
                     $article = get_article_title($i);
                 }
                 if (!$found) {
-            ?>
+                    ?>
             <div class="flex-grow relative pt-1 mb-2">
                 <div class="flex items-center justify-between">
                     <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2">No pending approvals.</h1>
                 </div>
             </div>
-            <?php } ?>
+            <?php
+                } ?>
         </div>
     </body>
 </html>
