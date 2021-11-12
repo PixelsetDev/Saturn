@@ -182,7 +182,7 @@
                             <div class="flex w-full">
                                 <div class="flex-grow">
                                     <h1 class="text-2xl leading-tight text-gray-900"><?php echo $category; ?></h1>
-                                    <span class="text-xs font-semibold inline-block py-1 px-2 height-auto rounded-lg text-<?php echo $statusColour; ?>-500 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
+                                    <span class="text-xs font-semibold inline-block py-1 px-2 height-auto rounded-lg text-<?php echo $statusColour; ?>-900 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
                                 </div>
                                 <div class="flex mb-1 items-center justify-between">
                                     <div class="text-right">
