@@ -1,17 +1,14 @@
 <?php session_start();
+require_once __DIR__.'/../../common/global_private.php';
 
 if (isset($_POST['newArticle'])) {
     create_article($_POST['newArticleTitle']);
 }
-
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../common/global_private.php';
             include_once __DIR__.'/../../common/panel/vendors.php';
-            include_once __DIR__.'/../../common/processes/pages.php';
-            include_once __DIR__.'/../../common/processes/gui/pages.php';
         ?>
         <title>Articles - Saturn Panel</title>
 
@@ -235,7 +232,7 @@ if (isset($_POST['newArticle'])) {
                                 </div>
                             </div>
                             <div class="mb-2 w-30 h-8">
-                                <form action="/panel/articles/index.php/?articleID=1" method="post" x-data="{ open: false }" class="flex space-x-2">
+                                <form action="" method="post" x-data="{ open: false }" class="flex space-x-2">
                                     <div class="flex-grow w-full">
                                         <label for="newArticleTitle" class="sr-only">Password</label>
                                         <input id="newArticleTitle" name="newArticleTitle" type="text" required class="w-full appearance-none relative block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Article Title">
