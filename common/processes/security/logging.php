@@ -30,7 +30,7 @@
         $message = checkOutput('DEFAULT', $message);
         if (LOGGING_ACTIVE === true) {
             $message = date(DATE_FORMAT).' ['.$prefix.'] '.$message."\r\n";
-            $file = __DIR__.'/../../../../storage/logs/security.txt';
+            $file = __DIR__.'/../../../storage/logs/security.txt';
             file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
         }
     }
