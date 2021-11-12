@@ -1,8 +1,8 @@
 <?php
     session_start();
     ob_start();
-    require_once __DIR__.'/../../../assets/common/global_private.php';
-    require_once __DIR__.'/../../../assets/common/admin/global.php';
+    require_once __DIR__.'/../../../common/global_private.php';
+    require_once __DIR__.'/../../../common/admin/global.php';
 
     if (isset($_POST['save'])) {
         if (update_announcement_active('1', checkInput('DEFAULT', $_POST['panel_active'])) &&
@@ -26,14 +26,14 @@
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include __DIR__.'/../../../assets/common/panel/vendors.php'; ?>
+        <?php include __DIR__.'/../../../common/panel/vendors.php'; ?>
 
         <title>Announcements - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
-        <?php require __DIR__.'/../../../assets/common/panel/theme.php'; ?>
+        <?php require __DIR__.'/../../../common/panel/theme.php'; ?>
 
     </head>
     <body class="bg-gray-200">
-        <?php require __DIR__.'/../../../assets/common/admin/navigation.php'; ?>
+        <?php require __DIR__.'/../../../common/admin/navigation.php'; ?>
 
         <form action="index.php" method="post" class="px-8 py-4 w-full">
             <h1 class="text-gray-900 text-3xl">Announcements</h1>

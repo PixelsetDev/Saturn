@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include_once __DIR__.'/../../../assets/common/global_public.php';
+    include_once __DIR__.'/../../../common/global_public.php';
 
     if (isset($_POST['login']) || isset($_GET['login'])) {
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
@@ -22,9 +22,9 @@
                 } elseif ($getUserRow['role_id'] == '0') {
                     $errorMsg = 'Your account has been restricted. If you require access, please contact your administrator.';
                 } else {
-                    require_once __DIR__.'/../../../assets/common/processes/database/get/user.php';
-                    require_once __DIR__.'/../../../assets/common/processes/database/get/user_settings.php';
-                    require_once __DIR__.'/../../../assets/common/processes/database/update/user.php';
+                    require_once __DIR__.'/../../../common/processes/database/get/user.php';
+                    require_once __DIR__.'/../../../common/processes/database/get/user_settings.php';
+                    require_once __DIR__.'/../../../common/processes/database/update/user.php';
                     if (get_user_last_login_ip($getUserRow['id']) != hash_ip($_SERVER['REMOTE_ADDR'])) {
                         echo '<meta http-equiv="refresh" content="0; url='.CONFIG_INSTALL_URL.'/panel/account/signin/verify/?type=1&username='.$getUserRow['username'].'">';
                     } else {
@@ -77,8 +77,8 @@
     <head>
         <title>Sign in - Saturn Panel</title>
         <?php
-            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../../assets/common/panel/theme.php';
+            include_once __DIR__.'/../../../common/panel/vendors.php';
+            include_once __DIR__.'/../../../common/panel/theme.php';
         ?>
 
     </head>

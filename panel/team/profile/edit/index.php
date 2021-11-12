@@ -1,7 +1,7 @@
 <?php session_start();
 
 ob_start();
-include_once __DIR__.'/../../../../assets/common/global_private.php';
+include_once __DIR__.'/../../../../common/global_private.php';
 $user = $_SESSION['id'];
 
 if (isset($_GET['uploadedTo'])) {
@@ -60,15 +60,15 @@ ob_end_flush();
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../../../assets/common/panel/theme.php';
+            include_once __DIR__.'/../../../../common/panel/vendors.php';
+            include_once __DIR__.'/../../../../common/panel/theme.php';
         ?>
 
         <title>Edit <?php echo get_user_fullname($user); ?>'s Profile - Saturn Panel</title>
 
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__.'/../../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../../common/panel/navigation.php'; ?>
         <form class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" method="post" action="index.php">
             <div class="w-full h-48" style="background: url('<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/background.jpg');">
                 <div class="max-w-7xl flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">

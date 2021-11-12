@@ -1,5 +1,5 @@
 <?php ob_start(); session_start();
-    include_once __DIR__.'/../../../assets/common/global_private.php';
+    include_once __DIR__.'/../../../common/global_private.php';
     if (isset($_POST['message'])) {
         $query = "SET time_zone='".CONFIG_SITE_TIMEZONE."';";
         $rs = mysqli_query($conn, $query);
@@ -15,14 +15,14 @@
 <html lang="en">
     <head>
         <?php
-        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../assets/common/panel/theme.php';
+        include_once __DIR__.'/../../../common/panel/vendors.php';
+        include_once __DIR__.'/../../../common/panel/theme.php';
         ?>
 
         <title>Saturn Panel</title>
     </head>
     <body>
-        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
 
         <div class="w-screen">
             <div class="grid grid-cols-3 min-w-full border rounded" style="min-height: 80vh;">
@@ -141,7 +141,7 @@
                                                 />
                                             </a>
                                             <div class="ml-2">
-                                                <span class="block">'.$row['message'].'</span>
+                                                <span class="block break-words max-w-xl md:max-w-sm lg:max-w-xl">'.$row['message'].'</span>
                                                 <span class="block text-xs text-right">'.get_user_fullname($row['user_id']).' '.$row['datetime'].'</span>
                                             </div>
                                         </div>

@@ -1,5 +1,5 @@
 <?php
-    include_once __DIR__.'/../../../../assets/common/global_public.php';
+    include_once __DIR__.'/../../../../common/global_public.php';
 
     session_start();
 
@@ -110,14 +110,14 @@
     <head>
         <title>Forgot Password - Saturn Panel</title>
         <?php
-        include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../../assets/common/panel/theme.php';
+        include_once __DIR__.'/../../../../common/panel/vendors.php';
+        include_once __DIR__.'/../../../../common/panel/theme.php';
         ?>
 
     </head>
     <body>
         <?php
-        include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
+        include_once __DIR__.'/../../../../common/panel/vendors.php';
         ?>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
