@@ -1,8 +1,1 @@
-<?php
-
-    function checkOutput($mode, $data)
-    {
-        $data = checkInput($mode, $data);
-
-        return $data;
-    }
+<?php function checkOutput($mode, $data) { return checkInput($mode, $data); }
