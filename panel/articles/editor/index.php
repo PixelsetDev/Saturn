@@ -73,7 +73,7 @@
                 <textarea name="title" id="title" maxlength="60" class="w-full border"><?php
                     $title = get_article_title($articleID);
                     $title = checkOutput('DEFAULT', $title);
-                    echo $title;
+                    echo stripslashes($title);
                     unset($title);
                     ?></textarea>
             </div>
@@ -84,7 +84,7 @@
                 <textarea name="content" id="content"><?php
                     $content = get_article_content($articleID);
                     $content = checkOutput('HTML', $content);
-                    echo $content;
+                    echo stripslashes($content);
                     unset($content);
                     ?></textarea>
             </div>
@@ -95,7 +95,7 @@
                 <textarea name="references" id="references"><?php
                     $references = get_article_references($articleID);
                     $references = checkOutput('HTML', $references);
-                    echo $references;
+                    echo stripslashes($references);
                     unset($references);
                     ?></textarea>
             </div>

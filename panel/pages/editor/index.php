@@ -184,7 +184,7 @@
                 <h2 class="text-2xl mb-2 font-bold my-2">Title</h2>
                 <label class="hidden" for="title">Title</label>
                 <p class="mb-2">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> Characters.</p>
-                <textarea name="title" id="title" maxlength="<?php echo CONFIG_MAX_TITLE_CHARS; ?>" class="w-full border"><?php
+                <textarea name="title" id="title" maxlength="<?php echo stripslashes(CONFIG_MAX_TITLE_CHARS); ?>" class="w-full border"><?php
                         $pageStatus = get_page_status($pageID);
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $title = get_page_title($pageID);
@@ -207,11 +207,11 @@
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $content = get_page_content($pageID);
                             $content = checkOutput('HTML', $content);
-                            echo $content;
+                            echo stripslashes($content);
                         } elseif ($pageStatus == 'yellow') {
                             $content = get_page_pending_content($pageID);
                             $content = checkOutput('HTML', $content);
-                            echo $content;
+                            echo stripslashes($content);
                         }
                         unset($content);
                 ?></textarea>
@@ -241,11 +241,11 @@
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $references = get_page_references($pageID);
                             $references = checkOutput('HTML', $references);
-                            echo $references;
+                            echo stripslashes($references);
                         } elseif ($pageStatus == 'yellow') {
                             $references = get_page_pending_references($pageID);
                             $references = checkOutput('HTML', $references);
-                            echo $references;
+                            echo stripslashes($references);
                         }
                         unset($references);
                 ?></textarea>
