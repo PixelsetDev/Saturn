@@ -46,10 +46,13 @@
     /* Authenticate Session */
     if (!isset($_SESSION['id'])) {
         internal_redirect('/panel/account/signin/?signedout=true');
+        exit;
     } elseif (!isset($_SESSION['role_id'])) {
         internal_redirect('/panel/account/signin/?signedout=role');
+        exit;
     } elseif (!isset($_SESSION['user_key']) || ($_SESSION['user_key'] != get_user_key($_SESSION['id']))) {
         internal_redirect('/panel/system/error/?err=gss2');
+        exit;
     } else {
         $id = $_SESSION['id'];
         $uid = $_SESSION['id'];
