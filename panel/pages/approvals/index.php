@@ -156,6 +156,7 @@
                                         <div>';
                 if (is_nan($approved / $total) * 100) {
                     $statusColour = 'gray';
+                    $sCol = 'gray';
                     $status = 'No Pages';
                 } elseif ((($approved / $total) * 100) == 100.00) {
                     $statusColour = 'green';
@@ -171,9 +172,10 @@
                     $status = 'No Pending Approvals';
                 } else {
                     $statusColour = 'gray';
+                    $sCol = 'gray';
                     $status = 'Unknown Status';
                 }
-                echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$sCol.'-500 bg-'.$sCol.'-200">'.$status.'</span>
+                echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$sCol.'-900 bg-'.$sCol.'-200">'.$status.'</span>
                                         </div>
                                         <div class="text-right">
                                             <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">';
