@@ -4,7 +4,7 @@
 
     $articleID = checkInput('DEFAULT', $_GET['articleID']);
 
-    if(get_article_author_id($articleID) != $_SESSION['id']) {
+    if (get_article_author_id($articleID) != $_SESSION['id']) {
         internal_redirect('/panel/articles');
     }
 

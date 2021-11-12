@@ -1,1 +1,6 @@
-<?php function checkOutput($mode, $data) { return checkInput($mode, $data); }
+<?php
+
+function checkOutput($mode, $data)
+{
+    return checkInput($mode, $data);
+}
