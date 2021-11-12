@@ -3,7 +3,7 @@
     function ccv_validate($file): bool
     {
         if ($file == 'CONFIG') {
-            $file = file_get_contents(__DIR__.'/../../../../config.php');
+            $file = file_get_contents(__DIR__.'/../../../config.php');
 
             return checksum_validate($file, CCV_CONFIG);
         } else {
@@ -13,7 +13,7 @@
 
     function ccv_reset(): bool
     {
-        $file1 = file_get_contents(__DIR__.'/../../../../config.php');
+        $file1 = file_get_contents(__DIR__.'/../../../config.php');
 
         $newChecksum1 = checksum_generate($file1);
 
