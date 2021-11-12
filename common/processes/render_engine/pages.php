@@ -53,7 +53,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{article:image:credit}}', $pageData['image']['credit'], $pageOutput);
     $pageOutput = str_replace('{{article:image:license}}', $pageData['image']['credit'], $pageOutput);
     // Data
-    $pageOutput = str_replace('{{data:random:integer}}', random_int(0,9999), $pageOutput);
+    $pageOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $pageOutput);
     // Config values
     $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
     $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);

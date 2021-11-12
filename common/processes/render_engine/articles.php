@@ -40,7 +40,7 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{article:image:credit}}', $articleData['image']['credit'], $articleOutput);
     $articleOutput = str_replace('{{article:image:license}}', $articleData['image']['credit'], $articleOutput);
     // Data
-    $articleOutput = str_replace('{{data:random:integer}}', random_int(0,9999), $articleOutput);
+    $articleOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $articleOutput);
     // Config values
     $articleOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $articleOutput);
     $articleOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $articleOutput);
