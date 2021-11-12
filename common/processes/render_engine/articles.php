@@ -24,6 +24,9 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{section:navigation}}', $articleData['section']['navigation'], $articleOutput);
     $articleOutput = str_replace('{{section:footer}}', $articleData['section']['footer'], $articleOutput);
     // Article Data
+    $articleOutput = str_replace('{{page:title}}', $articleData['title'], $articleOutput);
+    $articleOutput = str_replace('{{page:content}}', $articleData['content'], $articleOutput);
+    $articleOutput = str_replace('{{page:author:name}}', get_user_fullname($articleData['author']['id']), $articleOutput);
     $articleOutput = str_replace('{{article:title}}', $articleData['title'], $articleOutput);
     $articleOutput = str_replace('{{article:content}}', $articleData['content'], $articleOutput);
     $articleOutput = str_replace('{{article:author:name}}', get_user_fullname($articleData['author']['id']), $articleOutput);
@@ -104,7 +107,7 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $articleOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', 'Converted 57 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 60 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
 
     return $articleOutput;

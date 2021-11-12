@@ -40,6 +40,9 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{page:title}}', $pageData['title'], $pageOutput);
     $pageOutput = str_replace('{{page:content}}', $pageData['content'], $pageOutput);
     $pageOutput = str_replace('{{page:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
+    $pageOutput = str_replace('{{article:title}}', $pageData['title'], $pageOutput);
+    $pageOutput = str_replace('{{article:content}}', $pageData['content'], $pageOutput);
+    $pageOutput = str_replace('{{article:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
     // Config values
     $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
     $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);
@@ -117,7 +120,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $pageOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', 'Converted 57 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 60 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
     return $pageOutput;
 }
