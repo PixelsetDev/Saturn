@@ -1,8 +1,8 @@
 <?php session_start();
     ob_start();
 
-    include_once __DIR__.'/../../../../assets/common/global_private.php';
-    include_once __DIR__.'/../../../../assets/common/processes/gui/modals.php';
+    include_once __DIR__.'/../../../../common/global_private.php';
+    include_once __DIR__.'/../../../../common/processes/gui/modals.php';
 
     $pageID = checkInput('DEFAULT', $_GET['pageID']);
 
@@ -53,15 +53,15 @@
 <html lang="en">
     <head>
         <?php
-        include_once __DIR__.'/../../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../../assets/common/panel/theme.php';
+        include_once __DIR__.'/../../../../common/panel/vendors.php';
+        include_once __DIR__.'/../../../../common/panel/theme.php';
         ?>
 
         <title>Page Approvals - Saturn Panel</title>
 
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__.'/../../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../../common/panel/navigation.php'; ?>
         <header class="bg-white shadow">
             <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">
                 <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow">Page Approval: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>

@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../assets/common/global_private.php';
-            include_once __DIR__.'/../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../assets/common/panel/theme.php';
-            include_once __DIR__.'/../../assets/common/processes/pages.php';
-            include_once __DIR__.'/../../assets/common/processes/gui/pages.php';
+            include_once __DIR__.'/../../common/global_private.php';
+            include_once __DIR__.'/../../common/panel/vendors.php';
+            include_once __DIR__.'/../../common/panel/theme.php';
+            include_once __DIR__.'/../../common/processes/pages.php';
+            include_once __DIR__.'/../../common/processes/gui/pages.php';
         ?>
         <title>Pages - Saturn Panel</title>
 

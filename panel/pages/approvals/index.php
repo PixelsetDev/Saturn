@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <?php
-        include_once __DIR__.'/../../../assets/common/global_private.php';
-        include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-        include_once __DIR__.'/../../../assets/common/panel/theme.php';
-        include_once __DIR__.'/../../../assets/common/processes/pages.php';
+        include_once __DIR__.'/../../../common/global_private.php';
+        include_once __DIR__.'/../../../common/panel/vendors.php';
+        include_once __DIR__.'/../../../common/panel/theme.php';
+        include_once __DIR__.'/../../../common/processes/pages.php';
         ?>
         <title>Page Approvals - Saturn Panel</title>
 
@@ -37,7 +37,7 @@
 
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">

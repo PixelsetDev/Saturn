@@ -154,7 +154,7 @@ if (isset($_POST['newArticle'])) {
                         } else {
                             $statusColour = 'gray';
                             $status = 'Unknown Status';
-                        } ?><span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-<?php echo $statusColour; ?>-500 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
+                        } ?><span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-lg text-<?php echo $statusColour; ?>-900 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +164,7 @@ if (isset($_POST['newArticle'])) {
                                         </a>
                                         <?php
                         if ($status == 'Published' || $status == 'Pending') {
-                            echo '<form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{ open: false }">
+                            echo '<form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{ open: false }" class="h-8">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-eye-slash" aria-hidden="true"></i>&nbsp;Hide
                                             </a>
@@ -175,7 +175,7 @@ if (isset($_POST['newArticle'])) {
                                 </div>').'
                                         </form>';
                         } elseif ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === false) {
-                            echo '<form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{ open: false }">
+                            echo '<form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{ open: false }" class="h-8">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Publish
                                             </a>
@@ -193,7 +193,7 @@ if (isset($_POST['newArticle'])) {
                             alert('ERROR', 'Unable to fetch approval status.');
                         }
                         $contents = 'Article Owner: '.display_user_dropdown('SELECTME');
-                        echo '          <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{open: false}">
+                        echo '          <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{open: false}" class="h-8">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-cogs" aria-hidden="true"></i>&nbsp;Settings
                                             </a>
@@ -203,7 +203,7 @@ if (isset($_POST['newArticle'])) {
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
                                 </div>').'
                                         </form>
-                                        <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{ open: false }">
+                                        <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{ open: false }" class="h-8">
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-trash-alt" aria-hidden="true"></i>&nbsp;Delete
                                             </a>

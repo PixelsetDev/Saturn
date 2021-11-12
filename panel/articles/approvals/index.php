@@ -2,11 +2,11 @@
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../../assets/common/global_private.php';
-            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../../assets/common/panel/theme.php';
-            include_once __DIR__.'/../../../assets/common/processes/pages.php';
-            include_once __DIR__.'/../../../assets/common/processes/gui/pages.php';
+            include_once __DIR__.'/../../../common/global_private.php';
+            include_once __DIR__.'/../../../common/panel/vendors.php';
+            include_once __DIR__.'/../../../common/panel/theme.php';
+            include_once __DIR__.'/../../../common/processes/pages.php';
+            include_once __DIR__.'/../../../common/processes/gui/pages.php';
         ?>
 
         <title>Articles - Saturn Panel</title>
@@ -31,7 +31,7 @@
 
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -55,6 +55,7 @@
                 $role = get_user_roleID($_SESSION['id']);
                 $i = 1;
                 $article = get_article_title($i);
+                $found = false;
                 while ($article != null) {
                     if (get_article_status($i) == 'PENDING') {
                         echo '            <div>
@@ -62,6 +63,7 @@
                                         <div class="flex-grow relative pt-1 mb-2">
                                             <div class="flex items-center justify-between">
                                                 <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2">'.$article.'</h1>
+                                                <p class="text-gray-500">Requested by '.get_user_fullname(get_article_author_id($i)).'</p>
                                             <div>
                                             <div class="flex items-center justify-between space-x-2">
                                                 <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-yellow-500 bg-yellow-200">Pending</span>
@@ -72,13 +74,21 @@
                                         </div>
                                     </div>
                                 </div>
-                            <hr><br>';
+                            <br><hr><br>';
+                        $found = true;
                     }
                     unset($article);
                     $i++;
                     $article = get_article_title($i);
                 }
+                if (!$found) {
             ?>
+            <div class="flex-grow relative pt-1 mb-2">
+                <div class="flex items-center justify-between">
+                    <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2">No pending approvals.</h1>
+                </div>
+            </div>
+            <?php } ?>
         </div>
     </body>
 </html>
