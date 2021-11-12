@@ -1,12 +1,17 @@
-<?php session_start(); ?><!DOCTYPE html>
+<?php session_start();
+
+if (isset($_POST['newArticle'])) {
+    create_article($_POST['newArticleTitle']);
+}
+
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../assets/common/global_private.php';
-            include_once __DIR__.'/../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../assets/common/panel/theme.php';
-            include_once __DIR__.'/../../assets/common/processes/pages.php';
-            include_once __DIR__.'/../../assets/common/processes/gui/pages.php';
+            include_once __DIR__.'/../../common/global_private.php';
+            include_once __DIR__.'/../../common/panel/vendors.php';
+            include_once __DIR__.'/../../common/processes/pages.php';
+            include_once __DIR__.'/../../common/processes/gui/pages.php';
         ?>
         <title>Articles - Saturn Panel</title>
 
@@ -104,7 +109,7 @@
 
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__.'/../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -132,7 +137,7 @@
                 while ($article != null) {
                     if (get_article_author_id($i) == $_SESSION['id'] && get_article_status($i) != 'DELETED') {
                         $exists = true; ?>  <div>
-                                <div name="<?php echo $article; ?>" id="<?php echo $article; ?>">
+                                <div id="<?php echo $article; ?>">
                                     <div class="flex-0 relative pt-1 mb-2">
                                         <div class="flex items-center justify-between">
                                             <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2"><?php echo $article; ?></h1>
@@ -178,7 +183,7 @@
                                                 <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Publish
                                             </a>
                                             '.display_modal('green', 'Publish Article: '.$article, 'Are you sure you want to publish this article?', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
-                                    <input type="submit" id="publish" name="publish" value="Publish Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-1 md:text-rg md:px-10">
+                                    <input type="submit" id="publish" name="publish" value="Publish Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 bg-green-200 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
                                 </div>').'
@@ -196,7 +201,7 @@
                                                 <i class="fas fa-cogs" aria-hidden="true"></i>&nbsp;Settings
                                             </a>
                                         '.display_modal_sidebar('Article Settings: '.$article, $contents, '<span class="mx-6">WARNING: Check these settings are correct before you save, saving them may cause irreversable changes.</span><div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
-                                    <input type="submit" id="savesettings" name="savesettings" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-1 md:text-rg md:px-10">
+                                    <input type="submit" id="savesettings" name="savesettings" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 bg-green-200 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
                                 </div>').'
@@ -214,13 +219,33 @@
                                     </div>
                                 </div>
                             </div>
-                        <hr><br>';
+                        <br><hr><br>';
                     }
                     unset($article);
                     $i++;
                     $article = get_article_title($i);
                 }
                 ?>
+                <div class="px-4 py-6 sm:px-0">
+                    <div>
+                        <div name="New Article" id="New Article">
+                            <div class="flex-0 relative pt-1 mb-2">
+                                <div class="flex items-center justify-between">
+                                    <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2">Create a New Article</h1>
+                                </div>
+                            </div>
+                            <div class="mb-2 w-30 h-8">
+                                <form action="/panel/articles/index.php/?articleID=1" method="post" x-data="{ open: false }" class="flex space-x-2">
+                                    <div class="flex-grow w-full">
+                                        <label for="newArticleTitle" class="sr-only">Password</label>
+                                        <input id="newArticleTitle" name="newArticleTitle" type="text" required class="w-full appearance-none relative block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Article Title">
+                                    </div>
+                                    <input type="submit" id="newArticle" name="newArticle" value="Create" class="h-auto transition-all duration-200 hover:shadow-lg cursor-pointer flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-900 bg-gray-200 hover:bg-gray-300 md:py-1 md:text-rg md:px-10">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
