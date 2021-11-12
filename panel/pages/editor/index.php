@@ -51,6 +51,9 @@
         update_page_category($pageID, $_POST['settings_page_category']);
         update_page_template($pageID, $_POST['settings_page_template']);
         update_page_url($pageID, $_POST['settings_page_url']);
+        update_page_image_url($pageID, $_POST['settings_page_image']);
+        update_page_image_credit($pageID, $_POST['settings_page_image_credit']);
+        update_page_image_license($pageID, $_POST['settings_page_image_license']);
     }
 
     if (isset($_POST['deletePage'])) {
@@ -119,16 +122,28 @@
                                         <textarea id="settings_page_description" name="settings_page_description" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"><?php echo get_page_description($pageID); ?></textarea>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_category">Page Template</label>
+                                        <label for="settings_page_category" class="self-center">Page Category</label>
                                         <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                                             <option value="1" selected>History</option>
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_template">Page Template</label>
+                                        <label for="settings_page_template" class="self-center">Page Template</label>
                                         <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                                             <option value="DEFAULT" selected>DEFAULT</option>
                                         </select>
+                                    </div>
+                                    <div class="grid grid-cols-2 mb-2">
+                                        <label for="settings_page_image" class="self-center">Page Image URL</label>
+                                        <input id="settings_page_image" name="settings_page_image" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                    </div>
+                                    <div class="grid grid-cols-2 mb-2">
+                                        <label for="settings_page_image_credit" class="self-center">Image Credit</label>
+                                        <input id="settings_page_image_credit" name="settings_page_image_credit" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                    </div>
+                                    <div class="grid grid-cols-2 mb-2">
+                                        <label for="settings_page_image_license" class="self-center">Image License</label>
+                                        <input id="settings_page_image_license" name="settings_page_image_license" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_url" class="self-center">Page URL</label>
@@ -139,7 +154,7 @@
                                     <div class="mt-12 rounded border border-red-500 p-4" x-data="{open:false}">
                                         <h3 class="font-bold text-red-500 pb-4">Danger Zone</h3>
                                         <form action="index.php" method="POST">
-                                            <a @click="open = true" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">Approve Changes</a>
+                                            <a @click="open = true" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">Delete Page</a>
                                             <?php echo display_modal('red', 'Delete Page', 'Are you sure you want to delete this page?<br> <u>This action cannot be undone.</u>', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                     <input type="submit" id="deletePage" name="deletePage" value="Delete Page" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
