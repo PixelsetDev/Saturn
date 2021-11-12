@@ -38,8 +38,8 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $articleOutput);
     $articleOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $articleOutput);
     // Images
-    $articleOutput = str_replace('{{image:logo}}', '/assets/storage/images/logo.png', $articleOutput);
-    $articleOutput = str_replace('{{image:icon}}', '/assets/storage/images/icon.png', $articleOutput);
+    $articleOutput = str_replace('{{image:logo}}', '/storage/images/logo.png', $articleOutput);
+    $articleOutput = str_replace('{{image:icon}}', '/storage/images/icon.png', $articleOutput);
     // Colours
     $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
     $cd = json_decode($cd);

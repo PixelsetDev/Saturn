@@ -51,8 +51,8 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $pageOutput);
     $pageOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $pageOutput);
     // Images
-    $pageOutput = str_replace('{{image:logo}}', '/assets/storage/images/logo.png', $pageOutput);
-    $pageOutput = str_replace('{{image:icon}}', '/assets/storage/images/icon.png', $pageOutput);
+    $pageOutput = str_replace('{{image:logo}}', '/storage/images/logo.png', $pageOutput);
+    $pageOutput = str_replace('{{image:icon}}', '/storage/images/icon.png', $pageOutput);
     // Colours
     $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
     $cd = json_decode($cd);
