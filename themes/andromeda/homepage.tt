@@ -17,7 +17,7 @@
         </div>
         <div>
             <div class="relative z-10 pb-8">
-                <div class="bg-gray-800 px-4 md:px-24 lg:px-8 py-20">
+                <div class="bg-gray-800 px-4 md:px-24 lg:px-8 py-20" style="background-image: url("{{page:image}}");background-repeat: no-repeat, repeat;">
                     <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center self-center">
                         <img src="{{image:logo}}?v={{data:random:integer}}" alt="GeolHistory" class="self-center my-8">
                     </div>
