@@ -178,3 +178,42 @@
             return 'red';
         }
     }
+
+    function get_page_image($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `image_url` FROM `'.DATABASE_PREFIX."pages` WHERE `id` = '".$id."';";
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['image_url'];
+    }
+
+    function get_page_image_credit($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `image_credit` FROM `'.DATABASE_PREFIX."pages` WHERE `id` = '".$id."';";
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['image_credit'];
+    }
+
+    function get_page_image_license($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `image_license` FROM `'.DATABASE_PREFIX."pages` WHERE `id` = '".$id."';";
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['image_license'];
+    }

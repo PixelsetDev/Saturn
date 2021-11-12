@@ -24,6 +24,9 @@ function getdata($pageID): array
     $pageData['author']['id'] = get_page_last_edit_user_id($pageID);
     $pageData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $pageData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
+    $pageData['image']['url'] = get_page_image($pageID);
+    $pageData['image']['credit'] = get_page_image_credit($pageID);
+    $pageData['image']['license'] = get_page_image_license($pageID);
 
     return $pageData;
 }
@@ -40,9 +43,17 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{page:title}}', $pageData['title'], $pageOutput);
     $pageOutput = str_replace('{{page:content}}', $pageData['content'], $pageOutput);
     $pageOutput = str_replace('{{page:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
+    $pageOutput = str_replace('{{page:image}}', $pageData['image']['url'], $pageOutput);
+    $pageOutput = str_replace('{{page:image:credit}}', $pageData['image']['credit'], $pageOutput);
+    $pageOutput = str_replace('{{page:image:license}}', $pageData['image']['credit'], $pageOutput);
     $pageOutput = str_replace('{{article:title}}', $pageData['title'], $pageOutput);
     $pageOutput = str_replace('{{article:content}}', $pageData['content'], $pageOutput);
     $pageOutput = str_replace('{{article:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
+    $pageOutput = str_replace('{{article:image}}', $pageData['image']['url'], $pageOutput);
+    $pageOutput = str_replace('{{article:image:credit}}', $pageData['image']['credit'], $pageOutput);
+    $pageOutput = str_replace('{{article:image:license}}', $pageData['image']['credit'], $pageOutput);
+    // Data
+    $pageOutput = str_replace('{{data:random:integer}}', random_int(0,9999), $pageOutput);
     // Config values
     $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
     $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);
@@ -54,7 +65,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{image:logo}}', '/storage/images/logo.png', $pageOutput);
     $pageOutput = str_replace('{{image:icon}}', '/storage/images/icon.png', $pageOutput);
     // Colours
-    $cd = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
+    $cd = file_get_contents(__DIR__.'/../../../themes/'.THEME_SLUG.'/'.THEME_COLOUR_SCHEME.'.tc');
     $cd = json_decode($cd);
     $pageOutput = str_replace('{{colour:text}}', $cd->colours->text, $pageOutput);
     $pageOutput = str_replace('{{colour:bg}}', $cd->colours->bg, $pageOutput);
@@ -120,7 +131,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $pageOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', 'Converted 60 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 73 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
 
     return $pageOutput;
