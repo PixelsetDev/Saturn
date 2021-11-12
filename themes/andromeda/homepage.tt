@@ -12,23 +12,26 @@
         <title>{{page:title}} - {{config:sitename}}</title>
     </head>
     <body class="{{colour:bg}} {{colour:text}}">
-        {{section:navigation}}
-                <div class="flex mt-20">
-                    <div class="max-w-7xl mx-4 pb-6 lg:pt-6 sm:px-6 lg:px-8">
-                        <div class="flex">
-                            <div class="flex-grow z-10">
-                                <div class="flex">
-                                    <div class="w-3/4 flex-grow text-justify">
-                                        <h1 class="text-5xl">{{page:title}}</h1>
-                                        {{page:content}}<br>
-                                        <br>
-                                        Page by {{page:author:name}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="z-20">
+            {{section:navigation}}
+        </div>
+        <div>
+            <div class="relative z-10 pb-8">
+                <div class="bg-gray-800 px-4 md:px-24 lg:px-8 py-20">
+                    <div class="relative max-w-2xl sm:mx-auto sm:max-w-xl md:max-w-2xl sm:text-center self-center">
+                        <img src="{{image:logo}}?v={{data:random:integer}}" alt="GeolHistory" class="self-center my-8">
                     </div>
                 </div>
+            </div>
+            <div class="relative">
+                <h1 class="text-5xl md:text-7xl mb-8 text-center">{{page:title}}</h1>
+            </div>
+            <div class="flex space-x-8 mx-4 sm:px-6 lg:px-8 mb-8">
+                <div class="w-2/3 flex-grow text-justify">
+                    {{page:content}}
+                </div>
+            </div>
+        </div>
         {{section:footer}}
     </body>
 </html>

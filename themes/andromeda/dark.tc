@@ -19,7 +19,7 @@
         "focus": "text-white"
       },
       "bg": {
-        "default": "bg-gray-800",
+        "default": "bg-gray-900",
         "hover": "bg-gray-700",
         "focus": "bg-gray-700"
       }
