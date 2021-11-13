@@ -139,6 +139,8 @@ function replacedata($pageOutput, $pageData, $themeData): string
 
 $pageID = get_page_id_from_url($pageuri);
 
+update_user_statistics_increment_pageviews($_SESSION['id']);
+
 $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/theme.json'));
 
 $file = strtolower(get_page_template($pageID));

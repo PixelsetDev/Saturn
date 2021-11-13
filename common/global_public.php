@@ -26,7 +26,9 @@
     require_once __DIR__.'/processes/database/get/articles.php';
     require_once __DIR__.'/processes/database/get/page.php';
     require_once __DIR__.'/processes/database/get/user_settings.php';
+    require_once __DIR__.'/processes/database/get/user_statistics.php';
     require_once __DIR__.'/processes/database/get/user.php';
+    require_once __DIR__.'/processes/database/update/user_statistics.php';
     /* Required Files */
     require_once __DIR__.'/processes/resource_loader/resource_loader.php';
     require_once __DIR__.'/processes/email.php';
