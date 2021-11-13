@@ -1,6 +1,6 @@
 <?php
 
-    function get_page_category_name($id): string
+    function get_page_category_name($id)
     {
         $id = checkInput('DEFAULT', $id);
 
@@ -11,6 +11,19 @@
         $row = mysqli_fetch_assoc($rs);
 
         return $row['name'];
+    }
+
+    function get_category_id_from_name($name)
+    {
+        $name = checkInput('DEFAULT', $name);
+
+        global $conn;
+
+        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."pages_categories` WHERE `name` = '".$name."'";
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['id'];
     }
 
     function get_page_category_id($id): string
