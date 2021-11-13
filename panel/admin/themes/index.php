@@ -60,7 +60,7 @@
 
                     $themeImage = $themeData->{'theme'}->{'image'};
                     if ($themeImage == '') {
-                        $themeImage = CONFIG_INSTALL_URL.'/assets/images/no-image-500x500.png';
+                        $themeImage = CONFIG_INSTALL_URL.'/storage/images/no-image-500x500.png';
                     }
 
                     $themeFramework = $themeData->{'theme'}->{'framework'};
@@ -76,7 +76,7 @@
                         <?php if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) { ?><p class="text-xs text-white">ACTIVE</p><?php } ?>
                     </div>
                     <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
-                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/images/icons/<?php echo $themeFramework; ?>.svg" class="w-6 h-6" alt="<?php echo $themeFramework; ?>">
+                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/icons/<?php echo $themeFramework; ?>.svg" class="w-6 h-6" alt="<?php echo $themeFramework; ?>">
                     </div>
                     <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
                         <?php echo $themeData->{'theme'}->{'version'}->{'theme'}; ?>
