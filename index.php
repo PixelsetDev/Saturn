@@ -107,7 +107,7 @@ if ($result->num_rows > 0) {
 
 // Homepage
 $router->get('/', function () {
-    echo '<h1>Saturn</h1><p>Whoops, we were unable to locate a file to render for the homepage. Please allocate a homepage in the Saturn Panel.</p>';
+    echo '<h1>Saturn</h1><p>Whoops, we were unable to locate a file to render for the homepage. Please allocate a homepage in the <a href="panel">Saturn Panel</a>.</p>';
 });
 
 // Subrouting
