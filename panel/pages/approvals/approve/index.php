@@ -19,11 +19,11 @@
     }
 
     if (isset($_POST['approve'])) {
-        $title = get_page_pending_title($pageID);
-        $content = get_page_pending_content($pageID);
-        $references = get_page_pending_references($pageID);
+        $title = checkInput('HTML', get_page_pending_title($pageID));
+        $content = checkInput('HTML', get_page_pending_content($pageID));
+        $references = checkInput('HTML', get_page_pending_references($pageID));
         $uid = get_page_pending_user_id($pageID);
-        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `title`='$title',`content`='$content',`reference`='$references',`user_id`='$uid' WHERE `id`='$pageID';";
+        $query = "UPDATE `".DATABASE_PREFIX."pages` SET `title`='$title',`content`='$content',`reference`='$references',`user_id`='$uid' WHERE `id`='$pageID';";
         $rs = mysqli_query($conn, $query);
         $query = 'INSERT INTO `'.DATABASE_PREFIX."pages_history` (`id`, `page_id`, `user_id`, `timestamp`) VALUES (NULL, '".$pageID."', '".$uid."', CURRENT_TIMESTAMP)";
         $rs = mysqli_query($conn, $query);
