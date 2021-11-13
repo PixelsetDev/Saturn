@@ -19,7 +19,7 @@
 
         global $conn;
 
-        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `category` = '".$data."' WHERE `id` = ".$id;
+        $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `category_id` = '".$data."' WHERE `id` = ".$id;
 
         return mysqli_query($conn, $query);
     }
