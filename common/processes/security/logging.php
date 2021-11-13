@@ -5,8 +5,6 @@
     function log_all($prefix, $message)
     {
         $prefix = strtoupper($prefix);
-        $prefix = checkOutput('DEFAULT', $prefix);
-        $message = checkOutput('DEFAULT', $message);
         if (LOGGING_ACTIVE === true) {
             log_console($prefix, $message);
             log_file($prefix, $message);
@@ -16,8 +14,6 @@
     function log_console($prefix, $message)
     {
         $prefix = strtoupper($prefix);
-        $prefix = checkOutput('DEFAULT', $prefix);
-        $message = checkOutput('DEFAULT', $message);
         if (LOGGING_ACTIVE && CONFIG_DEBUG) {
             echo '<script>console.log("'.date(DATE_FORMAT).' ['.$prefix.'] '.$message.'");</script>';
         }
@@ -26,8 +22,6 @@
     function log_file($prefix, $message)
     {
         $prefix = strtoupper($prefix);
-        $prefix = checkOutput('DEFAULT', $prefix);
-        $message = checkOutput('DEFAULT', $message);
         if (LOGGING_ACTIVE === true) {
             $message = date(DATE_FORMAT).' ['.$prefix.'] '.$message."\r\n";
             $file = __DIR__.'/../../../storage/logs/security.txt';
