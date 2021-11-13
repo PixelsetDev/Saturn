@@ -29,7 +29,7 @@ function create_category($title, $homepage): bool
 
     global $conn;
 
-    $query = "INSERT INTO `".DATABASE_PREFIX."pages_categories` (`id`, `name`, `homepage_id`) VALUES (NULL, '".$title."', '".$homepage."')";
+    $query = 'INSERT INTO `'.DATABASE_PREFIX."pages_categories` (`id`, `name`, `homepage_id`) VALUES (NULL, '".$title."', '".$homepage."')";
 
     if (mysqli_query($conn, $query)) {
         $return = true;

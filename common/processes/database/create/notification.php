@@ -6,7 +6,7 @@
         $title = checkInput('HTML', $title);
         $message = checkInput('HTML', $message);
 
-        $message = str_replace('\\', "", $message);
+        $message = str_replace('\\', '', $message);
 
         // Get user notification preference
         $type = get_user_notification_preference($id);
