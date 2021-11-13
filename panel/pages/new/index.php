@@ -1,11 +1,16 @@
-<?php session_start(); ob_start(); ?><!DOCTYPE html>
+<?php session_start(); ob_start();?><!DOCTYPE html>
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../../assets/common/global_private.php';
-            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../../assets/common/panel/theme.php';
-            if (isset($_GET['create'])) {
+            include_once __DIR__.'/../../../common/global_private.php';
+            include_once __DIR__.'/../../../common/panel/vendors.php';
+            include_once __DIR__.'/../../../common/panel/theme.php';
+
+            if (isset($_GET['categorytitle'])) {
+                create_category(checkInput('DEFAULT', $_GET['categorytitle']), '0');
+                internal_redirect('/panel/pages');
+                exit;
+            } elseif (isset($_GET['create'])) {
                 $pageTitle = trim(checkInput('DEFAULT', $_GET['pagetitle']));
             } elseif (isset($_POST['posted'])) {
                 $pageURL = trim(checkInput('DEFAULT', $_POST['pageurl']));
@@ -35,7 +40,7 @@
         <title>New Page (<?php echo $pageTitle; ?>) - Saturn Panel</title>
     </head>
     <body class="mb-8">
-        <?php include_once __DIR__.'/../../../assets/common/panel/navigation.php'; ?>
+        <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
