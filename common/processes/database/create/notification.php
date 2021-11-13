@@ -1,12 +1,12 @@
 <?php
 
-    function create_notification($id, $title, $message): bool
+    function create_notification($id, $title, $message)
     {
         $id = checkInput('DEFAULT', $id);
-        $title = checkInput('DEFAULT', $title);
-        $message = checkInput('DEFAULT', $message);
+        $title = checkInput('HTML', $title);
+        $message = checkInput('HTML', $message);
 
-        $message = str_replace('\\', "<span style='display:none;'>\\</span>", $message);
+        $message = str_replace('\\', "", $message);
 
         // Get user notification preference
         $type = get_user_notification_preference($id);
