@@ -8,4 +8,4 @@
     const THEME_PANEL_FONT = 'Questrial'; /* Google Font Name */
     const THEME_PANEL_COLOUR = 'gray';
     /* Site Branding */
-    const THEME_SOCIAL_IMAGE = CONFIG_INSTALL_URL.'/assets/images/social-image.jpg';
+    const THEME_SOCIAL_IMAGE = CONFIG_INSTALL_URL.'/storage/images/social-image.jpg';
