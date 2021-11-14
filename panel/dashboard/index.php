@@ -156,11 +156,14 @@
             <?php if ($notifCount > '0') {
             echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_latest_notification_id($_SESSION['id']).'" class="m-1 bg-white rounded-lg border-gray-300 border p-3 shadow-lg absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
                 <div class="flex flex-row">
-                    <div class="animate-pulse px-2 bg-blue-500 rounded-full w-6 h-6 text-white text-center">
-                        <i class="fas fa-info" aria-hidden="true"></i>
-                    </div>
+                    <span class="animate-pulse bg-blue-500 h-6 w-6 rounded-full relative text-center">
+                        <i class="fas fa-info text-white self-center object-center py-1" aria-hidden="true"></i>
+                    </span>
                     <div class="ml-2 mr-6">
-                        <div class="flex w-full"><span class="font-semibold w-11/12">'.get_latest_notification_title($_SESSION['id']).'</span><span class="w-1/12 text-red-500">x</span></div>
+                        <div class="flex w-full">
+                            <span class="font-semibold flex-grow">'.get_latest_notification_title($_SESSION['id']).'</span>
+                            <span class="text-red-500"><i class="fas fa-times text-red-500 self-center object-center py-1" aria-hidden="true"></i></span>
+                        </div>
                         <span class="block text-gray-500">'.get_latest_notification_content($_SESSION['id']).'</span>
                     </div>
                 </div>
@@ -198,8 +201,8 @@
                 <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-gray-800">
                     <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages">
                         <div class="flex items-center">
-                            <span class="bg-green-500 px-3 py-2 h-10 w-10 rounded-full relative">
-                                <i class="far fa-file fa-lg text-white" aria-hidden="true"></i>
+                            <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
+                                <i class="far fa-file fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                             </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                                 Pages
@@ -219,8 +222,8 @@
                 <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-gray-800 ml-4">
                     <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles">
                         <div class="flex items-center">
-                            <span class="bg-green-500 px-2 py-2 h-10 w-10 rounded-full relative">
-                                <i class="far fa-newspaper fa-lg text-white" aria-hidden="true"></i>
+                            <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
+                                <i class="far fa-newspaper fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                             </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                                 Articles
@@ -241,8 +244,8 @@
                 <div x-data="{ open: false }" class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-gray-800">
                     <a @click="open = true" class="cursor-pointer">
                         <div class="flex items-center">
-                            <span class="bg-green-500 px-2 py-2 h-10 w-10 rounded-full relative">
-                                <i class="fas fa-search fa-lg text-white" aria-hidden="true"></i>
+                            <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
+                                <i class="fas fa-search fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                             </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                                 Pending <br class="md:hidden block">Approvals
@@ -280,8 +283,8 @@
         $uid = $row[0]; ?>
                 <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-gray-800 relative overflow-hidden mt-4">
                     <div class="flex items-center">
-                        <span class="bg-green-500 px-3 py-2 h-10 w-10 rounded-full relative">
-                            <i class="fas fa-pencil-alt fa-lg text-white" aria-hidden="true"></i>
+                        <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
+                            <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                         </span>
                         <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                             Top Writers
@@ -333,8 +336,8 @@
                     $uid = $row[0];
                     echo '<div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-gray-800 relative overflow-hidden mt-4">
                     <div class="flex items-center">
-                        <span class="bg-green-500 px-3 py-2 h-10 w-10 rounded-full relative">
-                            <i class="fas fa-pencil-ruler fa-lg text-white" aria-hidden="true"></i>
+                        <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
+                            <i class="fas fa-pencil-ruler fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                         </span>
                         <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                             Top Editors
