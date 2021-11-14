@@ -124,11 +124,13 @@
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_category" class="self-center">Page Category</label>
                                         <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-<?php                                       $i=1;
+<?php                                       $i = 1;
                                             $category = get_page_category_name($i);
                                             while ($category != null) {
                                                 ?>
-                                            <option value="<?php echo get_category_id_from_name($category); ?>"<?php if(get_category_id_from_name($category) == get_page_category_id($pageID)) { echo ' selected'; } ?>><?php echo $category; ?></option>
+                                            <option value="<?php echo get_category_id_from_name($category); ?>"<?php if (get_category_id_from_name($category) == get_page_category_id($pageID)) {
+                                                    echo ' selected';
+                                                } ?>><?php echo $category; ?></option>
 <?php                                           $i++;
                                                 $category = get_page_category_name($i);
                                             } ?>
@@ -138,28 +140,32 @@
                                         <label for="settings_page_template" class="self-center">Page Template</label>
                                         <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                                             <?php
-                                        $files = glob(__DIR__."/../../../themes/".THEME_SLUG."/*.tt");
+                                        $files = glob(__DIR__.'/../../../themes/'.THEME_SLUG.'/*.tt');
                                         foreach ($files as $file) {
                                             $file = substr($file, strrpos($file, '/') + 1);
-                                            $file = substr($file, 0, strpos($file, "."));
+                                            $file = substr($file, 0, strpos($file, '.'));
                                             $file = strtoupper($file);
-                                            if($file != 'NAVIGATION' && $file != 'FOOTER' && $file != 'ARTICLE') {
-                                        ?>
-                                        <option value="<?php echo $file; ?>"<?php if(get_page_template($pageID) == $file) { echo ' selected'; } ?>><?php echo $file; ?></option>
-                                        <?php }} ?>
+                                            if ($file != 'NAVIGATION' && $file != 'FOOTER' && $file != 'ARTICLE') {
+                                                ?>
+                                        <option value="<?php echo $file; ?>"<?php if (get_page_template($pageID) == $file) {
+                                                    echo ' selected';
+                                                } ?>><?php echo $file; ?></option>
+                                        <?php
+                                            }
+                                        } ?>
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_image" class="self-center">Page Image URL</label>
-                                        <input id="settings_page_image" name="settings_page_image" type="text" value="<?php echo get_page_image($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                        <input id="settings_page_image" name="settings_page_image" type="text" value="<?php echo get_page_image($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_image_credit" class="self-center">Image Credit</label>
-                                        <input id="settings_page_image_credit" name="settings_page_image_credit" type="text" value="<?php echo get_page_image_credit($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                        <input id="settings_page_image_credit" name="settings_page_image_credit" type="text" value="<?php echo get_page_image_credit($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_image_license" class="self-center">Image License</label>
-                                        <input id="settings_page_image_license" name="settings_page_image_license" type="text" value="<?php echo get_page_image_license($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                        <input id="settings_page_image_license" name="settings_page_image_license" type="text" value="<?php echo get_page_image_license($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_url" class="self-center">Page URL</label>

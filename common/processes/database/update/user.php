@@ -55,7 +55,7 @@
 
         global $conn;
 
-        $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `edits` = '".$data."' WHERE `id` = ".$id;
+        $query = 'UPDATE `'.DATABASE_PREFIX."users_statistics` SET `edits` = '".$data."' WHERE `id` = ".$id;
 
         return mysqli_query($conn, $query);
     }
@@ -67,7 +67,7 @@
 
         global $conn;
 
-        $query = 'UPDATE `'.DATABASE_PREFIX."users` SET `approvals` = '".$data."' WHERE `id` = ".$id;
+        $query = 'UPDATE `'.DATABASE_PREFIX."users_statistics` SET `approvals` = '".$data."' WHERE `id` = ".$id;
 
         return mysqli_query($conn, $query);
     }
