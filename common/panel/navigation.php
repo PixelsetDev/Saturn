@@ -87,14 +87,7 @@
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-t-lg lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo get_user_profile_link($_SESSION['id']); ?>">My Profile</a>
                                 <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-none lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/team/profile/edit">Account Settings</a>
                                 <hr>
-                                <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-none lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/notifications"><?php if ($notifCount == 0) {
-                            echo 'No Notification';
-                        } else {
-                            echo $notifCount.' Notification';
-                        }
-                    if ($notifCount > 1 || $notifCount == 0) {
-                        echo's';
-                    }?></a><?php unset($notifCount); ?>
+                                <a class="block text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-none lg:mt-0 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/notifications">Notifications <span class="px-1 h-6 bg-red-500 rounded-full text-xs"><?php echo $notifCount; unset($notifCount); ?></span></a>
                                 <?php
                                     if (get_user_roleID($_SESSION['id']) == '4') {
                                         ?>
