@@ -29,7 +29,7 @@
             }
 
             $key = '
-                                                        <div class="text-xs text-left absolute bottom-2 left-0 h-16 w-30 p-2 bg-gray-50 rounded">
+                                                        <div class="text-xs text-left absolute bottom-0 left-0 h-20 w-30 p-2 bg-gray-50 rounded-tr">
                                                             <span class="text-red-500">Red:</span> No Content<br>
                                                             <span class="text-yellow-500">Yellow:</span> Pending Approval<br>
                                                             <span class="text-green-500">Green:</span> Currently Live<br>
@@ -97,7 +97,6 @@ $results = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM `".DATABASE_PREFI
 foreach ($results as $result) {
     if ($result[5] != null) {
         $status = get_page_status($result[0]);
-        var_dump($status);
         if ($status == 'green') {
             $complete++;
         } elseif ($status == 'yellow') {

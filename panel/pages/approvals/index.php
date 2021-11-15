@@ -62,82 +62,83 @@
                 $approved = 0;
                 $pending = 0;
                 $total = 0;
-                echo '<div x-data="{ open: false }">
-                            <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
-                                <div class="absolute inset-0 overflow-hidden">
-                                    <div class="absolute inset-0 bg-gray-500 bg-opacity-75" aria-hidden="true" @click="open = false"></div>
-                                    <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
-                                        <div class="relative w-screen max-w-md">
-                                            <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
-                                                <button @click="open = false" class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
-                                                    <span class="sr-only">Close panel</span>
-                                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
-                                                <div class="px-4 sm:px-6">
-                                                    <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
-                                                        '.$category.'
-                                                    </h2>
+                ?>
+                <div x-data="{ open: false }">
+                    <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
+                        <div class="absolute inset-0 overflow-hidden">
+                            <div class="absolute inset-0 bg-gray-500 bg-opacity-75" aria-hidden="true" @click="open = false"></div>
+                            <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
+                                <div class="relative w-screen max-w-md">
+                                    <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
+                                        <button @click="open = false" class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                                            <span class="sr-only">Close panel</span>
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                                        <div class="px-4 sm:px-6">
+                                            <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
+                                                <?php echo $category; ?>
+                                            </h2>
+                                        </div>
+                                        <div class="mt-6 relative flex-1 px-4 sm:px-6">
+                                            <div class="absolute inset-0 px-4 sm:px-6 h-full">
+                                                <p>Please select a page.</p>
+                                                <?php
+                                                $results = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM `".DATABASE_PREFIX."pages` WHERE `category_id` = ".$i));
+
+                                                foreach ($results as $result) {
+                                                if ($result[5] != null) {
+                                                $status = get_page_status($result[0]);
+                                                if (get_page_pending_title($result[0]) != null && get_page_pending_title($result[0]) != '') {
+                                                    $pending++;
+                                                    $status = 'red';
+                                                } else {
+                                                    $approved++;
+                                                    $status = 'green';
+                                                }
+                                                $total++; ?>
+                                                <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
+                                                    <div class="flex w-full relative">
+                                                        <div class="flex-grow">
+                                                            <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full"></div>
+                                                            <?php if ($status == 'red') { ?>
+                                                                <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
+                                                            <?php } ?>
+                                                            <div class="flex-grow mr-2 self-center"><?php echo $result[5]; ?>
+                                                                <?php if ($result[0] == get_page_category_homepage($i)) { ?>
+                                                                    <i class="fas fa-home" aria-hidden="true"></i>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div class="text-xs normal-case font-normal">
+                                                                <?php echo $result[6]; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <a href="approve/?pageID=<?php echo $result[0]; ?>" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                                                Approve
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-xs normal-case font-normal text-gray-400 italic">
+                                                        <?php
+                                                        if ($status == 'yellow') {
+                                                            echo 'Pending approval request from '.get_user_fullname(get_page_pending_user_id($result[0])).'.';
+                                                        } elseif ($status == 'red') {
+                                                            echo'This page has not been edited by anyone yet.';
+                                                        } else {
+                                                            echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($result[0])).' at '.get_page_last_edit_timestamp($result[0]).'.';
+                                                        }
+                                                        ?>
+                                                    </div>
                                                 </div>
-                                                <div class="mt-6 relative flex-1 px-4 sm:px-6">
-                                                    <div class="absolute inset-0 px-4 sm:px-6 h-full">
-                                                        <p>Please select a page.</p>';
-
-                $o = pageQuery_1($i);
-
-                $row = pageQuery_2($i, $o);
-
-                while ($row['title'] != null) {
-                    $row = pageQuery_2($i, $o);
-
-                    if ($row['title'] != null) {
-                        $status = get_page_status($o);
-                        if ($status == 'red') {
-                            $status = 'green';
-                        }
-                        if ($status == 'green') {
-                            $approved++;
-                        } elseif ($status == 'yellow') {
-                            if (CONFIG_PAGE_APPROVALS) {
-                                $pending++;
-                                $status = 'red';
-                            } else {
-                                $status = 'green';
-                                $approved++;
-                            }
-                        }
-                        $total++;
-                        echo'<div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
-                                                                    <div class="flex w-full relative">
-                                                                        <div class="flex-grow">
-                                                                            <div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full"></div>
-                                                                            ';
-                        if (($status == 'yellow' || $status == 'red') && CONFIG_PAGE_APPROVALS) {
-                            echo'<div class="absolute -top-1 -right-1 bg-'.$status.'-500 w-3 h-3 rounded-full animate-ping"></div>';
-                        }
-                        echo'
-                                                                            <div class="flex-grow mr-2 self-center">'.get_page_title($o).'</div>
-                                                                            <div class="text-xs normal-case font-normal">
-                                                                                '.get_page_description($o).'
-                                                                            </div>
-                                                                        </div>
-                                                                        <div><a href="approve/?pageID='.$o.'" class="hover:shadow-xl w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 text-'.THEME_PANEL_COLOUR.'-900 md:py-1 md:text-rg md:px-10">Approve</span></a></div>
-                                                                    </div>
-                                                                    <div class="text-xs normal-case font-normal text-gray-400 italic">';
-                        if ($status == 'red') {
-                            echo 'Approval request from '.get_user_fullname(get_page_pending_user_id($o));
-                        } else {
-                            echo 'No pending approval requests.';
-                        }
-                        echo'</div>
-                                                                </div>
-                                                                <br><br>';
-                    }
-                    $o++;
-                }
+                                                <br><br>
+                                                <?php
+    unset($result, $status);
+    }
+}
                 echo '
                                                         <br><br><br><br>
                                                     </div>
@@ -148,7 +149,7 @@
                                     </section>
                                 </div>
                             </div>
-                            <h1 class="text-xl font-bold leading-tight text-gray-900">'.$category.'</h1>
+                            <h1 class="text-2xl leading-tight text-gray-900">'.$category.'</h1>
                             
                             <div class="flex">
                                 <div class="flex-grow h-16 relative pt-1">
@@ -175,7 +176,7 @@
                     $sCol = 'gray';
                     $status = 'Unknown Status';
                 }
-                echo '<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-'.$sCol.'-900 bg-'.$sCol.'-200">'.$status.'</span>
+                echo '<span class="text-xs font-semibold inline-block py-1 px-2 height-auto rounded-lg text-'.$sCol.'-900 bg-'.$sCol.'-200">'.$status.'</span>
                                         </div>
                                         <div class="text-right">
                                             <span class="text-xs font-semibold inline-block">Approved: <span class="text-xs font-semibold inline-block text-gray-600">';
@@ -197,7 +198,7 @@
                 echo '</span></span>
                                         </div>
                                     </div>
-                                    <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-400">
+                                    <div class="overflow-hidden h-1.5 mb-4 text-xs flex rounded bg-red-400">
                                         <div style="width:'.(($approved / $total) * 100).'%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
                                     </div>
                                 </div>
