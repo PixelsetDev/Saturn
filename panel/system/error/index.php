@@ -1,4 +1,6 @@
 <?php
+ob_start();
+include_once __DIR__.'/../../../common/global_public.php';
     session_start();
     if (isset($_GET['err'])) {
         $err = checkInput('DEFAULT', $_GET['err']);
@@ -23,15 +25,15 @@
         $errorTitle = 'Error';
         $errorDescription = 'Sorry, an unexpected error occurred.';
     }
+    ob_end_flush();
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <title><?php echo $errorTitle; ?> - Saturn Panel</title>
         <?php
-            include_once __DIR__.'/../../../assets/common/global_public.php';
-            include_once __DIR__.'/../../../assets/common/panel/vendors.php';
-            include_once __DIR__.'/../../../assets/common/panel/theme.php';
+            include_once __DIR__.'/../../../common/panel/vendors.php';
+            include_once __DIR__.'/../../../common/panel/theme.php';
         ?>
 
     </head>

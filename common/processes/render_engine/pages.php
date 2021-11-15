@@ -21,6 +21,7 @@ function getdata($pageID): array
 {
     $pageData['title'] = get_page_title($pageID);
     $pageData['content'] = get_page_content($pageID);
+    $pageData['description'] = get_page_description($pageID);
     $pageData['author']['id'] = get_page_last_edit_user_id($pageID);
     $pageData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $pageData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
@@ -42,18 +43,13 @@ function replacedata($pageOutput, $pageData, $themeData): string
     // Page Data
     $pageOutput = str_replace('{{page:title}}', $pageData['title'], $pageOutput);
     $pageOutput = str_replace('{{page:content}}', $pageData['content'], $pageOutput);
+    $pageOutput = str_replace('{{page:description}}', $pageData['description'], $pageOutput);
     $pageOutput = str_replace('{{page:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
     $pageOutput = str_replace('{{page:image}}', $pageData['image']['url'], $pageOutput);
     $pageOutput = str_replace('{{page:image:credit}}', $pageData['image']['credit'], $pageOutput);
     $pageOutput = str_replace('{{page:image:license}}', $pageData['image']['credit'], $pageOutput);
-    $pageOutput = str_replace('{{article:title}}', $pageData['title'], $pageOutput);
-    $pageOutput = str_replace('{{article:content}}', $pageData['content'], $pageOutput);
-    $pageOutput = str_replace('{{article:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
-    $pageOutput = str_replace('{{article:image}}', $pageData['image']['url'], $pageOutput);
-    $pageOutput = str_replace('{{article:image:credit}}', $pageData['image']['credit'], $pageOutput);
-    $pageOutput = str_replace('{{article:image:license}}', $pageData['image']['credit'], $pageOutput);
     // Data
-    $pageOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $pageOutput);
+    try { $pageOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $pageOutput); } catch (Exception $e) { errorHandlerError($e, 'Random integer creation error.'); }
     // Config values
     $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
     $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);
