@@ -91,64 +91,64 @@
                                             </div>
                                             <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                                 <div class="absolute inset-0 px-4 sm:px-6 h-full">
-                                                    <?php
-                                                        $o = pageQuery_1($i);
+<?php
+$results = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM `".DATABASE_PREFIX."pages` WHERE `category_id` = ".$i));
 
-                    $row = pageQuery_2($i, $o);
-
-                    while ($row['title'] != null) {
-                        $row = pageQuery_2($i, $o);
-
-                        if ($row['title'] != null) {
-                            $status = get_page_status($o);
-                            if ($status == 'green') {
-                                $complete++;
-                            } elseif ($status == 'yellow') {
-                                if (CONFIG_PAGE_APPROVALS) {
-                                    $pending++;
-                                } else {
-                                    $status = 'green';
-                                    $complete++;
-                                }
-                            }
-                            $total++; ?>
-                                                        <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
-                                                            <div class="flex w-full relative">
-                                                                <div class="flex-grow">
-                                                                    <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full"></div>
-                                                                    <?php if ($status == 'red') { ?>
-                                                                        <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
-                                                                    <?php } ?>
-                                                                    <div class="flex-grow mr-2 self-center"><?php echo get_page_title($o); ?>
-                                                                    <?php if ($o == get_page_category_homepage($i)) { ?>
+foreach ($results as $result) {
+    if ($result[5] != null) {
+        $status = get_page_status($result[0]);
+        if ($status == 'green') {
+            $complete++;
+        } elseif ($status == 'yellow') {
+            if (CONFIG_PAGE_APPROVALS) {
+                $pending++;
+            } else {
+                $status = 'green';
+                $complete++;
+            }
+        }
+        $total++; ?>
+        echo '<br><br>';
+?>
+                                                    <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
+                                                        <div class="flex w-full relative">
+                                                            <div class="flex-grow">
+                                                                <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full"></div>
+                                                                <?php if ($status == 'red') { ?>
+                                                                    <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
+                                                                <?php } ?>
+                                                                <div class="flex-grow mr-2 self-center"><?php echo $result[5]; ?>
+                                                                    <?php if ($result[0] == get_page_category_homepage($i)) { ?>
                                                                         <i class="fas fa-home" aria-hidden="true"></i>
                                                                     <?php } ?>
-                                                                    </div>
-                                                                    <div class="text-xs normal-case font-normal">
-                                                                        <?php echo get_page_description($o); ?>
-                                                                    </div>
                                                                 </div>
-                                                                <div>
-                                                                    <a href="editor/?pageID=<?php echo $o; ?>" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
-                                                                        Edit
-                                                                    </a>
+                                                                <div class="text-xs normal-case font-normal">
+                                                                    <?php echo $result[6]; ?>
                                                                 </div>
                                                             </div>
-                                                            <div class="text-xs normal-case font-normal text-gray-400 italic">
+                                                            <div>
+                                                                <a href="editor/?pageID=<?php echo $result[0]; ?>" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                                                    Edit
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-xs normal-case font-normal text-gray-400 italic">
                                                             <?php
                                                             if ($status == 'yellow') {
-                                                                echo 'Pending approval request from '.get_user_fullname(get_page_pending_user_id($o)).'.';
+                                                                echo 'Pending approval request from '.get_user_fullname(get_page_pending_user_id($result[0])).'.';
                                                             } elseif ($status == 'red') {
                                                                 echo'This page has not been edited by anyone yet.';
                                                             } else {
-                                                                echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($o)).' at '.get_page_last_edit_timestamp($row['id']).'.';
+                                                                echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($result[0])).' at '.get_page_last_edit_timestamp($result[0]).'.';
                                                             }
-                            echo'</div>
-                                                                                            </div>
-                                                                                            <br><br>';
-                        }
-                        $o++;
-                    }
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                    <br><br>
+<?php
+    unset($result);
+    }
+}
                     if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
                         echo display_page_new_form();
                     } ?>
