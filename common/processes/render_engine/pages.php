@@ -49,7 +49,11 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{page:image:credit}}', $pageData['image']['credit'], $pageOutput);
     $pageOutput = str_replace('{{page:image:license}}', $pageData['image']['credit'], $pageOutput);
     // Data
-    try { $pageOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $pageOutput); } catch (Exception $e) { errorHandlerError($e, 'Random integer creation error.'); }
+    try {
+        $pageOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $pageOutput);
+    } catch (Exception $e) {
+        errorHandlerError($e, 'Random integer creation error.');
+    }
     // Config values
     $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
     $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);
