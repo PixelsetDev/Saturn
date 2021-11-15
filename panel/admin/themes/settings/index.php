@@ -129,9 +129,15 @@ if (isset($_GET['successMsg'])) {
         <div class="px-8 py-4 w-full">
             <h1 class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 text-3xl">Themes</h1>
             <?php
-            if(isset($_GET['errorMsg'])) { $errorMsg = $_GET['errorMsg']; }
-            if(isset($_GET['successMsg'])) { $successMsg = $_GET['successMsg']; }
-            if(isset($_GET['infoMsg'])) { $infoMsg = $_GET['infoMsg']; }
+            if (isset($_GET['errorMsg'])) {
+                $errorMsg = $_GET['errorMsg'];
+            }
+            if (isset($_GET['successMsg'])) {
+                $successMsg = $_GET['successMsg'];
+            }
+            if (isset($_GET['infoMsg'])) {
+                $infoMsg = $_GET['infoMsg'];
+            }
 
             if (isset($errorMsg)) {
                 echo alert('ERROR', $errorMsg);
@@ -189,8 +195,12 @@ if (isset($_GET['successMsg'])) {
                         <label for="theme_colour_scheme">Website Colour Scheme</label>
                         <select id="theme_colour_scheme" name="theme_colour_scheme" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option disabled>-- Please select one --</option>
-                            <option value="light"<?php if (THEME_COLOUR_SCHEME == 'light') { echo ' selected'; } ?>>Light</option>
-                            <option value="dark"<?php if (THEME_COLOUR_SCHEME == 'dark') { echo ' selected'; } ?>>Dark</option>
+                            <option value="light"<?php if (THEME_COLOUR_SCHEME == 'light') {
+                echo ' selected';
+            } ?>>Light</option>
+                            <option value="dark"<?php if (THEME_COLOUR_SCHEME == 'dark') {
+                echo ' selected';
+            } ?>>Dark</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -201,14 +211,30 @@ if (isset($_GET['successMsg'])) {
                         <label for="panel_colour_scheme">Panel Colour Scheme</label>
                         <select id="panel_colour_scheme" name="panel_colour_scheme" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option disabled>-- Please select one --</option>
-                            <option value="gray"<?php if (THEME_PANEL_COLOUR == 'gray') { echo ' selected'; } ?>>Gray</option>
-                            <option value="red"<?php if (THEME_PANEL_COLOUR == 'red') { echo ' selected'; } ?>>Red</option>
-                            <option value="yellow"<?php if (THEME_PANEL_COLOUR == 'yellow') { echo ' selected'; } ?>>Yellow</option>
-                            <option value="green"<?php if (THEME_PANEL_COLOUR == 'green') { echo ' selected'; } ?>>Green</option>
-                            <option value="blue"<?php if (THEME_PANEL_COLOUR == 'blue') { echo ' selected'; } ?>>Blue</option>
-                            <option value="indigo"<?php if (THEME_PANEL_COLOUR == 'indigo') { echo ' selected'; } ?>>Indigo</option>
-                            <option value="purple"<?php if (THEME_PANEL_COLOUR == 'purple') { echo ' selected'; } ?>>Purple</option>
-                            <option value="pink"<?php if (THEME_PANEL_COLOUR == 'pink') { echo ' selected'; } ?>>Pink</option>
+                            <option value="gray"<?php if (THEME_PANEL_COLOUR == 'gray') {
+                echo ' selected';
+            } ?>>Gray</option>
+                            <option value="red"<?php if (THEME_PANEL_COLOUR == 'red') {
+                echo ' selected';
+            } ?>>Red</option>
+                            <option value="yellow"<?php if (THEME_PANEL_COLOUR == 'yellow') {
+                echo ' selected';
+            } ?>>Yellow</option>
+                            <option value="green"<?php if (THEME_PANEL_COLOUR == 'green') {
+                echo ' selected';
+            } ?>>Green</option>
+                            <option value="blue"<?php if (THEME_PANEL_COLOUR == 'blue') {
+                echo ' selected';
+            } ?>>Blue</option>
+                            <option value="indigo"<?php if (THEME_PANEL_COLOUR == 'indigo') {
+                echo ' selected';
+            } ?>>Indigo</option>
+                            <option value="purple"<?php if (THEME_PANEL_COLOUR == 'purple') {
+                echo ' selected';
+            } ?>>Purple</option>
+                            <option value="pink"<?php if (THEME_PANEL_COLOUR == 'pink') {
+                echo ' selected';
+            } ?>>Pink</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
