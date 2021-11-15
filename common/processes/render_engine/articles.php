@@ -6,14 +6,15 @@ const THEME_DIRECTORY = '/themes/';
 
 function getdata($articleID): array
 {
-    $articleData['title'] = get_page_title($articleID);
-    $articleData['content'] = get_page_content($articleID);
-    $articleData['author']['id'] = get_page_last_edit_user_id($articleID);
+    $articleData['title'] = get_article_title($articleID);
+    $articleData['content'] = get_article_content($articleID);
+    $articleData['description'] = NULL;
+    $articleData['author']['id'] = get_article_author_id($articleID);
     $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
-    $articleData['image']['url'] = get_page_image($articleID);
-    $articleData['image']['credit'] = get_page_image_credit($articleID);
-    $articleData['image']['license'] = get_page_image_license($articleID);
+    $articleData['image']['url'] = NULL;
+    $articleData['image']['credit'] = NULL;
+    $articleData['image']['license'] = NULL;
 
     return $articleData;
 }
@@ -29,18 +30,13 @@ function replacedata($articleOutput, $articleData, $themeData): string
     // Article Data
     $articleOutput = str_replace('{{page:title}}', $articleData['title'], $articleOutput);
     $articleOutput = str_replace('{{page:content}}', $articleData['content'], $articleOutput);
+    $articleOutput = str_replace('{{page:description}}', $articleData['description'], $articleOutput);
     $articleOutput = str_replace('{{page:author:name}}', get_user_fullname($articleData['author']['id']), $articleOutput);
     $articleOutput = str_replace('{{page:image}}', $articleData['image']['url'], $articleOutput);
     $articleOutput = str_replace('{{page:image:credit}}', $articleData['image']['credit'], $articleOutput);
     $articleOutput = str_replace('{{page:image:license}}', $articleData['image']['credit'], $articleOutput);
-    $articleOutput = str_replace('{{article:title}}', $articleData['title'], $articleOutput);
-    $articleOutput = str_replace('{{article:content}}', $articleData['content'], $articleOutput);
-    $articleOutput = str_replace('{{article:author:name}}', get_user_fullname($articleData['author']['id']), $articleOutput);
-    $articleOutput = str_replace('{{article:image}}', $articleData['image']['url'], $articleOutput);
-    $articleOutput = str_replace('{{article:image:credit}}', $articleData['image']['credit'], $articleOutput);
-    $articleOutput = str_replace('{{article:image:license}}', $articleData['image']['credit'], $articleOutput);
     // Data
-    $articleOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $articleOutput);
+    try { $articleOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $articleOutput); } catch (Exception $e) { errorHandlerError($e, 'Random integer creation error.'); }
     // Config values
     $articleOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $articleOutput);
     $articleOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $articleOutput);
