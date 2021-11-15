@@ -21,7 +21,9 @@
                 } elseif ($userData['role_id'] == '0') {
                     $errorMsg = 'Your account has been deleted. If you require access, please contact your site administrator by emailing "'.CONFIG_EMAIL_ADMIN.'", thank you.';
                 } else {
-                    $code = random_int(100000, 999999);
+                    try {
+                        $code = random_int(100000, 999999);
+                    } catch (Exception $e) { errorHandlerError($e, 'ERROR GENERATING RANDOM NUMBER'); }
                     $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '$code' WHERE `email` = '".$username."' OR `username` = '".$username."';";
                     $rs = mysqli_query($conn, $sql);
 
@@ -154,7 +156,7 @@
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="username" class="sr-only">Email address or Username</label>
-                                <input id="username" name="username" type="username" autocomplete="username" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Email Address or Username">
+                                <input id="username" name="username" type="text" autocomplete="username" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Email Address or Username">
                             </div>
                         </div>
                         <div>
