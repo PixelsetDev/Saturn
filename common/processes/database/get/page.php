@@ -170,9 +170,9 @@
         $rs2 = mysqli_query($conn, $query2);
         $row2 = mysqli_fetch_assoc($rs2);
 
-        if ($row2['content'] != null) {
+        if ($row2['content'] != null && $row2['content'] != '') {
             return 'yellow';
-        } elseif ($row['content'] != null) {
+        } elseif ($row['content'] != null && $row['content'] != '') {
             return 'green';
         } else {
             return 'red';
