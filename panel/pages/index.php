@@ -97,6 +97,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM `".DATABASE_PREFI
 foreach ($results as $result) {
     if ($result[5] != null) {
         $status = get_page_status($result[0]);
+        var_dump($status);
         if ($status == 'green') {
             $complete++;
         } elseif ($status == 'yellow') {
@@ -108,8 +109,6 @@ foreach ($results as $result) {
             }
         }
         $total++; ?>
-        echo '<br><br>';
-?>
                                                     <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                         <div class="flex w-full relative">
                                                             <div class="flex-grow">
@@ -146,7 +145,7 @@ foreach ($results as $result) {
                                                     </div>
                                                     <br><br>
 <?php
-    unset($result);
+    unset($result, $status);
     }
 }
                     if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
@@ -184,6 +183,7 @@ foreach ($results as $result) {
                                     <h1 class="text-2xl leading-tight text-gray-900"><?php echo $category; ?></h1>
                                     <span class="text-xs font-semibold inline-block py-1 px-2 height-auto rounded-lg text-<?php echo $statusColour; ?>-900 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
                                 </div>
+                                <?php /*
                                 <div class="flex mb-1 items-center justify-between">
                                     <div class="text-right">
                                         <span class="text-xs font-semibold inline-block">
@@ -213,7 +213,7 @@ foreach ($results as $result) {
                                             </span>
                                         </span>
                                     </div>
-                                </div>
+                                </div> */ ?>
                             </div>
                             <div class="flex-none w-22 h-12">
                                 <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-4 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
