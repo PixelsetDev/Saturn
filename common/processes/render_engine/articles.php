@@ -8,13 +8,13 @@ function getdata($articleID): array
 {
     $articleData['title'] = get_article_title($articleID);
     $articleData['content'] = get_article_content($articleID);
-    $articleData['description'] = NULL;
+    $articleData['description'] = null;
     $articleData['author']['id'] = get_article_author_id($articleID);
     $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
-    $articleData['image']['url'] = NULL;
-    $articleData['image']['credit'] = NULL;
-    $articleData['image']['license'] = NULL;
+    $articleData['image']['url'] = null;
+    $articleData['image']['credit'] = null;
+    $articleData['image']['license'] = null;
 
     return $articleData;
 }
@@ -36,7 +36,11 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{page:image:credit}}', $articleData['image']['credit'], $articleOutput);
     $articleOutput = str_replace('{{page:image:license}}', $articleData['image']['credit'], $articleOutput);
     // Data
-    try { $articleOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $articleOutput); } catch (Exception $e) { errorHandlerError($e, 'Random integer creation error.'); }
+    try {
+        $articleOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $articleOutput);
+    } catch (Exception $e) {
+        errorHandlerError($e, 'Random integer creation error.');
+    }
     // Config values
     $articleOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $articleOutput);
     $articleOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $articleOutput);
