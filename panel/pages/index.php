@@ -25,6 +25,8 @@
                 $success = $_GET['success'];
                 if ($success == 'deleted') {
                     $successMsg = 'The page has been deleted.';
+                } elseif ($success == 'new') {
+                    $successMsg = 'The page has been created..';
                 }
             }
 
@@ -147,7 +149,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                         }
                     }
                     if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
-                        echo display_page_new_form();
+                        echo display_page_new_form(strtolower($category));
                     } ?>
                                                     <br><br><br><br>
                                                 </div>
