@@ -4,7 +4,45 @@
     require_once __DIR__.'/../../common/global_private.php';
     require_once __DIR__.'/../../common/admin/global.php';
     ob_end_flush();
+
     $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
+
+    if(isset($_GET['update'])) {
+        if ($_GET['update']) {
+            $downloadUrl = "https://link.saturncms.net/update/".$remoteVersion.".zip";
+            $downloadTo = "update.zip";
+
+            if (strpos($downloadUrl, 'saturncms.net') !== false) {
+                $installFile = __DIR__.$downloadTo;
+                file_put_contents($installFile, fopen($downloadUrl, 'r'));
+                $path = pathinfo(realpath($installFile), PATHINFO_DIRNAME);
+                $archive = new ZipArchive();
+                $res = $archive->open($installFile);
+
+                if ($res) {
+                    $archive->extractTo($path);
+                    $archive->close();
+                    if (!unlink($installFile)) {
+                        $complete = false;
+                        $errorMsg = "Saturn update error: Unable to delete the update file.";
+                    } else {
+                        $complete = true;
+                    }
+                } else {
+                    $complete = false;
+                    $errorMsg = "Saturn update error: Unable to unzip the archive.";
+                }
+            } else {
+                $complete = false;
+                $errorMsg = "Saturn update error: Halted download from untrusted URL. Attempted to download from: ".$downloadUrl;
+            }
+
+            if ($complete) {
+                header('Location: update.php');
+                exit;
+            }
+        }
+    }
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,7 +59,15 @@
                 <?php
                     if (isset($_GET['error'])) {
                         $error = checkInput('DEFAULT', $_GET['error']);
-                        echo alert('ERROR', $error);
+                        echo alert('ERROR', $error).'<br>';
+                    }
+                    if (isset($errorMsg)) {
+                        $error = checkInput('DEFAULT', $errorMsg);
+                        echo alert('ERROR', $error).'<br>';
+                    }
+                    if (isset($success)) {
+                        $success = checkInput('DEFAULT', $success);
+                        echo alert('ERROR', $success).'<br>';
                     }
                 ?>
 
