@@ -121,7 +121,7 @@
         return $role;
     }
 
-    function get_user_roleID($id): int
+    function get_user_roleID($id)
     {
         $id = checkInput('DEFAULT', $id);
 
@@ -212,7 +212,6 @@
         global $conn;
 
         $query = 'SELECT `last_login_ip` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
 
