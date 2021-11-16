@@ -23,7 +23,9 @@
                 } else {
                     try {
                         $code = random_int(100000, 999999);
-                    } catch (Exception $e) { errorHandlerError($e, 'ERROR GENERATING RANDOM NUMBER'); }
+                    } catch (Exception $e) {
+                        errorHandlerError($e, 'ERROR GENERATING RANDOM NUMBER');
+                    }
                     $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '$code' WHERE `email` = '".$username."' OR `username` = '".$username."';";
                     $rs = mysqli_query($conn, $sql);
 

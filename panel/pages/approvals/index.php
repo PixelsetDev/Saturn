@@ -61,8 +61,7 @@
                 $percent = 0;
                 $approved = 0;
                 $pending = 0;
-                $total = 0;
-                ?>
+                $total = 0; ?>
                 <div x-data="{ open: false }">
                     <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                         <div class="absolute inset-0 overflow-hidden">
@@ -87,19 +86,19 @@
                                             <div class="absolute inset-0 px-4 sm:px-6 h-full">
                                                 <p>Please select a page.</p>
                                                 <?php
-                                                $results = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM `".DATABASE_PREFIX."pages` WHERE `category_id` = ".$i));
+                                                $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE `category_id` = '.$i));
 
-                                                foreach ($results as $result) {
-                                                if ($result[5] != null) {
-                                                $status = get_page_status($result[0]);
-                                                if (get_page_pending_title($result[0]) != null && get_page_pending_title($result[0]) != '') {
-                                                    $pending++;
-                                                    $status = 'red';
-                                                } else {
-                                                    $approved++;
-                                                    $status = 'green';
-                                                }
-                                                $total++; ?>
+                foreach ($results as $result) {
+                    if ($result[5] != null) {
+                        $status = get_page_status($result[0]);
+                        if (get_page_pending_title($result[0]) != null && get_page_pending_title($result[0]) != '') {
+                            $pending++;
+                            $status = 'red';
+                        } else {
+                            $approved++;
+                            $status = 'green';
+                        }
+                        $total++; ?>
                                                 <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                     <div class="flex w-full relative">
                                                         <div class="flex-grow">
@@ -130,15 +129,14 @@
                                                             echo'This page has not been edited by anyone yet.';
                                                         } else {
                                                             echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($result[0])).' at '.get_page_last_edit_timestamp($result[0]).'.';
-                                                        }
-                                                        ?>
+                                                        } ?>
                                                     </div>
                                                 </div>
                                                 <br><br>
                                                 <?php
     unset($result, $status);
-    }
-}
+                    }
+                }
                 echo '
                                                         <br><br><br><br>
                                                     </div>

@@ -92,22 +92,22 @@
                                             <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                                 <div class="absolute inset-0 px-4 sm:px-6 h-full">
 <?php
-$results = mysqli_fetch_all(mysqli_query($conn, "SELECT * FROM `".DATABASE_PREFIX."pages` WHERE `category_id` = ".$i));
+$results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE `category_id` = '.$i));
 
-foreach ($results as $result) {
-    if ($result[5] != null) {
-        $status = get_page_status($result[0]);
-        if ($status == 'green') {
-            $complete++;
-        } elseif ($status == 'yellow') {
-            if (CONFIG_PAGE_APPROVALS) {
-                $pending++;
-            } else {
-                $status = 'green';
-                $complete++;
-            }
-        }
-        $total++; ?>
+                    foreach ($results as $result) {
+                        if ($result[5] != null) {
+                            $status = get_page_status($result[0]);
+                            if ($status == 'green') {
+                                $complete++;
+                            } elseif ($status == 'yellow') {
+                                if (CONFIG_PAGE_APPROVALS) {
+                                    $pending++;
+                                } else {
+                                    $status = 'green';
+                                    $complete++;
+                                }
+                            }
+                            $total++; ?>
                                                     <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                         <div class="flex w-full relative">
                                                             <div class="flex-grow">
@@ -138,15 +138,14 @@ foreach ($results as $result) {
                                                                 echo'This page has not been edited by anyone yet.';
                                                             } else {
                                                                 echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($result[0])).' at '.get_page_last_edit_timestamp($result[0]).'.';
-                                                            }
-                                                            ?>
+                                                            } ?>
                                                         </div>
                                                     </div>
                                                     <br><br>
 <?php
     unset($result, $status);
-    }
-}
+                        }
+                    }
                     if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
                         echo display_page_new_form();
                     } ?>
