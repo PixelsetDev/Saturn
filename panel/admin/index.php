@@ -10,7 +10,7 @@
     if(isset($_GET['update'])) {
         if ($_GET['update']) {
             $downloadUrl = "https://link.saturncms.net/update/".$remoteVersion.".zip";
-            $downloadTo = "update.zip";
+            $downloadTo = "/update.zip";
 
             if (strpos($downloadUrl, 'saturncms.net') !== false) {
                 $installFile = __DIR__.$downloadTo;
