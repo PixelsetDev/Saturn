@@ -44,13 +44,13 @@
         }
     }
 
-    function log_error($type, $message)
+    function log_error($prefix, $message)
     {
-        $type = checkOutput('DEFAULT', $type);
+        $prefix = checkOutput('DEFAULT', $prefix);
         $message = checkOutput('DEFAULT', $message);
 
         if (LOGGING_ACTIVE === true) {
-            $message = date(DATE_FORMAT).' ['.$type.'] '.$message."\r\n";
+            $message = date(DATE_FORMAT).' ['.$prefix.'] '.$message."\r\n";
             $file = __DIR__.'/../../../storage/logs/errors.txt';
             file_put_contents($file, $message, FILE_APPEND | LOCK_EX);
         }
