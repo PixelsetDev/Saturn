@@ -25,7 +25,7 @@
                     log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' created a page ('.$_POST['pagetitle'].').');
                 } else {
                     header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?error=new');
-                    log_all('SATURN][ERROR', get_user_fullname($_SESSION['id']).' attempted to create a page but an error occurred.');
+                    log_error('SATURN][ERROR', get_user_fullname($_SESSION['id']).' attempted to create a page but an error occurred.');
                 }
             } else {
                 header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?error=new');
@@ -49,7 +49,7 @@
             </div>
         </header>
 
-        <form action="" method="post">
+        <form action="index.php" method="post">
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <?php
                 if (isset($errorMsg)) {
