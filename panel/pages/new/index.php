@@ -11,6 +11,7 @@
                 internal_redirect('/panel/pages');
                 exit;
             } elseif (isset($_GET['create'])) {
+                $pageCategory = trim(checkInput('DEFAULT', $_GET['pagecategory']));
                 $pageTitle = trim(checkInput('DEFAULT', $_GET['pagetitle']));
             } elseif (isset($_POST['posted'])) {
                 $pageURL = trim(checkInput('DEFAULT', $_POST['pageurl']));
@@ -20,10 +21,10 @@
                 $pageTitle = trim(checkInput('DEFAULT', $_POST['pagetitle']));
                 $pageDescription = trim(checkInput('DEFAULT', $_POST['pagedescription']));
                 if (create_page($pageURL, $pageCategory, $pageTemplate, $pageTitle, $pageDescription)) {
-                    $successMsg = 'Page created. <a href="'.CONFIG_INSTALL_URL.'/panel/pages" class="text-green-500 hover:text-green-400 transition duration-200">Go Back</a>';
+                    header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?success=new');
                     log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' created a page ('.$_POST['pagetitle'].').');
                 } else {
-                    $errorMsg = 'Page not created. <a href="'.CONFIG_INSTALL_URL.'/panel/pages" class="text-red-500 hover:text-red-400 transition duration-200">Go Back</a>';
+                    header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?error=new');
                     log_all('SATURN][ERROR', get_user_fullname($_SESSION['id']).' attempted to create a page but an error occurred.');
                 }
             } else {
@@ -48,7 +49,7 @@
             </div>
         </header>
 
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <form action="" method="post">
             <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                 <?php
                 if (isset($errorMsg)) {
@@ -79,7 +80,7 @@
                         <h1 class="text-xl w-1/6 self-center">Page URL</h1>
                         <div class="flex-grow">
                             <label for="pageurl" class="sr-only self-center">Page Title</label>
-                            <input id="pageurl" name="pageurl" type="text" value="<?php echo str_replace(' ', '-', '/'.strtolower(get_page_category_name(1)).'/'.strtolower($pageTitle)); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-lg" placeholder="Page URL">
+                            <input id="pageurl" name="pageurl" type="text" value="<?php echo str_replace(' ', '-', '/'.strtolower($pageCategory).'/'.strtolower($pageTitle)); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-lg" placeholder="Page URL">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
@@ -92,8 +93,12 @@
                         $i = 1;
                         $category = get_page_category_name($i);
                         while ($category != null) {
-                            echo '<option value="'.get_page_category_id($i).'">'.$category.'</option>';
+                            if ($pageCategory == strtolower(get_page_category_name($i))) {
+                                $selected = ' selected';
+                            }
+                            echo '<option value="'.$i.'"'.$selected.'>'.$category.'</option>';
                             $i++;
+                            unset($selected,$category);
                             $category = get_page_category_name($i);
                         }
                     } catch (Exception $e) {
@@ -108,7 +113,8 @@
                         <div class="flex-grow">
                             <label for="pagetemplate" class="sr-only self-center">Page Template</label>
                             <select name="pagetemplate" id="pagetemplate" class="flex-grow w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
-                                <option value="DEFAULT"><?php echo list_page_templates(); ?></option>
+                                <option value="HOMEPAGE">Homepage</option>
+                                <option value="DEFAULT" selected>Default</option>
                             </select>
                             </div>
                     </div>
