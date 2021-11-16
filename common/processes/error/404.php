@@ -1,15 +1,15 @@
 <?php
     $errorScreen = true;
-    include_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/assets/common/global_public.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/common/global_public.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/assets/common/panel/vendors.php'; ?>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/common/panel/vendors.php'; ?>
         <title>Error 404 - <?php echo CONFIG_SITE_NAME; ?></title>
     </head>
     <body>
-        <?php include_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/assets/common/navigation.php'; ?>
+        <?php include_once $_SERVER['DOCUMENT_ROOT'].CONFIG_INSTALL_URL.'/common/navigation.php'; ?>
 
         <main class="bg-white relative overflow-hidden h-screen relative">
             <div class="container mx-auto h-screen pt-32 md:pt-0 px-6 z-10 flex items-center justify-between">
