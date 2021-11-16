@@ -7,10 +7,10 @@
 
     $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
 
-    if(isset($_GET['update'])) {
+    if (isset($_GET['update'])) {
         if ($_GET['update']) {
-            $downloadUrl = "https://link.saturncms.net/update/".$remoteVersion.".zip";
-            $downloadTo = "/update.zip";
+            $downloadUrl = 'https://link.saturncms.net/update/'.$remoteVersion.'.zip';
+            $downloadTo = '/update.zip';
 
             if (strpos($downloadUrl, 'saturncms.net') !== false) {
                 $installFile = __DIR__.$downloadTo;
@@ -24,17 +24,17 @@
                     $archive->close();
                     if (!unlink($installFile)) {
                         $complete = false;
-                        $errorMsg = "Saturn update error: Unable to delete the update file.";
+                        $errorMsg = 'Saturn update error: Unable to delete the update file.';
                     } else {
                         $complete = true;
                     }
                 } else {
                     $complete = false;
-                    $errorMsg = "Saturn update error: Unable to unzip the archive.";
+                    $errorMsg = 'Saturn update error: Unable to unzip the archive.';
                 }
             } else {
                 $complete = false;
-                $errorMsg = "Saturn update error: Halted download from untrusted URL. Attempted to download from: ".$downloadUrl;
+                $errorMsg = 'Saturn update error: Halted download from untrusted URL. Attempted to download from: '.$downloadUrl;
             }
 
             if ($complete) {
