@@ -59,15 +59,17 @@
                 <?php
                     if (isset($_GET['error'])) {
                         $error = checkInput('DEFAULT', $_GET['error']);
+                        log_error('ERROR', $error);
                         echo alert('ERROR', $error).'<br>';
                     }
                     if (isset($errorMsg)) {
                         $error = checkInput('DEFAULT', $errorMsg);
+                        log_error('ERROR', $error);
                         echo alert('ERROR', $error).'<br>';
                     }
                     if (isset($success)) {
                         $success = checkInput('DEFAULT', $success);
-                        echo alert('ERROR', $success).'<br>';
+                        echo alert('SUCCESS', $success).'<br>';
                     }
                 ?>
 

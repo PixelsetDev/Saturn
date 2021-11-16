@@ -40,11 +40,13 @@
         // Check if directory exists and create it if it does not.
         if (!file_exists($uploadDirectory) && !mkdir($uploadDirectory, 0755)) {
             echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
+            log_error('WARNING', 'The directory does not exist and could not be created.');
         }
 
         // Check if directory can be written to.
         if (!is_writable($uploadDirectory)) {
             echo alert('WARNING', 'You don\'t have the required permissions to write in this directory. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#no-directory-write-permissions" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
+            log_error('WARNING', 'Saturn does\'t have permissions to write in the directory.');
         }
         $uploadDirectory = $uploadDirectory.basename($_FILES['uploaded_file']['name']);
 
@@ -73,12 +75,14 @@
                 $uploadedTo = basename($_FILES['uploaded_file']['name']);
             } else {
                 echo alert('ERROR', 'There was an error uploading the file, please try again later or check warnings for more information.', true);
+                log_error('ERROR', 'There was an error uploading the file, please try again later or check warnings for more information.');
                 $uploaded = false;
             }
 
             if (isset($_GET['renameTo'])) {
                 if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'], '', $uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']))) {
                     echo alert('WARNING', 'Unable to rename file.', true);
+                    log_error('WARNING', 'Unable to rename file.');
                     $uploaded = false;
                 } else {
                     $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
@@ -89,6 +93,7 @@
                 $rand = rand(000000000000, 999999999999);
                 if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'], '', $uploadDirectory).$rand.'.'.$ext)) {
                     echo alert('WARNING', 'Unable to rename file.', true);
+                    log_error('WARNING', 'Unable to rename file.');
                     $uploaded = false;
                 } else {
                     $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
@@ -114,6 +119,7 @@
             }
         } else {
             echo alert('ERROR', 'File not uploaded.', true);
+            log_error('ERROR', 'File not uploaded.');
         }
     }
 

@@ -118,6 +118,7 @@ if (isset($_POST['newArticle'])) {
             <?php
             if (isset($errorMsg)) {
                 echo alert('ERROR', $errorMsg);
+                log_error('ERROR', $errorMsg);
             }
             unset($errorMsg);
             if (isset($successMsg)) {
@@ -190,7 +191,8 @@ if (isset($_POST['newArticle'])) {
                                             <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Request Publication
                                         </a>';
                         } else {
-                            alert('ERROR', 'Unable to fetch approval status.');
+                            alert('ERROR', 'Unable to fetch approval status. Article ID: '.$i);
+                            log_error('ERROR', 'Unable to fetch approval status of article with ID: '.$i);
                         }
                         $contents = 'Article Owner: '.display_user_dropdown('SELECTME');
                         echo '          <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{open: false}" class="h-8">

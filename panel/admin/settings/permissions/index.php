@@ -100,6 +100,7 @@ ob_end_flush();
         <?php
         if (isset($_GET['errorMsg'])) {
             echo alert('ERROR', $_GET['errorMsg']);
+            log_error('ERROR', checkInput('DEFAULT', $errorMsg));
             unset($_GET['errorMsg']);
         }
         if (isset($_GET['successMsg'])) {

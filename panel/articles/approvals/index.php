@@ -43,6 +43,7 @@
         <?php
         if (isset($errorMsg)) {
             echo alert('ERROR', $errorMsg);
+            log_error('ERROR', $errorMsg);
         }
         unset($errorMsg);
         if (isset($successMsg)) {

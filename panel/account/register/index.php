@@ -94,6 +94,7 @@
                         <?php
                             if (isset($errorMsg)) {
                                 echo alert('ERROR', $errorMsg);
+                                log_error('ERROR', $errorMsg);
                                 unset($errorMsg);
                             } elseif (isset($successMsg)) {
                                 echo alert('SUCCESS', $successMsg);
@@ -217,6 +218,7 @@
 
                         if (isset($errorMsg)) {
                             echo alert('ERROR', $errorMsg);
+                            log_error('ERROR', $errorMsg);
                             unset($errorMsg);
                         } elseif (isset($successMsg)) {
                             echo alert('SUCCESS', $successMsg);

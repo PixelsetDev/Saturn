@@ -99,6 +99,7 @@
             <?php
                 if (isset($_GET['errorMsg'])) {
                     echo alert('ERROR', $_GET['errorMsg']);
+                    log_error('ERROR', checkInput('DEFAULT',$_GET['$errorMsg']));
                     unset($_GET['errorMsg']);
                 }
                 if (isset($_GET['successMsg'])) {

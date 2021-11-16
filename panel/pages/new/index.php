@@ -25,7 +25,7 @@
                     log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' created a page ('.$_POST['pagetitle'].').');
                 } else {
                     header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?error=new');
-                    log_error('SATURN][ERROR', get_user_fullname($_SESSION['id']).' attempted to create a page but an error occurred.');
+                    log_error('ERROR', get_user_fullname($_SESSION['id']).' attempted to create a page but an error occurred.');
                 }
             } else {
                 header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?error=new');

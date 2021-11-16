@@ -38,6 +38,7 @@
             <?php
                 if (isset($errorMsg)) {
                     alert('ERROR', $errorMsg);
+                    log_error('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
                 if (isset($successMsg)) {
@@ -50,6 +51,7 @@
                 echo random_int('0000', '9999');
             } catch (Exception $e) {
                 echo alert('ERROR', $e);
+                log_error('ERROR', $e);
             } ?>" class="w-full h-1/4 overflow-scroll" title="Security Log"></iframe>
             <div x-data="{open:false}">
                 <a @click="open = true" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer flex w-1/6 items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">Clear Log</a>
@@ -65,6 +67,7 @@
             <?php
             if (isset($errorMsg)) {
                 echo alert('ERROR', $errorMsg);
+                log_error('ERROR', $errorMsg);
                 unset($errorMsg);
             }
             if (isset($successMsg)) {
@@ -77,6 +80,7 @@
                 echo random_int('0000', '9999');
             } catch (Exception $e) {
                 echo alert('ERROR', $e);
+                log_error('ERROR', $e);
             } ?>" class="w-full h-1/4 overflow-scroll" title="Error Log"></iframe>
             <div x-data="{open:false}">
                 <a @click="open = true" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer flex w-1/6 items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">Clear Log</a>

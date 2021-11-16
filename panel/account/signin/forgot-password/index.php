@@ -141,6 +141,7 @@
                         <?php
                         if (isset($errorMsg)) {
                             echo alert('ERROR', $errorMsg);
+                            log_error('ERROR', $errorMsg);
                             unset($errorMsg);
                         }
                         if (isset($infoMsg)) {
@@ -204,6 +205,7 @@
 <?php
     } else {
         echo alert('ERROR', 'An error has occurred, please try again later.');
+        log_error('ERROR', 'An error occurred when resetting a user\'s password.');
     }
 ?>
                     </form>

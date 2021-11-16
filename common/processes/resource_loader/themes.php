@@ -14,4 +14,5 @@
             log_console('SATURN][RESOURCE LOADER][THEMES', 'Unable to load theme: '.THEME_SLUG);
         }
         echo alert('ERROR', 'Unable to load theme: '.THEME_SLUG);
+        log_error('ERROR', 'Unable to load theme: '.THEME_SLUG);
     }
