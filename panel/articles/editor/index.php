@@ -62,7 +62,7 @@
             <?php
             if (isset($_GET['error'])) {
                 echo alert('ERROR', $_GET['error']);
-                log_error('ERROR', checkInput($_GET['error']));
+                log_error('ERROR', checkInput('DEFAULT', $_GET['error']));
             } elseif (isset($_GET['success'])) {
                 echo alert('SUCCESS', $_GET['success']);
             }

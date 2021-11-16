@@ -131,7 +131,7 @@ if (isset($_GET['successMsg'])) {
             <?php
             if (isset($_GET['errorMsg'])) {
                 $errorMsg = $_GET['errorMsg'];
-                log_error('ERROR', checkInput($_GET['errorMsg']));
+                log_error('ERROR', checkInput('DEFAULT', $_GET['errorMsg']));
             }
             if (isset($_GET['successMsg'])) {
                 $successMsg = $_GET['successMsg'];
