@@ -4,14 +4,39 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/common/global_public.php';
 
 const THEME_DIRECTORY = '/themes/';
 
+function getarticles() {
+    $i = 1;
+    $article = get_article_title($i);
+    $return = '';
+    while ($article != null) {
+        $return .= '<div class="w-full bg-gray-100 rounded-md shadow hover:shadow-xl mb-8 p-2 transition duration-200 flex">
+    <div class="flex-grow">
+        <h1 class="text-xl">'.$article.'</h1>
+        <p>By '.get_user_fullname(get_article_author_id($i)).'</p>
+    </div>
+    <div>
+        <a href="/articles/'.$i.'" class="hover:shadow-lg cursor-pointer w-full h-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all duration-200 md:py-1 md:text-rg md:px-10">
+            <i class="fas fa-eye" aria-hidden="true"></i>&nbsp;View
+        </a>
+    </div>
+</div>';
+        unset($article);
+        $i++;
+        $article = get_article_title($i);
+    }
+    return $return;
+}
+
 function getdata($articleID): array
 {
     $articleData['title'] = get_article_title($articleID);
     $articleData['content'] = get_article_content($articleID);
+    $articleData['references'] = get_article_references($articleID);
     $articleData['description'] = null;
     $articleData['author']['id'] = get_article_author_id($articleID);
     $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
+    if($articleID != null) { $articleData['section']['articles'] = $articleData['content'].'<br><br>'.$articleData['references'].'<br><br><em>Written by '.get_user_fullname($articleData['author']['id']).'</em>'; } else { $articleData['section']['articles'] = getarticles(); }
     $articleData['image']['url'] = null;
     $articleData['image']['credit'] = null;
     $articleData['image']['license'] = null;
@@ -27,6 +52,7 @@ function replacedata($articleOutput, $articleData, $themeData): string
     // Sections
     $articleOutput = str_replace('{{section:navigation}}', $articleData['section']['navigation'], $articleOutput);
     $articleOutput = str_replace('{{section:footer}}', $articleData['section']['footer'], $articleOutput);
+    $articleOutput = str_replace('{{section:articles}}', $articleData['section']['articles'], $articleOutput);
     // Article Data
     $articleOutput = str_replace('{{page:title}}', $articleData['title'], $articleOutput);
     $articleOutput = str_replace('{{page:content}}', $articleData['content'], $articleOutput);
@@ -118,7 +144,7 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $articleOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', 'Converted 60 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 74 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
 
     return $articleOutput;
