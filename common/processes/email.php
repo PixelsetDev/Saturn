@@ -33,12 +33,13 @@
 </html>';
 
             return mail($to, $subject, $contents, $headers);
-        } elseif (CONFIG_EMAIL_FUNCTION == 'smtp') {
-            echo 'SMTP is not implemented.';
-
-            return false;
+        } elseif (CONFIG_EMAIL_FUNCTION == strtolower('smtp')) {
+           echo 'FATAL ERROR: SMTP is not implemented yet, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.';
+            log_error('FATAL ERROR', 'SMTP is not implemented yet, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.');
+            exit;
         } else {
-            echo 'FATAL ERROR: Email function not specified correctly, please check your config.php file and visit docs.saturncms.net for help.';
+            echo 'FATAL ERROR: Email function not specified correctly, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.';
+            log_error('FATAL ERROR', 'Email function not specified correctly, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.');
             exit;
         }
     }
