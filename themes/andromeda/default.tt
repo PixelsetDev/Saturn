@@ -19,11 +19,15 @@
                             <svg class="absolute left-0 hidden h-full text-white transform -translate-x-1/2 lg:block" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
                                 <path d="M50 0H100L50 100H0L50 0Z"></path>
                             </svg>
+                            <!--
+
+                            Image support is patchy. Temporarily removing until fixed.
+
                             <img
                                 class="object-cover w-full h-56 rounded shadow-lg lg:rounded-none lg:shadow-none md:h-96 lg:h-full"
-                                src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_Vice_Admiral_of_Red_1805_to_1864.png" alt="{{page:title}}"
+                                src="" alt="{{page:title}}"
                             />
-                            Image &copy; {{page:image:credit}} ({{page:image:license}})
+                            Image &copy; {{page:image:credit}} ({{page:image:license}})-->
                         </div>
                         <div class="relative flex flex-col items-start w-full max-w-xl px-4 mx-auto md:px-0 lg:px-8 lg:max-w-screen-xl">
                             <div class="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
