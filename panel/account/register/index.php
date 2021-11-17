@@ -107,14 +107,14 @@
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="code" class="sr-only">Code</label>
-                                <input id="code" name="code" type="text" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
+                                <input id="code" name="code" type="text" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
                             </div>
                         </div>
         
                         <div>
                             <input id="c" name="c" type="text" required value="'.$hashCode.'" class="hidden" placeholder="c">
                             <input id="email" name="email" type="text" required value="'.checkOutput('DEFAULT', $_POST['verify_email']).'" class="hidden" placeholder="email">
-                            <button type="submit" name="confirm" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                            <button type="submit" name="confirm" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-'.THEME_PANEL_COLOUR.'-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-envelope"></i>
                                 </span>
@@ -128,30 +128,30 @@
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="email_address" class="sr-only">Email Address</label>
-                                <input id="email_address" name="email_address" type="email" value="'.checkOutput('DEFAULT', $_POST['email']).'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                                <input id="email_address" name="email_address" type="email" value="'.checkOutput('DEFAULT', $_POST['email']).'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Email address">
                             </div>
                             <div class="flex w-full">
                                 <div class="flex-grow">
                                     <label for="firstname" class="sr-only">First Name</label>
-                                    <input id="firstname" name="firstname" type="text" autocomplete="firstname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="First Name">
+                                    <input id="firstname" name="firstname" type="text" autocomplete="firstname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="First Name">
                                 </div>
                                 <div class="flex-grow">
                                     <label for="lastname" class="sr-only">Last Name</label>
-                                    <input id="lastname" name="lastname" type="text" autocomplete="lastname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="First Name">
+                                    <input id="lastname" name="lastname" type="text" autocomplete="lastname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="First Name">
                                 </div>
                             </div>
                             <div>
                                 <label for="password" class="sr-only">Password</label>
-                                <input id="password" name="password" type="password" autocomplete="password" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+                                <input id="password" name="password" type="password" autocomplete="password" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Password">
                             </div>
                             <div>
                                 <label for="organisation" class="sr-only">Organisation</label>
-                                <input id="organisation" name="organisation" type="text" autocomplete="organisation" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Organisation (Optional)">
+                                <input id="organisation" name="organisation" type="text" autocomplete="organisation" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Organisation (Optional)">
                             </div>
                         </div>
         
                         <div>
-                            <button type="submit" name="register" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                            <button type="submit" name="register" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-'.THEME_PANEL_COLOUR.'-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-padlock"></i>
                                 </span>
@@ -165,12 +165,12 @@
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="verify_email" class="sr-only">Email Address</label>
-                                <input id="verify_email" name="verify_email" type="email" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                                <input id="verify_email" name="verify_email" type="email" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Email address">
                             </div>
                         </div>
         
                         <div>
-                            <button type="submit" name="verify" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
+                            <button type="submit" name="verify" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-'.THEME_PANEL_COLOUR.'-500 transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-envelope"></i>
                                 </span>
