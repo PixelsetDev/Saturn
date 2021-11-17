@@ -10,7 +10,7 @@ function create_page($url, $categoryID, $template, $title, $description): bool
 
     global $conn;
 
-    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."pages` WHERE `url` = '/history/test'";
+    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."pages` WHERE `url` = '".$url."'";
     if (mysqli_num_rows(mysqli_query($conn, $query)) != 0) {
         return false;
     }
