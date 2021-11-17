@@ -4,7 +4,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/common/global_public.php';
 
 const THEME_DIRECTORY = '/themes/';
 
-function getarticles() {
+function getarticles()
+{
     $i = 1;
     $article = get_article_title($i);
     $return = '';
@@ -24,6 +25,7 @@ function getarticles() {
         $i++;
         $article = get_article_title($i);
     }
+
     return $return;
 }
 
@@ -36,7 +38,11 @@ function getdata($articleID): array
     $articleData['author']['id'] = get_article_author_id($articleID);
     $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
-    if($articleID != null) { $articleData['section']['articles'] = $articleData['content'].'<br><br>'.$articleData['references'].'<br><br><em>Written by '.get_user_fullname($articleData['author']['id']).'</em>'; } else { $articleData['section']['articles'] = getarticles(); }
+    if ($articleID != null) {
+        $articleData['section']['articles'] = $articleData['content'].'<br><br>'.$articleData['references'].'<br><br><em>Written by '.get_user_fullname($articleData['author']['id']).'</em>';
+    } else {
+        $articleData['section']['articles'] = getarticles();
+    }
     $articleData['image']['url'] = null;
     $articleData['image']['credit'] = null;
     $articleData['image']['license'] = null;

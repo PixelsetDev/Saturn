@@ -73,12 +73,13 @@
                                     ?>
                                     <li>Approve Pages and Articles.</li>
                                     <?php
-                                        }
-                                        if (get_user_roleID($_SESSION['id'] >= '4')) {
-                                    ?>
+                                }
+            if (get_user_roleID($_SESSION['id'] >= '4')) {
+                ?>
                                     <li>Manage the Website's Core Settings</li>
                                     <li>Manage the the Users and their permissions.</li>
-                                    <?php } ?>
+                                    <?php
+            } ?>
                                 <li>Join the Team Chat and Socialise with Team Members.</li>
                                 <li>and so much more!</li>
                             </ul>
