@@ -57,6 +57,9 @@
     const LOGGING_AUTOLOG = false;
     /* Developer Tools */
     const CONFIG_DEBUG = false;
+    /* Updating */
+    const CONFIG_UPDATE_CHECK = true;
+    const CONFIG_UPDATE_AUTO = true;
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '4';
     const PERMISSION_CREATE_PAGE = '4';
