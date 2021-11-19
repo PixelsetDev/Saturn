@@ -12,6 +12,7 @@ function optimise_tables(): bool
 {
     global $conn;
 
+    $query1 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'announcements`';
     $query1 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'articles`';
     $query2 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'chats_messages`';
     $query3 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'notifications`';
