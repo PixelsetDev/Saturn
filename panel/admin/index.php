@@ -114,10 +114,10 @@
                 </div>
                 <div class="flex w-full">
                     <?php
-                        $sql = 'SELECT `id` from `gh_users` WHERE 1';
+                        $sql = 'SELECT `id` from `'.DATABASE_PREFIX.'users` WHERE 1';
                         $results = mysqli_query($conn, $sql);
                         $rows = mysqli_num_rows($results);
-                        $sql = "SELECT `id` from `gh_users` WHERE `role_id` NOT IN ('0', '1');";
+                        $sql = "SELECT `id` from `".DATABASE_PREFIX."users` WHERE `role_id` NOT IN ('0', '1');";
                         $results = mysqli_query($conn, $sql);
                         $activerows = mysqli_num_rows($results);
                         if ($activerows != 0) {
@@ -125,13 +125,13 @@
                         } else {
                             $colour = 'red';
                         }
-                        $sql = "SELECT `id` from `gh_users` WHERE `role_id` = '1';";
+                        $sql = "SELECT `id` from `".DATABASE_PREFIX."users` WHERE `role_id` = '1';";
                         $results = mysqli_query($conn, $sql);
                         $pendingrows = mysqli_num_rows($results);
                         if ($pendingrows != 0) {
                             $colour = 'yellow';
                         }
-                        $sql = "SELECT `id` from `gh_users` WHERE `role_id` = '0';";
+                        $sql = "SELECT `id` from `".DATABASE_PREFIX."users` WHERE `role_id` = '0';";
                         $results = mysqli_query($conn, $sql);
                         $bannedrows = mysqli_num_rows($results);
                     ?>
