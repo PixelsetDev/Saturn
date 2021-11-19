@@ -10,7 +10,7 @@
         $errorMsg = checkInput('DEFAULT', $_GET['errorMsg']);
     }
     if (isset($_GET['download'])) {
-        if (marketplace_download_zip(checkInput('DEFAULT', $_GET['download']), '/../../../../themes/download.zip')) {
+        if (marketplace_download_zip(checkInput('DEFAULT', $_GET['download']), '/../../../themes/download.zip')) {
             internal_redirect('/panel/admin/themes?successMsg=The theme was downloaded and installed successfully.');
         } else {
             internal_redirect('/panel/admin/themes?errorMsg=An error occurred whilst downloading the theme.');
@@ -68,7 +68,7 @@
                     if ($themeFramework == '') {
                         $themeFramework = 'question_mark';
                     } ?>
-                <a href="settings?slug=<?php echo $themeData->{'theme'}->{'slug'}; ?>" class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                <a href="settings?slug=<?php echo $themeData->{'theme'}->{'slug'}; ?>" class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0 rounded">
                     <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
                         <div class="flex-grow">
                             <h3 class="text-lg mt-1 mx-2 text-white"><?php echo $themeData->{'theme'}->{'name'}; ?></h3>
@@ -92,7 +92,7 @@
             <div class="my-6 flex space-x-3 p-3 bg-white rounded-t-md overflow-x-scroll">
                 <?php $themeURL = 'https://www.marketplace.saturncms.net/themes/embed'; echo file_get_contents($themeURL); ?>
                 <a href="https://marketplace.saturncms.net/themes/?url=<?php echo url(); ?>" target="_blank">
-                    <div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0">
+                    <div class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0 rounded">
                         <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20">
                             <h3 class="text-lg mt-1 mx-2 text-white">Get more Themes</h3>
                             <p class="text-xs -mt-1 mb-1 mx-2 text-white">marketplace.saturncms.net</p>
