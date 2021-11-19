@@ -7,40 +7,35 @@
 
     $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
 
-    if (isset($_GET['update'])) {
-        if ($_GET['update']) {
-            $downloadUrl = 'https://link.saturncms.net/update/'.$remoteVersion.'.zip';
-            $downloadTo = '/update.zip';
-
-            if (strpos($downloadUrl, 'saturncms.net') !== false) {
-                $installFile = __DIR__.$downloadTo;
-                file_put_contents($installFile, fopen($downloadUrl, 'r'));
-                $path = pathinfo(realpath($installFile), PATHINFO_DIRNAME);
-                $archive = new ZipArchive();
-                $res = $archive->open($installFile);
-
-                if ($res) {
-                    $archive->extractTo($path);
-                    $archive->close();
-                    if (!unlink($installFile)) {
-                        $complete = false;
-                        $errorMsg = 'Saturn update error: Unable to delete the update file.';
-                    } else {
-                        $complete = true;
-                    }
-                } else {
+    if ((isset($_GET['update']) || CONFIG_UPDATE_AUTO) && CONFIG_UPDATE_CHECK) {
+        $downloadUrl = 'https://link.saturncms.net/update/' . $remoteVersion . '.zip';
+        $downloadTo = '/update.zip';
+        if (strpos($downloadUrl, 'saturncms.net') !== false) {
+            $installFile = __DIR__ . $downloadTo;
+            file_put_contents($installFile, fopen($downloadUrl, 'r'));
+            $path = pathinfo(realpath($installFile), PATHINFO_DIRNAME);
+            $archive = new ZipArchive();
+            $res = $archive->open($installFile);
+            if ($res) {
+                $archive->extractTo($path);
+                $archive->close();
+                if (!unlink($installFile)) {
                     $complete = false;
-                    $errorMsg = 'Saturn update error: Unable to unzip the archive.';
+                    $errorMsg = 'Saturn update error: Unable to delete the update file.';
+                } else {
+                    $complete = true;
                 }
             } else {
                 $complete = false;
-                $errorMsg = 'Saturn update error: Halted download from untrusted URL. Attempted to download from: '.$downloadUrl;
+                $errorMsg = 'Saturn update error: Unable to unzip the archive.';
             }
-
-            if ($complete) {
-                header('Location: update.php');
-                exit;
-            }
+        } else {
+            $complete = false;
+            $errorMsg = 'Saturn update error: Halted download from untrusted URL. Attempted to download from: ' . $downloadUrl;
+        }
+        if ($complete) {
+            header('Location: update.php');
+            exit;
         }
     }
 ?><!DOCTYPE html>
@@ -173,7 +168,7 @@
                     </div>';
                     }
                     ?>
-                    <?php if ($remoteVersion != SATURN_VERSION) {
+                    <?php if ($remoteVersion != SATURN_VERSION && CONFIG_UPDATE_CHECK) {
                         echo '
                     <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                         <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
@@ -252,11 +247,12 @@
                         <p>
                             <u>Latest Version:</u> <?php echo $remoteVersion; ?><br>
                             <u>Current Version:</u> <?php echo SATURN_VERSION; ?><br>
-                            <?php
-                            if ($remoteVersion != SATURN_VERSION) { ?>
-                            <a href="?update=true" class="underline">Update now</a>
+                            <?php if (!CONFIG_UPDATE_CHECK) { ?><p class="italic text-xs">Update checking is disabled. To update, re-enable it in your settings.</p><?php } ?>
+                            <?php if (!CONFIG_UPDATE_AUTO) { ?><p class="italic text-xs">Automatic updating is disabled. To automatically update when a new version is found, re-enable it in your settings.</p><?php } ?>
+                            <?php if ($remoteVersion != SATURN_VERSION) { ?>
+                            <p class="italic underline"><a href="?update=true">Update now</a></p>
                             <?php } else { ?>
-                            <p>You're up to date!</p>
+                            <p class="italic">You're up to date!</p>
                             <?php } ?>
                         </p>
                     </div>
