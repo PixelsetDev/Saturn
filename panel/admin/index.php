@@ -7,7 +7,7 @@
 
     $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
 
-    if ((isset($_GET['update']) || CONFIG_UPDATE_AUTO) && CONFIG_UPDATE_CHECK) {
+    if (((isset($_GET['update']) || CONFIG_UPDATE_AUTO) && CONFIG_UPDATE_CHECK) && $remoteVersion != SATURN_VERSION) {
         $downloadUrl = 'https://link.saturncms.net/update/' . $remoteVersion . '.zip';
         $downloadTo = '/update.zip';
         if (strpos($downloadUrl, 'saturncms.net') !== false) {
