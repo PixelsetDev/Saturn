@@ -16,7 +16,7 @@ Code Quality is measured using CodeFactor.io and SonarCloud, it allows us to ins
 [![StyleCI](https://github.styleci.io/repos/374477121/shield?branch=master)](https://github.styleci.io/repos/374477121?branch=master)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5217/badge)](https://bestpractices.coreinfrastructure.org/projects/5217)
 ### General
-[![Github all releases](https://img.shields.io/github/downloads/LMWNWeb/Saturn/total.svg)](https://GitHub.com/lewmilburn/Particle-CSS/releases/)
+[![Github all releases](https://img.shields.io/github/downloads/LMWNWeb/Saturn/total.svg)](https://GitHub.com/LMWNWeb/Saturn/releases/)
 [![GitHub latest commit](https://badgen.net/github/last-commit/LMWNWeb/Saturn)](https://GitHub.com/LMWNWeb/Saturn/commit/)
 [![GitHub license](https://badgen.net/github/license/LMWNWeb/Saturn)](https://github.com/LMWNWeb/Saturn/blob/master/LICENSE)
 [![GitHub forks](https://badgen.net/github/forks/LMWNWeb/Saturn/)](https://GitHub.com/LMWNWeb/Saturn/network/)
