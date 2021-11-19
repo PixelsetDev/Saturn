@@ -26,7 +26,7 @@ function marketplace_download_zip($download_url, $download_to, $delete_zip = tru
             if ($delete_zip) {
                 if (!unlink($file)) {
                     $complete = false;
-                    log_error('ERROR][MARKETPLACE DOWNLOAD','Unable to delete the file.');
+                    log_error('ERROR][MARKETPLACE DOWNLOAD', 'Unable to delete the file.');
                 } else {
                     $complete = true;
                 }
@@ -35,11 +35,11 @@ function marketplace_download_zip($download_url, $download_to, $delete_zip = tru
             }
         } else {
             $complete = false;
-            log_error('ERROR][MARKETPLACE DOWNLOAD','Unable to open the file.');
+            log_error('ERROR][MARKETPLACE DOWNLOAD', 'Unable to open the file.');
         }
     } else {
         $complete = false;
-        log_error('ERROR][MARKETPLACE DOWNLOAD','Stopped attempted to download from untrusted URL.');
+        log_error('ERROR][MARKETPLACE DOWNLOAD', 'Stopped attempted to download from untrusted URL.');
     }
 
     return $complete;
