@@ -64,9 +64,9 @@
             <div class="px-4 py-6 sm:px-0">
                 <?php
                 $role = get_user_roleID($_SESSION['id']);
-                $i = 1;
-                $category = get_page_category_name($i);
-                while ($category != null) {
+                $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT `name`, `id` FROM `'.DATABASE_PREFIX.'pages_categories` WHERE 1 ORDER BY `name` ASC'));
+                foreach ($results as $cresult) {
+                    $categoryID = $cresult[1];
                     $percent = 0;
                     $written = 0;
                     $complete = 0;
@@ -89,13 +89,13 @@
                                         <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                                             <div class="px-4 sm:px-6">
                                                 <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
-                                                    <?php echo $category; ?>
+                                                    <?php echo $cresult[0]; ?>
                                                 </h2>
                                             </div>
                                             <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                                 <div class="absolute inset-0 px-4 sm:px-6 h-full">
 <?php
-$results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE `category_id` = '.$i));
+$results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE `category_id` = '.$categoryID.' ORDER BY `title` ASC'));
 
                     foreach ($results as $result) {
                         if ($result[5] != null) {
@@ -119,7 +119,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                                                     <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
                                                                 <?php } ?>
                                                                 <div class="flex-grow mr-2 self-center"><?php echo $result[5]; ?>
-                                                                    <?php if ($result[0] == get_page_category_homepage($i)) { ?>
+                                                                    <?php if ($result[0] == get_page_category_homepage($categoryID)) { ?>
                                                                         <i class="fas fa-home" aria-hidden="true"></i>
                                                                     <?php } ?>
                                                                 </div>
@@ -150,7 +150,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                         }
                     }
                     if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
-                        echo display_page_new_form(strtolower($category));
+                        echo display_page_new_form(strtolower($cresult[0]));
                     } ?>
                                                     <br><br><br><br>
                                                 </div>
@@ -181,7 +181,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                         <div class="flex w-full space-x-4">
                             <div class="flex w-full">
                                 <div class="flex-grow">
-                                    <h1 class="text-2xl leading-tight text-gray-900"><?php echo $category; ?></h1>
+                                    <h1 class="text-2xl leading-tight text-gray-900"><?php echo $cresult[0]; ?></h1>
                                     <span class="text-xs font-semibold inline-block py-1 px-2 height-auto rounded-lg text-<?php echo $statusColour; ?>-900 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
                                 </div>
                                 <?php /*
@@ -230,11 +230,9 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                         </div>
                         <br>
                         <?php
+                        unset($cresult);
                             get_assigned_editors();
-                    get_assigned_writers();
-                    unset($category);
-                    $i++;
-                    $category = get_page_category_name($i); ?>
+                    get_assigned_writers();?>
                     </div>
                 <br><hr><br>
                 <?php
