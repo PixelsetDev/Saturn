@@ -111,8 +111,8 @@ ob_end_flush();
                                 } ?>
                     </ul>
                     <br>
-                    <div class="">
-                        <div class="flex"><input type="text" id="bio" name="bio" value="<?php echo str_ireplace('\\', '', get_user_bio($user)); ?>" class="text-base bg-gray-100 bg-opacity-50" maxlength="100"/><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
+                    <div class="w-full">
+                        <div class="flex"><input type="text" id="bio" name="bio" value="<?php echo str_ireplace('\\', '', get_user_bio($user)); ?>" class="text-base bg-gray-100 bg-opacity-50 w-full" maxlength="100"/><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
                         <div class="flex"><input type="text" id="link" name="link" value="<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2 bg-gray-100 bg-opacity-50" /><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
                     </div>
                 </div>
