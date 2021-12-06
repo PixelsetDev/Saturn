@@ -92,7 +92,7 @@
                                 <img class="rounded-full h-16 w-16 inline m-1" src="<?php echo get_user_profilephoto($_SESSION['id']); ?>" alt="<?php echo get_user_fullname($_SESSION['id']); ?>">
                                 <h3 class="text-xl font-bold inline"><?php echo get_user_fullname($_SESSION['id']); ?></h3>
                                 <p class="mt-4">
-                                    <?php echo get_user_bio($_SESSION['id']); ?>
+                                    <?php echo stripslashes(get_user_bio($_SESSION['id'])); ?>
                                 </p>
                             </div>
                         </div>

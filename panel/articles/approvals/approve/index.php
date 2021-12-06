@@ -81,7 +81,7 @@
                             <span name="title" id="title" maxlength="60" class="w-full border">
                                 <?php
                                     $title = get_article_title($articleID);
-                                    echo checkOutput('HTML', $title);
+                                    echo stripslashes(checkOutput('HTML', $title));
                                     unset($title);
                                 ?>
                             </span>
@@ -92,7 +92,7 @@
                         <span name="content" id="content">
                             <?php
                                 $content = get_article_content($articleID);
-                                $content = checkOutput('HTML', $content); echo $content;
+                                $content = checkOutput('HTML', $content); echo stripslashes($content);
                                 unset($content);
                             ?>
                         </span>
@@ -103,7 +103,7 @@
                         <span name="references" id="references">
                             <?php
                                 $references = get_article_references($articleID);
-                                $references = checkOutput('HTML', $references); echo $references;
+                                $references = checkOutput('HTML', $references); echo stripslashes($references);
                                 unset($references);
                             ?>
                         </span>
