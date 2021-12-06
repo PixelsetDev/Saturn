@@ -3,7 +3,8 @@
     <head>
         <?php
             $errorScreen = true;
-            include_once __DIR__.'/common/global_public.php';
+            require __DIR__.'/common/global_public.php';
+            require __DIR__.'/common/vendors.php';
         ?>
         <title><?php echo CONFIG_SITE_NAME; ?></title>
     </head>
@@ -23,7 +24,9 @@
                         <button onclick="window.history.back();" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Go back
                         </button>
-                        <a href="<?php echo checkInput('DEFAULT', $_GET['url']); ?>" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
+                        <a href="<?php if (strpos(checkInput('DEFAULT', $_GET['url']), 'http') === false) {
+                            echo 'http://';
+                        } echo checkInput('DEFAULT', $_GET['url']); ?>" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Continue
                         </a>
                     </div>
