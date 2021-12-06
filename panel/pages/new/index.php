@@ -66,21 +66,21 @@
                         <h1 class="text-xl w-1/6 self-center">Page Title</h1>
                         <div class="flex-grow">
                             <label for="pagetitle" class="sr-only self-center">Page Title</label>
-                            <input id="pagetitle" maxlength="64" name="pagetitle" type="text" maxlength="100" value="<?php echo $pageTitle; ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page Title">
+                            <input id="pagetitle" maxlength="64" name="pagetitle" type="text" maxlength="100" value="<?php echo stripslashes($pageTitle); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page Title">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
                         <h1 class="text-xl w-1/6 self-center">Page Description</h1>
                         <div class="flex-grow">
                             <label for="pagedescription" class="sr-only self-center">Page Description</label>
-                            <input id="pagedescription" maxlength="127" name="pagedescription" type="text" maxlength="255" value="<?php echo $pageTitle; ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page Description">
+                            <input id="pagedescription" maxlength="127" name="pagedescription" type="text" maxlength="255" value="<?php echo stripslashes($pageTitle); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page Description">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
                         <h1 class="text-xl w-1/6 self-center">Page URL</h1>
                         <div class="flex-grow">
                             <label for="pageurl" class="sr-only self-center">Page Title</label>
-                            <input id="pageurl" name="pageurl" maxlength="64" type="text" value="<?php echo str_replace(' ', '-', '/'.strtolower($pageCategory).'/'.strtolower($pageTitle)); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page URL">
+                            <input id="pageurl" name="pageurl" maxlength="64" type="text" value="<?php echo str_replace(' ', '-', '/'.stripslashes(strtolower($pageCategory)).'/'.stripslashes(strtolower($pageTitle))); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page URL">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
@@ -91,9 +91,9 @@
                     <?php
                     try {
                         $i = 1;
-                        $category = get_page_category_name($i);
+                        $category = stripslashes(get_page_category_name($i));
                         while ($category != null) {
-                            if ($pageCategory == strtolower(get_page_category_name($i))) {
+                            if ($pageCategory == stripslashes(strtolower(get_page_category_name($i)))) {
                                 $selected = ' selected';
                             }
                             echo '<option value="'.$i.'"'.$selected.'>'.$category.'</option>';

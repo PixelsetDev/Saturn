@@ -161,4 +161,4 @@ $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.
 $articleOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/article.tt');
 
 $articleData = getdata($articleID);
-echo replacedata($articleOutput, $articleData, $data);
+echo stripslashes(replacedata($articleOutput, $articleData, $data));

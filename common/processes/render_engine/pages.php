@@ -145,4 +145,4 @@ $file = strtolower(get_page_template($pageID));
 $pageOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/'.$file.'.tt');
 
 $pageData = getdata($pageID);
-echo replacedata($pageOutput, $pageData, $data);
+echo stripslashes(replacedata($pageOutput, $pageData, $data));
