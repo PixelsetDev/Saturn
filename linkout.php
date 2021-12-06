@@ -23,9 +23,9 @@
                         <button onclick="window.history.back();" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Go back
                         </button>
-                        <button onclick="location.href='<?php echo checkInput('DEFAULT', $_GET['url']); ?>';" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
+                        <a href="<?php echo checkInput('DEFAULT', $_GET['url']); ?>" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Continue
-                        </button>
+                        </a>
                     </div>
                     <div class="block w-full mx-auto md:mt-0 relative max-w-md lg:max-w-2xl">
                         <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/error.svg" alt="Linkout Image">
