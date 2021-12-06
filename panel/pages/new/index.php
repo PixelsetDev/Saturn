@@ -38,7 +38,7 @@
             ob_end_flush();
         ?>
 
-        <title>New Page (<?php echo $pageTitle; ?>) - Saturn Panel</title>
+        <title>New Page (<?php echo stripslashes($pageTitle); ?>) - Saturn Panel</title>
     </head>
     <body class="mb-8">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
