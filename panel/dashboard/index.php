@@ -104,7 +104,7 @@
                 </p>
                 <?php
                     if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
-                        $output = json_decode(file_get_contents(__DIR__.'/../../assets/storage/terms.json'));
+                        $output = json_decode(file_get_contents(__DIR__.'/../../storage/terms.json'));
                         if ($output->data->termsandconditions != null) {
                             ?>
                 <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Terms and Conditions</h2>
