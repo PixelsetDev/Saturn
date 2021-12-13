@@ -47,6 +47,8 @@
                                 <div class="flex">
                                     <div class="w-3/4 flex-grow text-justify">
                                         {{page:content}}
+                                        <br><br>
+                                        {{page:references}}
                                     </div>
                                 </div>
                             </div>
