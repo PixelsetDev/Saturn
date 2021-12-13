@@ -9,9 +9,10 @@
 
     if (((isset($_GET['update']) || CONFIG_UPDATE_AUTO) && CONFIG_UPDATE_CHECK) && $remoteVersion != SATURN_VERSION) {
         $downloadUrl = 'https://link.saturncms.net/update/'.$remoteVersion.'.zip';
-        $downloadTo = '/update.zip';
+        $downloadTo = 'update.zip';
         if (strpos($downloadUrl, 'saturncms.net') !== false) {
-            $installFile = __DIR__.$downloadTo;
+            $installFile = __DIR__.'/../../'.$downloadTo;
+            echo $installFile;
             file_put_contents($installFile, fopen($downloadUrl, 'r'));
             $path = pathinfo(realpath($installFile), PATHINFO_DIRNAME);
             $archive = new ZipArchive();
@@ -33,8 +34,9 @@
             $complete = false;
             $errorMsg = 'Saturn update error: Halted download from untrusted URL. Attempted to download from: '.$downloadUrl;
         }
+
         if ($complete) {
-            header('Location: update.php');
+            header('Location: /update.php');
             exit;
         }
     }
