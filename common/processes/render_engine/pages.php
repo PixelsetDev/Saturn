@@ -21,6 +21,7 @@ function getdata($pageID): array
 {
     $pageData['title'] = get_page_title($pageID);
     $pageData['content'] = get_page_content($pageID);
+    $pageData['references'] = get_page_references($pageID);
     $pageData['description'] = get_page_description($pageID);
     $pageData['author']['id'] = get_page_last_edit_user_id($pageID);
     $pageData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
@@ -43,6 +44,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     // Page Data
     $pageOutput = str_replace('{{page:title}}', $pageData['title'], $pageOutput);
     $pageOutput = str_replace('{{page:content}}', $pageData['content'], $pageOutput);
+    $pageOutput = str_replace('{{page:references}}', $pageData['references'], $pageOutput);
     $pageOutput = str_replace('{{page:description}}', $pageData['description'], $pageOutput);
     $pageOutput = str_replace('{{page:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
     $pageOutput = str_replace('{{page:image}}', $pageData['image']['url'], $pageOutput);

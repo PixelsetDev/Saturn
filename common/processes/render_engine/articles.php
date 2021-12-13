@@ -62,6 +62,7 @@ function replacedata($articleOutput, $articleData, $themeData): string
     // Article Data
     $articleOutput = str_replace('{{page:title}}', $articleData['title'], $articleOutput);
     $articleOutput = str_replace('{{page:content}}', $articleData['content'], $articleOutput);
+    $articleOutput = str_replace('{{page:references}}', $articleData['references'], $articleOutput);
     $articleOutput = str_replace('{{page:description}}', $articleData['description'], $articleOutput);
     $articleOutput = str_replace('{{page:author:name}}', get_user_fullname($articleData['author']['id']), $articleOutput);
     $articleOutput = str_replace('{{page:image}}', $articleData['image']['url'], $articleOutput);
