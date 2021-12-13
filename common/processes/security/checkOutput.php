@@ -2,5 +2,5 @@
 
 function checkOutput($mode, $data)
 {
-    return checkInput($mode, $data);
+    return stripslashes(checkInput($mode, $data));
 }

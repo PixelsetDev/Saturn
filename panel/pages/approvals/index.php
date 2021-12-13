@@ -113,7 +113,7 @@
                                                                 <?php } ?>
                                                             </div>
                                                             <div class="text-xs normal-case font-normal">
-                                                                <?php echo $result[6]; ?>
+                                                                <?php echo stripslashes($result[6]); ?>
                                                             </div>
                                                         </div>
                                                         <div>

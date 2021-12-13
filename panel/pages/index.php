@@ -124,7 +124,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                                                     <?php } ?>
                                                                 </div>
                                                                 <div class="text-xs normal-case font-normal">
-                                                                    <?php echo $result[6]; ?>
+                                                                    <?php echo stripslashes($result[6]); ?>
                                                                 </div>
                                                             </div>
                                                             <div>
