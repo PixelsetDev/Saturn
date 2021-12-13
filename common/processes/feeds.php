@@ -1,5 +1,7 @@
 <?php
-    function feed_rss($type): string {
+
+    function feed_rss($type): string
+    {
         if ($type == 1) {
             return feed_rss_articles();
         } elseif ($type == 2) {
@@ -9,83 +11,95 @@
         }
     }
 
-    function feed_rss_articles(): string {
+    function feed_rss_articles(): string
+    {
         require __DIR__.'/database/connect.php';
-        $query = "SELECT * FROM `".DATABASE_PREFIX."articles` WHERE `status` = 'PUBLISHED';";
-        $rs = mysqli_query($conn,$query);
+        $query = 'SELECT * FROM `'.DATABASE_PREFIX."articles` WHERE `status` = 'PUBLISHED';";
+        $rs = mysqli_query($conn, $query);
 
-        if(SECURITY_USE_HTTPS) { $protocol= 'https'; } else { $protocol = 'http'; }
+        if (SECURITY_USE_HTTPS) {
+            $protocol = 'https';
+        } else {
+            $protocol = 'http';
+        }
 
         header('Content-type: application/xml');
 
         $feed = "<?xml version='1.0' encoding='UTF-8'?>
         <rss version='2.0'>
             <channel>
-                <title>".CONFIG_SITE_NAME." Articles</title>
-                <link>".$protocol."://".$_SERVER['HTTP_HOST']."/articles</link>
-                <description>".CONFIG_SITE_NAME." Articles</description>
+                <title>".CONFIG_SITE_NAME.' Articles</title>
+                <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'/articles</link>
+                <description>'.CONFIG_SITE_NAME.' Articles</description>
                 <language>en-us</language>
                 <image>
-                    <url>".$protocol."://".$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE."</url>
-                    <title>".CONFIG_SITE_NAME." Articles</title>
-                    <link>".$protocol."://".$_SERVER['HTTP_HOST']."/articles</link>
-                </image>";
-                while($row = mysqli_fetch_assoc($rs)){
-                    if ($row["content"] != null) {
-                        $feed .= "
+                    <url>'.$protocol.'://'.$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE.'</url>
+                    <title>'.CONFIG_SITE_NAME.' Articles</title>
+                    <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'/articles</link>
+                </image>';
+        while ($row = mysqli_fetch_assoc($rs)) {
+            if ($row['content'] != null) {
+                $feed .= '
                 <item>
-                    <title>".$row['title']."</title>
-                    <link>".$protocol."://".$_SERVER['HTTP_HOST']."/articles/".$row['id']."</link>
-                    <description>".strip_tags(stripslashes(html_entity_decode($row['content'])))."</description>
-                    <author>".CONFIG_EMAIL_ADMIN." (".get_author_fullname($row['author_id']).")</author>
-                </item>";
-                    }
-                }
+                    <title>'.$row['title'].'</title>
+                    <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'/articles/'.$row['id'].'</link>
+                    <description>'.strip_tags(stripslashes(html_entity_decode($row['content']))).'</description>
+                    <author>'.CONFIG_EMAIL_ADMIN.' ('.get_author_fullname($row['author_id']).')</author>
+                </item>';
+            }
+        }
 
-            $feed.="
+        $feed .= '
             </channel>
-        </rss>";
+        </rss>';
+
         return $feed;
     }
 
-    function feed_rss_page_updates() {
+    function feed_rss_page_updates()
+    {
         require __DIR__.'/database/connect.php';
-        $query = "SELECT * FROM `".DATABASE_PREFIX."pages_history` WHERE 1;";
-        $rs = mysqli_query($conn,$query);
+        $query = 'SELECT * FROM `'.DATABASE_PREFIX.'pages_history` WHERE 1;';
+        $rs = mysqli_query($conn, $query);
 
-        if(SECURITY_USE_HTTPS) { $protocol= 'https'; } else { $protocol = 'http'; }
+        if (SECURITY_USE_HTTPS) {
+            $protocol = 'https';
+        } else {
+            $protocol = 'http';
+        }
 
         header('Content-type: application/xml');
 
         $feed = "<?xml version='1.0' encoding='UTF-8'?>
         <rss version='2.0'>
             <channel>
-                <title>".CONFIG_SITE_NAME." Page Updates</title>
-                <link>".$protocol."://".$_SERVER['HTTP_HOST']."</link>
-                <description>".CONFIG_SITE_NAME." Page Updates</description>
+                <title>".CONFIG_SITE_NAME.' Page Updates</title>
+                <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'</link>
+                <description>'.CONFIG_SITE_NAME.' Page Updates</description>
                 <language>en-us</language>
                 <image>
-                    <url>".$protocol."://".$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE."</url>
-                    <title>".CONFIG_SITE_NAME." Page Updates</title>
-                    <link>".$protocol."://".$_SERVER['HTTP_HOST']."</link>
-                </image>";
-        while($row = mysqli_fetch_assoc($rs)){
-            $query2 = "SELECT `title`,`description`,`url` FROM `".DATABASE_PREFIX."pages` WHERE `id` =".$row['page_id'];
-            $rs2 = mysqli_query($conn,$query2);
+                    <url>'.$protocol.'://'.$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE.'</url>
+                    <title>'.CONFIG_SITE_NAME.' Page Updates</title>
+                    <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'</link>
+                </image>';
+        while ($row = mysqli_fetch_assoc($rs)) {
+            $query2 = 'SELECT `title`,`description`,`url` FROM `'.DATABASE_PREFIX.'pages` WHERE `id` ='.$row['page_id'];
+            $rs2 = mysqli_query($conn, $query2);
             $row2 = mysqli_fetch_assoc($rs2);
             $name = get_author_fullname($row['user_id']);
-                $feed .= "
+            $feed .= '
                 <item>
-                    <title>".$row2['title']."</title>
-                    <link>".$protocol."://".$_SERVER['HTTP_HOST'].$row2['url']."</link>
-                    <description>".$name." edited page titled ".$row2['title']." at ".$row['timestamp']."</description>
-                    <author>".CONFIG_EMAIL_ADMIN." (".$name.")</author>
-                </item>";
+                    <title>'.$row2['title'].'</title>
+                    <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].$row2['url'].'</link>
+                    <description>'.$name.' edited page titled '.$row2['title'].' at '.$row['timestamp'].'</description>
+                    <author>'.CONFIG_EMAIL_ADMIN.' ('.$name.')</author>
+                </item>';
         }
 
-        $feed.="
+        $feed .= '
             </channel>
-        </rss>";
+        </rss>';
+
         return $feed;
     }
 
