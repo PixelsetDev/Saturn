@@ -80,15 +80,13 @@ $router->mount('/rss', function () use ($router) {
     });
     //rss/articles
     $router->get('/articles', function () {
-        ?>
-
-        <?php
+        require __DIR__.'/common/processes/feeds.php';
+        echo feed_rss(1);
     });
     //rss/pagehistory
     $router->get('/page-updates', function () {
-        ?>
-
-        <?php
+        require __DIR__.'/common/processes/feeds.php';
+        echo feed_rss(2);
     });
 });
 
