@@ -25,11 +25,10 @@
                 <link>".$protocol."://".$_SERVER['HTTP_HOST']."/articles</link>
                 <description>".CONFIG_SITE_NAME." Articles</description>
                 <language>en-us</language>
-                <copyright></copyright>
                 <image>
                     <url>".$protocol."://".$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE."</url>
-                    <title>".CONFIG_SITE_NAME."</title>
-                    <link>".$protocol."://".$_SERVER['HTTP_HOST']."</link>
+                    <title>".CONFIG_SITE_NAME." Articles</title>
+                    <link>".$protocol."://".$_SERVER['HTTP_HOST']."/articles</link>
                 </image>";
                 while($row = mysqli_fetch_assoc($rs)){
                     if ($row["content"] != null) {
@@ -38,7 +37,7 @@
                     <title>".$row['title']."</title>
                     <link>".$protocol."://".$_SERVER['HTTP_HOST']."/articles/".$row['id']."</link>
                     <description>".strip_tags(stripslashes(html_entity_decode($row['content'])))."</description>
-                    <author>".get_author_fullname($row['author_id'])."</author>
+                    <author>".CONFIG_EMAIL_ADMIN." (".get_author_fullname($row['author_id']).")</author>
                 </item>";
                     }
                 }
@@ -61,14 +60,13 @@
         $feed = "<?xml version='1.0' encoding='UTF-8'?>
         <rss version='2.0'>
             <channel>
-                <title>".CONFIG_SITE_NAME." Page Edits</title>
+                <title>".CONFIG_SITE_NAME." Page Updates</title>
                 <link>".$protocol."://".$_SERVER['HTTP_HOST']."</link>
-                <description>".CONFIG_SITE_NAME." Page Edits</description>
+                <description>".CONFIG_SITE_NAME." Page Updates</description>
                 <language>en-us</language>
-                <copyright></copyright>
                 <image>
                     <url>".$protocol."://".$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE."</url>
-                    <title>".CONFIG_SITE_NAME."</title>
+                    <title>".CONFIG_SITE_NAME." Page Updates</title>
                     <link>".$protocol."://".$_SERVER['HTTP_HOST']."</link>
                 </image>";
         while($row = mysqli_fetch_assoc($rs)){
@@ -81,7 +79,7 @@
                     <title>".$row2['title']."</title>
                     <link>".$protocol."://".$_SERVER['HTTP_HOST'].$row2['url']."</link>
                     <description>".$name." edited page titled ".$row2['title']." at ".$row['timestamp']."</description>
-                    <author>".$name."</author>
+                    <author>".CONFIG_EMAIL_ADMIN." (".$name.")</author>
                 </item>";
         }
 
