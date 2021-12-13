@@ -103,12 +103,12 @@
                     <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
                         <div class="relative w-screen max-w-md">
                             <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
-                                <button @click="open = false" class="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white">
+                                <div @click="open = false" class="cursor-pointer rounded-md text-gray-300 hover:text-white hover:outline-none hover:ring-2 hover:ring-white">
                                     <span class="sr-only">Close panel</span>
                                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                     </svg>
-                                </button>
+                                </div>
                             </div>
                             <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                                 <div class="px-4 sm:px-6">
@@ -172,7 +172,7 @@
                                         <input id="settings_page_url" name="settings_page_url" type="text" value="<?php echo get_page_url($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" />
                                     </div>
                                     <input type="submit" id="submitSettings" name="submitSettings" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">
-
+                                    <p class="text-xs italics">Warning: This save button only saves settings, not your work. If you've edited the page, save that first.</p>
                                     <div class="mt-12 rounded border border-red-500 p-4" x-data="{open:false}">
                                         <h3 class="font-bold text-red-500 pb-4">Danger Zone</h3>
                                         <form action="index.php" method="POST">
