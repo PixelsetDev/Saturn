@@ -64,6 +64,7 @@
             <div class="px-4 py-6 sm:px-0">
                 <?php
                 $role = get_user_roleID($_SESSION['id']);
+                $i=0;
                 $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT `name`, `id` FROM `'.DATABASE_PREFIX.'pages_categories` WHERE 1 ORDER BY `name` ASC'));
                 foreach ($results as $cresult) {
                     $categoryID = $cresult[1];
@@ -71,7 +72,26 @@
                     $written = 0;
                     $complete = 0;
                     $pending = 0;
-                    $total = 0; ?>
+                    $total = 0;
+                    $i++;?>
+                    <script>
+                        function myFunction<?php echo $i; ?>() {
+                            var input, filter, ul, li, a, i, txtValue;
+                            input = document.getElementById("myInput<?php echo $i; ?>");
+                            filter = input.value.toUpperCase();
+                            ul = document.getElementById("myUL<?php echo $i; ?>");
+                            li = ul.getElementsByTagName("li");
+                            for (i = 0; i < li.length; i++) {
+                                a = li[i].getElementsByTagName("span")[0];
+                                txtValue = a.textContent || a.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    li[i].style.display = "";
+                                } else {
+                                    li[i].style.display = "none";
+                                }
+                            }
+                        }
+                    </script>
                     <div x-data="{ open: false }">
                         <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                             <div class="absolute inset-0 overflow-hidden">
@@ -91,9 +111,10 @@
                                                 <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
                                                     <?php echo $cresult[0]; ?>
                                                 </h2>
+                                                <input type="text" id="myInput<?php echo $i; ?>" onkeyup="myFunction<?php echo $i; ?>()" placeholder="Search" class="border-b-2 border-blue-500 bg-gray-50 px-1 rounded-md">
                                             </div>
-                                            <div class="mt-6 relative flex-1 px-4 sm:px-6">
-                                                <div class="absolute inset-0 px-4 sm:px-6 h-full">
+                                            <div class="mt-6 relative flex-1 px-4 sm:px-6" id="searchResults">
+                                                <ul id="myUL<?php echo $i; ?>" class="absolute inset-0 px-4 sm:px-6 h-full">
 <?php
 $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE `category_id` = '.$categoryID.' ORDER BY `title` ASC'));
 
@@ -111,6 +132,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                 }
                             }
                             $total++; ?>
+                                                    <li class="my-2">
                                                     <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
                                                         <div class="flex w-full relative">
                                                             <div class="flex-grow">
@@ -118,7 +140,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                                                 <?php if ($status == 'red') { ?>
                                                                     <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full animate-ping"></div>
                                                                 <?php } ?>
-                                                                <div class="flex-grow mr-2 self-center"><?php echo $result[5]; ?>
+                                                                <div class="flex-grow mr-2 self-center"><span><?php echo $result[5]; ?></span>
                                                                     <?php if ($result[0] == get_page_category_homepage($categoryID)) { ?>
                                                                         <i class="fas fa-home" aria-hidden="true"></i>
                                                                     <?php } ?>
@@ -144,7 +166,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                                             } ?>
                                                         </div>
                                                     </div>
-                                                    <br><br>
+                                                    </li>
 <?php
     unset($result, $status);
                         }
@@ -153,7 +175,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                         echo display_page_new_form(strtolower($cresult[0]));
                     } ?>
                                                     <br><br><br><br>
-                                                </div>
+                                                </ul>
                                             </div>
                                             <?php echo $key; ?>
                                         </div>
