@@ -126,7 +126,7 @@
                                                         <?php
                                                         if ($status == 'red') {
                                                             echo 'Pending approval request from '.get_user_fullname(get_page_pending_user_id($result[0])).'.';
-                                                        } elseif (get_page_content($result[0]) == NULL || get_page_content($result[0]) == "") {
+                                                        } elseif (get_page_content($result[0]) == null || get_page_content($result[0]) == '') {
                                                             echo 'This page has not been edited by anyone yet.';
                                                         } else {
                                                             echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($result[0])).' at '.get_page_last_edit_timestamp($result[0]).'.';

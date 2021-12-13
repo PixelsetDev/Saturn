@@ -231,8 +231,8 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                         <br>
                         <?php
                         unset($cresult);
-                            get_assigned_editors();
-                    get_assigned_writers();?>
+                    get_assigned_editors();
+                    get_assigned_writers(); ?>
                     </div>
                 <br><hr><br>
                 <?php

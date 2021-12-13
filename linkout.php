@@ -25,8 +25,8 @@
                             Go back
                         </button>
                         <a href="<?php if (strpos(checkInput('DEFAULT', $_GET['url']), 'http') === false) {
-                            echo 'http://';
-                        } echo checkInput('DEFAULT', $_GET['url']); ?>" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
+            echo 'http://';
+        } echo checkInput('DEFAULT', $_GET['url']); ?>" class="px-2 py-2 w-36 mt-16 font-light transition ease-in duration-200 hover:bg-gray-200 border-2 text-lg border-gray-700 focus:outline-none">
                             Continue
                         </a>
                     </div>
