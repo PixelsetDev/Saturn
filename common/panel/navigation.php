@@ -1,4 +1,4 @@
-<div class="w-full text-gray-100 bg-<?php echo THEME_PANEL_COLOUR; ?>-900">
+<div class="w-full text-gray-100 bg-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:bg-neutral-900">
             <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto lg:items-center lg:justify-between lg:flex-row lg:px-6 lg:px-8">
                 <div class="p-4 flex flex-row items-center justify-between flex-none w-full lg:w-1/6">
                     <div class="flex space-x-6">

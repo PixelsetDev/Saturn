@@ -66,7 +66,7 @@
     }
     ob_end_flush();
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark:bg-neutral-700 dark:bg-white">
     <head>
         <?php
         include_once __DIR__.'/../../../common/panel/vendors.php';
@@ -77,19 +77,19 @@
         <script src="<?php echo CONFIG_INSTALL_URL; ?>/assets/js/editor.js"></script>
 
     </head>
-    <body class="mb-8">
+    <body class="mb-8 dark:bg-neutral-700">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
         <div<?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?> x-data="{ open: false }"<?php } ?>>
-            <header class="bg-white shadow">
+            <header class="bg-white shadow bg-neutral-800">
                 <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">
-                    <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow">Page Editor: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
+                    <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow dark:text-white">Page Editor: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
                     <br class="md:hidden block">
                     <span class="self-center flex space-x-6 text-right">
-                        <a href="<?php echo get_page_url($pageID); ?>" target="_blank" rel="noopener" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 underline transition duration-200">
+                        <a href="<?php echo get_page_url($pageID); ?>" target="_blank" rel="noopener" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:hover:text-white dark:text-gray-300 transition duration-200 underline transition duration-200">
                             View live <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                         </a>
                         <?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?>
-                        <a @click="open = true" target="_blank" rel="noopener" class="cursor-pointer text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 underline transition duration-200">
+                        <a @click="open = true" target="_blank" rel="noopener" class="cursor-pointer text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:hover:text-white dark:text-gray-300 transition duration-200 underline transition duration-200">
                             Page Settings <i class="fas fa-cogs" aria-hidden="true"></i>
                         </a>
                         <?php } ?>
@@ -97,9 +97,9 @@
                 </div>
             </header>
             <?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?>
-            <form action="index.php?pageID=<?php echo checkInput('DEFAULT', $pageID); ?>" method="POST" class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
+            <form action="index.php?pageID=<?php echo checkInput('DEFAULT', $pageID); ?>" method="POST" class="fixed inset-0 overflow-hidden z-50 dark:bg-gray-700" x-show="open" @click.away="open = false">
                 <div class="absolute inset-0 overflow-hidden">
-                    <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="open = false"></div>
+                    <div class="absolute inset-0 bg-gray-500 bg-opacity-75 dark:bg-black dark:bg-opacity-75" aria-hidden="true" @click="open = false"></div>
                     <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
                         <div class="relative w-screen max-w-md">
                             <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
@@ -110,20 +110,20 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                            <div class="h-full flex flex-col py-6 bg-white dark:bg-neutral-900 shadow-xl overflow-y-scroll">
                                 <div class="px-4 sm:px-6">
-                                    <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
+                                    <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900 dark:text-white">
                                         Page Settings
                                     </h2>
                                 </div>
                                 <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                     <div class="mb-2">
-                                        <label for="settings_page_description" class="self-center">Page Description</label><br>
-                                        <textarea id="settings_page_description" name="settings_page_description" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"><?php echo get_page_description($pageID); ?></textarea>
+                                        <label for="settings_page_description" class="self-center dark:text-white">Page Description</label><br>
+                                        <textarea id="settings_page_description" name="settings_page_description" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"><?php echo get_page_description($pageID); ?></textarea>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_category" class="self-center">Page Category</label>
-                                        <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                        <label for="settings_page_category" class="self-center dark:text-white">Page Category</label>
+                                        <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
 <?php                                       $i = 1;
                                             $category = get_page_category_name($i);
                                             while ($category != null) {
@@ -137,8 +137,8 @@
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_template" class="self-center">Page Template</label>
-                                        <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                        <label for="settings_page_template" class="self-center dark:text-white">Page Template</label>
+                                        <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                                             <?php
                                         $files = glob(__DIR__.'/../../../themes/'.THEME_SLUG.'/*.tt');
                                         foreach ($files as $file) {
@@ -156,31 +156,31 @@
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_image" class="self-center">Page Image URL</label>
-                                        <input id="settings_page_image" name="settings_page_image" type="text" value="<?php echo get_page_image($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                        <label for="settings_page_image" class="self-center dark:text-white">Page Image URL</label>
+                                        <input id="settings_page_image" name="settings_page_image" type="text" value="<?php echo get_page_image($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_image_credit" class="self-center">Image Credit</label>
-                                        <input id="settings_page_image_credit" name="settings_page_image_credit" type="text" value="<?php echo get_page_image_credit($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                        <label for="settings_page_image_credit" class="self-center dark:text-white">Image Credit</label>
+                                        <input id="settings_page_image_credit" name="settings_page_image_credit" type="text" value="<?php echo get_page_image_credit($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_image_license" class="self-center">Image License</label>
-                                        <input id="settings_page_image_license" name="settings_page_image_license" type="text" value="<?php echo get_page_image_license($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                        <label for="settings_page_image_license" class="self-center dark:text-white">Image License</label>
+                                        <input id="settings_page_image_license" name="settings_page_image_license" type="text" value="<?php echo get_page_image_license($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_url" class="self-center">Page URL</label>
-                                        <input id="settings_page_url" name="settings_page_url" type="text" value="<?php echo get_page_url($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" />
+                                        <label for="settings_page_url" class="self-center dark:text-white">Page URL</label>
+                                        <input id="settings_page_url" name="settings_page_url" type="text" value="<?php echo get_page_url($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" />
                                     </div>
-                                    <input type="submit" id="submitSettings" name="submitSettings" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">
-                                    <p class="text-xs italics">Warning: This save button only saves settings, not your work. If you've edited the page, save that first.</p>
-                                    <div class="mt-12 rounded border border-red-500 p-4" x-data="{open:false}">
-                                        <h3 class="font-bold text-red-500 pb-4">Danger Zone</h3>
+                                    <input type="submit" id="submitSettings" name="submitSettings" value="Save" class="dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">
+                                    <p class="text-xs italics dark:text-white">Warning: This save button only saves settings, not your work. If you've edited the page, save that first.</p>
+                                    <div class="mt-12 rounded border border-red-500 dark:border-red-800 p-4" x-data="{open:false}">
+                                        <h3 class="font-bold text-red-500 dark:text-red-800 pb-4">Danger Zone</h3>
                                         <form action="index.php" method="POST">
-                                            <a @click="open = true" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">Delete Page</a>
-                                            <?php echo display_modal('red', 'Delete Page', 'Are you sure you want to delete this page?<br> <u>This action cannot be undone.</u>', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
-                                    <input type="submit" id="deletePage" name="deletePage" value="Delete Page" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
+                                            <a @click="open = true" class="dark:bg-red-800 dark:hover:bg-red-700 dark:text-white flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">Delete Page</a>
+                                            <?php echo display_modal('red', 'Delete Page', 'Are you sure you want to delete this page?<br> <u>This action cannot be undone.</u>', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <input type="submit" id="deletePage" name="deletePage" value="Delete Page" class="dark:bg-red-800 dark:text-white dark:hover:bg-red-700 transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-900 bg-gray-200 hover:bg-gray-300 md:py-1 md:text-rg md:px-10">Cancel</a>
+                                    <a @click="open=false" class="dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700 flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-900 bg-gray-200 hover:bg-gray-300 md:py-1 md:text-rg md:px-10">Cancel</a>
                                 </div>'); ?>
                                         </form>
                                     </div>
@@ -204,9 +204,9 @@
             ?>
 
             <div class="py-6">
-                <h2 class="text-2xl mb-2 font-bold my-2">Title</h2>
+                <h2 class="text-2xl mb-2 font-bold my-2 dark:text-white">Title</h2>
                 <label class="hidden" for="title">Title</label>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> Characters.</p>
+                <p class="mb-2 dark:text-white">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> Characters.</p>
                 <textarea name="title" id="title" maxlength="<?php echo stripslashes(CONFIG_MAX_TITLE_CHARS); ?>" class="w-full border"><?php
                         $pageStatus = get_page_status($pageID);
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
@@ -223,9 +223,9 @@
             </div>
 
             <div class="py-6">
-                <h2 class="text-2xl font-bold mt-2">Content</h2>
+                <h2 class="text-2xl font-bold mt-2 dark:text-white">Content</h2>
                 <label class="hidden" for="content">Content</label>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 5); ?> Characters.</p>
+                <p class="mb-2 dark:text-white">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 5); ?> Characters.</p>
                 <textarea name="content" id="content" class="content" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 5); ?>" ><?php
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $content = get_page_content($pageID);
@@ -257,8 +257,8 @@
             </script>
 
             <div class="py-6">
-                <h2 class="text-2xl font-bold mt-2">References</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 10); ?> Characters.</p>
+                <h2 class="text-2xl font-bold mt-2 dark:text-white">References</h2>
+                <p class="mb-2 dark:text-white">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 10); ?> Characters.</p>
                 <label class="hidden" for="references">References</label>
                 <textarea name="references" id="references" class="references" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 10); ?>"><?php
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
@@ -290,8 +290,8 @@
             </script>
 
             <div class="flex space-x-4">
-                <input type="submit" id="submit" name="submit" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 bg-green-200 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages" class="transition-all duration-200 hover:shadow-lg w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
+                <input type="submit" id="submit" name="submit" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 dark:text-white bg-green-200 dark:bg-green-700 dark:hover:bg-green-600 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages" class="transition-all duration-200 hover:shadow-lg w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 dark:text-white bg-red-200 dark:bg-red-700 dark:hover:bg-red-600 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
                     Cancel
                 </a>
             </div>

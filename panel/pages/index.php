@@ -1,5 +1,5 @@
 <?php session_start(); ?><!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark:bg-neutral-700 dark:text-white">
     <head>
         <?php
             include_once __DIR__.'/../../common/global_private.php';
@@ -31,7 +31,7 @@
             }
 
             $key = '
-                                                        <div class="text-xs text-left absolute bottom-0 left-0 h-20 w-30 p-2 bg-gray-50 rounded-tr">
+                                                        <div class="text-xs text-left absolute bottom-0 left-0 h-20 w-30 p-2 bg-gray-50 dark:bg-neutral-800 rounded-tr">
                                                             <span class="text-red-500">Red:</span> No Content<br>
                                                             <span class="text-yellow-500">Yellow:</span> Pending Approval<br>
                                                             <span class="text-green-500">Green:</span> Currently Live<br>
@@ -43,9 +43,9 @@
     <body class="mb-8">
         <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>
 
-        <header class="bg-white shadow">
+        <header class="bg-white shadow bg-neutral-800">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">Pages</h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Pages</h1>
             </div>
         </header>
 
@@ -95,7 +95,7 @@
                     <div x-data="{ open: false }">
                         <div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                             <div class="absolute inset-0 overflow-hidden">
-                                <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="open = false"></div>
+                                <div class="absolute inset-0 bg-gray-500 bg-opacity-75 dark:bg-black dark:bg-opacity-75 transition-opacity" aria-hidden="true" @click="open = false"></div>
                                 <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex" aria-labelledby="slide-over-heading">
                                     <div class="relative w-screen max-w-md">
                                         <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
@@ -106,12 +106,12 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                        <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                                        <div class="h-full flex flex-col py-6 bg-white dark:bg-neutral-900 shadow-xl overflow-y-scroll">
                                             <div class="px-4 sm:px-6">
-                                                <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
+                                                <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900 dark:text-white">
                                                     <?php echo $cresult[0]; ?>
                                                 </h2>
-                                                <input type="text" id="myInput<?php echo $i; ?>" onkeyup="myFunction<?php echo $i; ?>()" placeholder="Search" class="border-b-2 border-blue-500 bg-gray-50 px-1 rounded-md">
+                                                <input type="text" id="myInput<?php echo $i; ?>" onkeyup="myFunction<?php echo $i; ?>()" placeholder="Search" class="border-b-2 border-blue-500 bg-gray-50 dark:bg-neutral-800 dark:text-white dark:border-blue-900 px-1 rounded-md">
                                             </div>
                                             <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                                 <ul id="myUL<?php echo $i; ?>" class="absolute inset-0 px-4 sm:px-6 h-full">
@@ -133,7 +133,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                             }
                             $total++; ?>
                                                     <li class="my-2">
-                                                    <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 bg-gray-100">
+                                                    <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 dark:text-white bg-gray-100 dark:bg-neutral-800">
                                                         <div class="flex w-full relative">
                                                             <div class="flex-grow">
                                                                 <div class="absolute -top-1 -right-1 bg-<?php echo $status; ?>-500 w-3 h-3 rounded-full"></div>
@@ -150,7 +150,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                                                 </div>
                                                             </div>
                                                             <div>
-                                                                <a href="editor/?pageID=<?php echo $result[0]; ?>" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-200 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                                                <a href="editor/?pageID=<?php echo $result[0]; ?>" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-200 dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                                     Edit
                                                                 </a>
                                                             </div>
@@ -203,8 +203,8 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                         <div class="flex w-full space-x-4">
                             <div class="flex w-full">
                                 <div class="flex-grow">
-                                    <h1 class="text-2xl leading-tight text-gray-900"><?php echo $cresult[0]; ?></h1>
-                                    <span class="text-xs font-semibold inline-block py-1 px-2 height-auto rounded-lg text-<?php echo $statusColour; ?>-900 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
+                                    <h1 class="text-2xl leading-tight text-gray-900 dark:text-white"><?php echo $cresult[0]; ?></h1>
+                                    <span class="text-xs font-semibold inline-block py-1 px-2 height-auto rounded-lg text-<?php echo $statusColour; ?>-900 bg-<?php echo $statusColour; ?>-200 dark:text-white dark:bg-<?php echo $statusColour; ?>-600"><?php echo $status; ?></span>
                                 </div>
                                 <?php /*
                                 <div class="flex mb-1 items-center justify-between">
@@ -239,15 +239,15 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                 </div> */ ?>
                             </div>
                             <div class="flex-none w-22 h-12">
-                                <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-4 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                                <a @click="open = true" class="dark:bg-neutral-600 dark:hover:bg-neutral-500 dark:text-white hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-4 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                     Select
                                 </a>
                             </div>
                         </div>
                         <div class="flex float-right h-auto relative w-full mt-3">
-                            <div class="overflow-hidden h-1.5 text-xs flex rounded bg-red-400 w-full">
-                                <div style="width:<?php echo($complete / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
-                                <div style="width:<?php echo($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
+                            <div class="overflow-hidden h-1.5 text-xs flex rounded bg-red-400 dark:bg-red-600 w-full">
+                                <div style="width:<?php echo($complete / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 dark:bg-green-600"></div>
+                                <div style="width:<?php echo($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500 dark:bg-yellow-600"></div>
                             </div>
                         </div>
                         <br>
@@ -256,7 +256,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                     get_assigned_editors();
                     get_assigned_writers(); ?>
                     </div>
-                <br><hr><br>
+                <br><hr class="dark:text-neutral-900"><br>
                 <?php
                 }
                 if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_CATEGORY) {
