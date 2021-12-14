@@ -113,7 +113,7 @@
                                                 </h2>
                                                 <input type="text" id="myInput<?php echo $i; ?>" onkeyup="myFunction<?php echo $i; ?>()" placeholder="Search" class="border-b-2 border-blue-500 bg-gray-50 px-1 rounded-md">
                                             </div>
-                                            <div class="mt-6 relative flex-1 px-4 sm:px-6" id="searchResults">
+                                            <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                                 <ul id="myUL<?php echo $i; ?>" class="absolute inset-0 px-4 sm:px-6 h-full">
 <?php
 $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE `category_id` = '.$categoryID.' ORDER BY `title` ASC'));
