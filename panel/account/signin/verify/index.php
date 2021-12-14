@@ -126,7 +126,7 @@
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="code" class="sr-only">Verification Code</label>
-                                <input id="code" name="code" type="code" autocomplete="one-time-code" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
+                                <input id="code" name="code" type="code" autocomplete="one-time-code" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
                             </div>
                         </div>
 
