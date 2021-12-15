@@ -4,7 +4,7 @@
     {
         return '<div class="fixed inset-0 overflow-hidden z-50" x-show="open" @click.away="open = false">
                                         <div class="absolute inset-0 overflow-hidden">
-                                            <div class="absolute inset-0 bg-gray-500 bg-opacity-75" @click="open=false"></div>
+                                            <div class="absolute inset-0 bg-gray-500 bg-opacity-75 dark:bg-black dark:bg-opacity-75" @click="open=false"></div>
                                             <section class="absolute inset-y-0 right-0 pl-10 max-w-full flex">
                                                 <div class="relative w-screen max-w-md">
                                                     <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
@@ -15,14 +15,14 @@
                                                             </svg>
                                                         </button>
                                                     </div>
-                                                    <div class="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                                                    <div class="h-full flex flex-col py-6 bg-white dark:bg-neutral-900 shadow-xl overflow-y-scroll">
                                                         <div class="px-4 sm:px-6">
-                                                            <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900">
+                                                            <h2 id="slide-over-heading" class="text-3xl font-medium text-gray-900 dark:text-white">
                                                                 '.$title.'
                                                             </h2>
                                                         </div>
                                                         <div class="mt-6 relative flex-1 px-4 sm:px-6">
-                                                            <div class="absolute inset-0 px-4 sm:px-6 h-full">
+                                                            <div class="absolute inset-0 px-4 sm:px-6 h-full text-gray-900 dark:text-white">
                                                                 '.$contents.'
                                                                 <br><br><br><br>
                                                             </div>

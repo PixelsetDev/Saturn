@@ -4,7 +4,7 @@ session_destroy();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
         <title>Sign out - Saturn Panel</title>
         <?php
@@ -15,10 +15,10 @@ session_destroy();
 
     </head>
     <body>
-        <header class="bg-white shadow">
+        <header class="bg-white shadow dark:bg-neutral-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900">Saturn Panel</a>
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white">Saturn Panel</a>
                 </h1>
             </div>
         </header>
@@ -27,7 +27,7 @@ session_destroy();
                 <div class="max-w-md w-full space-y-8">
                     <div>
                         <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
-                        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
                             Sign out.
                         </h2>
                         <?php alert('SUCCESS', 'You have been signed out.'); ?>
@@ -35,7 +35,7 @@ session_destroy();
 
                     <div class="flex space-x-2">
                         <div class="flex-grow">
-                            <a href="<?php echo CONFIG_INSTALL_URL; ?>/" class="hover:shadow-xl group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500">
+                            <a href="<?php echo CONFIG_INSTALL_URL; ?>/" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-gray-300 dark:hover:text-white transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-home" aria-hidden="true"></i>
                                 </span>
@@ -43,7 +43,7 @@ session_destroy();
                             </a>
                         </div>
                         <div class="flex-grow">
-                            <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/signin" class="hover:shadow-xl group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500">
+                            <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/signin" class="hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-gray-300 dark:hover:text-white transition-all duration-200">
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-lock" aria-hidden="true"></i>
                                 </span>

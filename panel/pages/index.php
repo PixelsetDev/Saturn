@@ -43,7 +43,7 @@
     <body class="mb-8">
         <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>
 
-        <header class="bg-white shadow bg-neutral-800">
+        <header class="bg-white shadow dark:bg-neutral-800">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Pages</h1>
             </div>
@@ -256,7 +256,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                     get_assigned_editors();
                     get_assigned_writers(); ?>
                     </div>
-                <br><hr class="dark:text-neutral-900"><br>
+                <br><hr class="dark:text-neutral-900 text-gray-200"><br>
                 <?php
                 }
                 if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_CATEGORY) {

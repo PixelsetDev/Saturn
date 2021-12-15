@@ -10,7 +10,7 @@
 
     function display_user_dropdown($type)
     {
-        $return = '<select name="users" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">';
+        $return = '<select name="users" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 dark:bg-neutral-800 border rounded-lg appearance-none focus:shadow-outline">';
         $i = 1;
         $user = get_user_username($i);
 
