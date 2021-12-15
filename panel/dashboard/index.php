@@ -179,25 +179,25 @@
                     echo alert('ERROR', $errorMsg);
                     unset($errorMsg);
                 }
-            if (isset($warningMsg)) {
-                echo alert('WARNING', $warningMsg);
-                unset($warningMsg);
-            }
-            if (CONFIG_DEBUG) {
-                echo alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
-            }
-            if (get_user_roleID($_SESSION['id']) > 3) {
-                $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
-                if ($remoteVersion != SATURN_VERSION) {
-                    echo '<br>
+        if (isset($warningMsg)) {
+            echo alert('WARNING', $warningMsg);
+            unset($warningMsg);
+        }
+        if (CONFIG_DEBUG) {
+            echo alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
+        }
+        if (get_user_roleID($_SESSION['id']) > 3) {
+            $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
+            if ($remoteVersion != SATURN_VERSION) {
+                echo '<br>
                         <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
                                 <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
                                 <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
                             </div>
                         </div>';
-                }
-            } ?>
+            }
+        } ?>
 
                 <div class="flex flex-wrap space-x-4">
                     <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800">
@@ -214,8 +214,8 @@
                                 <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
                                     <?php
                                         $result = mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE 1;');
-            $rowCount = mysqli_num_rows($result);
-            echo $rowCount; ?>
+        $rowCount = mysqli_num_rows($result);
+        echo $rowCount; ?>
                                 </p>
                             </div>
                         </a>
@@ -235,8 +235,8 @@
                                 <p class="text-gray-800 text-4xl text-left dark:text-white font-bold my-4">
                                     <?php
                                         $result = mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX."articles` WHERE `author_id` = '".$_SESSION['id']."';");
-            $rowCount = mysqli_num_rows($result);
-            echo $rowCount; ?>
+        $rowCount = mysqli_num_rows($result);
+        echo $rowCount; ?>
                                 </p>
                             </div>
                         </a>
@@ -285,8 +285,8 @@
                 <div class="flex flex-wrap space-x-4">
                     <?php
                         $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statisticcs` WHERE 1 ORDER BY edits;');
-            $row = mysqli_fetch_row($result);
-            $uid = $row[0]; ?>
+        $row = mysqli_fetch_row($result);
+        $uid = $row[0]; ?>
                     <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
                         <div class="flex items-center">
                             <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
@@ -299,12 +299,12 @@
                         <div class="flex space-x-4">
                             <?php
                                 $x = 0;
-            $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits DESC;');
-            $row = mysqli_fetch_row($result);
-            $uid = $row[0];
-            while ($uid != null && $x != '4') {
-                if (get_user_roleID($uid) != '0' && get_user_roleID($uid) != '1') {
-                    echo '<div class="flex-grow">
+        $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits DESC;');
+        $row = mysqli_fetch_row($result);
+        $uid = $row[0];
+        while ($uid != null && $x != '4') {
+            if (get_user_roleID($uid) != '0' && get_user_roleID($uid) != '1') {
+                echo '<div class="flex-grow">
                                 <div class="flex flex-col items-center">
                                     <div class="relative">
                                         <a href="'.get_user_profile_link($uid).'" class="block relative">
@@ -315,25 +315,25 @@
                                         '.get_user_fullname($uid).'
                                     </a>
                                     <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';
-                    if (get_user_statistics_edits($uid) == '0') {
-                        echo 'red';
-                    } elseif (get_user_statistics_edits($uid) < '6') {
-                        echo 'yellow';
-                    } else {
-                        echo 'green';
-                    }
-                    echo'-500 rounded-full p-1">
+                if (get_user_statistics_edits($uid) == '0') {
+                    echo 'red';
+                } elseif (get_user_statistics_edits($uid) < '6') {
+                    echo 'yellow';
+                } else {
+                    echo 'green';
+                }
+                echo'-500 rounded-full p-1">
                                         '.$row[1].' Edits
                                     </a>
                                 </div>
                             </div>';
-                }
-                $row = mysqli_fetch_row($result);
-                if (isset($row[0])) {
-                    $uid = $row[0];
-                }
-                $x++;
-            } ?>
+            }
+            $row = mysqli_fetch_row($result);
+            if (isset($row[0])) {
+                $uid = $row[0];
+            }
+            $x++;
+        } ?>
                         </div>
                     </div><?php
                     if (get_user_roleID($id) > '2') {
