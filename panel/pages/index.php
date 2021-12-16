@@ -64,7 +64,7 @@
             <div class="px-4 py-6 sm:px-0">
                 <?php
                 $role = get_user_roleID($_SESSION['id']);
-                $i=0;
+                $i = 0;
                 $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT `name`, `id` FROM `'.DATABASE_PREFIX.'pages_categories` WHERE 1 ORDER BY `name` ASC'));
                 foreach ($results as $cresult) {
                     $categoryID = $cresult[1];
@@ -73,7 +73,7 @@
                     $complete = 0;
                     $pending = 0;
                     $total = 0;
-                    $i++;?>
+                    $i++; ?>
                     <script>
                         function myFunction<?php echo $i; ?>() {
                             var input, filter, ul, li, a, i, txtValue;
