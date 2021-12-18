@@ -21,10 +21,10 @@
     /* General */
     const CONFIG_INSTALL_URL = '".CONFIG_INSTALL_URL."';
     const CONFIG_ACTIVATION_KEY = '".$_POST['activation_key']."';
-    const CONFIG_SITE_NAME = '".$_POST['site_name']."';
-    const CONFIG_SITE_DESCRIPTION = '".$_POST['site_description']."';
-    const CONFIG_SITE_KEYWORDS = '".$_POST['site_keywords']."';
-    const CONFIG_SITE_CHARSET = '".$_POST['site_charset']."';
+    const CONFIG_SITE_NAME = '".htmlspecialchars($_POST['site_name'], ENT_QUOTES)."';
+    const CONFIG_SITE_DESCRIPTION = '".htmlspecialchars($_POST['site_description'], ENT_QUOTES)."';
+    const CONFIG_SITE_KEYWORDS = '".htmlspecialchars($_POST['site_keywords'], ENT_QUOTES)."';
+    const CONFIG_SITE_CHARSET = '".htmlspecialchars($_POST['site_charset'], ENT_QUOTES)."';
     const CONFIG_SITE_TIMEZONE = '".$_POST['site_timezone']."';
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = ".$_POST['registration_enabled'].";
