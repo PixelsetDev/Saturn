@@ -6,8 +6,9 @@ The following versions of Saturn are currently supported and will receive future
 
 | Version        | Supported          |
 |----------------|--------------------|
-| BETA 0.1.0     | :white_check_mark: |
-| ALPHA 1.5.1 & Below | :x:                |
+| 0.1.1 (BETA) | :white_check_mark: |
+| 0.1.0 (BETA) | :white_check_mark: |
+| ALPHA 1.5.1 & Below | :x: |
 
 ## Reporting a Vulnerability
 
