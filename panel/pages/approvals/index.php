@@ -64,7 +64,7 @@
         <div class="px-4 py-6 sm:px-0">
             <?php
             $role = get_user_roleID($_SESSION['id']);
-            $i=0;
+            $i = 0;
             $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT `name`, `id` FROM `'.DATABASE_PREFIX.'pages_categories` WHERE 1 ORDER BY `name` ASC'));
             foreach ($results as $cresult) {
                 $categoryID = $cresult[1];
@@ -74,7 +74,7 @@
                 $pending = 0;
                 $approved = 0;
                 $total = 0;
-                $i++;?>
+                $i++; ?>
                 <script>
                     function myFunction<?php echo $i; ?>() {
                         var input, filter, ul, li, a, i, txtValue;
@@ -119,18 +119,17 @@
                                                 <?php
                                                 $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFIX.'pages` WHERE `category_id` = '.$categoryID.' ORDER BY `title` ASC'));
 
-                                                foreach ($results as $result) {
-                                                    if ($result[5] != null) {
-                                                        $status = get_page_status($result[0]);
-                                                        if (get_page_pending_title($result[0]) != null && get_page_pending_title($result[0]) != '') {
-                                                            $pending++;
-                                                            $status = 'red';
-                                                        } else {
-                                                            $approved++;
-                                                            $status = 'green';
-                                                        }
-                                                        $total++;
-                                                ?>
+                foreach ($results as $result) {
+                    if ($result[5] != null) {
+                        $status = get_page_status($result[0]);
+                        if (get_page_pending_title($result[0]) != null && get_page_pending_title($result[0]) != '') {
+                            $pending++;
+                            $status = 'red';
+                        } else {
+                            $approved++;
+                            $status = 'green';
+                        }
+                        $total++; ?>
                                                         <li class="my-2">
                                                             <div class="w-full font-semibold inline-block py-2 px-4 uppercase rounded text-gray-900 dark:text-white bg-gray-100 dark:bg-neutral-800">
                                                                 <div class="flex w-full relative">
@@ -168,11 +167,11 @@
                                                         </li>
                                                         <?php
                                                         unset($result, $status);
-                                                    }
-                                                }
-                                                if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
-                                                    echo display_page_new_form(strtolower($cresult[0]));
-                                                } ?>
+                    }
+                }
+                if (get_user_roleID($_SESSION['id']) >= PERMISSION_CREATE_PAGE) {
+                    echo display_page_new_form(strtolower($cresult[0]));
+                } ?>
                                                 <br><br><br><br>
                                             </ul>
                                         </div>
@@ -250,15 +249,15 @@
                     </div>
                     <div class="flex float-right h-auto relative w-full mt-3">
                         <div class="overflow-hidden h-1.5 text-xs flex rounded bg-red-400 dark:bg-red-600 w-full">
-                            <div style="width:<?php echo(100 - ($pending / $total) * 100) ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500 dark:bg-red-600"></div>
+                            <div style="width:<?php echo 100 - ($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500 dark:bg-red-600"></div>
                             <div style="width:<?php echo($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 dark:bg-green-600"></div>
                         </div>
                     </div>
                     <br>
                     <?php
                     unset($cresult);
-                    get_assigned_editors();
-                    get_assigned_writers(); ?>
+                get_assigned_editors();
+                get_assigned_writers(); ?>
                 </div>
                 <br><hr class="dark:text-neutral-900 text-gray-200"><br>
                 <?php
