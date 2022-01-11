@@ -194,7 +194,7 @@
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="database_password">Database Password</label>
-                        <input id="database_password" name="database_password" type="password" value="<?php echo DATABASE_PASSWORD; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <input id="database_password" name="database_password" type="password" value="<?php echo DATABASE_PASSWORD; ?>" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="database_port">Database Port</label>
