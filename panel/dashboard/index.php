@@ -156,7 +156,7 @@
                 <h1 class="text-3xl font-bold leading-tight">Dashboard</h1>
             </div>
             <?php if ($notifCount > '0') {
-            echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_latest_notification_id($_SESSION['id']).'" class="m-1 bg-white rounded-lg border-gray-300 border p-3 shadow-lg absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
+            echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_latest_notification_id($_SESSION['id']).'" class="m-1 bg-white dark:bg-neutral-700 rounded-lg dark:border-neutral-900 border-gray-300 border p-3 shadow-lg absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
                 <div class="flex flex-row">
                     <span class="animate-pulse bg-blue-500 h-6 w-6 rounded-full relative text-center">
                         <i class="fas fa-info text-white self-center object-center py-1" aria-hidden="true"></i>
@@ -166,7 +166,7 @@
                             <span class="font-semibold flex-grow">'.get_latest_notification_title($_SESSION['id']).'</span>
                             <span class="text-red-500"><i class="fas fa-times text-red-500 self-center object-center py-1" aria-hidden="true"></i></span>
                         </div>
-                        <span class="block text-gray-500">'.get_latest_notification_content($_SESSION['id']).'</span>
+                        <span class="block text-gray-500 dark:text-white">'.get_latest_notification_content($_SESSION['id']).'</span>
                     </div>
                 </div>
             </a>';

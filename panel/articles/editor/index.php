@@ -50,11 +50,11 @@
         <title>Article Editor - Saturn Panel</title>
 
     </head>
-    <body class="mb-8">
+    <body class="mb-8 dark:bg-neutral-700 dark:text-white">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
-        <header class="bg-white shadow">
+        <header class="bg-white shadow dark:bg-neutral-800">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">Article Editor: <?php $title = get_article_title($articleID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Article Editor: <?php $title = get_article_title($articleID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
             </div>
         </header>
 
@@ -102,8 +102,8 @@
             </div>
 
             <div class="flex space-x-4">
-                <input type="submit" id="submit" name="submit" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-1 md:text-rg md:px-10">
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles" class="transition-all duration-200 hover:shadow-lg w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 md:py-1 md:text-rg md:px-10">
+                <input type="submit" id="submit" name="submit" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 dark:text-white bg-green-200 dark:bg-green-700 dark:hover:bg-green-600 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles" class="transition-all duration-200 hover:shadow-lg w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 dark:text-white bg-red-200 dark:bg-red-700 dark:hover:bg-red-600 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
                     Cancel
                 </a>
             </div>

@@ -155,7 +155,7 @@ if (isset($_POST['newArticle'])) {
                         } else {
                             $statusColour = 'gray';
                             $status = 'Unknown Status';
-                        } ?><span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-lg text-<?php echo $statusColour; ?>-900 bg-<?php echo $statusColour; ?>-200"><?php echo $status; ?></span>
+                        } ?><span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-lg text-<?php echo $statusColour; ?>-900 dark:text-white bg-<?php echo $statusColour; ?>-200 dark:bg-<?php echo $statusColour; ?>-600"><?php echo $status; ?></span>
                                             </div>
                                         </div>
                                     </div>
@@ -180,10 +180,10 @@ if (isset($_POST['newArticle'])) {
                                             <a @click="open = true" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 dark:text-white bg-'.THEME_PANEL_COLOUR.'-200 dark:bg-neutral-600 dark:hover:bg-neutral-500 hover:bg-'.THEME_PANEL_COLOUR.'-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                                 <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;Publish
                                             </a>
-                                            '.display_modal('green', 'Publish Article: '.$article, 'Are you sure you want to publish this article?', '<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
-                                    <input type="submit" id="publish" name="publish" value="Publish Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 bg-green-200 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
+                                            '.display_modal('green', 'Publish Article: '.$article, 'Are you sure you want to publish this article?', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <input type="submit" id="publish" name="publish" value="Publish Article" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 dark:text-white bg-green-200 dark:bg-green-700 dark:hover:bg-green-600 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
                                     &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
+                                    <a @click="open=false" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Cancel</a>
                                 </div>').'
                                         </form>';
                         } elseif ($status != 'Published' && CONFIG_ARTICLE_APPROVALS === true) {

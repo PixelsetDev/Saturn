@@ -21,18 +21,18 @@
 
         <title>Saturn Panel</title>
     </head>
-    <body>
+    <body class="dark:text-white">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
 
         <div class="w-screen">
             <div class="grid grid-cols-3 min-w-full border rounded" style="min-height: 80vh;">
-                <div class="col-span-1 bg-white border-r border-gray-300" x-data="loadChats()">
+                <div class="col-span-1 bg-white dark:bg-neutral-800 border-r border-gray-300 dark:border-neutral-900" x-data="loadChats()">
 
                     <div class="container pt-8 mx-auto" x-data="loadChats()">
                         <div class="my-3 mx-3 ">
-                            <div class="relative text-gray-600 focus-within:text-gray-400">
+                            <div class="relative text-gray-600 dark:text-white focus-within:text-gray-400">
                                 <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6 text-gray-500"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6 text-gray-500 dark:text-white"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                                 </span>
                                 <input
                                     x-ref="searchField"
@@ -40,13 +40,12 @@
                                     x-on:keydown.window.prevent.slash="$refs.searchField.focus()"
                                     placeholder="Search"
                                     type="search"
-                                    class="py-2 pl-10 block w-full rounded bg-gray-100 outline-none focus:text-gray-700"
+                                    class="py-2 pl-10 block w-full rounded bg-gray-100 dark:bg-neutral-600 outline-none focus:text-gray-700 dark:focus:text-white"
                                 />
                             </div>
                         </div>
                             <template x-for="item in filteredChats" :key="item">
-
-                                <a class="hover:bg-gray-100 border-b border-gray-300 px-3 py-2 cursor-pointer flex items-center text-sm focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
+                                <a class="hover:bg-gray-100 dark:hover:bg-neutral-700 border-b border-gray-300 dark:border-neutral-900 px-3 py-2 cursor-pointer flex items-center text-sm focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
                                     <div class="rounded-full bg-<?php echo THEME_PANEL_COLOUR; ?>-200 px-1 py-1">
                                         <img class="h-8 w-8 rounded-full object-cover"
                                              src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon/chat.png"
@@ -55,12 +54,12 @@
                                     </div>
                                     <div class="w-full pb-2">
                                         <div class="flex justify-between">
-                                            <span class="block ml-2 font-semibold text-base text-gray-600" x-text="item.chat_name"></span>
+                                            <span class="block ml-2 font-semibold text-base text-gray-600 dark:text-white" x-text="item.chat_name"></span>
                                             <?php
                                                 $query = 'SELECT * FROM `'.DATABASE_PREFIX."chats_messages` WHERE `chat_id` = '1' ORDER BY `id` DESC";
                                                 $rs = mysqli_query($conn, $query);
                                                 $row = mysqli_fetch_assoc($rs);
-                                                echo '<span class="block ml-2 text-sm text-gray-600">Last Message: '.$row['datetime'].'</span>';
+                                                echo '<span class="block ml-2 text-sm text-gray-600 dark:text-white">Last Message: '.$row['datetime'].'</span>';
                                             ?>
                                         </div>
                                         <span class="block ml-2 text-sm text-gray-600"></span>
@@ -94,16 +93,16 @@
                         ];
                     </script>
                 </div>
-                <div class="col-span-2 bg-white">
+                <div class="col-span-2 bg-white dark:bg-neutral-700">
                     <div class="w-full">
-                        <div class="flex items-center border-b border-gray-300 pl-3 py-3">
+                        <div class="flex items-center border-b border-gray-300 dark:border-neutral-900 pl-3 py-3">
                             <div class="rounded-full bg-<?php echo THEME_PANEL_COLOUR; ?>-200 px-1 py-1">
                                 <img class="h-8 w-8 rounded-full object-cover"
                                      src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon/chat.png"
                                      alt=""
                                 />
                             </div>
-                            <span class="block ml-2 font-bold text-base text-gray-600">General</span>
+                            <span class="block ml-2 font-bold text-base text-gray-600 dark:text-white">General</span>
                         </div>
                         <div id="chat" class="w-full overflow-y-scroll p-10 relative" style="height: 700px;" ref="toolbarChat">
                             <ul>
@@ -117,7 +116,7 @@
                                             if ($row['user_id'] == $_SESSION['id']) {
                                                 echo '
                                     <li class="w-full flex justify-end">
-                                        <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" style="max-width: 300px;">
+                                        <div class="flex bg-gray-100 dark:bg-neutral-600 rounded px-5 py-2 my-2 text-gray-700 dark:text-white relative" style="max-width: 300px;">
                                             <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($row['user_id']).'" class="flex-shrink-0">
                                                 <img class="h-8 w-8 rounded-full object-cover"
                                                     src="'.get_user_profilephoto($row['user_id']).'"
@@ -133,7 +132,7 @@
                                             } else {
                                                 echo '
                                     <li class="w-full flex justify-start">
-                                        <div class="flex bg-gray-100 rounded px-5 py-2 my-2 text-gray-700 relative" style="max-width: 300px;">
+                                        <div class="flex bg-gray-100 dark:bg-neutral-600 rounded px-5 py-2 my-2 text-gray-700 dark:text-white relative" style="max-width: 300px;">
                                             <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($row['user_id']).'" class="flex-shrink-0">
                                                 <img class="h-8 w-8 rounded-full object-cover"
                                                     src="'.get_user_profilephoto($row['user_id']).'"
@@ -173,7 +172,7 @@
                                 placeholder="Message"
                                 required
                                 maxlength="255"
-                                class="py-2 mx-3 pl-5 block w-full rounded-full bg-gray-100 outline-none focus:text-gray-700"
+                                class="py-2 mx-3 pl-5 block w-full rounded-full bg-gray-100 dark:bg-neutral-600 outline-none dark:focus:text-white focus:text-gray-700"
                             />
                             <button class="outline-none focus:outline-none" name="Send" type="submit" aria-label="Send">
                                 <svg class="text-gray-400 h-7 w-7 origin-center transform rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

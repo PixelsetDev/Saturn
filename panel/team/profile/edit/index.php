@@ -67,14 +67,14 @@ ob_end_flush();
         <title>Edit <?php echo get_user_fullname($user); ?>'s Profile - Saturn Panel</title>
 
     </head>
-    <body class="mb-8">
+    <body class="mb-8 dark:bg-neutral-700 dark:text-white">
         <?php include_once __DIR__.'/../../../../common/panel/navigation.php'; ?>
         <form class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8" method="post" action="index.php">
             <div class="w-full h-48" style="background: url('<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/background.jpg');">
                 <div class="max-w-7xl flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
                     <div class="h-32 w-32 py-2 px-2 md:h-48 md:w-48 md:py-4 md:px-4 relative inline-block">
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=profilepicture&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/team/profile/edit&maxHeight=1000&maxWidth=1000"><img class="h-28 w-28 md:h-40 md:w-40 bg-white rounded-full" src="<?php echo get_user_profilephoto($user); ?>" alt="<?php echo get_user_fullname($user); ?>"></a>
-                        <span class="absolute inline-block bg-<?php echo get_activity_colour($user); ?>-600 rounded-full border-black bottom-4 right-4 w-4 h-4 border-2 md:border-white md:bottom-5 md:right-5 md:w-8 md:h-8 md:border-4"></span>
+                        <span class="absolute inline-block bg-<?php echo get_activity_colour($user); ?>-600 rounded-full border-black bottom-4 right-4 w-4 h-4 border-2 md:border-white dark:md:border-neutral-700 md:bottom-5 md:right-5 md:w-8 md:h-8 md:border-4"></span>
                     </div>
                     <div class="flex flex-wrap items-center w-3/4">
                         <div class="w-3/4 flex flex-wrap">
@@ -112,8 +112,8 @@ ob_end_flush();
                     </ul>
                     <br>
                     <div class="w-full">
-                        <div class="flex"><input type="text" id="bio" name="bio" value="<?php echo str_ireplace('\\', '', get_user_bio($user)); ?>" class="text-base bg-gray-100 bg-opacity-50 w-full" maxlength="100"/><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
-                        <div class="flex"><input type="text" id="link" name="link" value="<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2 bg-gray-100 bg-opacity-50" /><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
+                        <div class="flex"><input type="text" id="bio" name="bio" value="<?php echo str_ireplace('\\', '', get_user_bio($user)); ?>" class="text-base bg-gray-100 dark:bg-neutral-600 bg-opacity-50 w-full" maxlength="100"/><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
+                        <div class="flex"><input type="text" id="link" name="link" value="<?php echo get_user_website($user); ?>" class="block text-base text-blue-500 mt-2 bg-gray-100 dark:bg-neutral-600 bg-opacity-50" /><i class="fas fa-pencil-alt fa-lg text-black" aria-hidden="true"></i></div>
                     </div>
                 </div>
             </div>

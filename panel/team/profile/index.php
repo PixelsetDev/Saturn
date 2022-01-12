@@ -18,14 +18,14 @@
         <title><?php echo get_user_fullname($user); ?>'s Profile - Saturn Panel</title>
 
     </head>
-    <body class="mb-6">
+    <body class="mb-6 dark:bg-neutral-700 dark:text-white">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div class="w-full h-48" style="background: url('<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/background.jpg');">
                 <div class="max-w-7xl flex mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
                     <div class="h-32 w-32 py-2 px-2 md:h-48 md:w-48 md:py-4 md:px-4 relative inline-block">
-                        <img class="h-28 w-28 md:h-40 md:w-40 bg-white rounded-full border-white border-4" src="<?php echo get_user_profilephoto($user); ?>" alt="<?php echo get_user_fullname($user); ?>">
-                        <span class="absolute inline-block bg-<?php echo get_activity_colour($user); ?>-600 rounded-full bottom-3 right-3 border-white md:bottom-6 md:right-6 md:w-8 md:h-8 w-6 h-6 border-4"></span>
+                        <img class="h-28 w-28 md:h-40 md:w-40 bg-white rounded-full border-white dark:border-neutral-700 border-4" src="<?php echo get_user_profilephoto($user); ?>" alt="<?php echo get_user_fullname($user); ?>">
+                        <span class="absolute inline-block bg-<?php echo get_activity_colour($user); ?>-600 rounded-full bottom-3 right-3 border-white dark:border-neutral-700 md:bottom-6 md:right-6 md:w-8 md:h-8 w-6 h-6 border-4"></span>
                     </div>
                     <div class="flex flex-wrap items-center w-3/4">
                         <div class="w-3/4 flex flex-wrap">

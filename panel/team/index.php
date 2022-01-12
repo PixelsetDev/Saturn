@@ -17,7 +17,7 @@ function listUsers($role)
                 echo'<div>
                                 <a href="'.get_user_profile_link($value).'" id="'.get_user_fullname($value).'" class="relative inline-block">
                                     <img class="inline-block object-cover w-12 h-12 rounded-full" src="'.get_user_profilephoto($value).'" alt="'.get_user_fullname($value).'">
-                                    <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity_colour($value).'-600 border-2 border-white rounded-full"></span>
+                                    <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-'.get_activity_colour($value).'-600 border-2 border-white dark:border-neutral-700 rounded-full"></span>
                                 </a>
                                 <b>'.get_user_fullname($value).'</b>
                             </div>';
@@ -38,31 +38,31 @@ function listUsers($role)
 
         <title>Saturn Panel</title>
     </head>
-    <body class="mb-8">
+    <body class="mb-8 dark:bg-neutral-700 dark:text-white">
         <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>
 
-        <header class="bg-white shadow">
+        <header class="bg-white shadow dark:bg-neutral-800">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900">Team</h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Team</h1>
             </div>
         </header>
 
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <div class="w-full px-4 py-6 sm:px-0 flex">
                 <div class="flex-auto mr-8 w-1/3">
-                    <h1 class="text-2xl font-bold leading-tight text-gray-900">Administration</h1>
+                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Administration</h1>
                     <?php
                         listUsers('4');
                     ?>
                 </div>
                 <div class="flex-auto mr-8 w-1/3">
-                    <h1 class="text-2xl font-bold leading-tight text-gray-900">Editors</h1>
+                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Editors</h1>
                     <?php
                         listUsers('3');
                     ?>
                 </div>
                 <div class="flex-auto mr-8 w-1/3">
-                    <h1 class="text-2xl font-bold leading-tight text-gray-900">Writers</h1>
+                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Writers</h1>
                     <?php
                         listUsers('2');
                     ?>
