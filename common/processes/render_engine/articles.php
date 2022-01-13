@@ -36,9 +36,9 @@ function getarticles()
 function getdata($articleID): array
 {
     if(get_article_status($articleID) == 'PUBLISHED') { $articleData['title'] = get_article_title($articleID); }
-    else { $articleData['title'] = 'Sorry, this article is temporarily unavailable.<br><i>Why not read one of our other great articles?</i>'; }
+    else if ($articleID != null) { $articleData['title'] = 'Sorry, this article is temporarily unavailable.<br><i>Why not read one of our other great articles?</i>'; }
     if(get_article_status($articleID) == 'PUBLISHED') { $articleData['content'] = get_article_content($articleID); }
-    else { $articleData['content'] = null; }
+    else if ($articleID != null) { $articleData['content'] = null; }
     $articleData['references'] = get_article_references($articleID);
     $articleData['description'] = null;
     $articleData['author']['id'] = get_article_author_id($articleID);
