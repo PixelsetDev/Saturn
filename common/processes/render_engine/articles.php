@@ -8,22 +8,26 @@ function getarticles()
 {
     $i = 1;
     $article = get_article_title($i);
+    $articleStatus = get_article_status($i);
     $return = '';
     while ($article != null) {
-        $return .= '<div class="w-full bg-gray-100 rounded-md shadow hover:shadow-xl mb-8 p-2 transition duration-200 flex">
+        if ($articleStatus == 'PUBLISHED') {
+            $return .= '<div class="w-full bg-gray-100 rounded-md shadow hover:shadow-xl mb-8 p-2 transition duration-200 flex">
     <div class="flex-grow">
-        <h1 class="text-xl">'.$article.'</h1>
-        <p>By '.get_user_fullname(get_article_author_id($i)).'</p>
+        <h1 class="text-xl">' . $article . '</h1>
+        <p>By ' . get_user_fullname(get_article_author_id($i)) . '</p>
     </div>
     <div>
-        <a href="/articles/'.$i.'" class="hover:shadow-lg cursor-pointer w-full h-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all duration-200 md:py-1 md:text-rg md:px-10">
+        <a href="/articles/' . $i . '" class="hover:shadow-lg cursor-pointer w-full h-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all duration-200 md:py-1 md:text-rg md:px-10">
             <i class="fas fa-eye" aria-hidden="true"></i>&nbsp;View
         </a>
     </div>
 </div>';
-        unset($article);
+        }
+        unset($article, $articleStatus);
         $i++;
         $article = get_article_title($i);
+        $articleStatus = get_article_status($i);
     }
 
     return $return;
@@ -31,14 +35,16 @@ function getarticles()
 
 function getdata($articleID): array
 {
-    $articleData['title'] = get_article_title($articleID);
-    $articleData['content'] = get_article_content($articleID);
+    if(get_article_status($articleID) == 'PUBLISHED') { $articleData['title'] = get_article_title($articleID); }
+    else { $articleData['title'] = 'Sorry, this article is temporarily unavailable.<br><i>Why not read one of our other great articles?</i>'; }
+    if(get_article_status($articleID) == 'PUBLISHED') { $articleData['content'] = get_article_content($articleID); }
+    else { $articleData['content'] = null; }
     $articleData['references'] = get_article_references($articleID);
     $articleData['description'] = null;
     $articleData['author']['id'] = get_article_author_id($articleID);
     $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
-    if ($articleID != null) {
+    if ($articleID != null && get_article_status($articleID) == 'PUBLISHED') {
         $articleData['section']['articles'] = $articleData['content'].'<br><br>'.$articleData['references'].'<br><br><em>Written by '.get_user_fullname($articleData['author']['id']).'</em>';
     } else {
         $articleData['section']['articles'] = getarticles();
