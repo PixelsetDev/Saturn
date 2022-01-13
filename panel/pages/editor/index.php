@@ -80,7 +80,7 @@
     <body class="mb-8 dark:bg-neutral-700">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
         <div<?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?> x-data="{ open: false }"<?php } ?>>
-            <header class="bg-white shadow bg-neutral-800">
+            <header class="bg-white shadow dark:bg-neutral-800">
                 <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">
                     <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow dark:text-white">Page Editor: <?php $title = get_page_title($pageID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
                     <br class="md:hidden block">
