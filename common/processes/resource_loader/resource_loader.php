@@ -5,3 +5,4 @@
     }
     require_once 'marketplace.php';
     require_once 'themes.php';
+    require_once 'translation.php';

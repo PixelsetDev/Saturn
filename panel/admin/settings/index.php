@@ -26,6 +26,7 @@
     const CONFIG_SITE_KEYWORDS = '".htmlspecialchars($_POST['site_keywords'], ENT_QUOTES)."';
     const CONFIG_SITE_CHARSET = '".htmlspecialchars($_POST['site_charset'], ENT_QUOTES)."';
     const CONFIG_SITE_TIMEZONE = '".$_POST['site_timezone']."';
+    const CONFIG_LANGUAGE = '".$_POST['site_language']."';
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = ".$_POST['registration_enabled'].";
     /* Database */
@@ -159,7 +160,11 @@
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="activation_key">Activation Key</label>
-                        <input id="activation_key" name="activation_key" type="text" value="<?php echo CONFIG_ACTIVATION_KEY; ?>" class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <input id="activation_key" name="activation_key" type="text" value="<?php echo CONFIG_ACTIVATION_KEY; ?>" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="site_language">Language</label>
+                        <input id="site_language" name="site_language" type="text" value="<?php echo CONFIG_LANGUAGE; ?>" class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                 </div>
 
