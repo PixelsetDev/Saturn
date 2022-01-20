@@ -8,7 +8,6 @@
         <link rel="icon" type="image/png" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon.png">
         <link rel="stylesheet" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/css/tailwind-custom.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
-        <link rel="stylesheet" href="<?php echo CONFIG_INSTALL_URL; ?>/commonstyles.css">
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.js" integrity="sha256-9R44V6iCmVV7oDivSSvnPm4oYYirH6gC7ft09IS4j+o=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
         <script src="https://cdn.tailwindcss.com"></script>
