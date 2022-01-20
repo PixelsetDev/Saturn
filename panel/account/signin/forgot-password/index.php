@@ -61,7 +61,7 @@
             $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
             $rs = mysqli_query($conn, $sql);
 
-            $errorMsg = 'The code you provided does not match our records. For security purposes we have de-validated your security code, please generate a new one by completing the form again.';
+            $errorMsg = 'The code you provided does not match our records. For security purposes we have invalidated your security code. Please generate a new code by completing the form again.';
             $status = 0;
         }
     }
