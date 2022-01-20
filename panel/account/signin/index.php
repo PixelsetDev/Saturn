@@ -21,7 +21,7 @@
                 if ($getUserRow['role_id'] == '1') {
                     $errorMsg = "Your account has not been approved by a site administrator yet. We'll send you an email when we're ready for you to sign in.";
                 } elseif ($getUserRow['role_id'] == '0') {
-                    $errorMsg = 'Your account has been restricted. If you require access, please contact your administrator.';
+                    $errorMsg = 'Your account has been restricted. If you require access please contact your administrator.';
                 } else {
                     require_once __DIR__.'/../../../common/processes/database/get/user.php';
                     require_once __DIR__.'/../../../common/processes/database/get/user_settings.php';
@@ -66,7 +66,7 @@
             $errorMsg = 'You need to sign in to access this area.<br>Error GSS2';
         }
         if ($_GET['signedout'] == 'verified') {
-            $successMsg = 'Your IP has been verified. You may now sign in to Saturn.';
+            $successMsg = 'Your IP has been verified. You can now sign in to Saturn.';
         }
         if ($_GET['signedout'] == 'permission') {
             $errorMsg = 'You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.';

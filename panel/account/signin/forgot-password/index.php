@@ -92,11 +92,11 @@
                     $successMsg = 'Password changed successfully.<br>You can now log in using your new credentials.';
                     $status = 2;
                 } else {
-                    $errorMsg = 'The password and confirmed password provided does not match. You can try again by clicking the link in your email.';
+                    $errorMsg = 'The password and confirmed password provided does not match. Please try again.';
                     $status = 0;
                 }
             } else {
-                $errorMsg = 'You did not enter a password and confirmed password. You can try again by clicking the link in your email.';
+                $errorMsg = 'You did not enter a password and confirmed password. Please try again.';
             }
         } else {
             $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
