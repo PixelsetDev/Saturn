@@ -19,7 +19,7 @@
                 if ($userData['role_id'] == '1') {
                     $errorMsg = "Your account has not been approved by a site administrator yet. We'll send you an email when we're ready for you to sign in.";
                 } elseif ($userData['role_id'] == '0') {
-                    $errorMsg = 'Your account has been deleted. If you require access, please contact your site administrator by emailing "'.CONFIG_EMAIL_ADMIN.'", thank you.';
+                    $errorMsg = 'Your account has been deleted. If you require access please contact your site administrator by emailing "'.CONFIG_EMAIL_ADMIN.'", thank you.';
                 } else {
                     try {
                         $code = random_int(100000, 999999);
