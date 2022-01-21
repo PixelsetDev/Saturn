@@ -1,5 +1,5 @@
 # Saturn
-Saturn is a powerful content management system for publishers, educators and everyone in-between. Saturn is a lightweight, blazing fast and incredibly powerful CMS. Designed with speed, performance and reliability in mind, Saturn perfect for websites of any size that can scale with ease.
+Saturn is a powerful content management system for publishers, educators and everyone in-between. Saturn is a lightweight, blazing-fast and incredibly powerful CMS. Designed with speed, performance and reliability in mind, Saturn is perfect for websites of any size that can scale with ease.
 
 ## How does Saturn display pages?
 Saturn uses the backend (shown in this repo) to display pages using the Saturn Router and Render Engine, meaning that we don't need to hard-code any frontend of your website. The Saturn router is fast and powerful, it allows us to save space and complexity by serving all your public-facing webpages from only two files! It handles rendering, themeing, errors and more.
