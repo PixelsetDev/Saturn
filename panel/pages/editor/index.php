@@ -82,7 +82,7 @@
         <div<?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?> x-data="{ open: false }"<?php } ?>>
             <header class="bg-white shadow dark:bg-neutral-800">
                 <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">
-                    <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow dark:text-white">Page Editor: <?php $title = checkOutput('DEFAULT',get_page_title($pageID)); echo $title; ?></h1>
+                    <h1 class="text-3xl font-bold leading-tight text-gray-900 flex-grow dark:text-white">Page Editor: <?php $title = checkOutput('DEFAULT', get_page_title($pageID)); echo $title; ?></h1>
                     <br class="md:hidden block">
                     <span class="self-center flex space-x-6 text-right">
                         <a href="<?php echo get_page_url($pageID); ?>" target="_blank" rel="noopener" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:hover:text-white dark:text-gray-300 transition duration-200 underline transition duration-200">

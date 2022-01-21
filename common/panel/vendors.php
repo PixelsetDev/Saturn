@@ -13,7 +13,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="<?php $url = "https://".$_SERVER['HTTP_HOST']; echo $url; ?>">
+        <meta property="og:url" content="<?php $url = 'https://'.$_SERVER['HTTP_HOST']; echo $url; ?>">
         <meta property="og:title" content="<?php echo CONFIG_SITE_NAME; ?>">
         <meta property="og:description" content="<?php echo CONFIG_SITE_DESCRIPTION; ?>">
         <meta property="og:image" content="<?php echo 'https://'.$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE; ?>">
