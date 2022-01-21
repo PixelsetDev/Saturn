@@ -17,10 +17,12 @@
         log_error('ERROR', 'Unable to load language file: '.CONFIG_LANGUAGE);
     }
 
-    function __($key) {
+    function __($key)
+    {
         global $lang;
         if (isset($lang)) {
             $translations = $lang->translations;
+
             return $translations->$key;
         } else {
             return 'Language file not loaded.';
