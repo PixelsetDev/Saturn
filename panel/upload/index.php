@@ -39,14 +39,14 @@
 
         // Check if directory exists and create it if it does not.
         if (!file_exists($uploadDirectory) && !mkdir($uploadDirectory, 0755)) {
-            echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
+            echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/v/'.SATURN_VERSION.'/user-documentation/errors-and-warnings#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
             log_error('WARNING', 'The directory does not exist and could not be created.');
         }
 
         // Check if directory can be written to.
         if (!is_writable($uploadDirectory)) {
-            echo alert('WARNING', 'You don\'t have the required permissions to write in this directory. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#no-directory-write-permissions" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
-            log_error('WARNING', 'Saturn does\'t have permissions to write in the directory.');
+            echo alert('WARNING', 'You don\'t have the required permissions to write in this directory. <a href="https://docs.saturncms.net/v/'.SATURN_VERSION.'/user-documentation/errors-and-warnings#no-directory-write-permissions" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
+            log_error('WARNING', 'You don\'t have the required permissions to write in this directory.');
         }
         $uploadDirectory = $uploadDirectory.basename($_FILES['uploaded_file']['name']);
 

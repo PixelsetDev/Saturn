@@ -38,7 +38,7 @@
             } else {
                 echo'Stopped';
             }
-            echo' I/O: Contained Blacklisted Item: '.$value.'.");</script>';
+            echo 'I/O: Contained Blacklisted Item: '.$value.'.");</script>';
         }
     }
 

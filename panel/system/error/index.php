@@ -8,8 +8,8 @@ include_once __DIR__.'/../../../common/global_public.php';
             $errorTitle = 'Error 404: Page not Found.';
             $errorDescription = 'Sorry, the page you requested could not be found.';
         } elseif ($err == '403') {
-            $errorTitle = 'Error 403';
-            $errorDescription = 'Sorry, the page you requested could not be found.';
+            $errorTitle = 'Error 403: Access Denied';
+            $errorDescription = 'Sorry, you don\'t have the required permissions to access this resource.';
         } elseif ($err == 'security') {
             $errorTitle = 'Security Error';
             $errorDescription = 'Sorry, our security system has detected malicious activity and has suspended Saturn CMS.<br><br>For more information please contact the website administrator.';

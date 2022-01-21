@@ -33,7 +33,7 @@ $router->set404('/api(/.*)?', function () {
 
     $jsonArray = [];
     $jsonArray['status'] = '404';
-    $jsonArray['status_text'] = 'route not defined';
+    $jsonArray['status_text'] = 'Route not defined';
 
     echo json_encode($jsonArray);
 });

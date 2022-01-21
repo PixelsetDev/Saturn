@@ -19,7 +19,7 @@
         include_once __DIR__.'/../../../common/panel/theme.php';
         ?>
 
-        <title>Saturn Panel</title>
+        <title>Team Chat - Saturn Panel</title>
     </head>
     <body class="dark:text-white">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>

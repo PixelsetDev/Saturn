@@ -55,7 +55,7 @@
             </header>
             <form method="POST" action="index.php" class="py-6 px-4 sm:px-6 lg:px-8">
                 <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    Hey <?php echo get_user_firstname($_SESSION['id']); ?>, welcome to Saturn. Since it's your first time using Saturn we've got a few things to go through with you before you can get started.<br>
+                    Hey <?php echo get_user_firstname($_SESSION['id']); ?>. Welcome to Saturn. Since it's your first time using Saturn we've got a few things to go through with you before you can get started.<br>
                 </p>
                 <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">About You</h2>
                 <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
@@ -76,7 +76,7 @@
                                 }
             if (get_user_roleID($_SESSION['id'] >= '4')) {
                 ?>
-                                    <li>Manage the Website's Core Settings</li>
+                                    <li>Manage the Website's Core Settings.</li>
                                     <li>Manage the the Users and their permissions.</li>
                                     <?php
             } ?>

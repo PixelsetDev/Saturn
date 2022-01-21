@@ -118,11 +118,11 @@
                                 </div>
                                 <div class="mt-6 relative flex-1 px-4 sm:px-6">
                                     <div class="mb-2">
-                                        <label for="settings_page_description" class="self-center dark:text-white">Page Description</label><br>
+                                        <label for="settings_page_description" class="self-center dark:text-white">Description</label><br>
                                         <textarea id="settings_page_description" name="settings_page_description" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"><?php echo get_page_description($pageID); ?></textarea>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_category" class="self-center dark:text-white">Page Category</label>
+                                        <label for="settings_page_category" class="self-center dark:text-white">Category</label>
                                         <select id="settings_page_category" name="settings_page_category" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
 <?php                                       $i = 1;
                                             $category = get_page_category_name($i);
@@ -137,7 +137,7 @@
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_template" class="self-center dark:text-white">Page Template</label>
+                                        <label for="settings_page_template" class="self-center dark:text-white">Template</label>
                                         <select id="settings_page_template" name="settings_page_template" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                                             <?php
                                         $files = glob(__DIR__.'/../../../themes/'.THEME_SLUG.'/*.tt');
@@ -156,7 +156,7 @@
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_image" class="self-center dark:text-white">Page Image URL</label>
+                                        <label for="settings_page_image" class="self-center dark:text-white">Image URL</label>
                                         <input id="settings_page_image" name="settings_page_image" type="text" value="<?php echo get_page_image($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
@@ -168,7 +168,7 @@
                                         <input id="settings_page_image_license" name="settings_page_image_license" type="text" value="<?php echo get_page_image_license($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_url" class="self-center dark:text-white">Page URL</label>
+                                        <label for="settings_page_url" class="self-center dark:text-white">URL</label>
                                         <input id="settings_page_url" name="settings_page_url" type="text" value="<?php echo get_page_url($pageID); ?>" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" />
                                     </div>
                                     <input type="submit" id="submitSettings" name="submitSettings" value="Save" class="dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">

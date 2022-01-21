@@ -72,7 +72,7 @@
 
         if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
-            internal_redirect('/panel/admin/settings?successMsg=Website settings saved successfully. You may need to refresh the page to see changes. If an error message appears, refresh the page.');
+            internal_redirect('/panel/admin/settings?successMsg=Website settings saved successfully. You may need to refresh the page to see changes. If an error message appears please refresh the page.');
             exit;
         } else {
             internal_redirect('/panel/admin/settings?errorMsg=Unable to save website settings, an error occurred.');
@@ -115,7 +115,7 @@
                         <input id="site_name" name="site_name" type="text" value="<?php echo CONFIG_SITE_NAME; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="site_description">Site Description</label>
+                        <label for="site_description">Website Description</label>
                         <input id="site_description" name="site_description" type="text" value="<?php echo CONFIG_SITE_DESCRIPTION; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
@@ -190,7 +190,7 @@
                         <input id="database_host" name="database_host" type="text" value="<?php echo DATABASE_HOST; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="database_name">Database Username</label>
+                        <label for="database_name">Database Name</label>
                         <input id="database_name" name="database_name" type="text" value="<?php echo DATABASE_NAME; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
@@ -224,7 +224,7 @@
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="email_sendfrom">Email Sendfrom</label>
+                        <label for="email_sendfrom">Send from Email</label>
                         <input id="email_sendfrom" name="email_sendfrom" type="text" value="<?php echo CONFIG_EMAIL_SENDFROM; ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                 </div>
@@ -328,7 +328,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Security System</h2>
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Security</h2>
                     <div class="grid grid-cols-2">
                         <label for="security_active">Security Active</label>
                         <select id="security_active" name="security_active" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">

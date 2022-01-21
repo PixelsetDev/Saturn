@@ -72,7 +72,7 @@
                     <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
                         <div class="flex-grow">
                             <h3 class="text-lg mt-1 mx-2 text-white"><?php echo $themeData->{'theme'}->{'name'}; ?></h3>
-                            <p class="text-xs -mt-1 mb-1 mx-2 text-white">By <?php echo $themeData->{'theme'}->{'author'}; ?></p>
+                            <p class="text-xs -mt-1 mb-1 mx-2 text-white">Created by <?php echo $themeData->{'theme'}->{'author'}; ?></p>
                         </div>
                         <?php if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) { ?><p class="text-xs text-white">ACTIVE</p><?php } ?>
                     </div>

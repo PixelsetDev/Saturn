@@ -28,7 +28,7 @@
             <span class="flex-grow text-right self-center text-4xl">'.CONFIG_SITE_NAME.'</span>
         </div>
         <div class="py-2 px-4">'.$message.'</div>
-        <div class="py-20 px-4 text-xs italic">This message was sent because you have an account registered with '.CONFIG_SITE_NAME.'\'s Saturn installation at "'.$_SERVER['SERVER_NAME'].'". You may be able to opt-out of these emails in your user settings.</div>
+        <div class="py-20 px-4 text-xs italic">This message was sent because you have an account registered with '.CONFIG_SITE_NAME.'\'s Saturn installation at "'.$_SERVER['SERVER_NAME'].'". You may be able to opt out of these emails in your user settings.</div>
     </body>
 </html>';
 
