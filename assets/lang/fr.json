@@ -65,7 +65,8 @@
     "An error has occurred": "Une erreur est survenue",
     "An error occurred when resetting a user's password": "Une erreur s'est produite lors de la réinitialisation du mot de passe d'un utilisateur",
     "Failed login verification attempt by user to account": "Échec de la tentative de vérification de connexion par l'utilisateur au compte",
-    "With IP hash": "Avec hachage IP",
+    "Failed login attempt by user to account": "Échec de la tentative de connexion de l'utilisateur au compte",
+    "with IP hash": "avec hachage IP",
     "Code does not match": "Le code ne correspond pas",
     "A new code has been sent to your email address": "Un nouveau code a été envoyé à votre adresse e-mail",
     "We've detected that you're attempting to sign in from a new location": "Nous avons détecté que vous essayez de vous connecter à partir d'un nouvel emplacement",
@@ -634,6 +635,6 @@
     "RSS Feeds": "Flux RSS",
     "Whoops, we were unable to locate a file to render for the homepage": "Oups, nous n'avons pas pu localiser un fichier à afficher pour la page d'accueil",
     "Please allocate a homepage in the": "Veuillez attribuer une page d'accueil dans le",
-    "Username or Email Address": "nom d'utilisateur ou adresse e-mail"
+    "Username or Email Address": "Nom d'utilisateur ou adresse e-mail"
   }
 }

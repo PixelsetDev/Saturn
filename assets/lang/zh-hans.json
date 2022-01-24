@@ -65,7 +65,7 @@
     "An error has occurred": "发生了错误",
     "An error occurred when resetting a user's password": "重置用户密码时出错",
     "Failed login verification attempt by user to account": "用户对帐户的登录验证尝试失败",
-    "With IP hash": "使用 IP 哈希",
+    "with IP hash": "使用 IP 哈希",
     "Code does not match": "代码不匹配",
     "A new code has been sent to your email address": "新代码已发送到您的电子邮件地址",
     "We've detected that you're attempting to sign in from a new location": "我们检测到您正尝试从新位置登录",
