@@ -17,13 +17,19 @@
         log_error('ERROR', 'Unable to load language file: '.CONFIG_LANGUAGE);
     }
 
-    function __($key)
+    function __($key): string
     {
         global $lang;
         if (isset($lang)) {
             $translations = $lang->translations;
-
-            return $translations->$key;
+            if($translations->$key == NULL || $translations->$key == '') {
+                if (CONFIG_DEBUG) {
+                    echo alert('ERROR','Translation not found for "'.$key.'".', true);
+                }
+                return $key;
+            } else {
+                return $translations->$key;
+            }
         } else {
             return 'Language file not loaded.';
         }
