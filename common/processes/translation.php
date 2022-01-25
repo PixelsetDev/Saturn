@@ -25,6 +25,8 @@
                 $translations = $lang->translations->admin;
             } elseif (strpos($key, "Panel:") !== false) {
                 $translations = $lang->translations->panel;
+            } elseif (strpos($key, "Error:") !== false) {
+                $translations = $lang->translations->error;
             } else {
                 $translations = $lang->translations->general;
             }

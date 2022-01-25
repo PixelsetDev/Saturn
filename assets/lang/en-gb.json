@@ -6,7 +6,9 @@
   "translations": {
     "general": {
       "Saturn": "Saturn",
-      "SaturnCMS": "Saturn CMS"
+      "SaturnCMS": "Saturn CMS",
+      "Error": "Error",
+      "GoHome": "Go home"
     },
     "panel": {
       "Panel": "Control Panel",
@@ -22,7 +24,20 @@
       "Notifications": "Notifications",
       "SignOut": "Sign out",
       "BugFree_Message": "Let's Keep Saturn Bug Free:",
-      "BugFree_Contact": "Found a problem? Let us know!"
+      "BugFree_Contact": "Found a problem? Let us know!",
+      "Level_Beginner": "Beginner",
+      "Level_Explorer": "Explorer",
+      "Level_Junior": "Junior",
+      "Level_Experienced": "Experienced",
+      "Level_Senior": "Senior",
+      "Level_Semi-Pro": "Semi-Pro",
+      "Level_Professional": "Professional",
+      "Level_Master": "Master",
+      "Level_Legendary": "Legendary",
+      "Page_Name": "Page Name",
+      "Page_Category": "Category",
+      "Category_Name": "Category Name",
+      "Create": "Create"
     },
     "admin": {
       "Panel": "Admin Panel",
@@ -40,6 +55,10 @@
       "Settings_Web": "Website Settings",
       "Settings_Perms": "Permission Settings",
       "DatabaseManagement": "Database Management"
+    },
+    "error": {
+      "404_Message": "Page not Found.",
+      "404_Info": "Error code: 404. If you clicked a link on our website, please contact us to let us know it's broken. If you typed in the page URL yourself, please check your spelling and try again."
     }
   }
 }
