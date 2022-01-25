@@ -2,6 +2,7 @@
         <meta charset="<?php echo CONFIG_SITE_CHARSET; ?>">
         <meta name="description" content="<?php echo CONFIG_SITE_DESCRIPTION; ?>">
         <meta name="keywords" content="<?php echo CONFIG_SITE_KEYWORDS; ?>">
+        <meta name="generator" content="<?php echo __('General:SaturnCMS'); ?> <?php echo SATURN_VERSION; ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#111827">
         <meta name="robots" content="noindex, nofollow" />
