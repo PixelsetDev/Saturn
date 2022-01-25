@@ -17,24 +17,24 @@
     function getvalues_dashboard_statistics($value): array
     {
         if ($value < '10') {
-            $current = 'Beginner';
-            $next = 'Explorer';
+            $current = __('Panel:Level_Beginner');
+            $next = __('Panel:Level_Explorer');
             $colour = 'red';
         } elseif ($value < '20') {
-            $current = 'Explorer';
-            $next = 'Junior';
+            $current = __('Panel:Level_Explorer');
+            $next = __('Panel:Level_Junior');
             $colour = 'yellow';
         } elseif ($value < '30') {
-            $current = 'Junior';
-            $next = 'Experienced';
+            $current = __('Panel:Level_Junior');
+            $next = __('Panel:Level_Experienced');
             $colour = 'green';
         } elseif ($value < '40') {
-            $current = 'Experienced';
-            $next = 'Senior';
+            $current = __('Panel:Level_Experienced');
+            $next = __('Panel:Level_Senior');
             $colour = 'blue';
         } elseif ($value < '50') {
-            $current = 'Senior';
-            $next = 'Semi-Pro';
+            $current = __('Panel:Level_Senior');
+            $next = __('Panel:Level_Semi-Pro');
             $colour = 'purple';
         }
         if (isset($colour)) {
@@ -42,22 +42,22 @@
         } else {
             if ($value < '100') {
                 $max = '100';
-                $current = 'Semi-Pro';
-                $next = 'Professional';
+                $current = __('Panel:Level_Semi-Pro');
+                $next = __('Panel:Level_Professional');
                 $colour = 'pink';
             } elseif ($value < '200') {
                 $max = '200';
-                $current = 'Professional';
-                $next = 'Master';
+                $current = __('Panel:Level_Professional');
+                $next = __('Panel:Level_Master');
                 $colour = 'red';
             } elseif ($value < '500') {
                 $max = '500';
-                $current = 'Master';
-                $next = 'Legendary';
+                $current = __('Panel:Level_Master');
+                $next = __('Panel:Level_Legendary');
                 $colour = 'yellow';
             } else {
                 $max = '500';
-                $current = 'Legendary';
+                $current = __('Panel:Level_Legendary');
                 $next = 'None';
                 $colour = 'green';
             }
