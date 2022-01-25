@@ -36,10 +36,7 @@
             $string = substr($key, strpos($key, ":") + 1);
             // Output translation
             if($translations->$string == NULL || $translations->$string == '') {
-                if (CONFIG_DEBUG) {
-                    echo alert('ERROR','Translation not found for "'.$key.'".', true);
-                }
-                return $key;
+                return 'Translation not found for "'.$key.'".';
             } else {
                 return $translations->$string;
             }
