@@ -9,12 +9,25 @@
       "SaturnCMS": "Saturn CMS"
     },
     "panel": {
-      "Panel": "Control Panel"
+      "Panel": "Control Panel",
+      "Pages": "Pages",
+      "Articles": "Articles",
+      "Editor": "Editor",
+      "Approvals": "Approvals",
+      "Team": "Team",
+      "TeamMembers": "Team Members",
+      "TeamChat": "Team Chat",
+      "MyProfile": "My Profile",
+      "AccountSettings": "Account Settings",
+      "Notifications": "Notifications",
+      "SignOut": "Sign out",
+      "BugFree_Message": "Let's Keep Saturn Bug Free:",
+      "BugFree_Contact": "Found a problem? Let us know!"
     },
     "admin": {
       "Panel": "Admin Panel",
-      "ExitCP": "Exit to Control Panel",
-      "ExitWEB": "Exit to Website",
+      "Exit_Panel": "Exit to Control Panel",
+      "Exit_Web": "Exit to Website",
       "Menu": "Admin Panel Menu",
       "Overview": "Overview",
       "Announcements": "Announcements",
@@ -24,8 +37,8 @@
       "SecurityManagement": "Security Management",
       "Logs": "Logs",
       "Settings": "Settings",
-      "SettingsWEB": "Website Settings",
-      "SettingsPERMS": "Permission Settings",
+      "Settings_Web": "Website Settings",
+      "Settings_Perms": "Permission Settings",
       "DatabaseManagement": "Database Management"
     }
   }

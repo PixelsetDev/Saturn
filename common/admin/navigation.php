@@ -5,8 +5,8 @@
                         <span class="ml-2 text-xl font-bold transition-colors duration-200 tracking-wide text-<?php echo THEME_PANEL_COLOUR; ?>-300 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo CONFIG_SITE_NAME; ?> <?php echo __('Admin:Panel'); ?></span>
                     </a>
                     <ul class="flex items-center hidden space-x-8 lg:flex">
-                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitCP'); ?></a></li>
-                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitWEB'); ?></a></li>
+                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:Exit_Panel'); ?></a></li>
+                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:Exit_Web'); ?></a></li>
                     </ul>
                     <!-- Mobile menu -->
                     <div class="lg:hidden" x-data="{ open: false }">
@@ -38,8 +38,8 @@
                             </div>
                             <nav aria-label="<?php echo __('Saturn'); ?> <?php echo __('Admin:Panel'); ?>">
                                 <ul class="space-y-4">
-                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="<?php echo __('Admin:ExitCP'); ?>" title="<?php echo __('Admin:ExitCP'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitCP'); ?></a></li>
-                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="<?php echo __('Admin:ExitWEB'); ?>" title="<?php echo __('Admin:ExitWEB'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitWEB'); ?></a></li>
+                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="<?php echo __('Admin:Exit_Panel'); ?>" title="<?php echo __('Admin:Exit_Panel'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:Exit_Panel'); ?></a></li>
+                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="<?php echo __('Admin:Exit_Web'); ?>" title="<?php echo __('Admin:Exit_Web'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:Exit_Web'); ?></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -82,8 +82,8 @@
                         </button>
                         <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg z-40">
                             <div class="px-2 py-2 rounded-md shadow bg-<?php echo THEME_PANEL_COLOUR; ?>-800">
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings'; ?>"><?php echo __('Admin:SettingsWEB'); ?></a>
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings/permissions'; ?>"><?php echo __('Admin:SettingsPERMS'); ?></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings'; ?>"><?php echo __('Admin:Settings_Web'); ?></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings/permissions'; ?>"><?php echo __('Admin:Settings_Perms'); ?></a>
                             </div>
                         </div>
                     </div>
