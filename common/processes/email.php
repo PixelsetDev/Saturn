@@ -28,18 +28,18 @@
             <span class="flex-grow text-right self-center text-4xl">'.CONFIG_SITE_NAME.'</span>
         </div>
         <div class="py-2 px-4">'.$message.'</div>
-        <div class="py-20 px-4 text-xs italic">This message was sent because you have an account registered with '.CONFIG_SITE_NAME.'\'s Saturn installation at "'.$_SERVER['SERVER_NAME'].'". You may be able to opt out of these emails in your user settings.</div>
+        <div class="py-20 px-4 text-xs italic">'.__('General:Email_Footer').' '.CONFIG_SITE_NAME.' '.__('General:Email_Footer_2').' '.$_SERVER['SERVER_NAME'].'. '.__('General:Email_Footer_3').'</div>
     </body>
 </html>';
 
             return mail($to, $subject, $contents, $headers);
         } elseif (CONFIG_EMAIL_FUNCTION == strtolower('smtp')) {
-            echo 'FATAL ERROR: SMTP is not implemented yet, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.';
-            log_error('FATAL ERROR', 'SMTP is not implemented yet, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.');
+            echo __('Error:Fatal').': '.__('Error:SMTP_1').SATURN_VERSION.__('Error:SMTP_2');
+            log_error(__('Error:Fatal'), __('Error:SMTP_1').SATURN_VERSION.__('Error:SMTP_2'));
             exit;
         } else {
-            echo 'FATAL ERROR: Email function not specified correctly, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.';
-            log_error('FATAL ERROR', 'Email function not specified correctly, please check your config.php file and visit https://docs.saturncms.net/0.1.0/developer/email for help.');
+            echo __('Error:Fatal').': '.__('Error:EmailFunction_1').SATURN_VERSION.__('Error:EmailFunction_2');
+            log_error(__('Error:Fatal'), __('Error:EmailFunction_1').SATURN_VERSION.__('Error:EmailFunction_2'));
             exit;
         }
     }

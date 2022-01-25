@@ -8,13 +8,20 @@
       "Saturn": "Saturn",
       "SaturnCMS": "Saturn CMS",
       "Error": "Error",
+      "Home": "Home",
       "GoHome": "Go home",
       "Converted_GTAGS_1": "Converted",
-      "Converted_GTAGS_2": "Global Tags in"
+      "Converted_GTAGS_2": "Global Tags in",
+      "Email_Footer_1": "This message was sent because you have an account registered with",
+      "Email_Footer_2": "'s Saturn installation at \"",
+      "Email_Footer_3": "You may be able to opt out of these emails in your user settings.",
+      "MoreInfo": "For more information",
+      "ClickHere": "click here"
     },
     "panel": {
       "Panel": "Control Panel",
       "Pages": "Pages",
+      "PageUpdates": "Page Updates",
       "Articles": "Articles",
       "Editor": "Editor",
       "Approvals": "Approvals",
@@ -42,7 +49,10 @@
       "Category_Name": "Category Name",
       "Article_WrittenBy": "Written by",
       "Article_Unavailable": "Sorry, this article is temporarily unavailable.",
-      "Article_ReadOther": "Why not read one of our other great articles?"
+      "Article_ReadOther": "Why not read one of our other great articles?",
+      "EditedPageTitled": "edited page titled",
+      "AssignedWriters": "Assigned Writers:",
+      "AssignedEditors": "Assigned Editors:"
     },
     "admin": {
       "Panel": "Admin Panel",
@@ -64,10 +74,18 @@
     "error": {
       "404_Message": "Page not Found.",
       "404_Info": "Error code: 404. If you clicked a link on our website, please contact us to let us know it's broken. If you typed in the page URL yourself, please check your spelling and try again.",
+      "404_Feed": "Feed not found.",
       "RandomInteger": "Random integer creation error.",
       "FrameworkUnassigned": "Unable to load framework or a framework may not be assigned.",
       "CCV": "CCV: Website configuration does not match checksum.",
-      "GetHelp": "Get help."
+      "GetHelp": "Get help.",
+      "Fatal": "FATAL ERROR",
+      "SMTP_1": "SMTP is not implemented yet, please check your config.php file and visit https://docs.saturncms.net/",
+      "SMTP_2": "/developer/email for help.",
+      "EmailFunction_1": "Email function not specified correctly, please check your config.php file and visit https://docs.saturncms.net/",
+      "EmailFunction_2": "/developer/email for help.",
+      "DebugEnabled": "Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.",
+      "NotActivated": "Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel."
     },
     "security": {
       "Cleaned": "Cleaned",
