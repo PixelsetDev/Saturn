@@ -89,6 +89,6 @@
                     </div>
                     <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/database-management'; ?>"><?php echo __('Admin:DatabaseManagement'); ?></a>
 
-                    <span class="hidden md:block fixed bottom-0 -left-0 text-xs text-<?php echo THEME_PANEL_COLOUR; ?>-600"><?php echo __('General:Saturn');?> <?php echo __('Admin:Panel');?> &copy; 2021 - <?php echo date('Y'); ?> <?php echo __('General:SaturnCMS');?></span>
+                    <span class="hidden md:block fixed bottom-0 -left-0 text-xs text-<?php echo THEME_PANEL_COLOUR; ?>-600"><?php echo __('General:Saturn'); ?> <?php echo __('Admin:Panel'); ?> &copy; 2021 - <?php echo date('Y'); ?> <?php echo __('General:SaturnCMS'); ?></span>
                 </nav>
             </div>
