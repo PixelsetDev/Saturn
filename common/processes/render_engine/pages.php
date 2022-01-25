@@ -54,7 +54,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     try {
         $pageOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $pageOutput);
     } catch (Exception $e) {
-        errorHandlerError($e, 'Random integer creation error.');
+        errorHandlerError($e, __('Error:RandomInteger'));
     }
     // Config values
     $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
@@ -115,10 +115,10 @@ function replacedata($pageOutput, $pageData, $themeData): string
         $cdn_css = 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css';
         $cdn_js = 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js';
     } else {
+        $cdn_css = '';
+        $cdn_js = '';
         if (CONFIG_DEBUG) {
-            $cdn_css = '';
-            $cdn_js = '';
-            log_console('Saturn][Resource Loader][G-Tags', 'Unable to load framework or a framework may not be assigned.');
+            log_console('Saturn][Resource Loader][G-Tags', __('FrameworkUnassigned'));
         }
     }
     $pageOutput = str_replace('{{cdn:css}}', $cdn_css, $pageOutput);
@@ -133,7 +133,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $pageOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', 'Converted 73 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', __('General:Converted_GTAGS_1').' 73'.__('General:Converted_GTAGS_2').' '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
 
     return $pageOutput;
