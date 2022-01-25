@@ -1,22 +1,22 @@
 {
-  "language": "Chinese (Simplified) - 简体中文",
-  "code": "zh-hans",
+  "language": "Chinese (Traditional) - 中國傳統的",
+  "code": "zh-hant",
   "version": "0.2.0",
   "authors": "Lewis Milburn",
   "translations": {
     "general": {
       "Saturn": "土星",
       "SaturnCMS": "土星 CMS",
-      "Error": "错误",
+      "Error": "錯誤",
       "Home": "家",
       "GoHome": "回家",
-      "Converted_GTAGS_1": "已转换",
-      "Converted_GTAGS_2": "全局标签",
-      "Email_Footer_1": "发送此消息是因为您注册了一个帐户",
-      "Email_Footer_2": "的土星安装在",
-      "Email_Footer_3": "您可以在您的用户设置中选择退出这些电子邮件。",
-      "MoreInfo": "想要查询更多的信息",
-      "ClickHere": "点击这里"
+      "Converted_GTAGS_1": "已轉換",
+      "Converted_GTAGS_2": "全局標籤",
+      "Email_Footer_1": "發送此消息是因為您註冊了一個帳戶",
+      "Email_Footer_2": "的土星安裝在",
+      "Email_Footer_3": "您可以在您的用戶設置中選擇退出這些電子郵件。",
+      "MoreInfo": "想要查詢更多的信息",
+      "ClickHere": "點擊這裡"
     },
     "panel": {
       "Panel": "",
@@ -70,8 +70,8 @@
       "Settings_Web": "",
       "Settings_Perms": "",
       "DatabaseManagement": ""
-    },
-    "error": {
+      },
+      "error": {
       "404_Message": "",
       "404_Info": "",
       "404_Feed": "",

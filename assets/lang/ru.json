@@ -1,22 +1,22 @@
 {
-  "language": "Chinese (Simplified) - 简体中文",
-  "code": "zh-hans",
+  "language": "Russian - русский",
+  "code": "ru",
   "version": "0.2.0",
   "authors": "Lewis Milburn",
   "translations": {
     "general": {
-      "Saturn": "土星",
-      "SaturnCMS": "土星 CMS",
-      "Error": "错误",
-      "Home": "家",
-      "GoHome": "回家",
-      "Converted_GTAGS_1": "已转换",
-      "Converted_GTAGS_2": "全局标签",
-      "Email_Footer_1": "发送此消息是因为您注册了一个帐户",
-      "Email_Footer_2": "的土星安装在",
-      "Email_Footer_3": "您可以在您的用户设置中选择退出这些电子邮件。",
-      "MoreInfo": "想要查询更多的信息",
-      "ClickHere": "点击这里"
+      "Saturn": "Сатурн",
+      "SaturnCMS": "Сатурн CMS",
+      "Error": "Ошибка",
+      "Home": "Домой",
+      "GoHome": "Иди домой",
+      "Converted_GTAGS_1": "Конвертировано",
+      "Converted_GTAGS_2": "Глобальные теги в",
+      "Email_Footer_1": "Это сообщение было отправлено, потому что у вас есть учетная запись, зарегистрированная в",
+      "Email_Footer_2": "установка «Сатурн» в",
+      "Email_Footer_3": "Вы можете отказаться от этих писем в настройках пользователя.",
+      "MoreInfo": "Чтобы получить больше информации",
+      "ClickHere": "кликните сюда"
     },
     "panel": {
       "Panel": "",

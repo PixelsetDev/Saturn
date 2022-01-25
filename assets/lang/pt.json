@@ -1,22 +1,22 @@
 {
-  "language": "Chinese (Simplified) - 简体中文",
-  "code": "zh-hans",
+  "language": "Portuguese - Português",
+  "code": "ru",
   "version": "0.2.0",
   "authors": "Lewis Milburn",
   "translations": {
     "general": {
-      "Saturn": "土星",
-      "SaturnCMS": "土星 CMS",
-      "Error": "错误",
-      "Home": "家",
-      "GoHome": "回家",
-      "Converted_GTAGS_1": "已转换",
-      "Converted_GTAGS_2": "全局标签",
-      "Email_Footer_1": "发送此消息是因为您注册了一个帐户",
-      "Email_Footer_2": "的土星安装在",
-      "Email_Footer_3": "您可以在您的用户设置中选择退出这些电子邮件。",
-      "MoreInfo": "想要查询更多的信息",
-      "ClickHere": "点击这里"
+      "Saturn": "Saturno",
+      "SaturnCMS": "Saturno CMS",
+      "Error": "Erro",
+      "Home": "Casa",
+      "GoHome": "Ir para casa",
+      "Converted_GTAGS_1": "Convertido",
+      "Converted_GTAGS_2": "Tags globais em",
+      "Email_Footer_1": "Esta mensagem foi enviada porque você tem uma conta registrada com",
+      "Email_Footer_2": "instalação do Saturn em",
+      "Email_Footer_3": "Você pode optar por não receber esses e-mails em suas configurações de usuário.",
+      "MoreInfo": "Para maiores informações",
+      "ClickHere": "Clique aqui"
     },
     "panel": {
       "Panel": "",
