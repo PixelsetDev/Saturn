@@ -2,11 +2,11 @@
             <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div class="relative flex items-center justify-between">
                     <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin" aria-label="Saturn" title="Saturn" class="inline-flex items-center">
-                        <span class="ml-2 text-xl font-bold transition-colors duration-200 tracking-wide text-<?php echo THEME_PANEL_COLOUR; ?>-300 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo CONFIG_SITE_NAME; ?> Admin Panel</span>
+                        <span class="ml-2 text-xl font-bold transition-colors duration-200 tracking-wide text-<?php echo THEME_PANEL_COLOUR; ?>-300 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo CONFIG_SITE_NAME; ?> <?php echo __('Admin:Panel'); ?></span>
                     </a>
                     <ul class="flex items-center hidden space-x-8 lg:flex">
-                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Control Panel</a></li>
-                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
+                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitCP'); ?></a></li>
+                        <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitWEB'); ?></a></li>
                     </ul>
                     <!-- Mobile menu -->
                     <div class="lg:hidden" x-data="{ open: false }">
@@ -22,7 +22,7 @@
                                 <div class="flex items-center justify-between mb-4">
                                     <div>
                                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin" aria-label="Title" title="Title" class="inline-flex items-center">
-                                            <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 text-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo CONFIG_SITE_NAME; ?> Admin Panel</span>
+                                            <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 text-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo CONFIG_SITE_NAME; ?> <?php echo __('Admin:Panel'); ?></span>
                                         </a>
                                     </div>
                                 <div>
@@ -36,10 +36,10 @@
                                     </button>
                                 </div>
                             </div>
-                            <nav aria-label="Saturn Admin Panel Mobile Menu">
+                            <nav aria-label="<?php echo __('Saturn'); ?> <?php echo __('Admin:Panel'); ?>">
                                 <ul class="space-y-4">
-                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Dashboard</a></li>
-                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
+                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="<?php echo __('Admin:ExitCP'); ?>" title="<?php echo __('Admin:ExitCP'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitCP'); ?></a></li>
+                                    <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="<?php echo __('Admin:ExitWEB'); ?>" title="<?php echo __('Admin:ExitWEB'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:ExitWEB'); ?></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -50,7 +50,7 @@
         <div class="md:relative md:flex flex-col md:flex-row md:min-h-full min-w-full bg-transparent">
             <div @click.away="open = false" class="z-20 flex flex-col w-full md:w-64 text-<?php echo THEME_PANEL_COLOUR; ?>-200 bg-<?php echo THEME_PANEL_COLOUR; ?>-800 flex-shrink-0" x-data="{ open: false }">
                 <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
-                    <a href="<?php echo CONFIG_INSTALL_URL ?>/panel/admin" class="text-lg font-semibold tracking-widest text-white rounded-lg hover:text-white focus:outline-none focus:shadow-outline">Admin Panel Menu</a>
+                    <a href="<?php echo CONFIG_INSTALL_URL ?>/panel/admin" class="text-lg font-semibold tracking-widest text-white rounded-lg hover:text-white focus:outline-none focus:shadow-outline"><?php echo __('Admin:Menu'); ?></a>
                     <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
                         <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                             <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -59,35 +59,36 @@
                     </button>
                 </div>
                 <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto z-30" aria-label="Sidebar Menu">
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin'; ?>">Dashboard</a>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/announcements'; ?>">Announcements</a>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/user-management'; ?>">User Management</a>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/themes'; ?>">Themes</a>
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin'; ?>"><?php echo __('Admin:Overview'); ?></a>
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/announcements'; ?>"><?php echo __('Admin:Announcements'); ?></a>
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/user-management'; ?>"><?php echo __('Admin:UserManagement'); ?></a>
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/themes'; ?>"><?php echo __('Admin:Themes'); ?></a>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg bg-transparent focus:text-white hover:text-white :focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 md:block focus:outline-none focus:shadow-outline">
-                            <span>Security</span>
+                            <span><?php echo __('Admin:Security'); ?></span>
                             <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                         </button>
                         <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg z-40">
                             <div class="px-2 py-2 rounded-md shadow bg-<?php echo THEME_PANEL_COLOUR; ?>-800">
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/security'; ?>">Security Management</a>
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/security/log.php'; ?>">Logs</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/security'; ?>"><?php echo __('Admin:SecurityManagement'); ?></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/security/log.php'; ?>"><?php echo __('Admin:Logs'); ?></a>
                             </div>
                         </div>
                     </div>
                     <div @click.away="open = false" class="relative" x-data="{ open: false }">
                         <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left rounded-lg bg-transparent focus:text-white hover:text-white :focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 md:block focus:outline-none focus:shadow-outline">
-                            <span>Settings</span>
+                            <span><?php echo __('Admin:Settings'); ?></span>
                             <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                         </button>
                         <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg z-40">
                             <div class="px-2 py-2 rounded-md shadow bg-<?php echo THEME_PANEL_COLOUR; ?>-800">
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings'; ?>">Website Settings</a>
-                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings/permissions'; ?>">Permissions</a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings'; ?>"><?php echo __('Admin:SettingsWEB'); ?></a>
+                                <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 md:mt-0 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/settings/permissions'; ?>"><?php echo __('Admin:SettingsPERMS'); ?></a>
                             </div>
                         </div>
                     </div>
-                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/database-management'; ?>">Database Management</a>
-                    <span class="fixed bottom-0 text-xs text-<?php echo THEME_PANEL_COLOUR; ?>-600">Saturn Panel &copy; 2021 - <?php echo date('Y'); ?> Saturn CMS</span>
+                    <a class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg bg-transparent hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-600 focus:text-white hover:text-white text-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL.'/panel/admin/database-management'; ?>"><?php echo __('Admin:DatabaseManagement'); ?></a>
+
+                    <span class="hidden md:block fixed bottom-0 -left-0 text-xs text-<?php echo THEME_PANEL_COLOUR; ?>-600"><?php echo __('General:Saturn');?> <?php echo __('Admin:Panel');?> &copy; 2021 - <?php echo date('Y'); ?> <?php echo __('General:SaturnCMS');?></span>
                 </nav>
             </div>

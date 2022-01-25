@@ -21,14 +21,24 @@
     {
         global $lang;
         if (isset($lang)) {
-            $translations = $lang->translations;
-            if($translations->$key == NULL || $translations->$key == '') {
+            // Select translation set
+            if (strpos($key, "Admin:") !== false) {
+                $translations = $lang->translations->admin;
+            } elseif (strpos($key, "Panel:") !== false) {
+                $translations = $lang->translations->panel;
+            } else {
+                $translations = $lang->translations->general;
+            }
+            // Select key
+            $string = substr($key, strpos($key, ":") + 1);
+            // Output translation
+            if($translations->$string == NULL || $translations->$string == '') {
                 if (CONFIG_DEBUG) {
                     echo alert('ERROR','Translation not found for "'.$key.'".', true);
                 }
                 return $key;
             } else {
-                return $translations->$key;
+                return $translations->$string;
             }
         } else {
             return 'Language file not loaded.';
