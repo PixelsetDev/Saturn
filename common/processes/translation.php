@@ -21,12 +21,14 @@
         global $lang;
         if (isset($lang)) {
             // Select translation set
-            if (strpos($key, "Admin:") !== false) {
-                $translations = $lang->translations->admin;
-            } elseif (strpos($key, "Panel:") !== false) {
+            if (strpos($key, "Panel:") !== false) {
                 $translations = $lang->translations->panel;
+            } elseif (strpos($key, "Admin:") !== false) {
+                $translations = $lang->translations->admin;
             } elseif (strpos($key, "Error:") !== false) {
                 $translations = $lang->translations->error;
+            } elseif (strpos($key, "Security:") !== false) {
+                $translations = $lang->translations->security;
             } else {
                 $translations = $lang->translations->general;
             }

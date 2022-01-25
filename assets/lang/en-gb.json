@@ -8,7 +8,9 @@
       "Saturn": "Saturn",
       "SaturnCMS": "Saturn CMS",
       "Error": "Error",
-      "GoHome": "Go home"
+      "GoHome": "Go home",
+      "Converted_GTAGS_1": "Converted",
+      "Converted_GTAGS_2": "Global Tags in"
     },
     "panel": {
       "Panel": "Control Panel",
@@ -34,10 +36,13 @@
       "Level_Professional": "Professional",
       "Level_Master": "Master",
       "Level_Legendary": "Legendary",
+      "Create": "Create",
       "Page_Name": "Page Name",
       "Page_Category": "Category",
       "Category_Name": "Category Name",
-      "Create": "Create"
+      "Article_WrittenBy": "Written by",
+      "Article_Unavailable": "Sorry, this article is temporarily unavailable.",
+      "Article_ReadOther": "Why not read one of our other great articles?"
     },
     "admin": {
       "Panel": "Admin Panel",
@@ -58,7 +63,18 @@
     },
     "error": {
       "404_Message": "Page not Found.",
-      "404_Info": "Error code: 404. If you clicked a link on our website, please contact us to let us know it's broken. If you typed in the page URL yourself, please check your spelling and try again."
+      "404_Info": "Error code: 404. If you clicked a link on our website, please contact us to let us know it's broken. If you typed in the page URL yourself, please check your spelling and try again.",
+      "RandomInteger": "Random integer creation error.",
+      "FrameworkUnassigned": "Unable to load framework or a framework may not be assigned.",
+      "CCV": "CCV: Website configuration does not match checksum.",
+      "GetHelp": "Get help."
+    },
+    "security": {
+      "Cleaned": "Cleaned",
+      "Stopped": "Stopped",
+      "ClearedLog_Security": "cleared the Security Log",
+      "ClearedLog_Error": "cleared the Error Log",
+      "I/O_Blacklist": "I/O: Contained Blacklisted Item:"
     }
   }
 }
