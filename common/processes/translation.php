@@ -1,6 +1,6 @@
 <?php
 
-    $langJSON = file_get_contents(__DIR__ . '/../../assets/lang/' .CONFIG_LANGUAGE.'.json');
+    $langJSON = file_get_contents(__DIR__.'/../../assets/lang/'.CONFIG_LANGUAGE.'.json');
     $lang = json_decode($langJSON);
     if ($lang->{'language'} != null || $lang->{'language'} != '') {
         if (CONFIG_DEBUG) {
@@ -21,21 +21,21 @@
         global $lang;
         if (isset($lang)) {
             // Select translation set
-            if (strpos($key, "Panel:") !== false) {
+            if (strpos($key, 'Panel:') !== false) {
                 $translations = $lang->translations->panel;
-            } elseif (strpos($key, "Admin:") !== false) {
+            } elseif (strpos($key, 'Admin:') !== false) {
                 $translations = $lang->translations->admin;
-            } elseif (strpos($key, "Error:") !== false) {
+            } elseif (strpos($key, 'Error:') !== false) {
                 $translations = $lang->translations->error;
-            } elseif (strpos($key, "Security:") !== false) {
+            } elseif (strpos($key, 'Security:') !== false) {
                 $translations = $lang->translations->security;
             } else {
                 $translations = $lang->translations->general;
             }
             // Select key
-            $string = substr($key, strpos($key, ":") + 1);
+            $string = substr($key, strpos($key, ':') + 1);
             // Output translation
-            if($translations->$string == NULL || $translations->$string == '') {
+            if ($translations->$string == null || $translations->$string == '') {
                 return 'Translation not found for "'.$key.'".';
             } else {
                 return $translations->$string;
