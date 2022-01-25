@@ -28,7 +28,7 @@
             <span class="flex-grow text-right self-center text-4xl">'.CONFIG_SITE_NAME.'</span>
         </div>
         <div class="py-2 px-4">'.$message.'</div>
-        <div class="py-20 px-4 text-xs italic">'.__('General:Email_Footer').' '.CONFIG_SITE_NAME.' '.__('General:Email_Footer_2').' '.$_SERVER['SERVER_NAME'].'. '.__('General:Email_Footer_3').'</div>
+        <div class="py-20 px-4 text-xs italic">'.__('General:Email_Footer').' '.CONFIG_SITE_NAME.' '.__('General:Email_Footer_2').' '.$_SERVER['SERVER_NAME'].'". '.__('General:Email_Footer_3').'</div>
     </body>
 </html>';
 
