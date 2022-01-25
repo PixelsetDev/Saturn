@@ -2,7 +2,7 @@
   "language": "Korean - 한국인",
   "code": "ko",
   "version": "0.2.0",
-  "authors": "Lewis Milburn",
+  "authors": "Lewis Milburn, Emmy M",
   "translations": {
     "general": {
       "Saturn": "토성",
@@ -37,10 +37,10 @@
       "Level_Beginner": "초보자",
       "Level_Explorer": "탐색기",
       "Level_Junior": "주니어",
-      "Level_Experienced": "Experienced",
+      "Level_Experienced": "숙련됨",
       "Level_Senior": "시니어",
-      "Level_Semi-Pro": "Semi-Pro",
-      "Level_Professional": "Professional",
+      "Level_Semi-Pro": "세미 프로",
+      "Level_Professional": "프로",
       "Level_Master": "마스터",
       "Level_Legendary": "전설",
       "Create": "만들기",
