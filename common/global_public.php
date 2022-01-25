@@ -3,8 +3,9 @@
     ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../config.php';
-    require_once __DIR__.'/../theme.php';
     /* Important Functions */
+    require_once __DIR__.'/processes/translation.php';
+    require_once __DIR__.'/../theme.php';
     require_once __DIR__.'/processes/database/connect.php';
     require_once __DIR__.'/processes/security/security.php';
     require_once __DIR__.'/processes/errorHandler.php';
