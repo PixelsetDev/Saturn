@@ -31,6 +31,8 @@
       "MyProfile": "Mi Perfil",
       "AccountSettings": "Configuración de la cuenta",
       "Notifications": "Notificaciones",
+      "Notifications_New": "Notificaciones Nuevas",
+      "Notifications_Dismissed": "Notificaciones Descartadas",
       "SignOut": "Cerrar sesión",
       "BugFree_Message": "Mantengamos Saturno libre de errores:",
       "BugFree_Contact": "¿Encontraste un problema? ¡Háznoslo saber!",

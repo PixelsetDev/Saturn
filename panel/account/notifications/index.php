@@ -15,7 +15,7 @@ ob_end_flush();
             include_once __DIR__.'/../../../common/panel/vendors.php';
             include_once __DIR__.'/../../../common/panel/theme.php';
         ?>
-        <title>Notifications - Saturn Panel</title>
+        <title><?php echo __('Panel:Notifications'); ?> - <?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
     </head>
     <body class="mb-8 dark:bg-neutral-700 dark:text-white">
         <?php
@@ -24,7 +24,7 @@ ob_end_flush();
 
         <header class="bg-white shadow dark:bg-neutral-800">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Notifications</h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Notifications'); ?></h1>
             </div>
         </header>
 

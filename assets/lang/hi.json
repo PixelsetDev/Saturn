@@ -31,6 +31,8 @@
       "MyProfile": "माई प्रोफाइल",
       "AccountSettings": "खाता सेटिंग",
       "Notifications": "सूचनाएं",
+      "Notifications_New": "नई सूचनाएं",
+      "Notifications_Dismissed": "खारिज सूचनाएं",
       "SignOut": "साइन आउट",
       "BugFree_Message": "चलो सैटर्न बग फ्री रखें:",
       "BugFree_Contact": "कोई समस्या मिली? हमें बताएं!",
@@ -92,7 +94,7 @@
       "Stopped": "रोका",
       "ClearedLog_Security": "सुरक्षा लॉग को साफ़ किया",
       "ClearedLog_Error": "त्रुटि लॉग को साफ़ किया",
-      "I/O_Blacklist": "I/O: सम्\u200Dमिलित काली सूची में डाला गया आइटम:"
+      "I/O_Blacklist": "I/O: ब्लैक लिस्टेड आइटम शामिल हैं:"
     }
   }
 }

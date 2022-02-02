@@ -31,6 +31,8 @@
       "MyProfile": "Мой профиль",
       "AccountSettings": "Настройки учетной записи",
       "Notifications": "Уведомления",
+      "Notifications_New": "Новые уведомления",
+      "Notifications_Dismissed": "Отклоненные уведомления",
       "SignOut": "Выйти",
       "BugFree_Message": "Давайте избавим Сатурн от багов:",
       "BugFree_Contact": "Нашли проблему? Сообщите нам!",

@@ -31,6 +31,8 @@
       "MyProfile": "내 프로필",
       "AccountSettings": "계정 설정",
       "Notifications": "알림",
+      "Notifications_New": "새 알림",
+      "Notifications_Dismissed": "알림을 닫았습니다",
       "SignOut": "로그아웃",
       "BugFree_Message": "토성 버그가 없도록 합시다:",
       "BugFree_Contact": "문제를 찾았습니까? 저희에게 알려주십시오!",
