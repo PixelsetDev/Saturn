@@ -29,7 +29,7 @@ ob_end_flush();
         </header>
 
         <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 relative py-6">
-            <h1 class="text-2xl leading-tight text-gray-900 dark:text-white my-8">New Notifications</h1>
+            <h1 class="text-2xl leading-tight text-gray-900 dark:text-white my-8"><?php echo __('Panel:Notifications_New'); ?></h1>
             <?php
                 $result = $conn->query('SELECT id FROM `'.DATABASE_PREFIX."notifications` WHERE `dismissed`='0' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.';');
                 if ($result->num_rows > 0) {
@@ -75,10 +75,10 @@ ob_end_flush();
                         }
                     }
                 } else {
-                    echo 'None found.';
+                    echo __('Panel:NoneFound');
                 }
             ?>
-            <h1 class="text-2xl leading-tight text-gray-900 dark:text-white my-8">Previous Notifications</h1>
+            <h1 class="text-2xl leading-tight text-gray-900 dark:text-white my-8"><?php echo __('Panel:Notifications_Dismissed'); ?></h1>
             <?php
                 $rs = $conn->query('SELECT id FROM `'.DATABASE_PREFIX."notifications` WHERE `dismissed`='1' AND `user_id`='".$_SESSION['id']."' ORDER BY `timestamp` DESC LIMIT ".CONFIG_NOTIFICATIONS_LIMIT.';');
                 if ($rs->num_rows > 0) {
@@ -122,7 +122,7 @@ ob_end_flush();
                         }
                     }
                 } else {
-                    echo 'None found.';
+                    echo __('Panel:NoneFound');
                 }
             ?>
         </div>
