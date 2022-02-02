@@ -76,7 +76,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
-        <title>Sign in - Saturn Panel</title>
+        <title>Sign in - <?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
         <?php
             include_once __DIR__.'/../../../common/panel/vendors.php';
             include_once __DIR__.'/../../../common/panel/theme.php';

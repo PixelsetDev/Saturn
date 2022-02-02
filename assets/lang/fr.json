@@ -88,11 +88,11 @@
       "NotActivated": "Activation: Saturn n'est pas activé, certaines fonctionnalités peuvent être indisponibles. Vous pouvez toujours utiliser certaines fonctionnalités de Saturn non activées. Vous pouvez activer Saturn dans votre panneau d'administration."
     },
     "security": {
-      "Cleaned": "",
-      "Stopped": "",
-      "ClearedLog_Security": "",
-      "ClearedLog_Error": "",
-      "I/O_Blacklist": ""
+      "Cleaned": "Nettoyé",
+      "Stopped": "Arrêté",
+      "ClearedLog_Security": "a effacé le journal de sécurité",
+      "ClearedLog_Error": "a effacé le journal des erreurs",
+      "I/O_Blacklist": "E/S: Contenu de l'élément sur liste noire:"
     }
   }
 }
