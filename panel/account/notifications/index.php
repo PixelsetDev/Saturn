@@ -32,7 +32,7 @@ ob_end_flush();
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_object()) {
                         foreach ($row as $r) {
-            ?>
+                            ?>
             <div class="flex space-x-4 mb-8">
                 <?php if (strpos(get_notification_title($r), 'not Approved') !== false) { ?>
                     <div class="bg-red-100 dark:bg-red-600 rounded-full w-20 h-20 text-center">
