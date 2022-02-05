@@ -88,7 +88,10 @@
       "EmailFunction_1": "La fonction e-mail n'est pas spécifiée correctement, veuillez vérifier votre fichier config.php et visiter https://docs.saturncms.net/v/",
       "EmailFunction_2": "/developer-documentation/email pour obtenir de l'aide.",
       "DebugEnabled": "Le mode débogage est ACTIVÉ. Ceci n'est PAS recommandé dans les environnements de production. Vous pouvez le désactiver dans les paramètres de configuration de votre site.",
-      "NotActivated": "Activation: Saturn n'est pas activé, certaines fonctionnalités peuvent être indisponibles. Vous pouvez toujours utiliser certaines fonctionnalités de Saturn non activées. Vous pouvez activer Saturn dans votre panneau d'administration."
+      "NotActivated": "Activation: Saturn n'est pas activé, certaines fonctionnalités peuvent être indisponibles. Vous pouvez toujours utiliser certaines fonctionnalités de Saturn non activées. Vous pouvez activer Saturn dans votre panneau d'administration.",
+      "EmailExists": "Un utilisateur avec cette adresse e-mail existe déjà.",
+      "Code": "Une erreur s'est produite lors de la génération d'un code. Veuillez réessayer ultérieurement.",
+      "TryAgain": "Erreur : Veuillez réessayer."
     },
     "security": {
       "Cleaned": "Nettoyé",

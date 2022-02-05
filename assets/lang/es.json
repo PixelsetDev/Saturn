@@ -88,7 +88,10 @@
       "EmailFunction_1": "La función de correo electrónico no se especificó correctamente, verifique su archivo config.php y visite https://docs.saturncms.net/v/",
       "EmailFunction_2": "/developer-documentation/email para ayuda.",
       "DebugEnabled": "El modo de depuración está HABILITADO. NO se recomienda en entornos de producción. Puede deshabilitarlo en los ajustes de configuración de su sitio.",
-      "NotActivated": "Activación: Saturn no está activado, es posible que ciertas funciones no estén disponibles. Todavía puedes usar algunas funciones de Saturn sin activar. Puedes activar Saturn en tu Panel de administración."
+      "NotActivated": "Activación: Saturn no está activado, es posible que ciertas funciones no estén disponibles. Todavía puedes usar algunas funciones de Saturn sin activar. Puedes activar Saturn en tu Panel de administración.",
+      "EmailExists": "Ya existe un usuario con esta dirección de correo electrónico.",
+      "Code": "Se produjo un error al generar un código. Vuelva a intentarlo más tarde.",
+      "TryAgain": "Error: Inténtalo de nuevo"
     },
     "security": {
       "Cleaned": "Limpiado",

@@ -88,7 +88,10 @@
       "EmailFunction_1": "未正確指定電子郵件功能，請檢查您的 config.php 文件並訪問 https://docs.saturncms.net/v/",
       "EmailFunction_2": "/developer-documentation/email 尋求幫助。",
       "DebugEnabled": "調試模式已啟用。不建議在生產環境中使用。您可以在站點配置設置中禁用它。",
-      "NotActivated": "激活：土星未激活，某些功能可能不可用。您仍然可以使用土星未激活的某些功能。您可以在管理面板中激活土星。"
+      "NotActivated": "激活：土星未激活，某些功能可能不可用。您仍然可以使用土星未激活的某些功能。您可以在管理面板中激活土星。",
+      "EmailExists": "使用此電子郵件地址的用戶已經存在。",
+      "Code": "生成代碼時出錯，請稍後再試。",
+      "TryAgain": "錯誤：請重試。"
     },
     "security": {
       "Cleaned": "清潔",

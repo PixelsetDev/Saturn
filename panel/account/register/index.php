@@ -9,15 +9,15 @@
                     include_once __DIR__.'/../../../common/processes/database/get/user.php';
                     $email = checkInput('DEFAULT', $_POST['verify_email']);
                     if (get_user_email_exists($email)) {
-                        $errorMsg = 'A user with this email address already exists.';
+                        $errorMsg = __('Error:EmailExists');
                         header('Location: log.php?error='.$errorMsg);
                         exit;
                     } else {
                         try {
                             $code = random_int(100000, 999999);
                         } catch (Exception $e) {
-                            $errorMsg = 'An error occurred whilst generating a code. Please try again later.';
-                            $code = '[ERROR] Please try again.';
+                            $errorMsg = __('Error:Code');
+                            $code = __('Error:TryAgain');
                         }
                         $code = checkInput('DEFAULT', $code);
                         $hashCode = hash('SHA3-512', $code);

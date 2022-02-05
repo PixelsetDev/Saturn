@@ -88,7 +88,10 @@
       "EmailFunction_1": "Email function not specified correctly, please check your config.php file and visit https://docs.saturncms.net/v/",
       "EmailFunction_2": "/developer-documentation/email for help.",
       "DebugEnabled": "Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.",
-      "NotActivated": "Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel."
+      "NotActivated": "Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel.",
+      "EmailExists": "A user with this email address already exists.",
+      "Code": "An error occurred whilst generating a code. Please try again later.",
+      "TryAgain": "Error: Please try again."
     },
     "security": {
       "Cleaned": "Dibersihkan",

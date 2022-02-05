@@ -88,7 +88,10 @@
       "EmailFunction_1": "Fungsi email tidak ditentukan dengan benar, harap periksa file config.php Anda dan kunjungi https://docs.saturncms.net/v/",
       "EmailFunction_2": "/developer-documentation/email untuk bantuan.",
       "DebugEnabled": "Mode Debug DIAKTIFKAN. Ini TIDAK direkomendasikan di lingkungan produksi. Anda dapat menonaktifkan ini di pengaturan konfigurasi situs Anda.",
-      "NotActivated": "Aktivasi: Saturn tidak diaktifkan, fitur tertentu mungkin tidak tersedia. Anda masih dapat menggunakan beberapa fitur Saturn yang tidak diaktifkan. Anda dapat mengaktifkan Saturn di Panel Admin Anda."
+      "NotActivated": "Aktivasi: Saturn tidak diaktifkan, fitur tertentu mungkin tidak tersedia. Anda masih dapat menggunakan beberapa fitur Saturn yang tidak diaktifkan. Anda dapat mengaktifkan Saturn di Panel Admin Anda.",
+      "EmailExists": "Pengguna dengan alamat email ini sudah ada.",
+      "Code": "Terjadi kesalahan saat membuat kode. Silakan coba lagi nanti.",
+      "TryAgain": "Error: Silakan coba lagi."
     },
     "security": {
       "Cleaned": "",

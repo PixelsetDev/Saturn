@@ -88,7 +88,10 @@
       "EmailFunction_1": "이메일 기능이 올바르게 지정되지 않았습니다. config.php 파일을 확인하고 https://docs.saturncms.net/v/",
       "EmailFunction_2": "/developer-documentation/email 을 방문하십시오 에서 도움을 받으세요.",
       "DebugEnabled": "디버그 모드가 활성화되었습니다. 프로덕션 환경에서는 권장하지 않습니다. 사이트 구성 설정에서 비활성화할 수 있습니다.",
-      "NotActivated": "활성화: Saturn 이 활성화되지 않았으며 특정 기능을 사용하지 못할 수 있습니다. 비활성화된 Saturn 의 일부 기능은 계속 사용할 수 있습니다. 관리자 패널에서 Saturn 을 활성화할 수 있습니다."
+      "NotActivated": "활성화: Saturn 이 활성화되지 않았으며 특정 기능을 사용하지 못할 수 있습니다. 비활성화된 Saturn 의 일부 기능은 계속 사용할 수 있습니다. 관리자 패널에서 Saturn 을 활성화할 수 있습니다.",
+      "EmailExists": "이 이메일 주소를 가진 사용자가 이미 존재합니다.",
+      "Code": "코드를 생성하는 동안 오류가 발생했습니다. 나중에 다시 시도하십시오.",
+      "TryAgain": "오류: 다시 시도하십시오."
     },
     "security": {
       "Cleaned": "청소",
