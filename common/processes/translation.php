@@ -1,17 +1,20 @@
 <?php
+    $saturnInfo = json_decode(file_get_contents(__DIR__.'/../../assets/saturn.json'));
+    define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
 
     $langJSON = file_get_contents(__DIR__.'/../../assets/lang/'.CONFIG_LANGUAGE.'.json');
     $lang = json_decode($langJSON);
+
     if ($lang->{'language'} != null || $lang->{'language'} != '') {
         if (CONFIG_DEBUG) {
             if ($lang->{'version'} != SATURN_VERSION) {
-                echo '<script>console.log("'.date(DATE_FORMAT).' [SATURN][TRANSLATION] WARNING: Language file '.$lang->{'language'}.' is for Saturn version '.$lang->{'version'}.' - you are running version '.SATURN_VERSION.'");</script>';
+                echo '<script>console.log("'.date('Y/m/d H:i:s').' [SATURN][TRANSLATION] WARNING: Language file '.$lang->{'language'}.' is for Saturn version '.$lang->{'version'}.' - you are running version '.SATURN_VERSION.'");</script>';
             }
-            echo '<script>console.log("'.date(DATE_FORMAT).' [SATURN][TRANSLATION] Loaded language file: '.CONFIG_LANGUAGE.'");</script>';
+            echo '<script>console.log("'.date('Y/m/d H:i:s').' [SATURN][TRANSLATION] Loaded language file: '.CONFIG_LANGUAGE.'");</script>';
         }
     } else {
         if (CONFIG_DEBUG) {
-            echo '<script>console.log("'.date(DATE_FORMAT).' [SATURN][TRANSLATION] Unable to load language file: '.CONFIG_LANGUAGE.'");</script>';
+            echo '<script>console.log("'.date('Y/m/d H:i:s').' [SATURN][TRANSLATION] Unable to load language file: '.CONFIG_LANGUAGE.'");</script>';
         }
         echo '<strong>FATAL ERROR: Unable to load language file: '.CONFIG_LANGUAGE.'</strong>';
     }

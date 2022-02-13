@@ -24,8 +24,8 @@
     const CONFIG_REGISTRATION_ENABLED = true;
     /* Database */
     const DATABASE_HOST = 'localhost';
-    const DATABASE_NAME = '';
-    const DATABASE_USERNAME = '';
+    const DATABASE_NAME = 'saturn';
+    const DATABASE_USERNAME = 'root';
     const DATABASE_PASSWORD = '';
     const DATABASE_PORT = '3306';
     const DATABASE_PREFIX = 'sat_';
