@@ -35,6 +35,11 @@
       "Notifications_Dismissed": "Notifikasi yang Disingkirkan",
       "NoneFound": "Tidak ada yang ditemukan.",
       "SignOut": "Keluar",
+      "SignIn": "Masuk",
+      "SignIn_Message": "Masuk ke akun Anda.",
+      "SignIn_IPVerified": "IP Anda telah diverifikasi. Sekarang Anda dapat masuk ke Saturn.",
+      "UsernameEmail": "Nama Pengguna atau Alamat Email",
+      "ForgotPassword": "Lupa kata sandi Anda?",
       "Register": "रजिस्टर",
       "Register_Message": "शामिल होने के लिए रजिस्टर करें",
       "Register_AccountsApprove": "शनि खातों को एक्सेस करने से पहले उन्हें वेबसाइट के मालिक द्वारा अनुमोदित किया जाना चाहिए।",
@@ -112,7 +117,15 @@
       "CodeBlank": "Kode wajib diisi.",
       "Code": "Terjadi kesalahan saat membuat kode. Silakan coba lagi nanti.",
       "Error": "Maaf ada kesalahan, silakan coba lagi nanti.",
-      "TryAgain": "Error: Silakan coba lagi."
+      "TryAgain": "Error: Silakan coba lagi.",
+      "Signin_Incorrect": "Nama Pengguna atau Kata Sandi salah.",
+      "Signin_Empty": "Nama Pengguna atau Kata Sandi tidak boleh kosong.",
+      "Signin_Required": "Anda harus masuk untuk mengakses area ini.",
+      "AccountNotApproved": "Akun Anda belum disetujui oleh administrator situs. Kami akan mengirimkan email saat Anda siap untuk masuk.",
+      "AccountRestricted": "Akun Anda telah dibatasi. Jika Anda memerlukan akses, hubungi administrator Anda.",
+      "InvalidSecurityKey": "Kunci keamanan tidak valid.",
+      "InvalidRole": "Peran tidak valid.",
+      "AccessPermissions": "Anda tidak memiliki izin yang diperlukan untuk mengakses Saturnus, ini mungkin karena akun Anda menunggu persetujuan atau telah dibatasi."
     },
     "security": {
       "Cleaned": "Dibersihkan",

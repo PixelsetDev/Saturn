@@ -36,6 +36,11 @@
       "Notifications_Dismissed": "Dismissed Notifications",
       "NoneFound": "None found.",
       "SignOut": "Sign out",
+      "SignIn": "Sign in",
+      "SignIn_Message": "Sign in to your account.",
+      "SignIn_IPVerified": "Your IP has been verified. You can now sign in to Saturn.",
+      "UsernameEmail": "Username or Email Address",
+      "ForgotPassword": "Forgot your password?",
       "Register": "Register",
       "Register_Message": "Register to Join",
       "Register_AccountsApprove": "Saturn accounts must be approved by the website owner before you can access them.",
@@ -113,7 +118,15 @@
       "CodeBlank": "Code must not be blank.",
       "Code": "An error occurred whilst generating a code. Please try again later.",
       "Error": "Sorry there was an error, please try again later.",
-      "TryAgain": "Error: Please try again."
+      "TryAgain": "Error: Please try again.",
+      "Signin_Incorrect": "Username or Password is incorrect.",
+      "Signin_Empty": "Username or Password can not be empty.",
+      "Signin_Required": "You need to sign in to access this area.",
+      "AccountNotApproved": "Your account has not been approved by a site administrator yet. We'll send you an email when we're ready for you to sign in.",
+      "AccountRestricted": "Your account has been restricted. If you require access please contact your administrator.",
+      "InvalidSecurityKey": "Invalid security key.",
+      "InvalidRole": "Invalid role.",
+      "AccessPermissions": "You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted."
     },
     "security": {
       "Cleaned": "Cleaned",

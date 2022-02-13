@@ -35,6 +35,11 @@
       "Notifications_Dismissed": "Notificações dispensadas",
       "NoneFound": "Nenhum encontrado.",
       "SignOut": "Sair",
+      "SignIn": "Entrar",
+      "SignIn_Message": "Faça login em sua conta.",
+      "SignIn_IPVerified": "Seu IP foi verificado. Agora você pode entrar no Saturn.",
+      "UsernameEmail": "Nome de usuário ou endereço de e-mail",
+      "ForgotPassword": "Esqueceu sua senha?",
       "Register": "Registrar",
       "Register_Message": "Registre-se para participar",
       "Register_AccountsApprove": "As contas Saturn devem ser aprovadas pelo proprietário do site antes que você possa acessá-las.",
@@ -112,7 +117,15 @@
       "CodeBlank": "O código não deve ficar em branco.",
       "Code": "Ocorreu um erro ao gerar um código. Tente novamente mais tarde.",
       "Error": "Desculpe, ocorreu um erro, tente novamente mais tarde.",
-      "TryAgain": "Erro: Por favor, tente novamente."
+      "TryAgain": "Erro: Por favor, tente novamente.",
+      "Signin_Incorrect": "Nome de usuário ou senha incorretos.",
+      "Signin_Empty": "Nome de usuário ou senha não podem estar vazios.",
+      "Signin_Required": "Você precisa fazer login para acessar esta área.",
+      "AccountNotApproved": "Sua conta ainda não foi aprovada por um administrador do site. Enviaremos um e-mail quando estivermos prontos para você entrar.",
+      "AccountRestricted": "Sua conta foi restrita. Se você precisar de acesso, entre em contato com seu administrador.",
+      "InvalidSecurityKey": "Chave de segurança inválida.",
+      "InvalidRole": "Função inválida.",
+      "AccessPermissions": "Você não tem as permissões necessárias para acessar o Saturn, isso pode ser porque sua conta está com aprovação pendente ou foi restrita."
     },
     "security": {
       "Cleaned": "Limpo",

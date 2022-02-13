@@ -35,6 +35,11 @@
       "Notifications_Dismissed": "",
       "NoneFound": "",
       "SignOut": "",
+      "SignIn": "",
+      "SignIn_Message": "",
+      "SignIn_IPVerified": "",
+      "UsernameEmail": "",
+      "ForgotPassword": "",
       "Register": "",
       "Register_Message": "",
       "Register_AccountsApprove": "",
@@ -112,7 +117,15 @@
       "CodeBlank": "",
       "Code": "",
       "Error": "",
-      "TryAgain": "Spróbuj ponownie"
+      "TryAgain": "Spróbuj ponownie",
+      "Signin_Incorrect": "",
+      "Signin_Empty": "",
+      "Signin_Required": "",
+      "AccountNotApproved": "",
+      "AccountRestricted": "",
+      "InvalidSecurityKey": "",
+      "InvalidRole": "",
+      "AccessPermissions": ""
     },
     "security": {
       "Cleaned": "",

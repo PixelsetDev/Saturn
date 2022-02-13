@@ -19,9 +19,9 @@
             if (password_verify($password, $getUserRow['password'])) {
                 unset($password);
                 if ($getUserRow['role_id'] == '1') {
-                    $errorMsg = "Your account has not been approved by a site administrator yet. We'll send you an email when we're ready for you to sign in.";
+                    $errorMsg = __('Error:AccountNotApproved');
                 } elseif ($getUserRow['role_id'] == '0') {
-                    $errorMsg = 'Your account has been restricted. If you require access please contact your administrator.';
+                    $errorMsg = __('Error:AccountRestricted');
                 } else {
                     require_once __DIR__.'/../../../common/processes/database/get/user.php';
                     require_once __DIR__.'/../../../common/processes/database/get/user_settings.php';
@@ -47,36 +47,36 @@
                 unset($getUserRow['password']);
             } else {
                 unset($password, $row, $rs, $sql);
-                $errorMsg = 'Username or Password is incorrect.';
+                $errorMsg = __('Error:Signin_Incorrect');
                 log_file('SATURN][SECURITY', 'Failed login attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
             }
         } else {
-            $errorMsg = 'Username or Password can not be empty.';
+            $errorMsg = __('Error:LoginEmpty');
         }
     }
 
     if (isset($_GET['signedout'])) {
         if ($_GET['signedout'] == 'true') {
-            $errorMsg = 'You need to sign in to access this area.';
+            $errorMsg = __('Error:Signin_Required');
         }
         if ($_GET['signedout'] == 'role') {
-            $errorMsg = 'You need to sign in to access this area.<br>Error GSS1';
+            $errorMsg = __('Error:Signin_Required').' ('.__('Error:InvalidRole').')';
         }
         if ($_GET['signedout'] == 'key') {
-            $errorMsg = 'You need to sign in to access this area.<br>Error GSS2';
+            $errorMsg = __('Error:Signin_Required').' ('.__('Error:InvalidSecurityKey').')';
         }
         if ($_GET['signedout'] == 'verified') {
-            $successMsg = 'Your IP has been verified. You can now sign in to Saturn.';
+            $successMsg = __('Panel:SignIn_IPVerified');
         }
         if ($_GET['signedout'] == 'permission') {
-            $errorMsg = 'You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.';
+            $errorMsg = __('Error:AccessPermissions');
         }
     }
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
-        <title>Sign in - <?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
+        <title><?php echo __('Panel:SignIn'); ?> - <?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
         <?php
             include_once __DIR__.'/../../../common/panel/vendors.php';
             include_once __DIR__.'/../../../common/panel/theme.php';
@@ -87,7 +87,7 @@
         <header class="bg-white shadow dark:bg-neutral-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white">Saturn Panel</a>
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></a>
                 </h1>
             </div>
         </header>
@@ -97,7 +97,7 @@
                     <div>
                         <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                            Sign in to your account.
+                            <?php echo __('Panel:SignIn_Message'); ?>
                         </h2>
                         <?php
                             if (isset($errorMsg)) {
@@ -113,24 +113,24 @@
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="username" class="sr-only">Username or Email Address</label>
-                                <input id="username" name="username" type="text" autocomplete="username" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Username or Email address">
+                                <label for="username" class="sr-only"><?php echo __('Panel:UsernameEmail'); ?></label>
+                                <input id="username" name="username" type="text" autocomplete="username" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:UsernameEmail'); ?>">
                             </div>
                             <div>
-                                <label for="password" class="sr-only">Password</label>
-                                <input id="password" name="password" type="password" autocomplete="current-password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Password">
+                                <label for="password" class="sr-only"><?php echo __('Panel:Password'); ?></label>
+                                <input id="password" name="password" type="password" autocomplete="current-password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Password'); ?>">
                             </div>
                         </div>
 
                         <div class="flex items-center justify-between">
                             <div class="text-sm">
                                 <a href="forgot-password" class="font-medium text-<?php echo THEME_PANEL_COLOUR; ?>-700 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-gray-300 dark:hover:text-white transition duration-200">
-                                    Forgot your password?
+                                    <?php echo __('Panel:ForgotPassword'); ?>
                                 </a>
                             </div><?php if (CONFIG_REGISTRATION_ENABLED) { ?>
                             <div class="text-sm">
                                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/account/register" class="font-medium text-<?php echo THEME_PANEL_COLOUR; ?>-700 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-gray-300 dark:hover:text-white transition duration-200">
-                                    Register
+                                    <?php echo __('Panel:Register'); ?>
                                 </a>
                             </div><?php } ?>
                         </div>
@@ -140,7 +140,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-lock" aria-hidden="true"></i>
                                 </span>
-                                Sign in
+                                <?php echo __('Panel:SignIn'); ?>
                             </button>
                         </div>
                     </form>

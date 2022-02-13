@@ -35,6 +35,11 @@
       "Notifications_Dismissed": "被忽略的通知",
       "NoneFound": "没有找到。",
       "SignOut": "退出",
+      "SignIn": "登录",
+      "SignIn_Message": "登录您的帐户。",
+      "SignIn_IPVerified": "您的 IP 已通过验证。您现在可以登录 Saturn。",
+      "UsernameEmail": "用户名或电子邮件地址",
+      "ForgotPassword": "忘记密码？",
       "Register": "注册",
       "Register_Message": "注册加入",
       "Register_AccountsApprove": "Saturn 帐户必须经过网站所有者的批准才能访问它们。",
@@ -112,7 +117,15 @@
       "CodeBlank": "代码不能为空。",
       "Code": "生成代码时出错，请稍后再试。",
       "Error": "抱歉出现错误，请稍后再试。",
-      "TryAgain": "错误：请重试。"
+      "TryAgain": "错误：请重试。",
+      "Signin_Incorrect": "用户名或密码不正确。",
+      "Signin_Empty": "用户名或密码不能为空。",
+      "Signin_Required": "您需要登录才能访问该区域。",
+      "AccountNotApproved": "您的帐户尚未获得站点管理员的批准。当我们准备好让您登录时，我们会向您发送一封电子邮件。",
+      "AccountRestricted": "您的帐户已被限制。如果您需要访问权限，请联系您的管理员。",
+      "InvalidSecurityKey": "安全密钥无效。",
+      "InvalidRole": "无效角色。",
+      "AccessPermissions": "您没有访问 Saturn 所需的权限，这可能是因为您的帐户正在等待批准或已被限制。"
     },
     "security": {
       "Cleaned": "清洁",

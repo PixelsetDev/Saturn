@@ -35,6 +35,11 @@
       "Notifications_Dismissed": "被忽略的通知",
       "NoneFound": "沒有找到。",
       "SignOut": "退出",
+      "SignIn": "登錄",
+      "SignIn_Message": "登錄您的帳戶。",
+      "SignIn_IPVerified": "您的 IP 已通過驗證。您現在可以登錄 Saturn。",
+      "UsernameEmail": "用戶名或電子郵件地址",
+      "ForgotPassword": "忘記密碼？",
       "Register": "註冊",
       "Register_Message": "註冊加入",
       "Register_AccountsApprove": "Saturn 帳戶必須經過網站所有者的批准才能訪問它們。",
@@ -59,7 +64,7 @@
       "Level_Professional": "專業",
       "Level_Master": "大師",
       "Level_Legendary": "傳奇",
-      "Create": "創建"，
+      "Create": "創建",
       "Page_Name": "頁面名稱",
       "Page_Category": "類別",
       "Category_Name": "類別名稱",
@@ -112,7 +117,15 @@
       "CodeBlank": "代碼不能為空。",
       "Code": "生成代碼時出錯，請稍後再試。",
       "Error": "抱歉出現錯誤，請稍後再試。",
-      "TryAgain": "錯誤：請重試。"
+      "TryAgain": "錯誤：請重試。",
+      "Signin_Incorrect": "用戶名或密碼不正確。",
+      "Signin_Empty": "用戶名或密碼不能為空。",
+      "Signin_Required": "您需要登錄才能訪問該區域。",
+      "AccountNotApproved": "您的帳戶尚未獲得站點管理員的批准。當我們準備好讓您登錄時，我們會向您發送一封電子郵件。",
+      "AccountRestricted": "您的帳戶已被限制。如果您需要訪問權限，請聯繫您的管理員。",
+      "InvalidSecurityKey": "安全密鑰無效。",
+      "InvalidRole": "無效角色。",
+      "AccessPermissions": "您沒有訪問 Saturn 所需的權限，這可能是因為您的帳戶正在等待批准或已被限制。"
     },
     "security": {
       "Cleaned": "清潔",

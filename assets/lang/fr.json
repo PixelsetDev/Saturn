@@ -35,6 +35,11 @@
       "Notifications_Dismissed": "Notifications rejetées",
       "NoneFound": "Personne n'est trouve.",
       "SignOut": "Déconnexion",
+      "SignIn": "Connexion",
+      "SignIn_Message": "Connectez-vous à votre compte.",
+      "SignIn_IPVerified": "Votre IP a été vérifiée. Vous pouvez maintenant vous connecter à Saturn.",
+      "UsernameEmail": "Nom d'utilisateur ou adresse e-mail",
+      "ForgotPassword": "Mot de passe oublié?",
       "Register": "S'inscrire",
       "Register_Message": "Inscrivez-vous pour rejoindre",
       "Register_AccountsApprove": "Les comptes Saturn doivent être approuvés par le propriétaire du site Web avant que vous puissiez y accéder.",
@@ -112,7 +117,15 @@
       "CodeBlank": "Le code ne doit pas être vide.",
       "Code": "Une erreur s'est produite lors de la génération d'un code. Veuillez réessayer ultérieurement.",
       "Erreur": "Désolé, il y a eu une erreur, veuillez réessayer plus tard.",
-      "TryAgain": "Erreur: Veuillez réessayer."
+      "TryAgain": "Erreur: Veuillez réessayer.",
+      "Signin_Incorrect": "Le nom d'utilisateur ou le mot de passe est incorrect.",
+      "Signin_Empty": "Le nom d'utilisateur ou le mot de passe ne peut pas être vide.",
+      "Signin_Required": "Vous devez vous connecter pour accéder à cette zone.",
+      "AccountNotApproved": "Votre compte n'a pas encore été approuvé par un administrateur du site. Nous vous enverrons un e-mail lorsque nous serons prêts à vous connecter.",
+      "AccountRestricted": "Votre compte a été restreint. Si vous avez besoin d'un accès, veuillez contacter votre administrateur.",
+      "InvalidSecurityKey": "Clé de sécurité invalide.",
+      "InvalidRole": "Rôle invalide.",
+      "AccessPermissions": "Vous ne disposez pas des autorisations requises pour accéder à Saturn, cela peut être dû au fait que votre compte est en attente d'approbation ou a été restreint."
     },
     "security": {
       "Cleaned": "Nettoyé",

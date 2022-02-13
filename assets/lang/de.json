@@ -35,6 +35,11 @@
       "Notifications_Dismissed": "Abgelehnte Benachrichtigungen",
       "NoneFound": "Keine gefunden.",
       "SignOut": "Abmelden",
+      "SignIn": "Anmelden",
+      "SignIn_Message": "Melden Sie sich bei Ihrem Konto an.",
+      "SignIn_IPVerified": "Ihre IP-Adresse wurde verifiziert. Sie können sich jetzt bei Saturn anmelden.",
+      "BenutzernameEmail": "Benutzername oder E-Mail-Adresse",
+      "ForgotPassword": "Passwort vergessen?",
       "Register": "Registrieren",
       "Register_Message": "Zum Beitritt registrieren",
       "Register_AccountsApprove": "Saturn-Konten müssen vom Eigentümer der Website genehmigt werden, bevor Sie darauf zugreifen können.",
@@ -112,7 +117,15 @@
       "CodeBlank": "Code darf nicht leer sein.",
       "Code": "Beim Generieren eines Codes ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
       "Error": "Leider ist ein Fehler aufgetreten, bitte versuchen Sie es später erneut.",
-      "TryAgain": "Fehler: Bitte versuchen Sie es erneut."
+      "TryAgain": "Fehler: Bitte versuchen Sie es erneut.",
+      "Signin_Incorrect": "Benutzername oder Passwort ist falsch.",
+      "Signin_Empty": "Benutzername oder Passwort dürfen nicht leer sein.",
+      "Signin_Required": "Sie müssen sich anmelden, um auf diesen Bereich zuzugreifen.",
+      "AccountNotApproved": "Ihr Konto wurde noch nicht von einem Site-Administrator genehmigt. Wir senden Ihnen eine E-Mail, wenn Sie sich anmelden können.",
+      "AccountRestricted": "Ihr Konto wurde eingeschränkt. Wenn Sie Zugriff benötigen, wenden Sie sich bitte an Ihren Administrator.",
+      "InvalidSecurityKey": "Ungültiger Sicherheitsschlüssel.",
+      "InvalidRole": "Ungültige Rolle.",
+      "AccessPermissions": "Sie haben nicht die erforderlichen Berechtigungen für den Zugriff auf Saturn. Dies kann daran liegen, dass Ihr Konto noch nicht genehmigt wurde oder eingeschränkt wurde."
     },
     "security": {
       "Cleaned": "Gesäubert",
