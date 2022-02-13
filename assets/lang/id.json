@@ -98,11 +98,11 @@
       "TryAgain": "Error: Silakan coba lagi."
     },
     "security": {
-      "Cleaned": "",
-      "Stopped": "",
-      "ClearedLog_Security": "",
-      "ClearedLog_Error": "",
-      "I/O_Blacklist": ""
+      "Cleaned": "Dibersihkan",
+      "Stopped": "Berhenti",
+      "ClearedLog_Security": "menghapus Log Keamanan",
+      "ClearedLog_Error": "menghapus Log Kesalahan",
+      "I/O_Blacklist": "I/O: Item yang Dimasukkan Daftar Hitam:"
     }
   }
 }

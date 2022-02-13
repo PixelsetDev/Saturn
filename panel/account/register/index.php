@@ -17,13 +17,13 @@
                             $code = random_int(100000, 999999);
                         } catch (Exception $e) {
                             $errorMsg = __('Error:Code');
-                            $code = __('Error:TryAgain');
+                            $code = ('Error:TryAgain');
                         }
                         $code = checkInput('DEFAULT', $code);
                         $hashCode = hash('SHA3-512', $code);
-                        $message = 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.';
-                        send_email($email, 'Saturn Verification Code', $message);
-                        $successMsg = 'Please check your email and do not exit this page.';
+                        $message = __('Panel:VerificationCode_Message_1').' "'.$code.'". '.__('Panel:VerificationCode_Message_2');
+                        send_email($email, __('VerificationCode'), $message);
+                        $successMsg = __('Panel:VerificationCode_Email');
                     }
                 } else {
                     $errorMsg = 'Email address must not be blank.';
