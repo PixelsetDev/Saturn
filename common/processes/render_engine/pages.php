@@ -1,5 +1,7 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'].'/common/global_public.php';
+
 const THEME_DIRECTORY = '/themes/';
 
 function get_page_id_from_url($uri)
