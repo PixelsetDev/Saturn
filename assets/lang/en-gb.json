@@ -16,7 +16,8 @@
       "Email_Footer_2": "'s Saturn installation at \"",
       "Email_Footer_3": "You may be able to opt out of these emails in your user settings.",
       "MoreInfo": "For more information",
-      "ClickHere": "click here"
+      "ClickHere": "click here",
+      "Optional": "Optional"
     },
     "panel": {
       "Panel": "Control Panel",
@@ -35,6 +36,19 @@
       "Notifications_Dismissed": "Dismissed Notifications",
       "NoneFound": "None found.",
       "SignOut": "Sign out",
+      "Register": "Register",
+      "Register_Message": "Register to Join",
+      "Register_AccountsApprove": "Saturn accounts must be approved by the website owner before you can access them.",
+      "Register_Closed": "Sorry, registration is currently closed.",
+      "PendingApproval": "Your Saturn account is now pending approval, we'll send you an email when you're ready to get started.",
+      "Code": "Code",
+      "Verify": "Verify",
+      "EmailAddress": "Email Address",
+      "FirstName": "First Name",
+      "LastName": "Last Name",
+      "Password": "Password",
+      "Organisation": "Organisation",
+      "RequestAccount": "Request Account",
       "BugFree_Message": "Let's Keep Saturn Bug Free:",
       "BugFree_Contact": "Found a problem? Let us know!",
       "Level_Beginner": "Beginner",
@@ -94,7 +108,11 @@
       "DebugEnabled": "Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.",
       "NotActivated": "Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel.",
       "EmailExists": "A user with this email address already exists.",
+      "EmailBlank": "Email address must not be blank.",
+      "CodeNotMatch": "The verification code that you provided does not match the code that we sent.",
+      "CodeBlank": "Code must not be blank.",
       "Code": "An error occurred whilst generating a code. Please try again later.",
+      "Error": "Sorry there was an error, please try again later.",
       "TryAgain": "Error: Please try again."
     },
     "security": {
