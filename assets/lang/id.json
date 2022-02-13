@@ -77,7 +77,12 @@
       "VerificationCode": "Kode Verifikasi Saturnus",
       "VerificationCode_Message_1": "Kode Verifikasi Saturnus Anda adalah:",
       "VerificationCode_Message_2": "Silakan masukkan kode ini ke Saturnus untuk melanjutkan.",
-      "VerificationCode_Email": "Silakan periksa email Anda dan jangan keluar dari halaman ini."
+      "VerificationCode_Email": "Silakan periksa email Anda dan jangan keluar dari halaman ini.",
+      "Reset": "Lupa Kata Sandi",
+      "Reset_ConfirmPassword": "Konfirmasi Kata Sandi",
+      "Reset_Password": "Setel Ulang Kata Sandi",
+      "Reset_Success": "Kata sandi berhasil diubah.",
+      "Reset_CanLogin": "Sekarang Anda dapat masuk menggunakan kredensial baru Anda."
     },
     "admin": {
       "Panel": "Panel Admin",

@@ -77,7 +77,12 @@
       "VerificationCode": "Code de vérification Saturne",
       "VerificationCode_Message_1": "Votre code de vérification Saturn est:",
       "VerificationCode_Message_2": "Veuillez entrer ce code dans Saturn pour continuer.",
-      "VerificationCode_Email": "Veuillez vérifier votre messagerie et ne pas quitter cette page."
+      "VerificationCode_Email": "Veuillez vérifier votre messagerie et ne pas quitter cette page.",
+      "Reset": "Mot de passe oublié",
+      "Reset_ConfirmPassword": "Confirmer le mot de passe",
+      "Reset_Password": "Réinitialiser le mot de passe",
+      "Reset_Success": "Mot de passe modifié avec succès.",
+      "Reset_CanLogin": "Vous pouvez désormais vous connecter avec vos nouveaux identifiants."
     },
     "admin": {
       "Panel": "Panneau d'administration",

@@ -77,7 +77,12 @@
       "VerificationCode": "Kod weryfikacyjny",
       "VerificationCode_Message_1": "Kod weryfikacyjny to",
       "VerificationCode_Message_2": "Wpisz kod weryfikacyjny by kontynuować.",
-      "VerificationCode_Email": "Sprawdź swoją skrzynkę e-mailową, nie opuszczaj tej strony"
+      "VerificationCode_Email": "Sprawdź swoją skrzynkę e-mailową, nie opuszczaj tej strony",
+      "Reset": "",
+      "Reset_ConfirmPassword": "",
+      "Reset_Password": "",
+      "Reset_Success": "",
+      "Reset_CanLogin": ""
     },
     "admin": {
       "Panel": "",

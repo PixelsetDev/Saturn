@@ -77,7 +77,12 @@
       "VerificationCode": "Код подтверждения Saturn",
       "VerificationCode_Message_1": "Ваш код подтверждения Saturn:",
       "VerificationCode_Message_2": "Чтобы продолжить, введите этот код в Saturn.",
-      "VerificationCode_Email": "Пожалуйста, проверьте свою электронную почту и не покидайте эту страницу."
+      "VerificationCode_Email": "Пожалуйста, проверьте свою электронную почту и не покидайте эту страницу.",
+      "Reset": "Забыли пароль",
+      "Reset_ConfirmPassword": "Подтвердите пароль",
+      "Reset_Password": "Сбросить пароль",
+      "Reset_Success": "Пароль успешно изменен.",
+      "Reset_CanLogin": "Теперь вы можете войти в систему, используя свои новые учетные данные."
     },
     "admin": {
       "Panel": "Панель администратора",

@@ -89,7 +89,7 @@
                     $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
                     $rs = mysqli_query($conn, $sql);
 
-                    $successMsg = 'Password changed successfully.<br>You can now log in using your new credentials.';
+                    $successMsg = __('Panel:Reset_Success').'<br>'.__('Panel:Reset_CanLogin');
                     $status = 2;
                 } else {
                     $errorMsg = __('Error:Reset_PasswordNotMatch');
@@ -110,7 +110,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
-        <title>Forgot Password - Saturn Panel</title>
+        <title><?php echo __('Panel:Reset'); ?> - <?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
         <?php
         include_once __DIR__.'/../../../../common/panel/vendors.php';
         include_once __DIR__.'/../../../../common/panel/theme.php';
@@ -124,7 +124,7 @@
         <header class="bg-white shadow dark:bg-neutral-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white">Saturn Panel</a>
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></a>
                 </h1>
             </div>
         </header>
@@ -134,7 +134,7 @@
                     <div>
                         <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                            Forgot Password.
+                            <?php echo __('Panel:Reset'); ?>
                         </h2>
                         <?php
                         if (isset($errorMsg)) {
@@ -156,8 +156,8 @@
 <?php if ($status == 0) { ?>
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="username" class="sr-only">Email address or Username</label>
-                                <input id="username" name="username" type="text" autocomplete="username" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Email Address or Username">
+                                <label for="username" class="sr-only"><?php echo __('Panel:UsernameEmail'); ?></label>
+                                <input id="username" name="username" type="text" autocomplete="username" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:UsernameEmail'); ?>">
                             </div>
                         </div>
                         <div>
@@ -165,24 +165,24 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
-                                Reset Password
+                                <?php echo __('Panel:Reset'); ?>
                             </button>
                         </div>
 <?php } elseif ($status == 1) { ?>
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="securitycode" class="text-xs">Security Code</label><br>
-                                <input id="securitycode" name="securitycode" type="password" autocomplete="code" value="<?php echo $code; ?>" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Security Code">
+                                <label for="securitycode" class="text-xs"><?php echo __('Panel:Code'); ?></label><br>
+                                <input id="securitycode" name="securitycode" type="password" autocomplete="code" value="<?php echo $code; ?>" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Admin:Security'); ?> <?php echo __('Panel:Code'); ?>">
                             </div>
                         </div>
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="password" class="sr-only">Password</label>
-                                <input id="password" name="password" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Password">
+                                <label for="password" class="sr-only"><?php echo __('Panel:Password'); ?></label>
+                                <input id="password" name="password" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Password'); ?>">
                             </div>
                             <div>
-                                <label for="confirmpassword" class="sr-only">Confirm Password</label>
-                                <input id="confirmpassword" name="confirmpassword" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Confirm Password">
+                                <label for="confirmpassword" class="sr-only"><?php echo __('Panel:Reset_ConfirmPassword'); ?></label>
+                                <input id="confirmpassword" name="confirmpassword" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Reset_ConfirmPassword'); ?>">
                             </div>
                         </div>
                         <div>
@@ -190,7 +190,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
-                                Reset Password
+                                <?php echo __('Panel:ResetPassword'); ?>
                             </button>
                         </div>
 <?php } elseif ($status == 2) { ?>
@@ -198,7 +198,7 @@
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <i class="fas fa-lock" aria-hidden="true"></i>
                             </span>
-                            Sign in
+                            <?php echo __('SignIn'); ?>
                         </a>
 <?php
     } else {

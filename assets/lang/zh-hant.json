@@ -77,7 +77,12 @@
       "VerificationCode": "土星驗證碼",
       "VerificationCode_Message_1": "你的土星驗證碼是：",
       "VerificationCode_Message_2": "請將此代碼輸入土星繼續。",
-      "VerificationCode_Email": "請檢查您的電子郵件，不要退出此頁面。"
+      "VerificationCode_Email": "請檢查您的電子郵件，不要退出此頁面。",
+      "重置": "忘記密碼",
+      "Reset_ConfirmPassword": "確認密碼",
+      "Reset_Password": "重置密碼",
+      "Reset_Success": "密碼修改成功。",
+      "Reset_CanLogin": "您現在可以使用新憑據登錄。"
     },
     "admin": {
       "Panel": "管理面板",

@@ -84,7 +84,7 @@
             <div class="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
                     <div>
-                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
+                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="<?php echo __('General:Saturn'); ?>">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             <?php echo __('Panel:Register_Message'); ?> <?php echo CONFIG_SITE_NAME; ?>.
                         </h2>
@@ -199,14 +199,14 @@
         <body>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></a></h1>
             </div>
         </header>
         <main>
             <div class="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
                     <div>
-                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
+                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="<?php echo __('General:Saturn'); ?>">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             <?php echo __('Panel:Register_Message'); ?> <?php echo CONFIG_SITE_NAME; ?>.
                         </h2>
