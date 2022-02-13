@@ -78,6 +78,7 @@
       "VerificationCode_Message_1": "你的土星验证码是：",
       "VerificationCode_Message_2": "请将此代码输入土星继续。",
       "VerificationCode_Email": "请检查您的电子邮件，不要退出此页面。",
+      "VerificationCode_Message_Alternative": "或者点击这里继续。",
       "Reset": "忘记密码",
       "Reset_ConfirmPassword": "确认密码",
       "Reset_Password": "重置密码",

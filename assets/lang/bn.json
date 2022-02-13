@@ -77,6 +77,7 @@
       "VerificationCode": "শনি ভেরিফিকেশন কোড",
       "VerificationCode_Message_1": "আপনার শনি যাচাইকরণ কোড হল:",
       "VerificationCode_Message_2": "অনুগ্রহ করে এগিয়ে যেতে শনির মধ্যে এই কোডটি লিখুন।",
+      "VerificationCode_Message_Alternative": "অথবা চালিয়ে যেতে এখানে ক্লিক করুন।",
       "VerificationCode_Email": "অনুগ্রহ করে আপনার ইমেল চেক করুন এবং এই পৃষ্ঠা থেকে প্রস্থান করবেন না।",
       "Reset": "পাসওয়ার্ড ভুলে গেছি",
       "Reset_ConfirmPassword": "পাসওয়ার্ড নিশ্চিত করুন",

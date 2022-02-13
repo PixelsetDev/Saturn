@@ -78,6 +78,7 @@
       "VerificationCode": "Saturn Verification Code",
       "VerificationCode_Message_1": "Your Saturn Verification Code is:",
       "VerificationCode_Message_2": "Please enter this code into Saturn to proceed.",
+      "VerificationCode_Message_Alternative": "Or click here to continue.",
       "VerificationCode_Email": "Please check your email and do not exit this page.",
       "Reset": "Forgot Password",
       "Reset_ConfirmPassword": "Confirm Password",

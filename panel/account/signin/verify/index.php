@@ -44,8 +44,8 @@
                     }
                 }
             } else {
-                log_file('SATURN][SECURITY', 'Failed login verification attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
-                $errorMsg = 'Code does not match. A new code has been sent to your email address.';
+                log_file('SATURN][SECURITY', __('Account_FailedLogin_1').' '.$username.' '.__('Account_FailedLogin_2').' '.hash_ip($_SERVER['REMOTE_ADDR']));
+                $errorMsg = __('Error:CodeNotMatch');
             }
         }
     } else {
@@ -61,7 +61,7 @@
         require_once __DIR__.'/../../../../common/processes/database/update/user.php';
         update_user_auth_code($id, $code);
         $email = get_user_email($id);
-        send_email($email, CONFIG_SITE_NAME.' - Saturn Verification Code', 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.');
+        send_email($email, CONFIG_SITE_NAME.' - '.__('Panel:VerificationCode'), __('Panel:VerificationCode_Message_1').' "'.$code.'". '.__('Panel:VerificationCode_Message_2'));
         if (isset($_GET['type'])) {
             if ($_GET['type'] == '1') {
                 $infoMsg = "We've detected that you're attempting to sign in from a new location. To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
@@ -126,7 +126,7 @@
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label for="code" class="sr-only">Verification Code</label>
-                                <input id="code" name="code" type="code" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
+                                <input id="code" name="code" type="text" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
                             </div>
                         </div>
 

@@ -77,6 +77,7 @@
       "VerificationCode": "Código de Verificação Saturno",
       "VerificationCode_Message_1": "Seu código de verificação do Saturn é:",
       "VerificationCode_Message_2": "Por favor, insira este código no Saturn para continuar.",
+      "VerificationCode_Message_Alternative": "Ou clique aqui para continuar.",
       "VerificationCode_Email": "Por favor, verifique seu e-mail e não saia desta página.",
       "Reset": "Esqueci a senha",
       "Reset_ConfirmPassword": "Confirmar Senha",

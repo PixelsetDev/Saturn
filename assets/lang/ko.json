@@ -77,6 +77,7 @@
       "VerificationCode": "토성 인증 코드",
       "VerificationCode_Message_1": "당신의 토성 인증 코드는:",
       "VerificationCode_Message_2": "계속하려면 이 코드를 토성 에 입력하십시오.",
+      "VerificationCode_Message_Alternative": "또는 계속하려면 여기를 클릭하십시오.",
       "VerificationCode_Email": "이메일을 확인하고 이 페이지를 종료하지 마십시오.",
       "Reset": "비밀번호 찾기",
       "Reset_ConfirmPassword": "비밀번호 확인",

@@ -32,7 +32,7 @@
                     $email = $userData['email'];
                     $user_id = $userData['id'];
                     $page = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    send_email($email, 'Saturn Password Reset', 'Your Saturn password reset code is: '.$code.'<br><br>Please enter this code into Saturn or <a href="'.$page.'?code='.$code.'" class="underline">click here to continue</a>.');
+                    send_email($email, __('General:Saturn').' '.__('Panel:Reset_Password'), __('Panel:VerificationCode_Message_1').' '.$code.'<br><br>'.__('Panel:VerificationCode_Message_2').'<a href="'.$page.'?code='.$code.'" class="underline">'.__('Panel:VerificationCode_Message_Link').'</a>.');
                     $infoMsg = 'We\'ve sent you an email to confirm the information you have provided. Please click the link in your email to continue.';
 
                     $status = 0;

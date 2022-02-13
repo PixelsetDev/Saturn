@@ -77,6 +77,7 @@
       "VerificationCode": "Kode Verifikasi Saturnus",
       "VerificationCode_Message_1": "Kode Verifikasi Saturnus Anda adalah:",
       "VerificationCode_Message_2": "Silakan masukkan kode ini ke Saturnus untuk melanjutkan.",
+      "VerificationCode_Message_Alternative": "Atau klik di sini untuk melanjutkan.",
       "VerificationCode_Email": "Silakan periksa email Anda dan jangan keluar dari halaman ini.",
       "Reset": "Lupa Kata Sandi",
       "Reset_ConfirmPassword": "Konfirmasi Kata Sandi",
