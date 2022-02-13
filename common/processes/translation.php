@@ -1,4 +1,5 @@
 <?php
+
     $saturnInfo = json_decode(file_get_contents(__DIR__.'/../../assets/saturn.json'));
     define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
 
