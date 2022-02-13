@@ -2,7 +2,7 @@
   "language": "Hindi - हिन्दी",
   "code": "hi",
   "version": "0.2.0",
-  "authors": "Lewis Milburn",
+  "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "general": {
       "Saturn": "शनि ग्रह",
@@ -55,7 +55,11 @@
       "Article_ReadOther": "क्यों न हमारे अन्य महान लेखों में से एक को पढ़ा जाए?",
       "EditedPageTitled": "संपादित पृष्ठ का शीर्षक",
       "AssignedWriters": "असाइन किए गए लेखक:",
-      "AssignedEditors": "असाइन किए गए संपादक:"
+      "AssignedEditors": "असाइन किए गए संपादक:",
+      "VerificationCode": "शनि सत्यापन कोड",
+      "VerificationCode_Message_1": "आपका शनि सत्यापन कोड है:",
+      "VerificationCode_Message_2": "कृपया आगे बढ़ने के लिए इस कोड को शनि में दर्ज करें।",
+      "VerificationCode_Email": "कृपया अपना ईमेल जांचें और इस पृष्ठ से बाहर न निकलें।"
     },
     "admin": {
       "Panel": "एडमिन पैनल",

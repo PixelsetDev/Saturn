@@ -2,7 +2,7 @@
   "language": "Bengali - বাংলা",
   "code": "bn",
   "version": "0.2.0",
-  "authors": "Lewis Milburn",
+  "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "general": {
       "Saturn": "শনি",
@@ -55,7 +55,11 @@
       "Article_ReadOther": "কেন আমাদের অন্য একটি দুর্দান্ত নিবন্ধ পড়ি না?",
       "EditedPageTitled": "শিরোনামে সম্পাদিত পাতা",
       "AssignedWriters": "অর্পিত লেখক:",
-      "AssignedEditors": "অর্পিত সম্পাদক:"
+      "AssignedEditors": "অর্পিত সম্পাদক:",
+      "VerificationCode": "শনি ভেরিফিকেশন কোড",
+      "VerificationCode_Message_1": "আপনার শনি যাচাইকরণ কোড হল:",
+      "VerificationCode_Message_2": "অনুগ্রহ করে এগিয়ে যেতে শনির মধ্যে এই কোডটি লিখুন।",
+      "VerificationCode_Email": "অনুগ্রহ করে আপনার ইমেল চেক করুন এবং এই পৃষ্ঠা থেকে প্রস্থান করবেন না।"
     },
     "admin": {
       "Panel": "অ্যাডমিন প্যানেল",

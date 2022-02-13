@@ -2,7 +2,7 @@
   "language": "Korean - 한국인",
   "code": "ko",
   "version": "0.2.0",
-  "authors": "Lewis Milburn, Emmy M",
+  "authors": "Google Translate, Lewis Milburn, Emmy Mcgillivray",
   "translations": {
     "general": {
       "Saturn": "토성",
@@ -55,7 +55,11 @@
       "Article_ReadOther": "우리의 다른 훌륭한 기사 중 하나를 읽어보는 것이 어떻습니까?",
       "EditedPageTitled": "편집된 페이지 제목",
       "AssignedWriters": "할당된 작성자:",
-      "AssignedEditors": "할당된 편집자:"
+      "AssignedEditors": "할당된 편집자:",
+      "VerificationCode": "토성 인증 코드",
+      "VerificationCode_Message_1": "당신의 Saturn 인증 코드는:",
+      "VerificationCode_Message_2": "계속하려면 이 코드를 Saturn에 입력하십시오.",
+      "VerificationCode_Email": "이메일을 확인하고 이 페이지를 종료하지 마십시오."
     },
     "admin": {
       "Panel": "관리자 패널",

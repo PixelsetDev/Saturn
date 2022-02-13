@@ -2,7 +2,7 @@
   "language": "Spanish - Español",
   "code": "es",
   "version": "0.2.0",
-  "authors": "Lewis Milburn",
+  "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "general": {
       "Saturn": "Saturne",
@@ -55,7 +55,11 @@
       "Article_ReadOther": "¿Por qué no lees uno de nuestros excelentes artículos?",
       "EditedPageTitled": "página editada titulada",
       "AssignedWriters": "Escritores asignados:",
-      "AssignedEditors": "Editores asignados:"
+      "AssignedEditors": "Editores asignados:",
+      "VerificationCode": "Código de verificación de Saturno",
+      "VerificationCode_Message_1": "Tu código de verificación de Saturn es:",
+      "VerificationCode_Message_2": "Por favor ingrese este código en Saturn para continuar.",
+      "VerificationCode_Email": "Por favor revisa tu correo electrónico y no salgas de esta página."
     },
     "admin": {
       "Panel": "Panel de administración",

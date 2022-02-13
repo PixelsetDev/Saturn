@@ -2,7 +2,7 @@
   "language": "French - Français",
   "code": "fr",
   "version": "0.2.0",
-  "authors": "Lewis Milburn",
+  "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "general": {
       "Saturn": "Saturne",
@@ -55,7 +55,11 @@
       "Article_ReadOther": "Pourquoi ne pas lire l'un de nos autres excellents articles?",
       "EditedPageTitled": "intitulé de la page éditée",
       "AssignedWriters": "Auteurs affectés:",
-      "AssignedEditors": "Éditeurs affectés:"
+      "AssignedEditors": "Éditeurs affectés:",
+      "VerificationCode": "Code de vérification Saturne",
+      "VerificationCode_Message_1": "Votre code de vérification Saturn est:",
+      "VerificationCode_Message_2": "Veuillez entrer ce code dans Saturn pour continuer.",
+      "VerificationCode_Email": "Veuillez vérifier votre messagerie et ne pas quitter cette page."
     },
     "admin": {
       "Panel": "Panneau d'administration",
@@ -91,7 +95,7 @@
       "NotActivated": "Activation: Saturn n'est pas activé, certaines fonctionnalités peuvent être indisponibles. Vous pouvez toujours utiliser certaines fonctionnalités de Saturn non activées. Vous pouvez activer Saturn dans votre panneau d'administration.",
       "EmailExists": "Un utilisateur avec cette adresse e-mail existe déjà.",
       "Code": "Une erreur s'est produite lors de la génération d'un code. Veuillez réessayer ultérieurement.",
-      "TryAgain": "Erreur : Veuillez réessayer."
+      "TryAgain": "Erreur: Veuillez réessayer."
     },
     "security": {
       "Cleaned": "Nettoyé",

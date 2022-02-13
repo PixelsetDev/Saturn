@@ -2,7 +2,7 @@
   "language": "Chinese (Simplified) - 简体中文",
   "code": "zh-hans",
   "version": "0.2.0",
-  "authors": "Lewis Milburn",
+  "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "general": {
       "Saturn": "土星",
@@ -55,7 +55,11 @@
       "Article_ReadOther": "为什么不阅读我们的另一篇精彩文章？",
       "EditedPageTitled": "编辑页面标题",
       "AssignedWriters": "指定作者：",
-      "AssignedEditors": "指定编辑："
+      "AssignedEditors": "指定编辑：",
+      "VerificationCode": "土星验证码",
+      "VerificationCode_Message_1": "你的土星验证码是：",
+      "VerificationCode_Message_2": "请将此代码输入土星继续。",
+      "VerificationCode_Email": "请检查您的电子邮件，不要退出此页面。"
     },
     "admin": {
       "Panel": "管理面板",
