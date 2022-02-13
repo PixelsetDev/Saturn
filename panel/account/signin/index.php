@@ -12,6 +12,7 @@
             $password = checkInput('DEFAULT', $password);
 
             $sql = 'SELECT * FROM `'.DATABASE_PREFIX."users` WHERE `email` = '".$username."' OR `username` = '".$username."';";
+
             $rs = mysqli_query($conn, $sql);
             $getNumRows = mysqli_num_rows($rs);
             $getUserRow = mysqli_fetch_assoc($rs);
@@ -19,9 +20,9 @@
             if (password_verify($password, $getUserRow['password'])) {
                 unset($password);
                 if ($getUserRow['role_id'] == '1') {
-                    $errorMsg = __('Error:AccountNotApproved');
+                    $errorMsg = __('Error:Account_NotApproved');
                 } elseif ($getUserRow['role_id'] == '0') {
-                    $errorMsg = __('Error:AccountRestricted');
+                    $errorMsg = __('Error:Account_Restricted');
                 } else {
                     require_once __DIR__.'/../../../common/processes/database/get/user.php';
                     require_once __DIR__.'/../../../common/processes/database/get/user_settings.php';
@@ -48,7 +49,7 @@
             } else {
                 unset($password, $row, $rs, $sql);
                 $errorMsg = __('Error:Signin_Incorrect');
-                log_file('SATURN][SECURITY', 'Failed login attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
+                log_file('SATURN][SECURITY', __('Error:Account_FailedLogin_1').' '.$username.' '.__('Error:Account_FailedLogin_2').' '.hash_ip($_SERVER['REMOTE_ADDR']));
             }
         } else {
             $errorMsg = __('Error:LoginEmpty');

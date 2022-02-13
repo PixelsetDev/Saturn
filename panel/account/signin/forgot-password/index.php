@@ -17,14 +17,14 @@
             if ($getNumRows == 1) {
                 $userData = mysqli_fetch_assoc($rs);
                 if ($userData['role_id'] == '1') {
-                    $errorMsg = "Your account has not been approved by a site administrator yet. We'll send you an email when we're ready for you to sign in.";
+                    $errorMsg = __('Error:AccountNotApproved');
                 } elseif ($userData['role_id'] == '0') {
-                    $errorMsg = 'Your account has been deleted. If you require access please contact your site administrator by emailing "'.CONFIG_EMAIL_ADMIN.'", thank you.';
+                    $errorMsg = __('Error:Account_Deleted').' "'.CONFIG_EMAIL_ADMIN.'". ';
                 } else {
                     try {
                         $code = random_int(100000, 999999);
                     } catch (Exception $e) {
-                        errorHandlerError($e, 'ERROR GENERATING RANDOM NUMBER');
+                        errorHandlerError($e, __('Error:RandomInteger'));
                     }
                     $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '$code' WHERE `email` = '".$username."' OR `username` = '".$username."';";
                     $rs = mysqli_query($conn, $sql);
@@ -38,11 +38,11 @@
                     $status = 0;
                 }
             } else {
-                $errorMsg = 'Sorry, we were unable to determine what account the data you entered belongs to. Please try a different method of authentication.';
+                $errorMsg = __('Error:UnknownAccount');
                 $status = 0;
             }
         } else {
-            $errorMsg = 'Please enter a username or email address.';
+            $errorMsg = __('Error:Reset_UsernameRequired');
             $status = 0;
         }
     }
@@ -61,7 +61,7 @@
             $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
             $rs = mysqli_query($conn, $sql);
 
-            $errorMsg = 'The code you provided does not match our records. For security purposes we have invalidated your security code. Please generate a new code by completing the form again.';
+            $errorMsg = __('Error:CodeNotMatch');
             $status = 0;
         }
     }
@@ -92,17 +92,17 @@
                     $successMsg = 'Password changed successfully.<br>You can now log in using your new credentials.';
                     $status = 2;
                 } else {
-                    $errorMsg = 'The password and confirmed password provided does not match. Please try again.';
+                    $errorMsg = __('Error:Reset_PasswordNotMatch');
                     $status = 0;
                 }
             } else {
-                $errorMsg = 'You did not enter a password and confirmed password. Please try again.';
+                $errorMsg = __('Error:Reset_PasswordEmpty');
             }
         } else {
             $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
             $rs = mysqli_query($conn, $sql);
 
-            $errorMsg = 'Sorry, we were unable to determine what account the data you entered belongs to. For security purposes we have de-validated your security code, please generate a new one by completing the form again.';
+            $errorMsg = __('Error:UnknownAccount');
             $status = 0;
         }
     }
@@ -202,8 +202,8 @@
                         </a>
 <?php
     } else {
-        echo alert('ERROR', 'An error has occurred, please try again later.');
-        log_error('ERROR', 'An error occurred when resetting a user\'s password.');
+        echo alert('ERROR', __('Error:Unknown'));
+        log_error('ERROR', __('Error:Reset_Unknown'));
     }
 ?>
                     </form>
