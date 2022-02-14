@@ -85,7 +85,13 @@
       "Reset_ConfirmPassword": "",
       "Reset_Password": "",
       "Reset_Success": "",
-      "Reset_CanLogin": ""
+      "Reset_CanLogin": "",
+      "Reset_EmailConfirm": "",
+      "Verify_User": "",
+      "Verify_EnterCode": "",
+      "Verify_NewLocation": "",
+      "Verify_2FA": "",
+      "Verify_Code": ""
     },
     "admin": {
       "Panel": "Panel",
@@ -144,7 +150,8 @@
       "AccountRestricted": "",
       "InvalidSecurityKey": "",
       "InvalidRole": "",
-      "AccessPermissions": ""
+      "AccessPermissions": "",
+      "Verify_Unknown": ""
     },
     "security": {
       "Cleaned": "",

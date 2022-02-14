@@ -83,7 +83,13 @@
       "Reset_ConfirmPassword": "Confirm Password",
       "Reset_Password": "Reset Password",
       "Reset_Success": "Password changed successfully.",
-      "Reset_CanLogin": "You can now log in using your new credentials."
+      "Reset_CanLogin": "You can now log in using your new credentials.",
+      "Reset_EmailConfirm": "We've sent you an email to confirm the information you have provided. Please click the link in your email to continue.",
+      "Verify_User": "User Verification",
+      "Verify_EnterCode": "To help us keep your account secure please enter the security code we've sent to your email address in the box below.",
+      "Verify_NewLocation": "We've detected that you're attempting to sign in from a new location.",
+      "Verify_2FA": "Two Factor Authentication",
+      "Verify_Code": "Verification Code"
     },
     "admin": {
       "Panel": "Admin Panel",
@@ -140,7 +146,8 @@
       "Unknown": "An error has occurred, please try again later.",
       "InvalidSecurityKey": "Invalid security key.",
       "InvalidRole": "Invalid role.",
-      "AccessPermissions": "You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted."
+      "AccessPermissions": "You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.",
+      "Verify_Unknown": "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you."
     },
     "security": {
       "Cleaned": "Cleaned",

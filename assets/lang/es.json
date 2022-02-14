@@ -83,7 +83,13 @@
       "Reset_ConfirmPassword": "Confirmar Contraseña",
       "Reset_Password": "Restablecer contraseña",
       "Reset_Success": "La contraseña se cambió correctamente.",
-      "Reset_CanLogin": "Ahora puede iniciar sesión con sus nuevas credenciales."
+      "Reset_CanLogin": "Ahora puede iniciar sesión con sus nuevas credenciales.",
+      "Reset_EmailConfirm": "Te hemos enviado un correo electrónico para confirmar la información que has proporcionado. Haz clic en el enlace de tu correo electrónico para continuar.",
+      "Verify_User": "Verificación de Usuario",
+      "Verify_EnterCode": "Para ayudarnos a mantener su cuenta segura, ingrese el código de seguridad que le enviamos a su dirección de correo electrónico en el cuadro a continuación.",
+      "Verify_NewLocation": "Hemos detectado que estás intentando iniciar sesión desde una nueva ubicación.",
+      "Verify_2FA": "Autenticación de dos factores",
+      "Verify_Code": "Código de Verificación"
     },
     "admin": {
       "Panel": "Panel de administración",
@@ -142,7 +148,8 @@
       "AccountRestricted": "Su cuenta ha sido restringida. Si necesita acceso, comuníquese con su administrador.",
       "InvalidSecurityKey": "Clave de seguridad no válida.",
       "InvalidRole": "Rol no válido.",
-      "AccessPermissions": "No tienes los permisos necesarios para acceder a Saturn, esto puede deberse a que tu cuenta está pendiente de aprobación o ha sido restringida."
+      "AccessPermissions": "No tienes los permisos necesarios para acceder a Saturn, esto puede deberse a que tu cuenta está pendiente de aprobación o ha sido restringida.",
+      "Verify_Unknown": "El sistema de verificación de usuarios se activó, pero no estamos muy seguros de por qué. Si tiene algún problema, regrese e inicie sesión nuevamente o comuníquese con el administrador de su sitio web para obtener ayuda. Si este es un problema recurrente, puede también repórtalo en saturncms.net/reportbug y lo investigaremos por ti."
     },
     "security": {
       "Cleaned": "Limpiado",

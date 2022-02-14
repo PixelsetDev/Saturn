@@ -83,7 +83,13 @@
       "Reset_ConfirmPassword": "Confirmar Senha",
       "Reset_Password": "Redefinir Senha",
       "Reset_Success": "Senha alterada com sucesso.",
-      "Reset_CanLogin": "Agora você pode fazer login usando suas novas credenciais."
+      "Reset_CanLogin": "Agora você pode fazer login usando suas novas credenciais.",
+      "Reset_EmailConfirm": "Enviamos um e-mail para confirmar as informações que você forneceu. Clique no link em seu e-mail para continuar.",
+      "Verify_User": "Verificação do usuário",
+      "Verify_EnterCode": "Para nos ajudar a manter sua conta segura, digite o código de segurança que enviamos para seu endereço de e-mail na caixa abaixo.",
+      "Verify_NewLocation": "Detectamos que você está tentando fazer login de um novo local.",
+      "Verify_2FA": "Autenticação de dois fatores",
+      "Verify_Code": "Código de Verificação"
     },
     "admin": {
       "Panel": "Painel Administrativo",
@@ -142,7 +148,8 @@
       "AccountRestricted": "Sua conta foi restrita. Se você precisar de acesso, entre em contato com seu administrador.",
       "InvalidSecurityKey": "Chave de segurança inválida.",
       "InvalidRole": "Função inválida.",
-      "AccessPermissions": "Você não tem as permissões necessárias para acessar o Saturn, isso pode ser porque sua conta está com aprovação pendente ou foi restrita."
+      "AccessPermissions": "Você não tem as permissões necessárias para acessar o Saturn, isso pode ser porque sua conta está com aprovação pendente ou foi restrita.",
+      "Verify_Unknown": "O sistema de verificação de usuário foi acionado, mas não temos certeza do motivo. Se você tiver algum problema, volte e faça login novamente ou entre em contato com o administrador do seu site para obter ajuda. Se este for um problema recorrente, você pode também denuncie em saturncms.net/reportbug e nós analisaremos isso para você."
     },
     "security": {
       "Cleaned": "Limpo",

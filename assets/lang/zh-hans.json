@@ -83,7 +83,13 @@
       "Reset_ConfirmPassword": "确认密码",
       "Reset_Password": "重置密码",
       "Reset_Success": "密码修改成功。",
-      "Reset_CanLogin": "您现在可以使用新凭据登录。"
+      "Reset_CanLogin": "您现在可以使用新凭据登录。",
+      "Reset_EmailConfirm": "我们已向您发送一封电子邮件以确认您提供的信息。请单击您电子邮件中的链接继续。",
+      "Verify_User": "用户验证",
+      "Verify_EnterCode": "为了帮助我们确保您的帐户安全，请在下面的框中输入我们发送到您的电子邮件地址的安全代码。",
+      "Verify_NewLocation": "我们检测到您正尝试从新位置登录。",
+      "Verify_2FA": "双因素认证",
+      "Verify_Code": "验证码"
     },
     "admin": {
       "Panel": "管理面板",
@@ -142,7 +148,8 @@
       "AccountRestricted": "您的帐户已被限制。如果您需要访问权限，请联系您的管理员。",
       "InvalidSecurityKey": "安全密钥无效。",
       "InvalidRole": "无效角色。",
-      "AccessPermissions": "您没有访问 Saturn 所需的权限，这可能是因为您的帐户正在等待批准或已被限制。"
+      "AccessPermissions": "您没有访问 Saturn 所需的权限，这可能是因为您的帐户正在等待批准或已被限制。",
+      "Verify_Unknown": "用户验证系统已触发，但我们不太确定原因。如果您遇到任何问题，请返回并重新登录或联系您的网站管理员寻求帮助。如果再次出现此问题，您可以 也可以在 saturncms.net/reportbug 上报告，我们会为您调查。"
     },
     "security": {
       "Cleaned": "清洁",

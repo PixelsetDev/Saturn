@@ -83,7 +83,13 @@
       "Reset_ConfirmPassword": "비밀번호 확인",
       "Reset_Password": "비밀번호 재설정",
       "Reset_Success": "비밀번호가 성공적으로 변경되었습니다.",
-      "Reset_CanLogin": "이제 새 자격 증명을 사용하여 로그인할 수 있습니다."
+      "Reset_CanLogin": "이제 새 자격 증명을 사용하여 로그인할 수 있습니다.",
+      "Reset_EmailConfirm": "제공한 정보를 확인하기 위해 이메일을 보냈습니다. 계속하려면 이메일에 있는 링크를 클릭하십시오.",
+      "Verify_User": "사용자 확인",
+      "Verify_EnterCode": "귀하의 계정을 안전하게 보호하려면 아래 상자에 귀하의 이메일 주소로 전송된 보안 코드를 입력하십시오.",
+      "Verify_NewLocation": "새 위치에서 로그인을 시도하고 있음을 감지했습니다.",
+      "Verify_2FA": "2단계 인증",
+      "Verify_Code": "인증 코드"
     },
     "admin": {
       "Panel": "관리자 패널",
@@ -142,7 +148,8 @@
       "AccountRestricted": "계정이 제한되었습니다. 액세스가 필요한 경우 관리자에게 문의하십시오.",
       "InvalidSecurityKey": "잘못된 보안 키입니다.",
       "InvalidRole": "잘못된 역할입니다.",
-      "AccessPermissions": "Saturn에 액세스하는 데 필요한 권한이 없습니다. 계정이 승인 대기 중이거나 제한되었기 때문일 수 있습니다."
+      "AccessPermissions": "Saturn에 액세스하는 데 필요한 권한이 없습니다. 계정이 승인 대기 중이거나 제한되었기 때문일 수 있습니다.",
+      "Verify_Unknown": "사용자 확인 시스템이 트리거되었지만 이유를 잘 모르겠습니다. 문제가 발생하면 뒤로 돌아가서 다시 로그인하거나 웹사이트 관리자에게 도움을 요청하십시오. 이것이 반복되는 문제인 경우 다음을 수행할 수 있습니다. saturncms.net/reportbug 에서도 보고해 주시면 조사해 드리겠습니다."
     },
     "security": {
       "Cleaned": "청소",

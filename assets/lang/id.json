@@ -83,7 +83,13 @@
       "Reset_ConfirmPassword": "Konfirmasi Kata Sandi",
       "Reset_Password": "Setel Ulang Kata Sandi",
       "Reset_Success": "Kata sandi berhasil diubah.",
-      "Reset_CanLogin": "Sekarang Anda dapat masuk menggunakan kredensial baru Anda."
+      "Reset_CanLogin": "Sekarang Anda dapat masuk menggunakan kredensial baru Anda.",
+      "Reset_EmailConfirm": "Kami telah mengirimkan email kepada Anda untuk mengonfirmasi informasi yang Anda berikan. Silakan klik tautan di email Anda untuk melanjutkan.",
+      "Verify_User": "Verifikasi Pengguna",
+      "Verify_EnterCode": "Untuk membantu kami menjaga keamanan akun Anda, masukkan kode keamanan yang kami kirimkan ke alamat email Anda di kotak di bawah ini.",
+      "Verify_NewLocation": "Kami mendeteksi bahwa Anda mencoba masuk dari lokasi baru.",
+      "Verify_2FA": "Otentikasi Dua Faktor",
+      "Verify_Code": "Kode Verifikasi"
     },
     "admin": {
       "Panel": "Panel Admin",
@@ -142,7 +148,8 @@
       "AccountRestricted": "Akun Anda telah dibatasi. Jika Anda memerlukan akses, hubungi administrator Anda.",
       "InvalidSecurityKey": "Kunci keamanan tidak valid.",
       "InvalidRole": "Peran tidak valid.",
-      "AccessPermissions": "Anda tidak memiliki izin yang diperlukan untuk mengakses Saturnus, ini mungkin karena akun Anda menunggu persetujuan atau telah dibatasi."
+      "AccessPermissions": "Anda tidak memiliki izin yang diperlukan untuk mengakses Saturnus, ini mungkin karena akun Anda menunggu persetujuan atau telah dibatasi.",
+      "Verify_Unknown": "Sistem verifikasi pengguna telah dipicu, tetapi kami tidak yakin mengapa. Jika Anda mengalami masalah apa pun, silakan kembali dan masuk lagi atau hubungi administrator situs web Anda untuk mendapatkan bantuan. Jika ini adalah masalah yang berulang, Anda dapat laporkan juga di saturncms.net/reportbug dan kami akan memeriksanya untuk Anda."
     },
     "security": {
       "Cleaned": "Dibersihkan",

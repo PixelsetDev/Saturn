@@ -105,9 +105,9 @@
                             <?php
                                 if (isset($_GET['type'])) {
                                     if ($_GET['type'] == '2') {
-                                        echo 'Two Factor Authentication';
+                                        echo __('Panel:2FA');
                                     } else {
-                                        echo 'User Verification';
+                                        echo __('Panel:Verify_User');
                                     }
                                 }
                             ?>
@@ -128,8 +128,8 @@
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="code" class="sr-only">Verification Code</label>
-                                <input id="code" name="code" type="text" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
+                                <label for="code" class="sr-only"><?php echo __('Panel:Verify_Code'); ?></label>
+                                <input id="code" name="code" type="text" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Verify_Code'); ?>">
                             </div>
                         </div>
 
@@ -138,7 +138,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-lock" aria-hidden="true"></i>
                                 </span>
-                                Verify
+                                <?php echo __('Panel:Verify'); ?>
                             </button>
                         </div>
                     </form>

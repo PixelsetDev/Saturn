@@ -83,7 +83,13 @@
       "Reset_ConfirmPassword": "Confirmer le mot de passe",
       "Reset_Password": "Réinitialiser le mot de passe",
       "Reset_Success": "Mot de passe modifié avec succès.",
-      "Reset_CanLogin": "Vous pouvez désormais vous connecter avec vos nouveaux identifiants."
+      "Reset_CanLogin": "Vous pouvez désormais vous connecter avec vos nouveaux identifiants.",
+      "Reset_EmailConfirm": "Nous vous avons envoyé un e-mail pour confirmer les informations que vous avez fournies. Veuillez cliquer sur le lien dans votre e-mail pour continuer.",
+      "Verify_User": "Vérification de l'utilisateur",
+      "Verify_EnterCode": "Pour nous aider à sécuriser votre compte, veuillez saisir le code de sécurité que nous vous avons envoyé à votre adresse e-mail dans le champ ci-dessous.",
+      "Verify_NewLocation": "Nous avons détecté que vous essayez de vous connecter depuis un nouvel emplacement.",
+      "Verify_2FA": "Authentification à deux facteurs",
+      "Verify_Code": "Code de vérification"
     },
     "admin": {
       "Panel": "Panneau d'administration",
@@ -142,7 +148,8 @@
       "AccountRestricted": "Votre compte a été restreint. Si vous avez besoin d'un accès, veuillez contacter votre administrateur.",
       "InvalidSecurityKey": "Clé de sécurité invalide.",
       "InvalidRole": "Rôle invalide.",
-      "AccessPermissions": "Vous ne disposez pas des autorisations requises pour accéder à Saturn, cela peut être dû au fait que votre compte est en attente d'approbation ou a été restreint."
+      "AccessPermissions": "Vous ne disposez pas des autorisations requises pour accéder à Saturn, cela peut être dû au fait que votre compte est en attente d'approbation ou a été restreint.",
+      "Verify_Unknown": "Le système de vérification de l'utilisateur a été déclenché, mais nous ne savons pas exactement pourquoi. Si vous rencontrez des problèmes, revenez en arrière et reconnectez-vous ou contactez l'administrateur de votre site Web pour obtenir de l'aide. S'il s'agit d'un problème récurrent, vous pouvez signalez-le également sur saturncms.net/reportbug et nous l'examinerons pour vous."
     },
     "security": {
       "Cleaned": "Nettoyé",
