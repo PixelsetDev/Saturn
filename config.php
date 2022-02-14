@@ -12,23 +12,23 @@
      */
 
     /* General */
-    const CONFIG_INSTALL_URL = '';
+    const CONFIG_INSTALL_URL = 'http://localhost/Saturn';
     const CONFIG_ACTIVATION_KEY = '';
     const CONFIG_SITE_NAME = 'Saturn';
     const CONFIG_SITE_DESCRIPTION = 'A website running the Saturn Content Management System.';
     const CONFIG_SITE_KEYWORDS = 'saturn, cms, website';
     const CONFIG_SITE_CHARSET = 'UTF-8';
     const CONFIG_SITE_TIMEZONE = 'Europe/London';
-    const CONFIG_LANGUAGE = 'en-gb';
+    const CONFIG_LANGUAGE = 'pl';
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = true;
     /* Database */
     const DATABASE_HOST = 'localhost';
-    const DATABASE_NAME = 'saturn';
+    const DATABASE_NAME = 'Saturn';
     const DATABASE_USERNAME = 'root';
     const DATABASE_PASSWORD = '';
     const DATABASE_PORT = '3306';
-    const DATABASE_PREFIX = 'sat_';
+    const DATABASE_PREFIX = 'saturn_';
     /* Email */
     const CONFIG_EMAIL_ADMIN = '';
     const CONFIG_EMAIL_FUNCTION = 'phpmail';
