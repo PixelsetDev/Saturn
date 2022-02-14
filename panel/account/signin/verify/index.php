@@ -105,7 +105,7 @@
                             <?php
                                 if (isset($_GET['type'])) {
                                     if ($_GET['type'] == '2') {
-                                        echo __('Panel:2FA');
+                                        echo __('Panel:Verify_2FA');
                                     } else {
                                         echo __('Panel:Verify_User');
                                     }
