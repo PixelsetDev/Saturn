@@ -7,7 +7,6 @@
     "general": {
       "Saturn": "Saturn",
       "SaturnCMS": "SaturnCMS",
-      "Error": "Błąd",
       "Home": "Strona główna",
       "GoHome": "Przejdź do strony głównej",
       "Converted_GTAGS_1": "",
@@ -17,8 +16,19 @@
       "Email_Footer_3": "",
       "MoreInfo": "Więcej informacji",
       "ClickHere": "Kliknij tutaj",
-      "Optional": "Opcjonalne"
-
+      "Optional": "Opcjonalne",
+      "Active": "",
+      "Inactive": "",
+      "Title": "",
+      "Link": "",
+      "Message": "",
+      "Notification": "",
+      "Information": "",
+      "Success": "",
+      "Warning": "",
+      "Error": "Błąd",
+      "Save": "",
+      "Default": ""
     },
     "panel": {
       "Panel": "",
@@ -102,6 +112,12 @@
       "Menu": "Menu",
       "Overview": "Przegląd",
       "Announcements": "Ogłoszenia",
+      "Announcements_Updated": "",
+      "Announcements_ControlPanel": "",
+      "Announcements_Website": "",
+      "Announcements_Show": "",
+      "Announcements_Hide": "",
+      "Announcements_Style": "",
       "UserManagement": "Zarządzanie użytkownikami",
       "Themes": "Motywy",
       "Security": "Bezpieczeństwo",

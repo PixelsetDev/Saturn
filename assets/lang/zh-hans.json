@@ -7,7 +7,6 @@
     "general": {
       "Saturn": "土星",
       "SaturnCMS": "土星 CMS",
-      "Error": "错误",
       "Home": "家",
       "GoHome": "回家",
       "Converted_GTAGS_1": "已转换",
@@ -16,7 +15,20 @@
       "Email_Footer_2": "的土星安装在",
       "Email_Footer_3": "您可以在您的用户设置中选择退出这些电子邮件。",
       "MoreInfo": "想要查询更多的信息",
-      "ClickHere": "点击这里"
+      "ClickHere": "点击这里",
+      "Optional": "可选",
+      "Active": "主动",
+      "Inactive": "不活动",
+      "Title": "标题",
+      "Link": "链接",
+      "Message": "消息",
+      "Notification": "通知",
+      "Information": "信息",
+      "Success": "成功",
+      "Warning": "警告",
+      "Error": "错误",
+      "Save": "保存",
+      "Default": "默认"
     },
     "panel": {
       "Panel": "控制面板",
@@ -100,6 +112,12 @@
       "Menu": "管理面板菜单",
       "Overview": "概述",
       "Announcements": "公告",
+      "Announcements_Updated": "公告更新",
+      "Announcements_ControlPanel": "私人控制面板公告",
+      "Announcements_Website": "公共网站公告",
+      "Announcements_Show": "显示公告",
+      "Announcements_Hide": "隐藏公告",
+      "Announcements_Style": "公告风格",
       "UserManagement": "用户管理",
       "Themes": "主题",
       "Security": "安全",
@@ -108,7 +126,7 @@
       "Settings": "设置",
       "Settings_Web": "网站设置",
       "Settings_Perms": "权限设置",
-      "DatabaseManagement": ""
+      "DatabaseManagement": "数据库管理"
     },
     "error": {
       "404_Message": "找不到页面。",
