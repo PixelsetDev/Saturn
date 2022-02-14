@@ -12,14 +12,14 @@
      */
 
     /* General */
-    const CONFIG_INSTALL_URL = 'http://localhost/Saturn';
+    const CONFIG_INSTALL_URL = '';
     const CONFIG_ACTIVATION_KEY = '';
     const CONFIG_SITE_NAME = 'Saturn';
     const CONFIG_SITE_DESCRIPTION = 'A website running the Saturn Content Management System.';
     const CONFIG_SITE_KEYWORDS = 'saturn, cms, website';
     const CONFIG_SITE_CHARSET = 'UTF-8';
     const CONFIG_SITE_TIMEZONE = 'Europe/London';
-    const CONFIG_LANGUAGE = 'pl';
+    const CONFIG_LANGUAGE = 'en-gb';
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = true;
     /* Database */
