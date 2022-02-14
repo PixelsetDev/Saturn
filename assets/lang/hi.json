@@ -35,6 +35,8 @@
       "Notifications_Dismissed": "खारिज सूचनाएं",
       "NoneFound": "कोई नहीं मिला।",
       "SignOut": "साइन आउट",
+      "SignOut_Exit": "शनि से बाहर निकलें",
+      "SignOut_Success": "आप साइन आउट हो चुके हैं।",
       "SignIn": "साइन इन",
       "SignIn_Message": "अपने खाते में साइन इन करें।",
       "SignIn_IPVerified": "आपका IP सत्यापित हो गया है। अब आप शनि में प्रवेश कर सकते हैं।",

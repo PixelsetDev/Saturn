@@ -35,6 +35,8 @@
       "Notifications_Dismissed": "Notificaciones Descartadas",
       "NoneFound": "Nada encontrado.",
       "SignOut": "Cerrar sesión",
+      "SignOut_Exit": "Saturn verlassen",
+      "SignOut_Success": "Sie wurden abgemeldet.",
       "SignIn": "Iniciar sesión",
       "SignIn_Message": "Inicia sesión en tu cuenta.",
       "SignIn_IPVerified": "Tu IP ha sido verificada. Ahora puedes iniciar sesión en Saturn.",

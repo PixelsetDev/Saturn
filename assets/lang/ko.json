@@ -2,7 +2,7 @@
   "language": "Korean - 한국인",
   "code": "ko",
   "version": "0.2.0",
-  "authors": "Google Translate, Lewis Milburn, Emmy Mcgillivray",
+  "authors": "Google Translate, Lewis Milburn, Emmy M",
   "translations": {
     "general": {
       "Saturn": "토성",
@@ -35,6 +35,8 @@
       "Notifications_Dismissed": "알림을 닫았습니다",
       "NoneFound": "검색된 항목이 없습니다.",
       "SignOut": "로그아웃",
+      "SignOut_Exit": "토성 종료",
+      "SignOut_Success": "로그아웃되었습니다.",
       "SignIn": "로그인",
       "SignIn_Message": "계정에 로그인하십시오.",
       "SignIn_IPVerified": "IP가 확인되었습니다. 이제 Saturn 에 로그인할 수 있습니다.",
@@ -143,7 +145,7 @@
       "Account_FailedLogin_1": "사용자가 계정에 로그인하지 못했습니다.",
       "Account_FailedLogin_2": "IP 해시 사용:",
       "UnknownAccount": "죄송합니다. 입력한 데이터가 속한 계정을 확인할 수 없습니다. 다른 인증 방법을 시도하십시오.",
-      "Unkown": "오류가 발생했습니다. 나중에 다시 시도하십시오.",
+      "Unknown": "오류가 발생했습니다. 나중에 다시 시도하십시오.",
       "AccountNotApproved": "사이트 관리자가 아직 계정을 승인하지 않았습니다. 로그인할 준비가 되면 이메일을 보내드리겠습니다.",
       "AccountRestricted": "계정이 제한되었습니다. 액세스가 필요한 경우 관리자에게 문의하십시오.",
       "InvalidSecurityKey": "잘못된 보안 키입니다.",

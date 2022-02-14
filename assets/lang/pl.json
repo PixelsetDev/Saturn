@@ -1,5 +1,5 @@
 {
-  "language": "Polish",
+  "language": "Polish - Polskie",
   "code": "pl",
   "version": "0.2.0",
   "authors": "Jakub Koziej",
@@ -37,6 +37,8 @@
       "Notifications_Dismissed": "",
       "NoneFound": "Nie znaleziono",
       "SignOut": "Wyloguj się",
+      "SignOut_Exit": "",
+      "SignOut_Success": "",
       "SignIn": "Zaloguj się",
       "SignIn_Message": "",
       "SignIn_IPVerified": "",

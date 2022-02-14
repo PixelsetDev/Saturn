@@ -35,6 +35,8 @@
       "Notifications_Dismissed": "被忽略的通知",
       "NoneFound": "没有找到。",
       "SignOut": "退出",
+      "SignOut_Exit": "退出土星",
+      "SignOut_Success": "您已退出。",
       "SignIn": "登录",
       "SignIn_Message": "登录您的帐户。",
       "SignIn_IPVerified": "您的 IP 已通过验证。您现在可以登录 Saturn。",

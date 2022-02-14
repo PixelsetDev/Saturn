@@ -35,6 +35,8 @@
       "Notifications_Dismissed": "Dismissed Notifications",
       "NoneFound": "None found.",
       "SignOut": "Sign out",
+      "SignOut_Exit": "Exit Saturn",
+      "SignOut_Success": "You have been signed out.",
       "SignIn": "Sign in",
       "SignIn_Message": "Sign in to your account.",
       "SignIn_IPVerified": "Your IP has been verified. You can now sign in to Saturn.",

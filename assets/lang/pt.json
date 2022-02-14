@@ -35,6 +35,8 @@
       "Notifications_Dismissed": "Notificações dispensadas",
       "NoneFound": "Nenhum encontrado.",
       "SignOut": "Sair",
+      "SignOut_Exit": "Sair de Saturno",
+      "SignOut_Success": "Você foi desconectado.",
       "SignIn": "Entrar",
       "SignIn_Message": "Faça login em sua conta.",
       "SignIn_IPVerified": "Seu IP foi verificado. Agora você pode entrar no Saturn.",

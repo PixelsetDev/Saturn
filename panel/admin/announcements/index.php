@@ -28,7 +28,7 @@
     <head>
         <?php include __DIR__.'/../../../common/panel/vendors.php'; ?>
 
-        <title>Announcements - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+        <title><?php echo __('Admin:Announcements'); ?> - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
         <?php require __DIR__.'/../../../common/panel/theme.php'; ?>
 
     </head>
