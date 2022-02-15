@@ -21,6 +21,7 @@ include_once __DIR__.'/../../common/global_private.php';
         </header>
 
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <?php if ($_SESSION['role_id'] == '4') { echo alert('INFO', '<p>Some images including website logo, icon, default profile picture, error image, and missing image can be managed in your <a href="'.CONFIG_INSTALL_URL.'/panel/admin/themes" class="underline text-black dark:text-white">Theme Settings</a>.</p>'); ?><br><?php } ?>
             <div class="w-full px-4 py-6 sm:px-0 flex">
                 <div class="flex-auto mr-8 w-1/3">
                     <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Images</h1>
