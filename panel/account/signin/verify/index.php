@@ -4,6 +4,10 @@
 
     include_once __DIR__.'/../../../../common/global_public.php';
 
+    if (!isset($_GET['type']) || !isset($_GET['username'])) {
+        header('Location: /panel/account/signin/?signedout=true');
+    }
+
     require_once __DIR__.'/../../../../common/processes/database/get/user.php';
 
     if (isset($_POST['verify'])) {
@@ -59,17 +63,16 @@
             exit;
         }
         require_once __DIR__.'/../../../../common/processes/database/update/user.php';
-        update_user_auth_code($id, $code);
         $email = get_user_email($id);
         send_email($email, CONFIG_SITE_NAME.' - '.__('Panel:VerificationCode'), __('Panel:VerificationCode_Message_1').' "'.$code.'". '.__('Panel:VerificationCode_Message_2'));
         if (isset($_GET['type'])) {
             if ($_GET['type'] == '1') {
-                $infoMsg = "We've detected that you're attempting to sign in from a new location. To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
+                $infoMsg = __('Panel:Verify_NewLocation').' '.__('Panel:Verify_EnterCode');
             } elseif ($_GET['type'] == '2') {
-                $infoMsg = "To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
+                $infoMsg = __('Panel:Verify_EnterCode');
             } else {
-                $errorMsg = "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you.";
-                $infoMsg = "To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
+                $errorMsg = __('Error:Verify_Unknown');
+                $infoMsg = __('Panel:Verify_EnterCode');
             }
         }
     }
@@ -78,7 +81,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
-        <title>User Verification - Saturn Panel</title>
+        <title><?php echo __('Panel:Verify_User'); ?> - <?php echo __('General:Saturn').' '.__('Panel:Panel'); ?></title>
         <?php
         include_once __DIR__.'/../../../../common/panel/vendors.php';
         include_once __DIR__.'/../../../../common/panel/theme.php';
@@ -89,7 +92,7 @@
         <header class="bg-white shadow dark:bg-neutral-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white">Saturn Panel</a>
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white"><?php echo __('General:Saturn').' '.__('Panel:Panel'); ?></a>
                 </h1>
             </div>
         </header>
@@ -97,14 +100,14 @@
             <div class="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
                     <div>
-                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
+                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="<?php echo __('General:Saturn'); ?>">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
                             <?php
                                 if (isset($_GET['type'])) {
                                     if ($_GET['type'] == '2') {
-                                        echo 'Two Factor Authentication';
+                                        echo __('Panel:Verify_2FA');
                                     } else {
-                                        echo 'User Verification';
+                                        echo __('Panel:Verify_User');
                                     }
                                 }
                             ?>
@@ -125,8 +128,8 @@
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="code" class="sr-only">Verification Code</label>
-                                <input id="code" name="code" type="text" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
+                                <label for="code" class="sr-only"><?php echo __('Panel:Verify_Code'); ?></label>
+                                <input id="code" name="code" type="text" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Verify_Code'); ?>">
                             </div>
                         </div>
 
@@ -135,7 +138,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-lock" aria-hidden="true"></i>
                                 </span>
-                                Verify
+                                <?php echo __('Panel:Verify'); ?>
                             </button>
                         </div>
                     </form>

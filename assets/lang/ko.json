@@ -2,12 +2,11 @@
   "language": "Korean - 한국인",
   "code": "ko",
   "version": "0.2.0",
-  "authors": "Google Translate, Lewis Milburn, Emmy Mcgillivray",
+  "authors": "Google Translate, Lewis Milburn, Emmy M",
   "translations": {
     "general": {
       "Saturn": "토성",
       "SaturnCMS": "토성 CMS",
-      "Error": "오류",
       "Home": "집",
       "GoHome": "집에가",
       "Converted_GTAGS_1": "변환됨",
@@ -16,7 +15,20 @@
       "Email_Footer_2": "의 새턴 설치 위치",
       "Email_Footer_3": "사용자 설정에서 이러한 이메일을 선택 해제할 수 있습니다.",
       "MoreInfo": "자세한 내용은",
-      "ClickHere": "여기를 클릭"
+      "ClickHere": "여기를 클릭",
+      "Optional": "선택 사항",
+      "Active": "활성",
+      "Inactive": "비활성",
+      "Title": "제목",
+      "Link": "링크",
+      "Message": "메시지",
+      "Notification": "알림",
+      "Information": "정보",
+      "Success": "성공",
+      "Warning": "경고",
+      "Error": "오류",
+      "Save": "저장",
+      "Default": "기본값"
     },
     "panel": {
       "Panel": "제어판",
@@ -35,6 +47,8 @@
       "Notifications_Dismissed": "알림을 닫았습니다",
       "NoneFound": "검색된 항목이 없습니다.",
       "SignOut": "로그아웃",
+      "SignOut_Exit": "토성 종료",
+      "SignOut_Success": "로그아웃되었습니다.",
       "SignIn": "로그인",
       "SignIn_Message": "계정에 로그인하십시오.",
       "SignIn_IPVerified": "IP가 확인되었습니다. 이제 Saturn 에 로그인할 수 있습니다.",
@@ -83,7 +97,13 @@
       "Reset_ConfirmPassword": "비밀번호 확인",
       "Reset_Password": "비밀번호 재설정",
       "Reset_Success": "비밀번호가 성공적으로 변경되었습니다.",
-      "Reset_CanLogin": "이제 새 자격 증명을 사용하여 로그인할 수 있습니다."
+      "Reset_CanLogin": "이제 새 자격 증명을 사용하여 로그인할 수 있습니다.",
+      "Reset_EmailConfirm": "제공한 정보를 확인하기 위해 이메일을 보냈습니다. 계속하려면 이메일에 있는 링크를 클릭하십시오.",
+      "Verify_User": "사용자 확인",
+      "Verify_EnterCode": "귀하의 계정을 안전하게 보호하려면 아래 상자에 귀하의 이메일 주소로 전송된 보안 코드를 입력하십시오.",
+      "Verify_NewLocation": "새 위치에서 로그인을 시도하고 있음을 감지했습니다.",
+      "Verify_2FA": "2단계 인증",
+      "Verify_Code": "인증 코드"
     },
     "admin": {
       "Panel": "관리자 패널",
@@ -92,6 +112,12 @@
       "Menu": "관리자 패널 메뉴",
       "Overview": "개요",
       "Announcements": "공지사항",
+      "Announcements_Updated": "공지사항이 업데이트됨",
+      "Announcements_ControlPanel": "개인 제어판 공지",
+      "Announcements_Website": "공개 웹사이트 공지사항",
+      "Announcements_Show": "공지사항 표시",
+      "Announcements_Hide": "공지사항 숨기기",
+      "Announcements_Style": "공지 스타일",
       "UserManagement": "사용자 관리",
       "Themes": "테마",
       "Security": "보안",
@@ -137,12 +163,13 @@
       "Account_FailedLogin_1": "사용자가 계정에 로그인하지 못했습니다.",
       "Account_FailedLogin_2": "IP 해시 사용:",
       "UnknownAccount": "죄송합니다. 입력한 데이터가 속한 계정을 확인할 수 없습니다. 다른 인증 방법을 시도하십시오.",
-      "Unkown": "오류가 발생했습니다. 나중에 다시 시도하십시오.",
+      "Unknown": "오류가 발생했습니다. 나중에 다시 시도하십시오.",
       "AccountNotApproved": "사이트 관리자가 아직 계정을 승인하지 않았습니다. 로그인할 준비가 되면 이메일을 보내드리겠습니다.",
       "AccountRestricted": "계정이 제한되었습니다. 액세스가 필요한 경우 관리자에게 문의하십시오.",
       "InvalidSecurityKey": "잘못된 보안 키입니다.",
       "InvalidRole": "잘못된 역할입니다.",
-      "AccessPermissions": "Saturn에 액세스하는 데 필요한 권한이 없습니다. 계정이 승인 대기 중이거나 제한되었기 때문일 수 있습니다."
+      "AccessPermissions": "Saturn에 액세스하는 데 필요한 권한이 없습니다. 계정이 승인 대기 중이거나 제한되었기 때문일 수 있습니다.",
+      "Verify_Unknown": "사용자 확인 시스템이 트리거되었지만 이유를 잘 모르겠습니다. 문제가 발생하면 뒤로 돌아가서 다시 로그인하거나 웹사이트 관리자에게 도움을 요청하십시오. 이것이 반복되는 문제인 경우 다음을 수행할 수 있습니다. saturncms.net/reportbug 에서도 보고해 주시면 조사해 드리겠습니다."
     },
     "security": {
       "Cleaned": "청소",

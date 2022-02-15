@@ -1,24 +1,23 @@
 <?php
 session_start();
 session_destroy();
-
 ?>
 <!DOCTYPE html>
 <html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
-        <title>Sign out - Saturn Panel</title>
         <?php
         include_once __DIR__.'/../../../common/global_public.php';
         include_once __DIR__.'/../../../common/panel/vendors.php';
         include_once __DIR__.'/../../../common/panel/theme.php';
         ?>
 
+        <title><?php echo __('Panel:SignOut'); ?> - <?php echo __('General:Saturn').' '.__('Panel:Panel'); ?></title>
     </head>
     <body>
         <header class="bg-white shadow dark:bg-neutral-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white">Saturn Panel</a>
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white"><?php echo __('General:Saturn').' '.__('Panel:Panel'); ?></a>
                 </h1>
             </div>
         </header>
@@ -28,9 +27,9 @@ session_destroy();
                     <div>
                         <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                            Sign out.
+                            <?php echo __('Panel:SignOut'); ?>
                         </h2>
-                        <?php alert('SUCCESS', 'You have been signed out.'); ?>
+                        <?php echo alert('SUCCESS', __('Panel:SignOut_Success')); ?>
                     </div>
 
                     <div class="flex space-x-2">
@@ -39,7 +38,7 @@ session_destroy();
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-home" aria-hidden="true"></i>
                                 </span>
-                                Exit Saturn
+                                <?php echo __('Panel:SignOut_Exit'); ?>
                             </a>
                         </div>
                         <div class="flex-grow">
@@ -47,7 +46,7 @@ session_destroy();
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-lock" aria-hidden="true"></i>
                                 </span>
-                                Sign in
+                                <?php echo __('Panel:SignIn'); ?>
                             </a>
                         </div>
                     </div>

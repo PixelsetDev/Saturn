@@ -7,7 +7,6 @@
     "general": {
       "Saturn": "Saturne",
       "SaturnCMS": "Saturne CMS",
-      "Error": "Erreur",
       "Home": "Accueil",
       "GoHome": "Rentrer chez soi",
       "Converted_GTAGS_1": "Converti",
@@ -16,7 +15,20 @@
       "Email_Footer_2": "l'installation de Saturne à",
       "Email_Footer_3": "Vous pouvez peut-être désactiver ces e-mails dans vos paramètres d'utilisateur.",
       "MoreInfo": "Pour plus d'informations",
-      "ClickHere": "Cliquez ici"
+      "ClickHere": "Cliquez ici",
+      "Optional": "Facultatif",
+      "Active": "Actif",
+      "Inactive": "Inactif",
+      "Title": "Titre",
+      "Link": "Liens",
+      "Message": "Messages",
+      "Notification": "Notifications",
+      "Information": "Informations",
+      "Success": "Succès",
+      "Warning": "Avertissement",
+      "Error": "Erreur",
+      "Save": "Enregistrer",
+      "Default": "Par défaut"
     },
     "panel": {
       "Panel": "Panneau de configuration",
@@ -35,6 +47,8 @@
       "Notifications_Dismissed": "Notifications rejetées",
       "NoneFound": "Personne n'est trouve.",
       "SignOut": "Déconnexion",
+      "SignOut_Exit": "Quitter Saturne",
+      "SignOut_Success": "Vous avez été déconnecté.",
       "SignIn": "Connexion",
       "SignIn_Message": "Connectez-vous à votre compte.",
       "SignIn_IPVerified": "Votre IP a été vérifiée. Vous pouvez maintenant vous connecter à Saturn.",
@@ -83,7 +97,13 @@
       "Reset_ConfirmPassword": "Confirmer le mot de passe",
       "Reset_Password": "Réinitialiser le mot de passe",
       "Reset_Success": "Mot de passe modifié avec succès.",
-      "Reset_CanLogin": "Vous pouvez désormais vous connecter avec vos nouveaux identifiants."
+      "Reset_CanLogin": "Vous pouvez désormais vous connecter avec vos nouveaux identifiants.",
+      "Reset_EmailConfirm": "Nous vous avons envoyé un e-mail pour confirmer les informations que vous avez fournies. Veuillez cliquer sur le lien dans votre e-mail pour continuer.",
+      "Verify_User": "Vérification de l'utilisateur",
+      "Verify_EnterCode": "Pour nous aider à sécuriser votre compte, veuillez saisir le code de sécurité que nous vous avons envoyé à votre adresse e-mail dans le champ ci-dessous.",
+      "Verify_NewLocation": "Nous avons détecté que vous essayez de vous connecter depuis un nouvel emplacement.",
+      "Verify_2FA": "Authentification à deux facteurs",
+      "Verify_Code": "Code de vérification"
     },
     "admin": {
       "Panel": "Panneau d'administration",
@@ -92,6 +112,12 @@
       "Menu": "Menu du panneau d'administration",
       "Overview": "Aperçu",
       "Announcements": "Annonces",
+      "Announcements_Updated": "Annonces mises à jour",
+      "Announcements_ControlPanel": "Annonces du panneau de contrôle privé",
+      "Announcements_Website": "Annonce de site Web public",
+      "Announcements_Show": "Afficher les annonces",
+      "Announcements_Hide": "Masquer l'annonce",
+      "Announcements_Style": "Style des annonces",
       "UserManagement": "Gestion des utilisateurs",
       "Themes": "Thèmes",
       "Security": "Sécurité",
@@ -137,12 +163,13 @@
       "Account_FailedLogin_1": "Echec de la tentative de connexion de l'utilisateur au compte",
       "Account_FailedLogin_2": "avec hachage IP :",
       "UnknownAccount": "Désolé, nous n'avons pas pu déterminer à quel compte appartiennent les données que vous avez saisies. Veuillez essayer une autre méthode d'authentification.",
-      "Unkown": "Une erreur s'est produite, veuillez réessayer plus tard.",
+      "Unknown": "Une erreur s'est produite, veuillez réessayer plus tard.",
       "AccountNotApproved": "Votre compte n'a pas encore été approuvé par un administrateur du site. Nous vous enverrons un e-mail lorsque nous serons prêts à vous connecter.",
       "AccountRestricted": "Votre compte a été restreint. Si vous avez besoin d'un accès, veuillez contacter votre administrateur.",
       "InvalidSecurityKey": "Clé de sécurité invalide.",
       "InvalidRole": "Rôle invalide.",
-      "AccessPermissions": "Vous ne disposez pas des autorisations requises pour accéder à Saturn, cela peut être dû au fait que votre compte est en attente d'approbation ou a été restreint."
+      "AccessPermissions": "Vous ne disposez pas des autorisations requises pour accéder à Saturn, cela peut être dû au fait que votre compte est en attente d'approbation ou a été restreint.",
+      "Verify_Unknown": "Le système de vérification de l'utilisateur a été déclenché, mais nous ne savons pas exactement pourquoi. Si vous rencontrez des problèmes, revenez en arrière et reconnectez-vous ou contactez l'administrateur de votre site Web pour obtenir de l'aide. S'il s'agit d'un problème récurrent, vous pouvez signalez-le également sur saturncms.net/reportbug et nous l'examinerons pour vous."
     },
     "security": {
       "Cleaned": "Nettoyé",

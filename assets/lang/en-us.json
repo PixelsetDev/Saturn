@@ -7,7 +7,6 @@
     "general": {
       "Saturn": "Saturn",
       "SaturnCMS": "Saturn CMS",
-      "Error": "Error",
       "Home": "Home",
       "GoHome": "Go home",
       "Converted_GTAGS_1": "Converted",
@@ -16,7 +15,20 @@
       "Email_Footer_2": "'s Saturn installation at \"",
       "Email_Footer_3": "You may be able to opt out of these emails in your user settings.",
       "MoreInfo": "For more information",
-      "ClickHere": "click here"
+      "ClickHere": "click here",
+      "Optional": "Optional",
+      "Active": "Active",
+      "Inactive": "Inactive",
+      "Title": "Title",
+      "Link": "Link",
+      "Message": "Message",
+      "Notification": "Notification",
+      "Information": "Information",
+      "Success": "Success",
+      "Warning": "Warning",
+      "Error": "Error",
+      "Save": "Save",
+      "Default": "Default"
     },
     "panel": {
       "Panel": "Control Panel",
@@ -35,6 +47,8 @@
       "Notifications_Dismissed": "Dismissed Notifications",
       "NoneFound": "None found.",
       "SignOut": "Sign out",
+      "SignOut_Exit": "Exit Saturn",
+      "SignOut_Success": "You have been signed out.",
       "SignIn": "Sign in",
       "SignIn_Message": "Sign in to your account.",
       "SignIn_IPVerified": "Your IP has been verified. You can now sign in to Saturn.",
@@ -83,7 +97,13 @@
       "Reset_ConfirmPassword": "Confirm Password",
       "Reset_Password": "Reset Password",
       "Reset_Success": "Password changed successfully.",
-      "Reset_CanLogin": "You can now log in using your new credentials."
+      "Reset_CanLogin": "You can now log in using your new credentials.",
+      "Reset_EmailConfirm": "We've sent you an email to confirm the information you have provided. Please click the link in your email to continue.",
+      "Verify_User": "User Verification",
+      "Verify_EnterCode": "To help us keep your account secure please enter the security code we've sent to your email address in the box below.",
+      "Verify_NewLocation": "We've detected that you're attempting to sign in from a new location.",
+      "Verify_2FA": "Two Factor Authentication",
+      "Verify_Code": "Verification Code"
     },
     "admin": {
       "Panel": "Admin Panel",
@@ -92,6 +112,12 @@
       "Menu": "Admin Panel Menu",
       "Overview": "Overview",
       "Announcements": "Announcements",
+      "Announcements_Updated": "Announcements Updated",
+      "Announcements_ControlPanel": "Private Control Panel Announcement",
+      "Announcements_Website": "Public Website Announcement",
+      "Announcements_Show": "Show announcement",
+      "Announcements_Hide": "Hide announcement",
+      "Announcements_Style": "Announcements Style",
       "UserManagement": "User Management",
       "Themes": "Themes",
       "Security": "Security",
@@ -140,7 +166,8 @@
       "Unknown": "An error has occurred, please try again later.",
       "InvalidSecurityKey": "Invalid security key.",
       "InvalidRole": "Invalid role.",
-      "AccessPermissions": "You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted."
+      "AccessPermissions": "You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.",
+      "Verify_Unknown": "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you."
     },
     "security": {
       "Cleaned": "Cleaned",

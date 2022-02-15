@@ -7,7 +7,6 @@
     "general": {
       "Saturn": "Saturne",
       "SaturnCMS": "Saturne CMS",
-      "Error": "Error",
       "Home": "Casa",
       "GoHome": "Vete a casa",
       "Converted_GTAGS_1": "Convertido",
@@ -16,7 +15,20 @@
       "Email_Footer_2": "l'installation de Saturne à",
       "Email_Footer_3": "Vous pouvez peut-être désactiver ces e-mails dans vos paramètres d'utilisateur.",
       "MoreInfo": "Pour plus d'informations",
-      "ClickHere": "Cliquez ici"
+      "ClickHere": "Cliquez ici",
+      "Optional": "Opcional",
+      "Active": "Activo",
+      "Inactive": "Inactivo",
+      "Title": "Título",
+      "Link": "Enlaces",
+      "Message": "Mensajes",
+      "Notification": "Notificaciones",
+      "Information": "Información",
+      "Success": "Éxito",
+      "Warning": "Advertencia",
+      "Error": "Error",
+      "Save": "Guardar",
+      "Default": "Predeterminado"
     },
     "panel": {
       "Panel": "Panel de control",
@@ -35,6 +47,8 @@
       "Notifications_Dismissed": "Notificaciones Descartadas",
       "NoneFound": "Nada encontrado.",
       "SignOut": "Cerrar sesión",
+      "SignOut_Exit": "Saturn verlassen",
+      "SignOut_Success": "Sie wurden abgemeldet.",
       "SignIn": "Iniciar sesión",
       "SignIn_Message": "Inicia sesión en tu cuenta.",
       "SignIn_IPVerified": "Tu IP ha sido verificada. Ahora puedes iniciar sesión en Saturn.",
@@ -83,7 +97,13 @@
       "Reset_ConfirmPassword": "Confirmar Contraseña",
       "Reset_Password": "Restablecer contraseña",
       "Reset_Success": "La contraseña se cambió correctamente.",
-      "Reset_CanLogin": "Ahora puede iniciar sesión con sus nuevas credenciales."
+      "Reset_CanLogin": "Ahora puede iniciar sesión con sus nuevas credenciales.",
+      "Reset_EmailConfirm": "Te hemos enviado un correo electrónico para confirmar la información que has proporcionado. Haz clic en el enlace de tu correo electrónico para continuar.",
+      "Verify_User": "Verificación de Usuario",
+      "Verify_EnterCode": "Para ayudarnos a mantener su cuenta segura, ingrese el código de seguridad que le enviamos a su dirección de correo electrónico en el cuadro a continuación.",
+      "Verify_NewLocation": "Hemos detectado que estás intentando iniciar sesión desde una nueva ubicación.",
+      "Verify_2FA": "Autenticación de dos factores",
+      "Verify_Code": "Código de Verificación"
     },
     "admin": {
       "Panel": "Panel de administración",
@@ -92,6 +112,12 @@
       "Menu": "Menú del panel de administración",
       "Overview": "Resumen",
       "Announcements": "Anuncios",
+      "Announcements_Updated": "Anuncios actualizados",
+      "Announcements_ControlPanel": "Anuncios del Panel de Control Privado",
+      "Announcements_Website": "Anuncio de sitio web público",
+      "Announcements_Show": "Mostrar anuncios",
+      "Announcements_Hide": "Ocultar anuncios",
+      "Announcements_Style": "Estilo de Anuncios",
       "UserManagement": "Administración de Usuarios",
       "Themes": "Temas",
       "Security": "Seguridad",
@@ -142,7 +168,8 @@
       "AccountRestricted": "Su cuenta ha sido restringida. Si necesita acceso, comuníquese con su administrador.",
       "InvalidSecurityKey": "Clave de seguridad no válida.",
       "InvalidRole": "Rol no válido.",
-      "AccessPermissions": "No tienes los permisos necesarios para acceder a Saturn, esto puede deberse a que tu cuenta está pendiente de aprobación o ha sido restringida."
+      "AccessPermissions": "No tienes los permisos necesarios para acceder a Saturn, esto puede deberse a que tu cuenta está pendiente de aprobación o ha sido restringida.",
+      "Verify_Unknown": "El sistema de verificación de usuarios se activó, pero no estamos muy seguros de por qué. Si tiene algún problema, regrese e inicie sesión nuevamente o comuníquese con el administrador de su sitio web para obtener ayuda. Si este es un problema recurrente, puede también repórtalo en saturncms.net/reportbug y lo investigaremos por ti."
     },
     "security": {
       "Cleaned": "Limpiado",

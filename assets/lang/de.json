@@ -7,7 +7,6 @@
     "general": {
       "Saturn": "Saturn",
       "SaturnCMS": "Saturn CMS",
-      "Error": "Fehler",
       "Home": "Heim",
       "GoHome": "Nach Hause gehen",
       "Converted_GTAGS_1": "Umgewandelt",
@@ -16,7 +15,20 @@
       "Email_Footer_2": "'s Saturn-Installation bei",
       "Email_Footer_3": "Möglicherweise können Sie diese E-Mails in Ihren Benutzereinstellungen deaktivieren.",
       "MoreInfo": "Für mehr Informationen",
-      "ClickHere": "klicken Sie hier"
+      "ClickHere": "klicken Sie hier",
+      "Optional": "Optional",
+      "Active": "Aktiv",
+      "Inactive": "Inaktiv",
+      "Title": "Titel",
+      "Links": "Links",
+      "Message": "Nachrichten",
+      "Notification": "Benachrichtigungen",
+      "Information": "Informationen",
+      "Success": "Erfolg",
+      "Warning": "Warnung",
+      "Error": "Fehler",
+      "Save": "Speichern",
+      "Default": "Standard"
     },
     "panel": {
       "Panel": "Systemsteuerung",
@@ -35,6 +47,8 @@
       "Notifications_Dismissed": "Abgelehnte Benachrichtigungen",
       "NoneFound": "Keine gefunden.",
       "SignOut": "Abmelden",
+      "SignOut_Exit": "Saturn verlassen",
+      "SignOut_Success": "Sie wurden abgemeldet.",
       "SignIn": "Anmelden",
       "SignIn_Message": "Melden Sie sich bei Ihrem Konto an.",
       "SignIn_IPVerified": "Ihre IP-Adresse wurde verifiziert. Sie können sich jetzt bei Saturn anmelden.",
@@ -83,7 +97,13 @@
       "Reset_ConfirmPassword": "Passwort bestätigen",
       "Reset_Password": "Passwort zurücksetzen",
       "Reset_Success": "Passwort erfolgreich geändert.",
-      "Reset_CanLogin": "Sie können sich jetzt mit Ihren neuen Zugangsdaten anmelden."
+      "Reset_CanLogin": "Sie können sich jetzt mit Ihren neuen Zugangsdaten anmelden.",
+      "Reset_EmailConfirm": "Wir haben Ihnen eine E-Mail gesendet, um die von Ihnen bereitgestellten Informationen zu bestätigen. Bitte klicken Sie auf den Link in Ihrer E-Mail, um fortzufahren.",
+      "Verify_User": "Benutzerüberprüfung",
+      "Verify_EnterCode": "Um uns zu helfen, Ihr Konto zu schützen, geben Sie bitte den Sicherheitscode, den wir an Ihre E-Mail-Adresse gesendet haben, in das Feld unten ein.",
+      "Verify_NewLocation": "Wir haben festgestellt, dass Sie versuchen, sich von einem neuen Standort aus anzumelden.",
+      "Verify_2FA": "Zwei-Faktor-Authentifizierung",
+      "Verify_Code": "Bestätigungscode"
     },
     "admin": {
       "Panel": "Admin-Panel",
@@ -92,6 +112,12 @@
       "Menu": "Admin-Panel-Menü",
       "Overview": "Übersicht",
       "Announcements": "Ankündigungen",
+      "Announcements_Updated": "Ankündigung aktualisiert",
+      "Announcements_ControlPanel": "Ankündigung des privaten Steuerfelds",
+      "Announcements_Website": "Öffentliche Website-Ankündigung",
+      "Announcements_Show": "Ankündigung anzeigen",
+      "Announcements_Hide": "Ankündigung ausblenden",
+      "Announcements_Style": "Ankündigungsstil",
       "UserManagement": "Benutzerverwaltung",
       "Themes": "Themen",
       "Security": "Sicherheit",
@@ -142,7 +168,8 @@
       "AccountRestricted": "Ihr Konto wurde eingeschränkt. Wenn Sie Zugriff benötigen, wenden Sie sich bitte an Ihren Administrator.",
       "InvalidSecurityKey": "Ungültiger Sicherheitsschlüssel.",
       "InvalidRole": "Ungültige Rolle.",
-      "AccessPermissions": "Sie haben nicht die erforderlichen Berechtigungen für den Zugriff auf Saturn. Dies kann daran liegen, dass Ihr Konto noch nicht genehmigt wurde oder eingeschränkt wurde."
+      "AccessPermissions": "Sie haben nicht die erforderlichen Berechtigungen für den Zugriff auf Saturn. Dies kann daran liegen, dass Ihr Konto noch nicht genehmigt wurde oder eingeschränkt wurde.",
+      "Verify_Unknown": "Das Benutzerverifizierungssystem wurde ausgelöst, aber wir sind uns nicht ganz sicher, warum. Wenn Sie auf Probleme stoßen, gehen Sie bitte zurück und melden Sie sich erneut an oder wenden Sie sich an Ihren Website-Administrator, um Hilfe zu erhalten. Wenn dies ein wiederkehrendes Problem ist, können Sie das tun Melden Sie es auch unter saturncms.net/reportbug und wir werden es für Sie untersuchen."
     },
     "security": {
       "Cleaned": "Gesäubert",
