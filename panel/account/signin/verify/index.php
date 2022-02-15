@@ -4,7 +4,7 @@
 
     include_once __DIR__.'/../../../../common/global_public.php';
 
-    if(!isset($_GET['type']) || !isset($_GET['username'])) {
+    if (!isset($_GET['type']) || !isset($_GET['username'])) {
         header('Location: /panel/account/signin/?signedout=true');
     }
 
