@@ -73,6 +73,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php if($_SESSION['role_id'] >= '3') { ?>
+                    <a class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 focus:outline-none focus:shadow-outline" href="<?php echo CONFIG_INSTALL_URL; ?>/panel/files"><?php echo __('Panel:Files'); ?></a>
+                    <?php } ?>
                     <div @click.away="open = false" class="relative self-center" x-data="{ open: false }">
                         <button @click="open = !open" class="self-center text-<?php echo THEME_PANEL_COLOUR; ?>-100 px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg lg:mt-0 lg:ml-4 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 focus:bg-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800 focus:outline-none focus:shadow-outline">
                             <div class="flex">
