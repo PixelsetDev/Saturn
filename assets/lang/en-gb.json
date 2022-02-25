@@ -186,7 +186,8 @@
       "AccessPermissions": "You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.",
       "Verify_Unknown": "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you.",
       "DatabaseOptimisation": "Unable to optimise the database, an error occurred.",
-      "ResetCCV": "Unable to reset Core Checksum Validation, an error occurred."
+      "ResetCCV": "Unable to reset Core Checksum Validation, an error occurred.",
+      "IssuesFound": "Issues found"
     },
     "security": {
       "Cleaned": "Cleaned",

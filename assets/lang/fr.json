@@ -186,7 +186,8 @@
       "AccessPermissions": "Vous ne disposez pas des autorisations requises pour accéder à Saturn, cela peut être dû au fait que votre compte est en attente d'approbation ou a été restreint.",
       "Verify_Unknown": "Le système de vérification de l'utilisateur a été déclenché, mais nous ne savons pas exactement pourquoi. Si vous rencontrez des problèmes, revenez en arrière et reconnectez-vous ou contactez l'administrateur de votre site Web pour obtenir de l'aide. S'il s'agit d'un problème récurrent, vous pouvez signalez-le également sur saturncms.net/reportbug et nous l'examinerons pour vous.",
       "DatabaseOptimisation": "Impossible d'optimiser la base de données, une erreur s'est produite.",
-      "ResetCCV": "Impossible de réinitialiser la validation de la somme de contrôle principale, une erreur s'est produite."
+      "ResetCCV": "Impossible de réinitialiser la validation de la somme de contrôle principale, une erreur s'est produite.",
+      "IssuesFound": "Problèmes trouvés"
     },
     "security": {
       "Cleaned": "Nettoyé",

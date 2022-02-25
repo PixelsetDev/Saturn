@@ -186,7 +186,8 @@
       "AccessPermissions": "",
       "Verify_Unknown": "",
       "DatabaseOptimization": "",
-      "ResetCCV": ""
+      "ResetCCV": "",
+      "IssuesFound": ""
     },
     "security": {
       "Cleaned": "",

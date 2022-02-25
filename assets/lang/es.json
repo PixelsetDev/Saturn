@@ -186,7 +186,8 @@
       "AccessPermissions": "No tienes los permisos necesarios para acceder a Saturn, esto puede deberse a que tu cuenta está pendiente de aprobación o ha sido restringida.",
       "Verify_Unknown": "El sistema de verificación de usuarios se activó, pero no estamos muy seguros de por qué. Si tiene algún problema, regrese e inicie sesión nuevamente o comuníquese con el administrador de su sitio web para obtener ayuda. Si este es un problema recurrente, puede también repórtalo en saturncms.net/reportbug y lo investigaremos por ti.",
       "DatabaseOptimisation": "No se pudo optimizar la base de datos, ocurrió un error.",
-      "ResetCCV": "No se pudo restablecer la validación de la suma de verificación del núcleo, ocurrió un error."
+      "ResetCCV": "No se pudo restablecer la validación de la suma de verificación del núcleo, ocurrió un error.",
+      "IssuesFound": "Probleme gefunden"
     },
     "security": {
       "Cleaned": "Limpiado",

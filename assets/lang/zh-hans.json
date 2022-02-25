@@ -186,7 +186,8 @@
       "AccessPermissions": "您没有访问 Saturn 所需的权限，这可能是因为您的帐户正在等待批准或已被限制。",
       "Verify_Unknown": "用户验证系统已触发，但我们不太确定原因。如果您遇到任何问题，请返回并重新登录或联系您的网站管理员寻求帮助。如果再次出现此问题，您可以 也可以在 saturncms.net/reportbug 上报告，我们会为您调查。",
       "DatabaseOptimisation": "无法优化数据库，发生错误。",
-      "ResetCCV": "无法重置核心校验和验证，发生错误。"
+      "ResetCCV": "无法重置核心校验和验证，发生错误。",
+      "IssuesFound": "发现问题"
     },
     "security": {
       "Cleaned": "清洁",

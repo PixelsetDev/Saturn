@@ -58,7 +58,7 @@ ob_end_flush();
                 echo alert('WARNING', __('Error:CCV').' <a href="https://docs.saturncms.net/v/'.SATURN_VERSION.'/user-documentation/errors-and-warnings#website-configuration-checksum" class="underline text-xs text-black" target="_blank" rel="noopener">'.__('Error:GetHelp').'</a>', true);
                 $issue = $issue + 1;
             }
-            echo $issue.' issues found.';
+            echo $issue.' '.__('Error:IssuesFound');
             ?>
             <div x-data="{open:false}">
                 <a @click="open = true" class="flex-grow cursor-pointer flex w-1/3 text-base font-medium text-red-700"><?php echo __('Admin:ResetCCV'); ?></a>
