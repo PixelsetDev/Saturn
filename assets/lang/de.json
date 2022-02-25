@@ -133,7 +133,13 @@
       "Settings": "Einstellungen",
       "Settings_Web": "Website-Einstellungen",
       "Settings_Perms": "Berechtigungseinstellungen",
-      "DatabaseManagement": "Datenbankverwaltung"
+      "DatabaseManagement": "Datenbankverwaltung",
+      "CCV": "Validierung der Kernprüfsumme",
+      "ResetCCV": "Core-Prüfsummenvalidierung zurücksetzen",
+      "ResetCCV_Confirm": "Sind Sie sicher, dass Sie die Überprüfung der Kern-Prüfsumme zurücksetzen möchten?",
+      "ResetCCV_Success": "Kernprüfsummenvalidierung wurde erfolgreich zurückgesetzt.",
+      "ResetCCV_Message": "Setzen Sie die Core Checksum Validation-Werte zurück.",
+      "RecordInSecurityLog": "Diese Aktion wird im Sicherheitsprotokoll aufgezeichnet"
     },
     "error": {
       "404_Message": "Seite nicht gefunden.",
@@ -176,7 +182,8 @@
       "InvalidSecurityKey": "Ungültiger Sicherheitsschlüssel.",
       "InvalidRole": "Ungültige Rolle.",
       "AccessPermissions": "Sie haben nicht die erforderlichen Berechtigungen für den Zugriff auf Saturn. Dies kann daran liegen, dass Ihr Konto noch nicht genehmigt wurde oder eingeschränkt wurde.",
-      "Verify_Unknown": "Das Benutzerverifizierungssystem wurde ausgelöst, aber wir sind uns nicht ganz sicher, warum. Wenn Sie auf Probleme stoßen, gehen Sie bitte zurück und melden Sie sich erneut an oder wenden Sie sich an Ihren Website-Administrator, um Hilfe zu erhalten. Wenn dies ein wiederkehrendes Problem ist, können Sie das tun Melden Sie es auch unter saturncms.net/reportbug und wir werden es für Sie untersuchen."
+      "Verify_Unknown": "Das Benutzerverifizierungssystem wurde ausgelöst, aber wir sind uns nicht ganz sicher, warum. Wenn Sie auf Probleme stoßen, gehen Sie bitte zurück und melden Sie sich erneut an oder wenden Sie sich an Ihren Website-Administrator, um Hilfe zu erhalten. Wenn dies ein wiederkehrendes Problem ist, können Sie das tun Melden Sie es auch unter saturncms.net/reportbug und wir werden es für Sie untersuchen.",
+      "DatabaseOptimisation": "Die Datenbank konnte nicht optimiert werden, ein Fehler ist aufgetreten."
     },
     "security": {
       "Cleaned": "Gesäubert",

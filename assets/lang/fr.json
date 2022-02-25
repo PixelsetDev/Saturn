@@ -133,7 +133,13 @@
       "Settings": "Paramètres",
       "Settings_Web": "Paramètres du site Web",
       "Settings_Perms": "Paramètres d'autorisation",
-      "DatabaseManagement": "Gestion de la base de données"
+      "DatabaseManagement": "Gestion de la base de données",
+      "CCV": "Validation de la somme de contrôle principale",
+      "ResetCCV": "Réinitialiser la validation de la somme de contrôle principale",
+      "ResetCCV_Confirm": "Êtes-vous sûr de vouloir réinitialiser la validation de la somme de contrôle principale ?",
+      "ResetCCV_Success": "La validation de la somme de contrôle principale a été réinitialisée avec succès.",
+      "ResetCCV_Message": "réinitialise les valeurs de validation de la somme de contrôle principale.",
+      "RecordInSecurityLog": "Cette action sera enregistrée dans le journal de sécurité"
     },
     "error": {
       "404_Message": "Page introuvable.",
@@ -176,7 +182,8 @@
       "InvalidSecurityKey": "Clé de sécurité invalide.",
       "InvalidRole": "Rôle invalide.",
       "AccessPermissions": "Vous ne disposez pas des autorisations requises pour accéder à Saturn, cela peut être dû au fait que votre compte est en attente d'approbation ou a été restreint.",
-      "Verify_Unknown": "Le système de vérification de l'utilisateur a été déclenché, mais nous ne savons pas exactement pourquoi. Si vous rencontrez des problèmes, revenez en arrière et reconnectez-vous ou contactez l'administrateur de votre site Web pour obtenir de l'aide. S'il s'agit d'un problème récurrent, vous pouvez signalez-le également sur saturncms.net/reportbug et nous l'examinerons pour vous."
+      "Verify_Unknown": "Le système de vérification de l'utilisateur a été déclenché, mais nous ne savons pas exactement pourquoi. Si vous rencontrez des problèmes, revenez en arrière et reconnectez-vous ou contactez l'administrateur de votre site Web pour obtenir de l'aide. S'il s'agit d'un problème récurrent, vous pouvez signalez-le également sur saturncms.net/reportbug et nous l'examinerons pour vous.",
+      "DatabaseOptimisation": "Impossible d'optimiser la base de données, une erreur s'est produite."
     },
     "security": {
       "Cleaned": "Nettoyé",

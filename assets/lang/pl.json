@@ -133,7 +133,13 @@
       "Settings": "Ustawienia",
       "Settings_Web": "Ustawienia witryny",
       "Settings_Perms": "",
-      "DatabaseManagement": "Zarządzanie bazą danych"
+      "DatabaseManagement": "Zarządzanie bazą danych",
+      "CCV": "",
+      "ResetCCV": "",
+      "ResetCCV_Confirm": "",
+      "ResetCCV_Success": "",
+      "ResetCCV_Message": "",
+      "RecordInSecurityLog": ""
     },
     "error": {
       "404_Message": "",
@@ -176,7 +182,8 @@
       "InvalidSecurityKey": "",
       "InvalidRole": "",
       "AccessPermissions": "",
-      "Verify_Unknown": ""
+      "Verify_Unknown": "",
+      "DatabaseOptimization": ""
     },
     "security": {
       "Cleaned": "",

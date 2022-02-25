@@ -133,7 +133,13 @@
       "Settings": "設置",
       "Settings_Web": "網站設置",
       "Settings_Perms": "權限設置",
-      "DatabaseManagement": "數據庫管理"
+      "DatabaseManagement": "數據庫管理",
+      "CCV": "核心校驗和驗證",
+      "ResetCCV": "重置核心校驗和驗證",
+      "ResetCCV_Confirm": "您確定要重置核心校驗和驗證嗎？",
+      "ResetCCV_Success": "核心校驗和驗證已成功重置。",
+      "ResetCCV_Message": "重置核心校驗和驗證值。",
+      "RecordInSecurityLog": "這個動作將被記錄在安全日誌中"
     },
     "error": {
       "404_Message": "找不到頁面。",
@@ -176,7 +182,8 @@
       "InvalidSecurityKey": "安全密鑰無效。",
       "InvalidRole": "無效角色。",
       "AccessPermissions": "您沒有訪問 Saturn 所需的權限，這可能是因為您的帳戶正在等待批准或已被限制。",
-      "Verify_Unknown": "用戶驗證系統已觸發，但我們不太確定原因。如果您遇到任何問題，請返回並重新登錄或聯繫您的網站管理員尋求幫助。如果再次出現此問題，您可以 也可以在 saturncms.net/reportbug 上報告，我們會為您調查。"
+      "Verify_Unknown": "用戶驗證系統已觸發，但我們不太確定原因。如果您遇到任何問題，請返回並重新登錄或聯繫您的網站管理員尋求幫助。如果再次出現此問題，您可以 也可以在 saturncms.net/reportbug 上報告，我們會為您調查。",
+      "DatabaseOptimisation": "無法優化數據庫，發生錯誤。"
     },
     "security": {
       "Cleaned": "清潔",

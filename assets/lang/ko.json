@@ -133,7 +133,13 @@
       "Settings": "설정",
       "Settings_Web": "웹사이트 설정",
       "Settings_Perms": "권한 설정",
-      "DatabaseManagement": "데이터베이스 관리"
+      "DatabaseManagement": "데이터베이스 관리",
+      "CCV": "코어 체크섬 유효성 검사",
+      "ResetCCV": "코어 체크섬 유효성 검사 재설정",
+      "ResetCCV_Confirm": "핵심 체크섬 유효성 검사를 재설정하시겠습니까?",
+      "ResetCCV_Success": "핵심 체크섬 유효성 검사가 성공적으로 재설정되었습니다.",
+      "ResetCCV_Message": "핵심 체크섬 유효성 검사 값을 재설정합니다.",
+      "RecordInSecurityLog": "이 작업은 보안 로그에 기록됩니다."
     },
     "error": {
       "404_Message": "페이지를 찾을 수 없습니다.",
@@ -176,7 +182,8 @@
       "InvalidSecurityKey": "잘못된 보안 키입니다.",
       "InvalidRole": "잘못된 역할입니다.",
       "AccessPermissions": "Saturn에 액세스하는 데 필요한 권한이 없습니다. 계정이 승인 대기 중이거나 제한되었기 때문일 수 있습니다.",
-      "Verify_Unknown": "사용자 확인 시스템이 트리거되었지만 이유를 잘 모르겠습니다. 문제가 발생하면 뒤로 돌아가서 다시 로그인하거나 웹사이트 관리자에게 도움을 요청하십시오. 이것이 반복되는 문제인 경우 다음을 수행할 수 있습니다. saturncms.net/reportbug 에서도 보고해 주시면 조사해 드리겠습니다."
+      "Verify_Unknown": "사용자 확인 시스템이 트리거되었지만 이유를 잘 모르겠습니다. 문제가 발생하면 뒤로 돌아가서 다시 로그인하거나 웹사이트 관리자에게 도움을 요청하십시오. 이것이 반복되는 문제인 경우 다음을 수행할 수 있습니다. saturncms.net/reportbug 에서도 보고해 주시면 조사해 드리겠습니다.",
+      "DatabaseOptimization": "데이터베이스를 최적화할 수 없습니다. 오류가 발생했습니다."
     },
     "security": {
       "Cleaned": "청소",

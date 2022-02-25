@@ -28,7 +28,9 @@
       "Warning": "Warning",
       "Error": "Error",
       "Save": "Save",
-      "Default": "Default"
+      "Default": "Default",
+      "Cancel": "Cancel",
+      "CannotBeUndone": "This action cannot be undone."
     },
     "panel": {
       "Panel": "Control Panel",
@@ -133,7 +135,13 @@
       "Settings": "Settings",
       "Settings_Web": "Website Settings",
       "Settings_Perms": "Permission Settings",
-      "DatabaseManagement": "Database Management"
+      "DatabaseManagement": "Database Management",
+      "CCV": "Core Checksum Validation",
+      "ResetCCV": "Reset Core Checksum Validation",
+      "ResetCCV_Confirm": "Are you sure you want to reset core checksum validation?",
+      "ResetCCV_Success": "Core Checksum Validation was reset successfully.",
+      "ResetCCV_Message": "reset the Core Checksum Validation values.",
+      "RecordInSecurityLog": "This action will be recorded in the Security Log"
     },
     "error": {
       "404_Message": "Page not Found.",
@@ -171,10 +179,13 @@
       "Account_FailedLogin_2": "with IP Hash:",
       "UnknownAccount": "Sorry, we were unable to determine what account the data you entered belongs to. Please try a different method of authentication.",
       "Unknown": "An error has occurred, please try again later.",
+      "AccountNotApproved": "Your account has not yet been approved by a site administrator. We'll email you when we're ready to log you in.",
+      "AccountRestricted": "Your account has been restricted. If you need access, please contact your administrator.",
       "InvalidSecurityKey": "Invalid security key.",
       "InvalidRole": "Invalid role.",
       "AccessPermissions": "You do not have the required permissions to access Saturn, this may be because your account is pending approval or has been restricted.",
-      "Verify_Unknown": "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you."
+      "Verify_Unknown": "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you.",
+      "DatabaseOptimisation": "Unable to optimise the database, an error occurred."
     },
     "security": {
       "Cleaned": "Cleaned",
