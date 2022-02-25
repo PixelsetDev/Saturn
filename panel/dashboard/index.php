@@ -188,11 +188,12 @@
         }
         if (get_user_roleID($_SESSION['id']) > 3) {
             $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
-            if ($remoteVersion != SATURN_VERSION) {
+            if (($remoteVersion != SATURN_VERSION ) && $remoteVersion != null) {
                 echo '<br>
                         <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
                                 <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
+                                <p>Saturn '.$remoteVersion.' is now available for download.</p>
                                 <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
                             </div>
                         </div>';
