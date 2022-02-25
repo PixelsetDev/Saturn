@@ -185,7 +185,8 @@
       "InvalidRole": "Função inválida.",
       "AccessPermissions": "Você não tem as permissões necessárias para acessar o Saturn, isso pode ser porque sua conta está com aprovação pendente ou foi restrita.",
       "Verify_Unknown": "O sistema de verificação de usuário foi acionado, mas não temos certeza do motivo. Se você tiver algum problema, volte e faça login novamente ou entre em contato com o administrador do seu site para obter ajuda. Se este for um problema recorrente, você pode também denuncie em saturncms.net/reportbug e nós analisaremos isso para você.",
-      "DatabaseOptimisation": "Não foi possível otimizar o banco de dados, ocorreu um erro."
+      "DatabaseOptimisation": "Não foi possível otimizar o banco de dados, ocorreu um erro.",
+      "ResetCCV": "Não é possível redefinir a validação da soma de verificação principal, ocorreu um erro."
     },
     "security": {
       "Cleaned": "Limpo",

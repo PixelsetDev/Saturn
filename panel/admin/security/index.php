@@ -11,7 +11,7 @@
             log_file('SATURN][SECURITY', __('General:Warning').': '.get_user_fullname($_SESSION['id']).' '.__('Admin:ResetCCV_Message'));
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?successResetCCV='.__('Admin:ResetCCV_Success'));
         } else {
-            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?errorMsg=Unable to reset Core Checksum Validation, an error occurred.');
+            header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?errorMsg='.__('Error:ResetCCV'));
         }
         exit;
     }

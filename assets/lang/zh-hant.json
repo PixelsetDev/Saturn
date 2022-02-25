@@ -185,7 +185,8 @@
       "InvalidRole": "無效角色。",
       "AccessPermissions": "您沒有訪問 Saturn 所需的權限，這可能是因為您的帳戶正在等待批准或已被限制。",
       "Verify_Unknown": "用戶驗證系統已觸發，但我們不太確定原因。如果您遇到任何問題，請返回並重新登錄或聯繫您的網站管理員尋求幫助。如果再次出現此問題，您可以 也可以在 saturncms.net/reportbug 上報告，我們會為您調查。",
-      "DatabaseOptimisation": "無法優化數據庫，發生錯誤。"
+      "DatabaseOptimisation": "無法優化數據庫，發生錯誤。",
+      "ResetCCV": "無法重置核心校驗和驗證，發生錯誤。"
     },
     "security": {
       "Cleaned": "清潔",

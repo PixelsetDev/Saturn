@@ -185,7 +185,8 @@
       "InvalidRole": "",
       "AccessPermissions": "",
       "Verify_Unknown": "",
-      "DatabaseOptimization": ""
+      "DatabaseOptimization": "",
+      "ResetCCV": ""
     },
     "security": {
       "Cleaned": "",
