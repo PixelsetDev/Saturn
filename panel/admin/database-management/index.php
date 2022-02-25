@@ -13,19 +13,19 @@ function optimise_tables(): bool
     global $conn;
 
     $query1 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'announcements`';
-    $query1 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'articles`';
-    $query2 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'chats_messages`';
-    $query3 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'notifications`';
-    $query4 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages`';
-    $query5 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_authors`';
-    $query6 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_history`';
-    $query7 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_pending`';
-    $query8 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_statistics`';
-    $query9 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_items`';
-    $query10 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_lists`';
-    $query11 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users`';
-    $query12 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_settings`';
-    $query13 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_statistics`';
+    $query2 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'articles`';
+    $query3 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'chats_messages`';
+    $query4 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'notifications`';
+    $query5 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages`';
+    $query6 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_authors`';
+    $query7 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_history`';
+    $query8 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_pending`';
+    $query9 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_statistics`';
+    $query10 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_items`';
+    $query11 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_lists`';
+    $query12 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users`';
+    $query13 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_settings`';
+    $query14 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_statistics`';
 
     return mysqli_query($conn, $query1) &&
         mysqli_query($conn, $query2) &&
@@ -39,7 +39,8 @@ function optimise_tables(): bool
         mysqli_query($conn, $query10) &&
         mysqli_query($conn, $query11) &&
         mysqli_query($conn, $query12) &&
-        mysqli_query($conn, $query13);
+        mysqli_query($conn, $query13) &&
+        mysqli_query($conn, $query14);
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
@@ -47,7 +48,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
         $successMsg = __('Admin:Database_Optimised');
         log_file('Saturn', get_user_fullname($_SESSION['id']).' '.__('Admin:Database_OptimisedLog'));
     } else {
-        $errorMsg = 'Unable to optimise the database, an error occurred.';
+        $errorMsg = __('Error:DatabaseOptimisation');
     }
 }
 ?><!DOCTYPE html>
