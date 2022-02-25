@@ -28,7 +28,9 @@
       "Warning": "Peringatan",
       "Error": "Kesalahan",
       "Save": "Simpan",
-      "Default": "Bawaan"
+      "Default": "Bawaan",
+      "Cancel": "Batalkan",
+      "CannotBeUndone": "Tindakan ini tidak dapat dibatalkan."
     },
     "panel": {
       "Panel": "Panel Kontrol",

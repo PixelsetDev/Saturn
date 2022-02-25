@@ -28,7 +28,9 @@
       "Warning": "Aviso",
       "Error": "Erro",
       "Save": "Salvar",
-      "Default": "Padrão"
+      "Default": "Padrão",
+      "Cancel": "Cancelar",
+      "CannotBeUndone": "Esta ação não pode ser desfeita."
     },
     "panel": {
       "Panel": "Painel de Controle",

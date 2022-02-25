@@ -28,7 +28,9 @@
       "Warning": "Warning",
       "Error": "Error",
       "Save": "Save",
-      "Default": "Default"
+      "Default": "Default",
+      "Cancel": "Cancel",
+      "CannotBeUndone": "This action cannot be undone."
     },
     "panel": {
       "Panel": "Control Panel",

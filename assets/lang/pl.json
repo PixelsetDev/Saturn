@@ -28,7 +28,9 @@
       "Warning": "",
       "Error": "Błąd",
       "Save": "",
-      "Default": ""
+      "Default": "",
+      "Cancel": "",
+      "CannotBeUndone": ""
     },
     "panel": {
       "Panel": "",

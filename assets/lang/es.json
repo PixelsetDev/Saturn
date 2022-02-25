@@ -28,7 +28,9 @@
       "Warning": "Advertencia",
       "Error": "Error",
       "Save": "Guardar",
-      "Default": "Predeterminado"
+      "Default": "Predeterminado",
+      "Cancel": "Cancelar",
+      "CannotBeUndone": "Esta acción no se puede deshacer".
     },
     "panel": {
       "Panel": "Panel de control",

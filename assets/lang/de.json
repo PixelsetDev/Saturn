@@ -28,7 +28,9 @@
       "Warning": "Warnung",
       "Error": "Fehler",
       "Save": "Speichern",
-      "Default": "Standard"
+      "Default": "Standard",
+      "Cancel": "Abbrechen",
+      "CannotBeUndone": "Diese Aktion kann nicht rückgängig gemacht werden."
     },
     "panel": {
       "Panel": "Systemsteuerung",

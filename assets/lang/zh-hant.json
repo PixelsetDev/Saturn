@@ -28,7 +28,9 @@
       "Warning": "警告",
       "Error": "錯誤",
       "Save": "保存",
-      "Default": "默認"
+      "Default": "默認",
+      "Cancel": "取消",
+      "CannotBeUndone": "此操作無法撤消。"
     },
     "panel": {
       "Panel": "控制面板",

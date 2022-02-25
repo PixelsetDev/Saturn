@@ -28,7 +28,9 @@
       "Warning": "Avertissement",
       "Error": "Erreur",
       "Save": "Enregistrer",
-      "Default": "Par défaut"
+      "Default": "Par défaut",
+      "Cancel": "Annuler",
+      "CannotBeUndone": "Cette action ne peut pas être annulée."
     },
     "panel": {
       "Panel": "Panneau de configuration",
