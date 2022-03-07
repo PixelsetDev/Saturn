@@ -1,6 +1,15 @@
 <?php
 session_start();
 include_once __DIR__.'/../../common/global_private.php';
+
+function is_restricted($file): bool
+{
+    if (strpos($file[2], 'error.svg') === false && strpos($file[2], 'icon.png') === false && strpos($file[2], 'logo.png') === false && strpos($file[2], 'no-image-500x500.png') === false && strpos($file[2], 'icon.svg') === false && strpos($file[2], 'defaultprofile.png') === false) {
+        return false;
+    } else {
+        return true;
+    }
+}
 ?><!DOCTYPE html>
 <html lang="en">
     <head>
@@ -33,7 +42,7 @@ include_once __DIR__.'/../../common/global_private.php';
     foreach (glob($directory.'*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg,SVG}', GLOB_BRACE) as $file) {
         $file = explode('/..', $file);
         $fileName = basename($file);
-        if (strpos($file[2], 'error.svg') === false && strpos($file[2], 'icon.png') === false && strpos($file[2], 'logo.png') === false && strpos($file[2], 'no-image-500x500.png') === false && strpos($file[2], 'icon.svg') === false && strpos($file[2], 'defaultprofile.png') === false) {
+        if (is_restricted($file) == false) {
             ?>
                         <a href="<?php echo $file[2]; ?>">
                             <img src="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2" alt="<?php echo $fileName; ?>">
@@ -51,9 +60,9 @@ include_once __DIR__.'/../../common/global_private.php';
     foreach (glob($directory.'*.{mp4,MP4,mov,MOV}', GLOB_BRACE) as $file) {
         $file = explode('/..', $file);
         $fileName = basename($file);
-        if (strpos($file[2], 'error.svg') === false && strpos($file[2], 'icon.png') === false && strpos($file[2], 'logo.png') === false && strpos($file[2], 'no-image-500x500.png') === false && strpos($file[2], 'icon.svg') === false && strpos($file[2], 'defaultprofile.png') === false) {
+        if (is_restricted($file) == false) {
             ?>
-                        <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2" alt="<?php echo $fileName; ?>">
+                        <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2">
                             <video width="320" height="240" controls>
                                 <source src="<?php echo $file[2]; ?>" type="video/mp4">
                                 Your browser does not support videos.
@@ -72,7 +81,7 @@ include_once __DIR__.'/../../common/global_private.php';
     foreach (glob($directory.'*.{txt,TXT,pdf,PDF,doc,DOC,docx,DOCX,ppt,PPT,pptx,PPTX}', GLOB_BRACE) as $file) {
         $file = explode('/..', $file);
         $fileName = basename($file);
-        if (strpos($fileName, 'error.svg') === false && strpos($fileName, 'icon.png') === false && strpos($fileName, 'logo.png') === false && strpos($fileName, 'no-image-500x500.png') === false && strpos($fileName, 'icon.svg') === false && strpos($fileName, 'defaultprofile.png') === false) {
+        if (is_restricted($file) == false) {
             ?>
                         <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $fileName; ?></a>
 <?php
