@@ -2,7 +2,7 @@
 
     /*
      * Saturn Configuration File
-     * Copyright (c) 2021 - Saturn Authors
+     * Copyright (c) 2022 - Saturn Authors
      * saturncms.net
      *
      * You should not edit this file directly as it can cause errors to occur.
