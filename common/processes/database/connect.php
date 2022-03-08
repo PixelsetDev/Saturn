@@ -1,7 +1,7 @@
 <?php
 
     $conn = mysqli_connect(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_PORT);
-    if (mysqli_connect_errno($conn)) {
+    if (mysqli_connect_errno()) {
         ?>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <img src="/storage/images/logo.png" class="mx-auto w-1/6 mt-6" alt="<?php echo CONFIG_SITE_NAME; ?>">
