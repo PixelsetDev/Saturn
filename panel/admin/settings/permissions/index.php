@@ -29,6 +29,7 @@ if (isset($_POST['save'])) {
     const CONFIG_SITE_CHARSET = '".CONFIG_SITE_CHARSET."';
     const CONFIG_SITE_TIMEZONE = '".CONFIG_SITE_TIMEZONE."';
     const CONFIG_LANGUAGE = '".CONFIG_LANGUAGE."';
+    const CONFIG_SEND_DATA = '".CONFIG_SEND_DATA."';
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = ".CONFIG_REGISTRATION_ENABLED.";
     /* Database */
