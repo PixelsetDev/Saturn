@@ -27,10 +27,14 @@
     }
 
     if (isset($_POST['ban'])) {
-        if (ban_user(checkInput('DEFAULT', $_POST['ban_user_id']), checkInput('DEFAULT', $_POST['reason']))) {
-            $successMsg = 'User banned.';
+        if ($_POST['ban_user_id'] == $_SESSION['id']) {
+            $errorMsg = 'You can\'t ban yourself';
         } else {
-            $errorMsg = 'Unable to ban user.';
+            if (ban_user(checkInput('DEFAULT', $_POST['ban_user_id']), checkInput('DEFAULT', $_POST['reason']))) {
+                $successMsg = 'User banned.';
+            } else {
+                $errorMsg = 'Unable to ban user.';
+            }
         }
     }
 

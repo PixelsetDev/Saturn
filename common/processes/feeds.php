@@ -7,7 +7,7 @@
         } elseif ($type == 2) {
             return feed_rss_page_updates();
         } else {
-            return 'Feed not found.';
+            return __('404Feed');
         }
     }
 
@@ -28,13 +28,13 @@
         $feed = "<?xml version='1.0' encoding='UTF-8'?>
         <rss version='2.0'>
             <channel>
-                <title>".CONFIG_SITE_NAME.' Articles</title>
+                <title>".CONFIG_SITE_NAME.' '.__('Panel:Articles').'</title>
                 <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'/articles</link>
-                <description>'.CONFIG_SITE_NAME.' Articles</description>
-                <language>en-us</language>
+                <description>'.CONFIG_SITE_NAME.' '.__('Panel:Articles').'</description>
+                <language>'.CONFIG_LANGUAGE.'</language>
                 <image>
                     <url>'.$protocol.'://'.$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE.'</url>
-                    <title>'.CONFIG_SITE_NAME.' Articles</title>
+                    <title>'.CONFIG_SITE_NAME.' '.__('Panel:Articles').'</title>
                     <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'/articles</link>
                 </image>';
         while ($row = mysqli_fetch_assoc($rs)) {
@@ -73,13 +73,13 @@
         $feed = "<?xml version='1.0' encoding='UTF-8'?>
         <rss version='2.0'>
             <channel>
-                <title>".CONFIG_SITE_NAME.' Page Updates</title>
+                <title>".CONFIG_SITE_NAME.' '.__('Panel:PageUpdates').'</title>
                 <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'</link>
-                <description>'.CONFIG_SITE_NAME.' Page Updates</description>
-                <language>en-us</language>
+                <description>'.CONFIG_SITE_NAME.' '.__('Panel:PageUpdates').'</description>
+                <language>'.CONFIG_LANGUAGE.'</language>
                 <image>
                     <url>'.$protocol.'://'.$_SERVER['HTTP_HOST'].THEME_SOCIAL_IMAGE.'</url>
-                    <title>'.CONFIG_SITE_NAME.' Page Updates</title>
+                    <title>'.CONFIG_SITE_NAME.' '.__('Panel:PageUpdates').'</title>
                     <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].'</link>
                 </image>';
         while ($row = mysqli_fetch_assoc($rs)) {
@@ -91,7 +91,7 @@
                 <item>
                     <title>'.$row2['title'].'</title>
                     <link>'.$protocol.'://'.$_SERVER['HTTP_HOST'].$row2['url'].'</link>
-                    <description>'.$name.' edited page titled '.$row2['title'].' at '.$row['timestamp'].'</description>
+                    <description>'.$name.' '.__('Panel:EditedPageTitled').' '.$row2['title'].' at '.$row['timestamp'].'</description>
                     <author>'.CONFIG_EMAIL_ADMIN.' ('.$name.')</author>
                 </item>';
         }

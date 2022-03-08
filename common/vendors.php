@@ -1,6 +1,7 @@
 <meta charset="<?php echo CONFIG_SITE_CHARSET; ?>">
 <meta name="description" content="<?php echo CONFIG_SITE_DESCRIPTION; ?>">
 <meta name="keywords" content="<?php echo CONFIG_SITE_KEYWORDS; ?>">
+<meta name="generator" content="<?php echo __('General:SaturnCMS'); ?> <?php echo SATURN_VERSION; ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" type="image/png" sizes="16x16" href="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/icon.png">

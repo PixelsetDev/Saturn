@@ -24,11 +24,11 @@
     const CONFIG_REGISTRATION_ENABLED = true;
     /* Database */
     const DATABASE_HOST = 'localhost';
-    const DATABASE_NAME = '';
-    const DATABASE_USERNAME = '';
+    const DATABASE_NAME = 'Saturn';
+    const DATABASE_USERNAME = 'root';
     const DATABASE_PASSWORD = '';
     const DATABASE_PORT = '3306';
-    const DATABASE_PREFIX = 'sat_';
+    const DATABASE_PREFIX = 'saturn_';
     /* Email */
     const CONFIG_EMAIL_ADMIN = '';
     const CONFIG_EMAIL_FUNCTION = 'phpmail';

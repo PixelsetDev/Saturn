@@ -55,7 +55,7 @@
             </header>
             <form method="POST" action="index.php" class="py-6 px-4 sm:px-6 lg:px-8">
                 <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    Hey <?php echo get_user_firstname($_SESSION['id']); ?>, welcome to Saturn. Since it's your first time using Saturn we've got a few things to go through with you before you can get started.<br>
+                    Hey <?php echo get_user_firstname($_SESSION['id']); ?>. Welcome to Saturn. Since it's your first time using Saturn we've got a few things to go through with you before you can get started.<br>
                 </p>
                 <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">About You</h2>
                 <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
@@ -76,7 +76,7 @@
                                 }
             if (get_user_roleID($_SESSION['id'] >= '4')) {
                 ?>
-                                    <li>Manage the Website's Core Settings</li>
+                                    <li>Manage the Website's Core Settings.</li>
                                     <li>Manage the the Users and their permissions.</li>
                                     <?php
             } ?>
@@ -188,11 +188,12 @@
         }
         if (get_user_roleID($_SESSION['id']) > 3) {
             $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
-            if ($remoteVersion != SATURN_VERSION) {
+            if (($remoteVersion != SATURN_VERSION) && $remoteVersion != null) {
                 echo '<br>
                         <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
                                 <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
+                                <p>Saturn '.$remoteVersion.' is now available for download.</p>
                                 <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
                             </div>
                         </div>';
