@@ -15,11 +15,11 @@
         if (isset($_GET['error'])) {
             $error = $_GET['error'];
             if ($error == 'permission') {
-                $errorMsg = 'Error: You do not have the requineutral permissions to do that.';
+                $errorMsg = 'Error: You do not have the required permissions to do that.';
             } elseif ($error == 'new') {
                 $errorMsg = 'Error: There was a problem creating a new article.';
             } else {
-                $errorMsg = 'Error: An unknown error occurneutral.';
+                $errorMsg = 'Error: An unknown error occurred.';
             }
         }
 

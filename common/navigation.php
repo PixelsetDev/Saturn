@@ -9,7 +9,7 @@
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <a class="text-gray-300 hover:text-gray-200 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/<?php echo CONFIG_INSTALL_URL; ?>">
-                                Home
+                                <?php echo __('General:Home'); ?>
                             </a>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
         <div class="md:hidden" x-show="open">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
-                    Home
+                    <?php echo __('General:Home'); ?>
                 </a>
             </div>
         </div>

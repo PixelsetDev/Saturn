@@ -45,10 +45,10 @@ function optimise_tables(): bool
 
 if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
     if (optimise_tables()) {
-        $successMsg = 'Tables optimised.';
-        log_file('Saturn', get_user_fullname($_SESSION['id']).' optimised the database tables.');
+        $successMsg = __('Admin:Database_Optimised');
+        log_file('Saturn', get_user_fullname($_SESSION['id']).' '.__('Admin:Database_OptimisedLog'));
     } else {
-        $errorMsg = 'Unable to optimise the database, an error occurred.';
+        $errorMsg = __('Error:DatabaseOptimisation');
     }
 }
 ?><!DOCTYPE html>
@@ -56,7 +56,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
     <head>
         <?php include __DIR__.'/../../../common/panel/vendors.php'; ?>
 
-        <title>Database Management - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+        <title><?php echo __('Admin:Database_Management'); ?> - <?php echo CONFIG_SITE_NAME.' '.__('Admin:Panel'); ?></title>
         <?php require __DIR__.'/../../../common/panel/theme.php'; ?>
 
     </head>
@@ -64,7 +64,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
         <?php require __DIR__.'/../../../common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
-            <h1 class="text-gray-900 text-3xl">Database Management</h1>
+            <h1 class="text-gray-900 text-3xl"><?php echo __('Admin:Database_Management'); ?></h1>
             <?php
             if (isset($errorMsg)) {
                 echo alert('ERROR', $errorMsg);
@@ -76,8 +76,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
                 unset($successMsg);
             }
             ?>
-            <h2 class="text-gray-900 text-2xl mt-8">Table Overhead</h2>
-            <p class="text-xs">Table overhead is the number of allocated but unused bytes, high overhead can slow down your website and use more storage space. You can reduce overhead by clicking on the 'Optimise Tables' button.</p>
+            <h2 class="text-gray-900 text-2xl mt-8"><?php echo __('Admin:Database_TableOverhead'); ?></h2>
+            <p class="text-xs"><?php echo __('Admin:Database_TableOverhead_Message'); ?></p>
             <div class="grid grid-cols-2 lg:grid-cols-3">
             <?php
             $query = 'SHOW TABLE STATUS';
@@ -92,7 +92,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
             ?>
             </div>
             <br>
-            <a href="index.php/?action=optimise" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Optimise Tables</a>
+            <a href="index.php/?action=optimise" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10"><?php echo __('Admin:Database_Optimise'); ?></a>
         </div>
     </body>
 </html>
