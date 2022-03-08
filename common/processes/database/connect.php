@@ -36,6 +36,5 @@
             $rs = mysqli_query($conn, $query);
             unset($query,$rs);
         } catch (Exception $e) {
-
         }
     }
