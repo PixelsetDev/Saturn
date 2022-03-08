@@ -2,7 +2,21 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="Saturn BETA @ LMWN Workshop">
+      <paths name="Saturn">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Testing Server">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="XAMPP">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
