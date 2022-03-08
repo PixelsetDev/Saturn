@@ -31,7 +31,11 @@
 <?php
         exit;
     } else {
-        $query = "SET time_zone = '".CONFIG_SITE_TIMEZONE."';";
-        $rs = mysqli_query($conn, $query);
-        unset($query,$rs);
+        try {
+            $query = "SET time_zone = '".CONFIG_SITE_TIMEZONE."';";
+            $rs = mysqli_query($conn, $query);
+            unset($query,$rs);
+        } catch (Exception $e) {
+
+        }
     }
