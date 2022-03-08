@@ -189,11 +189,11 @@
                         <label for="registration_enabled">Registration Enabled</label>
                         <select id="registration_enabled" name="registration_enabled" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_REGISTRATION_ENABLED) {
-                                    echo ' selected';
-                                } ?>>True</option>
+                                echo ' selected';
+                            } ?>>True</option>
                             <option value="false"<?php if (!CONFIG_REGISTRATION_ENABLED) {
-                                    echo ' selected';
-                                } ?>>False</option>
+                                echo ' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                 </div>
@@ -254,22 +254,22 @@
                         <label for="saturn_notifications">Allow Saturn Notifications</label>
                         <select id="saturn_notifications" name="saturn_notifications" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="email_notifications">Allow Email Notifications</label>
                         <select id="email_notifications" name="email_notifications" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                 </div>
@@ -280,22 +280,22 @@
                         <label for="welcome_screen">Show Welcome Screen</label>
                         <select id="welcome_screen" name="welcome_screen" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_WELCOME_SCREEN) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!CONFIG_WELCOME_SCREEN) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="welcome_screen_show_terms">Show Website Terms on Welcome Screen</label>
                         <select id="welcome_screen_show_terms" name="welcome_screen_show_terms" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                 </div>
@@ -306,22 +306,22 @@
                         <label for="page_approvals">Page Approvals</label>
                         <select id="page_approvals" name="page_approvals" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_PAGE_APPROVALS) {
-                                    echo' selected';
-                                } ?>>True</option>
+                                echo' selected';
+                            } ?>>True</option>
                             <option value="false"<?php if (!CONFIG_PAGE_APPROVALS) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="article_approvals">Article Approvals</label>
                         <select id="article_approvals" name="article_approvals" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ARTICLE_APPROVALS) {
-                                    echo' selected';
-                                } ?>>True</option>
+                                echo' selected';
+                            } ?>>True</option>
                             <option value="false"<?php if (!CONFIG_ARTICLE_APPROVALS) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -348,148 +348,148 @@
                         <label for="security_active">Security Active</label>
                         <select id="security_active" name="security_active" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (SECURITY_ACTIVE) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!SECURITY_ACTIVE) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="security_mode">Security Mode</label>
                         <select id="security_mode" name="security_mode" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="clean"<?php if (SECURITY_MODE == 'clean') {
-                                    echo' selected';
-                                } ?>>Clean (Recommended)</option>
+                                echo' selected';
+                            } ?>>Clean (Recommended)</option>
                             <option value="halt"<?php if (SECURITY_MODE == 'halt') {
-                                    echo' selected';
-                                } ?>>Halt</option>
+                                echo' selected';
+                            } ?>>Halt</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="security_use_https">Use HTTPS</label>
                         <select id="security_use_https" name="security_use_https" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (SECURITY_USE_HTTPS) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!SECURITY_USE_HTTPS) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="security_use_gss">Use Saturn Global Security System</label>
                         <select id="security_use_gss" name="security_use_gss" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (SECURITY_USE_GSS) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!SECURITY_USE_GSS) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="security_default_hash">Default Hash</label>
                         <select id="security_default_hash" name="security_default_hash" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="sha3-512"<?php if (SECURITY_DEFAULT_HASH == 'sha3-512') {
-                                    echo' selected';
-                                } ?>>sha3-512 (Recommended)</option>
+                                echo' selected';
+                            } ?>>sha3-512 (Recommended)</option>
                             <option value="sha3-384"<?php if (SECURITY_DEFAULT_HASH == 'sha3-384') {
-                                    echo' selected';
-                                } ?>>sha3-384</option>
+                                echo' selected';
+                            } ?>>sha3-384</option>
                             <option value="sha3-256"<?php if (SECURITY_DEFAULT_HASH == 'sha3-256') {
-                                    echo' selected';
-                                } ?>>sha3-256</option>
+                                echo' selected';
+                            } ?>>sha3-256</option>
                             <option value="sha3-224"<?php if (SECURITY_DEFAULT_HASH == 'sha3-224') {
-                                    echo' selected';
-                                } ?>>sha3-224</option>
+                                echo' selected';
+                            } ?>>sha3-224</option>
                             <option value="sha512"<?php if (SECURITY_DEFAULT_HASH == 'sha512') {
-                                    echo' selected';
-                                } ?>>sha512</option>
+                                echo' selected';
+                            } ?>>sha512</option>
                             <option value="sha512/224"<?php if (SECURITY_DEFAULT_HASH == 'sha512/224') {
-                                    echo' selected';
-                                } ?>>sha512/224</option>
+                                echo' selected';
+                            } ?>>sha512/224</option>
                             <option value="sha512/256"<?php if (SECURITY_DEFAULT_HASH == 'sha512/256') {
-                                    echo' selected';
-                                } ?>>sha512/256</option>
+                                echo' selected';
+                            } ?>>sha512/256</option>
                             <option value="sha256"<?php if (SECURITY_DEFAULT_HASH == 'sha256') {
-                                    echo' selected';
-                                } ?>>sha256</option>
+                                echo' selected';
+                            } ?>>sha256</option>
                             <option value="haval256,5"<?php if (SECURITY_DEFAULT_HASH == 'haval256,5') {
-                                    echo' selected';
-                                } ?>>haval256,5</option>
+                                echo' selected';
+                            } ?>>haval256,5</option>
                             <option value="haval256,4"<?php if (SECURITY_DEFAULT_HASH == 'haval256,4') {
-                                    echo' selected';
-                                } ?>>haval256,4</option>
+                                echo' selected';
+                            } ?>>haval256,4</option>
                             <option value="haval256,3"<?php if (SECURITY_DEFAULT_HASH == 'haval256,3') {
-                                    echo' selected';
-                                } ?>>haval256,3</option>
+                                echo' selected';
+                            } ?>>haval256,3</option>
                             <option value="whirlpool"<?php if (SECURITY_DEFAULT_HASH == 'whirlpool') {
-                                    echo' selected';
-                                } ?>>whirlpool</option>
+                                echo' selected';
+                            } ?>>whirlpool</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="security_checksum_hash">Checksum Hash</label>
                         <select id="security_checksum_hash" name="security_checksum_hash" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="sha3-512"<?php if (SECURITY_CHECKSUM_HASH == 'sha3-512') {
-                                    echo' selected';
-                                } ?>>sha3-512</option>
+                                echo' selected';
+                            } ?>>sha3-512</option>
                             <option value="sha3-384"<?php if (SECURITY_CHECKSUM_HASH == 'sha3-384') {
-                                    echo' selected';
-                                } ?>>sha3-384</option>
+                                echo' selected';
+                            } ?>>sha3-384</option>
                             <option value="sha3-256"<?php if (SECURITY_CHECKSUM_HASH == 'sha3-256') {
-                                    echo' selected';
-                                } ?>>sha3-256</option>
+                                echo' selected';
+                            } ?>>sha3-256</option>
                             <option value="sha3-224"<?php if (SECURITY_CHECKSUM_HASH == 'sha3-224') {
-                                    echo' selected';
-                                } ?>>sha3-224</option>
+                                echo' selected';
+                            } ?>>sha3-224</option>
                             <option value="sha512"<?php if (SECURITY_CHECKSUM_HASH == 'sha512') {
-                                    echo' selected';
-                                } ?>>sha512 (Recommended)</option>
+                                echo' selected';
+                            } ?>>sha512 (Recommended)</option>
                             <option value="sha512/224"<?php if (SECURITY_CHECKSUM_HASH == 'sha512/224') {
-                                    echo' selected';
-                                } ?>>sha512/224</option>
+                                echo' selected';
+                            } ?>>sha512/224</option>
                             <option value="sha512/256"<?php if (SECURITY_CHECKSUM_HASH == 'sha512/256') {
-                                    echo' selected';
-                                } ?>>sha512/256</option>
+                                echo' selected';
+                            } ?>>sha512/256</option>
                             <option value="sha256"<?php if (SECURITY_CHECKSUM_HASH == 'sha256') {
-                                    echo' selected';
-                                } ?>>sha256</option>
+                                echo' selected';
+                            } ?>>sha256</option>
                             <option value="haval256,5"<?php if (SECURITY_CHECKSUM_HASH == 'haval256,5') {
-                                    echo' selected';
-                                } ?>>haval256,5</option>
+                                echo' selected';
+                            } ?>>haval256,5</option>
                             <option value="haval256,4"<?php if (SECURITY_CHECKSUM_HASH == 'haval256,4') {
-                                    echo' selected';
-                                } ?>>haval256,4</option>
+                                echo' selected';
+                            } ?>>haval256,4</option>
                             <option value="haval256,3"<?php if (SECURITY_CHECKSUM_HASH == 'haval256,3') {
-                                    echo' selected';
-                                } ?>>haval256,3</option>
+                                echo' selected';
+                            } ?>>haval256,3</option>
                             <option value="whirlpool"<?php if (SECURITY_CHECKSUM_HASH == 'whirlpool') {
-                                    echo' selected';
-                                } ?>>whirlpool</option>
+                                echo' selected';
+                            } ?>>whirlpool</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="logging">Logging Active</label>
                         <select id="logging" name="logging" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (LOGGING_ACTIVE) {
-                                    echo' selected';
-                                } ?>>True (Recommended)</option>
+                                echo' selected';
+                            } ?>>True (Recommended)</option>
                             <option value="false"<?php if (!LOGGING_ACTIVE) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="logging_autolog">AutoLog Active</label>
                         <select id="logging_autolog" name="logging_autolog" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (LOGGING_AUTOLOG) {
-                                    echo' selected';
-                                } ?>>True</option>
+                                echo' selected';
+                            } ?>>True</option>
                             <option value="false"<?php if (!LOGGING_AUTOLOG) {
-                                    echo' selected';
-                                } ?>>False (Recommended)</option>
+                                echo' selected';
+                            } ?>>False (Recommended)</option>
                         </select>
                     </div>
                 </div>
@@ -500,11 +500,11 @@
                         <label for="debug">Debug Mode</label>
                         <select id="debug" name="debug" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_DEBUG) {
-                                    echo' selected';
-                                } ?>>True</option>
+                                echo' selected';
+                            } ?>>True</option>
                             <option value="false"<?php if (!CONFIG_DEBUG) {
-                                    echo' selected';
-                                } ?>>False</option>
+                                echo' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                 </div>
