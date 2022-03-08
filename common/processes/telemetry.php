@@ -1,7 +1,7 @@
 <?php
 function send_data(): string
 {
-    if (CONFIG_SEND_STATS) {
+    if (CONFIG_SEND_DATA) {
         $data = array(
             'key' => urlencode(CONFIG_ACTIVATION_KEY),
             'saturn_version' => urlencode(SATURN_VERSION),
