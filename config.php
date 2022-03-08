@@ -2,7 +2,7 @@
 
     /*
      * Saturn Configuration File
-     * Copyright (c) 2021 - Saturn Authors
+     * Copyright (c) 2022 - Saturn Authors
      * saturncms.net
      *
      * You should not edit this file directly as it can cause errors to occur.
@@ -19,7 +19,7 @@
     const CONFIG_SITE_KEYWORDS = 'saturn, cms, website';
     const CONFIG_SITE_CHARSET = 'UTF-8';
     const CONFIG_SITE_TIMEZONE = 'Europe/London';
-    const CONFIG_LANGUAGE = 'en-gb';
+    const CONFIG_SEND_DATA = false;
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = true;
     /* Database */
