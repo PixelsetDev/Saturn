@@ -15,7 +15,7 @@
     require_once __DIR__.'/../theme.php';
     require_once __DIR__.'/processes/database/connect.php';
     require_once __DIR__.'/processes/security/security.php';
-    require_once __DIR__.'/processes/errorHandler.php';
+    require_once __DIR__ . '/processes/error_handler.php';
     set_error_handler('errorHandlerError', E_ERROR);
     set_error_handler('errorHandlerWarning', E_WARNING);
     /* Developer Tools */
@@ -38,7 +38,7 @@
     require_once __DIR__.'/processes/link.php';
     require_once __DIR__.'/processes/themes.php';
     require_once __DIR__.'/processes/redirect.php';
-    require_once __DIR__.'/processes/versionCheck.php';
+    require_once __DIR__ . '/processes/version_check.php';
     if (CONFIG_SEND_DATA) {
         require_once __DIR__.'/processes/telemetry.php';
     }

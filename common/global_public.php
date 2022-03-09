@@ -8,7 +8,7 @@
     require_once __DIR__.'/../theme.php';
     require_once __DIR__.'/processes/database/connect.php';
     require_once __DIR__.'/processes/security/security.php';
-    require_once __DIR__.'/processes/errorHandler.php';
+    require_once __DIR__ . '/processes/error_handler.php';
     set_error_handler('errorHandlerError', E_ERROR);
     set_error_handler('errorHandlerWarning', E_WARNING);
     // Saturn Info
@@ -34,7 +34,7 @@
     /* Required Files */
     require_once __DIR__.'/processes/resource_loader/resource_loader.php';
     require_once __DIR__.'/processes/email.php';
-    require_once __DIR__.'/processes/versionCheck.php';
+    require_once __DIR__ . '/processes/version_check.php';
     require_once __DIR__.'/processes/gui/alerts.php';
     /* Require HTTPS */
     if ($_SERVER['HTTPS'] != 'on' && SECURITY_USE_HTTPS) {
