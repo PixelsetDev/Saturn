@@ -112,5 +112,7 @@
         <div class="flex fixed bottom-0 left-0 px-2 text-xs w-full bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-neutral-900 z-40">
             <span class="w-1/3"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?> &copy; 2021 - <?php echo date('Y'); ?> <?php echo __('General:SaturnCMS'); ?></span>
             <span class="w-1/3 text-center font-bold"><?php echo __('Panel:BugFree_Message'); ?> <a href="https://saturncms.net/feedback" target="_blank" class="font-normal underline text-black dark:text-white text-black" rel="nofollow noopener"><?php echo __('Panel:BugFree_Contact'); ?></a></span>
-            <span class="w-1/3 text-right"><?php echo SATURN_VERSION; ?><?php if (SATURN_BRANCH != 'release') { echo '-'.SATURN_BRANCH; } ?></span>
+            <span class="w-1/3 text-right"><?php echo SATURN_VERSION; ?><?php if (SATURN_BRANCH != 'release') {
+                                    echo '-'.SATURN_BRANCH;
+                                } ?></span>
         </div>
