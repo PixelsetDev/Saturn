@@ -200,7 +200,9 @@
                             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
                                 <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
                                 <p>Saturn '.latest_version().' is now available for download.</p>';
-                if (CONFIG_UPDATE_AUTO) { echo '<p>Saturn will update automatically next time you visit your Admin Panel.</p>'; }
+                if (CONFIG_UPDATE_AUTO) {
+                    echo '<p>Saturn will update automatically next time you visit your Admin Panel.</p>';
+                }
                 echo '          <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
                             </div>
                         </div><br>';
