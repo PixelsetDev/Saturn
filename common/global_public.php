@@ -14,6 +14,7 @@
     // Saturn Info
     $saturnInfo = json_decode(file_get_contents(__DIR__.'/../assets/saturn.json'));
     define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
+    define('SATURN_BRANCH', $saturnInfo->{'saturn'}->{'branch'});
     define('SATURN_STORAGE_DIRECTORY', $saturnInfo->{'saturn'}->{'storagedir'});
     unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
@@ -33,6 +34,7 @@
     /* Required Files */
     require_once __DIR__.'/processes/resource_loader/resource_loader.php';
     require_once __DIR__.'/processes/email.php';
+    require_once __DIR__.'/processes/versionCheck.php';
     require_once __DIR__.'/processes/gui/alerts.php';
     /* Require HTTPS */
     if ($_SERVER['HTTPS'] != 'on' && SECURITY_USE_HTTPS) {

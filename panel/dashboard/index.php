@@ -177,26 +177,33 @@
                 <?php
                 if (isset($errorMsg)) {
                     echo alert('ERROR', $errorMsg);
+                    echo '<br>';
                     unset($errorMsg);
                 }
         if (isset($warningMsg)) {
             echo alert('WARNING', $warningMsg);
+            echo '<br>';
             unset($warningMsg);
         }
         if (CONFIG_DEBUG) {
             echo alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
+            echo '<br>';
+        }
+        if (SATURN_BRANCH == 'dev') {
+            echo alert('WARNING', 'You are running a development build of Saturn. This is NOT recommended in production environments.');
+            echo '<br>';
         }
         if (get_user_roleID($_SESSION['id']) > 3) {
-            $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
-            if (($remoteVersion != SATURN_VERSION) && $remoteVersion != null) {
+            if ((latest_version() != SATURN_VERSION) && CONFIG_UPDATE_CHECK) {
                 echo '<br>
                         <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
                                 <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
-                                <p>Saturn '.$remoteVersion.' is now available for download.</p>
-                                <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
+                                <p>Saturn '.latest_version().' is now available for download.</p>';
+                if (CONFIG_UPDATE_AUTO) { echo '<p>Saturn will update automatically next time you visit your Admin Panel.</p>'; }
+                echo '          <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
                             </div>
-                        </div>';
+                        </div><br>';
             }
         } ?>
 

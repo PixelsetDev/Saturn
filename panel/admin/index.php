@@ -5,10 +5,8 @@
     require_once __DIR__.'/../../common/admin/global.php';
     ob_end_flush();
 
-    $remoteVersion = file_get_contents('https://link.saturncms.net/?latest_version');
-
-    if (((isset($_GET['update']) || CONFIG_UPDATE_AUTO) && CONFIG_UPDATE_CHECK) && $remoteVersion != SATURN_VERSION) {
-        $downloadUrl = 'https://link.saturncms.net/update/'.$remoteVersion.'.zip';
+    if (((isset($_GET['update']) || CONFIG_UPDATE_AUTO) && CONFIG_UPDATE_CHECK) && latest_version() != SATURN_VERSION) {
+        $downloadUrl = 'https://link.saturncms.net/update/'.latest_version().'.zip';
         $downloadTo = 'update.zip';
         if (strpos($downloadUrl, 'saturncms.net') !== false) {
             $installFile = __DIR__.'/../../'.$downloadTo;
@@ -170,7 +168,7 @@
                     </div>';
                     }
                     ?>
-                    <?php if ($remoteVersion != SATURN_VERSION && CONFIG_UPDATE_CHECK) {
+                    <?php if (latest_version() != SATURN_VERSION && CONFIG_UPDATE_CHECK) {
                         echo '
                     <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                         <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">

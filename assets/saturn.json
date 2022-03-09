@@ -1,6 +1,7 @@
 {
   "saturn": {
     "version": "0.2.0",
+    "branch": "dev",
     "storagedir": "/storage"
   }
 }
