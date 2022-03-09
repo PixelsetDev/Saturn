@@ -10,7 +10,7 @@
         if (log_clear('SECURITY')) {
             $successMsg = __('Admin:Logs_Security_Cleared');
         } else {
-            $errorMsg = 'Unable to clear the log, an error occurred.';
+            $errorMsg = __('Error:Logs_Clear');
         }
     }
 
@@ -18,7 +18,7 @@
         if (log_clear('ERROR')) {
             $successMsg = __('Admin:Logs_Error_Cleared');
         } else {
-            $errorMsg = 'Unable to clear the log, an error occurred.';
+            $errorMsg = __('Error:Logs_Clear');
         }
     }
 ?><!DOCTYPE html>

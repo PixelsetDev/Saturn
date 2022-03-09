@@ -194,7 +194,8 @@
       "Verify_Unknown": "",
       "DatabaseOptimization": "",
       "ResetCCV": "",
-      "IssuesFound": ""
+      "IssuesFound": "",
+      "Logs_Clear": ""
     },
     "security": {
       "Cleaned": "",
