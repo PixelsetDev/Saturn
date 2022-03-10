@@ -75,7 +75,7 @@
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Settings_Saved_Log'));
             internal_redirect('/panel/admin/settings?successMsg='.__('Admin:Settings_Saved'));
         } else {
-            internal_redirect('/panel/admin/settings?errorMsg=Unable to save website settings, an error occurred.');
+            internal_redirect('/panel/admin/settings?errorMsg='.__('Error:Settings_Saved'));
         }
         exit;
     }
@@ -370,10 +370,10 @@
                         <select id="security_mode" name="security_mode" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="clean"<?php if (SECURITY_MODE == 'clean') {
                                 echo' selected';
-                            } ?>>Clean (<?php echo __('General:Recommended'); ?>)</option>
+                            } ?>><?php echo __('Security:Clean'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="halt"<?php if (SECURITY_MODE == 'halt') {
                                 echo' selected';
-                            } ?>>Halt</option>
+                            } ?>><?php echo __('Security:Halt'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">

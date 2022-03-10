@@ -36,7 +36,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <nav aria-label="<?php echo __('Saturn'); ?> <?php echo __('Admin:Panel'); ?>">
+                            <nav aria-label="<?php echo __('General:Saturn'); ?> <?php echo __('Admin:Panel'); ?>">
                                 <ul class="space-y-4">
                                     <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="<?php echo __('Admin:Exit_Panel'); ?>" title="<?php echo __('Admin:Exit_Panel'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:Exit_Panel'); ?></a></li>
                                     <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="<?php echo __('Admin:Exit_Web'); ?>" title="<?php echo __('Admin:Exit_Web'); ?>" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400"><?php echo __('Admin:Exit_Web'); ?></a></li>
