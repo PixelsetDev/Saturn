@@ -293,112 +293,91 @@
                     <?php } ?>
                 </div>
                 <div class="flex flex-wrap space-x-4">
-                    <?php
-                        $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statisticcs` WHERE 1 ORDER BY edits;');
-        $row = mysqli_fetch_row($result);
-        $uid = $row[0]; ?>
                     <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
                         <div class="flex items-center">
-                            <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
-                                <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
-                            </span>
+                                <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
+                                    <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
+                                </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
                                 Top Writers
                             </p>
                         </div>
                         <div class="flex space-x-4">
                             <?php
-                                $x = 0;
-        $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits DESC;');
-        $row = mysqli_fetch_row($result);
-        $uid = $row[0];
-        while ($uid != null && $x != '4') {
-            if (get_user_roleID($uid) != '0' && get_user_roleID($uid) != '1') {
-                echo '<div class="flex-grow">
-                                <div class="flex flex-col items-center">
-                                    <div class="relative">
-                                        <a href="'.get_user_profile_link($uid).'" class="block relative">
-                                            <img alt="'.get_user_fullname($uid).'" src="'.get_user_profilephoto($uid).'" class="mx-auto object-cover rounded-full h-10 w-10 "/>
+                            $result = $conn->query('SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits DESC;');
+                            $data = $result->fetch_all();
+                            foreach ($data as $item) {
+                                ?>
+                                <div class="flex-grow">
+                                    <div class="flex flex-col items-center">
+                                        <div class="relative">
+                                            <a href="<?php echo get_user_profile_link($item[0]); ?>" class="block relative">
+                                                <img alt="<?php echo get_user_fullname($item[0]); ?>" src="<?php echo get_user_profilephoto($item[0]); ?>" class="mx-auto object-cover rounded-full h-10 w-10 "/>
+                                            </a>
+                                        </div>
+                                        <a href="<?php echo get_user_profile_link($item[0]); ?>" class="text-gray-600 dark:text-gray-400 text-xs mt-2">
+                                            <?php echo get_user_fullname($item[0]); ?>
+                                        </a>
+                                        <a href="<?php echo get_user_profile_link($item[0]); ?>" class="mt-1 text-xs text-white bg-<?php
+                                        if ($item[1] == '0') {
+                                            echo 'red';
+                                        } elseif ($item[1] < '6') {
+                                            echo 'yellow';
+                                        } else {
+                                            echo 'green';
+                                        }
+                                        ?>-500 rounded-full p-1">
+                                            <?php echo $item[1]; ?> Edits
                                         </a>
                                     </div>
-                                    <a href="'.get_user_profile_link($uid).'" class="text-gray-600 dark:text-gray-400 text-xs mt-2">
-                                        '.get_user_fullname($uid).'
-                                    </a>
-                                    <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';
-                if (get_user_statistics_edits($uid) == '0') {
-                    echo 'red';
-                } elseif (get_user_statistics_edits($uid) < '6') {
-                    echo 'yellow';
-                } else {
-                    echo 'green';
-                }
-                echo'-500 rounded-full p-1">
-                                        '.$row[1].' Edits
-                                    </a>
                                 </div>
-                            </div>';
-            }
-            $row = mysqli_fetch_row($result);
-            if (isset($row[0])) {
-                $uid = $row[0];
-            }
-            $x++;
-        } ?>
+                            <?php } ?>
                         </div>
-                    </div><?php
-                    if (get_user_roleID($id) > '2') {
-                        $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits;');
-                        $row = mysqli_fetch_row($result);
-                        $uid = $row[0];
-                        echo '<div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
+                    </div>
+                    <?php if (get_user_roleID($id) > '2') { ?>
+                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
                         <div class="flex items-center">
-                            <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
-                                <i class="fas fa-pencil-ruler fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
-                            </span>
+                                <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
+                                    <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
+                                </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
-                                Top Editors
+                                Top Approvals
                             </p>
                         </div>
-                        <div class="flex space-x-4">';
-                        $x = 0;
-                        $result = mysqli_query($conn, 'SELECT `id`, `approvals` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY approvals DESC;');
-                        $row = mysqli_fetch_row($result);
-                        $uid = $row[0];
-                        while ($uid != null && $x != '4') {
-                            if (get_user_roleID($uid) > '2') {
-                                echo '<div class="flex-grow">
-                                <div class="flex flex-col items-center">
-                                    <div class="relative">
-                                        <a href="'.get_user_profile_link($uid).'" class="block relative">
-                                            <img alt="'.get_user_fullname($uid).'" src="'.get_user_profilephoto($uid).'" class="mx-auto object-cover rounded-full h-10 w-10 "/>
+                        <div class="flex space-x-4">
+                            <?php
+                            $result = $conn->query('SELECT `id`, `approvals` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY approvals DESC;');
+                            $data = $result->fetch_all();
+                            foreach ($data as $item) {
+                                if (get_user_roleID($item[0]) > '2') {
+                                ?>
+                                <div class="flex-grow">
+                                    <div class="flex flex-col items-center">
+                                        <div class="relative">
+                                            <a href="<?php echo get_user_profile_link($item[0]); ?>" class="block relative">
+                                                <img alt="<?php echo get_user_fullname($item[0]); ?>" src="<?php echo get_user_profilephoto($item[0]); ?>" class="mx-auto object-cover rounded-full h-10 w-10 "/>
+                                            </a>
+                                        </div>
+                                        <a href="<?php echo get_user_profile_link($item[0]); ?>" class="text-gray-600 dark:text-gray-400 text-xs mt-2">
+                                            <?php echo get_user_fullname($item[0]); ?>
+                                        </a>
+                                        <a href="<?php echo get_user_profile_link($item[0]); ?>" class="mt-1 text-xs text-white bg-<?php
+                                        if ($item[1] == '0') {
+                                            echo 'red';
+                                        } elseif ($item[1] < '6') {
+                                            echo 'yellow';
+                                        } else {
+                                            echo 'green';
+                                        }
+                                        ?>-500 rounded-full p-1">
+                                            <?php echo $item[1]; ?> Approvals
                                         </a>
                                     </div>
-                                    <a href="'.get_user_profile_link($uid).'" class="text-gray-600 dark:text-gray-400 text-xs mt-2">
-                                        '.get_user_fullname($uid).'
-                                    </a>
-                                    <a href="'.get_user_profile_link($uid).'" class="mt-1 text-xs text-white bg-';
-                                if (get_user_statistics_approvals($uid) == '0') {
-                                    echo 'red';
-                                } elseif (get_user_statistics_approvals($uid) < '6') {
-                                    echo 'yellow';
-                                } else {
-                                    echo 'green';
-                                }
-                                echo'-500 rounded-full p-1">
-                                        '.$row[1].' Approvals
-                                    </a>
                                 </div>
-                            </div>';
-                            }
-                            $x++;
-                            $row = mysqli_fetch_row($result);
-                            if (isset($row[0])) {
-                                $uid = $row[0];
-                            }
-                        }
-                        echo '</div>
-                    </div>';
-                    } ?>
+                            <?php }} ?>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
 
                 <?php display_dashboard_statistics($_SESSION['id']); ?>
