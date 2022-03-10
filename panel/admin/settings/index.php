@@ -131,7 +131,7 @@
                             <option disabled>UTF</option>
                             <option value="utf-8"<?php if (CONFIG_SITE_CHARSET == 'utf-8') {
                 echo ' selected';
-            } ?>>UTF-8 (<?php echo __('General:Recommended'); ?>'); ?>)</option>
+            } ?>>UTF-8 (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="utf-16"<?php if (CONFIG_SITE_CHARSET == 'utf-16') {
                 echo ' selected';
             } ?>>UTF-16</option>
