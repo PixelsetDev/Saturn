@@ -160,6 +160,10 @@ if (isset($_GET['successMsg'])) {
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes" class="underline text-red-900 hover:text-red-800 text-2xl mt-8">Back</a>
             </div>
             <?php if (isset($themeData->{'theme'}->{'slug'})) { ?>
+            <?php if ($themeData->{'theme'}->{'version'}->{'saturn'} != SATURN_VERSION) {
+                echo alert('WARNING', 'This theme is for Saturn version "' . $themeData->{'theme'}->{'version'}->{'saturn'} . '", you are running Saturn version "' . SATURN_VERSION . '".');
+            }
+            ?>
             <div class="grid grid-cols-2 mt-4">
                 <div>
                     <h3 class="text-xl">Make Active Theme</h3>
