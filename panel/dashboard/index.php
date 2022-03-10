@@ -135,7 +135,7 @@
                 <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
                     You're all set and ready to go! If you need any further help you can reach out to your Website Administrator via Email here: <a href="mailto:<?php echo CONFIG_EMAIL_ADMIN; ?>" class="underline" rel="noopener"><?php echo CONFIG_EMAIL_ADMIN; ?></a> or read the Saturn Documentation at <a href="https://docs.saturncms.net" class="underline" rel="noopener" target="_blank">https://docs.saturncms.net</a>
                 </p>
-                <a href="?acceptTerms=true" class="mt-10 hover:shadow-lg group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
+                <a href="?acceptTerms=true" class="mt-10 hover:shadow-md group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
                     <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                         <i class="fas fa-check" aria-hidden="true"></i>
                     </span>
@@ -156,7 +156,7 @@
                 <h1 class="text-3xl font-bold leading-tight">Dashboard</h1>
             </div>
             <?php if ($notifCount > '0') {
-            echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_latest_notification_id($_SESSION['id']).'" class="m-1 bg-white dark:bg-neutral-700 rounded-lg dark:border-neutral-900 border-gray-300 border p-3 shadow-lg absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
+            echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_latest_notification_id($_SESSION['id']).'" class="m-1 bg-white dark:bg-neutral-700 rounded-lg dark:border-neutral-900 border-gray-300 border p-3 shadow-md absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
                 <div class="flex flex-row">
                     <span class="animate-pulse bg-blue-500 h-6 w-6 rounded-full relative text-center">
                         <i class="fas fa-info text-white self-center object-center py-1" aria-hidden="true"></i>
@@ -210,7 +210,7 @@
         } ?>
 
                 <div class="flex flex-wrap space-x-4">
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800">
+                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800">
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages">
                             <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
@@ -231,7 +231,7 @@
                         </a>
                     </div>
 
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800 ml-4">
+                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800 ml-4">
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles">
                             <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
@@ -253,7 +253,7 @@
                     </div>
 
                     <?php if (get_user_roleID($_SESSION['id']) > 2) { ?>
-                    <div x-data="{ open: false }" class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800">
+                    <div x-data="{ open: false }" class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800">
                         <a @click="open = true" class="cursor-pointer">
                             <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
@@ -279,11 +279,11 @@
                             </div>
                         </a>
                         <?php echo display_modal('INFO', 'Approvals', 'Please select an option below. There are currently '.$rows.' pending page approvals and '.$rows2.' pending article approvals.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
-                                        <a href="'.CONFIG_INSTALL_URL.'/panel/articles/approvals" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
+                                        <a href="'.CONFIG_INSTALL_URL.'/panel/articles/approvals" class="flex-grow transition-all duration-200 hover:shadow-md cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
                                             Article Approvals&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows2.'</span>
                                         </a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="'.CONFIG_INSTALL_URL.'/panel/pages/approvals" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
+                                        <a href="'.CONFIG_INSTALL_URL.'/panel/pages/approvals" class="flex-grow transition-all duration-200 hover:shadow-md cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
                                             Page Approvals&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows.'</span>
                                         </a>
                                     </div>');
@@ -293,7 +293,7 @@
                     <?php } ?>
                 </div>
                 <div class="flex flex-wrap space-x-4">
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
+                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
                         <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
                                     <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
@@ -335,7 +335,7 @@
                         </div>
                     </div>
                     <?php if (get_user_roleID($id) > '2') { ?>
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
+                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
                         <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
                                     <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
@@ -383,7 +383,7 @@
                 <?php display_dashboard_statistics($_SESSION['id']); ?>
 
                 <div class="flex mt-4 space-x-4">
-                    <div class="flex-grow shadow-lg rounded-xl w-1/6 bg-white dark:bg-neutral-800 dark:text-white text-gray-500 relative overflow-hidden">
+                    <div class="flex-grow shadow-md rounded-xl w-1/6 bg-white dark:bg-neutral-800 dark:text-white text-gray-500 relative overflow-hidden">
                         <div class="text-center">
                             <p class="text-xl font-medium mt-4 mx-2">Your Total Views:</p>
                             <p class="mt-2"><?php echo get_user_statistics_views($_SESSION['id']); ?></p>

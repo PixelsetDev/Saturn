@@ -69,7 +69,7 @@
     function display_dashboard_statbox($type, $current, $max, $currentLevel, $next, $colour): string
     {
         $return = '<div class="flex mt-4">
-                    <div class="shadow-lg rounded-xl w-full bg-white dark:bg-neutral-800 relative overflow-hidden">
+                    <div class="shadow-md rounded-xl w-full bg-white dark:bg-neutral-800 relative overflow-hidden">
                         <a class="w-full h-full block">
                             <div class="flex items-center justify-between px-4 py-6 space-x-4">
                                 <div class="flex items-center">
@@ -105,7 +105,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="shadow-lg rounded-xl w-1/6 bg-white dark:bg-neutral-800 text-'.$colour.'-500 dark:text-'.$colour.'-700 relative overflow-hidden ml-4">
+                    <div class="shadow-md rounded-xl w-1/6 bg-white dark:bg-neutral-800 text-'.$colour.'-500 dark:text-'.$colour.'-700 relative overflow-hidden ml-4">
                         <div class="text-center">
                             <p class="text-xl font-medium mt-4 mx-2">Next Level:</p>
                             <p class="mt-2">'.$next.'</p>
