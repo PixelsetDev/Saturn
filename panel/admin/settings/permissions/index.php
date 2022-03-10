@@ -87,7 +87,7 @@ ob_end_flush();
 <head>
     <?php include __DIR__.'/../../../../common/panel/vendors.php'; ?>
 
-    <title><?php __('Admin:Permissions'); ?> - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+    <title><?php echo __('Admin:Permissions'); ?> - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
     <?php require __DIR__.'/../../../../common/panel/theme.php'; ?>
 </head>
 <body class="bg-gray-200">
