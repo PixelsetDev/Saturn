@@ -247,9 +247,12 @@
       "DatabaseOptimisation": "Unable to optimise the database, an error occurred.",
       "ResetCCV": "Unable to reset Core Checksum Validation, an error occurred.",
       "IssuesFound": "Issues found",
-      "Logs_Clear": "Unable to clear the log, an error occurred."
+      "Logs_Clear": "Unable to clear the log, an error occurred.",
+      "Settings_Saved": "Unable to save website settings, an error occurred."
     },
     "security": {
+      "Clean": "Clean",
+      "Halt": "Halt",
       "Cleaned": "Cleaned",
       "Stopped": "Stopped",
       "ClearedLog_Security": "cleared the Security Log",

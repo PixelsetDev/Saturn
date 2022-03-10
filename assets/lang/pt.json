@@ -247,9 +247,12 @@
       "DatabaseOptimisation": "Não foi possível otimizar o banco de dados, ocorreu um erro.",
       "ResetCCV": "Não é possível redefinir a validação da soma de verificação principal, ocorreu um erro.",
       "IssuesFound": "Problemas encontrados",
-      "Logs_Clear": "Não foi possível limpar o log, ocorreu um erro."
+      "Logs_Clear": "Não foi possível limpar o log, ocorreu um erro.",
+      "Settings_Saved": "Não foi possível salvar as configurações do site, ocorreu um erro."
     },
     "security": {
+      "clean": "Limpar",
+      "halt": "Parar",
       "Cleaned": "Limpo",
       "Stopped": "Parado",
       "ClearedLog_Security": "limpou o log de segurança",

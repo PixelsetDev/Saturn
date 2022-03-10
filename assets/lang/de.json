@@ -247,9 +247,12 @@
       "DatabaseOptimisation": "Die Datenbank konnte nicht optimiert werden, ein Fehler ist aufgetreten.",
       "ResetCCV": "Core Checksum Validation kann nicht zurückgesetzt werden, ein Fehler ist aufgetreten.",
       "IssuesFound": "Probleme gefunden",
-      "Logs_Clear": "Das Protokoll konnte nicht gelöscht werden, ein Fehler ist aufgetreten."
+      "Logs_Clear": "Das Protokoll konnte nicht gelöscht werden, ein Fehler ist aufgetreten.",
+      "Settings_Saved": "Website-Einstellungen konnten nicht gespeichert werden, ein Fehler ist aufgetreten."
     },
     "security": {
+      "Clean": "Reinigen",
+      "Halt": "Halt",
       "Cleaned": "Gesäubert",
       "Stopped": "Gestoppt",
       "ClearedLog_Security": "Sicherheitsprotokoll gelöscht",

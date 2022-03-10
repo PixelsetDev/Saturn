@@ -247,9 +247,12 @@
       "DatabaseOptimization": "",
       "ResetCCV": "",
       "IssuesFound": "",
-      "Logs_Clear": ""
+      "Logs_Clear": "",
+      "Settings_Saved": ""
     },
     "security": {
+      "Clean": "",
+      "Halt": "",
       "Cleaned": "",
       "Stopped": "",
       "ClearedLog_Security": "",

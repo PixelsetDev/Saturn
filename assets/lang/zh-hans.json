@@ -247,9 +247,12 @@
       "DatabaseOptimisation": "无法优化数据库，发生错误。",
       "ResetCCV": "无法重置核心校验和验证，发生错误。",
       "IssuesFound": "发现问题",
-      "Logs_Clear": "无法清除日志，发生错误。"
+      "Logs_Clear": "无法清除日志，发生错误。",
+      "Settings_Saved": "无法保存网站设置，发生错误。"
     },
     "security": {
+      "Clean": "干净",
+      "Halt": "暂停",
       "Cleaned": "清洁",
       "Stopped": "停止",
       "ClearedLog_Security": "清除了安全日志",

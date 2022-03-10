@@ -247,9 +247,12 @@
       "DatabaseOptimisation": "No se pudo optimizar la base de datos, ocurrió un error.",
       "ResetCCV": "No se pudo restablecer la validación de la suma de verificación del núcleo, ocurrió un error.",
       "IssuesFound": "Probleme gefunden",
-      "Logs_Clear": "No se pudo borrar el registro, ocurrió un error."
+      "Logs_Clear": "No se pudo borrar el registro, ocurrió un error.",
+      "Settings_Saved": "No se pudo guardar la configuración del sitio web, ocurrió un error."
     },
     "security": {
+      "Clean": "Limpiar",
+      "Halt": "Alto",
       "Cleaned": "Limpiado",
       "Stopped": "Detenido",
       "ClearedLog_Security": "borró el registro de seguridad",

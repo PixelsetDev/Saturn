@@ -247,9 +247,12 @@
       "DatabaseOptimisation": "Impossible d'optimiser la base de données, une erreur s'est produite.",
       "ResetCCV": "Impossible de réinitialiser la validation de la somme de contrôle principale, une erreur s'est produite.",
       "IssuesFound": "Problèmes trouvés",
-      "Logs_Clear": "Impossible d'effacer le journal, une erreur s'est produite."
+      "Logs_Clear": "Impossible d'effacer le journal, une erreur s'est produite.",
+      "Settings_Saved": "Impossible d'enregistrer les paramètres du site Web, une erreur s'est produite."
     },
-    "security": {
+    "Security": {
+      "Clean": "Nettoyer",
+      "Halt": "Halter",
       "Cleaned": "Nettoyé",
       "Stopped": "Arrêté",
       "ClearedLog_Security": "a effacé le journal de sécurité",

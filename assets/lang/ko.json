@@ -247,9 +247,12 @@
       "DatabaseOptimization": "데이터베이스를 최적화할 수 없습니다. 오류가 발생했습니다.",
       "ResetCCV": "코어 체크섬 유효성 검사를 재설정할 수 없습니다. 오류가 발생했습니다.",
       "IssuesFound": "발견된 문제",
-      "Logs_Clear": "로그를 지울 수 없습니다. 오류가 발생했습니다."
+      "Logs_Clear": "로그를 지울 수 없습니다. 오류가 발생했습니다.",
+      "Settings_Saved": "웹사이트 설정을 저장할 수 없습니다. 오류가 발생했습니다."
     },
     "security": {
+      "Clean": "깨끗하다",
+      "Halt": "중지",
       "Cleaned": "청소",
       "Stopped": "중지",
       "ClearedLog_Security": "보안 로그를 지웠습니다",

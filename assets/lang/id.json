@@ -247,9 +247,12 @@
       "DatabaseOptimisation": "Tidak dapat mengoptimalkan database, terjadi kesalahan.",
       "ResetCCV": "Tidak dapat mengatur ulang Validasi Checksum Inti, terjadi kesalahan.",
       "IssuesFound": "Masalah ditemukan",
-      "Logs_Clear": "Tidak dapat menghapus log, terjadi kesalahan."
+      "Logs_Clear": "Tidak dapat menghapus log, terjadi kesalahan.",
+      "Settings_Saved": "Tidak dapat menyimpan pengaturan situs web, terjadi kesalahan."
     },
     "security": {
+      "Clean": "Bersih",
+      "Halt": "Berhenti",
       "Cleaned": "Dibersihkan",
       "Stopped": "Berhenti",
       "ClearedLog_Security": "menghapus Log Keamanan",

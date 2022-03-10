@@ -69,10 +69,12 @@
             // Output translation
             if ($translations->$string == null || $translations->$string == '') {
                 log_error('ERROR', 'Could not convert key '.$key.' into language '.CONFIG_LANGUAGE.' and no fallback translation was found, if this error persists please report it to contact@saturncms.net.');
+                log_console('SATURN][TRANSLATION', 'Translation error. See error log for more information.');
                 return $key;
             } else {
                 if (LOGGING_ACTIVE) {
                     log_error('ERROR', 'Could not convert key '.$key.' into language '.CONFIG_LANGUAGE.' so the fallback translation into en-gb has been used.');
+                    log_console('SATURN][TRANSLATION', 'Translation error. See error log for more information.');
                 }
                 return $translations->$string;
             }
