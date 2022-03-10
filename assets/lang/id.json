@@ -30,7 +30,10 @@
       "Save": "Simpan",
       "Default": "Bawaan",
       "Cancel": "Batalkan",
-      "CannotBeUndone": "Tindakan ini tidak dapat dibatalkan."
+      "CannotBeUndone": "Tindakan ini tidak dapat dibatalkan.",
+      "True": "Betul",
+      "False": "Salah",
+      "Recommended": "Direkomendasikan"
     },
     "panel": {
       "Panel": "Panel Kontrol",

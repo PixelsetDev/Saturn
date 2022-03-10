@@ -30,7 +30,10 @@
       "Save": "Guardar",
       "Default": "Predeterminado",
       "Cancel": "Cancelar",
-      "CannotBeUndone": "Esta acción no se puede deshacer."
+      "CannotBeUndone": "Esta acción no se puede deshacer.",
+      "True": "Verdad",
+      "False": "Falso",
+      "Recommended": "Recomendado"
     },
     "panel": {
       "Panel": "Panel de control",

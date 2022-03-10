@@ -30,7 +30,10 @@
       "Save": "Enregistrer",
       "Default": "Par défaut",
       "Cancel": "Annuler",
-      "CannotBeUndone": "Cette action ne peut pas être annulée."
+      "CannotBeUndone": "Cette action ne peut pas être annulée.",
+      "True": "Vrai",
+      "False": "Faux",
+      "Recommended": "Recommandé"
     },
     "panel": {
       "Panel": "Panneau de configuration",

@@ -30,7 +30,10 @@
       "Save": "Save",
       "Default": "Default",
       "Cancel": "Cancel",
-      "CannotBeUndone": "This action cannot be undone."
+      "CannotBeUndone": "This action cannot be undone.",
+      "True": "True",
+      "False": "False",
+      "Recommended": "Recommended"
     },
     "panel": {
       "Panel": "Control Panel",

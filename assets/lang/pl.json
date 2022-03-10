@@ -30,7 +30,10 @@
       "Save": "",
       "Default": "",
       "Cancel": "",
-      "CannotBeUndone": ""
+      "CannotBeUndone": "",
+      "True": "",
+      "False": "",
+      "Recommended": ""
     },
     "panel": {
       "Panel": "",

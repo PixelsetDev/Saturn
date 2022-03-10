@@ -30,7 +30,10 @@
       "Save": "Speichern",
       "Default": "Standard",
       "Cancel": "Abbrechen",
-      "CannotBeUndone": "Diese Aktion kann nicht rückgängig gemacht werden."
+      "CannotBeUndone": "Diese Aktion kann nicht rückgängig gemacht werden.",
+      "True": "Wahr",
+      "False": "Falsch",
+      "Recommended": "Empfohlen"
     },
     "panel": {
       "Panel": "Systemsteuerung",

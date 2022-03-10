@@ -30,7 +30,10 @@
       "Save": "保存",
       "Default": "默认",
       "Cancel": "取消",
-      "CannotBeUndone": "此操作无法撤消。"
+      "CannotBeUndone": "此操作无法撤消。",
+      "True": "真",
+      "False": "假",
+      "Recommended": "推荐"
     },
     "panel": {
       "Panel": "控制面板",

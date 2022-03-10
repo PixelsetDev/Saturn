@@ -74,11 +74,10 @@
         if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Settings_Saved_Log'));
             internal_redirect('/panel/admin/settings?successMsg='.__('Admin:Settings_Saved'));
-            exit;
         } else {
             internal_redirect('/panel/admin/settings?errorMsg=Unable to save website settings, an error occurred.');
-            exit;
         }
+        exit;
     }
     ob_end_flush();
 ?><!DOCTYPE html>
@@ -129,7 +128,7 @@
                             <option disabled>UTF</option>
                             <option value="utf-8"<?php if (CONFIG_SITE_CHARSET == 'utf-8') {
                 echo ' selected';
-            } ?>>UTF-8</option>
+            } ?>>UTF-8 (<?php echo __('General:Recommended'); ?>'); ?>)</option>
                             <option value="utf-16"<?php if (CONFIG_SITE_CHARSET == 'utf-16') {
                 echo ' selected';
             } ?>>UTF-16</option>
@@ -188,8 +187,8 @@
                     <div class="grid grid-cols-2">
                         <label for="send_data"><?php echo __('Admin:Settings_Panel_Telemetry'); ?></label>
                         <select id="send_data" name="send_data" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option<?php if (CONFIG_SEND_DATA == true) { echo ' selected'; } ?>>True</option>
-                            <option<?php if (CONFIG_SEND_DATA == false) { echo ' selected'; } ?>>False</option>
+                            <option<?php if (CONFIG_SEND_DATA == true) { echo ' selected'; } ?>><?php echo __('General:True'); ?></option>
+                            <option<?php if (CONFIG_SEND_DATA == false) { echo ' selected'; } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                 </div>
@@ -201,10 +200,10 @@
                         <select id="registration_enabled" name="registration_enabled" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_REGISTRATION_ENABLED) {
                                 echo ' selected';
-                            } ?>>True</option>
+                            } ?>><?php echo __('General:True'); ?></option>
                             <option value="false"<?php if (!CONFIG_REGISTRATION_ENABLED) {
                                 echo ' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                 </div>
@@ -266,10 +265,10 @@
                         <select id="saturn_notifications" name="saturn_notifications" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!CONFIG_ALLOW_SATURN_NOTIFICATIONS) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -277,10 +276,10 @@
                         <select id="email_notifications" name="email_notifications" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!CONFIG_ALLOW_EMAIL_NOTIFICATIONS) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                 </div>
@@ -292,10 +291,10 @@
                         <select id="welcome_screen" name="welcome_screen" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_WELCOME_SCREEN) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!CONFIG_WELCOME_SCREEN) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -303,10 +302,10 @@
                         <select id="welcome_screen_show_terms" name="welcome_screen_show_terms" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                 </div>
@@ -318,10 +317,10 @@
                         <select id="page_approvals" name="page_approvals" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_PAGE_APPROVALS) {
                                 echo' selected';
-                            } ?>>True</option>
+                            } ?>><?php echo __('General:True'); ?></option>
                             <option value="false"<?php if (!CONFIG_PAGE_APPROVALS) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -329,10 +328,10 @@
                         <select id="article_approvals" name="article_approvals" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_ARTICLE_APPROVALS) {
                                 echo' selected';
-                            } ?>>True</option>
+                            } ?>><?php echo __('General:True'); ?></option>
                             <option value="false"<?php if (!CONFIG_ARTICLE_APPROVALS) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -360,10 +359,10 @@
                         <select id="security_active" name="security_active" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (SECURITY_ACTIVE) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!SECURITY_ACTIVE) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -371,7 +370,7 @@
                         <select id="security_mode" name="security_mode" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="clean"<?php if (SECURITY_MODE == 'clean') {
                                 echo' selected';
-                            } ?>>Clean (Recommended)</option>
+                            } ?>>Clean (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="halt"<?php if (SECURITY_MODE == 'halt') {
                                 echo' selected';
                             } ?>>Halt</option>
@@ -382,10 +381,10 @@
                         <select id="security_use_https" name="security_use_https" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (SECURITY_USE_HTTPS) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!SECURITY_USE_HTTPS) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -393,10 +392,10 @@
                         <select id="security_use_gss" name="security_use_gss" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (SECURITY_USE_GSS) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!SECURITY_USE_GSS) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -404,7 +403,7 @@
                         <select id="security_default_hash" name="security_default_hash" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="sha3-512"<?php if (SECURITY_DEFAULT_HASH == 'sha3-512') {
                                 echo' selected';
-                            } ?>>sha3-512 (Recommended)</option>
+                            } ?>>sha3-512 (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="sha3-384"<?php if (SECURITY_DEFAULT_HASH == 'sha3-384') {
                                 echo' selected';
                             } ?>>sha3-384</option>
@@ -457,7 +456,7 @@
                             } ?>>sha3-224</option>
                             <option value="sha512"<?php if (SECURITY_CHECKSUM_HASH == 'sha512') {
                                 echo' selected';
-                            } ?>>sha512 (Recommended)</option>
+                            } ?>>sha512 (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="sha512/224"<?php if (SECURITY_CHECKSUM_HASH == 'sha512/224') {
                                 echo' selected';
                             } ?>>sha512/224</option>
@@ -486,10 +485,10 @@
                         <select id="logging" name="logging" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (LOGGING_ACTIVE) {
                                 echo' selected';
-                            } ?>>True (Recommended)</option>
+                            } ?>><?php echo __('General:True'); ?> (<?php echo __('General:Recommended'); ?>)</option>
                             <option value="false"<?php if (!LOGGING_ACTIVE) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
@@ -497,10 +496,10 @@
                         <select id="logging_autolog" name="logging_autolog" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (LOGGING_AUTOLOG) {
                                 echo' selected';
-                            } ?>>True</option>
+                            } ?>><?php echo __('General:True'); ?></option>
                             <option value="false"<?php if (!LOGGING_AUTOLOG) {
                                 echo' selected';
-                            } ?>>False (Recommended)</option>
+                            } ?>>False (<?php echo __('General:Recommended'); ?>)</option>
                         </select>
                     </div>
                 </div>
@@ -512,10 +511,10 @@
                         <select id="debug" name="debug" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_DEBUG) {
                                 echo' selected';
-                            } ?>>True</option>
+                            } ?>><?php echo __('General:True'); ?></option>
                             <option value="false"<?php if (!CONFIG_DEBUG) {
                                 echo' selected';
-                            } ?>>False</option>
+                            } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                 </div>

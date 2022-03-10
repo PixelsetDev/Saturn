@@ -30,7 +30,10 @@
       "Save": "저장",
       "Default": "기본값",
       "Cancel": "취소",
-      "CannotBeUndone": "이 작업은 취소할 수 없습니다."
+      "CannotBeUndone": "이 작업은 취소할 수 없습니다.",
+      "True": "진짜",
+      "False": "거짓",
+      "Recommended": "권장"
     },
     "panel": {
       "Panel": "제어판",

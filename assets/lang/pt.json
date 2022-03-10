@@ -30,7 +30,10 @@
       "Save": "Salvar",
       "Default": "Padrão",
       "Cancel": "Cancelar",
-      "CannotBeUndone": "Esta ação não pode ser desfeita."
+      "CannotBeUndone": "Esta ação não pode ser desfeita.",
+      "True": "Verdade",
+      "False": "Falso",
+      "Recommended": "Recomendado"
     },
     "panel": {
       "Panel": "Painel de Controle",
