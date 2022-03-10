@@ -37,7 +37,7 @@
             $string = substr($key, strpos($key, ':') + 1);
             // Output translation
             if ($translations->$string == null || $translations->$string == '') {
-                return 'Translation not found for "'.$key.'".';
+                return $key;
             } else {
                 return $translations->$string;
             }
