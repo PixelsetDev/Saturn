@@ -173,7 +173,7 @@
         } ?>
         </header>
         <section class="dark:bg-neutral-700 dark:text-white">
-            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto py-6 px-2 sm:px-6 lg:px-8">
                 <?php
                 if (isset($errorMsg)) {
                     echo alert('ERROR', $errorMsg);
@@ -209,7 +209,7 @@
             }
         } ?>
 
-                <div class="flex flex-wrap space-x-4">
+                <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
                     <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800">
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/pages">
                             <div class="flex items-center">
@@ -231,7 +231,7 @@
                         </a>
                     </div>
 
-                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800 ml-4">
+                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-2xl w-auto p-4 bg-white dark:bg-neutral-800">
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles">
                             <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
@@ -292,8 +292,8 @@
                     </div>
                     <?php } ?>
                 </div>
-                <div class="flex flex-wrap space-x-4">
-                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
+                <div class="grid md:grid-cols-2 grid-cols-1 gap-4 w-full">
+                    <div class="w-full shadow-md hover:shadow-xl transition-shadow duration-200 rounded-xl p-4 bg-white dark:bg-neutral-800 overflow-hidden mt-4">
                         <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
                                     <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
@@ -335,7 +335,7 @@
                         </div>
                     </div>
                     <?php if (get_user_roleID($id) > '2') { ?>
-                    <div class="flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
+                    <div class="w-full flex-grow shadow-md hover:shadow-xl transition-shadow duration-200 rounded-xl p-4 bg-white dark:bg-neutral-800 overflow-hidden mt-4">
                         <div class="flex items-center">
                                 <span class="bg-green-500 h-10 w-10 rounded-full relative text-center">
                                     <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
