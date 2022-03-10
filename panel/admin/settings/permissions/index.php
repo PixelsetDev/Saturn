@@ -87,7 +87,7 @@ ob_end_flush();
 <head>
     <?php include __DIR__.'/../../../../common/panel/vendors.php'; ?>
 
-    <title>Permissions - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+    <title><?php __('Admin:Permissions'); ?> - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
     <?php require __DIR__.'/../../../../common/panel/theme.php'; ?>
 </head>
 <body class="bg-gray-200">
@@ -96,13 +96,13 @@ ob_end_flush();
 <div class="px-8 py-4 w-full">
     <form class="w-full" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
         <div class="mb-8 grid grid-cols-2">
-            <h1 class="text-gray-900 text-3xl">Permissions</h1>
-            <input type="submit" name="save" value="Save" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
+            <h1 class="text-gray-900 text-3xl"><?php echo __('Admin:Permissions'); ?></h1>
+            <input type="submit" name="save" value="<?php echo __('General:Save'); ?>" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
         </div>
         <?php
         if (isset($_GET['errorMsg'])) {
             echo alert('ERROR', $_GET['errorMsg']);
-            log_error('ERROR', checkInput('DEFAULT', $errorMsg));
+            log_error('ERROR', checkInput('DEFAULT', $_GET['errorMsg']));
             unset($_GET['errorMsg']);
         }
         if (isset($_GET['successMsg'])) {
@@ -111,48 +111,48 @@ ob_end_flush();
         }
         ?>
         <div class="mt-4">
-            <h2 class="text-gray-900 text-2xl pb-4 mb-1">Pages and Categories</h2>
+            <h2 class="text-gray-900 text-2xl pb-4 mb-1"><?php echo __('Admin:Permissions_PagesCategories'); ?></h2>
             <div class="mt-4">
                 <div class="grid grid-cols-2">
-                    <label for="PERMISSION_CREATE_CATEGORY">Create Category</label>
+                    <label for="PERMISSION_CREATE_CATEGORY"><?php echo __('Admin:Permissions_PagesCategories_CreateCategory'); ?></label>
                     <select id="PERMISSION_CREATE_CATEGORY" name="PERMISSION_CREATE_CATEGORY" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                         <option value="2"<?php if (PERMISSION_CREATE_CATEGORY == '2') {
             echo ' selected';
-        } ?>>Not Restricted: Administrators, Edits and Writers.</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Unrestricted'); ?></option>
                         <option value="3"<?php if (PERMISSION_CREATE_CATEGORY == '3') {
             echo ' selected';
-        } ?>>Restricted: Administrators and Editors Only</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Restricted_1'); ?></option>
                         <option value="4"<?php if (PERMISSION_CREATE_CATEGORY == '4') {
             echo ' selected';
-        } ?>>Restricted: Administrators Only</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Restricted_2'); ?></option>
                     </select>
                 </div>
                 <div class="grid grid-cols-2">
-                    <label for="PERMISSION_CREATE_PAGE">Create Page</label>
+                    <label for="PERMISSION_CREATE_PAGE"><?php echo __('Admin:Permissions_PagesCategories_CreatePage'); ?></label>
                     <select id="PERMISSION_CREATE_PAGE" name="PERMISSION_CREATE_PAGE" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                        <option value="2"<?php if (PERMISSION_CREATE_PAGE == '3') {
+                        <option value="2"<?php if (PERMISSION_CREATE_PAGE == '2') {
             echo ' selected';
-        } ?>>Not Restricted: Administrators, Edits and Writers.</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Unrestricted'); ?></option>
                         <option value="3"<?php if (PERMISSION_CREATE_PAGE == '3') {
             echo ' selected';
-        } ?>>Restricted: Administrators and Editors Only</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Restricted_1'); ?></option>
                         <option value="4"<?php if (PERMISSION_CREATE_PAGE == '4') {
             echo ' selected';
-        } ?>>Restricted: Administrators Only</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Restricted_2'); ?></option>
                     </select>
                 </div>
                 <div class="grid grid-cols-2">
-                    <label for="PERMISSION_EDIT_PAGE_SETTINGS">Edit Page Setting</label>
+                    <label for="PERMISSION_EDIT_PAGE_SETTINGS"><?php echo __('Admin:Permissions_PagesCategories_EditPageSettings'); ?></label>
                     <select id="PERMISSION_EDIT_PAGE_SETTINGS" name="PERMISSION_EDIT_PAGE_SETTINGS" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                         <option value="2"<?php if (PERMISSION_EDIT_PAGE_SETTINGS == '3') {
             echo ' selected';
-        } ?>>Not Restricted: Administrators, Edits and Writers.</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Unrestricted'); ?></option>
                         <option value="3"<?php if (PERMISSION_EDIT_PAGE_SETTINGS == '3') {
             echo ' selected';
-        } ?>>Restricted: Administrators and Editors Only</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Restricted_1'); ?></option>
                         <option value="4"<?php if (PERMISSION_EDIT_PAGE_SETTINGS == '4') {
             echo ' selected';
-        } ?>>Restricted: Administrators Only</option>
+        } ?>><?php echo __('Admin:Permissions_PagesCategories_Restricted_2'); ?></option>
                     </select>
                 </div>
             </div>
@@ -160,7 +160,7 @@ ob_end_flush();
 
         <div class="mt-8 grid grid-cols-2">
             <div></div>
-            <input type="submit" name="save" value="Save" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
+            <input type="submit" name="save" value="<?php echo __('General:Save'); ?>" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
         </div>
     </form>
 </div>
