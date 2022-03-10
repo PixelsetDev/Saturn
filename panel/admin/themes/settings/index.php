@@ -194,8 +194,17 @@ if (isset($_GET['successMsg'])) {
                     <?php } ?>
                 </div>
             </div>
+            <?php if ($slug == THEME_SLUG) { ?>
             <div class="mt-6">
                 <h3 class="text-xl">General Settings</h3>
+                <?php
+                if ($themeData->{'theme'}->{'features'}->{'custom-fonts'} == "none") {
+                    echo alert('WARNING', 'This theme does not support Website Fonts.');
+                }
+                if (!isset($themeData->{'theme'}->{'features'})) {
+                    echo alert('WARNING', 'This theme does not support advanced features. Please contact the theme author and ask them to enable this.');
+                }
+                ?>
                 <form class="mt-4" action="" method="post">
                     <div class="grid grid-cols-2">
                         <label for="theme_colour_scheme">Website Colour Scheme</label>
@@ -211,7 +220,7 @@ if (isset($_GET['successMsg'])) {
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="theme_font">Website Font</label>
-                        <input id="theme_font" name="theme_font" type="text" value="<?php echo THEME_FONT; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <input id="theme_font" name="theme_font" type="text" value="<?php echo THEME_FONT; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"<?php if($themeData->{'theme'}->{'features'}->{'custom-fonts'} == "none" || !isset($themeData->{'theme'}->{'features'})) { echo ' disabled'; } ?>>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="panel_colour_scheme">Panel Colour Scheme</label>
@@ -251,7 +260,7 @@ if (isset($_GET['successMsg'])) {
                     <input type="submit" name="update" value="Save" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200" control-id="ControlID-1">
                 </form>
             </div>
-            <?php } else { ?>
+            <?php } } else { ?>
             <div class="grid grid-cols-2 mt-4">
                 <div>
                     <h3 class="text-xl">Theme not found.</h3>
