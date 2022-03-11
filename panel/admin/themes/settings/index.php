@@ -164,8 +164,13 @@ if (isset($_GET['successMsg'])) {
             if ($themeData->{'theme'}->{'version'}->{'saturn'} != SATURN_VERSION) {
                 echo alert('WARNING', 'This theme is for Saturn version "' . $themeData->{'theme'}->{'version'}->{'saturn'} . '", you are running Saturn version "' . SATURN_VERSION . '".');
             }
-            if (get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'themes') != $themeData->{'theme'}->{'version'}->{'theme'}) {
-                echo alert('INFO', 'A new update is available for this theme. You have version ' . $themeData->{'theme'}->{'version'}->{'theme'} . ' and the latest version is ' . get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'themes'));
+            $remoteVersion = get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'theme');
+            if ($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) {
+                if ($remoteVersion != "") {
+                    echo alert('INFO', 'A new update is available for this theme. You have version ' . $themeData->{'theme'}->{'version'}->{'theme'} . ' and the latest version is ' . $remoteVersion);
+                } else {
+                    echo alert('ERROR', 'Saturn is having issues connecting to the Marketplace server. If this issue persists please email contact@saturncms.net, thank you.');
+                }
             }
             ?>
             <div class="grid grid-cols-2 mt-4">
@@ -200,15 +205,15 @@ if (isset($_GET['successMsg'])) {
             </div>
             <?php if ($slug == THEME_SLUG) { ?>
             <div class="mt-6">
-                <h3 class="text-xl">General Settings</h3>
                 <?php
                 if ($themeData->{'theme'}->{'features'}->{'custom-fonts'} == "none") {
-                    echo alert('WARNING', 'This theme does not support Website Fonts.');
+                    echo alert('WARNING', 'This theme does not support Website Fonts.').'<br>';
                 }
                 if (!isset($themeData->{'theme'}->{'features'})) {
-                    echo alert('WARNING', 'This theme does not support advanced features. Please contact the theme author and ask them to enable this.');
+                    echo alert('WARNING', 'This theme does not support advanced features. Please contact the theme author and ask them to enable this.').'<br>';
                 }
                 ?>
+                <h3 class="text-xl">General Settings</h3>
                 <form class="mt-4" action="" method="post">
                     <div class="grid grid-cols-2">
                         <label for="theme_colour_scheme">Website Colour Scheme</label>
