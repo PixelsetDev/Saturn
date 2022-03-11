@@ -47,8 +47,8 @@ if (isset($_POST['update'])) {
     const THEME_SOCIAL_IMAGE = CONFIG_INSTALL_URL.'/storage/images/social-image.jpg';";
 
     if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
-        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Theme Settings.');
-        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Theme settings updated.');
+        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Themes_UpdatedSettings_Message'));
+        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg='.__('Admin:Themes_UpdatedSettings'));
     } else {
         internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Theme settings could not be updated.');
     }
@@ -69,8 +69,8 @@ if (isset($_GET['activate'])) {
     const THEME_SOCIAL_IMAGE = CONFIG_INSTALL_URL.'/storage/images/social-image.jpg';";
 
     if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
-        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
-        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Theme activated.');
+        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Themes_UpdatedSettings_Message'));
+        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg='.__('Admin:Themes_Activated'));
     } else {
         internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Theme could not be activated.');
     }
@@ -86,7 +86,7 @@ if (isset($_GET['uninstall_confirm'])) {
             if (is_dir($dir)) {
                 array_map('unlink', glob("$dir/*.*"));
                 if (rmdir($dir)) {
-                    internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Uninstalled successfully.');
+                    internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg='.__('Admin:Themes_Uninstalled'));
                 } else {
                     internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: The file or directory could not be deleted.');
                 }
@@ -104,7 +104,7 @@ if (isset($_GET['uninstall'])) {
     if ($slug == THEME_SLUG) {
         $errorMsg = 'You can\'t uninstall an active theme.';
     } else {
-        $infoMsg = 'Please confirm you\'d like to uninstall this theme by clicking the uninstall button again.';
+        $infoMsg = __('Admin:Themes_ConfirmUninstall');
     }
 }
 
@@ -119,7 +119,7 @@ if (isset($_GET['successMsg'])) {
     <head>
         <?php include __DIR__.'/../../../../common/panel/vendors.php'; ?>
 
-        <title>Theme Settings - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+        <title><?php echo __('Admin:Themes_Settings'); ?> - <?php echo CONFIG_SITE_NAME.' '.__('Admin:Panel'); ?></title>
         <?php require __DIR__.'/../../../../common/panel/theme.php'; ?>
 
     </head>
@@ -127,7 +127,7 @@ if (isset($_GET['successMsg'])) {
         <?php require __DIR__.'/../../../../common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
-            <h1 class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 text-3xl">Themes</h1>
+            <h1 class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 text-3xl"><?php echo __('Admin:Themes'); ?></h1>
             <?php
             if (isset($_GET['errorMsg'])) {
                 $errorMsg = $_GET['errorMsg'];
@@ -156,18 +156,18 @@ if (isset($_GET['successMsg'])) {
             ?>
             <br>
             <div class="flex">
-                <h2 class="flex-grow text-<?php echo THEME_PANEL_COLOUR; ?>-900 text-2xl mt-8">Theme Settings: <?php echo $themeData->{'theme'}->{'name'}; ?></h2>
+                <h2 class="flex-grow text-<?php echo THEME_PANEL_COLOUR; ?>-900 text-2xl mt-8"><?php echo __('Admin:Themes_Settings'); ?>: <?php echo $themeData->{'theme'}->{'name'}; ?></h2>
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes" class="underline text-red-900 hover:text-red-800 text-2xl mt-8">Back</a>
             </div>
             <?php if (isset($themeData->{'theme'}->{'slug'})) { ?>
             <?php
             if ($themeData->{'theme'}->{'version'}->{'saturn'} != SATURN_VERSION) {
-                echo alert('WARNING', 'This theme is for Saturn version "' . $themeData->{'theme'}->{'version'}->{'saturn'} . '", you are running Saturn version "' . SATURN_VERSION . '".');
+                echo alert('WARNING', __('Admin:Themes_NewVersion_For') . $themeData->{'theme'}->{'version'}->{'saturn'} . __('Admin:Themes_NewVersion_Running') . SATURN_VERSION . '".');
             }
             $remoteVersion = get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'theme');
             if ($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) {
                 if ($remoteVersion != "") {
-                    echo alert('INFO', 'A new update is available for this theme. You have version ' . $themeData->{'theme'}->{'version'}->{'theme'} . ' and the latest version is ' . $remoteVersion);
+                    echo alert('INFO', __('Admin:Themes_NewVersion_Message_1').' ' . $themeData->{'theme'}->{'version'}->{'theme'} . ' '.__('Admin:Themes_NewVersion_Message_2').' ' . $remoteVersion);
                 } else {
                     echo alert('ERROR', 'Saturn is having issues connecting to the Marketplace server. If this issue persists please email contact@saturncms.net, thank you.');
                 }
@@ -175,30 +175,30 @@ if (isset($_GET['successMsg'])) {
             ?>
             <div class="grid grid-cols-2 mt-4">
                 <div>
-                    <h3 class="text-xl">Make Active Theme</h3>
+                    <h3 class="text-xl"><?php echo __('Admin:Themes_MakeActive'); ?></h3>
                     <?php if ($slug == THEME_SLUG) { ?>
-                    <p>This theme is already the active theme.</p>
+                    <p><?php echo __('Admin:Themes_MakeActive_Already'); ?></p>
                     <?php } else { ?>
-                    <a href="index.php?slug=<?php echo $slug; ?>&activate=true" class="underline">Click here to make this the active theme.</a>
+                    <a href="index.php?slug=<?php echo $slug; ?>&activate=true" class="underline"><?php echo __('Admin:Themes_MakeActive_Link'); ?></a>
                     <?php } ?>
                 </div>
                 <div>
-                    <h3 class="text-xl">Author Information</h3>
-                    <p>Author: <?php echo $themeData->{'theme'}->{'author'}; ?></p>
+                    <h3 class="text-xl"><?php echo __('Admin:Themes_AuthorInformation') ?></h3>
+                    <p><?php echo __('General:Author') ?>: <?php echo $themeData->{'theme'}->{'author'}; ?></p>
                 </div>
                 <div class="mt-6">
-                    <h3 class="text-xl">Uninstall</h3>
+                    <h3 class="text-xl"><?php echo __('Admin:Themes_Uninstall') ?></h3>
                     <?php if (isset($_GET['uninstall'])) { ?>
                         <?php if ($slug == THEME_SLUG) { ?>
-                            <p>You can't uninstall this theme as it is currently active and being used by the render engine, please activate another theme before uninstalling this one.</p>
+                            <p><?php echo __('Error:Themes_Uninstall_Unable'); ?></p>
                         <?php } else { ?>
-                            <a href="index.php?slug=<?php echo $slug; ?>&uninstall_confirm=true" class="underline">WARNING: This action cannot be undone. Are you sure? Click here to confirm.</a>
+                            <a href="index.php?slug=<?php echo $slug; ?>&uninstall_confirm=true" class="underline"><?php echo __('General:Warning'); ?>: <?php echo __('General:CannotBeUndone'); ?> <?php echo __('General:AreYouSure'); ?> <?php echo __('General:ClickToConfirm'); ?></a>
                         <?php } ?>
                     <?php } else { ?>
                         <?php if ($slug == THEME_SLUG) { ?>
-                            <p>You can't uninstall this theme as it is currently active, please change the active theme before uninstalling this theme.</p>
+                            <p><?php echo __('Error:Themes_Uninstall_Cant'); ?></p>
                         <?php } else { ?>
-                            <a href="index.php?slug=<?php echo $slug; ?>&uninstall=true" class="underline">Click here to uninstall.</a>
+                            <a href="index.php?slug=<?php echo $slug; ?>&uninstall=true" class="underline"><?php echo __('Admin:Themes_Uninstall_Link'); ?></a>
                         <?php } ?>
                     <?php } ?>
                 </div>
@@ -213,56 +213,56 @@ if (isset($_GET['successMsg'])) {
                     echo alert('WARNING', 'This theme does not support advanced features. Please contact the theme author and ask them to enable this.').'<br>';
                 }
                 ?>
-                <h3 class="text-xl">General Settings</h3>
+                <h3 class="text-xl"><?php echo __('Admin:Themes_Settings_General'); ?></h3>
                 <form class="mt-4" action="" method="post">
                     <div class="grid grid-cols-2">
-                        <label for="theme_colour_scheme">Website Colour Scheme</label>
+                        <label for="theme_colour_scheme"><?php echo __('Admin:Themes_Settings_Website_ColourScheme'); ?></label>
                         <select id="theme_colour_scheme" name="theme_colour_scheme" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option disabled>-- Please select one --</option>
+                            <option disabled>-- <?php echo __('General:PleaseSelectOne'); ?> --</option>
                             <option value="light"<?php if (THEME_COLOUR_SCHEME == 'light') {
                 echo ' selected';
-            } ?>>Light</option>
+            } ?>><?php echo __('General:Light'); ?></option>
                             <option value="dark"<?php if (THEME_COLOUR_SCHEME == 'dark') {
                 echo ' selected';
-            } ?>>Dark</option>
+            } ?>><?php echo __('General:Dark'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="theme_font">Website Font</label>
+                        <label for="theme_font"><?php echo __('Admin:Themes_Settings_Website_Font'); ?></label>
                         <input id="theme_font" name="theme_font" type="text" value="<?php echo THEME_FONT; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"<?php if($themeData->{'theme'}->{'features'}->{'custom-fonts'} == "none" || !isset($themeData->{'theme'}->{'features'})) { echo ' disabled'; } ?>>
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="panel_colour_scheme">Panel Colour Scheme</label>
+                        <label for="panel_colour_scheme"><?php echo __('Admin:Themes_Settings_Panel_ColourScheme'); ?></label>
                         <select id="panel_colour_scheme" name="panel_colour_scheme" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
-                            <option disabled>-- Please select one --</option>
+                            <option disabled>-- <?php echo __('General:PleaseSelectOne'); ?> --</option>
                             <option value="gray"<?php if (THEME_PANEL_COLOUR == 'gray') {
                 echo ' selected';
-            } ?>>Gray</option>
+            } ?>><?php echo __('General:Gray'); ?></option>
                             <option value="red"<?php if (THEME_PANEL_COLOUR == 'red') {
                 echo ' selected';
-            } ?>>Red</option>
+            } ?>><?php echo __('General:Red'); ?></option>
                             <option value="yellow"<?php if (THEME_PANEL_COLOUR == 'yellow') {
                 echo ' selected';
-            } ?>>Yellow</option>
+            } ?>><?php echo __('General:Yellow'); ?></option>
                             <option value="green"<?php if (THEME_PANEL_COLOUR == 'green') {
                 echo ' selected';
-            } ?>>Green</option>
+            } ?>><?php echo __('General:Green'); ?></option>
                             <option value="blue"<?php if (THEME_PANEL_COLOUR == 'blue') {
                 echo ' selected';
-            } ?>>Blue</option>
+            } ?>><?php echo __('General:Blue'); ?></option>
                             <option value="indigo"<?php if (THEME_PANEL_COLOUR == 'indigo') {
                 echo ' selected';
-            } ?>>Indigo</option>
+            } ?>><?php echo __('General:Indigo'); ?></option>
                             <option value="purple"<?php if (THEME_PANEL_COLOUR == 'purple') {
                 echo ' selected';
-            } ?>>Purple</option>
+            } ?>><?php echo __('General:Purple'); ?></option>
                             <option value="pink"<?php if (THEME_PANEL_COLOUR == 'pink') {
                 echo ' selected';
-            } ?>>Pink</option>
+            } ?>><?php echo __('General:Pink'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="panel_font">Control Panel Font</label>
+                        <label for="panel_font"><?php echo __('Admin:Themes_Settings_Panel_Font'); ?></label>
                         <input id="panel_font" name="panel_font" type="text" value="<?php echo THEME_PANEL_FONT; ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <br>
