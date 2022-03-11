@@ -72,7 +72,7 @@
                     <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
                         <div class="flex-grow">
                             <h3 class="text-lg mt-1 mx-2 text-white"><?php echo $themeData->{'theme'}->{'name'}; ?></h3>
-                            <p class="text-xs -mt-1 mb-1 mx-2 text-white"><?php echo __('General:CreatedBy'); ?> <?php echo $themeData->{'theme'}->{'author'}; ?></p>
+                            <p class="text-xs -mt-1 mb-1 mx-2 text-white"><?php echo __('General:By'); ?> <?php echo $themeData->{'theme'}->{'author'}; ?></p>
                         </div>
                         <?php
                             $remoteVersion = get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'theme');
