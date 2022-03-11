@@ -76,10 +76,15 @@
                         </div>
                         <?php if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) { ?><p class="text-xs text-white">ACTIVE</p><?php } ?>
                     </div>
+                    <?php if (get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'themes') != $themeData->{'theme'}->{'version'}->{'theme'}) { ?>
+                    <div class="absolute top-1/3 left-1/3 text-white z-20">
+                        <i class="fas fa-sync fa-4x"></i>
+                    </div>
+                    <?php } ?>
                     <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
                         <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/icons/<?php echo $themeFramework; ?>.svg" class="w-6 h-6" alt="<?php echo $themeFramework; ?>">
                     </div>
-                    <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 text-white z-20">
+                    <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 <?php if (get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'themes') != $themeData->{'theme'}->{'version'}->{'theme'}) { ?>text-red-500<?php } else { ?>text-white<?php } ?> z-20">
                         <?php echo $themeData->{'theme'}->{'version'}->{'theme'}; ?>
                     </div>
                     <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="<?php echo $themeImage; ?>" alt="<?php echo $themeData->{'theme'}->{'name'}; ?>">
