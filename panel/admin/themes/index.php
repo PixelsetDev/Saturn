@@ -69,7 +69,7 @@
                         $themeFramework = 'question_mark';
                     } ?>
                 <a href="settings?slug=<?php echo $themeData->{'theme'}->{'slug'}; ?>" class="overflow-hidden bg-gray-200 w-52 h-52 relative hover:shadow-xl transition duration-200 flex-shrink-0 rounded">
-                    <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
+                    <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-30 flex">
                         <div class="flex-grow">
                             <h3 class="text-lg mt-1 mx-2 text-white"><?php echo $themeData->{'theme'}->{'name'}; ?></h3>
                             <p class="text-xs -mt-1 mb-1 mx-2 text-white"><?php echo __('General:By'); ?> <?php echo $themeData->{'theme'}->{'author'}; ?></p>
@@ -82,8 +82,9 @@
                         <?php } ?>
                     </div>
                     <?php if (($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) && ($remoteVersion != "")) { ?>
-                    <div class="absolute top-1/3 left-1/3 text-white z-20">
-                        <i class="fas fa-sync fa-4x"></i>
+                    <div class="absolute top-1/4 left-1/4 text-white z-20 bg-red-500 px-4 pt-4 pb-2 rounded-md bg-opacity-50">
+                        <i class="fas fa-sync fa-3x text-center w-full"></i><br>
+                        <span class="text-lg">Update</span>
                     </div>
                     <?php } ?>
                     <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
