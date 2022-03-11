@@ -81,7 +81,7 @@
                         <p class="text-xs text-white">ACTIVE</p>
                         <?php } ?>
                     </div>
-                    <?php if ($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'} && $remoteVersion != "") { ?>
+                    <?php if (($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) && ($remoteVersion != "")) { ?>
                     <div class="absolute top-1/3 left-1/3 text-white z-20">
                         <i class="fas fa-sync fa-4x"></i>
                     </div>
