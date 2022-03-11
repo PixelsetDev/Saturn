@@ -272,7 +272,8 @@
       "ResetCCV": "无法重置核心校验和验证，发生错误。",
       "IssuesFound": "发现问题",
       "Logs_Clear": "无法清除日志，发生错误。",
-      "Settings_Saved": "无法保存网站设置，发生错误。"
+      "Settings_Saved": "无法保存网站设置，发生错误。",
+      "Themes_Download": "下载主题时出错。"
     },
     "security": {
       "Clean": "干净",

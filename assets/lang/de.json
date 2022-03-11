@@ -272,7 +272,8 @@
       "ResetCCV": "Core Checksum Validation kann nicht zurückgesetzt werden, ein Fehler ist aufgetreten.",
       "IssuesFound": "Probleme gefunden",
       "Logs_Clear": "Das Protokoll konnte nicht gelöscht werden, ein Fehler ist aufgetreten.",
-      "Settings_Saved": "Website-Einstellungen konnten nicht gespeichert werden, ein Fehler ist aufgetreten."
+      "Settings_Saved": "Website-Einstellungen konnten nicht gespeichert werden, ein Fehler ist aufgetreten.",
+      "Themes_Download": "Beim Herunterladen des Designs ist ein Fehler aufgetreten."
     },
     "security": {
       "Clean": "Reinigen",

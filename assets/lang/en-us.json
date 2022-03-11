@@ -272,7 +272,8 @@
       "ResetCCV": "Unable to reset Core Checksum Validation, an error occurred.",
       "IssuesFound": "Issues found",
       "Logs_Clear": "Unable to clear the log, an error occurred.",
-      "Settings_Saved": "Unable to save website settings, an error occurred."
+      "Settings_Saved": "Unable to save website settings, an error occurred.",
+      "Themes_Download": "An error occurred whilst downloading the theme."
     },
     "security": {
       "Clean": "Clean",

@@ -13,7 +13,7 @@
         if (marketplace_download_zip(checkInput('DEFAULT', $_GET['download']), '/../../../themes/download.zip')) {
             internal_redirect('/panel/admin/themes?successMsg='.__('Admin:Themes_Installed_Success'));
         } else {
-            internal_redirect('/panel/admin/themes?errorMsg=An error occurred whilst downloading the theme.');
+            internal_redirect('/panel/admin/themes?errorMsg='.__('Error:Themes_Download'));
         }
         exit;
     }

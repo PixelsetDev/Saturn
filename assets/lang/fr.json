@@ -272,7 +272,8 @@
       "ResetCCV": "Impossible de réinitialiser la validation de la somme de contrôle principale, une erreur s'est produite.",
       "IssuesFound": "Problèmes trouvés",
       "Logs_Clear": "Impossible d'effacer le journal, une erreur s'est produite.",
-      "Settings_Saved": "Impossible d'enregistrer les paramètres du site Web, une erreur s'est produite."
+      "Settings_Saved": "Impossible d'enregistrer les paramètres du site Web, une erreur s'est produite.",
+      "Themes_Download": "Une erreur s'est produite lors du téléchargement du thème."
     },
     "Security": {
       "Clean": "Nettoyer",

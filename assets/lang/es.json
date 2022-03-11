@@ -272,7 +272,8 @@
       "ResetCCV": "No se pudo restablecer la validación de la suma de verificación del núcleo, ocurrió un error.",
       "IssuesFound": "Probleme gefunden",
       "Logs_Clear": "No se pudo borrar el registro, ocurrió un error.",
-      "Settings_Saved": "No se pudo guardar la configuración del sitio web, ocurrió un error."
+      "Settings_Saved": "No se pudo guardar la configuración del sitio web, ocurrió un error.",
+      "Themes_Download": "Ocurrió un error al descargar el tema."
     },
     "security": {
       "Clean": "Limpiar",
