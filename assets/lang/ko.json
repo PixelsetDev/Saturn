@@ -33,7 +33,8 @@
       "CannotBeUndone": "이 작업은 취소할 수 없습니다.",
       "True": "진짜",
       "False": "거짓",
-      "Recommended": "권장"
+      "Recommended": "권장",
+      "CreatedBy": "만든 사람"
     },
     "panel": {
       "Panel": "제어판",

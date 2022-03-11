@@ -33,7 +33,8 @@
       "CannotBeUndone": "This action cannot be undone.",
       "True": "True",
       "False": "False",
-      "Recommended": "Recommended"
+      "Recommended": "Recommended",
+      "CreatedBy": "Created By"
     },
     "panel": {
       "Panel": "Control Panel",

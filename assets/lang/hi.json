@@ -33,7 +33,8 @@
       "CannotBeUndone": "यह क्रिया पूर्ववत नहीं की जा सकती।",
       "True": "सच",
       "False": "झूठा",
-      "Recommended": "अनुशंसित"
+      "Recommended": "अनुशंसित",
+      "CreatedBy": "द्वारा बनाया गया"
     },
     "panel": {
       "Panel": "कंट्रोल पैनल",

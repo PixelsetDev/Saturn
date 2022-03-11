@@ -33,7 +33,8 @@
       "CannotBeUndone": "Cette action ne peut pas être annulée.",
       "True": "Vrai",
       "False": "Faux",
-      "Recommended": "Recommandé"
+      "Recommended": "Recommandé",
+      "CreatedBy": "Créé par"
     },
     "panel": {
       "Panel": "Panneau de configuration",

@@ -33,7 +33,8 @@
       "CannotBeUndone": "Esta acción no se puede deshacer.",
       "True": "Verdad",
       "False": "Falso",
-      "Recommended": "Recomendado"
+      "Recommended": "Recomendado",
+      "CreatedBy": "Creado por"
     },
     "panel": {
       "Panel": "Panel de control",

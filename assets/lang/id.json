@@ -33,7 +33,8 @@
       "CannotBeUndone": "Tindakan ini tidak dapat dibatalkan.",
       "True": "Betul",
       "False": "Salah",
-      "Recommended": "Direkomendasikan"
+      "Recommended": "Direkomendasikan",
+      "CreatedBy": "Dibuat Oleh"
     },
     "panel": {
       "Panel": "Panel Kontrol",

@@ -33,7 +33,8 @@
       "CannotBeUndone": "Diese Aktion kann nicht rückgängig gemacht werden.",
       "True": "Wahr",
       "False": "Falsch",
-      "Recommended": "Empfohlen"
+      "Recommended": "Empfohlen",
+      "CreatedBy": "Erstellt von"
     },
     "panel": {
       "Panel": "Systemsteuerung",

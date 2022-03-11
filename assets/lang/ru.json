@@ -33,7 +33,8 @@
       "CannotBeUndone": "Это действие нельзя отменить.",
       "True": "Правда",
       "False": "Ложь",
-      "Recommended": "Рекомендуется"
+      "Recommended": "Рекомендуется",
+      "CreatedBy": "Создано"
     },
     "panel": {
       "Panel": "Панель управления",

@@ -33,7 +33,8 @@
       "CannotBeUndone": "此操作無法撤消。",
       "True": "真",
       "False": "假",
-      "Recommended": "推薦"
+      "Recommended": "推薦",
+      "CreatedBy": "創建者"
     },
     "panel": {
       "Panel": "控制面板",
