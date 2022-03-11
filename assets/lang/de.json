@@ -34,7 +34,7 @@
       "True": "Wahr",
       "False": "Falsch",
       "Recommended": "Empfohlen",
-      "CreatedBy": "Erstellt von"
+      "By": "Von"
     },
     "panel": {
       "Panel": "Systemsteuerung",

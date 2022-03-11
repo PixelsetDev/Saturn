@@ -34,7 +34,7 @@
       "True": "진짜",
       "False": "거짓",
       "Recommended": "권장",
-      "CreatedBy": "만든 사람"
+      "By": "만든 사람"
     },
     "panel": {
       "Panel": "제어판",
