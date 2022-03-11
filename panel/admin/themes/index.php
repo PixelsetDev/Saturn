@@ -76,12 +76,13 @@
                         </div>
                         <?php
                             $remoteVersion = get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'theme');
-                            if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) {
+                    if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) {
                         ?>
                         <p class="text-xs text-white">ACTIVE</p>
-                        <?php } ?>
+                        <?php
+                    } ?>
                     </div>
-                    <?php if (($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) && ($remoteVersion != "")) { ?>
+                    <?php if (($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) && ($remoteVersion != '')) { ?>
                     <div class="absolute top-1/4 left-1/4 text-white z-20 bg-red-500 px-4 pt-4 pb-2 rounded-md bg-opacity-50">
                         <i class="fas fa-sync fa-3x text-center w-full"></i><br>
                         <span class="text-lg">Update</span>
@@ -90,7 +91,7 @@
                     <div class="absolute top-0 left p-1 bg-black bg-opacity-50 text-white z-20">
                         <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/icons/<?php echo $themeFramework; ?>.svg" class="w-6 h-6" alt="<?php echo $themeFramework; ?>">
                     </div>
-                    <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 <?php if ($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'} && $remoteVersion != "") { ?>text-red-500<?php } else { ?>text-white<?php } ?> z-20">
+                    <div class="absolute top-0 right-0 p-1 bg-black bg-opacity-50 <?php if ($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'} && $remoteVersion != '') { ?>text-red-500<?php } else { ?>text-white<?php } ?> z-20">
                         <?php echo $themeData->{'theme'}->{'version'}->{'theme'}; ?>
                     </div>
                     <img class="h-full w-full object-cover transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 z-10" src="<?php echo $themeImage; ?>" alt="<?php echo $themeData->{'theme'}->{'name'}; ?>">

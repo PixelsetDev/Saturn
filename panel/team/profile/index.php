@@ -79,7 +79,7 @@
             <div class="mt-5 flex space-x-4 overflow-x-scroll">
                 <?php
                 global $conn;
-                $results = $conn->query("SELECT `title`, `url` FROM `".DATABASE_PREFIX."pages` WHERE `user_id` = '".$user."';");
+                $results = $conn->query('SELECT `title`, `url` FROM `'.DATABASE_PREFIX."pages` WHERE `user_id` = '".$user."';");
                 $data = $results->fetch_all();
                 foreach ($data as $item) {
                     ?>
@@ -95,7 +95,7 @@
             <h1 class="text-2xl"><?php echo get_user_article_count($user); ?> Articles</h1>
             <div class="mt-5 grid grid-cols-3 gap-10 overflow-x-scroll">
                 <?php
-                $results = $conn->query("SELECT `title` FROM `".DATABASE_PREFIX."articles` WHERE `author_id` = '".$user."';");
+                $results = $conn->query('SELECT `title` FROM `'.DATABASE_PREFIX."articles` WHERE `author_id` = '".$user."';");
                 $data = $results->fetch_all();
                 foreach ($data as $item) {
                     ?>

@@ -305,9 +305,9 @@
                         <div class="flex space-x-4">
                             <?php
                             $result = $conn->query('SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits DESC;');
-                            $data = $result->fetch_all();
-                            foreach ($data as $item) {
-                                ?>
+        $data = $result->fetch_all();
+        foreach ($data as $item) {
+            ?>
                                 <div class="flex-grow">
                                     <div class="flex flex-col items-center">
                                         <div class="relative">
@@ -325,13 +325,13 @@
                                             echo 'yellow';
                                         } else {
                                             echo 'green';
-                                        }
-                                        ?>-500 rounded-full p-1">
+                                        } ?>-500 rounded-full p-1">
                                             <?php echo $item[1]; ?> Edits
                                         </a>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php
+        } ?>
                         </div>
                     </div>
                     <?php if (get_user_roleID($id) > '2') { ?>
@@ -350,7 +350,7 @@
                             $data = $result->fetch_all();
                             foreach ($data as $item) {
                                 if (get_user_roleID($item[0]) > '2') {
-                                ?>
+                                    ?>
                                 <div class="flex-grow">
                                     <div class="flex flex-col items-center">
                                         <div class="relative">
@@ -368,13 +368,14 @@
                                             echo 'yellow';
                                         } else {
                                             echo 'green';
-                                        }
-                                        ?>-500 rounded-full p-1">
+                                        } ?>-500 rounded-full p-1">
                                             <?php echo $item[1]; ?> Approvals
                                         </a>
                                     </div>
                                 </div>
-                            <?php }} ?>
+                            <?php
+                                }
+                            } ?>
                         </div>
                     </div>
                     <?php } ?>
