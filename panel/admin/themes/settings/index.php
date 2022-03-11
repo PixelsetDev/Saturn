@@ -162,12 +162,12 @@ if (isset($_GET['successMsg'])) {
             <?php if (isset($themeData->{'theme'}->{'slug'})) { ?>
             <?php
             if ($themeData->{'theme'}->{'version'}->{'saturn'} != SATURN_VERSION) {
-                echo alert('WARNING', __('Admin:Themes_NewVersion_For') . $themeData->{'theme'}->{'version'}->{'saturn'} . __('Admin:Themes_NewVersion_Running') . SATURN_VERSION . '".');
+                echo alert('WARNING', __('Admin:Themes_NewVersion_For').$themeData->{'theme'}->{'version'}->{'saturn'}.__('Admin:Themes_NewVersion_Running').SATURN_VERSION.'".');
             }
             $remoteVersion = get_remote_marketplace_version($themeData->{'theme'}->{'slug'}, 'theme');
             if ($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) {
-                if ($remoteVersion != "") {
-                    echo alert('INFO', __('Admin:Themes_NewVersion_Message_1').' ' . $themeData->{'theme'}->{'version'}->{'theme'} . ' '.__('Admin:Themes_NewVersion_Message_2').' ' . $remoteVersion);
+                if ($remoteVersion != '') {
+                    echo alert('INFO', __('Admin:Themes_NewVersion_Message_1').' '.$themeData->{'theme'}->{'version'}->{'theme'}.' '.__('Admin:Themes_NewVersion_Message_2').' '.$remoteVersion);
                 } else {
                     echo alert('ERROR', 'Saturn is having issues connecting to the Marketplace server. If this issue persists please email contact@saturncms.net, thank you.');
                 }
@@ -206,7 +206,7 @@ if (isset($_GET['successMsg'])) {
             <?php if ($slug == THEME_SLUG) { ?>
             <div class="mt-6">
                 <?php
-                if ($themeData->{'theme'}->{'features'}->{'custom-fonts'} == "none") {
+                if ($themeData->{'theme'}->{'features'}->{'custom-fonts'} == 'none') {
                     echo alert('WARNING', 'This theme does not support Website Fonts.').'<br>';
                 }
                 if (!isset($themeData->{'theme'}->{'features'})) {
@@ -220,45 +220,47 @@ if (isset($_GET['successMsg'])) {
                         <select id="theme_colour_scheme" name="theme_colour_scheme" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option disabled>-- <?php echo __('General:PleaseSelectOne'); ?> --</option>
                             <option value="light"<?php if (THEME_COLOUR_SCHEME == 'light') {
-                echo ' selected';
-            } ?>><?php echo __('General:Light'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Light'); ?></option>
                             <option value="dark"<?php if (THEME_COLOUR_SCHEME == 'dark') {
-                echo ' selected';
-            } ?>><?php echo __('General:Dark'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Dark'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="theme_font"><?php echo __('Admin:Themes_Settings_Website_Font'); ?></label>
-                        <input id="theme_font" name="theme_font" type="text" value="<?php echo THEME_FONT; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"<?php if($themeData->{'theme'}->{'features'}->{'custom-fonts'} == "none" || !isset($themeData->{'theme'}->{'features'})) { echo ' disabled'; } ?>>
+                        <input id="theme_font" name="theme_font" type="text" value="<?php echo THEME_FONT; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"<?php if ($themeData->{'theme'}->{'features'}->{'custom-fonts'} == 'none' || !isset($themeData->{'theme'}->{'features'})) {
+                    echo ' disabled';
+                } ?>>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="panel_colour_scheme"><?php echo __('Admin:Themes_Settings_Panel_ColourScheme'); ?></label>
                         <select id="panel_colour_scheme" name="panel_colour_scheme" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option disabled>-- <?php echo __('General:PleaseSelectOne'); ?> --</option>
                             <option value="gray"<?php if (THEME_PANEL_COLOUR == 'gray') {
-                echo ' selected';
-            } ?>><?php echo __('General:Gray'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Gray'); ?></option>
                             <option value="red"<?php if (THEME_PANEL_COLOUR == 'red') {
-                echo ' selected';
-            } ?>><?php echo __('General:Red'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Red'); ?></option>
                             <option value="yellow"<?php if (THEME_PANEL_COLOUR == 'yellow') {
-                echo ' selected';
-            } ?>><?php echo __('General:Yellow'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Yellow'); ?></option>
                             <option value="green"<?php if (THEME_PANEL_COLOUR == 'green') {
-                echo ' selected';
-            } ?>><?php echo __('General:Green'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Green'); ?></option>
                             <option value="blue"<?php if (THEME_PANEL_COLOUR == 'blue') {
-                echo ' selected';
-            } ?>><?php echo __('General:Blue'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Blue'); ?></option>
                             <option value="indigo"<?php if (THEME_PANEL_COLOUR == 'indigo') {
-                echo ' selected';
-            } ?>><?php echo __('General:Indigo'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Indigo'); ?></option>
                             <option value="purple"<?php if (THEME_PANEL_COLOUR == 'purple') {
-                echo ' selected';
-            } ?>><?php echo __('General:Purple'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Purple'); ?></option>
                             <option value="pink"<?php if (THEME_PANEL_COLOUR == 'pink') {
-                echo ' selected';
-            } ?>><?php echo __('General:Pink'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Pink'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
