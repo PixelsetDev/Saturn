@@ -77,10 +77,10 @@ if (isset($_POST['save'])) {
     const PERMISSION_EDIT_PAGE_SETTINGS = '".$_POST['PERMISSION_EDIT_PAGE_SETTINGS']."';";
 
     if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
-        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
-        internal_redirect('/panel/admin/settings/permissions?successMsg=Website settings saved successfully. You may need to refresh the page to see changes. If an error message appears, refresh the page.');
+        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Settings_Saved_Log'));
+        internal_redirect('/panel/admin/settings/permissions?successMsg='.__('Admin:Settings_Saved'));
     } else {
-        internal_redirect('/panel/admin/settings/permissions?errorMsg=Unable to save website settings, an error occurred.');
+        internal_redirect('/panel/admin/settings/permissions?errorMsg='.__('Error:Settings_Saved'));
     }
     exit;
 }

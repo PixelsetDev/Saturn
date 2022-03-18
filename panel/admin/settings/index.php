@@ -78,7 +78,7 @@
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Settings_Saved_Log'));
             internal_redirect('/panel/admin/settings?successMsg='.__('Admin:Settings_Saved'));
         } else {
-            internal_redirect('/panel/admin/settings?errorMsg=Unable to save website settings, an error occurred.');
+            internal_redirect('/panel/admin/settings?errorMsg='.__('Error:Settings_Saved'));
         }
         exit;
     }
