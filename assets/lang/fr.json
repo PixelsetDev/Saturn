@@ -290,7 +290,8 @@
       "Writers": "Écrivains",
       "Restricted": "Restreint",
       "Pending": "En attente",
-      "Update": "Mettre à jour"
+      "Update": "Mettre à jour",
+      "Back": "Arrière"
     },
     "panel": {
       "Panel": "Panneau de configuration",

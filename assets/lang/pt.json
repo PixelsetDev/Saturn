@@ -278,7 +278,8 @@
       "Writers": "Escritores",
       "Restricted": "Restrito",
       "Pending": "Pendente",
-      "Update": "Atualizar"
+      "Update": "Atualizar",
+      "Back": "Voltar"
     },
     "panel": {
       "Panel": "Painel de Controle",

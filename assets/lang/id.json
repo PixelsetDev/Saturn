@@ -278,7 +278,8 @@
       "Writers": "Penulis",
       "Restricted": "Dibatasi",
       "Pending": "Tertunda",
-      "Update": "Memperbarui"
+      "Update": "Memperbarui",
+      "Back": "Kembali"
     },
     "panel": {
       "Panel": "Panel Kontrol",

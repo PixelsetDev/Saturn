@@ -278,7 +278,8 @@
       "Writers": "Writers",
       "Restricted": "Restricted",
       "Pending": "Pending",
-      "Update": "Update"
+      "Update": "Update",
+      "Back": "Back"
     },
     "panel": {
       "Panel": "Control Panel",
