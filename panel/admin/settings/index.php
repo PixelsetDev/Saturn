@@ -65,10 +65,10 @@
     const LOGGING_ACTIVE = ".$_POST['logging'].';
     const LOGGING_AUTOLOG = '.$_POST['logging_autolog'].';
     /* Developer Tools */
-    const CONFIG_DEBUG = '.$_POST['debug'].";
+    const CONFIG_DEBUG = '.$_POST['debug'].';
     /* Updating */
-    const CONFIG_UPDATE_CHECK = ".$_POST['update_check'].";
-    const CONFIG_UPDATE_AUTO = ".$_POST['update_auto'].";
+    const CONFIG_UPDATE_CHECK = '.$_POST['update_check'].';
+    const CONFIG_UPDATE_AUTO = '.$_POST['update_auto'].";
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '".PERMISSION_CREATE_CATEGORY."';
     const PERMISSION_CREATE_PAGE = '".PERMISSION_CREATE_PAGE."';
@@ -208,8 +208,8 @@
                                     echo ' selected';
                                 } ?> value="ru">[RU] Russian</option>
                             <option<?php if (CONFIG_LANGUAGE == 'ru') {
-                                echo ' selected';
-                            } ?> value="ru">[UK] Ukrainian</option>
+                                    echo ' selected';
+                                } ?> value="ru">[UK] Ukrainian</option>
                             <option<?php if (CONFIG_LANGUAGE == 'zh-hans') {
                                     echo ' selected';
                                 } ?> value="zh-hans">[ZH-HANS] Chinese (Simplified)</option>
@@ -253,22 +253,22 @@
                         <label for="update_check"><?php echo __('Admin:Settings_Updating_Check'); ?></label>
                         <select id="update_check" name="update_check" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option<?php if (CONFIG_UPDATE_CHECK == true) {
-                                echo ' selected';
-                            } ?>><?php echo __('General:True'); ?></option>
+                                    echo ' selected';
+                                } ?>><?php echo __('General:True'); ?></option>
                             <option<?php if (CONFIG_UPDATE_CHECK == false) {
-                                echo ' selected';
-                            } ?>><?php echo __('General:False'); ?></option>
+                                    echo ' selected';
+                                } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="update_auto"><?php echo __('Admin:Settings_Updating_Auto'); ?></label>
                         <select id="update_auto" name="update_auto" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option<?php if (CONFIG_UPDATE_AUTO == true) {
-                                echo ' selected';
-                            } ?>><?php echo __('General:True'); ?></option>
+                                    echo ' selected';
+                                } ?>><?php echo __('General:True'); ?></option>
                             <option<?php if (CONFIG_UPDATE_AUTO == false) {
-                                echo ' selected';
-                            } ?>><?php echo __('General:False'); ?></option>
+                                    echo ' selected';
+                                } ?>><?php echo __('General:False'); ?></option>
                         </select>
                     </div>
                 </div>

@@ -67,10 +67,10 @@ if (isset($_POST['save'])) {
     const LOGGING_ACTIVE = ".LOGGING_ACTIVE.';
     const LOGGING_AUTOLOG = '.LOGGING_AUTOLOG.';
     /* Developer Tools */
-    const CONFIG_DEBUG = '.CONFIG_DEBUG.";
+    const CONFIG_DEBUG = '.CONFIG_DEBUG.';
     /* Updating */
-    const CONFIG_UPDATE_CHECK = ".CONFIG_UPDATE_CHECK.";
-    const CONFIG_UPDATE_AUTO = ".CONFIG_UPDATE_AUTO.";
+    const CONFIG_UPDATE_CHECK = '.CONFIG_UPDATE_CHECK.';
+    const CONFIG_UPDATE_AUTO = '.CONFIG_UPDATE_AUTO.";
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '".$_POST['PERMISSION_CREATE_CATEGORY']."';
     const PERMISSION_CREATE_PAGE = '".$_POST['PERMISSION_CREATE_PAGE']."';
