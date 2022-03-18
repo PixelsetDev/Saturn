@@ -214,7 +214,7 @@
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
                             <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Writers'); ?></h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('UserManagement_Description_Writers'); ?></p>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('Admin:UserManagement_Description_Writers'); ?></p>
                             <?php
                             $empty = true;
 
@@ -226,7 +226,7 @@
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
                             <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Pending'); ?></h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('UserManagement_Description_Pending'); ?></p>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('Admin:UserManagement_Description_Pending'); ?></p>
                             <?php
                             $empty = true;
 
@@ -238,7 +238,7 @@
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
                             <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Restricted'); ?></h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('UserManagement_Description_Restricted'); ?></p>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('Admin:UserManagement_Description_Restricted'); ?></p>
                             <?php
                             $empty = true;
 

@@ -277,7 +277,8 @@
       "Writer": "작가",
       "Writers": "작가",
       "Restricted": "제한된",
-      "Pending": "보류 중"
+      "Pending": "보류 중",
+      "Update": "업데이트"
     },
     "panel": {
       "Panel": "제어판",

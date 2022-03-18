@@ -289,7 +289,8 @@
       "Writer": "Scénariste",
       "Writers": "Écrivains",
       "Restricted": "Restreint",
-      "Pending": "En attente"
+      "Pending": "En attente",
+      "Update": "Mettre à jour"
     },
     "panel": {
       "Panel": "Panneau de configuration",
@@ -365,8 +366,7 @@
       "Verify_EnterCode": "Pour nous aider à sécuriser votre compte, veuillez saisir le code de sécurité que nous vous avons envoyé à votre adresse e-mail dans le champ ci-dessous.",
       "Verify_NewLocation": "Nous avons détecté que vous essayez de vous connecter depuis un nouvel emplacement.",
       "Verify_2FA": "Authentification à deux facteurs",
-      "Verify_Code": "Code de vérification",
-
+      "Verify_Code": "Code de vérification"
     }
   }
 }
