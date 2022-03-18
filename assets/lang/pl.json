@@ -5,6 +5,24 @@
   "authors": "Jakub Koziej",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "",
+      "UserManagement_RoleUpdated_Message_1": "",
+      "UserManagement_RoleUpdated_Message_2": "",
+      "UserManagement_RoleUpdated_Log": "",
+      "UserManagement_Ban": "",
+      "UserManagement_Ban_Warning": "",
+      "UserManagement_Ban_Select": "",
+      "UserManagement_Ban_Reason": "",
+      "UserManagement_Banned": "",
+      "UserManagement_Description_Administrator": "",
+      "UserManagement_Description_Editors": "",
+      "UserManagement_Description_Writers": "",
+      "UserManagement_Description_Pending": "",
+      "UserManagement_Description_Restricted": "",
+      "UserManagement_Approvals_Disabled_Msg_1": "",
+      "UserManagement_Approvals_Disabled_Msg_2": "",
+      "UserManagement_Approvals_Disabled_Msg_3": "",
+      "UserManagement_Approvals_Disabled_Msg_4": "",
       "Panel": "Panel",
       "Exit_Panel": "Przejdź do głównego panelu",
       "Exit_Web": "Przejdź do strony",
@@ -186,6 +204,12 @@
       "IssuesFound": "",
       "Logs_Clear": "",
       "Settings_Saved": "",
+      "NoneFound": "",
+      "UserManagement_Ban": "",
+      "UserManagement_Ban_Self": "",
+      "UserManagement_Update": "",
+      "UserManagement_Self": "",
+      "Marketplace_NotActivated": "",
       "Marketplace_Disconnected": "",
       "Themes_NotFound": "",
       "Themes_CustomFonts": "",
@@ -244,7 +268,16 @@
       "Blue": "",
       "Indigo": "",
       "Purple": "",
-      "Pink": ""
+      "Pink": "",
+      "Manage": "",
+      "Administrator": "",
+      "Administrators": "",
+      "Editor": "",
+      "Editors": "",
+      "Writer": "",
+      "Writers": "",
+      "Restricted": "",
+      "Pending": ""
     },
     "panel": {
       "Panel": "",
@@ -329,7 +362,10 @@
       "Stopped": "",
       "ClearedLog_Security": "",
       "ClearedLog_Error": "",
-      "I/O_Blacklist": ""
+      "I/O_Blacklist": "",
+      "GSS_OnList": "",
+      "GSS_OnList_Reason": "",
+      "GSS_OnList_LearnMore": ""
     }
   }
 }

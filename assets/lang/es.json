@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "Tu rol ha sido actualizado.",
+      "UserManagement_RoleUpdated_Message_1": "Tu rol ha sido actualizado. Anteriormente lo eras",
+      "UserManagement_RoleUpdated_Message_2": "ahora lo eres",
+      "UserManagement_RoleUpdated_Log": "La función de usuario se ha cambiado a",
+      "UserManagement_Ban": "Usuario Prohibido",
+      "UserManagement_Ban_Warning": "Advertencia: Esta acción no se puede deshacer. Prohibir usuarios eliminará toda su información personal.",
+      "UserManagement_Ban_Select": "Por favor seleccione uno. Advertencia: Esta acción no se puede deshacer.",
+      "UserManagement_Ban_Reason": "Motivo (Obligatorio)",
+      "UserManagement_Banned": "Usuario baneado.",
+      "UserManagement_Description_Administrator": "Administrar todos los aspectos del sitio.",
+      "UserManagement_Description_Editors": "Usuarios que pueden aprobar ediciones de página (si están habilitadas).",
+      "UserManagement_Description_Writers": "Usuarios que pueden editar contenido en su sitio de Saturn.",
+      "UserManagement_Description_Pending": "Usuarios que esperan que un administrador apruebe su cuenta. Estos usuarios aún no pueden acceder a Saturn.",
+      "UserManagement_Description_Restricted": "Usuarios que no pueden acceder a Saturn.",
+      "UserManagement_Approvals_Disabled_Msg_1": "Las aprobaciones están deshabilitadas.",
+      "UserManagement_Approvals_Disabled_Msg_2": "Estos usuarios tienen los mismos derechos que los Escritores cuando trabajan en Páginas, Artículos y Elementos Interactivos.",
+      "UserManagement_Approvals_Disabled_Msg_3": "Es posible que tengan más acceso que los escritores a áreas como Team Chat y Team To-Do Lists.",
+      "UserManagement_Approvals_Disabled_Msg_4": "¿Qué significa esto?",
       "Panel": "Panel de administración",
       "Exit_Panel": "Salir al Panel de Control",
       "Exit_Web": "Salir al sitio web",
@@ -186,6 +204,12 @@
       "IssuesFound": "Probleme gefunden",
       "Logs_Clear": "No se pudo borrar el registro, ocurrió un error.",
       "Settings_Saved": "No se pudo guardar la configuración del sitio web, ocurrió un error.",
+      "NoneFound": "Ninguno encontrado.",
+      "UserManagement_Ban": "Lo sentimos, nos encontramos con un problema al intentar prohibir a este usuario. Inténtalo de nuevo más tarde.",
+      "UserManagement_Ban_Self": "No puedes banearte a ti mismo",
+      "UserManagement_Update": "No se pudo actualizar el usuario, ocurrió un error.",
+      "UserManagement_Self": "Para evitar el bloqueo accidental de cuentas, actualmente no puede cambiar su propio rol, disculpe las molestias causadas. Para cambiar información como su nombre para mostrar",
+      "Marketplace_NotActivated": "Saturn Marketplace no funcionará si tu instalación no está activada.",
       "Marketplace_Disconnected": "Saturn tiene problemas para conectarse al servidor de Marketplace. Si este problema persiste, envíe un correo electrónico a contact@saturncms.net, gracias.",
       "Themes_NotFound": "Tema no encontrado.",
       "Themes_CustomFonts": "Este tema no admite fuentes de sitios web.",
@@ -244,7 +268,16 @@
       "Blue": "Azul",
       "Indigo": "Índigo",
       "Purple": "Púrpura",
-      "Pink": "Rosa"
+      "Pink": "Rosa",
+      "Manage": "Administrar",
+      "Administrator": "Administrador",
+      "Administrators": "Administradores",
+      "Editor": "Editor",
+      "Editors": "Editores",
+      "Writer": "Escritor",
+      "Writers": "Escritores",
+      "Restricted": "Restringido",
+      "Pending": "Pendiente"
     },
     "panel": {
       "Panel": "Panel de control",
@@ -329,7 +362,10 @@
       "Stopped": "Detenido",
       "ClearedLog_Security": "borró el registro de seguridad",
       "ClearedLog_Error": "borró el registro de errores",
-      "I/O_Blacklist": "E/S: Elemento incluido en la lista negra:"
+      "I/O_Blacklist": "E/S: Elemento incluido en la lista negra:",
+      "GSS_OnList": "Este usuario está en la Lista de Alertas del Sistema de Seguridad Global de Saturn.",
+      "GSS_OnList_Reason": "Motivo:",
+      "GSS_OnList_LearnMore": "Haz clic aquí para obtener más información u obtener ayuda."
     }
   }
 }

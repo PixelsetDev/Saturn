@@ -11,9 +11,30 @@
       "Stopped": "Arrêté",
       "ClearedLog_Security": "a effacé le journal de sécurité",
       "ClearedLog_Error": "a effacé le journal des erreurs",
-      "I/O_Blacklist": "E/S: Contenu de l'élément sur liste noire:"
+      "I/O_Blacklist": "E/S: Contenu de l'élément sur liste noire:",
+      "GSS_OnList": "Cet utilisateur est sur la liste d'alerte du système de sécurité mondial Saturn.",
+      "GSS_OnList_Reason": "Raison:",
+      "GSS_OnList_LearnMore": "Cliquez ici pour en savoir plus ou obtenir de l'aide."
     },
     "admin": {
+      "UserManagement_RoleUpdated": "Votre rôle a été mis à jour.",
+      "UserManagement_RoleUpdated_Message_1": "Votre rôle a été mis à jour. Vous l'étiez auparavant",
+      "UserManagement_RoleUpdated_Message_2": "maintenant vous êtes",
+      "UserManagement_RoleUpdated_Log": "le rôle de a été changé en",
+      "UserManagement_Ban": "Bannir l'utilisateur",
+      "UserManagement_Ban_Warning": "Attention : cette action est irréversible. Bannir des utilisateurs supprimera toutes leurs informations personnelles.",
+      "UserManagement_Ban_Select": "Veuillez en sélectionner un. Attention : Cette action ne peut pas être annulée.",
+      "UserManagement_Ban_Reason": "Raison (obligatoire)",
+      "UserManagement_Banned": "Utilisateur banni.",
+      "UserManagement_Description_Administrator": "Gérer tous les aspects du site.",
+      "UserManagement_Description_Editors": "Utilisateurs pouvant approuver les modifications de page (si activées).",
+      "UserManagement_Description_Writers": "Utilisateurs pouvant modifier le contenu de votre site Saturn.",
+      "UserManagement_Description_Pending": "Utilisateurs attendant que leur compte soit approuvé par un administrateur. Ces utilisateurs ne peuvent pas encore accéder à Saturn.",
+      "UserManagement_Description_Restricted": "Utilisateurs qui ne peuvent pas accéder à Saturn.",
+      "UserManagement_Approvals_Disabled_Msg_1": "Les approbations sont désactivées.",
+      "UserManagement_Approvals_Disabled_Msg_2": "Ces utilisateurs ont les mêmes droits que les rédacteurs lorsqu'ils travaillent sur des pages, des articles et des éléments interactifs.",
+      "UserManagement_Approvals_Disabled_Msg_3": "Ils peuvent avoir plus d'accès que les rédacteurs à des zones telles que le chat d'équipe et les listes de tâches d'équipe.",
+      "UserManagement_Approvals_Disabled_Msg_4": "Qu'est-ce que cela signifie ?",
       "Panel": "Panneau d'administration",
       "Exit_Panel": "Quitter le panneau de configuration",
       "Exit_Web": "Quitter vers le site Web",
@@ -195,6 +216,12 @@
       "IssuesFound": "Problèmes trouvés",
       "Logs_Clear": "Impossible d'effacer le journal, une erreur s'est produite.",
       "Settings_Saved": "Impossible d'enregistrer les paramètres du site Web, une erreur s'est produite.",
+      "NoneFound": "Aucun trouvé.",
+      "UserManagement_Ban": "Désolé, nous avons rencontré un problème en essayant de bannir cet utilisateur. Veuillez réessayer plus tard.",
+      "UserManagement_Ban_Self": "Vous ne pouvez pas vous bannir",
+      "UserManagement_Update": "Impossible de mettre à jour l'utilisateur, une erreur s'est produite.",
+      "UserManagement_Self": "Pour éviter le verrouillage accidentel des comptes, vous n'êtes actuellement pas en mesure de modifier votre propre rôle, désolé pour la gêne occasionnée. Pour modifier des informations telles que votre nom d'affichage,",
+      "Marketplace_NotActivated": "Le marché Saturn ne fonctionnera pas si votre installation n'est pas activée.",
       "Marketplace_Disconnected": "Saturn rencontre des problèmes de connexion au serveur Marketplace. Si ce problème persiste, veuillez envoyer un e-mail à contact@saturncms.net, merci.",
       "Themes_NotFound": "Thème introuvable.",
       "Themes_CustomFonts": "Ce thème ne prend pas en charge les polices de site Web.",
@@ -253,7 +280,16 @@
       "Blue": "Bleu",
       "Indigo": "Indigo",
       "Violet": "Violet",
-      "Pink": "Rose"
+      "Pink": "Rose",
+      "Manage": "Gérer",
+      "Administrator": "Administrateur",
+      "Administrators": "Administrateurs",
+      "Editor": "Éditeur",
+      "Editors": "Editeurs",
+      "Writer": "Scénariste",
+      "Writers": "Écrivains",
+      "Restricted": "Restreint",
+      "Pending": "En attente"
     },
     "panel": {
       "Panel": "Panneau de configuration",
@@ -329,7 +365,8 @@
       "Verify_EnterCode": "Pour nous aider à sécuriser votre compte, veuillez saisir le code de sécurité que nous vous avons envoyé à votre adresse e-mail dans le champ ci-dessous.",
       "Verify_NewLocation": "Nous avons détecté que vous essayez de vous connecter depuis un nouvel emplacement.",
       "Verify_2FA": "Authentification à deux facteurs",
-      "Verify_Code": "Code de vérification"
+      "Verify_Code": "Code de vérification",
+
     }
   }
 }

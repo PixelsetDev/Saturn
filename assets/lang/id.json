@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "Peran Anda telah diperbarui.",
+      "UserManagement_RoleUpdated_Message_1": "Peran Anda telah diperbarui. Sebelumnya Anda",
+      "UserManagement_RoleUpdated_Message_2": "sekarang Anda",
+      "UserManagement_RoleUpdated_Log": "peran telah diubah menjadi",
+      "UserManagement_Ban": "Larang Pengguna",
+      "UserManagement_Ban_Warning": "Peringatan: Tindakan ini tidak dapat dibatalkan. Pelarangan pengguna akan menghapus semua informasi pribadi mereka.",
+      "UserManagement_Ban_Select": "Harap pilih salah satu. Peringatan: Tindakan ini tidak dapat dibatalkan.",
+      "UserManagement_Ban_Reason": "Alasan (Diperlukan)",
+      "UserManagement_Banned": "Pengguna dilarang.",
+      "UserManagement_Description_Administrator": "Kelola semua aspek situs.",
+      "UserManagement_Description_Editors": "Pengguna yang dapat menyetujui pengeditan halaman (jika diaktifkan).",
+      "UserManagement_Description_Writers": "Pengguna yang dapat mengedit konten di situs Saturnus Anda.",
+      "UserManagement_Description_Pending": "Pengguna menunggu akun mereka disetujui oleh administrator. Pengguna ini belum dapat mengakses Saturn.",
+      "UserManagement_Description_Restricted": "Pengguna yang tidak dapat mengakses Saturnus.",
+      "UserManagement_Approvals_Disabled_Msg_1": "Persetujuan dinonaktifkan.",
+      "UserManagement_Approvals_Disabled_Msg_2": "Pengguna ini memiliki hak yang sama dengan Penulis saat mengerjakan Halaman, Artikel, dan Elemen Interaktif.",
+      "UserManagement_Approvals_Disabled_Msg_3": "Mereka mungkin memiliki lebih banyak akses daripada penulis ke area seperti Obrolan Tim dan Daftar Tugas Tim.",
+      "UserManagement_Approvals_Disabled_Msg_4": "Apa artinya ini?",
       "Panel": "Panel Admin",
       "Exit_Panel": "Keluar ke Panel Kontrol",
       "Exit_Web": "Keluar ke Situs Web",
@@ -186,6 +204,12 @@
       "IssuesFound": "Masalah ditemukan",
       "Logs_Clear": "Tidak dapat menghapus log, terjadi kesalahan.",
       "Settings_Saved": "Tidak dapat menyimpan pengaturan situs web, terjadi kesalahan.",
+      "NoneFound": "Tidak ada yang ditemukan.",
+      "UserManagement_Ban": "Maaf, kami mengalami masalah saat mencoba mencekal pengguna ini. Silakan coba lagi nanti.",
+      "UserManagement_Ban_Self": "Anda tidak dapat mencekal diri sendiri",
+      "UserManagement_Update": "Tidak dapat memperbarui pengguna, telah terjadi kesalahan.",
+      "UserManagement_Self": "Untuk mencegah penguncian akun yang tidak disengaja, saat ini Anda tidak dapat mengubah peran Anda sendiri, maaf atas ketidaknyamanan yang ditimbulkan. Untuk mengubah informasi seperti nama tampilan Anda,",
+      "Marketplace_NotActivated": "Pasar Saturn tidak akan berfungsi jika instalasi Anda tidak diaktifkan.",
       "Marketplace_Disconnected": "Saturnus mengalami masalah koneksi ke server Marketplace. Jika masalah ini berlanjut, silakan kirim email ke contact@saturncms.net, terima kasih.",
       "Themes_NotFound": "Tema tidak ditemukan.",
       "Themes_CustomFonts": "Tema ini tidak mendukung Font Situs Web.",
@@ -244,7 +268,16 @@
       "Blue": "Biru",
       "Indigo": "Indigo",
       "Purple": "Ungu",
-      "Pink": "Merah Muda"
+      "Pink": "Merah Muda",
+      "Manage": "Kelola",
+      "Administrator": "Administrator",
+      "Administrators": "Administrator",
+      "Editor": "Editor",
+      "Editors": "Editor",
+      "Writer": "Penulis",
+      "Writers": "Penulis",
+      "Restricted": "Dibatasi",
+      "Pending": "Tertunda"
     },
     "panel": {
       "Panel": "Panel Kontrol",
@@ -329,7 +362,10 @@
       "Stopped": "Berhenti",
       "ClearedLog_Security": "menghapus Log Keamanan",
       "ClearedLog_Error": "menghapus Log Kesalahan",
-      "I/O_Blacklist": "I/O: Item yang Dimasukkan Daftar Hitam:"
+      "I/O_Blacklist": "I/O: Item yang Dimasukkan Daftar Hitam:",
+      "GSS_OnList": "Pengguna ini ada dalam Daftar Peringatan Sistem Keamanan Global Saturnus.",
+      "GSS_OnList_Reason": "Alasan:",
+      "GSS_OnList_LearnMore": "Klik di sini untuk mempelajari lebih lanjut atau mendapatkan bantuan."
     }
   }
 }

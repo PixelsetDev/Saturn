@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "आपकी भूमिका अपडेट कर दी गई है।",
+      "UserManagement_RoleUpdated_Message_1": "आपकी भूमिका अपडेट कर दी गई है। पहले आप थे",
+      "UserManagement_RoleUpdated_Message_2": "अब आप हैं",
+      "UserManagement_RoleUpdated_Log": "की भूमिका बदल दी गई है",
+      "UserManagement_Ban": "उपयोगकर्ता को प्रतिबंधित करें",
+      "UserManagement_Ban_Warning": "चेतावनी: इस क्रिया को पूर्ववत नहीं किया जा सकता। उपयोगकर्ताओं को प्रतिबंधित करने से उनकी सभी व्यक्तिगत जानकारी हट जाएगी।",
+      "UserManagement_Ban_Select": "कृपया किसी एक को चुनें। चेतावनी: इस क्रिया को पूर्ववत नहीं किया जा सकता।",
+      "UserManagement_Ban_Reason": "कारण (आवश्यक)",
+      "UserManagement_Banned": "उपयोगकर्ता प्रतिबंधित।",
+      "UserManagement_Description_Administrator": "साइट के सभी पहलुओं को प्रबंधित करें।",
+      "UserManagement_Description_Editors": "वे उपयोगकर्ता जो पृष्ठ संपादनों को स्वीकृति दे सकते हैं (यदि सक्षम हो)।",
+      "UserManagement_Description_Writers": "उपयोगकर्ता जो आपकी शनि साइट पर सामग्री संपादित कर सकते हैं।",
+      "UserManagement_Description_Pending": "उपयोगकर्ता अपने खाते को किसी व्यवस्थापक द्वारा अनुमोदित किए जाने की प्रतीक्षा कर रहे हैं। ये उपयोगकर्ता अभी तक शनि तक नहीं पहुंच सकते हैं।",
+      "UserManagement_Description_Restricted": "वे उपयोगकर्ता जो शनि तक नहीं पहुंच सकते।",
+      "UserManagement_Approvals_Disabled_Msg_1": "स्वीकृति अक्षम हैं।",
+      "UserManagement_Approvals_Disabled_Msg_2": "इन उपयोगकर्ताओं के पास पेज, लेख और इंटरएक्टिव तत्वों पर काम करते समय लेखकों के समान अधिकार हैं।",
+      "UserManagement_Approvals_Disabled_Msg_3": "उनके पास टीम चैट और टीम टू-डू लिस्ट जैसे क्षेत्रों में लेखकों की तुलना में अधिक पहुंच हो सकती है।",
+      "UserManagement_Approvals_Disabled_Msg_4": "इसका क्या अर्थ है?",
       "Panel": "एडमिन पैनल",
       "Exit_Panel": "कंट्रोल पैनल से बाहर निकलें",
       "Exit_Web": "वेबसाइट से बाहर निकलें",
@@ -186,6 +204,12 @@
       "IssuesFound": "समस्याएं मिलीं",
       "Logs_Clear": "लॉग साफ़ करने में असमर्थ, एक त्रुटि हुई।",
       "Security_Saved": "वेबसाइट सेटिंग सहेजने में असमर्थ, एक त्रुटि हुई।",
+      "NoneFound": "कोई नहीं मिला।",
+      "UserManagement_Ban": "क्षमा करें, इस उपयोगकर्ता को प्रतिबंधित करने का प्रयास करते समय हमें एक समस्या का सामना करना पड़ा। कृपया बाद में पुन: प्रयास करें।",
+      "UserManagement_Ban_Self": "आप खुद को प्रतिबंधित नहीं कर सकते",
+      "UserManagement_Update": "उपयोगकर्ता को अपडेट करने में असमर्थ, एक त्रुटि हुई।",
+      "UserManagement_Self": "खातों के आकस्मिक लॉक-आउट को रोकने के लिए, आप वर्तमान में अपनी भूमिका बदलने में सक्षम नहीं हैं, किसी भी असुविधा के लिए खेद है। अपना प्रदर्शन नाम जैसी जानकारी बदलने के लिए,",
+      "Marketplace_NotActivated": "यदि आपका इंस्टालेशन सक्रिय नहीं है तो सैटर्न मार्केटप्लेस काम नहीं करेगा।",
       "Marketplace_Disconnected": "शनि को मार्केटप्लेस सर्वर से कनेक्ट करने में समस्या आ रही है। यदि यह समस्या बनी रहती है तो कृपया contact@saturncms.net पर ईमेल करें, धन्यवाद।",
       "Themes_NotFound": "थीम नहीं मिली।",
       "Themes_CustomFonts": "यह थीम वेबसाइट फ़ॉन्ट्स का समर्थन नहीं करती है।",
@@ -244,7 +268,16 @@
       "Blue": "ब्लू",
       "Indigo": "इंडिगो",
       "Purple": "बैंगनी",
-      "Pink": "गुलाबी"
+      "Pink": "गुलाबी",
+      "Manage": "प्रबंधित करें",
+      "Administrator": "व्यवस्थापक",
+      "Administrators": "व्यवस्थापक",
+      "Editor": "संपादक",
+      "Editors": "संपादक",
+      "Writer": "लेखक",
+      "Writers": "राइटर्स",
+      "Restricted": "प्रतिबंधित",
+      "Pending": "लंबित"
     },
     "panel": {
       "Panel": "कंट्रोल पैनल",
@@ -329,7 +362,10 @@
       "Stopped": "रोका",
       "ClearedLog_Security": "सुरक्षा लॉग को साफ़ किया",
       "ClearedLog_Error": "त्रुटि लॉग को साफ़ किया",
-      "I/O_Blacklist": "I/O: ब्लैक लिस्टेड आइटम शामिल हैं:"
+      "I/O_Blacklist": "I/O: ब्लैक लिस्टेड आइटम शामिल हैं:",
+      "GSS_OnList": "यह उपयोगकर्ता सैटर्न ग्लोबल सिक्योरिटी सिस्टम अलर्ट लिस्ट में है।",
+      "GSS_OnList_Reason": "कारण:",
+      "GSS_OnList_LearnMore": "अधिक जानने या सहायता प्राप्त करने के लिए यहां क्लिक करें।"
     }
   }
 }

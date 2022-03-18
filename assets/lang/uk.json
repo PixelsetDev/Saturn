@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "Вашу роль оновлено.",
+      "UserManagement_RoleUpdated_Message_1": "Вашу роль оновлено. Раніше ви були",
+      "UserManagement_RoleUpdated_Message_2": "тепер ти",
+      "UserManagement_RoleUpdated_Log": "роль змінено на",
+      "UserManagement_Ban": "Забанити користувача",
+      "UserManagement_Ban_Warning": "Попередження: цю дію неможливо скасувати. Забанення користувачів призведе до видалення всієї їх особистої інформації.",
+      "UserManagement_Ban_Select": "Будь ласка, виберіть один. Попередження: цю дію неможливо скасувати.",
+      "UserManagement_Ban_Reason": "Причина (обов'язково)",
+      "UserManagement_Banned": "Користувача забанено.",
+      "UserManagement_Description_Administrator": "Керувати всіма аспектами сайту.",
+      "UserManagement_Description_Editors": "Користувачі, які можуть схвалювати редагування сторінки (якщо ввімкнено).",
+      "UserManagement_Description_Writers": "Користувачі, які можуть редагувати вміст вашого сайту Saturn.",
+      "UserManagement_Description_Pending": "Користувачі, які чекають схвалення облікового запису адміністратором. Ці користувачі ще не можуть отримати доступ до Saturn.",
+      "UserManagement_Description_Restricted": "Користувачі, які не мають доступу до Saturn.",
+      "UserManagement_Approvals_Disabled_Msg_1": "Схвалення вимкнено.",
+      "UserManagement_Approvals_Disabled_Msg_2": "Ці користувачі мають ті самі права, що й Writers під час роботи зі сторінками, статтями та інтерактивними елементами.",
+      "UserManagement_Approvals_Disabled_Msg_3": "Вони можуть мати більше доступу, ніж автори, до таких областей, як командний чат і списки завдань команди.",
+      "UserManagement_Approvals_Disabled_Msg_4": "Що це означає?",
       "Panel": "",
       "Exit_Panel": "",
       "Exit_Web": "",
@@ -186,6 +204,12 @@
       "IssuesFound": "",
       "Logs_Clear": "",
       "Settings_Saved": "",
+      "NoneFound": "Не знайдено.",
+      "UserManagement_Ban": "На жаль, ми зіткнулися з проблемою під час спроби забанити цього користувача. Спробуйте пізніше.",
+      "UserManagement_Ban_Self": "Ви не можете забанити себе",
+      "UserManagement_Update": "Не вдається оновити користувача, сталася помилка.",
+      "UserManagement_Self": "Щоб запобігти випадковому блокуванню облікових записів, наразі ви не можете змінити свою власну роль, вибачте за будь-які незручності. Щоб змінити інформацію, таку як ваше відображуване ім'я,",
+      "Marketplace_NotActivated": "Saturn Marketplace не працюватиме, якщо ваша інсталяція не активована.",
       "Marketplace_Disconnected": "Saturn має проблеми з підключенням до сервера Marketplace. Якщо проблема не зникне, надішліть електронний лист на contact@saturncms.net, дякую.",
       "Themes_NotFound": "Тема не знайдена.",
       "Themes_CustomFonts": "Ця тема не підтримує шрифти веб-сайту.",
@@ -244,7 +268,16 @@
       "Blue": "",
       "Indigo": "",
       "Purple": "",
-      "Pink": ""
+      "Pink": "",
+      "Manage": "Керувати",
+      "Administrator": "Адміністратор",
+      "Administrators": "Адміністратори",
+      "Editor": "Редактор",
+      "Editors": "Редактори",
+      "Writer": "Письменник",
+      "Writers": "Письменники",
+      "Restricted": "Обмежено",
+      "Pending": "Очікує"
     },
     "panel": {
       "Panel": "Панель керування",
@@ -329,7 +362,10 @@
       "Stopped": "Зупинено",
       "ClearedLog_Security": "очистити журнал безпеки",
       "ClearedLog_Error": "очистити журнал помилок",
-      "I/O_Blacklist": "Ввод-вивод: міститься в чорному списку"
+      "I/O_Blacklist": "Ввод-вивод: міститься в чорному списку",
+      "GSS_OnList": "Цей користувач входить до списку попереджень глобальної системи безпеки Saturn.",
+      "GSS_OnList_Reason": "Причина:",
+      "GSS_OnList_LearnMore": "Натисніть тут, щоб дізнатися більше або отримати допомогу."
     }
   }
 }

@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "Ваша роль обновлена.",
+      "UserManagement_RoleUpdated_Message_1": "Ваша роль была обновлена. Раньше вы были",
+      "UserManagement_RoleUpdated_Message_2": "теперь вы",
+      "UserManagement_RoleUpdated_Log": "роль пользователя изменена на",
+      "UserManagement_Ban": "Заблокировать пользователя",
+      "UserManagement_Ban_Warning": "Предупреждение: это действие нельзя отменить. Блокировка пользователей приведет к удалению всей их личной информации.",
+      "UserManagement_Ban_Select": "Пожалуйста, выберите один. Внимание: это действие нельзя отменить.",
+      "UserManagement_Ban_Reason": "Причина (обязательно)",
+      "UserManagement_Banned": "Пользователь забанен.",
+      "UserManagement_Description_Administrator": "Управлять всеми аспектами сайта.",
+      "UserManagement_Description_Editors": "Пользователи, которые могут одобрять изменения страницы (если включено).",
+      "UserManagement_Description_Writers": "Пользователи, которые могут редактировать контент на вашем сайте Saturn.",
+      "UserManagement_Description_Pending": "Пользователи ожидают одобрения своей учетной записи администратором. Эти пользователи еще не могут получить доступ к Saturn.",
+      "UserManagement_Description_Restricted": "Пользователи, у которых нет доступа к Saturn.",
+      "UserManagement_Approvals_Disabled_Msg_1": "Утверждения отключены.",
+      "UserManagement_Approvals_Disabled_Msg_2": "Эти пользователи имеют те же права, что и Writers, при работе со страницами, статьями и интерактивными элементами.",
+      "UserManagement_Approvals_Disabled_Msg_3": "У них может быть больше доступа, чем у авторов, к таким областям, как командный чат и списки дел команды.",
+      "UserManagement_Approvals_Disabled_Msg_4": "Что это значит?",
       "Panel": "Панель администратора",
       "Exit_Panel": "Выход в панель управления",
       "Exit_Web": "Выход на сайт",
@@ -186,6 +204,12 @@
       "IssuesFound": "Найдены проблемы",
       "Logs_Clear": "Не удалось очистить журнал, произошла ошибка.",
       "Settings_Saved": "Не удалось сохранить настройки сайта, произошла ошибка.",
+      "NoneFound": "Ничего не найдено.",
+      "UserManagement_Ban": "Извините, мы столкнулись с проблемой при попытке заблокировать этого пользователя. Повторите попытку позже.",
+      "UserManagement_Ban_Self": "Вы не можете забанить себя",
+      "UserManagement_Update": "Не удалось обновить пользователя, произошла ошибка.",
+      "UserManagement_Self": "Чтобы предотвратить случайную блокировку учетных записей, в настоящее время вы не можете изменить свою собственную роль, приносим извинения за причиненные неудобства. Чтобы изменить такую информацию, как ваше отображаемое имя,",
+      "Marketplace_NotActivated": "Saturn Marketplace не будет работать, если ваша установка не активирована.",
       "Marketplace_Disconnected": "У Saturn возникли проблемы с подключением к серверу Marketplace. Если проблема не исчезнет, отправьте электронное письмо по адресу contact@saturncms.net, спасибо.",
       "Themes_NotFound": "Тема не найдена.",
       "Themes_CustomFonts": "Эта тема не поддерживает шрифты веб-сайтов.",
@@ -244,7 +268,16 @@
       "Blue": "Синий",
       "Indigo": "Индиго",
       "Purple": "Фиолетовый",
-      "Pink": "Розовый"
+      "Pink": "Розовый",
+      "Manage": "Управлять",
+      "Administrator": "Администратор",
+      "Administrators": "Администраторы",
+      "Editor": "Редактор",
+      "Editors": "Редакторы",
+      "Writer": "Писатель",
+      "Writers": "Писатели",
+      "Restricted": "Ограничено",
+      "Pending": "В ожидании"
     },
     "panel": {
       "Panel": "Панель управления",
@@ -329,7 +362,10 @@
       "Stopped": "Остановлено",
       "ClearedLog_Security": "очистил журнал безопасности",
       "ClearedLog_Error": "очищен журнал ошибок",
-      "I/O_Blacklist": "Ввод/вывод: Содержит элемент из черного списка:"
+      "I/O_Blacklist": "Ввод/вывод: Содержит элемент из черного списка:",
+      "GSS_OnList": "Этот пользователь находится в списке оповещений Saturn Global Security System.",
+      "GSS_OnList_Reason": "Причина:",
+      "GSS_OnList_LearnMore": "Нажмите здесь, чтобы узнать больше или получить помощь."
     }
   }
 }

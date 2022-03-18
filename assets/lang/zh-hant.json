@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "您的角色已更新。",
+      "UserManagement_RoleUpdated_Message_1": "你的角色已經更新。以前你是",
+      "UserManagement_RoleUpdated_Message_2": "現在你是",
+      "UserManagement_RoleUpdated_Log": "的角色已更改為",
+      "UserManagement_Ban": "禁止用戶",
+      "UserManagement_Ban_Warning": "警告：此操作無法撤消。禁止用戶將刪除其所有個人信息。",
+      "UserManagement_Ban_Select": "請選擇一項。警告：此操作無法撤消。",
+      "UserManagement_Ban_Reason": "原因（必填）",
+      "UserManagement_Banned": "用戶被封禁。",
+      "UserManagement_Description_Administrator": "管理網站的所有方面。",
+      "UserManagement_Description_Editors": "可以批准頁面編輯的用戶（如果啟用）。",
+      "UserManagement_Description_Writers": "可以在您的 Saturn 網站上編輯內容的用戶。",
+      "UserManagement_Description_Pending": "正在等待管理員批准其帳戶的用戶。這些用戶還不能訪問 Saturn。",
+      "UserManagement_Description_Restricted": "無法訪問 Saturn 的用戶。",
+      "UserManagement_Approvals_Disabled_Msg_1": "審批被禁用。",
+      "UserManagement_Approvals_Disabled_Msg_2": "這些用戶在處理頁面、文章和交互元素時擁有與作者相同的權限。",
+      "UserManagement_Approvals_Disabled_Msg_3": "他們可能比作者擁有更多訪問團隊聊天和團隊待辦事項列表等區域的權限。",
+      "UserManagement_Approvals_Disabled_Msg_4": "這是什麼意思？",
       "Panel": "管理面板",
       "Exit_Panel": "退出控制面板",
       "Exit_Web": "退出網站",
@@ -186,6 +204,12 @@
       "IssuesFound": "發現問題",
       "Logs_Clear": "無法清除日誌，發生錯誤。",
       "Settings_Saved": "無法保存網站設置，發生錯誤。",
+      "NoneFound": "沒有找到。",
+      "UserManagement_Ban": "抱歉，我們在嘗試禁止該用戶時遇到問題。請稍後再試。",
+      "UserManagement_Ban_Self": "你不能禁止自己",
+      "UserManagement_Update": "無法更新用戶，發生錯誤。",
+      "UserManagement_Self": "為防止賬戶意外鎖定，您目前無法更改自己的角色，給您帶來的不便，敬請原諒。更改顯示名稱等信息，",
+      "Marketplace_NotActivated": "如果您的安裝未激活，土星市場將無法工作。",
       "Marketplace_Disconnected": "Saturn 在連接到 Marketplace 服務器時遇到問題。如果此問題仍然存在，請發送電子郵件至 contact@saturncms.net，謝謝。",
       "Themes_NotFound": "找不到主題。",
       "Themes_CustomFonts": "此主題不支持網站字體。",
@@ -244,7 +268,16 @@
       "Blue": "藍色",
       "Indigo": "靛藍",
       "Purple": "紫色",
-      "Pink": "粉紅"
+      "Pink": "粉紅",
+      "Manage": "管理",
+      "Administrator": "管理員",
+      "Administrators": "管理員",
+      "Editor": "編輯",
+      "Editors": "編輯",
+      "Writer": "作家",
+      "Writers": "作家",
+      "Restricted": "受限",
+      "Pending": "待定"
     },
     "panel": {
       "Panel": "控制面板",
@@ -329,7 +362,10 @@
       "Stopped": "停止",
       "ClearedLog_Security": "清除了安全日誌",
       "ClearedLog_Error": "清除了錯誤日誌",
-      "I/O_Blacklist": "I/O：包含的黑名單項目："
+      "I/O_Blacklist": "I/O：包含的黑名單項目：",
+      "GSS_OnList": "此用戶在土星全球安全系統警報列表中。",
+      "GSS_OnList_Reason": "原因：",
+      "GSS_OnList_LearnMore": "單擊此處了解更多信息或獲取幫助。"
     }
   }
 }

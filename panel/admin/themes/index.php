@@ -114,7 +114,7 @@
                 </a>
             </div>
             <?php } else {
-                    echo alert('WARNING', 'The Saturn Marketplace will not work if your installation is not activated.');
+                    echo alert('WARNING', __('Error:Marketplace_NotActivated'));
                 } ?>
             <h2 class="text-gray-900 text-2xl mt-8"><?php echo __('Admin:Themes_Assets'); ?></h2>
             <div class="flex my-6 space-x-4">

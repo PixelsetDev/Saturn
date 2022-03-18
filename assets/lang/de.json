@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "Ihre Rolle wurde aktualisiert.",
+      "UserManagement_RoleUpdated_Message_1": "Ihre Rolle wurde aktualisiert. Zuvor waren Sie es",
+      "UserManagement_RoleUpdated_Message_2": "jetzt sind Sie es",
+      "UserManagement_RoleUpdated_Log": "Rolle wurde geändert in",
+      "UserManagement_Ban": "Benutzer sperren",
+      "UserManagement_Ban_Warning": "Warnung: Diese Aktion kann nicht rückgängig gemacht werden. Das Sperren von Benutzern löscht alle ihre persönlichen Daten.",
+      "UserManagement_Ban_Select": "Bitte wählen Sie eine aus. Warnung: Diese Aktion kann nicht rückgängig gemacht werden.",
+      "UserManagement_Ban_Reason": "Grund (erforderlich)",
+      "UserManagement_Banned": "Benutzer gesperrt.",
+      "UserManagement_Description_Administrator": "Alle Aspekte der Seite verwalten.",
+      "UserManagement_Description_Editors": "Benutzer, die Seitenbearbeitungen genehmigen können (falls aktiviert).",
+      "UserManagement_Description_Writers": "Benutzer, die Inhalte auf Ihrer Saturn-Website bearbeiten können.",
+      "UserManagement_Description_Pending": "Benutzer, die darauf warten, dass ihr Konto von einem Administrator genehmigt wird. Diese Benutzer können noch nicht auf Saturn zugreifen.",
+      "UserManagement_Description_Restricted": "Benutzer, die nicht auf Saturn zugreifen können.",
+      "UserManagement_Approvals_Disabled_Msg_1": "Genehmigungen sind deaktiviert.",
+      "UserManagement_Approvals_Disabled_Msg_2": "Diese Benutzer haben dieselben Rechte wie Autoren, wenn sie an Seiten, Artikeln und interaktiven Elementen arbeiten.",
+      "UserManagement_Approvals_Disabled_Msg_3": "Sie haben möglicherweise mehr Zugriff als Autoren auf Bereiche wie Team-Chat und Team-To-Do-Listen.",
+      "UserManagement_Approvals_Disabled_Msg_4": "Was bedeutet das?",
       "Panel": "Admin-Panel",
       "Exit_Panel": "Zur Systemsteuerung zurückkehren",
       "Exit_Web": "Zur Website verlassen",
@@ -186,6 +204,12 @@
       "IssuesFound": "Probleme gefunden",
       "Logs_Clear": "Das Protokoll konnte nicht gelöscht werden, ein Fehler ist aufgetreten.",
       "Settings_Saved": "Website-Einstellungen konnten nicht gespeichert werden, ein Fehler ist aufgetreten.",
+      "NoneFound": "Keine gefunden.",
+      "UserManagement_Ban": "Entschuldigung, beim Versuch, diesen Benutzer zu sperren, ist ein Problem aufgetreten. Bitte versuchen Sie es später erneut.",
+      "UserManagement_Ban_Self": "Sie können sich nicht selbst sperren",
+      "UserManagement_Update": "Benutzer kann nicht aktualisiert werden, es ist ein Fehler aufgetreten.",
+      "UserManagement_Self": "Um ein versehentliches Sperren von Konten zu verhindern, können Sie derzeit Ihre eigene Rolle nicht ändern. Entschuldigen Sie die entstandenen Unannehmlichkeiten. Um Informationen wie Ihren Anzeigenamen zu ändern,",
+      "Marketplace_NotActivated": "Der Saturn Marketplace funktioniert nicht, wenn Ihre Installation nicht aktiviert ist.",
       "Marketplace_Disconnected": "Saturn hat Probleme, sich mit dem Marketplace-Server zu verbinden. Wenn dieses Problem weiterhin besteht, senden Sie bitte eine E-Mail an contact@saturncms.net, vielen Dank.",
       "Themes_NotFound": "Design nicht gefunden.",
       "Themes_CustomFonts": "Dieses Design unterstützt keine Website-Schriftarten.",
@@ -244,7 +268,16 @@
       "Blue": "Blau",
       "Indigo": "Indigo",
       "Purple": "Lila",
-      "Pink": "Rosa"
+      "Pink": "Rosa",
+      "Manage": "Verwalten",
+      "Administrator": "Administrator",
+      "Administrators": "Administratoren",
+      "Editor": "Redakteur",
+      "Editors": "Redakteure",
+      "Writer": "Schriftsteller",
+      "Writers": "Schriftsteller",
+      "Restricted": "Eingeschränkt",
+      "Pending": "Ausstehend"
     },
     "panel": {
       "Panel": "Systemsteuerung",
@@ -329,7 +362,10 @@
       "Stopped": "Gestoppt",
       "ClearedLog_Security": "Sicherheitsprotokoll gelöscht",
       "ClearedLog_Error": "Fehlerprotokoll gelöscht",
-      "I/O_Blacklist": "I/O: Enthaltenes Element auf der schwarzen Liste:"
+      "I/O_Blacklist": "I/O: Enthaltenes Element auf der schwarzen Liste:",
+      "GSS_OnList": "Dieser Benutzer ist auf der Alarmliste des Saturn Global Security Systems.",
+      "GSS_OnList_Reason": "Grund:",
+      "GSS_OnList_LearnMore": "Klicken Sie hier, um mehr zu erfahren oder Hilfe zu erhalten."
     }
   }
 }

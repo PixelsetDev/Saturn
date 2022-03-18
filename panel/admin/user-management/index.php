@@ -15,25 +15,25 @@
                 if (update_user_role_id($userid, $role)) {
                     $message = get_user_fullname($_SESSION['id']).' changed '.get_user_fullname($userid).'\'s role to '.get_user_role($userid).'.';
                     log_file('SATURN][User Management', $message);
-                    create_notification($userid, 'Your role has been updated.', 'Your role has been updated. Previously you were '.$prevRoleName.', now you are '.get_user_role($userid).'.');
-                    $successMsg = get_user_fullname($userid).'\'s role has been changed to '.get_user_role($userid).'.';
+                    create_notification($userid, __('Admin:UserManagement_RoleUpdated'), __('Admin:UserManagement_RoleUpdated_Message_1').' '.$prevRoleName.', '.__('Admin:UserManagement_RoleUpdated_Message_2').' '.get_user_role($userid).'.');
+                    $successMsg = get_user_fullname($userid).__('Admin:UserManagement_RoleUpdated_Log').' '.get_user_role($userid).'.';
                 } else {
-                    $errorMsg = 'Unable to update user, an error has occurred.';
+                    $errorMsg = __('Error:UserManagement_Update');
                 }
             }
         } else {
-            $errorMsg = 'To prevent accidental locking-out of accounts, you\'re not currently able to change your own role, sorry for any inconvenience caused. To change information such as your display name, <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/edit" class="text-black underline">please click here</a>.';
+            $errorMsg = __('Error:UserManagement_Self').' <a href="'.CONFIG_INSTALL_URL.'/panel/team/profile/edit" class="text-black underline">'.__('General:ClickHere').'</a>.';
         }
     }
 
     if (isset($_POST['ban'])) {
         if ($_POST['ban_user_id'] == $_SESSION['id']) {
-            $errorMsg = 'You can\'t ban yourself';
+            $errorMsg = __('Error:UserManagement_Ban_Self');
         } else {
             if (ban_user(checkInput('DEFAULT', $_POST['ban_user_id']), checkInput('DEFAULT', $_POST['reason']))) {
-                $successMsg = 'User banned.';
+                $successMsg = __('Admin:UserManagement_Banned');
             } else {
-                $errorMsg = 'Unable to ban user.';
+                $errorMsg = __('Error:UserManagement_Ban');
             }
         }
     }
@@ -53,7 +53,7 @@
                                     <div class="font-bold h-full" x-data="{ open: false }">
                                         <span class="self-start block"><?php echo get_user_fullname($value); ?></span>
                                         <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
-                                            <i class="fas fa-cog" aria-hidden="true"></i>&nbsp;Manage
+                                            <i class="fas fa-cog" aria-hidden="true"></i>&nbsp;<?php echo __('General:Manage'); ?>
                                         </button>
                                         <div class="absolute top-0 left-0 h-screen w-screen z-40" x-show="open">
                                             <div class="h-screen w-full z-40 inset-0 overflow-y-auto">
@@ -88,43 +88,43 @@
                                                                         </p>
                                                                         <?php if (SECURITY_USE_GSS && (check_gss_bans(get_user_last_login_ip($value)) != 'false')) { ?>
                                                                         <p class="text-red-500 dark:text-red-200 font-light pt-4">
-                                                                            This user is on the Saturn Global Security System Alert List.
+                                                                            <?php echo __('Security:GSS_OnList'); ?>
                                                                         </p>
                                                                             <p class="text-sm text-red-500 dark:text-red-200 font-light">
-                                                                                Reason: <?php echo get_gss_ban_reason(get_user_last_login_ip($value))?>
+                                                                                <?php echo __('Security:GSS_OnList_Reason'); ?> <?php echo get_gss_ban_reason(get_user_last_login_ip($value))?>
                                                                             </p>
                                                                             <p class="text-sm text-red-200 dark:text-red-500 font-light">
-                                                                                <a class="text-red-300 hover:text-red-200 underline" href="https://saturncms.net/security/alert-list" target="_blank" rel="noopener">Click here to learn more or get help. <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></a>
+                                                                                <a class="text-red-300 hover:text-red-200 underline" href="https://saturncms.net/security/alert-list" target="_blank" rel="noopener"><?php echo __('Security:GSS_OnList_LearnMore'); ?> <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></a>
                                                                             </p>
                                                                         <?php } ?>
                                                                         <p class="text-md text-gray-500 dark:text-gray-400 max-w-xs py-4 font-light">
                                                                                 <input type="text" name="userid" id="userid" value="<?php echo $value; ?>" class="hidden">
                                                                                 <div class="relative inline-block w-full text-gray-700">
-                                                                                    <select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
+                                                                                    <select name="role" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
                                                                                         <option value="4"<?php
                     if (get_user_roleID($value) == '4') {
                         echo' selected';
                     }
-                    echo'>Administrator</option>
+                    echo'>'.__('General:Administrator').'</option>
                                                                                         ';
                     if (CONFIG_PAGE_APPROVALS || get_user_roleID($value) == '3') {
                         echo'<option value="3"';
                         if (get_user_roleID($value) == '3') {
                             echo' selected';
                         }
-                        echo'>Editor</option>';
+                        echo'>'.__('General:Editor').'</option>';
                     }
                     echo'
                                                                                         <option value="2"';
                     if (get_user_roleID($value) == '2' || get_user_roleID($value) == '1') {
                         echo' selected';
                     }
-                    echo'>Writer</option>
+                    echo'>'.__('General:Writer').'</option>
                                                                                         <option value="0"';
                     if (get_user_roleID($value) == '0') {
                         echo' selected';
                     }
-                    echo'>Restricted</option>'; ?>
+                    echo'>'.__('General:Restricted').'</option>'; ?>
                                                                                     </select>
                                                                                     <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                                                                         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
@@ -146,7 +146,7 @@
                 }
             }
             if ($empty) {
-                echo 'None found.';
+                echo __('Error:NoneFound');
             }
         }
     }
@@ -155,7 +155,7 @@
     <head>
         <?php include __DIR__.'/../../../common/panel/vendors.php'; ?>
 
-        <title>User Management - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+        <title><?php echo __('Admin:UserManagement'); ?> - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
         <?php require __DIR__.'/../../../common/panel/theme.php'; ?>
 
     </head>
@@ -163,7 +163,7 @@
         <?php require __DIR__.'/../../../common/admin/navigation.php'; ?>
 
             <div class="px-8 py-4 block w-full">
-                <h1 class="text-gray-900 text-3xl">User Management</h1>
+                <h1 class="text-gray-900 text-3xl"><?php echo __('Admin:UserManagement'); ?></h1>
                 <div class="w-full mx-auto py-6">
                     <?php
                     if (isset($errorMsg)) {
@@ -185,8 +185,8 @@
                     ?>
                     <div class="w-full px-0 py-6 flex flex-wrap">
                         <div class="flex-grow mr-8 w-1/3 mb-8">
-                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Administrators</h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Manage all aspects of the site.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Administrators'); ?></h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('Admin:UserManagement_Description_Administrator'); ?></p>
                             <?php
                             $empty = true;
 
@@ -198,10 +198,10 @@
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Editors</h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users who can approve page edits (if enabled).</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Editors'); ?></h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('Admin:UserManagement_Description_Editors'); ?></p>
                             <?php if (!CONFIG_PAGE_APPROVALS) {
-                                echo '<p class="text-xs font-light italic text-red-800">Approvals are disabled. <a href="javascript:alert(\'Approvals are disabled.\n\nThese users have the same rights as Writers when working on Pages, Articles and Interactive Elements.\n\nThey may have more access than writers to areas such as Team Chat and Team To-Do Lists.\')" class="underline text-red-800">What does this mean?</a></p>';
+                                echo '<p class="text-xs font-light italic text-red-800">'.__('Admin:UserManagement_Approvals_Disabled_Msg_1').' <a href="javascript:alert(\''.__('Admin:UserManagement_Approvals_Disabled_Msg_1').'\n\n'.__('Admin:UserManagement_Approvals_Disabled_Msg_2').'\n\n'.__('Admin:UserManagement_Approvals_Disabled_Msg_3').'\')" class="underline text-red-800">'.__('Admin:UserManagement_Approvals_Disabled_Msg_4').'</a></p>';
                             } ?>
                         <?php
                             $empty = true;
@@ -213,8 +213,8 @@
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Writers</h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users who can edit content on your Saturn site.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Writers'); ?></h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('UserManagement_Description_Writers'); ?></p>
                             <?php
                             $empty = true;
 
@@ -225,8 +225,8 @@
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Pending</h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users waiting to have their account approved by an administrator.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Pending'); ?></h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('UserManagement_Description_Pending'); ?></p>
                             <?php
                             $empty = true;
 
@@ -237,8 +237,8 @@
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Restricted</h1>
-                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800">Users who can not access Saturn.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900"><?php echo __('General:Restricted'); ?></h1>
+                            <p class="text-xs font-light text-<?php echo THEME_PANEL_COLOUR; ?>-800"><?php echo __('UserManagement_Description_Restricted'); ?></p>
                             <?php
                             $empty = true;
 
@@ -249,11 +249,11 @@
                             ?>
                         </div>
                         <div class="flex-grow mr-8 w-1/3 mb-10">
-                            <h1 class="text-2xl font-bold leading-tight text-red-900">Ban User</h1>
-                            <p class="text-xs font-light text-red-800">Warning: This action cannot be undone. Banning users will delete all their personal information.</p>
+                            <h1 class="text-2xl font-bold leading-tight text-red-900"><?php echo __('Admin:UserManagement_Ban'); ?></h1>
+                            <p class="text-xs font-light text-red-800"><?php echo __('Admin:UserManagement_Ban_Warning'); ?></p>
                             <form action="" method="POST" name="ban">
-                                <select name="ban_user_id" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-                                    <option value="NULL" disabled selected>Please select one. Warning: This action cannot be undone.</option>
+                                <select name="ban_user_id" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
+                                    <option value="NULL" disabled selected><?php echo __('Admin:UserManagement_Ban_Select'); ?></option>
                                 <?php
                                 $empty = true;
 
@@ -268,8 +268,8 @@
                                     }
                                 }
                                 ?>
-                                <input type="text" name="reason" required class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Reason (Required)" />
-                                <input type="Submit" name="ban" value="Ban" class="cursor-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none">
+                                <input type="text" name="reason" required class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="<?php echo __('Admin:UserManagement_Ban_Reason'); ?>" />
+                                <input type="Submit" name="ban" value="<?php echo __('Admin:UserManagement_Ban'); ?>" class="cursor-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none">
                             </form>
                         </div>
                     </div>

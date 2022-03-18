@@ -5,6 +5,24 @@
   "authors": "Google Translate, Lewis Milburn",
   "translations": {
     "admin": {
+      "UserManagement_RoleUpdated": "Sua função foi atualizada.",
+      "UserManagement_RoleUpdated_Message_1": "Sua função foi atualizada. Anteriormente você era",
+      "UserManagement_RoleUpdated_Message_2": "agora você é",
+      "UserManagement_RoleUpdated_Log": "a função foi alterada para",
+      "UserManagement_Ban": "Proibir usuário",
+      "UserManagement_Ban_Warning": "Aviso: Esta ação não pode ser desfeita. Banir usuários excluirá todas as suas informações pessoais.",
+      "UserManagement_Ban_Select": "Por favor, selecione um. Aviso: Esta ação não pode ser desfeita.",
+      "UserManagement_Ban_Reason": "Motivo (obrigatório)",
+      "UserManagement_Banned": "Usuário banido.",
+      "UserManagement_Description_Administrator": "Gerenciar todos os aspectos do site.",
+      "UserManagement_Description_Editors": "Usuários que podem aprovar edições de página (se habilitado).",
+      "UserManagement_Description_Writers": "Usuários que podem editar conteúdo em seu site Saturn.",
+      "UserManagement_Description_Pending": "Usuários aguardando a aprovação de sua conta por um administrador. Esses usuários ainda não podem acessar o Saturn.",
+      "UserManagement_Description_Restricted": "Usuários que não podem acessar o Saturn.",
+      "UserManagement_Approvals_Disabled_Msg_1": "As aprovações estão desabilitadas.",
+      "UserManagement_Approvals_Disabled_Msg_2": "Esses usuários têm os mesmos direitos que escritores ao trabalhar em páginas, artigos e elementos interativos.",
+      "UserManagement_Approvals_Disabled_Msg_3": "Eles podem ter mais acesso do que escritores a áreas como Bate-papo da Equipe e Listas de Tarefas da Equipe.",
+      "UserManagement_Approvals_Disabled_Msg_4": "O que isso significa?",
       "Panel": "Painel Administrativo",
       "Exit_Panel": "Sair para o Painel de Controle",
       "Exit_Web": "Sair para o site",
@@ -186,6 +204,12 @@
       "IssuesFound": "Problemas encontrados",
       "Logs_Clear": "Não foi possível limpar o log, ocorreu um erro.",
       "Settings_Saved": "Não foi possível salvar as configurações do site, ocorreu um erro.",
+      "NoneFound": "Nenhum encontrado.",
+      "UserManagement_Ban": "Desculpe, tivemos um problema ao tentar banir este usuário. Por favor, tente novamente mais tarde.",
+      "UserManagement_Ban_Self": "Você não pode se banir",
+      "UserManagement_Update": "Não foi possível atualizar o usuário, ocorreu um erro.",
+      "UserManagement_Self": "Para evitar o bloqueio acidental de contas, você não pode alterar sua própria função no momento, desculpe por qualquer inconveniente causado. Para alterar informações como seu nome de exibição,",
+      "Marketplace_NotActivated": "O Saturn Marketplace não funcionará se sua instalação não estiver ativada.",
       "Marketplace_Disconnected": "A Saturn está tendo problemas para se conectar ao servidor do Marketplace. Se o problema persistir, envie um email para contact@saturncms.net, obrigado.",
       "Themes_NotFound": "Tema não encontrado.",
       "Themes_CustomFonts": "Este tema não suporta fontes do site.",
@@ -244,7 +268,16 @@
       "Blue": "Azul",
       "Indigo": "Índigo",
       "Purple": "Roxo",
-      "Pink": "Rosa"
+      "Pink": "Rosa",
+      "Manage": "Gerenciar",
+      "Administrator": "Administrador",
+      "Administrators": "Administradores",
+      "Editor": "Editor",
+      "Editors": "Editores",
+      "Writer": "Escritor",
+      "Writers": "Escritores",
+      "Restricted": "Restrito",
+      "Pending": "Pendente"
     },
     "panel": {
       "Panel": "Painel de Controle",
@@ -329,7 +362,10 @@
       "Stopped": "Parado",
       "ClearedLog_Security": "limpou o log de segurança",
       "ClearedLog_Error": "limpou o log de erros",
-      "I/O_Blacklist": "I/O: Item contido na lista negra:"
+      "I/O_Blacklist": "I/O: Item contido na lista negra:",
+      "GSS_OnList": "Este usuário está na lista de alertas do Saturn Global Security System.",
+      "GSS_OnList_Reason": "Motivo:",
+      "GSS_OnList_LearnMore": "Clique aqui para saber mais ou obter ajuda."
     }
   }
 }
