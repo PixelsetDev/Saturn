@@ -50,7 +50,7 @@ if (isset($_POST['update'])) {
         log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Themes_UpdatedSettings_Message'));
         internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg='.__('Admin:Themes_UpdatedSettings'));
     } else {
-        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Theme settings could not be updated.');
+        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg='.__('Error:Themes_Settings'));
     }
     exit;
 }
@@ -72,7 +72,7 @@ if (isset($_GET['activate'])) {
         log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' '.__('Admin:Themes_UpdatedSettings_Message'));
         internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg='.__('Admin:Themes_Activated'));
     } else {
-        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Theme could not be activated.');
+        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg='.__('Error:Themes_Activate_Cant'));
     }
     exit;
 }
@@ -80,7 +80,7 @@ if (isset($_GET['activate'])) {
 if (isset($_GET['uninstall_confirm'])) {
     if ($slug === $themeData->{'theme'}->{'slug'}) {
         if ($slug == THEME_SLUG) {
-            $errorMsg = 'You can\'t uninstall an active theme.';
+            $errorMsg = __('Error:Themes_Uninstall_Active');
         } else {
             $dir = __DIR__.'/../../../../themes/'.$slug;
             if (is_dir($dir)) {
@@ -88,21 +88,21 @@ if (isset($_GET['uninstall_confirm'])) {
                 if (rmdir($dir)) {
                     internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg='.__('Admin:Themes_Uninstalled'));
                 } else {
-                    internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: The file or directory could not be deleted.');
+                    internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg='.__('Error:Themes_Uninstall_Delete'));
                 }
             } else {
-                internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: The file or directory could not be found.');
+                internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg='.__('Error:Themes_Uninstall_Slug'));
             }
         }
     } else {
-        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Unable to uninstall: Invalid slug.');
+        internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg='.__('Error:Themes_Slug'));
     }
     exit;
 }
 
 if (isset($_GET['uninstall'])) {
     if ($slug == THEME_SLUG) {
-        $errorMsg = 'You can\'t uninstall an active theme.';
+        $errorMsg = __('Error:Themes_Uninstall_Active');
     } else {
         $infoMsg = __('Admin:Themes_ConfirmUninstall');
     }
@@ -157,7 +157,7 @@ if (isset($_GET['successMsg'])) {
             <br>
             <div class="flex">
                 <h2 class="flex-grow text-<?php echo THEME_PANEL_COLOUR; ?>-900 text-2xl mt-8"><?php echo __('Admin:Themes_Settings'); ?>: <?php echo $themeData->{'theme'}->{'name'}; ?></h2>
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes" class="underline text-red-900 hover:text-red-800 text-2xl mt-8">Back</a>
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes" class="underline text-red-900 hover:text-red-800 text-2xl mt-8"><?php echo __('General:Back'); ?></a>
             </div>
             <?php if (isset($themeData->{'theme'}->{'slug'})) { ?>
             <?php
@@ -169,7 +169,7 @@ if (isset($_GET['successMsg'])) {
                 if ($remoteVersion != '') {
                     echo alert('INFO', __('Admin:Themes_NewVersion_Message_1').' '.$themeData->{'theme'}->{'version'}->{'theme'}.' '.__('Admin:Themes_NewVersion_Message_2').' '.$remoteVersion);
                 } else {
-                    echo alert('ERROR', 'Saturn is having issues connecting to the Marketplace server. If this issue persists please email contact@saturncms.net, thank you.');
+                    echo alert('ERROR', __('Error:Marketplace_Disconnected'));
                 }
             }
             ?>
@@ -207,10 +207,10 @@ if (isset($_GET['successMsg'])) {
             <div class="mt-6">
                 <?php
                 if ($themeData->{'theme'}->{'features'}->{'custom-fonts'} == 'none') {
-                    echo alert('WARNING', 'This theme does not support Website Fonts.').'<br>';
+                    echo alert('WARNING', __('Error:Themes_CustomFonts')).'<br>';
                 }
                 if (!isset($themeData->{'theme'}->{'features'})) {
-                    echo alert('WARNING', 'This theme does not support advanced features. Please contact the theme author and ask them to enable this.').'<br>';
+                    echo alert('WARNING', __('Error:Themes_AdvancedFeatures')).'<br>';
                 }
                 ?>
                 <h3 class="text-xl"><?php echo __('Admin:Themes_Settings_General'); ?></h3>
@@ -274,7 +274,7 @@ if (isset($_GET['successMsg'])) {
             <?php } } else { ?>
             <div class="grid grid-cols-2 mt-4">
                 <div>
-                    <h3 class="text-xl">Theme not found.</h3>
+                    <h3 class="text-xl"><?php echo __('Error:Themes_NotFound'); ?></h3>
                 </div>
             </div>
             <?php }?>
