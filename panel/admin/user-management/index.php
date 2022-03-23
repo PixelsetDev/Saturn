@@ -130,7 +130,7 @@
                                                                                         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
                                                                                 </div>
                                                                             </div>
-                                                                            <input type="Submit" name="action" value="Save" class="cursor-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
+                                                                            <input type="Submit" name="action" value="<?php echo __('General:Save'); ?>" class="cursor-pointer mt-2 px-1 py-2 font-normal hover:shadow-lg items-center justify-center w-24 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
                                                                         </p>
                                                                     </div>
                                                                 </form>
@@ -169,7 +169,7 @@
                     if (isset($errorMsg)) {
                         echo '<div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2 mt-2">
                                     <div class="p-5 border border-l-0 rounded-r shadow-sm">
-                                        <h6 class="mb-2 font-semibold leading-5">[ERROR] '.$errorMsg.'</h6>
+                                        <h6 class="mb-2 font-semibold leading-5">['.__('Error:Error').'] '.$errorMsg.'</h6>
                                     </div>
                                 </div><br>';
                     }
