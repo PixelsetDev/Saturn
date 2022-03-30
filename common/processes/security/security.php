@@ -9,4 +9,5 @@
     require_once 'ccv.php';
     require_once 'logging.php';
     require_once 'hashing.php';
+    require_once 'session.php';
     require_once 'ukauth.php';

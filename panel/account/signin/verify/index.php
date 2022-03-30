@@ -63,6 +63,7 @@
             exit;
         }
         require_once __DIR__.'/../../../../common/processes/database/update/user.php';
+        update_user_auth_code($id, $code);
         $email = get_user_email($id);
         send_email($email, CONFIG_SITE_NAME.' - '.__('Panel:VerificationCode'), __('Panel:VerificationCode_Message_1').' "'.$code.'". '.__('Panel:VerificationCode_Message_2'));
         if (isset($_GET['type'])) {
