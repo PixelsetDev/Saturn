@@ -39,6 +39,7 @@
     require_once __DIR__.'/processes/link.php';
     require_once __DIR__.'/processes/themes.php';
     require_once __DIR__.'/processes/redirect.php';
+    require_once __DIR__.'/processes/session.php';
     require_once __DIR__.'/processes/version_check.php';
     if (CONFIG_SEND_DATA) {
         require_once __DIR__.'/processes/telemetry.php';

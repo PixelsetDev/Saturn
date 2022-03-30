@@ -2,7 +2,6 @@
     function countdownJavascript(): string
     {
         $time = ini_get("session.gc_maxlifetime");
-        $time = 60;
         return
         '
         var timeleft = '.$time.';
