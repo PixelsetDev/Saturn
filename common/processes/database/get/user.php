@@ -103,19 +103,19 @@
         $q = $row['role_id'];
 
         if ($q == '0') {
-            $role = 'Restricted';
+            $role = __('General:Restricted');
         } elseif ($q == '1') {
-            $role = 'Pending';
+            $role = __('General:Pending');
         } elseif ($q == '2') {
-            $role = 'Writer';
+            $role = __('General:Writer');
         } elseif ($q == '3') {
-            $role = 'Editor';
+            $role = __('General:Editor');
         } elseif ($q == '4') {
-            $role = 'Administrator';
+            $role = __('General:Administrator');
         } elseif ($q == '-1') {
-            $role = 'Deleted';
+            $role = __('General:Deleted');
         } else {
-            $role = 'Unknown';
+            $role = '?';
         }
 
         return $role;
