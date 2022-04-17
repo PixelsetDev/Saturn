@@ -158,6 +158,12 @@
       "RecordInSecurityLog": "Esta acción se registrará en el registro de seguridad"
     },
     "error": {
+      "Permissions": "No tienes los permisos requeridos para hacer eso.",
+      "Articles_New": "Hubo un problema al crear un nuevo artículo.",
+      "Articles_DontOwn_Publish": "No puedes publicar artículos que no sean de tu propiedad.",
+      "Articles_DontOwn_Delete": "No puedes borrar artículos que no son de tu propiedad.",
+      "Articles_DontOwn_Hide": "No puedes ocultar artículos que no son de tu propiedad.",
+      "Articles_DontOwn_Settings": "No puedes cambiar la configuración de los artículos que no son de tu propiedad.",
       "404_Message": "Página no encontrada.",
       "404_Info": "Código de error: 404. Si hizo clic en un enlace de nuestro sitio web, comuníquese con nosotros para informarnos que está roto. Si ingresó la URL de la página usted mismo, verifique la ortografía y vuelva a intentarlo.",
       "404_Feed": "Feed no encontrado.",

@@ -16,26 +16,13 @@ if (isset($_POST['newArticle'])) {
             if (isset($_GET['error'])) {
                 $error = $_GET['error'];
                 if ($error == 'permission') {
-                    $errorMsg = 'Error: You do not have the required permissions to do that.';
+                    $errorMsg = __('Error:Permissions');
                 } elseif ($error == 'new') {
-                    $errorMsg = 'Error: There was a problem creating a new article.';
+                    $errorMsg = __('Error:Articles_New');
                 } else {
-                    $errorMsg = 'Error: An unknown error occurred.';
+                    $errorMsg = __('Error:Unknown');
                 }
             }
-
-            if (CONFIG_ARTICLE_APPROVALS) {
-                $yellowMsg = '<span class="text-yellow-500 dark:text-yellow-700">Yellow:</span> Pending Approval<br>';
-            } else {
-                $yellowMsg = '<span class="text-yellow-500 dark:text-yellow-700">Yellow:</span> Pending Publication<br>';
-            }
-
-            $key = '<div class="text-xs text-left absolute bottom-2 left-0 h-16 w-30 p-2 bg-gray-50 rounded">
-                                                                <span class="text-red-500">Red:</span> No Content<br>
-                                                                '.$yellowMsg.'
-                                                                <span class="text-green-500">Green:</span> Currently Live<br>
-                                                                <i>You can edit pending pages.</i>
-                                                            </div>';
 
             if (isset($_POST['publish'])) {
                 $articleID = checkInput('DEFAULT', $_GET['articleID']);
@@ -43,10 +30,10 @@ if (isset($_POST['newArticle'])) {
                     if (update_article_status($articleID, 'PUBLISHED')) {
                         $successMsg = 'Article published.';
                     } else {
-                        $errorMsg = 'An error occurred.';
+                        $errorMsg = __('Error:Unknown');
                     }
                 } else {
-                    $errorMsg = 'You can\'t publish articles that you don\'t own.';
+                    $errorMsg = __('Error:Articles_DownOwn_Publish');
                 }
             }
 
@@ -56,10 +43,10 @@ if (isset($_POST['newArticle'])) {
                     if (update_article_status($articleID, 'DELETED') && update_article_content($articleID, '') && update_article_references($articleID, '')) {
                         $successMsg = 'Article deleted.';
                     } else {
-                        $errorMsg = 'An error occurred.';
+                        $errorMsg = __('Error:Unknown');
                     }
                 } else {
-                    $errorMsg = 'You can\'t delete articles that you don\'t own.';
+                    $errorMsg = __('Error:Articles_DownOwn_Delete');
                 }
             }
 
@@ -69,10 +56,10 @@ if (isset($_POST['newArticle'])) {
                     if (update_article_status($articleID, 'UNPUBLISHED')) {
                         $successMsg = 'Article hidden.';
                     } else {
-                        $errorMsg = 'An error occurred.';
+                        $errorMsg = __('Error:Unknown');
                     }
                 } else {
-                    $errorMsg = 'You can\'t hide articles that you don\'t own.';
+                    $errorMsg = __('Error:Articles_DownOwn_Hide');
                 }
             }
 
@@ -83,10 +70,10 @@ if (isset($_POST['newArticle'])) {
                     if (update_article_author($articleID, $author)) {
                         $successMsg = 'Article settings updated.';
                     } else {
-                        $errorMsg = 'An error occurred.';
+                        $errorMsg = __('Error:Unknown');
                     }
                 } else {
-                    $errorMsg = 'You can\'t change settings for articles that you don\'t own.';
+                    $errorMsg = __('Error:Articles_DownOwn_Settings');
                 }
             }
 
@@ -96,10 +83,10 @@ if (isset($_POST['newArticle'])) {
                     if (update_article_status($articleID, 'PENDING')) {
                         $successMsg = 'Your article has been submitted for publication.';
                     } else {
-                        $errorMsg = 'An error occurred.';
+                        $errorMsg = __('Error:Unknown');
                     }
                 } else {
-                    $errorMsg = 'You can\'t submit articles for publication that you don\'t own.';
+                    $errorMsg = __('Error:Articles_DownOwn_Publish');
                 }
             }
             ?>
@@ -145,7 +132,7 @@ if (isset($_POST['newArticle'])) {
                             $status = 'Unpublished';
                         } elseif (get_article_status($i) == 'PENDING') {
                             $statusColour = 'yellow';
-                            $status = 'Pending';
+                            $status = __('General:Pending');
                         } elseif (get_article_status($i) == 'REJECTED') {
                             $statusColour = 'red';
                             $status = 'Rejected';

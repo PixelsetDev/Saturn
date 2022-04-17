@@ -2,7 +2,7 @@
   "language": "Polish - Polskie",
   "code": "pl",
   "version": "0.2.0",
-  "authors": "Jakub Koziej",
+  "authors": "Jakub Koziej, Lewis Milburn, Google Translate",
   "translations": {
     "admin": {
       "UserManagement_RoleUpdated": "",
@@ -185,6 +185,12 @@
       "News": ""
     },
     "error": {
+      "Permissions": "Nie masz wymaganych do tego uprawnień.",
+      "Articles_New": "Wystąpił problem podczas tworzenia nowego artykułu.",
+      "Articles_DontOwn_Publish": "Nie możesz publikować artykułów, których nie jesteś właścicielem.",
+      "Articles_DontOwn_Delete": "Nie możesz usuwać artykułów, których nie jesteś właścicielem.",
+      "Articles_DontOwn_Hide": "Nie możesz ukryć artykułów, których nie jesteś właścicielem.",
+      "Articles_DontOwn_Settings": "Nie możesz zmienić ustawień artykułów, których nie jesteś właścicielem.",
       "404_Message": "",
       "404_Info": "",
       "404_Feed": "",

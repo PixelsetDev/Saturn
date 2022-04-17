@@ -185,6 +185,12 @@
       "News": "新聞。"
     },
     "error": {
+      "Permissions": "您沒有執行此操作所需的權限。",
+      "Articles_New": "創建新文章時出現問題。",
+      "Articles_DontOwn_Publish": "您不能發布不屬於您的文章。",
+      "Articles_DontOwn_Delete": "你不能刪除不屬於你的文章。",
+      "Articles_DontOwn_Hide": "你不能隱藏不屬於你的文章。",
+      "Articles_DontOwn_Settings": "您不能更改不屬於您的文章的設置。",
       "404_Message": "找不到頁面。",
       "404_Info": "錯誤代碼：404。如果您點擊了我們網站上的鏈接，請聯繫我們告知我們該鏈接已損壞。如果您自己輸入了頁面 URL，請檢查您的拼寫並重試。",
       "404_Feed": "未找到 Feed。",

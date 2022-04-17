@@ -158,6 +158,12 @@
       "RecordInSecurityLog": "This action will be recorded in the Security Log"
     },
     "error": {
+      "Permissions": "You do not have the required permissions to do that.",
+      "Articles_New": "There was a problem creating a new article.",
+      "Articles_DontOwn_Publish": "You can't publish articles that you don't own.",
+      "Articles_DontOwn_Delete": "You can't delete articles that you don't own.",
+      "Articles_DontOwn_Hide": "You can't hide articles that you don't own.",
+      "Articles_DontOwn_Settings": "You can't change the settings for articles that you don't own.",
       "404_Message": "Page not Found.",
       "404_Info": "Error code: 404. If you clicked a link on our website, please contact us to let us know it's broken. If you typed in the page URL yourself, please check your spelling and try again.",
       "404_Feed": "Feed not found.",

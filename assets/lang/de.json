@@ -158,6 +158,12 @@
       "RecordInSecurityLog": "Diese Aktion wird im Sicherheitsprotokoll aufgezeichnet"
     },
     "error": {
+      "Permissions": "Sie haben nicht die erforderlichen Berechtigungen dazu.",
+      "Articles_New": "Beim Erstellen eines neuen Artikels ist ein Problem aufgetreten.",
+      "Articles_DontOwn_Publish": "Sie können keine Artikel veröffentlichen, die Sie nicht besitzen.",
+      "Articles_DontOwn_Delete": "Sie können keine Artikel löschen, die Sie nicht besitzen.",
+      "Articles_DontOwn_Hide": "Sie können keine Artikel ausblenden, die Sie nicht besitzen.",
+      "Articles_DontOwn_Settings": "Sie können die Einstellungen für Artikel, die Sie nicht besitzen, nicht ändern.",
       "404_Message": "Seite nicht gefunden.",
       "404_Info": "Fehlercode: 404. Wenn Sie auf einen Link auf unserer Website geklickt haben, kontaktieren Sie uns bitte, um uns mitzuteilen, dass er defekt ist. Wenn Sie die Seiten-URL selbst eingegeben haben, überprüfen Sie bitte Ihre Rechtschreibung und versuchen Sie es erneut.",
       "404_Feed": "Feed nicht gefunden.",
