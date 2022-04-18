@@ -191,6 +191,7 @@
       "Articles_DontOwn_Delete": "Nie możesz usuwać artykułów, których nie jesteś właścicielem.",
       "Articles_DontOwn_Hide": "Nie możesz ukryć artykułów, których nie jesteś właścicielem.",
       "Articles_DontOwn_Settings": "Nie możesz zmienić ustawień artykułów, których nie jesteś właścicielem.",
+      "Articles_ApprovalStatus": "Nie można pobrać statusu zatwierdzenia artykułu o numerze identyfikacyjnym:",
       "404_Message": "",
       "404_Info": "",
       "404_Feed": "",

@@ -178,8 +178,8 @@ if (isset($_POST['newArticle'])) {
                                             <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;'.__('Panel:RequestPublication').'
                                         </a>';
                         } else {
-                            alert('ERROR', 'Unable to fetch approval status. Article ID: '.$i);
-                            log_error('ERROR', 'Unable to fetch approval status of article with ID: '.$i);
+                            alert('ERROR', __('Error:Articles_ApprovalStatus') . ' ' . $i);
+                            log_error('ERROR', __('Error:Articles_ApprovalStatus') . ' ' . $i);
                         }
                         $contents = 'Article Owner: '.display_user_dropdown('SELECTME');
                         echo '          <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{open: false}" class="h-8">
@@ -224,7 +224,7 @@ if (isset($_POST['newArticle'])) {
                                 <form action="" method="post" x-data="{ open: false }" class="flex space-x-2">
                                     <div class="flex-grow w-full">
                                         <label for="newArticleTitle" class="sr-only"><?php echo __('General:Title'); ?></label>
-                                        <input id="newArticleTitle" name="newArticleTitle" type="text" required class="border-b-2 border-blue-500 bg-gray-50 dark:bg-neutral-600 dark:text-white dark:border-blue-900 px-3 py-2 rounded-md w-full" placeholder="Article Title">
+                                        <input id="newArticleTitle" name="newArticleTitle" type="text" required class="border-b-2 border-blue-500 bg-gray-50 dark:bg-neutral-600 dark:text-white dark:border-blue-900 px-3 py-2 rounded-md w-full" placeholder="<?php echo __('General:Title'); ?>">
                                     </div>
                                     <input type="submit" id="newArticle" name="newArticle" value="<?php echo __('General:Create'); ?>" class="hover:shadow-lg h-full cursor-pointer flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-200 dark:bg-neutral-600 dark:hover:bg-neutral-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                                 </form>

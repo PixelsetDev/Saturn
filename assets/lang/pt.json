@@ -164,6 +164,7 @@
       "Articles_DontOwn_Delete": "Você não pode excluir artigos que não são seus.",
       "Articles_DontOwn_Hide": "Você não pode ocultar artigos que não são seus.",
       "Articles_DontOwn_Settings": "Você não pode alterar as configurações de artigos que não são seus.",
+      "Articles_ApprovalStatus": "Não foi possível buscar o status de aprovação do artigo com número de identificação:",
       "404_Message": "Página não encontrada.",
       "404_Info": "Código de erro: 404. Se você clicou em um link em nosso site, entre em contato conosco para nos informar que está quebrado. Se você mesmo digitou o URL da página, verifique sua ortografia e tente novamente.",
       "404_Feed": "Feed não encontrado.",

@@ -164,6 +164,7 @@
       "Articles_DontOwn_Delete": "Sie können keine Artikel löschen, die Sie nicht besitzen.",
       "Articles_DontOwn_Hide": "Sie können keine Artikel ausblenden, die Sie nicht besitzen.",
       "Articles_DontOwn_Settings": "Sie können die Einstellungen für Artikel, die Sie nicht besitzen, nicht ändern.",
+      "Articles_ApprovalStatus": "Der Genehmigungsstatus des Artikels mit der Identifikationsnummer konnte nicht abgerufen werden:",
       "404_Message": "Seite nicht gefunden.",
       "404_Info": "Fehlercode: 404. Wenn Sie auf einen Link auf unserer Website geklickt haben, kontaktieren Sie uns bitte, um uns mitzuteilen, dass er defekt ist. Wenn Sie die Seiten-URL selbst eingegeben haben, überprüfen Sie bitte Ihre Rechtschreibung und versuchen Sie es erneut.",
       "404_Feed": "Feed nicht gefunden.",

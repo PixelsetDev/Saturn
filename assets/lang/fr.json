@@ -176,6 +176,7 @@
       "Articles_DontOwn_Delete": "Vous ne pouvez pas supprimer des articles dont vous n'êtes pas propriétaire.",
       "Articles_DontOwn_Hide": "Vous ne pouvez pas masquer les articles dont vous n'êtes pas propriétaire.",
       "Articles_DontOwn_Settings": "Vous ne pouvez pas modifier les paramètres des articles dont vous n'êtes pas propriétaire.",
+      "Articles_ApprovalStatus": "Impossible de récupérer le statut d'approbation de l'article avec le numéro d'identification :",
       "404_Message": "Page introuvable.",
       "404_Info": "Code d'erreur: 404. Si vous avez cliqué sur un lien sur notre site Web, veuillez nous contacter pour nous faire savoir qu'il est défectueux. Si vous avez saisi vous-même l'URL de la page, veuillez vérifier l'orthographe et réessayer.",
       "404_Feed": "Flux introuvable.",

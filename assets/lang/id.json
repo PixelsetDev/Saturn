@@ -164,6 +164,7 @@
       "Articles_DontOwn_Delete": "Anda tidak dapat menghapus artikel yang bukan milik Anda.",
       "Articles_DontOwn_Hide": "Anda tidak dapat menyembunyikan artikel yang bukan milik Anda.",
       "Articles_DontOwn_Settings": "Anda tidak dapat mengubah setelan untuk artikel yang bukan milik Anda.",
+      "Articles_ApprovalStatus": "Tidak dapat mengambil status persetujuan artikel dengan nomor identifikasi:",
       "404_Message": "Halaman tidak ditemukan.",
       "404_Info": "Kode kesalahan: 404. Jika Anda mengeklik tautan di situs web kami, harap hubungi kami untuk memberi tahu kami bahwa tautan itu rusak. Jika Anda mengetik sendiri URL laman, harap periksa ejaan Anda dan coba lagi.",
       "404_Feed": "Umpan tidak ditemukan.",

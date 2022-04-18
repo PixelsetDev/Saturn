@@ -191,6 +191,7 @@
       "Articles_DontOwn_Delete": "你不能删除不属于你的文章。",
       "Articles_DontOwn_Hide": "你不能隐藏不属于你的文章。",
       "Articles_DontOwn_Settings": "您不能更改不属于您的文章的设置。",
+      "Articles_ApprovalStatus": "无法获取带有识别号的文章的审批状态：",
       "404_Message": "找不到页面。",
       "404_Info": "错误代码：404。如果您点击了我们网站上的链接，请联系我们告知我们该链接已损坏。如果您自己输入了页面 URL，请检查您的拼写并重试。",
       "404_Feed": "未找到 Feed。",
