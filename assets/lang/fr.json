@@ -297,7 +297,11 @@
       "Restricted": "Restreint",
       "Pending": "En attente",
       "Update": "Mettre à jour",
-      "Back": "Arrière"
+      "Back": "Arrière",
+      "Settings": "Réglages",
+      "Delete": "Supprimer",
+      "Create": "Créer",
+      "Edit": "Modifier"
     },
     "panel": {
       "Panel": "Panneau de configuration",
@@ -373,7 +377,30 @@
       "Verify_EnterCode": "Pour nous aider à sécuriser votre compte, veuillez saisir le code de sécurité que nous vous avons envoyé à votre adresse e-mail dans le champ ci-dessous.",
       "Verify_NewLocation": "Nous avons détecté que vous essayez de vous connecter depuis un nouvel emplacement.",
       "Verify_2FA": "Authentification à deux facteurs",
-      "Verify_Code": "Code de vérification"
+      "Verify_Code": "Code de vérification",
+      "Publish": "Publier",
+      "RequestPublication": "Demande de publication",
+      "Hide": "Masquer",
+      "Article_Hide": "Masquer l'article",
+      "Article_Hide_Message_1": "Êtes-vous sûr de vouloir masquer cet article aux lecteurs ?",
+      "Article_Hide_Message_2": "Il ne sera plus disponible sur le site et son lien ne fonctionnera plus.",
+      "Article_Hide_Message_3": "Vous devrez publier à nouveau l'article pour retrouver l'accès à ces fonctionnalités.",
+      "Article_Published": "Article publié.",
+      "Article_Publish": "Publier l'article",
+      "Article_Publish_Message": "Êtes-vous sûr de vouloir publier cet article ?",
+      "Article_Deleted": "Article supprimé.",
+      "Article_Hidden": "Article masqué.",
+      "Article_Settings": "Paramètres des articles",
+      "Article_Settings_Updated": "Paramètres de l'article mis à jour.",
+      "Article_Settings_Message": "Vérifiez que ces paramètres sont corrects avant d'enregistrer, les enregistrer peut entraîner des modifications irréversibles.",
+      "Article_Submitted": "Votre article a été soumis pour publication.",
+      "Article_Delete": "Supprimer l'article",
+      "Article_Delete_Message": "Êtes-vous sûr de vouloir supprimer cet article ?",
+      "Article_New": "Créer un nouvel article",
+      "Unpublished": "Non publié",
+      "Published": "Publié",
+      "Rejected": "Rejeté",
+      "UnknownStatus": "Statut Inconnu"
     }
   }
 }
