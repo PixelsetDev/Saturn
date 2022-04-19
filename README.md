@@ -4,7 +4,11 @@ Saturn is a powerful content management system for publishers, educators and eve
 ## Getting Started
 Downloading and Installing Saturn has never been easier, check out our Quick Start Guide for more information: https://docs.saturncms.net/v/0.1.3/user-documentation/getting-started
 
-Saturn is in early access BETA, it's highly likely that you'll find bugs. We don't recommend it's use in production environments.
+Saturn is still in early access BETA. Please use with caution and be prepared for the following:
+- Future versions might have breaking changes.
+- Future versions will add new features and might remove or change existing features.
+- Future versions might have different system requirements.
+- This current version is stable enough for use, but will contain bugs.
 
 ## Links
 Documentation: https://docs.saturncms.net
