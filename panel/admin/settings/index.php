@@ -206,9 +206,6 @@
                                 } ?> value="pt">[PT] Portuguese</option>
                             <option<?php if (CONFIG_LANGUAGE == 'ru') {
                                     echo ' selected';
-                                } ?> value="ru">[RU] Russian</option>
-                            <option<?php if (CONFIG_LANGUAGE == 'ru') {
-                                    echo ' selected';
                                 } ?> value="ru">[UK] Ukrainian</option>
                             <option<?php if (CONFIG_LANGUAGE == 'zh-hans') {
                                     echo ' selected';
