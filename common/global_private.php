@@ -43,6 +43,7 @@
     require_once __DIR__.'/processes/version_check.php';
     if (CONFIG_SEND_DATA) {
         require_once __DIR__.'/processes/telemetry.php';
+        log_console('Saturn][Telemetry', Telemetry());
     }
     require_once __DIR__.'/panel/theme.php';
     /* GUI */
