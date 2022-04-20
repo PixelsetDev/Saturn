@@ -411,7 +411,13 @@
       "Article_Approvals_Declined_Message_2": "অনুমোদিত হয়নি।",
       "Article_Approvals_Declined_Log_1": "নিবন্ধ আইডির জন্য নিবন্ধ প্রকাশের অনুরোধ অস্বীকার করা হয়েছে:",
       "Article_Approvals_Declined_Log_2": "এর দ্বারা অনুরোধ করা হয়েছিল",
-      "References": "তথ্যসূত্র"
+      "Article_Saved": "আপনার নিবন্ধ সংরক্ষণ করা হয়েছে।",
+      "Article_Edited_Log_1": "আইডি সহ সম্পাদিত পৃষ্ঠা:",
+      "Article_Edited_Log_2": "সম্পাদনাটি অনুমোদনের অপেক্ষায় আছে।",
+      "Title": "শিরোনাম",
+      "Contents": "সামগ্রী",
+      "References": "রেফারেন্স",
+      "Characters": "অক্ষর"
     },
     "security": {
       "Clean": "পরিষ্কার",

@@ -441,7 +441,13 @@
       "Article_Approvals_Declined_Message_2": "未被批准。",
       "Article_Approvals_Declined_Log_1": "拒絕文章發布請求，識別號為：",
       "Article_Approvals_Declined_Log_2": "被請求",
-      "References": "參考"
+      "Article_Saved": "您的文章已保存。",
+      "Article_Edited_Log_1": "編輯頁面，ID:",
+      "Article_Edited_Log_2": "編輯正在等待批准。",
+      "Title": "標題",
+      "Content": "內容",
+      "References": "參考",
+      "Characters": "人物"
     },
     "security": {
       "Clean": "乾淨",

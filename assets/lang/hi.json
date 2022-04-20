@@ -411,7 +411,13 @@
       "Article_Approvals_Declined_Message_2": "स्वीकृत नहीं था।",
       "Article_Approvals_Declined_Log_1": "लेख आईडी के लिए लेख प्रकाशन अनुरोध अस्वीकार कर दिया:",
       "Article_Approvals_Declined_Log_2": "इनके द्वारा अनुरोध किया गया था",
-      "References": "संदर्भ"
+      "Article_Saved": "आपका लेख सहेज लिया गया है।",
+      "Article_Edited_Log_1": "आईडी के साथ संपादित पृष्ठ:",
+      "Article_Edited_Log_2": "संपादन की स्वीकृति लंबित है।",
+      "Title": "शीर्षक",
+      "Content": "सामग्री",
+      "References": "संदर्भ",
+      "Characters": "अक्षर"
     },
     "security": {
       "Clean": "क्लीन",

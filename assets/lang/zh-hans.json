@@ -441,7 +441,13 @@
       "Article_Approvals_Declined_Message_2": "未被批准。",
       "Article_Approvals_Declined_Log_1": "拒绝文章发布请求，识别号为：",
       "Article_Approvals_Declined_Log_2": "被请求",
-      "References": "参考"
+      "Article_Saved": "您的文章已保存。",
+      "Article_Edited_Log_1": "编辑页面，ID:",
+      "Article_Edited_Log_2": "编辑正在等待批准。",
+      "Title": "标题",
+      "Content": "内容",
+      "References": "参考",
+      "Characters": "人物"
     },
     "security": {
       "Clean": "干净",

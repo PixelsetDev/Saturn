@@ -441,7 +441,13 @@
       "Article_Approvals_Declined_Message_2": "не было одобрено.",
       "Article_Approvals_Declined_Log_1": "отклонен запрос на публикацию статьи с идентификационным номером:",
       "Article_Approvals_Declined_Log_2": "был запрошен",
-      "References": "Ссылки"
+      "Article_Saved": "Ваша статья была сохранена.",
+      "Article_Edited_Log_1": "отредактированная страница с идентификатором:",
+      "Article_Edited_Log_2": "Редактирование ожидает утверждения.",
+      "Title": "Заголовок",
+      "Content": "Содержание",
+      "References": "Ссылки",
+      "Characters": "Персонажи"
     },
     "security": {
       "Clean": "Чистый",

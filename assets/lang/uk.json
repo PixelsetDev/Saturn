@@ -441,7 +441,13 @@
       "Article_Approvals_Declined_Message_2": "не схвалено.",
       "Article_Approvals_Declined_Log_1": "відмовлено в запиті на публікацію статті для статті з ідентифікаційним номером:",
       "Article_Approvals_Declined_Log_2": "було запитано",
-      "References": "Посилання"
+      "Article_Saved": "Вашу статтю збережено.",
+      "Article_Edited_Log_1": "відредагована сторінка з ідентифікатором:",
+      "Article_Edited_Log_2": "Зміна очікує на затвердження.",
+      "Title": "Назва",
+      "Content": "Зміст",
+      "References": "Посилання",
+      "Characters": "Персонажі"
     },
     "security": {
       "Clean": "Очистити",

@@ -411,7 +411,13 @@
       "Article_Approvals_Declined_Message_2": "tidak disetujui.",
       "Article_Approvals_Declined_Log_1": "permintaan publikasi artikel ditolak untuk artikel dengan nomor identifikasi:",
       "Article_Approvals_Declined_Log_2": "diminta oleh",
-      "References": "Referensi"
+      "Article_Saved": "Artikel Anda telah disimpan.",
+      "Article_Edited_Log_1": "halaman yang diedit dengan ID:",
+      "Article_Edited_Log_2": "Pengeditan menunggu persetujuan.",
+      "Title": "Judul",
+      "Content": "Konten",
+      "References": "Referensi",
+      "Characters": "Karakter"
     },
     "security": {
       "Clean": "Bersih",

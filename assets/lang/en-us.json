@@ -411,7 +411,13 @@
       "Article_Approvals_Declined_Message_2": "was not approved.",
       "Article_Approvals_Declined_Log_1": "denied article publication request for article ID:",
       "Article_Approvals_Declined_Log_2": "was requested by",
-      "References": "References"
+      "Article_Saved": "Your article has been saved.",
+      "Article_Edited_Log_1": "edited page with ID:",
+      "Article_Edited_Log_2": "The edit is pending approval.",
+      "Title": "Title",
+      "Content": "Content",
+      "References": "References",
+      "Characters": "Characters"
     },
     "security": {
       "Clean": "Clean",

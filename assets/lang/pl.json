@@ -441,7 +441,13 @@
       "Article_Approvals_Declined_Message_2": "nie zostało zatwierdzone.",
       "Article_Approvals_Declined_Log_1": "odrzucono prośbę o publikację artykułu dla artykułu o numerze identyfikacyjnym:",
       "Article_Approvals_Declined_Log_2": "poprosił",
-      "References": "Referencje"
+      "Article_Saved": "Twój artykuł został zapisany.",
+      "Article_Edited_Log_1": "edytowana strona o identyfikatorze:",
+      "Article_Edited_Log_2": "Edycja oczekuje na zatwierdzenie.",
+      "Title": "Tytuł",
+      "Content": "Treść",
+      "References": "Referencje",
+      "Characters": "Znaki"
     },
     "security": {
       "Clean": "",

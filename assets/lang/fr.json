@@ -423,7 +423,13 @@
       "Article_Approvals_Declined_Message_2": "n'a pas été approuvé.",
       "Article_Approvals_Declined_Log_1": "demande de publication d'article refusée pour l'ID d'article:",
       "Article_Approvals_Declined_Log_2": "a été demandé par",
-      "References": "Références"
+      "Article_Saved": "Votre article a été enregistré.",
+      "Article_Edited_Log_1": "page modifiée avec ID :",
+      "Article_Edited_Log_2": "La modification est en attente d'approbation.",
+      "Title": "Titre",
+      "Contents": "Contenu",
+      "References": "Références",
+      "Characters": "Personnages"
     }
   }
 }

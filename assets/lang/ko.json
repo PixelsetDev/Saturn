@@ -441,7 +441,13 @@
       "Article_Approvals_Declined_Message_2": "승인되지 않았습니다.",
       "Article_Approvals_Declined_Log_1": "식별 번호가 있는 기사에 대한 기사 게시 요청 거부:",
       "Article_Approvals_Declined_Log_2": "요청한 사람",
-      "References": "참조"
+      "Article_Saved": "기사가 저장되었습니다.",
+      "Article_Edited_Log_1": "ID가 있는 편집된 페이지:",
+      "Article_Edited_Log_2": "편집이 승인 대기 중입니다.",
+      "Title": "제목",
+      "Content": "컨텐츠",
+      "References": "참조",
+      "Characters": "캐릭터"
     },
     "security": {
       "Clean": "깨끗하다",

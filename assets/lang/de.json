@@ -411,7 +411,13 @@
       "Article_Approvals_Declined_Message_2": "wurde nicht genehmigt.",
       "Article_Approvals_Declined_Log_1": "Anfrage zur Artikelveröffentlichung für Artikel-ID abgelehnt:",
       "Article_Approvals_Declined_Log_2": "wurde angefordert von",
-      "References": "Verweise"
+      "Article_Saved": "Ihr Artikel wurde gespeichert.",
+      "Article_Edited_Log_1": "bearbeitete Seite mit ID:",
+      "Article_Edited_Log_2": "Die Bearbeitung steht noch aus.",
+      "Title": "Titel",
+      "Content": "Inhalt",
+      "References": "Referenzen",
+      "Characters": "Charaktere"
     },
     "security": {
       "Clean": "Reinigen",

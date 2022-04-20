@@ -411,7 +411,13 @@
       "Article_Approvals_Declined_Message_2": "no fue aprobado.",
       "Article_Approvals_Declined_Log_1": "solicitud de publicación de artículo denegada para ID de artículo:",
       "Article_Approvals_Declined_Log_2": "fue solicitado por",
-      "References": "Referencias"
+      "Article_Saved": "Tu artículo ha sido guardado.",
+      "Article_Edited_Log_1": "página editada con ID:",
+      "Article_Edited_Log_2": "La edición está pendiente de aprobación.",
+      "Title": "Título",
+      "Contents": "Contenido",
+      "References": "Referencias",
+      "Characters": "Personajes"
     },
     "security": {
       "Clean": "Limpiar",
