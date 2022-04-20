@@ -229,7 +229,14 @@
       "Themes_Uninstall_Slug": "No se puede desinstalar: Slug no válido.",
       "Themes_Uninstall_Active": "No puedes desinstalar un tema activo.",
       "Themes_Uninstall_Cant": "No puedes desinstalar este tema ya que está activo actualmente, cambia el tema activo antes de desinstalarlo.",
-      "Themes_Uninstall_Unable": "No puede desinstalar este tema ya que actualmente está activo y está siendo utilizado por el motor de procesamiento, active otro tema antes de desinstalar este."
+      "Themes_Uninstall_Unable": "No puede desinstalar este tema ya que actualmente está activo y está siendo utilizado por el motor de procesamiento, active otro tema antes de desinstalar este.",
+      "SaveEdit": "No se pudo guardar la edición, ocurrió un error.",
+      "Article_NoTitle": "El artículo requiere un título.",
+      "Article_NoContent": "El artículo requiere contenido.",
+      "UserNotFound": "Usuario no encontrado.",
+      "UnknownWarning": "Se ha producido una advertencia, inténtalo de nuevo más tarde.",
+      "DebugMode": "El modo de depuración está habilitado. NO se recomienda en entornos de producción.",
+      "DevelopmentBuild": "Está ejecutando una compilación de desarrollo de Saturn. NO se recomienda en entornos de producción."
     },
     "general": {
       "Saturn": "Saturne",

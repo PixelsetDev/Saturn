@@ -10,7 +10,7 @@
         <?php
             include_once __DIR__.'/../../common/panel/theme.php';
         $id = $_SESSION['id']; ?>
-        <title>Saturn Panel</title>
+        <title><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
 
         <?php
         include_once __DIR__.'/../../common/panel/vendors.php';
@@ -22,19 +22,19 @@
         if (isset($_GET['error'])) {
             $error = $_GET['error'];
             if ($error == 'permission') {
-                $errorMsg = 'You do not have the required permissions to do that.';
+                $errorMsg = __('Error:Permissions');
             } elseif ($error == 'no_user') {
-                $errorMsg = 'User not found.';
+                $errorMsg = __('Error:UserNotFound');
             } else {
-                $errorMsg = 'An unknown error occurred.';
+                $errorMsg = __('Error:Unknown');
             }
         }
         if (isset($_GET['warning'])) {
             $error = $_GET['warning'];
             if ($error == 'permission') {
-                $errorMsg = 'You do not have the required permissions to do that.';
+                $errorMsg = __('Error:Permissions');
             } else {
-                $warningMsg = 'An unknown warning occurred.';
+                $errorMsg = __('Error:UnknownWarning');
             }
         } ?>
 
@@ -44,7 +44,7 @@
         if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN) {
             if (isset($_GET['acceptTerms']) && $_GET['acceptTerms'] == 'true') {
                 update_user_accepted_terms($_SESSION['id'], true);
-                echo alert('ERROR', 'Please try again.');
+                echo alert('ERROR', __('Error:TryAgain'));
             } ?>
         <div class="absolute top-0 bg-white z-50 ">
             <header class="bg-white shadow relative">
@@ -186,11 +186,11 @@
             unset($warningMsg);
         }
         if (CONFIG_DEBUG) {
-            echo alert('WARNING', 'Debug mode is enabled. This is NOT recommended in production environments.');
+            echo alert('WARNING', __('Error:DebugMode'));
             echo '<br>';
         }
         if (SATURN_BRANCH == 'dev') {
-            echo alert('WARNING', 'You are running a development build of Saturn. This is NOT recommended in production environments.');
+            echo alert('WARNING', __('Error:DevelopmentBuild'));
             echo '<br>';
         }
         if (get_user_roleID($_SESSION['id']) > 3) {
@@ -217,7 +217,7 @@
                                     <i class="far fa-file fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                                 </span>
                                 <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
-                                    Pages
+                                    <?php echo __('Panel:Pages'); ?>
                                 </p>
                             </div>
                             <div class="flex flex-col justify-start">
@@ -238,7 +238,7 @@
                                     <i class="far fa-newspaper fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                                 </span>
                                 <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
-                                    Articles
+                                    <?php echo __('Panel:Articles'); ?>
                                 </p>
                             </div>
                             <div class="flex flex-col justify-start">
@@ -330,8 +330,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            <?php
-        } ?>
+                            <?php } ?>
                         </div>
                     </div>
                     <?php if (get_user_roleID($id) > '2') { ?>

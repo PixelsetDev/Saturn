@@ -23,16 +23,16 @@
                     header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&success='.checkOutput('DEFAULT', $successMsg));
                     log_all('SATURN][ARTICLES', get_user_fullname($_SESSION['id']).' '.__('Panel:Article_Edited_Log_1').' '.$articleID.' ('.get_article_title($articleID).'). '.__('Panel:Article_Edited_Log_2'));
                 } else {
-                    $errorMsg = 'Unable to save edit, an error occurred.';
+                    $errorMsg = __('Error:SaveEdit');
                     header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&error='.checkOutput('DEFAULT', $errorMsg));
                 }
             } else {
-                $errorMsg = 'Article requires content.';
+                $errorMsg = __('Error:Article_NoContent');
                 header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&error='.checkOutput('DEFAULT', $errorMsg));
                 exit;
             }
         } else {
-            $errorMsg = 'Article requires a title.';
+            $errorMsg = __('Error:Article_NoTitle');
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&error='.checkOutput('DEFAULT', $errorMsg));
             exit;
         }

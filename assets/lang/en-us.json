@@ -229,7 +229,14 @@
       "Themes_Uninstall_Slug": "Unable to uninstall: Invalid slug.",
       "Themes_Uninstall_Active": "You can't uninstall an active theme.",
       "Themes_Uninstall_Cant": "You can't uninstall this theme as it is currently active, please change the active theme before uninstalling this theme.",
-      "Themes_Uninstall_Unable": "You can't uninstall this theme as it is currently active and being used by the render engine, please activate another theme before uninstalling this one."
+      "Themes_Uninstall_Unable": "You can't uninstall this theme as it is currently active and being used by the render engine, please activate another theme before uninstalling this one.",
+      "SaveEdit": "Unable to save edit, an error occurred.",
+      "Article_NoTitle": "Article requires a title.",
+      "Article_NoContent": "Article requires content.",
+      "UserNotFound": "User not found.",
+      "UnknownWarning": "A warning has occurred, please try again later.",
+      "DebugMode": "Debug mode is enabled. This is NOT recommended in production environments.",
+      "DevelopmentBuild": "You are running a development build of Saturn. This is NOT recommended in production environments."
     },
     "general": {
       "Saturn": "Saturn",

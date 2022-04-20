@@ -229,7 +229,14 @@
       "Themes_Uninstall_Slug": "Deinstallation nicht möglich: Ungültiger Slug.",
       "Themes_Uninstall_Active": "Sie können ein aktives Design nicht deinstallieren.",
       "Themes_Uninstall_Cant": "Sie können dieses Design nicht deinstallieren, da es derzeit aktiv ist. Bitte ändern Sie das aktive Design, bevor Sie dieses Design deinstallieren.",
-      "Themes_Uninstall_Unable": "Sie können dieses Design nicht deinstallieren, da es derzeit aktiv ist und von der Render-Engine verwendet wird. Bitte aktivieren Sie ein anderes Design, bevor Sie dieses deinstallieren."
+      "Themes_Uninstall_Unable": "Sie können dieses Design nicht deinstallieren, da es derzeit aktiv ist und von der Render-Engine verwendet wird. Bitte aktivieren Sie ein anderes Design, bevor Sie dieses deinstallieren.",
+      "SaveEdit": "Bearbeitung konnte nicht gespeichert werden, ein Fehler ist aufgetreten.",
+      "Article_NoTitle": "Artikel erfordert einen Titel.",
+      "Article_NoContent": "Artikel benötigt Inhalt.",
+      "UserNotFound": "Benutzer nicht gefunden.",
+      "UnknownWarning": "Eine Warnung ist aufgetreten, bitte versuchen Sie es später erneut.",
+      "DebugMode": "Der Debug-Modus ist aktiviert. Dies wird in Produktionsumgebungen NICHT empfohlen.",
+      "DevelopmentBuild": "Sie führen einen Entwicklungs-Build von Saturn aus. Dies wird in Produktionsumgebungen NICHT empfohlen."
     },
     "general": {
       "Saturn": "Saturn",

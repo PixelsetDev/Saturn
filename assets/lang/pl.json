@@ -259,7 +259,14 @@
       "Themes_Uninstall_Unable": "",
       "Update_DeleteFile": "",
       "Update_UnzipArchive": "",
-      "Update_UntrustedURL": ""
+      "Update_UntrustedURL": "",
+      "SaveEdit": "Nie można zapisać edycji, wystąpił błąd.",
+      "Article_NoTitle": "Artykuł wymaga tytułu.",
+      "Article_NoContent": "Artykuł wymaga treści.",
+      "UserNotFound": "Nie znaleziono użytkownika.",
+      "UnknownWarning": "Wystąpiło ostrzeżenie, spróbuj ponownie później.",
+      "DebugMode": "Tryb debugowania jest włączony. NIE jest to zalecane w środowiskach produkcyjnych.",
+      "DevelopmentBuild": "Używasz kompilacji programistycznej Saturn. NIE jest to zalecane w środowiskach produkcyjnych."
     },
     "general": {
       "Saturn": "Saturn",

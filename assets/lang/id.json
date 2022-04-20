@@ -229,7 +229,14 @@
       "Themes_Uninstall_Slug": "Tidak dapat menghapus instalasi: Siput tidak valid.",
       "Themes_Uninstall_Active": "Anda tidak dapat menghapus tema yang aktif.",
       "Themes_Uninstall_Cant": "Anda tidak dapat menghapus instalan tema ini karena sedang aktif, harap ubah tema aktif sebelum menghapus instalan tema ini.",
-      "Themes_Uninstall_Unable": "Anda tidak dapat menghapus instalan tema ini karena sedang aktif dan sedang digunakan oleh mesin render, harap aktifkan tema lain sebelum mencopot yang ini."
+      "Themes_Uninstall_Unable": "Anda tidak dapat menghapus instalan tema ini karena sedang aktif dan sedang digunakan oleh mesin render, harap aktifkan tema lain sebelum mencopot yang ini.",
+      "SaveEdit": "Tidak dapat menyimpan hasil edit, terjadi kesalahan.",
+      "Article_NoTitle": "Artikel memerlukan judul.",
+      "Article_NoContent": "Artikel membutuhkan konten.",
+      "UserNotFound": "Pengguna tidak ditemukan.",
+      "UnknownWarning": "Peringatan telah terjadi, silakan coba lagi nanti.",
+      "DebugMode": "Mode debug diaktifkan. Ini TIDAK disarankan di lingkungan produksi.",
+      "DevelopmentBuild": "Anda menjalankan build pengembangan Saturnus. Ini TIDAK direkomendasikan di lingkungan produksi."
     },
     "general": {
       "Saturn": "Saturnus",

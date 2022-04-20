@@ -259,7 +259,14 @@
       "Themes_Uninstall_Unable": "您无法卸载此主题，因为它当前处于活动状态并被渲染引擎使用，请在卸载之前激活另一个主题。",
       "Update_DeleteFile": "Saturn 更新程序错误：无法删除更新文件。",
       "Update_UnzipArchive": "Saturn 更新程序错误：无法解压缩存档。",
-      "Update_UntrustedURL": "Saturn 更新程序错误：从不受信任的 URL 停止下载。尝试从以下位置下载："
+      "Update_UntrustedURL": "Saturn 更新程序错误：从不受信任的 URL 停止下载。尝试从以下位置下载：",
+      "SaveEdit": "无法保存编辑，发生错误。",
+      "Article_NoTitle": "文章需要标题。",
+      "Article_NoContent": "文章需要内容。",
+      "UserNotFound": "未找到用户。",
+      "UnknownWarning": "出现警告，请稍后再试。",
+      "DebugMode": "调试模式已启用。不建议在生产环境中使用。",
+      "DevelopmentBuild": "您正在运行 Saturn 的开发版本。在生产环境中不建议这样做。"
     },
     "general": {
       "Saturn": "土星",

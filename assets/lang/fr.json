@@ -241,7 +241,14 @@
       "Themes_Uninstall_Slug": "Désinstallation impossible: slug invalide.",
       "Themes_Uninstall_Active": "Vous ne pouvez pas désinstaller un thème actif.",
       "Themes_Uninstall_Cant": "Vous ne pouvez pas désinstaller ce thème car il est actuellement actif, veuillez changer le thème actif avant de désinstaller ce thème.",
-      "Themes_Uninstall_Unable": "Vous ne pouvez pas désinstaller ce thème car il est actuellement actif et utilisé par le moteur de rendu, veuillez activer un autre thème avant de désinstaller celui-ci."
+      "Themes_Uninstall_Unable": "Vous ne pouvez pas désinstaller ce thème car il est actuellement actif et utilisé par le moteur de rendu, veuillez activer un autre thème avant de désinstaller celui-ci.",
+      "SaveEdit": "Impossible d'enregistrer la modification, une erreur s'est produite.",
+      "Article_NoTitle": "L'article nécessite un titre.",
+      "Article_NoContent": "L'article nécessite du contenu.",
+      "UserNotFound": "Utilisateur introuvable.",
+      "UnknownWarning": "Un avertissement s'est produit, veuillez réessayer plus tard.",
+      "DebugMode": "Le mode débogage est activé. Ceci n'est PAS recommandé dans les environnements de production.",
+      "DevelopmentBuild": "Vous exécutez une version de développement de Saturn. Ceci n'est PAS recommandé dans les environnements de production."
     },
     "general": {
       "Saturn": "Saturne",
