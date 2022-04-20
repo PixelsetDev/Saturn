@@ -8,7 +8,7 @@ Saturn is still in early access BETA. Please use with caution and be prepared fo
 - Future versions might have breaking changes.
 - Future versions will add new features and might remove or change existing features.
 - Future versions might have different system requirements.
-- This current version is stable enough for use, but will contain bugs.
+- The latest version of Saturn is stable enough for use but is likely to contain bugs.
 
 ## Links
 Documentation: https://docs.saturncms.net
