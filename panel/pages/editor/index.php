@@ -64,11 +64,10 @@
 
                     if (!$srp || !$srpWrite) {
                         $errorMsg = 'Saturn encountered an error whilst attempting to save your work and was also unable to save it to a recovery file.';
-                        header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
                     } else {
                         $errorMsg = 'Unable to save data to the database, a recovery file has been used instead.';
-                        header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
                     }
+                    header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
                     exit;
 
                 }
@@ -84,13 +83,18 @@
     }
 
     if (isset($_POST['submitSettings'])) {
-        update_page_description($pageID, $_POST['settings_page_description']);
-        update_page_category($pageID, $_POST['settings_page_category']);
-        update_page_template($pageID, $_POST['settings_page_template']);
-        update_page_url($pageID, $_POST['settings_page_url']);
-        update_page_image_url($pageID, $_POST['settings_page_image']);
-        update_page_image_credit($pageID, $_POST['settings_page_image_credit']);
-        update_page_image_license($pageID, $_POST['settings_page_image_license']);
+        update_page_description($pageID, checkInput('DEFAULT', $_POST['settings_page_description']));
+        update_page_category($pageID, checkInput('DEFAULT', $_POST['settings_page_category']));
+        update_page_template($pageID, checkInput('DEFAULT', $_POST['settings_page_template']));
+        update_page_url($pageID, checkInput('DEFAULT', $_POST['settings_page_url']));
+        update_page_image_credit($pageID, checkInput('DEFAULT', $_POST['settings_page_image_credit']));
+        update_page_image_license($pageID, checkInput('DEFAULT', $_POST['settings_page_image_license']));
+    }
+
+    if (isset($_GET['uploadedTo'])) {
+        update_page_image_url($pageID, checkInput('DEFAULT', $_GET['uploadedTo']));
+        header('Location: index.php/?pageID='.$pageID.'&success=Page image updated.');
+        exit;
     }
 
     if (isset($_POST['deletePage'])) {
@@ -202,8 +206,15 @@
                                         </select>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
-                                        <label for="settings_page_image" class="self-center dark:text-white">Image URL</label>
-                                        <input id="settings_page_image" name="settings_page_image" type="text" value="<?php echo get_page_image($pageID); ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm"/>
+                                        <label for="settings_page_image" class="self-center dark:text-white">Image</label>
+                                        <?php if (get_page_image($pageID) != null) { ?>
+                                            <img src="<?php echo get_page_image($pageID); ?>" class="w-full h-auto p-2" alt="Page Image">
+                                            <div></div>
+                                            <a href="/panel/files/upload/?type=image&redirectTo=/panel/pages/editor/?pageID=<?php echo $pageID; ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">Change</a>
+                                        <?php } else { ?>
+                                            <a href="/panel/files/upload/?type=image&redirectTo=/panel/pages/editor/?pageID=<?php echo $pageID; ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">Upload</a>
+                                        <?php } ?>
+                                        <?php echo get_page_image($pageID); ?>
                                     </div>
                                     <div class="grid grid-cols-2 mb-2">
                                         <label for="settings_page_image_credit" class="self-center dark:text-white">Image Credit</label>
