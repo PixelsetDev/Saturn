@@ -502,7 +502,13 @@
       "Level": "Poziom",
       "NextLevel": "Następny poziom:",
       "Writer": "Pisarz",
-      "TotalViews": "Twoja łączna liczba wyświetleń:"
+      "TotalViews": "Twoja łączna liczba wyświetleń:",
+      "Files_ThemeSettings_1": "Niektóre obrazy, w tym logo witryny, ikona, domyślne zdjęcie profilowe, obraz błędu i brakujący obraz, można zarządzać w swoim",
+      "Files_ThemeSettings_2": "Ustawienia motywu",
+      "Files_Images": "Obrazy",
+      "Files_Videos": "Filmy",
+      "Files_Other": "Inne",
+      "Files_Recovery": "Odzyskiwanie danych"
     },
     "security": {
       "Clean": "",

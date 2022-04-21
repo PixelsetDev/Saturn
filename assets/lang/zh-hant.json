@@ -502,7 +502,13 @@
       "Level": "級別",
       "NextLevel": "下一級:",
       "Writer": "作家",
-      "TotalViews": "您的總觀看次數："
+      "TotalViews": "您的總觀看次數：",
+      "Files_ThemeSettings_1": "部分圖片包括網站標誌、圖標、默認頭像、錯誤圖片、缺失圖片等可以在您的管理中",
+      "Files_ThemeSettings_2": "主題設置",
+      "Files_Images": "圖片",
+      "Files_Videos": "視頻",
+      "Files_Other": "其他",
+      "Files_Recovery": "數據恢復"
     },
     "security": {
       "Clean": "乾淨",

@@ -472,7 +472,13 @@
       "Levels": "লেভেল",
       "NextLevel": "পরবর্তী স্তর:",
       "Writer": "লেখক",
-      "TotalViews": "আপনার মোট ভিউ:"
+      "TotalViews": "আপনার মোট ভিউ:",
+      "Files_ThemeSettings_1": "ওয়েবসাইটের লোগো, আইকন, ডিফল্ট প্রোফাইল ছবি, ত্রুটির ছবি এবং অনুপস্থিত ছবি সহ কিছু ছবি আপনার মধ্যে পরিচালনা করা যেতে পারে",
+      "Files_ThemeSettings_2": "থিম সেটিংস",
+      "Files_Images": "ছবি",
+      "Files_Videos": "ভিডিও",
+      "Files_Other": "অন্যান্য",
+      "Files_Recovery": "ডেটা পুনরুদ্ধার"
     },
     "security": {
       "Clean": "পরিষ্কার",

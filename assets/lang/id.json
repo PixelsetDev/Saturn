@@ -472,7 +472,13 @@
       "Level": "Tingkat",
       "NextLevel": "Tingkat Berikutnya:",
       "Writer": "Penulis",
-      "TotalViews": "Total Views Anda:"
+      "TotalViews": "Total Views Anda:",
+      "Files_ThemeSettings_1": "Beberapa gambar termasuk logo situs web, ikon, gambar profil default, gambar kesalahan, dan gambar yang hilang dapat dikelola di Anda",
+      "Files_ThemeSettings_2": "Setelan Tema",
+      "Files_Images": "Gambar",
+      "Files_Videos": "Video",
+      "Files_Other": "Lainnya",
+      "Files_Recovery": "Pemulihan Data"
     },
     "security": {
       "Clean": "Bersih",

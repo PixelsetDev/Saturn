@@ -18,24 +18,24 @@ function is_restricted($file): bool
             include_once __DIR__.'/../../common/panel/theme.php';
         ?>
 
-        <title>Files - Saturn Panel</title>
+        <title><?php echo __('Panel:Files'); ?> - <?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
     </head>
     <body class="mb-8 dark:bg-neutral-700 dark:text-white">
         <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow dark:bg-neutral-800">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Files</h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Files'); ?></h1>
             </div>
         </header>
 
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <?php if ($_SESSION['role_id'] == '4') {
-            echo alert('INFO', '<p>Some images including website logo, icon, default profile picture, error image, and missing image can be managed in your <a href="'.CONFIG_INSTALL_URL.'/panel/admin/themes" class="underline text-black dark:text-white">Theme Settings</a>.</p>'); ?><br><?php
+            echo alert('INFO', '<p>'.__('Panel:Files_ThemeSettings_1').' <a href="'.CONFIG_INSTALL_URL.'/panel/admin/themes" class="underline text-black dark:text-white">'.__('Panel:Files_ThemeSettings_2').'</a>.</p>'); ?><br><?php
         } ?>
-            <div class="w-full px-4 py-6 sm:px-0 flex">
-                <div class="flex-auto mr-8 w-1/3">
-                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Images</h1>
+            <div class="w-full px-4 py-6 sm:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div>
+                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Files_Images'); ?></h1>
                     <div class="grid md:grid-cols-2 grid-cols-1 gap-2">
 <?php
     $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/images/*';
@@ -52,8 +52,8 @@ function is_restricted($file): bool
     } ?>
                     </div>
                 </div>
-                <div class="flex-auto mr-8 w-1/3">
-                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Videos</h1>
+                <div>
+                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Files_Videos'); ?></h1>
                     <div class="grid md:grid-cols-2 grid-cols-1 gap-2">
 <?php
     $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/videos/*';
@@ -73,20 +73,36 @@ function is_restricted($file): bool
     } ?>
                     </div>
                 </div>
-                <div class="flex-auto mr-8 w-1/3">
-                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">Other Files</h1>
+                <div>
+                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Files_Other'); ?></h1>
                     <div class="grid md:grid-cols-2 grid-cols-1 gap-2">
-<?php
-    $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/*';
-    foreach (glob($directory.'*.{txt,TXT,pdf,PDF,doc,DOC,docx,DOCX,ppt,PPT,pptx,PPTX}', GLOB_BRACE) as $file) {
-        $file = explode('/..', $file);
-        $fileName = basename($file);
-        if (is_restricted($file) == false) {
-            ?>
-                        <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $fileName; ?></a>
-<?php
-        }
-    } ?>
+                        <?php
+                        $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/*';
+                        foreach (glob($directory.'*.{txt,TXT,pdf,PDF,doc,DOC,docx,DOCX,ppt,PPT,pptx,PPTX}', GLOB_BRACE) as $file) {
+                            $file = explode('/..', $file);
+                            $fileName = basename($file);
+                            if (is_restricted($file) == false) {
+                                ?>
+                                <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $fileName; ?></a>
+                                <?php
+                            }
+                        } ?>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Files_Recovery'); ?></h1>
+                    <div class="grid md:grid-cols-2 grid-cols-1 gap-2">
+                        <?php
+                        $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/*';
+                        foreach (glob($directory.'*.{sdr}', GLOB_BRACE) as $file) {
+                            $file = explode('/..', $file);
+                            $fileName = basename($file);
+                            if (is_restricted($file) == false) {
+                                ?>
+                                <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $fileName; ?></a>
+                                <?php
+                            }
+                        } ?>
                     </div>
                 </div>
             </div>

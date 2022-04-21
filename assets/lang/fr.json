@@ -484,7 +484,13 @@
       "Level": "Niveau",
       "NextLevel": "Niveau suivant:",
       "Writer": "Scénariste",
-      "TotalViews": "Vos vues totales:"
+      "TotalViews": "Vos vues totales:",
+      "Files_ThemeSettings_1": "Certaines images, y compris le logo du site Web, l'icône, l'image de profil par défaut, l'image d'erreur et l'image manquante, peuvent être gérées dans votre",
+      "Files_ThemeSettings_2": "Paramètres du thème",
+      "Fichiers_Images": "Images",
+      "Fichiers_Vidéos": "Vidéos",
+      "Fichiers_Autre": "Autre",
+      "Files_Recovery": "Récupération de données"
     }
   }
 }

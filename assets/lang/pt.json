@@ -472,7 +472,13 @@
       "Level": "Nível",
       "NextLevel": "Próximo nível:",
       "Writer": "Escritor",
-      "TotalViews": "Suas visualizações totais:"
+      "TotalViews": "Suas visualizações totais:",
+      "Files_ThemeSettings_1": "Algumas imagens, incluindo logotipo do site, ícone, foto de perfil padrão, imagem de erro e imagem ausente podem ser gerenciadas em seu",
+      "Files_ThemeSettings_2": "Configurações do tema",
+      "Files_Images": "Imagens",
+      "Files_Videos": "Vídeos",
+      "Files_Other": "Outro",
+      "Files_Recovery": "Recuperação de dados"
     },
     "security": {
       "clean": "Limpar",

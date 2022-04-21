@@ -472,7 +472,13 @@
       "Level": "Level",
       "NextLevel": "Next Level:",
       "Writer": "Writer",
-      "TotalViews": "Your Total Views:"
+      "TotalViews": "Your Total Views:",
+      "Files_ThemeSettings_1": "Some images including website logo, icon, default profile picture, error image, and missing image can be managed in your",
+      "Files_ThemeSettings_2": "Theme Settings",
+      "Files_Images": "Images",
+      "Files_Videos": "Videos",
+      "Files_Other": "Other",
+      "Files_Recovery": "Data Recovery"
     },
     "security": {
       "Clean": "Clean",
