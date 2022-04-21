@@ -9,6 +9,17 @@
     if (empty($_SERVER['CONTENT_TYPE'])) {
         $_SERVER['CONTENT_TYPE'] = 'application/x-www-form-urlencoded';
     }
+
+    if (isset($_POST['discardRecovery'])) {
+        unlink(__DIR__."/../../../storage/recovery/".$pageID.".srp");
+        header ('Location: '.$_SERVER['PHP_SELF'].'?pageID='.$pageID);
+        exit;
+    } elseif (isset($_POST['loadRecovery'])) {
+        $recoveredData = file_get_contents(__DIR__."/../../../storage/recovery/".$pageID.".srp");
+        $recoveredData = json_decode($recoveredData);
+        unlink(__DIR__."/../../../storage/recovery/".$pageID.".srp");
+    }
+
     if (isset($_POST['submit'])) {
         if ($_POST['title'] != null) {
             if ($_POST['content'] != null) {
@@ -19,31 +30,57 @@
                     $myID = $_SESSION['id'];
                     $query = 'UPDATE `'.DATABASE_PREFIX."pages_pending` SET `title`='$title',`content`='$content',`reference`='$references',`user_id`='$myID' WHERE `id`='$pageID';";
                     unset($myID);
-                    $rs = mysqli_query($conn, $query);
+                    $rs1 = mysqli_query($conn, $query); $rs2 = true;
                     $successMsg = 'Your edit has been saved and is currently pending approval.';
                     log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' edited page with ID: '.$pageID.' ('.get_page_title($pageID).'). The edit is pending approval.');
                 } else {
                     $query = 'UPDATE `'.DATABASE_PREFIX."pages` SET `title`='$title',`content`='$content',`reference`='$references' WHERE `id`='$pageID';";
-                    $rs = mysqli_query($conn, $query);
+                    $rs1 = mysqli_query($conn, $query);
                     $query = 'INSERT INTO `'.DATABASE_PREFIX."pages_history` (`id`, `page_id`, `user_id`, `timestamp`) VALUES (NULL, '".$pageID."','".$_SESSION['id']."', CURRENT_TIMESTAMP)";
-                    $rs = mysqli_query($conn, $query);
+                    $rs2 = mysqli_query($conn, $query);
                     $newEdits = get_user_statistics_edits($_SESSION['id']) + 1;
                     update_user_edits($_SESSION['id'], $newEdits);
                     $successMsg = 'Your edit has been saved.';
                     log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' edited page with ID: '.$pageID.' ('.get_page_title($pageID).').');
                 }
-                header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&success='.$successMsg);
-                exit;
+                if ($rs1 && $rs2) {
+                    header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&success='.$successMsg);
+                } else {
+
+                    if (!file_exists(__DIR__."/../../../storage/recovery")) {
+                        mkdir(__DIR__."/../../../storage/recovery", 0755, true);
+                    }
+                    $srp = fopen(__DIR__."/../../../storage/recovery/".$pageID.".srp", "w");
+                    $data = '{
+	"SaturnRecoveredPage": {
+		"id": "'.$pageID.'",
+		"title": "'.$title.'",
+		"content": "'.$content.'",
+		"references": "'.$references.'"
+	}
+}';
+                    $srpWrite = fwrite($srp, $data);
+                    fclose($srp);
+
+                    if (!$srp || !$srpWrite) {
+                        $errorMsg = 'Saturn encountered an error whilst attempting to save your work and was also unable to save it to a recovery file.';
+                        header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
+                    } else {
+                        $errorMsg = 'Unable to save data to the database, a recovery file has been used instead.';
+                        header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
+                    }
+                    exit;
+
+                }
             } else {
                 $errorMsg = 'Page requires content.';
                 header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
-                exit;
             }
         } else {
             $errorMsg = 'Page requires a title.';
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
-            exit;
         }
+        exit;
     }
 
     if (isset($_POST['submitSettings'])) {
@@ -79,6 +116,15 @@
     </head>
     <body class="mb-8 dark:bg-neutral-700">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
+        <?php if (file_exists(__DIR__."/../../../storage/recovery/".$pageID.".srp")) { ?>
+        <form x-data="{ open: true }" action="" method="post">
+            <?php echo display_modal('info', 'Recovery File Found', 'Something didn\'t go quite right last time this page was saved and a recovery file was created. Would you like to load the data from this file now?<br><br>Loading a recovery file will delete your existing work if you later choose to save it. To revert to your previous work after loading click the cancel button at the bottom of the screen.<br><br>The recovery file will be deleted when you make your decision.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                                    <input type="submit" id="loadRecovery" name="loadRecovery" value="Yes" class="dark:bg-green-800 dark:text-white dark:hover:bg-green-700 transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 bg-green-200 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="submit" id="discardRecovery" name="discardRecovery" value="No" class="dark:bg-red-800 dark:text-white dark:hover:bg-red-700 transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 bg-red-200 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
+                                </div>'); ?>
+        </form>
+        <?php } ?>
         <div<?php if (get_user_roleID($_SESSION['id']) >= PERMISSION_EDIT_PAGE_SETTINGS) { ?> x-data="{ open: false }"<?php } ?>>
             <header class="bg-white shadow dark:bg-neutral-800">
                 <div class="py-6 px-4 sm:px-6 lg:px-8 md:flex max-w-7xl w-7xl mx-auto">
@@ -209,6 +255,11 @@
                 <p class="mb-2 dark:text-white">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> Characters.</p>
                 <textarea name="title" id="title" maxlength="<?php echo stripslashes(CONFIG_MAX_TITLE_CHARS); ?>" class="w-full border"><?php
                         $pageStatus = get_page_status($pageID);
+                    if (isset($recoveredData) && $recoveredData->SaturnRecoveredPage->title != null) {
+                        $title = $recoveredData->SaturnRecoveredPage->title;
+                        $title = checkOutput('HTML', $title);
+                        echo stripslashes($title);
+                    } else {
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $title = get_page_title($pageID);
                             $title = checkOutput('HTML', $title);
@@ -218,7 +269,8 @@
                             $title = checkOutput('HTML', $title);
                             echo $title;
                         }
-                        unset($title);
+                    }
+                    unset($title);
                 ?></textarea>
             </div>
 
@@ -227,6 +279,11 @@
                 <label class="hidden" for="content">Content</label>
                 <p class="mb-2 dark:text-white">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 5); ?> Characters.</p>
                 <textarea name="content" id="content" class="content" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 5); ?>" ><?php
+                    if (isset($recoveredData) && $recoveredData->SaturnRecoveredPage->content != null) {
+                        $content = $recoveredData->SaturnRecoveredPage->content;
+                        $content = checkOutput('HTML', $content);
+                        echo stripslashes($content);
+                    } else {
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $content = get_page_content($pageID);
                             $content = checkOutput('HTML', $content);
@@ -236,7 +293,8 @@
                             $content = checkOutput('HTML', $content);
                             echo stripslashes($content);
                         }
-                        unset($content);
+                    }
+                    unset($content);
                 ?></textarea>
             </div>
 
@@ -261,6 +319,11 @@
                 <p class="mb-2 dark:text-white">Max. <?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 10); ?> Characters.</p>
                 <label class="hidden" for="references">References</label>
                 <textarea name="references" id="references" class="references" maxlength="<?php echo CONFIG_MAX_PAGE_CHARS - (CONFIG_MAX_PAGE_CHARS / 10); ?>"><?php
+                    if (isset($recoveredData->SaturnRecoveredPage->references) && $recoveredData->SaturnRecoveredPage->references != null) {
+                        $references = $recoveredData->SaturnRecoveredPage->references;
+                        $references = checkOutput('HTML', $references);
+                        echo stripslashes($references);
+                    } else {
                         if ($pageStatus == 'green' || $pageStatus == 'red' || !CONFIG_PAGE_APPROVALS) {
                             $references = get_page_references($pageID);
                             $references = checkOutput('HTML', $references);
@@ -270,7 +333,8 @@
                             $references = checkOutput('HTML', $references);
                             echo stripslashes($references);
                         }
-                        unset($references);
+                    }
+                    unset($references);
                 ?></textarea>
             </div>
 

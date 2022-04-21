@@ -93,8 +93,8 @@ function is_restricted($file): bool
                     <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Files_Recovery'); ?></h1>
                     <div class="grid md:grid-cols-2 grid-cols-1 gap-2">
                         <?php
-                        $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/*';
-                        foreach (glob($directory.'*.{sdr}', GLOB_BRACE) as $file) {
+                        $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/recovery/*';
+                        foreach (glob($directory.'*.{srp}', GLOB_BRACE) as $file) {
                             $file = explode('/..', $file);
                             $fileName = basename($file);
                             if (is_restricted($file) == false) {
