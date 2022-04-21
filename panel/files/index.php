@@ -4,7 +4,7 @@ include_once __DIR__.'/../../common/global_private.php';
 
 function is_restricted($file): bool
 {
-    if (strpos($file[2], 'error.svg') === false && strpos($file[2], 'icon.png') === false && strpos($file[2], 'logo.png') === false && strpos($file[2], 'no-image-500x500.png') === false && strpos($file[2], 'icon.svg') === false && strpos($file[2], 'defaultprofile.png') === false) {
+    if (strpos($file[1], 'error.svg') === false && strpos($file[1], 'icon.png') === false && strpos($file[1], 'logo.png') === false && strpos($file[1], 'no-image-500x500.png') === false && strpos($file[1], 'icon.svg') === false && strpos($file[1], 'defaultprofile.png') === false) {
         return false;
     } else {
         return true;
@@ -40,12 +40,11 @@ function is_restricted($file): bool
 <?php
     $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/images/*';
     foreach (glob($directory.'*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg,SVG}', GLOB_BRACE) as $file) {
-        $file = explode('/..', $file);
-        $fileName = basename($file);
+        $file = explode('/images/', $file);
         if (is_restricted($file) == false) {
             ?>
-                        <a href="<?php echo $file[2]; ?>">
-                            <img src="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2" alt="<?php echo $fileName; ?>">
+                        <a href="/../../storage/images/<?php echo $file[1]; ?>">
+                            <img src="/../../storage/images/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2" alt="<?php echo $file[1]; ?>">
                         </a>
 <?php
         }
@@ -58,13 +57,12 @@ function is_restricted($file): bool
 <?php
     $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/videos/*';
     foreach (glob($directory.'*.{mp4,MP4,mov,MOV}', GLOB_BRACE) as $file) {
-        $file = explode('/..', $file);
-        $fileName = basename($file);
+        $file = explode('/videos/', $file);
         if (is_restricted($file) == false) {
             ?>
-                        <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2">
+                        <a href="/../../storage/images/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2">
                             <video width="320" height="240" controls>
-                                <source src="<?php echo $file[2]; ?>" type="video/mp4">
+                                <source src="/../../storage/videos/<?php echo $file[1]; ?>" type="video/mp4">
                                 Your browser does not support videos.
                             </video>
                         </a>
@@ -79,11 +77,10 @@ function is_restricted($file): bool
                         <?php
                         $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/*';
                         foreach (glob($directory.'*.{txt,TXT,pdf,PDF,doc,DOC,docx,DOCX,ppt,PPT,pptx,PPTX}', GLOB_BRACE) as $file) {
-                            $file = explode('/..', $file);
-                            $fileName = basename($file);
+                            $file = explode('/uploads/', $file);
                             if (is_restricted($file) == false) {
                                 ?>
-                                <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $fileName; ?></a>
+                                <a href="/../../storage/uploads/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $file[1]; ?></a>
                                 <?php
                             }
                         } ?>
@@ -95,11 +92,10 @@ function is_restricted($file): bool
                         <?php
                         $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/recovery/*';
                         foreach (glob($directory.'*.{srp}', GLOB_BRACE) as $file) {
-                            $file = explode('/..', $file);
-                            $fileName = basename($file);
-                            if (is_restricted($file) == false) {
+                            $file = explode('/recovery/', $file);
+                            if (is_restricted($file[1]) == false) {
                                 ?>
-                                <a href="<?php echo $file[2]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $fileName; ?></a>
+                                <a href="/../../storage/recovery/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $file[1]; ?></a>
                                 <?php
                             }
                         } ?>
