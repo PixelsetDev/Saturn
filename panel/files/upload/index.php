@@ -2,20 +2,20 @@
     session_start();
     ob_start();
 
-    include_once __DIR__.'/../../common/global_private.php';
+    include_once __DIR__.'/../../../common/global_private.php';
 
     if (!empty($_FILES['uploaded_file'])) {
 
         /* File Uploads Location Config */
         /* Changing this won't affect already existing uploads. */
-        $defaultUploadLocation = '/../../storage/uploads/';
-        $imageUploadLocation = '/../../storage/images/uploads/';
-        $profilepictureUploadLocation = '/../../storage/images/profile-pictures/';
-        $videoUploadLocation = '/../../storage/videos/uploads/';
+        $defaultUploadLocation = '/../../../storage/uploads/';
+        $imageUploadLocation = '/../../../storage/uploads/images/';
+        $profilepictureUploadLocation = '/../../../storage/images/profile-pictures/';
+        $videoUploadLocation = '/../../../storage/uploads/videos/';
 
         if (isset($_GET['uploadTo'])) {
-            $uploadDirectory = __DIR__.'/../Saturn'.checkInput('DEFAULT', $_GET['uploadTo']);
-            $uploadedToDirectory = '/../..'.checkInput('DEFAULT', $_GET['uploadTo']);
+            $uploadDirectory = __DIR__.'/../../../storage'.checkInput('DEFAULT', $_GET['uploadTo']);
+            $uploadedToDirectory = '/../../..'.checkInput('DEFAULT', $_GET['uploadTo']);
         } else {
             if (isset($_GET['type'])) {
                 if ($_GET['type'] == 'image') {
@@ -39,14 +39,14 @@
 
         // Check if directory exists and create it if it does not.
         if (!file_exists($uploadDirectory) && !mkdir($uploadDirectory, 0755)) {
-            echo alert('WARNING', 'The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this. <a href="https://docs.saturncms.net/v/'.SATURN_VERSION.'/user-documentation/errors-and-warnings#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
-            log_error('WARNING', 'The directory does not exist and could not be created.');
+            echo alert('WARNING', __('Error:FileUpload_DirectoryNotExist_Message_1').' <a href="https://docs.saturncms.net/v/'.SATURN_VERSION.'/user-documentation/errors-and-warnings#directory-not-exist-creation-failed" class="underline text-xs text-black" target="_blank" rel="noopener">'.__('Error:FileUpload_DirectoryNotExist_Message_2').'</a>', true);
+            log_error('WARNING', __('Error:FileUpload_DirectoryNotExist_Log'));
         }
 
         // Check if directory can be written to.
         if (!is_writable($uploadDirectory)) {
-            echo alert('WARNING', 'You don\'t have the required permissions to write in this directory. <a href="https://docs.saturncms.net/v/'.SATURN_VERSION.'/user-documentation/errors-and-warnings#no-directory-write-permissions" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a>', true);
-            log_error('WARNING', 'You don\'t have the required permissions to write in this directory.');
+            echo alert('WARNING', __('Error:FileUpload_NoPermissions_Message_1').' <a href="https://docs.saturncms.net/v/'.SATURN_VERSION.'/user-documentation/errors-and-warnings#no-directory-write-permissions" class="underline text-xs text-black" target="_blank" rel="noopener">'.__('Error:FileUpload_NoPermissions_Message_2').'</a>', true);
+            log_error('WARNING', __('Error:FileUpload_NoPermissions_Log'));
         }
         $uploadDirectory = $uploadDirectory.basename($_FILES['uploaded_file']['name']);
 
@@ -59,11 +59,11 @@
                 if ($height <= $_GET['maxHeight']) {
                     $allowUpload = true;
                 } else {
-                    echo alert('WARNING', 'This image is larger than the maximum height allowed. Your image height: '.$height.'; Maximum allowed: '.checkInput('DEFAULT', $_GET['maxHeight']), true);
+                    echo alert('WARNING', __('Error:FileUpload_TooLarge_Height').' '.$height.'; '.__('Error:FileUpload_MaximumAllowed').' '.checkInput('DEFAULT', $_GET['maxHeight']), true);
                     $allowUpload = false;
                 }
             } else {
-                echo alert('WARNING', 'This image is larger than the maximum width allowed. Your image width: '.$width.'; Maximum allowed: '.checkInput('DEFAULT', $_GET['maxWidth']), true);
+                echo alert('WARNING', __('Error:FileUpload_TooLarge_Width').' '.$width.'; '.__('Error:FileUpload_MaximumAllowed').' '.checkInput('DEFAULT', $_GET['maxWidth']), true);
                 $allowUpload = false;
             }
         }
@@ -74,15 +74,15 @@
                 $uploaded = true;
                 $uploadedTo = basename($_FILES['uploaded_file']['name']);
             } else {
-                echo alert('ERROR', 'There was an error uploading the file, please try again later or check warnings for more information.', true);
-                log_error('ERROR', 'There was an error uploading the file, please try again later or check warnings for more information.');
+                echo alert('ERROR', __('Error:FileUpload'), true);
+                log_error('ERROR', __('Error:FileUpload'));
                 $uploaded = false;
             }
 
             if (isset($_GET['renameTo'])) {
                 if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'], '', $uploadDirectory).checkInput('DEFAULT', $_GET['renameTo']))) {
-                    echo alert('WARNING', 'Unable to rename file.', true);
-                    log_error('WARNING', 'Unable to rename file.');
+                    echo alert('WARNING', __('Error:FileUpload_Rename'), true);
+                    log_error('WARNING', __('Error:FileUpload_Rename'));
                     $uploaded = false;
                 } else {
                     $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
@@ -92,8 +92,8 @@
                 $ext = pathinfo($path, PATHINFO_EXTENSION);
                 $rand = rand(000000000000, 999999999999);
                 if (!rename($uploadDirectory, str_replace($_FILES['uploaded_file']['name'], '', $uploadDirectory).$rand.'.'.$ext)) {
-                    echo alert('WARNING', 'Unable to rename file.', true);
-                    log_error('WARNING', 'Unable to rename file.');
+                    echo alert('WARNING', __('Error:FileUpload_Rename'), true);
+                    log_error('WARNING', __('Error:FileUpload_Rename'));
                     $uploaded = false;
                 } else {
                     $uploadedTo = checkInput('DEFAULT', $_GET['renameTo']);
@@ -118,8 +118,8 @@
                 }
             }
         } else {
-            echo alert('ERROR', 'File not uploaded.', true);
-            log_error('ERROR', 'File not uploaded.');
+            echo alert('ERROR', __('Error:FileUpload_NotUploaded'), true);
+            log_error('ERROR', __('Error:FileUpload_NotUploaded'));
         }
     }
 
@@ -129,15 +129,15 @@
 <html lang="en">
     <head>
         <?php
-            include_once __DIR__.'/../../common/panel/vendors.php';
-            include_once __DIR__.'/../../common/panel/theme.php';
+            include_once __DIR__.'/../../../common/panel/vendors.php';
+            include_once __DIR__.'/../../../common/panel/theme.php';
         ?>
 
         <title>File Upload - Saturn Panel</title>
     </head>
     <body class="mb-8">
         <?php if (!isset($_GET['embed'])) {
-            include_once __DIR__.'/../../common/panel/navigation.php';
+            include_once __DIR__.'/../../../common/panel/navigation.php';
         } ?>
 
         <header class="bg-white shadow">
