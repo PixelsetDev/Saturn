@@ -2,7 +2,7 @@
 
     function display_dashboard_statistics($id)
     {
-        echo'<h1 class="text-3xl text-gray-700 dark:text-gray-50 mt-4">Your Statistics</h1>';
+        echo'<h1 class="text-3xl text-gray-700 dark:text-gray-50 mt-4">'.__('Panel:Dashboard_Statistics').'</h1>';
 
         $edits = get_user_statistics_edits($id);
         list($max, $current, $next, $colour) = getvalues_dashboard_statistics($edits);
@@ -83,7 +83,7 @@
         $return .= ' text-'.$colour.'-500 dark:text-'.$colour.'-700"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
-                                        '.$type.' Level: '.$currentLevel.'
+                                        '.__('Panel:'.$type).' '.__('Panel:Level').': '.$currentLevel.'
                                     </p>
                                 </div>
                                 <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
@@ -91,9 +91,9 @@
                                     <span class="text-xs text-gray-400">
                                     ';
         if ($type == 'Writer') {
-            $return .= 'Edits';
+            $return .= __('Panel:Edits');
         } elseif ($type == 'Editor') {
-            $return .= 'Approvals';
+            $return .= __('Panel:Approvals');
         }
         $return .= '
                                     </span>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="shadow-md rounded-xl w-1/6 bg-white dark:bg-neutral-800 text-'.$colour.'-500 dark:text-'.$colour.'-700 relative overflow-hidden ml-4">
                         <div class="text-center">
-                            <p class="text-xl font-medium mt-4 mx-2">Next Level:</p>
+                            <p class="text-xl font-medium mt-4 mx-2">'.__('Panel:NextLevel').'</p>
                             <p class="mt-2">'.$next.'</p>
                         </div>
                         <div class="w-full h-3 bg-'.$colour.'-400 dark:bg-'.$colour.'-600 mt-3">

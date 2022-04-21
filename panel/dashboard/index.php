@@ -46,49 +46,49 @@
                 update_user_accepted_terms($_SESSION['id'], true);
                 echo alert('ERROR', __('Error:TryAgain'));
             } ?>
-        <div class="absolute top-0 bg-white z-50 ">
-            <header class="bg-white shadow relative">
+        <div class="absolute top-0 bg-white dark:bg-neutral-800 z-50 ">
+            <header class="bg-white dark:bg-neutral-900 shadow relative">
                 <div class="py-6 px-4 sm:px-6 lg:px-8 flex w-full">
-                    <h1 class="text-3xl font-bold leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900 flex-grow">Welcome to Saturn</h1>
+                    <h1 class="text-3xl font-bold leading-tight text-neutral-800 dark:text-neutral-200 flex-grow"><?php echo __('Panel:Welcome'); ?></h1>
                     <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" class="h-8 w-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
                 </div>
             </header>
             <form method="POST" action="index.php" class="py-6 px-4 sm:px-6 lg:px-8">
-                <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    Hey <?php echo get_user_firstname($_SESSION['id']); ?>. Welcome to Saturn. Since it's your first time using Saturn we've got a few things to go through with you before you can get started.<br>
+                <p class="text-lg text-neutral-800 dark:text-neutral-200">
+                    <?php echo __('Panel:Welcome_Greeting'); ?> <?php echo get_user_firstname($_SESSION['id']); ?>. <?php echo __('Panel:Welcome_Heading'); ?> <?php echo __('Panel:Welcome_Message'); ?><br>
                 </p>
-                <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">About You</h2>
-                <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    Everyone on Saturn has an account that keeps track of who you are, your account is <?php echo get_user_username($_SESSION['id']); ?>. You can change account information in your profile settings which can be accessed by clicking on your name in the menu. There's also a number of personal settings that can be changed there too, so it's worth checking it out.<br>
+                <h2 class="mt-8 mb-2 text-2xl leading-tight text-neutral-800 dark:text-neutral-200"><?php echo __('Panel:Welcome_AboutYou'); ?></h2>
+                <p class="text-lg text-neutral-800 dark:text-neutral-200">
+                    <?php echo __('Panel:Welcome_AboutYou_Message_1'); ?> <?php echo get_user_username($_SESSION['id']); ?>. <?php echo __('Panel:Welcome_AboutYou_Message_2'); ?><br>
                     <br>
                     <div class="grid grid-cols-2">
                         <div>
-                            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                                Your role is <?php echo get_user_role($_SESSION['id']); ?>. This means that you can:
+                            <p class="text-lg text-neutral-800 dark:text-neutral-200">
+                                <?php echo __('Panel:Welcome_AboutYou_Message_3'); ?> <?php echo get_user_role($_SESSION['id']); ?>. <?php echo __('Panel:Welcome_AboutYou_Message_4'); ?>
                             </p>
-                            <ul class="list-disc ml-4 text-<?php echo THEME_PANEL_COLOUR; ?>-700">
-                                <li>Write Pages and Articles.</li>
+                            <ul class="list-disc ml-4 text-neutral-800 dark:text-neutral-200">
+                                <li><?php echo __('Panel:Welcome_AboutYou_Permissions_Write'); ?></li>
                                 <?php
                                 if (get_user_roleID($_SESSION['id'] >= '3')) {
                                     ?>
-                                    <li>Approve Pages and Articles.</li>
+                                    <li><?php echo __('Panel:Welcome_AboutYou_Permissions_Approve'); ?></li>
                                     <?php
                                 }
             if (get_user_roleID($_SESSION['id'] >= '4')) {
                 ?>
-                                    <li>Manage the Website's Core Settings.</li>
-                                    <li>Manage the the Users and their permissions.</li>
+                                    <li><?php echo __('Panel:Welcome_AboutYou_Permissions_ManageWebsite'); ?></li>
+                                    <li><?php echo __('Panel:Welcome_AboutYou_Permissions_ManageUsers'); ?></li>
                                     <?php
             } ?>
-                                <li>Join the Team Chat and Socialise with Team Members.</li>
-                                <li>and so much more!</li>
+                                <li><?php echo __('Panel:Welcome_AboutYou_Permissions_TeamChat'); ?></li>
+                                <li><?php echo __('Panel:Welcome_AboutYou_Permissions_More'); ?></li>
                             </ul>
                         </div>
                         <div class="md:block hidden">
-                            <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50 mx-10">
-                                This is your Profile, you can edit this later in Saturn.
+                            <p class="text-lg text-neutral-800 dark:text-neutral-200 mx-10">
+                                <?php echo __('Panel:Welcome_AboutYou_Message_5'); ?>
                             </p>
-                            <div class="mx-10 rounded-md shadow-xl p-4">
+                            <div class="mx-10 rounded-md shadow-xl p-4 dark:bg-neutral-900">
                                 <img class="rounded-full h-16 w-16 inline m-1" src="<?php echo get_user_profilephoto($_SESSION['id']); ?>" alt="<?php echo get_user_fullname($_SESSION['id']); ?>">
                                 <h3 class="text-xl font-bold inline"><?php echo get_user_fullname($_SESSION['id']); ?></h3>
                                 <p class="mt-4">
@@ -98,19 +98,19 @@
                         </div>
                     </div>
                 </p>
-                <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Personal Settings and Preferences</h2>
-                <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    We've got a number of personal preferences and settings available for you. You're able to find and change these in your profile edit / profile settings page by clicking on your name in the main menu. You can set how and where you get notifications, if you'd like two-factor authentication and abbreviate your surname for further privacy. At the moment you get notifications in the Saturn dashboard, but you can get email notifications by enabling them in your profile settings.
+                <h2 class="mt-8 mb-2 text-2xl leading-tight text-neutral-800 dark:text-neutral-200"><?php echo __('Panel:Welcome_Settings'); ?></h2>
+                <p class="text-lg text-neutral-800 dark:text-neutral-200">
+                    <?php echo __('Panel:Welcome_Settings_Message'); ?>
                 </p>
                 <?php
                     if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN_SHOW_TERMS) {
                         $output = json_decode(file_get_contents(__DIR__.'/../../storage/terms.json'));
                         if ($output->data->termsandconditions != null) {
                             ?>
-                <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Terms and Conditions</h2>
-                <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    These are the Terms and Conditions of the Saturn System set out by your website administrator, you'll need to read these before you can continue.<br>
-                    By clicking the continue button at the bottom of the screen, you accept these Terms and Conditions.
+                <h2 class="mt-8 mb-2 text-2xl leading-tight text-neutral-800 dark:text-neutral-200"><?php echo __('Panel:Welcome_Terms'); ?></h2>
+                <p class="text-lg text-neutral-800 dark:text-neutral-200">
+                    <?php echo __('Panel:Welcome_Terms_Message_1'); ?><br>
+                    <?php echo __('Panel:Welcome_Terms_Message_2'); ?>
                 </p>
                 <div class="w-full h-1/2 shadow-xl overflow-y-scroll text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 border p-4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100">
                     <?php echo $output->data->termsandconditions; ?>
@@ -119,10 +119,10 @@
                         }
                         if ($output->data->privacypolicy != null) {
                             ?>
-                <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Privacy Policy</h2>
-                <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    This is the Privacy Policy your website administrator has created. You can also see how Saturn manages your data at <a href="https://www.saturncms.net/privacy" class="underline" rel="noopener" target="_blank">saturncms.net/privacy</a>, you'll need to read these before you can continue.<br>
-                    By clicking the continue button at the bottom of the screen, you accept this Privacy Policy.
+                <h2 class="mt-8 mb-2 text-2xl leading-tight text-neutral-800 dark:text-neutral-200"><?php echo __('Panel:Welcome_Privacy'); ?></h2>
+                <p class="text-lg text-neutral-800 dark:text-neutral-200">
+                    <?php echo __('Panel:Welcome_Privacy_Message_1'); ?> <a href="https://www.saturncms.net/privacy" class="underline" rel="noopener" target="_blank">saturncms.net/privacy</a>, <?php echo __('Panel:Welcome_Privacy_Message_2'); ?><br>
+                    <?php echo __('Panel:Welcome_Privacy_Message_3'); ?>
                 </p>
                 <div class="w-full h-1/2 shadow-xl overflow-y-scroll text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 border p-4 bg-<?php echo THEME_PANEL_COLOUR; ?>-100">
                     <?php echo $output->data->privacypolicy; ?>
@@ -131,15 +131,15 @@
                         } ?>
                 <?php
                     } ?>
-                <h2 class="mt-8 mb-2 text-2xl leading-tight text-<?php echo THEME_PANEL_COLOUR; ?>-900">Let's go!</h2>
-                <p class="text-lg text-<?php echo THEME_PANEL_COLOUR; ?>-700 dark:text-gray-50">
-                    You're all set and ready to go! If you need any further help you can reach out to your Website Administrator via Email here: <a href="mailto:<?php echo CONFIG_EMAIL_ADMIN; ?>" class="underline" rel="noopener"><?php echo CONFIG_EMAIL_ADMIN; ?></a> or read the Saturn Documentation at <a href="https://docs.saturncms.net" class="underline" rel="noopener" target="_blank">https://docs.saturncms.net</a>
+                <h2 class="mt-8 mb-2 text-2xl leading-tight text-neutral-800 dark:text-neutral-200"><?php echo __('Panel:Welcome_LetsGo'); ?></h2>
+                <p class="text-lg text-neutral-800 dark:text-neutral-200">
+                    <?php echo __('Panel:Welcome_LetsGo_Message_1'); ?> <a href="mailto:<?php echo CONFIG_EMAIL_ADMIN; ?>" class="underline" rel="noopener"><?php echo CONFIG_EMAIL_ADMIN; ?></a> <?php echo __('Panel:Welcome_LetsGo_Message_2'); ?> <a href="https://docs.saturncms.net" class="underline" rel="noopener" target="_blank">https://docs.saturncms.net</a>
                 </p>
                 <a href="?acceptTerms=true" class="mt-10 hover:shadow-md group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">
                     <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                         <i class="fas fa-check" aria-hidden="true"></i>
                     </span>
-                    Continue
+                    <?php echo __('Panel:Welcome_Continue'); ?>
                 </a>
             </form>
         </div>
@@ -153,7 +153,7 @@
             echo 'pb-28 md:pb-1';
         } ?>">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight">Dashboard</h1>
+                <h1 class="text-3xl font-bold leading-tight"><?php echo __('Panel:Dashboard'); ?></h1>
             </div>
             <?php if ($notifCount > '0') {
             echo'<a href="'.CONFIG_INSTALL_URL.'/panel/dashboard/?dismissNotif='.get_latest_notification_id($_SESSION['id']).'" class="m-1 bg-white dark:bg-neutral-700 rounded-lg dark:border-neutral-900 border-gray-300 border p-3 shadow-md absolute md:top-0 right-0 max-w-sm md:max-w-xl max-h-20 overflow-y-scroll">
@@ -198,12 +198,12 @@
                 echo '<br>
                         <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
-                                <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
-                                <p>Saturn '.latest_version().' is now available for download.</p>';
+                                <h6 class="mb-2 font-semibold leading-5">' . __('Panel:Dashboard_Update') . '</h6>
+                                <p>' . __('General:Saturn') . ' '.latest_version().' ' . __('Panel:Dashboard_Update_Message') . '</p>';
                 if (CONFIG_UPDATE_AUTO) {
-                    echo '<p>Saturn will update automatically next time you visit your Admin Panel.</p>';
+                    echo '<p>' . __('Panel:Dashboard_Update_Automatic') . '</p>';
                 }
-                echo '          <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">Update</a>.
+                echo '          <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">' . __('Panel:Dashboard_Update_Button') . '</a>.
                             </div>
                         </div><br>';
             }
@@ -260,7 +260,7 @@
                                     <i class="fas fa-search fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                                 </span>
                                 <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
-                                    Pending <br class="md:hidden block">Approvals
+                                    <?php echo __('Panel:Dashboard_PendingApprovals_Pending'); ?> <br class="md:hidden block"><?php echo __('Panel:Dashboard_PendingApprovals_Approvals'); ?>
                                 </p>
                             </div>
                             <div class="flex flex-col justify-start">
@@ -278,13 +278,13 @@
                                 </p>
                             </div>
                         </a>
-                        <?php echo display_modal('INFO', 'Approvals', 'Please select an option below. There are currently '.$rows.' pending page approvals and '.$rows2.' pending article approvals.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
+                        <?php echo display_modal('INFO', 'Approvals', __('Panel:Dashboard_PendingApprovals_Message_1').' '.$rows.' '.__('Panel:Dashboard_PendingApprovals_Message_2').' '.$rows2.' '.__('Panel:Dashboard_PendingApprovals_Message_2'), '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                         <a href="'.CONFIG_INSTALL_URL.'/panel/articles/approvals" class="flex-grow transition-all duration-200 hover:shadow-md cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
-                                            Article Approvals&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows2.'</span>
+                                            ' . __('Panel:Dashboard_PendingApprovals_Articles') . '&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows2.'</span>
                                         </a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="'.CONFIG_INSTALL_URL.'/panel/pages/approvals" class="flex-grow transition-all duration-200 hover:shadow-md cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
-                                            Page Approvals&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows.'</span>
+                                            ' . __('Panel:Dashboard_PendingApprovals_Pages') . '&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows.'</span>
                                         </a>
                                     </div>');
 
@@ -299,7 +299,7 @@
                                     <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                                 </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
-                                Top Writers
+                                <?php echo __('Panel:Dashboard_TopWriters'); ?>
                             </p>
                         </div>
                         <div class="flex space-x-4">
@@ -326,7 +326,7 @@
                                         } else {
                                             echo 'green';
                                         } ?>-500 rounded-full p-1">
-                                            <?php echo $item[1]; ?> Edits
+                                            <?php echo $item[1]; ?> <?php echo __('Panel:Edits'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -340,7 +340,7 @@
                                     <i class="fas fa-pencil-alt fa-lg text-white self-center object-center py-3" aria-hidden="true"></i>
                                 </span>
                             <p class="text-2xl text-gray-700 dark:text-gray-50 ml-2">
-                                Top Approvals
+                                <?php echo __('Panel:Dashboard_TopEditors'); ?>
                             </p>
                         </div>
                         <div class="flex space-x-4">
@@ -368,7 +368,7 @@
                                         } else {
                                             echo 'green';
                                         } ?>-500 rounded-full p-1">
-                                            <?php echo $item[1]; ?> Approvals
+                                            <?php echo $item[1]; ?> <?php echo __('Panel:Approvals'); ?>
                                         </a>
                                     </div>
                                 </div>
@@ -382,11 +382,12 @@
 
                 <?php display_dashboard_statistics($_SESSION['id']); ?>
 
+                <?php $views = get_user_statistics_views($_SESSION['id']); if ($views > 0) { ?>
                 <div class="flex mt-4 space-x-4">
                     <div class="flex-grow shadow-md rounded-xl w-1/6 bg-white dark:bg-neutral-800 dark:text-white text-gray-500 relative overflow-hidden">
                         <div class="text-center">
-                            <p class="text-xl font-medium mt-4 mx-2">Your Total Views:</p>
-                            <p class="mt-2"><?php echo get_user_statistics_views($_SESSION['id']); ?></p>
+                            <p class="text-xl font-medium mt-4 mx-2"><?php echo __('Panel:TotalViews'); ?></p>
+                            <p class="mt-2"><?php echo $views ?></p>
                         </div>
                         <div class="w-full h-3 mt-3">
                             <div class="w-full h-full text-center text-xs text-white bg-gray-100 dark:bg-neutral-900">
@@ -394,6 +395,7 @@
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </section>
     </body>
