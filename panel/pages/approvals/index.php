@@ -191,7 +191,7 @@
                         $sCol = 'green';
                         $status = 'No Pending Approvals';
                     } elseif ((($approved / $total) * 100) != 0 || (($pending / $total) * 100) != 0) {
-                        $statusColour = 'yellow';
+                        $statusColour = 'red';
                         $sCol = 'red';
                         $status = 'Pending Approvals';
                     } elseif ((($approved / $total) * 100) == 0 && (($pending / $total) * 100) == 0) {
@@ -248,9 +248,9 @@
                         </div>
                     </div>
                     <div class="flex float-right h-auto relative w-full mt-3">
-                        <div class="overflow-hidden h-1.5 text-xs flex rounded bg-red-400 dark:bg-red-600 w-full">
-                            <div style="width:<?php echo 100 - ($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500 dark:bg-red-600"></div>
-                            <div style="width:<?php echo($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 dark:bg-green-600"></div>
+                        <div class="overflow-hidden h-1.5 text-xs flex rounded bg-green-400 dark:bg-green-600 w-full">
+                            <div style="width:<?php echo 100 - ($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 dark:bg-green-600"></div>
+                            <div style="width:<?php echo($pending / $total) * 100 ?>%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500 dark:bg-red-600"></div>
                         </div>
                     </div>
                     <br>
