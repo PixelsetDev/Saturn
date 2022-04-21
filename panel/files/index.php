@@ -41,7 +41,7 @@ function is_restricted($file): bool
     $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/images/*';
     foreach (glob($directory.'*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg,SVG}', GLOB_BRACE) as $file) {
         $file = explode('/images/', $file);
-        if (is_restricted($file) == false) {
+        if (!is_restricted($file)) {
             ?>
                         <a href="/../../storage/images/<?php echo $file[1]; ?>">
                             <img src="/../../storage/images/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2" alt="<?php echo $file[1]; ?>">
@@ -58,7 +58,7 @@ function is_restricted($file): bool
     $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/videos/*';
     foreach (glob($directory.'*.{mp4,MP4,mov,MOV}', GLOB_BRACE) as $file) {
         $file = explode('/videos/', $file);
-        if (is_restricted($file) == false) {
+        if (!is_restricted($file)) {
             ?>
                         <a href="/../../storage/images/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2">
                             <video width="320" height="240" controls>
@@ -78,7 +78,7 @@ function is_restricted($file): bool
                         $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/*';
                         foreach (glob($directory.'*.{txt,TXT,pdf,PDF,doc,DOC,docx,DOCX,ppt,PPT,pptx,PPTX}', GLOB_BRACE) as $file) {
                             $file = explode('/uploads/', $file);
-                            if (is_restricted($file) == false) {
+                            if (!is_restricted($file)) {
                                 ?>
                                 <a href="/../../storage/uploads/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $file[1]; ?></a>
                                 <?php
@@ -93,7 +93,7 @@ function is_restricted($file): bool
                         $directory = __DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/recovery/*';
                         foreach (glob($directory.'*.{srp}', GLOB_BRACE) as $file) {
                             $file = explode('/recovery/', $file);
-                            if (is_restricted($file[1]) == false) {
+                            if (!is_restricted($file[1])) {
                                 ?>
                                 <a href="/../../storage/recovery/<?php echo $file[1]; ?>" class="shadow-lg hover:shadow-xl rounded transition duration-200 bg-gray-100 dark:bg-neutral-600 p-2"><?php echo $file[1]; ?></a>
                                 <?php
