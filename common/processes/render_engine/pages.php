@@ -147,4 +147,9 @@ $file = strtolower(get_page_template($pageID));
 $pageOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/'.$file.'.tt');
 
 $pageData = getdata($pageID);
+
+global $conn;
+$query = 'UPDATE `'.DATABASE_PREFIX.'users_statistics` SET `views`=`views`+1 WHERE `id` = '.$pageData['author']['id'];
+mysqli_query($conn, $query);
+
 echo stripslashes(replacedata($pageOutput, $pageData, $data));
