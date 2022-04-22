@@ -14,7 +14,7 @@
         $videoUploadLocation = '/../../../storage/uploads/videos/';
 
         if (isset($_GET['uploadTo'])) {
-            $uploadDirectory = __DIR__.'/../../../storage'.checkInput('DEFAULT', $_GET['uploadTo']);
+            $uploadDirectory = __DIR__.'/../../..'.checkInput('DEFAULT', $_GET['uploadTo']);
             $uploadedToDirectory = '/../../..'.checkInput('DEFAULT', $_GET['uploadTo']);
         } else {
             if (isset($_GET['type'])) {
@@ -105,7 +105,8 @@
 
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
-                if (strpos($_GET['redirectTo'],'?',) !== false) {
+                if (strpos($_GET['redirectTo'],'?'
+                        ,) !== false) {
                     if (isset($_GET['renameTo'])) {
                         header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'&uploadedTo='.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])));
                     } else {
