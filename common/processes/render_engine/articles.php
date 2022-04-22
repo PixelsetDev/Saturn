@@ -174,4 +174,9 @@ $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.
 $articleOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/article.tt');
 
 $articleData = getdata($articleID);
+
+global $conn;
+$query = 'UPDATE `'.DATABASE_PREFIX.'users_statistics` SET `views`=`views`+1 WHERE `id` = '.$articleData['author']['id'];
+mysqli_query($conn, $query);
+
 echo stripslashes(replacedata($articleOutput, $articleData, $data));
