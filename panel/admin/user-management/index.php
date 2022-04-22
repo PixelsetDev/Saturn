@@ -45,13 +45,13 @@
             foreach ($row as $value) {
                 if (is_numeric($value)) {
                     $empty = false; ?>
-                    <div class="h-12">
+                    <li class="h-12">
                                     <a href="<?php echo get_user_profile_link($value); ?>" class="relative inline-block float-left mr-4 z-30">
                                         <img class="z-10 inline-block object-cover w-12 h-12 rounded-full" src="<?php echo get_user_profilephoto($value); ?>" alt="<?php echo get_user_fullname($value); ?>">
                                         <span class="absolute bottom-0 right-0 inline-block w-3 h-3 bg-<?php echo get_activity_colour($value); ?>-600 border-2 border-gray-200 rounded-full"></span>
                                     </a>
                                     <div class="font-bold h-full" x-data="{ open: false }">
-                                        <span class="self-start block"><?php echo get_user_fullname($value); ?></span>
+                                        <name class="self-start block"><?php echo get_user_fullname($value); ?></name>
                                         <button @click="open = true" class="font-normal hover:shadow-lg inline-flex items-center justify-center w-24 h-6 tracking-wide text-white transition duration-200 rounded bg-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-400 focus:shadow-outline focus:outline-none">
                                             <i class="fas fa-cog" aria-hidden="true"></i>&nbsp;<?php echo __('General:Manage'); ?>
                                         </button>
@@ -141,7 +141,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </li>
                 <?php
                 }
             }
@@ -163,8 +163,11 @@
         <?php require __DIR__.'/../../../common/admin/navigation.php'; ?>
 
             <div class="px-8 py-4 block w-full">
-                <h1 class="text-gray-900 text-3xl"><?php echo __('Admin:UserManagement'); ?></h1>
-                <div class="w-full mx-auto py-6">
+                <div class="flex">
+                    <h1 class="text-gray-900 text-3xl flex-grow"><?php echo __('Admin:UserManagement'); ?></h1>
+                    <input type="text" id="searchBar" onkeyup="search()" placeholder="<?php echo __('General:Search'); ?>" class="border-b-2 border-blue-500 bg-gray-50 px-1 rounded-md mb-6">
+                </div>
+                <ul id="searchList" class="w-full mx-auto py-6">
                     <?php
                     if (isset($errorMsg)) {
                         echo '<div class="duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2 mt-2">
@@ -273,8 +276,26 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </ul>
             </div>
         </div>
+        <script>
+            function search() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById("searchBar");
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("searchList");
+                li = ul.getElementsByTagName("li");
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("name")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
     </body>
 </html>

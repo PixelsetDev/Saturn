@@ -96,8 +96,9 @@ if (isset($_POST['newArticle'])) {
         <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>
 
         <header class="bg-white shadow dark:bg-neutral-800">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Articles'); ?></h1>
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex">
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white flex-grow"><?php echo __('Panel:Articles'); ?></h1>
+                <input type="text" id="searchBar" onkeyup="search()" placeholder="<?php echo __('General:Search'); ?>" class="border-b-2 border-blue-500 bg-gray-50 dark:bg-neutral-900 dark:text-white dark:border-blue-900 px-1 rounded-md">
             </div>
         </header>
 
@@ -113,7 +114,7 @@ if (isset($_POST['newArticle'])) {
             }
             unset($successMsg);
             ?>
-            <div class="px-4 py-6 sm:px-0">
+            <ul id="searchList" class="px-4 py-6 sm:px-0">
                 <?php
                 $role = get_user_roleID($_SESSION['id']);
                 $i = 1;
@@ -121,8 +122,8 @@ if (isset($_POST['newArticle'])) {
                 $exists = false;
                 while ($article != null) {
                     if (get_article_author_id($i) == $_SESSION['id'] && get_article_status($i) != 'DELETED') {
-                        $exists = true; ?>  <div>
-                                <div id="<?php echo $article; ?>">
+                        $exists = true; ?>
+                                <li id="<?php echo $article; ?>">
                                     <div class="flex-0 relative pt-1 mb-2">
                                         <div class="flex items-center justify-between">
                                             <h1 class="text-xl font-bold leading-tight text-gray-900 mr-2 dark:text-white"><?php echo $article; ?></h1>
@@ -203,8 +204,7 @@ if (isset($_POST['newArticle'])) {
                                 </div>').'
                                         </form>
                                     </div>
-                                </div>
-                            </div>
+                            </li>
                         <br><hr class="dark:text-neutral-900 text-gray-200"><br>';
                     }
                     unset($article);
@@ -233,6 +233,24 @@ if (isset($_POST['newArticle'])) {
                     </div>
                 </div>
             </div>
-        </div>
+        </li>
+                    <script>
+                        function search() {
+                            var input, filter, ul, li, a, i, txtValue;
+                            input = document.getElementById("searchBar");
+                            filter = input.value.toUpperCase();
+                            ul = document.getElementById("searchList");
+                            li = ul.getElementsByTagName("li");
+                            for (i = 0; i < li.length; i++) {
+                                a = li[i].getElementsByTagName("h1")[0];
+                                txtValue = a.textContent || a.innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    li[i].style.display = "";
+                                } else {
+                                    li[i].style.display = "none";
+                                }
+                            }
+                        }
+                    </script>
     </body>
 </html>
