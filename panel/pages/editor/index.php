@@ -97,6 +97,12 @@
         exit;
     }
 
+    if (isset($_GET['deletePagePicture'])) {
+        update_page_image_url($pageID, '');
+        header('Location: index.php/?pageID='.$pageID.'&success=The image has been removed from the page. If you\'d like to delete the image file please use the file manager.');
+        exit;
+    }
+
     if (isset($_POST['deletePage'])) {
         if (delete_page($pageID)) {
             header('Location: '.CONFIG_INSTALL_URL.'/panel/pages/?success=deleted');
@@ -209,10 +215,10 @@
                                         <label for="settings_page_image" class="self-center dark:text-white">Image</label>
                                         <?php if (get_page_image($pageID) != null) { ?>
                                             <img src="<?php echo get_page_image($pageID); ?>" class="w-full h-auto p-2" alt="Page Image">
-                                            <div></div>
-                                            <a href="/panel/files/upload/?type=image&redirectTo=/panel/pages/editor/?pageID=<?php echo $pageID; ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">Change</a>
+                                            <a href="/panel/files/upload/?type=image&redirectTo=/panel/pages/editor/?pageID=<?php echo $pageID; ?>" class="dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">Change</a>
+                                            <a href="index.php/?pageID=<?php echo $pageID; ?>&deletePagePicture" class="dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">Remove</a>
                                         <?php } else { ?>
-                                            <a href="/panel/files/upload/?type=image&redirectTo=/panel/pages/editor/?pageID=<?php echo $pageID; ?>" class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:border-neutral-900 dark:bg-neutral-800 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">Upload</a>
+                                            <a href="/panel/files/upload/?type=image&redirectTo=/panel/pages/editor/?pageID=<?php echo $pageID; ?>" class="dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 md:py-1 md:text-rg md:px-10">Upload</a>
                                         <?php } ?>
                                         <?php echo get_page_image($pageID); ?>
                                     </div>
