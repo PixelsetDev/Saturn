@@ -3,10 +3,10 @@
                 <div class="p-4 flex flex-row items-center justify-between flex-none w-full lg:w-1/6">
                     <div class="flex space-x-6">
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" title="<?php echo __('General:Saturn'); ?>" class="w-32 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn" class="flex-none w-40 h-auto">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn" class="flex-none w-auto h-8">
                         </a>
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/" title="<?php echo CONFIG_SITE_NAME; ?>" class="w-40 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-auto h-8">
                         </a>
                     </div>
                     <div class="flex-grow">&nbsp;</div>
@@ -116,3 +116,4 @@
                                     echo '-'.SATURN_BRANCH;
                                 } ?></span>
         </div>
+<div class="fixed bottom-1/2 -right-[500px] w-[575px] z-40 hover:-translate-x-[500px] translation duration-500" id="sessionCountdown"></div><script><?php echo countdownJavascript(); ?></script>
