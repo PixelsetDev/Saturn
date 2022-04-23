@@ -99,7 +99,7 @@ ob_end_flush();
                 <div class="ml-10">
                     <ul class="flex justify-content-around items-center">
                         <li class="mr-4">
-                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_views($user); ?> </span> Views</span>
+                            <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_views_pages($user); ?> </span> Views</span>
                         </li>
                         <li class="mr-4">
                             <span class="block text-base flex"><span class="font-bold mr-2"><?php echo get_user_statistics_edits($user); ?> </span> Edits</span>
