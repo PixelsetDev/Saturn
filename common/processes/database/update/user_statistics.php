@@ -6,7 +6,7 @@
 
         global $conn;
 
-        $pageviews = get_user_statistics_views($userid) + 1;
+        $pageviews = get_user_statistics_views_pages($userid) + 1;
 
         $query = 'UPDATE `'.DATABASE_PREFIX."users_statistics` SET `views` = '".$pageviews."' WHERE `id` = ".$userid;
 

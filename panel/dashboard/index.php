@@ -381,21 +381,56 @@
                 </div>
 
                 <?php display_dashboard_statistics($_SESSION['id']); ?>
-
-                <?php $views = get_user_statistics_views($_SESSION['id']); if ($views > 0) { ?>
-                <div class="flex mt-4 space-x-4">
-                    <div class="flex-grow shadow-md rounded-xl w-1/6 bg-white dark:bg-neutral-800 dark:text-white text-gray-500 relative overflow-hidden">
-                        <div class="text-center">
-                            <p class="text-xl font-medium mt-4 mx-2"><?php echo __('Panel:TotalViews'); ?></p>
-                            <p class="mt-2"><?php echo $views ?></p>
-                        </div>
-                        <div class="w-full h-3 mt-3">
-                            <div class="w-full h-full text-center text-xs text-white bg-gray-100 dark:bg-neutral-900">
+                <div class="flex mt-4">
+                    <div class="shadow-md rounded-xl w-full bg-white dark:bg-neutral-800 relative overflow-hidden">
+                        <a class="w-full h-full block">
+                            <div class="flex items-center justify-between px-4 py-6 space-x-4">
+                                <div class="flex items-center">
+                                    <span class="rounded-full relative pl-3 pr-2 py-2 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-300">
+                                        <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
+                                    </span>
+                                    <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
+                                        Page Views: <?php $pageviews = get_user_statistics_views_pages($_SESSION['id']); echo $pageviews; ?>
+                                    </p>
+                                </div>
+                                <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
+                                    <span class="text-xs text-gray-400">
+                                        Website Total: <?php $totalpageviews = get_total_statistics_views_pages(); echo $totalpageviews; ?>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
+                            <div class="w-full h-3 bg-gray-100 dark:bg-neutral-600 absolute bottom-0">
+                                <div style="width:<?php if ($pageviews == 0) { echo 0; } else { echo ($pageviews / $totalpageviews) * 100; } ?>%" class="h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-400 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-900">
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <?php } ?>
+                <div class="flex mt-4">
+                    <div class="shadow-md rounded-xl w-full bg-white dark:bg-neutral-800 relative overflow-hidden">
+                        <a class="w-full h-full block">
+                            <div class="flex items-center justify-between px-4 py-6 space-x-4">
+                                <div class="flex items-center">
+                                    <span class="rounded-full relative pl-3 pr-2 py-2 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-300">
+                                        <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
+                                    </span>
+                                    <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
+                                        Article Views: <?php $articleviews = get_user_statistics_views_articles($_SESSION['id']); echo $articleviews; ?>
+                                    </p>
+                                </div>
+                                <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
+                                    <span class="text-xs text-gray-400">
+                                        Website Total: <?php $totalarticleviews = get_total_statistics_views_articles(); echo $totalarticleviews; ?>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-full h-3 bg-gray-100 dark:bg-neutral-600 absolute bottom-0">
+                                <div style="width:<?php if ($articleviews == 0) { echo 0; } else { echo ($articleviews / $totalarticleviews) * 100; } ?>%" class="h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-400 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-600">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </body>

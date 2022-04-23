@@ -1,17 +1,31 @@
 <?php
 
-    function get_user_statistics_views($id)
+    function get_user_statistics_views_pages($id)
     {
         $id = checkInput('DEFAULT', $id);
 
         global $conn;
 
-        $query = 'SELECT `views` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE `id` = '.$id;
+        $query = 'SELECT `page_views` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE `id` = '.$id;
 
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
 
-        return $row['views'];
+        return $row['page_views'];
+    }
+
+    function get_user_statistics_views_articles($id)
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `article_views` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE `id` = '.$id;
+
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['article_views'];
     }
 
     function get_user_statistics_edits($id)
