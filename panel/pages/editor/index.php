@@ -11,13 +11,13 @@
     }
 
     if (isset($_POST['discardRecovery'])) {
-        unlink(__DIR__."/../../../storage/recovery/".$pageID.".srp");
-        header ('Location: '.$_SERVER['PHP_SELF'].'?pageID='.$pageID);
+        unlink(__DIR__.'/../../../storage/recovery/'.$pageID.'.srp');
+        header('Location: '.$_SERVER['PHP_SELF'].'?pageID='.$pageID);
         exit;
     } elseif (isset($_POST['loadRecovery'])) {
-        $recoveredData = file_get_contents(__DIR__."/../../../storage/recovery/".$pageID.".srp");
+        $recoveredData = file_get_contents(__DIR__.'/../../../storage/recovery/'.$pageID.'.srp');
         $recoveredData = json_decode($recoveredData);
-        unlink(__DIR__."/../../../storage/recovery/".$pageID.".srp");
+        unlink(__DIR__.'/../../../storage/recovery/'.$pageID.'.srp');
     }
 
     if (isset($_POST['submit'])) {
@@ -30,7 +30,8 @@
                     $myID = $_SESSION['id'];
                     $query = 'UPDATE `'.DATABASE_PREFIX."pages_pending` SET `title`='$title',`content`='$content',`reference`='$references',`user_id`='$myID' WHERE `id`='$pageID';";
                     unset($myID);
-                    $rs1 = mysqli_query($conn, $query); $rs2 = true;
+                    $rs1 = mysqli_query($conn, $query);
+                    $rs2 = true;
                     $successMsg = 'Your edit has been saved and is currently pending approval.';
                     log_all('SATURN][PAGES', get_user_fullname($_SESSION['id']).' edited page with ID: '.$pageID.' ('.get_page_title($pageID).'). The edit is pending approval.');
                 } else {
@@ -46,11 +47,10 @@
                 if ($rs1 && $rs2) {
                     header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&success='.$successMsg);
                 } else {
-
-                    if (!file_exists(__DIR__."/../../../storage/recovery")) {
-                        mkdir(__DIR__."/../../../storage/recovery", 0755, true);
+                    if (!file_exists(__DIR__.'/../../../storage/recovery')) {
+                        mkdir(__DIR__.'/../../../storage/recovery', 0755, true);
                     }
-                    $srp = fopen(__DIR__."/../../../storage/recovery/".$pageID.".srp", "w");
+                    $srp = fopen(__DIR__.'/../../../storage/recovery/'.$pageID.'.srp', 'w');
                     $data = '{
 	"SaturnRecoveredPage": {
 		"id": "'.$pageID.'",
@@ -69,7 +69,6 @@
                     }
                     header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?pageID='.$pageID.'&error='.$errorMsg);
                     exit;
-
                 }
             } else {
                 $errorMsg = 'Page requires content.';
@@ -126,7 +125,7 @@
     </head>
     <body class="mb-8 dark:bg-neutral-700">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
-        <?php if (file_exists(__DIR__."/../../../storage/recovery/".$pageID.".srp")) { ?>
+        <?php if (file_exists(__DIR__.'/../../../storage/recovery/'.$pageID.'.srp')) { ?>
         <form x-data="{ open: true }" action="" method="post">
             <?php echo display_modal('info', 'Recovery File Found', 'Something didn\'t go quite right last time this page was saved and a recovery file was created. Would you like to load the data from this file now?<br><br>Loading a recovery file will delete your existing work if you later choose to save it. To revert to your previous work after loading click the cancel button at the bottom of the screen.<br><br>The recovery file will be deleted when you make your decision.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                     <input type="submit" id="loadRecovery" name="loadRecovery" value="Yes" class="dark:bg-green-800 dark:text-white dark:hover:bg-green-700 transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 bg-green-200 hover:bg-green-300 md:py-1 md:text-rg md:px-10">

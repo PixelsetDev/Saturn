@@ -1,20 +1,23 @@
 <?php
-function get_total_statistics_views_pages() {
+
+function get_total_statistics_views_pages()
+{
     $id = 1;
     $totalViews = 0;
 
-    while (get_user_statistics_views_pages($id) != NULL) {
+    while (get_user_statistics_views_pages($id) != null) {
         $totalViews += get_user_statistics_views_pages($id);
         $id++;
     }
 
     return $totalViews;
 }
-function get_total_statistics_views_articles() {
+function get_total_statistics_views_articles()
+{
     $id = 1;
     $totalViews = 0;
 
-    while (get_user_statistics_views_articles($id) != NULL) {
+    while (get_user_statistics_views_articles($id) != null) {
         $totalViews += get_user_statistics_views_articles($id);
         $id++;
     }

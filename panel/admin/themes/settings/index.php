@@ -238,11 +238,11 @@ if (isset($_GET['successMsg'])) {
                         <select id="panel_colour_scheme" name="panel_colour_scheme" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-<?php echo THEME_PANEL_COLOUR; ?>-300 placeholder-<?php echo THEME_PANEL_COLOUR; ?>-500 text-<?php echo THEME_PANEL_COLOUR; ?>-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option disabled>-- <?php echo __('General:PleaseSelectOne'); ?> --</option>
                             <option value="neutral"<?php if (THEME_PANEL_COLOUR == 'neutral') {
-                                echo ' selected';
-                            } ?>><?php echo __('General:Neutral'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Neutral'); ?></option>
                             <option value="gray"<?php if (THEME_PANEL_COLOUR == 'gray') {
-                                echo ' selected';
-                            } ?>><?php echo __('General:Gray'); ?></option>
+                    echo ' selected';
+                } ?>><?php echo __('General:Gray'); ?></option>
                             <option value="red"<?php if (THEME_PANEL_COLOUR == 'red') {
                     echo ' selected';
                 } ?>><?php echo __('General:Red'); ?></option>

@@ -1,7 +1,9 @@
 <?php
+
     function countdownJavascript(): string
     {
-        $time = ini_get("session.gc_maxlifetime");
+        $time = ini_get('session.gc_maxlifetime');
+
         return
         '
         var timeleft = '.$time.';

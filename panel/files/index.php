@@ -11,12 +11,12 @@ function is_restricted($file): bool
     }
 }
 
-if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
+if (isset($_POST['delete']) && $_POST['delete'] != null) {
     if (preg_match("/'([^']+)'/", $_POST['delete'], $m)) {
-        if (strpos($m[1], 'uploads') !== false || strpos($m[1], 'images') !== false || strpos($m[1], 'videos') !== false){
+        if (strpos($m[1], 'uploads') !== false || strpos($m[1], 'images') !== false || strpos($m[1], 'videos') !== false) {
             if (file_exists(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.checkInput('DEFAULT', $m[1]))) {
                 if (unlink(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.checkInput('DEFAULT', $m[1]))) {
-                    $successMsg = checkInput('DEFAULT', $m[1]). ' was deleted.';
+                    $successMsg = checkInput('DEFAULT', $m[1]).' was deleted.';
                 } else {
                     $errorMsg = 'Saturn encountered an error whilst trying to delete the file. Please try again later.';
                 }
@@ -64,8 +64,8 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
             unset($successMsg);
             ?>
             <?php if ($_SESSION['role_id'] == '4') {
-            echo alert('INFO', '<p>'.__('Panel:Files_ThemeSettings_1').' <a href="'.CONFIG_INSTALL_URL.'/panel/admin/themes" class="underline text-black dark:text-white">'.__('Panel:Files_ThemeSettings_2').'</a>.</p>'); ?><br><?php
-        } ?>
+                echo alert('INFO', '<p>'.__('Panel:Files_ThemeSettings_1').' <a href="'.CONFIG_INSTALL_URL.'/panel/admin/themes" class="underline text-black dark:text-white">'.__('Panel:Files_ThemeSettings_2').'</a>.</p>'); ?><br><?php
+            } ?>
             <div class="w-full px-4 py-6 sm:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 <div>
                     <h1 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Files_Images'); ?></h1>
@@ -81,7 +81,7 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
                                     <p class="p-2 w-full text-xs self-center text-center"><?php echo $file[1]; ?></p>
                                     <div class="flex">
                                         <a href="view/?file=<?php echo urlencode('/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]); ?>"><i class="self-center fa-solid fa-eye py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
-                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]) / 1048576),'2'); ?> MB</p>
+                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]) / 1048576), '2'); ?> MB</p>
                                         <form x-data="{open:false}" method="post" action="" class="mb-0">
                                             <a @click="open = true" class="cursor-pointer"><i class="self-center fa-solid fa-trash-can py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
                                             <?php echo display_modal('red', 'Delete File', 'Are you sure you want to delete '.$file[1].'?<br> This action cannot be undone.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
@@ -105,7 +105,7 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
                                     <p class="p-2 w-full text-xs self-center text-center"><?php echo $file[1]; ?></p>
                                     <div class="flex">
                                         <a href="view/?file=<?php echo urlencode('/../..'.SATURN_STORAGE_DIRECTORY.'/images/'.$file[1]); ?>"><i class="self-center fa-solid fa-eye py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
-                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/images/'.$file[1]) / 1048576),'2'); ?> MB</p>
+                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/images/'.$file[1]) / 1048576), '2'); ?> MB</p>
                                         <form x-data="{open:false}" method="post" action="" class="mb-0">
                                             <a @click="open = true" class="cursor-pointer"><i class="self-center fa-solid fa-trash-can py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
                                             <?php echo display_modal('red', 'Delete File', 'Are you sure you want to delete '.$file[1].'?<br> This action cannot be undone.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
@@ -129,7 +129,7 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
                                     <p class="p-2 w-full text-xs self-center text-center"><?php echo $file[1]; ?></p>
                                     <div class="flex">
                                         <a href="view/?file=<?php echo urlencode('/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/images/'.$file[1]); ?>"><i class="self-center fa-solid fa-eye py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
-                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/images/'.$file[1]) / 1048576),'2'); ?> MB</p>
+                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/images/'.$file[1]) / 1048576), '2'); ?> MB</p>
                                         <form x-data="{open:false}" method="post" action="" class="mb-0">
                                             <a @click="open = true" class="cursor-pointer"><i class="self-center fa-solid fa-trash-can py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
                                             <?php echo display_modal('red', 'Delete File', 'Are you sure you want to delete '.$file[1].'?<br> This action cannot be undone.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
@@ -159,7 +159,7 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
                                     <p class="p-2 w-full"><?php echo $file[1]; ?></p>
                                     <div class="flex">
                                         <a href="view/?file=<?php echo urlencode('/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]); ?>"><i class="self-center fa-solid fa-eye py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
-                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]) / 1048576),'2'); ?> MB</p>
+                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]) / 1048576), '2'); ?> MB</p>
                                         <form x-data="{open:false}" method="post" action="" class="mb-0">
                                             <a @click="open = true" class="cursor-pointer"><i class="self-center fa-solid fa-trash-can py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
                                             <?php echo display_modal('red', 'Delete File', 'Are you sure you want to delete '.$file[1].'?<br> This action cannot be undone.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
@@ -182,7 +182,7 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
                                     <p class="p-2 w-full"><?php echo $file[1]; ?></p>
                                     <div class="flex">
                                         <a href="view/?file=<?php echo urlencode('/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/videos/'.$file[1]); ?>"><i class="self-center fa-solid fa-eye py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
-                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/videos/'.$file[1]) / 1048576),'2'); ?> MB</p>
+                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/videos/'.$file[1]) / 1048576), '2'); ?> MB</p>
                                         <form x-data="{open:false}" method="post" action="" class="mb-0">
                                             <a @click="open = true" class="cursor-pointer"><i class="self-center fa-solid fa-trash-can py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
                                             <?php echo display_modal('red', 'Delete File', 'Are you sure you want to delete '.$file[1].'?<br> This action cannot be undone.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
@@ -212,7 +212,7 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
                                     <p class="p-2 w-full"><?php echo $file[1]; ?></p>
                                     <div class="flex">
                                         <a href="view/?file=<?php echo urlencode('/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]); ?>"><i class="self-center fa-solid fa-eye py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
-                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]) / 1048576),'2'); ?> MB</p>
+                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/uploads/'.$file[1]) / 1048576), '2'); ?> MB</p>
                                         <form x-data="{open:false}" method="post" action="" class="mb-0">
                                             <a @click="open = true" class="cursor-pointer"><i class="self-center fa-solid fa-trash-can py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
                                             <?php echo display_modal('red', 'Delete File', 'Are you sure you want to delete '.$file[1].'?<br> This action cannot be undone.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
@@ -250,7 +250,7 @@ if (isset($_POST['delete']) && $_POST['delete'] != NULL) {
                                 </div>'); ?>
                                         </form>
                                         <a href="view/?file=<?php echo urlencode('/../..'.SATURN_STORAGE_DIRECTORY.'/recovery/'.$file[1]); ?>"><i class="self-center fa-solid fa-eye py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
-                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/recovery/'.$file[1]) / 1048576),'2'); ?> MB</p>
+                                        <p class="flex-grow text-center text-xs self-center"><?php echo round((filesize(__DIR__.'/../..'.SATURN_STORAGE_DIRECTORY.'/recovery/'.$file[1]) / 1048576), '2'); ?> MB</p>
                                         <form x-data="{open:false}" method="post" action="" class="mb-0">
                                             <a @click="open = true" class="cursor-pointer"><i class="self-center fa-solid fa-trash-can py-2 px-2 text-black hover:text-neutral-800 dark:text-white dark:hover:text-neutral-200 transition duration-200" aria-hidden="true"></i></a>
                                             <?php echo display_modal('red', 'Delete File', 'Are you sure you want to delete '.$file[1].'?<br>This file contains unsaved work that will be lost forever when deleted.<br>This action cannot be undone.', '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
