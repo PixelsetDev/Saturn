@@ -39,5 +39,3 @@
         }
         ';
     }
-
-    echo '<div class="fixed bottom-1/2 -right-[500px] w-[575px] z-40 hover:-translate-x-[500px] translation duration-500" id="sessionCountdown"></div><script>'.countdownJavascript().'</script>';
