@@ -177,7 +177,14 @@
                                 '.__('Panel:Verify').'
                             </button>
                         </div>
-                    </form>';
+                    </form>
+                        <p class="mt-6 text-center text-xs font-base text-gray-900">
+                            '.__('Panel:Register_TermsMessage_1').'
+                            <a href="https://lmwn.co.uk/policies/saturn/software-privacy-policy/" class="underline" target="_blank">'.__('Panel:Register_TermsMessage_2').'</a>
+                            '.__('Panel:Register_TermsMessage_3').'
+                            <a href="https://lmwn.co.uk/policies/saturn/end-user-license-agreement/" class="underline" target="_blank">'.__('Panel:Register_TermsMessage_4').'</a>.
+                            '.__('Panel:Register_TermsMessage_5').'
+                        </p>';
                             } ?>
                 </div>
             </div>
@@ -210,9 +217,6 @@
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                             <?php echo __('Panel:Register_Message'); ?> <?php echo CONFIG_SITE_NAME; ?>.
                         </h2>
-                        <p class="mt-6 text-center text-md font-base text-gray-900">
-                            <?php echo __('Panel:Register_AccountsApprove'); ?>
-                        </p>
                         <?php
                         echo alert('ERROR', __('Panel:Register_Closed'));
 
