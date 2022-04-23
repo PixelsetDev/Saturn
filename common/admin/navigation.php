@@ -92,3 +92,4 @@
                     <span class="hidden md:block fixed bottom-0 -left-0 text-xs text-<?php echo THEME_PANEL_COLOUR; ?>-600"><?php echo __('General:Saturn'); ?> <?php echo __('Admin:Panel'); ?> &copy; 2021 - <?php echo date('Y'); ?> <?php echo __('General:SaturnCMS'); ?></span>
                 </nav>
             </div>
+            <div class="fixed bottom-1/2 -right-[500px] w-[575px] z-40 hover:-translate-x-[500px] translation duration-500" id="sessionCountdown"></div><script><?php echo countdownJavascript(); ?></script>
