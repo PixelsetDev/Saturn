@@ -2,7 +2,7 @@
 
 function Telemetry(): string
 {
-    if (CONFIG_SEND_DATA && CONFIG_ACTIVATION_KEY != NULL) {
+    if (CONFIG_SEND_DATA && CONFIG_ACTIVATION_KEY != null) {
         $data = [
             'key'            => urlencode(CONFIG_ACTIVATION_KEY),
             'saturn_version' => urlencode(SATURN_VERSION),
@@ -12,9 +12,10 @@ function Telemetry(): string
         ];
         if (activation_validate()) {
             try {
-                $telemetry = 'https://link.saturncms.net/telemetry/?key=' . $data['key'] . '&saturn_version=' . $data['saturn_version'] . '&saturn_branch=' . $data['saturn_branch'] . '&php_version=' . $data['php_version'] . '&server_os=' . $data['server_os'];
+                $telemetry = 'https://link.saturncms.net/telemetry/?key='.$data['key'].'&saturn_version='.$data['saturn_version'].'&saturn_branch='.$data['saturn_branch'].'&php_version='.$data['php_version'].'&server_os='.$data['server_os'];
                 $telemetry = file_get_contents($telemetry);
-                return '1: ' . $telemetry;
+
+                return '1: '.$telemetry;
             } catch (Exception $e) {
                 return '0';
             }

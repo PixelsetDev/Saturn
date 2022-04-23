@@ -105,8 +105,7 @@
 
         if ($uploaded) {
             if (isset($_GET['redirectTo'])) {
-                if (strpos($_GET['redirectTo'],'?'
-                        ,) !== false) {
+                if (strpos($_GET['redirectTo'], '?') !== false) {
                     if (isset($_GET['renameTo'])) {
                         header('Location: '.checkInput('DEFAULT', $_GET['redirectTo']).'&uploadedTo='.str_replace('/..', '', checkInput('DEFAULT', $uploadedToDirectory).checkInput('DEFAULT', $_GET['renameTo'])));
                     } else {

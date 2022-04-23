@@ -198,12 +198,12 @@
                 echo '<br>
                         <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
                             <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
-                                <h6 class="mb-2 font-semibold leading-5">' . __('Panel:Dashboard_Update') . '</h6>
-                                <p>' . __('General:Saturn') . ' '.latest_version().' ' . __('Panel:Dashboard_Update_Message') . '</p>';
+                                <h6 class="mb-2 font-semibold leading-5">'.__('Panel:Dashboard_Update').'</h6>
+                                <p>'.__('General:Saturn').' '.latest_version().' '.__('Panel:Dashboard_Update_Message').'</p>';
                 if (CONFIG_UPDATE_AUTO) {
-                    echo '<p>' . __('Panel:Dashboard_Update_Automatic') . '</p>';
+                    echo '<p>'.__('Panel:Dashboard_Update_Automatic').'</p>';
                 }
-                echo '          <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">' . __('Panel:Dashboard_Update_Button') . '</a>.
+                echo '          <a href="'.CONFIG_INSTALL_URL.'/panel/admin" class="text-'.THEME_PANEL_COLOUR.'-500 hover:text-'.THEME_PANEL_COLOUR.'-400 underline">'.__('Panel:Dashboard_Update_Button').'</a>.
                             </div>
                         </div><br>';
             }
@@ -280,11 +280,11 @@
                         </a>
                         <?php echo display_modal('INFO', 'Approvals', __('Panel:Dashboard_PendingApprovals_Message_1').' '.$rows.' '.__('Panel:Dashboard_PendingApprovals_Message_2').' '.$rows2.' '.__('Panel:Dashboard_PendingApprovals_Message_2'), '<div class="bg-gray-50 dark:bg-neutral-600 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse flex">
                                         <a href="'.CONFIG_INSTALL_URL.'/panel/articles/approvals" class="flex-grow transition-all duration-200 hover:shadow-md cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
-                                            ' . __('Panel:Dashboard_PendingApprovals_Articles') . '&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows2.'</span>
+                                            '.__('Panel:Dashboard_PendingApprovals_Articles').'&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows2.'</span>
                                         </a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="'.CONFIG_INSTALL_URL.'/panel/pages/approvals" class="flex-grow transition-all duration-200 hover:shadow-md cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-100 hover:bg-'.THEME_PANEL_COLOUR.'-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 dark:text-white md:py-1 md:text-rg md:px-10">
-                                            ' . __('Panel:Dashboard_PendingApprovals_Pages') . '&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows.'</span>
+                                            '.__('Panel:Dashboard_PendingApprovals_Pages').'&nbsp;<span class="px-1 h-5 bg-red-500 rounded-full text-white text-sm">'.$rows.'</span>
                                         </a>
                                     </div>');
 
@@ -330,7 +330,8 @@
                                         </a>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php
+        } ?>
                         </div>
                     </div>
                     <?php if (get_user_roleID($id) > '2') { ?>
@@ -390,17 +391,23 @@
                                         <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
-                                        Page Views: <?php $pageviews = get_user_statistics_views_pages($_SESSION['id']); echo $pageviews; ?>
+                                        Page Views: <?php $pageviews = get_user_statistics_views_pages($_SESSION['id']);
+        echo $pageviews; ?>
                                     </p>
                                 </div>
                                 <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
                                     <span class="text-xs text-gray-400">
-                                        Website Total: <?php $totalpageviews = get_total_statistics_views_pages(); echo $totalpageviews; ?>
+                                        Website Total: <?php $totalpageviews = get_total_statistics_views_pages();
+        echo $totalpageviews; ?>
                                     </span>
                                 </div>
                             </div>
                             <div class="w-full h-3 bg-gray-100 dark:bg-neutral-600 absolute bottom-0">
-                                <div style="width:<?php if ($pageviews == 0) { echo 0; } else { echo ($pageviews / $totalpageviews) * 100; } ?>%" class="h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-400 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-900">
+                                <div style="width:<?php if ($pageviews == 0) {
+            echo 0;
+        } else {
+            echo($pageviews / $totalpageviews) * 100;
+        } ?>%" class="h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-400 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-900">
                                 </div>
                             </div>
                         </a>
@@ -415,17 +422,23 @@
                                         <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
-                                        Article Views: <?php $articleviews = get_user_statistics_views_articles($_SESSION['id']); echo $articleviews; ?>
+                                        Article Views: <?php $articleviews = get_user_statistics_views_articles($_SESSION['id']);
+        echo $articleviews; ?>
                                     </p>
                                 </div>
                                 <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
                                     <span class="text-xs text-gray-400">
-                                        Website Total: <?php $totalarticleviews = get_total_statistics_views_articles(); echo $totalarticleviews; ?>
+                                        Website Total: <?php $totalarticleviews = get_total_statistics_views_articles();
+        echo $totalarticleviews; ?>
                                     </span>
                                 </div>
                             </div>
                             <div class="w-full h-3 bg-gray-100 dark:bg-neutral-600 absolute bottom-0">
-                                <div style="width:<?php if ($articleviews == 0) { echo 0; } else { echo ($articleviews / $totalarticleviews) * 100; } ?>%" class="h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-400 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-600">
+                                <div style="width:<?php if ($articleviews == 0) {
+            echo 0;
+        } else {
+            echo($articleviews / $totalarticleviews) * 100;
+        } ?>%" class="h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-400 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-600">
                                 </div>
                             </div>
                         </a>

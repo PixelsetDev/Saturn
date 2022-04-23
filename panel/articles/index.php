@@ -179,8 +179,8 @@ if (isset($_POST['newArticle'])) {
                                             <i class="fas fa-upload" aria-hidden="true"></i>&nbsp;'.__('Panel:RequestPublication').'
                                         </a>';
                         } else {
-                            alert('ERROR', __('Error:Articles_ApprovalStatus') . ' ' . $i);
-                            log_error('ERROR', __('Error:Articles_ApprovalStatus') . ' ' . $i);
+                            alert('ERROR', __('Error:Articles_ApprovalStatus').' '.$i);
+                            log_error('ERROR', __('Error:Articles_ApprovalStatus').' '.$i);
                         }
                         $contents = 'Article Owner: '.display_user_dropdown('SELECTME');
                         echo '          <form action="'.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.$i.'" method="post" x-data="{open: false}" class="h-8">
