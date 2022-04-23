@@ -176,7 +176,7 @@ $articleOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SL
 $articleData = getdata($articleID);
 
 global $conn;
-$query = 'UPDATE `'.DATABASE_PREFIX.'users_statistics` SET `views`=`views`+1 WHERE `id` = '.$articleData['author']['id'];
+$query = 'UPDATE `'.DATABASE_PREFIX.'users_statistics` SET `article_views`=`article_views`+1 WHERE `id` = '.$articleData['author']['id'];
 mysqli_query($conn, $query);
 
 echo stripslashes(replacedata($articleOutput, $articleData, $data));
