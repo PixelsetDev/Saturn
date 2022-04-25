@@ -236,7 +236,19 @@
       "UserNotFound": "Benutzer nicht gefunden.",
       "UnknownWarning": "Eine Warnung ist aufgetreten, bitte versuchen Sie es später erneut.",
       "DebugMode": "Der Debug-Modus ist aktiviert. Dies wird in Produktionsumgebungen NICHT empfohlen.",
-      "DevelopmentBuild": "Sie führen einen Entwicklungs-Build von Saturn aus. Dies wird in Produktionsumgebungen NICHT empfohlen."
+      "DevelopmentBuild": "Sie führen einen Entwicklungs-Build von Saturn aus. Dies wird in Produktionsumgebungen NICHT empfohlen.",
+      "FileUpload": "Beim Hochladen der Datei ist ein Fehler aufgetreten, bitte versuchen Sie es später erneut oder überprüfen Sie die Warnungen für weitere Informationen.",
+      "FileUpload_DirectoryNotExist_Log": "Das Verzeichnis existiert nicht und konnte nicht erstellt werden.",
+      "FileUpload_DirectoryNotExist_Message_1": "Das Verzeichnis existiert nicht und konnte nicht erstellt werden. Bitte überprüfen Sie, ob Saturn die erforderlichen Berechtigungen dazu hat.",
+      "FileUpload_DirectoryNotExist_Message_2": "Weitere Informationen finden Sie in Saturn Docs.",
+      "FileUpload_NoPermissions_Log": "Sie haben nicht die erforderlichen Berechtigungen, um in dieses Verzeichnis zu schreiben.",
+      "FileUpload_NoPermissions_Message_1": "Sie haben nicht die erforderlichen Berechtigungen, um in dieses Verzeichnis zu schreiben.",
+      "FileUpload_NoPermissions_Message_2": "Weitere Informationen finden Sie in Saturn Docs.",
+      "FileUpload_TooLarge_Height": "Dieses Bild ist größer als die maximal zulässige Höhe. Ihre Bildhöhe:",
+      "FileUpload_TooLarge_Width": "Dieses Bild ist größer als die maximal zulässige Breite. Ihre Bildbreite:",
+      "FileUpload_MaximumAllowed": "Maximal erlaubt:",
+      "FileUpload_Rename": "Datei kann nicht umbenannt werden.",
+      "FileUpload_NotUploaded": "Datei nicht hochgeladen."
     },
     "general": {
       "Saturn": "Saturn",
@@ -297,7 +309,9 @@
       "Settings": "Einstellungen",
       "Delete": "Löschen",
       "Create": "Erstellen",
-      "Edit": "Bearbeiten"
+      "Edit": "Bearbeiten",
+      "Search": "Suche",
+      "Neutral": "Neutral"
     },
     "panel": {
       "Panel": "Systemsteuerung",
@@ -327,6 +341,11 @@
       "Register": "Registrieren",
       "Register_Message": "Zum Beitritt registrieren",
       "Register_AccountsApprove": "Saturn-Konten müssen vom Eigentümer der Website genehmigt werden, bevor Sie darauf zugreifen können.",
+      "Register_TermsMessage_1": "Indem Sie das Bestätigungsformular oben absenden und mit der Erstellung eines Kontos bei Saturn beginnen, stimmen Sie dem zu",
+      "Register_TermsMessage_2": "Saturn Software-Datenschutzrichtlinie",
+      "Register_TermsMessage_3": "und",
+      "Register_TermsMessage_4": "Endbenutzer-Lizenzvereinbarung",
+      "Register_TermsMessage_5": "Ihr Website-Administrator hat möglicherweise andere Dokumente, denen Sie zustimmen müssen, diese finden Sie, wenn Sie Ihr Konto zum ersten Mal verwenden.",
       "Register_Closed": "Leider ist die Registrierung derzeit geschlossen.",
       "PendingApproval": "Die Genehmigung Ihres Saturn-Kontos steht jetzt aus. Wir senden Ihnen eine E-Mail, wenn Sie bereit sind, loszulegen.",
       "Code": "Code",

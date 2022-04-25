@@ -209,9 +209,9 @@
                                 <option<?php if (CONFIG_LANGUAGE == 'pt') {
                                         echo ' selected';
                                     } ?> value="pt">[PT] Portuguese</option>
-                                <option<?php if (CONFIG_LANGUAGE == 'ru') {
+                                <option<?php if (CONFIG_LANGUAGE == 'uk') {
                                         echo ' selected';
-                                    } ?> value="ru">[UK] Ukrainian</option>
+                                    } ?> value="uk">[UK] Ukrainian</option>
                                 <option<?php if (CONFIG_LANGUAGE == 'zh-hans') {
                                         echo ' selected';
                                     } ?> value="zh-hans">[ZH-HANS] Chinese (Simplified)</option>

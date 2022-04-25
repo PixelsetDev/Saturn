@@ -266,7 +266,19 @@
       "UserNotFound": "사용자를 찾을 수 없습니다.",
       "UnknownWarning": "경고가 발생했습니다. 나중에 다시 시도하십시오.",
       "DebugMode": "디버그 모드가 활성화되었습니다. 프로덕션 환경에서는 권장되지 않습니다.",
-      "DevelopmentBuild": "Saturn 의 개발 빌드를 실행하고 있습니다. 프로덕션 환경에서는 권장되지 않습니다."
+      "DevelopmentBuild": "Saturn 의 개발 빌드를 실행하고 있습니다. 프로덕션 환경에서는 권장되지 않습니다.",
+      "FileUpload": "파일을 업로드하는 동안 오류가 발생했습니다. 나중에 다시 시도하거나 자세한 내용은 경고를 확인하십시오.",
+      "FileUpload_DirectoryNotExist_Log": "디렉토리가 존재하지 않으며 만들 수 없습니다.",
+      "FileUpload_DirectoryNotExist_Message_1": "디렉토리가 존재하지 않아 생성할 수 없습니다. Saturn에 이 작업을 수행하는 데 필요한 권한이 있는지 확인하십시오.",
+      "FileUpload_DirectoryNotExist_Message_2": "자세한 내용은 Saturn 문서를 참조하십시오.",
+      "FileUpload_NoPermissions_Log": "이 디렉터리에 쓰는 데 필요한 권한이 없습니다.",
+      "FileUpload_NoPermissions_Message_1": "이 디렉터리에 쓰는 데 필요한 권한이 없습니다.",
+      "FileUpload_NoPermissions_Message_2": "자세한 내용은 Saturn 문서를 참조하십시오.",
+      "FileUpload_TooLarge_Height": "이 이미지는 허용된 최대 높이보다 큽니다. 이미지 높이:",
+      "FileUpload_TooLarge_Width": "이 이미지는 허용된 최대 너비보다 큽니다. 이미지 너비:",
+      "FileUpload_MaximumAllowed": "최대 허용:",
+      "FileUpload_Rename": "파일 이름을 바꿀 수 없습니다.",
+      "FileUpload_NotUploaded": "파일이 업로드되지 않았습니다."
     },
     "general": {
       "Saturn": "토성",
@@ -327,7 +339,9 @@
       "Settings": "설정",
       "Delete": "삭제",
       "Create": "창조하다",
-      "Edit": "편집하다"
+      "Edit": "편집하다",
+      "Search": "검색",
+      "Neutral": "중립적"
     },
     "panel": {
       "Panel": "제어판",
@@ -357,6 +371,11 @@
       "Register": "등록",
       "Register_Message": "가입하려면 등록",
       "Register_AccountsApprove": "토성 계정에 액세스하려면 웹 사이트 소유자의 승인을 받아야 합니다.",
+      "Register_TermsMessage_1": "위의 확인 양식을 제출하고 Saturn에서 계정을 만드는 과정을 시작하면 동의하는 것입니다.",
+      "Register_TermsMessage_2": "Saturn 소프트웨어 개인 정보 보호 정책",
+      "Register_TermsMessage_3": "및",
+      "Register_TermsMessage_4": "최종 사용자 사용권 계약",
+      "Register_TermsMessage_5": "웹사이트 관리자에 동의해야 하는 다른 문서가 있을 수 있습니다. 이 문서는 계정을 처음 사용할 때 찾을 수 있습니다.",
       "Register_Closed": "죄송합니다. 등록이 현재 종료되었습니다.",
       "PendingApproval": "토성 계정이 현재 승인 대기 중입니다. 시작할 준비가 되면 이메일을 보내드리겠습니다.",
       "Code": "코드",

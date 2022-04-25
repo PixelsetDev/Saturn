@@ -236,7 +236,19 @@
       "UserNotFound": "User not found.",
       "UnknownWarning": "A warning has occurred, please try again later.",
       "DebugMode": "Debug mode is enabled. This is NOT recommended in production environments.",
-      "DevelopmentBuild": "You are running a development build of Saturn. This is NOT recommended in production environments."
+      "DevelopmentBuild": "You are running a development build of Saturn. This is NOT recommended in production environments.",
+      "FileUpload": "There was an error uploading the file, please try again later or check warnings for more information.",
+      "FileUpload_DirectoryNotExist_Log": "The directory does not exist and could not be created.",
+      "FileUpload_DirectoryNotExist_Message_1": "The directory does not exist and could not be created. Please check that Saturn has the required permissions to do this.",
+      "FileUpload_DirectoryNotExist_Message_2": "For more information please see Saturn Docs.",
+      "FileUpload_NoPermissions_Log": "You don't have the required permissions to write in this directory.",
+      "FileUpload_NoPermissions_Message_1": "You don't have the required permissions to write in this directory.",
+      "FileUpload_NoPermissions_Message_2": "For more information please see Saturn Docs.",
+      "FileUpload_TooLarge_Height": "This image is larger than the maximum height allowed. Your image height:",
+      "FileUpload_TooLarge_Width": "This image is larger than the maximum width allowed. Your image width:",
+      "FileUpload_MaximumAllowed": "Maximum allowed:",
+      "FileUpload_Rename": "Unable to rename file.",
+      "FileUpload_NotUploaded": "File not uploaded."
     },
     "general": {
       "Saturn": "Saturn",
@@ -297,7 +309,9 @@
       "Settings": "Settings",
       "Delete": "Delete",
       "Create": "Create",
-      "Edit": "Edit"
+      "Edit": "Edit",
+      "Search": "Search",
+      "Neutral": "Neutral"
     },
     "panel": {
       "Panel": "Control Panel",
@@ -327,6 +341,11 @@
       "Register": "Register",
       "Register_Message": "Register to Join",
       "Register_AccountsApprove": "Saturn accounts must be approved by the website owner before you can access them.",
+      "Register_TermsMessage_1": "By submitting the verification form above, beginning the process of creating an account on Saturn, you agree to the",
+      "Register_TermsMessage_2": "Saturn Software Privacy Policy",
+      "Register_TermsMessage_3": "and",
+      "Register_TermsMessage_4": "End User License Agreement",
+      "Register_TermsMessage_5": "Your website administrator may have other documents you need to agree to, these can be found when you first use your account.",
       "Register_Closed": "Sorry, registration is currently closed.",
       "PendingApproval": "Your Saturn account is now pending approval, we'll send you an email when you're ready to get started.",
       "Code": "Code",

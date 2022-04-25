@@ -236,7 +236,19 @@
       "UserNotFound": "Usuario no encontrado.",
       "UnknownWarning": "Se ha producido una advertencia, inténtalo de nuevo más tarde.",
       "DebugMode": "El modo de depuración está habilitado. NO se recomienda en entornos de producción.",
-      "DevelopmentBuild": "Está ejecutando una compilación de desarrollo de Saturn. NO se recomienda en entornos de producción."
+      "DevelopmentBuild": "Está ejecutando una compilación de desarrollo de Saturn. NO se recomienda en entornos de producción.",
+      "FileUpload": "Hubo un error al cargar el archivo, intente nuevamente más tarde o verifique las advertencias para obtener más información.",
+      "FileUpload_DirectoryNotExist_Log": "El directorio no existe y no se pudo crear.",
+      "FileUpload_DirectoryNotExist_Message_1": "El directorio no existe y no se pudo crear. Verifique que Saturn tenga los permisos necesarios para hacerlo.",
+      "FileUpload_DirectoryNotExist_Message_2": "Para obtener más información, consulte Saturn Docs.",
+      "FileUpload_NoPermissions_Log": "No tienes los permisos requeridos para escribir en este directorio.",
+      "FileUpload_NoPermissions_Message_1": "No tienes los permisos requeridos para escribir en este directorio.",
+      "FileUpload_NoPermissions_Message_2": "Para obtener más información, consulte Saturn Docs.",
+      "FileUpload_TooLarge_Height": "Esta imagen es más grande que la altura máxima permitida. Altura de tu imagen:",
+      "FileUpload_TooLarge_Width": "Esta imagen es más grande que el ancho máximo permitido. El ancho de tu imagen:",
+      "FileUpload_MaximumAllowed": "Máximo permitido:",
+      "FileUpload_Rename": "No se pudo cambiar el nombre del archivo.",
+      "FileUpload_NotUploaded": "Archivo no cargado."
     },
     "general": {
       "Saturn": "Saturne",
@@ -297,7 +309,9 @@
       "Settings": "Ajustes",
       "Delete": "Borrar",
       "Create": "Crear",
-      "Edit": "Editar"
+      "Edit": "Editar",
+      "Search": "Búsqueda",
+      "Neutral": "Neutral"
     },
     "panel": {
       "Panel": "Panel de control",
@@ -327,6 +341,11 @@
       "Register": "Registrarse",
       "Register_Message": "Registrarse para unirse",
       "Register_AccountsApprove": "Las cuentas de Saturno deben ser aprobadas por el propietario del sitio web antes de poder acceder a ellas.",
+      "Register_TermsMessage_1": "Al enviar el formulario de verificación anterior, al comenzar el proceso de creación de una cuenta en Saturn, usted acepta",
+      "Register_TermsMessage_2": "Política de Privacidad del Software de Saturno",
+      "Register_TermsMessage_3": "y",
+      "Register_TermsMessage_4": "Acuerdo de licencia de usuario final",
+      "Register_TermsMessage_5": "El administrador de tu sitio web puede tener otros documentos que debes aceptar, estos se pueden encontrar cuando usas tu cuenta por primera vez.",
       "Register_Closed": "Lo sentimos, el registro está cerrado actualmente.",
       "PendingApproval": "Tu cuenta de Saturn ahora está pendiente de aprobación, te enviaremos un correo electrónico cuando estés listo para comenzar.",
       "Code": "Código",

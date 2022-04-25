@@ -266,7 +266,19 @@
       "UserNotFound": "未找到用户。",
       "UnknownWarning": "出现警告，请稍后再试。",
       "DebugMode": "调试模式已启用。不建议在生产环境中使用。",
-      "DevelopmentBuild": "您正在运行 Saturn 的开发版本。在生产环境中不建议这样做。"
+      "DevelopmentBuild": "您正在运行 Saturn 的开发版本。在生产环境中不建议这样做。",
+      "FileUpload": "上传文件时出错，请稍后重试或查看警告以获取更多信息。",
+      "FileUpload_DirectoryNotExist_Log": "目录不存在，无法创建。",
+      "FileUpload_DirectoryNotExist_Message_1": "目录不存在，无法创建。请检查 Saturn 是否具有执行此操作所需的权限。",
+      "FileUpload_DirectoryNotExist_Message_2": "更多信息请参见土星文档。",
+      "FileUpload_NoPermissions_Log": "您没有写入此目录所需的权限。",
+      "FileUpload_NoPermissions_Message_1": "您没有写入此目录所需的权限。",
+      "FileUpload_NoPermissions_Message_2": "更多信息请参见土星文档。",
+      "FileUpload_TooLarge_Height": "此图像大于允许的最大高度。您的图像高度：",
+      "FileUpload_TooLarge_Width": "此图像大于允许的最大宽度。您的图像宽度：",
+      "FileUpload_MaximumAllowed": "允许的最大值：",
+      "FileUpload_Rename": "无法重命名文件。",
+      "FileUpload_NotUploaded": "文件未上传。"
     },
     "general": {
       "Saturn": "土星",
@@ -327,7 +339,9 @@
       "Settings": "设置",
       "Delete": "删除",
       "Create": "创造",
-      "Edit": "编辑"
+      "Edit": "编辑",
+      "Search": "搜索",
+      "Neutral": "中性的"
     },
     "panel": {
       "Panel": "控制面板",
@@ -357,6 +371,11 @@
       "Register": "注册",
       "Register_Message": "注册加入",
       "Register_AccountsApprove": "Saturn 帐户必须经过网站所有者的批准才能访问它们。",
+      "Register_TermsMessage_1": "通过提交上面的验证表，开始在 Saturn 上创建帐户的过程，您同意",
+      "Register_TermsMessage_2": "Saturn 软件隐私政策",
+      "Register_TermsMessage_3": "和",
+      "Register_TermsMessage_4": "最终用户许可协议",
+      "Register_TermsMessage_5": "您的网站管理员可能还有其他需要您同意的文件，这些可以在您第一次使用您的帐户时找到。",
       "Register_Closed": "抱歉，目前已关闭注册。",
       "PendingApproval": "您的 Saturn 帐户现在正在等待批准，当您准备好开始时，我们会向您发送一封电子邮件。",
       "Code": "代码",
