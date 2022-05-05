@@ -10,7 +10,7 @@ function get_page_id_from_url($uri)
 
     global $conn;
 
-    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."pages` WHERE `url` = '".$uri."';";
+    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."pages` WHERE `url` = '".rtrim($uri,"/")."';";
     $rs = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($rs);
 
