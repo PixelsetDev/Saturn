@@ -106,8 +106,8 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{colour:button:bg:focus}}', $cd->colours->button->bg->focus, $pageOutput);
     // CDN
     if ($themeData->{'theme'}->{'framework'} == 'tailwind') {
-        $cdn_css = '';
-        $cdn_js = 'https://unpkg.com/alpinejs@2.8.2/dist/alpine.js"></script><script src="https://cdn.tailwindcss.com';
+        $cdn_css = 'https://unpkg.com/tailwindcss@2.2.16/dist/tailwind.min.css';
+        $cdn_js = 'https://unpkg.com/alpinejs@2.8.2/dist/alpine.js';
     } elseif ($themeData->{'theme'}->{'framework'} == 'bootstrap') {
         $cdn_css = 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css';
         $cdn_js = 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js';
