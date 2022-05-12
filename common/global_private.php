@@ -12,6 +12,11 @@
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Important Functions */
     require_once __DIR__.'/processes/translation.php';
+    $lang = get_user_language($_SESSION['id']);
+    if ($lang != 'DEFAULT' && $lang != NULL) {
+        $_SESSION['language'] = $lang;
+    }
+    unset($lang);
     require_once __DIR__.'/../storage/core_checksum.php';
     require_once __DIR__.'/../theme.php';
     require_once __DIR__.'/processes/database/connect.php';
