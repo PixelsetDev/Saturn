@@ -391,13 +391,13 @@
                                         <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
-                                        Page Views: <?php $pageviews = get_user_statistics_views_pages($_SESSION['id']);
+                                        <?php echo __('Panel:Views_Page') ?> <?php $pageviews = get_user_statistics_views_pages($_SESSION['id']);
         echo $pageviews; ?>
                                     </p>
                                 </div>
                                 <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
                                     <span class="text-xs text-gray-400">
-                                        Website Total: <?php $totalpageviews = get_total_statistics_views_pages();
+                                        <?php echo __('Panel:Views_WebsiteTotal') ?> <?php $totalpageviews = get_total_statistics_views_pages();
         echo $totalpageviews; ?>
                                     </span>
                                 </div>
@@ -422,13 +422,13 @@
                                         <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
-                                        <?php echo __('Panel:Views_Articles') ?>: <?php $articleviews = get_user_statistics_views_articles($_SESSION['id']);
+                                        <?php echo __('Panel:Views_Article') ?> <?php $articleviews = get_user_statistics_views_articles($_SESSION['id']);
         echo $articleviews; ?>
                                     </p>
                                 </div>
                                 <div class="mt-6 md:mt-0 text-black dark:text-white font-bold text-xl">
                                     <span class="text-xs text-gray-400">
-                                        <?php echo __('Panel:Views_Pages') ?>: <?php $totalarticleviews = get_total_statistics_views_articles();
+                                        <?php echo __('Panel:Views_WebsiteTotal') ?> <?php $totalarticleviews = get_total_statistics_views_articles();
         echo $totalarticleviews; ?>
                                     </span>
                                 </div>
