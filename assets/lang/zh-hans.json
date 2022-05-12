@@ -341,7 +341,8 @@
       "Create": "创造",
       "Edit": "编辑",
       "Search": "搜索",
-      "Neutral": "中性的"
+      "Neutral": "中性的",
+      "Maximum": "最大"
     },
     "panel": {
       "Panel": "控制面板",

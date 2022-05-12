@@ -323,7 +323,8 @@
       "Create": "Créer",
       "Edit": "Modifier",
       "Search": "Recherche",
-      "Neutral": "Neutre"
+      "Neutral": "Neutre",
+      "Maximum": "Maximum"
     },
     "panel": {
       "Panel": "Panneau de configuration",

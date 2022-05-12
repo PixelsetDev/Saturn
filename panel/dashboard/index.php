@@ -36,16 +36,16 @@
             } else {
                 $errorMsg = __('Error:UnknownWarning');
             }
-        } ?>
+        }
+        if (isset($_GET['acceptTerms']) && $_GET['acceptTerms'] == 'true') {
+            update_user_accepted_terms($_SESSION['id'], true);
+            echo alert('ERROR', __('Error:TryAgain'));
+        }
+        ?>
 
     </head>
     <body class="mb-14">
-        <?php
-        if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN) {
-            if (isset($_GET['acceptTerms']) && $_GET['acceptTerms'] == 'true') {
-                update_user_accepted_terms($_SESSION['id'], true);
-                echo alert('ERROR', __('Error:TryAgain'));
-            } ?>
+        <?php if (!get_user_accepted_terms($_SESSION['id']) && CONFIG_WELCOME_SCREEN) { ?>
         <div class="absolute top-0 bg-white dark:bg-neutral-800 z-50 ">
             <header class="bg-white dark:bg-neutral-900 shadow relative">
                 <div class="py-6 px-4 sm:px-6 lg:px-8 flex w-full">

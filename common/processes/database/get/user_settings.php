@@ -69,6 +69,19 @@
         return $row['accepted_terms'];
     }
 
+    function get_user_language($id): bool
+    {
+        $id = checkInput('DEFAULT', $id);
+
+        global $conn;
+
+        $query = 'SELECT `language` FROM `'.DATABASE_PREFIX.'users_settings` WHERE `id` = '.$id;
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+
+        return $row['language'];
+    }
+
     function get_user_notification_preference($id): int
     {
         $id = checkInput('DEFAULT', $id);

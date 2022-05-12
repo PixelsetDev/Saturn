@@ -311,7 +311,8 @@
       "Create": "Crear",
       "Edit": "Editar",
       "Search": "Búsqueda",
-      "Neutral": "Neutral"
+      "Neutral": "Neutral",
+      "Maximum": "Máximo"
     },
     "panel": {
       "Panel": "Panel de control",

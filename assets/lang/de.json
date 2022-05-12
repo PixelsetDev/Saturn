@@ -311,7 +311,8 @@
       "Create": "Erstellen",
       "Edit": "Bearbeiten",
       "Search": "Suche",
-      "Neutral": "Neutral"
+      "Neutral": "Neutral",
+      "Maximum": "Maximal"
     },
     "panel": {
       "Panel": "Systemsteuerung",

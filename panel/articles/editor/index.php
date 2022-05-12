@@ -70,7 +70,7 @@
 
             <div class="py-6">
                 <h2 class="text-2xl mb-2 font-bold my-2"><?php echo __('Panel:Title'); ?></h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> <?php echo __('Panel:Characters'); ?></p>
+                <p class="mb-2"><?php echo __('General:Maximum'); ?> <?php echo CONFIG_MAX_TITLE_CHARS; ?> <?php echo __('Panel:Characters'); ?></p>
                 <textarea name="title" id="title" maxlength="60" class="w-full border"><?php
                     $title = get_article_title($articleID);
                     $title = checkOutput('DEFAULT', $title);
@@ -81,7 +81,7 @@
 
             <div class="py-6">
                 <h2 class="text-2xl font-bold mt-2"><?php echo __('Panel:Content'); ?></h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_ARTICLE_CHARS - 10000; ?> <?php echo __('Panel:Characters'); ?></p>
+                <p class="mb-2"><?php echo __('General:Maximum'); ?> <?php echo CONFIG_MAX_ARTICLE_CHARS - 10000; ?> <?php echo __('Panel:Characters'); ?></p>
                 <textarea name="content" id="content"><?php
                     $content = get_article_content($articleID);
                     $content = checkOutput('HTML', $content);
@@ -92,7 +92,7 @@
 
             <div class="py-6">
                 <h2 class="text-2xl font-bold mt-2"><?php echo __('Panel:References'); ?></h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_REFERENCES_CHARS - 2000; ?> <?php echo __('Panel:Characters'); ?></p>
+                <p class="mb-2"><?php echo __('General:Maximum'); ?> <?php echo CONFIG_MAX_REFERENCES_CHARS - 2000; ?> <?php echo __('Panel:Characters'); ?></p>
                 <textarea name="references" id="references"><?php
                     $references = get_article_references($articleID);
                     $references = checkOutput('HTML', $references);
