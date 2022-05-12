@@ -523,6 +523,8 @@
       "NextLevel": "下一级:",
       "Writer": "作家",
       "TotalViews": "您的总观看次数：",
+      "Views_Article": "文章浏览量：",
+      "Views_Page": "页面浏览量：",
       "Files_ThemeSettings_1": "部分图片包括网站标志、图标、默认头像、错误图片、缺失图片等可以在您的管理中",
       "Files_ThemeSettings_2": "主题设置",
       "Files_Images": "图片",

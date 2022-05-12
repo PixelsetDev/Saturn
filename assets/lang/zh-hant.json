@@ -523,6 +523,8 @@
       "NextLevel": "下一級:",
       "Writer": "作家",
       "TotalViews": "您的總觀看次數：",
+      "Views_Article": "文章瀏覽量：",
+      "Views_Page": "頁面瀏覽量：",
       "Files_ThemeSettings_1": "部分圖片包括網站標誌、圖標、默認頭像、錯誤圖片、缺失圖片等可以在您的管理中",
       "Files_ThemeSettings_2": "主題設置",
       "Files_Images": "圖片",
