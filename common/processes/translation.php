@@ -3,12 +3,15 @@
     global $conn;
 
     $query = 'SELECT `language` FROM `'.DATABASE_PREFIX.'users_settings` WHERE `id` = '.htmlspecialchars($_SESSION['id']);
-    $rs = mysqli_query($conn, $query);
-    $row = mysqli_fetch_assoc($rs);
-
-    $Language = $_SESSION['language'];
-
-    if ($Language == NULL || $Language == 'DEFAULT') {
+    if ($query->num_rows != 0) {
+        $rs = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($rs);
+        $Language = $row['language'];
+        if ($Language == NULL || $Language == 'DEFAULT') {
+            $Language = CONFIG_LANGUAGE;
+        }
+    } else {
+        echo '<script>console.log("'.date('Y/m/d H:i:s').' [SATURN][TRANSLATION] WARNING: Unable to access user language preference.");</script>';
         $Language = CONFIG_LANGUAGE;
     }
 
