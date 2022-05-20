@@ -78,7 +78,7 @@
             <h1 class="text-2xl"><?php echo get_user_page_count($user); ?> Pages</h1>
             <article class="mt-5 flex space-x-4 overflow-x-scroll">
                 <?php
-                $query = "SELECT `title`, `url` FROM `gh_pages` WHERE `user_id` = '".$user."'";
+                $query = "SELECT `title`, `url` FROM `".DATABASE_PREFIX."pages` WHERE `user_id` = '".$user."'";
 
                 $rs = mysqli_query($conn, $query);
                 $resultset = [];

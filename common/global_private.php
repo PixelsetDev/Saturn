@@ -8,6 +8,7 @@
     // Saturn Info
     $saturnInfo = json_decode(file_get_contents(__DIR__.'/../assets/saturn.json'));
     define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
+    define('SATURN_BRANCH', $saturnInfo->{'saturn'}->{'branch'});
     define('SATURN_STORAGE_DIRECTORY', $saturnInfo->{'saturn'}->{'storagedir'});
     unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
@@ -80,5 +81,9 @@
         }
     }
     require_once __DIR__.'/processes/telemetry.php';
-    if (CONFIG_SEND_DATA) { send_data(); }
+    if (CONFIG_SEND_DATA) {
+        if (send_data() == 0) {
+            alert('ERROR','Failed to connect to Saturn Link Stats Server.',true);
+        }
+    }
     ob_end_flush();

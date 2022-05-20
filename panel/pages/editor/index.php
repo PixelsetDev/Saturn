@@ -253,7 +253,7 @@
                         console.error('[ERROR][SATURN] 003: Occurred in instance \'.content\'. Please report the following error on https://saturncms.net/report-error with the CKE5 build id and the error stack trace. CKE5 Build id: 82xe5t2x22wm-w2zoc189x0t1');
                         console.error(error);
                         alert('[ERROR][SATURN] 003: See console for more information.');
-                    } );
+                    });
             </script>
 
             <div class="py-6">
