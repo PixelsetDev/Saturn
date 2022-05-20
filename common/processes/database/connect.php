@@ -1,7 +1,7 @@
 <?php
 
     $conn = mysqli_connect(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME, DATABASE_PORT);
-    if (mysqli_connect_errno($conn)) {
+    if (mysqli_connect_errno()) {
         ?>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <img src="/storage/images/logo.png" class="mx-auto w-1/6 mt-6" alt="<?php echo CONFIG_SITE_NAME; ?>">
@@ -23,15 +23,11 @@
             </div>
         </div>
         <p class="bg-black text-white p-2 rounded w-auto mt-8 mx-32">
-            MYSQLI_CONNECT_ERRNO(<?php echo mysqli_connect_errno($conn); ?>) - <?php echo mysqli_connect_error($conn); ?>
+            MYSQLI_CONNECT_ERRNO(<?php echo mysqli_connect_errno(); ?>) - <?php echo mysqli_connect_error($conn); ?>
         </p>
         <?php } ?>
         <a href="https://saturncms.net" target="_blank" rel="noopener"><img src="/assets/panel/images/saturn.png" class="mx-auto w-32 mt-96" alt="Saturn"></a>
         <p class="w-full text-center text-xs">Powered by Saturn</p>
 <?php
         exit;
-    } else {
-        $query = "SET time_zone = '".CONFIG_SITE_TIMEZONE."';";
-        $rs = mysqli_query($conn, $query);
-        unset($query,$rs);
     }

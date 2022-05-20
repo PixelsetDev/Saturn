@@ -18,7 +18,7 @@
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
-        error_reporting('E_ALL');
+        error_reporting(E_ALL);
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */
