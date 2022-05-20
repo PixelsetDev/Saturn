@@ -67,7 +67,7 @@
     const CONFIG_DEBUG = '.$_POST['debug'].';
     /* Updating */
     const CONFIG_UPDATE_CHECK = '.$_POST['update_check'].';
-    const CONFIG_UPDATE_CHECK = '.$_POST['update_auto'].";
+    const CONFIG_UPDATE_AUTO = '.$_POST['update_auto'].";
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '".PERMISSION_CREATE_CATEGORY."';
     const PERMISSION_CREATE_PAGE = '".PERMISSION_CREATE_PAGE."';
@@ -508,7 +508,7 @@
                     <h2 class="text-gray-900 text-2xl pb-4 mb-1">Updating</h2>
                     <div class="grid grid-cols-2">
                         <label for="update_check">Check for Updates</label>
-                        <select id="update_check" name="update_check" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <select id="update_check" name="update_check" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_UPDATE_CHECK) {
                                 echo ' selected';
                             } ?>>True</option>
@@ -519,7 +519,7 @@
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="update_auto">Automatic Updates</label>
-                        <select id="update_auto" name="update_auto" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <select id="update_auto" name="update_auto" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_UPDATE_AUTO) {
                                 echo ' selected';
                             } ?>>True</option>
