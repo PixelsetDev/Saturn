@@ -26,6 +26,7 @@
     const CONFIG_SITE_KEYWORDS = '".htmlspecialchars($_POST['site_keywords'], ENT_QUOTES)."';
     const CONFIG_SITE_CHARSET = '".htmlspecialchars($_POST['site_charset'], ENT_QUOTES)."';
     const CONFIG_SITE_TIMEZONE = '".$_POST['site_timezone']."';
+    const CONFIG_SEND_DATA = '".$_POST['send_data']."';
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = ".$_POST['registration_enabled'].";
     /* Database */
@@ -63,7 +64,10 @@
     const LOGGING_ACTIVE = ".$_POST['logging'].';
     const LOGGING_AUTOLOG = '.$_POST['logging_autolog'].';
     /* Developer Tools */
-    const CONFIG_DEBUG = '.$_POST['debug'].";
+    const CONFIG_DEBUG = '.$_POST['debug'].';
+    /* Updating */
+    const CONFIG_UPDATE_CHECK = '.$_POST['update_check'].';
+    const CONFIG_UPDATE_CHECK = '.$_POST['update_auto'].";
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '".PERMISSION_CREATE_CATEGORY."';
     const PERMISSION_CREATE_PAGE = '".PERMISSION_CREATE_PAGE."';
@@ -159,7 +163,18 @@
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="activation_key">Activation Key</label>
-                        <input id="activation_key" name="activation_key" type="text" value="<?php echo CONFIG_ACTIVATION_KEY; ?>" class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <input id="activation_key" name="activation_key" type="text" value="<?php echo CONFIG_ACTIVATION_KEY; ?>" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="send_data">Send Usage and Debug Data (Telemetry)</label>
+                        <select id="send_data" name="send_data" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_SEND_DATA) {
+                                echo ' selected';
+                            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_SEND_DATA) {
+                                echo ' selected';
+                            } ?>>False</option>
+                        </select>
                     </div>
                 </div>
 
@@ -167,7 +182,7 @@
                     <h2 class="text-gray-900 text-2xl pb-4 mb-1">Users and Accounts</h2>
                     <div class="grid grid-cols-2">
                         <label for="registration_enabled">Registration Enabled</label>
-                        <select id="registration_enabled" name="registration_enabled" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <select id="registration_enabled" name="registration_enabled" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_REGISTRATION_ENABLED) {
                                     echo ' selected';
                                 } ?>>True</option>
@@ -485,6 +500,32 @@
                             <option value="false"<?php if (!CONFIG_DEBUG) {
                                     echo' selected';
                                 } ?>>False</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Updating</h2>
+                    <div class="grid grid-cols-2">
+                        <label for="update_check">Check for Updates</label>
+                        <select id="update_check" name="update_check" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_UPDATE_CHECK) {
+                                echo ' selected';
+                            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_UPDATE_CHECK) {
+                                echo ' selected';
+                            } ?>>False</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="update_auto">Automatic Updates</label>
+                        <select id="update_auto" name="update_auto" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_UPDATE_AUTO) {
+                                echo ' selected';
+                            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_UPDATE_AUTO) {
+                                echo ' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                 </div>
