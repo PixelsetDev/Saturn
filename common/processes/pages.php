@@ -5,7 +5,7 @@ function get_assigned_writers()
     echo '</div>
                                 </div>
                             <div class="container mx-auto">
-                                    '.__('Panel:AssignedWriters').'
+                                    Assigned Writers:
                                     <div class="flex -space-x-1 overflow-hidden">';
     $uid = 1;
     $users = get_user_firstname($uid);
@@ -28,7 +28,7 @@ function get_assigned_editors()
 {
     echo '<div class="flex">
                                 <div class="container mx-auto">
-                                    '.__('Panel:AssignedEditors').'
+    Assigned Editors:
                                     <div class="flex -space-x-1 overflow-hidden">';
     $uid = 1;
     $users = get_user_firstname($uid);

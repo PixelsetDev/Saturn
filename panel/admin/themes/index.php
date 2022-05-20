@@ -72,7 +72,7 @@
                     <div class="absolute bottom-0 w-full h-12 bg-black bg-opacity-50 overflow-x-auto z-20 flex">
                         <div class="flex-grow">
                             <h3 class="text-lg mt-1 mx-2 text-white"><?php echo $themeData->{'theme'}->{'name'}; ?></h3>
-                            <p class="text-xs -mt-1 mb-1 mx-2 text-white">Created by <?php echo $themeData->{'theme'}->{'author'}; ?></p>
+                            <p class="text-xs -mt-1 mb-1 mx-2 text-white">By <?php echo $themeData->{'theme'}->{'author'}; ?></p>
                         </div>
                         <?php if ($themeData->{'theme'}->{'slug'} == THEME_SLUG) { ?><p class="text-xs text-white">ACTIVE</p><?php } ?>
                     </div>
@@ -106,25 +106,17 @@
                 } ?>
             <h2 class="text-gray-900 text-2xl mt-8">Website Assets</h2>
             <div class="flex my-6 space-x-4">
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/files/upload/?type=image&uploadTo=/storage/images/&renameTo=icon.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/icon.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Icon (PNG)">
-                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Icon (PNG)</p>
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/storage/images/&renameTo=icon.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/icon.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Icon">
+                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Icon</p>
                 </a>
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/files/upload/?type=image&uploadTo=/storage/images/&renameTo=logo.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=200&maxWidth=1000" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Logo (PNG)">
-                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Logo (PNG)</p>
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/storage/images/&renameTo=logo.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=200&maxWidth=1000"  class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Logo">
+                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Logo</p>
                 </a>
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/files/upload/?type=image&uploadTo=/storage/images/&renameTo=defaultprofile.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/defaultprofile.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Default Profile Picture (PNG)">
-                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Default Profile Picture (PNG)</p>
-                </a>
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/files/upload/?type=image&uploadTo=/storage/images/&renameTo=no-image-500x500.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/no-image-500x500.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="'Missing Image' Image (PNG)">
-                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">'Missing Image' Image (PNG)</p>
-                </a>
-                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/files/upload/?type=image&uploadTo=/storage/images/&renameTo=error.svg&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400" class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
-                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/error.svg?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Error Image (SVG)">
-                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Error Image (SVG)</p>
+                <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/upload/?type=image&uploadTo=/storage/images/&renameTo=defaultprofile.png&redirectTo=<?php echo CONFIG_INSTALL_URL; ?>/panel/admin/themes&maxHeight=400&maxWidth=400"  class="md:w-1/6 w-1/3 p-4 relative overflow-hidden rounded-md bg-white shadow hover:shadow-xl transition duration-200">
+                    <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/defaultprofile.png?id=<?php echo rand(0000, 9999); ?>" class="self-center" alt="Default Profile Picture">
+                    <p class="p-1 bg-gray-100 text-gray-900 absolute bottom-0 left-0 rounded-md bg-opacity-50">Default Profile Picture</p>
                 </a>
             </div>
         </div>

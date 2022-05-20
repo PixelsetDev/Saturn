@@ -1,6 +1,6 @@
 <?php
 
-    function checkInput($mode, $data): string
+    function checkInput($mode, $data)
     {
         global $conn;
 

@@ -26,7 +26,7 @@
                 if ($success == 'deleted') {
                     $successMsg = 'The page has been deleted.';
                 } elseif ($success == 'new') {
-                    $successMsg = 'The page has been created.';
+                    $successMsg = 'The page has been created..';
                 }
             }
 
@@ -160,7 +160,7 @@ $results = mysqli_fetch_all(mysqli_query($conn, 'SELECT * FROM `'.DATABASE_PREFI
                                                             if ($status == 'yellow') {
                                                                 echo 'Pending approval request from '.get_user_fullname(get_page_pending_user_id($result[0])).'.';
                                                             } elseif ($status == 'red') {
-                                                                echo 'This page has not been edited by anyone yet.';
+                                                                echo'This page has not been edited by anyone yet.';
                                                             } else {
                                                                 echo 'Last edited by '.get_user_fullname(get_page_last_edit_user_id($result[0])).' at '.get_page_last_edit_timestamp($result[0]).'.';
                                                             } ?>

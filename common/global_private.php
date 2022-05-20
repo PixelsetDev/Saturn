@@ -37,9 +37,6 @@
     require_once __DIR__.'/processes/link.php';
     require_once __DIR__.'/processes/themes.php';
     require_once __DIR__.'/processes/redirect.php';
-    if (CONFIG_SEND_DATA) {
-        require_once __DIR__.'/processes/telemetry.php';
-    }
     require_once __DIR__.'/panel/theme.php';
     /* GUI */
     require_once __DIR__.'/processes/gui/dashboard.php';
@@ -81,8 +78,5 @@
         } else {
             echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
         }
-    }
-    if (CONFIG_SEND_DATA) {
-        send_data();
     }
     ob_end_flush();

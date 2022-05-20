@@ -1,12 +1,12 @@
 <?php
 
-    function checksum_generate($data)
+    function checksum_generate($data): string
     {
         if (SECURITY_ACTIVE) {
             return hash(SECURITY_CHECKSUM_HASH, $data);
-        } else {
-            return false;
         }
+
+        return 'Security Disabled';
     }
 
     function checksum_validate($data, $hash): bool

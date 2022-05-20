@@ -47,7 +47,7 @@ if (isset($_POST['update'])) {
     const THEME_SOCIAL_IMAGE = CONFIG_INSTALL_URL.'/storage/images/social-image.jpg';";
 
     if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
-        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Theme Settings.');
+        log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
         internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&successMsg=Theme settings updated.');
     } else {
         internal_redirect('/panel/admin/themes/settings/?slug='.$slug.'&errorMsg=Theme settings could not be updated.');

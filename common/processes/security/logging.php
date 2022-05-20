@@ -34,25 +34,25 @@
         if (LOGGING_ACTIVE && SECURITY_ACTIVE && CONFIG_DEBUG) {
             echo '<script>console.log("'.date(DATE_FORMAT).' [SATURN][GSS] ';
             if (SECURITY_MODE == 'clean') {
-                echo __('Security:Cleaned');
+                echo'Cleaned';
             } else {
-                echo __('Security:Stopped');
+                echo'Stopped';
             }
-            echo ' '.__('Security:I/O_Blacklist').' '.$value.'.");</script>';
+            echo' I/O: Contained Blacklisted Item: '.$value.'.");</script>';
         }
     }
 
     function log_clear($type): bool
     {
         if ($type == 'SECURITY') {
-            $message = get_user_fullname($_SESSION['id']).' '.__('Security:ClearedLog_Security');
+            $message = get_user_fullname($_SESSION['id']).' cleared the Security Log.';
             $message = date(DATE_FORMAT).' [SATURN][SECURITY] '.$message."\r\n";
             $file = __DIR__.'/../../../storage/logs/security.txt';
             file_put_contents($file, $message, LOCK_EX);
 
             return true;
         } elseif ($type == 'ERROR') {
-            $message = get_user_fullname($_SESSION['id']).' '.__('Security:ClearedLog_Error');
+            $message = get_user_fullname($_SESSION['id']).' cleared the Error Log.';
             $message = date(DATE_FORMAT).' [NOTICE] '.$message."\r\n";
             $file = __DIR__.'/../../../storage/logs/errors.txt';
             file_put_contents($file, $message, LOCK_EX);

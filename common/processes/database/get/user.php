@@ -19,7 +19,7 @@
 
         global $conn;
 
-        $query = 'SELECT `username` FROM `'.DATABASE_PREFIX."users` WHERE `id` = '".$id."';";
+        $query = 'SELECT `username` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
 
@@ -32,7 +32,7 @@
 
         global $conn;
 
-        $query = 'SELECT `first_name` FROM `'.DATABASE_PREFIX."users` WHERE `id` = '".$id."';";
+        $query = 'SELECT `first_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
 
@@ -64,21 +64,17 @@
 
         global $conn;
 
-        $query = "SELECT `first_name`, `last_name` FROM `".DATABASE_PREFIX."users` WHERE `id` = '".$id."';";
+        $query = 'SELECT `first_name`, `last_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
         $rs = mysqli_query($conn, $query);
-        if ($rs->num_rows) {
-            $row = mysqli_fetch_assoc($rs);
+        $row = mysqli_fetch_assoc($rs);
 
-            if (get_user_settings_privacy_abbreviate_surname($id)) {
-                $lastname = $row['last_name'];
-                $lastname = substr($lastname, 0, 1);
+        if (get_user_settings_privacy_abbreviate_surname($id)) {
+            $lastname = $row['last_name'];
+            $lastname = substr($lastname, 0, 1);
 
-                return $row['first_name'] . ' ' . $lastname;
-            } else {
-                return $row['first_name'] . ' ' . $row['last_name'];
-            }
+            return $row['first_name'].' '.$lastname;
         } else {
-            return 'Unknown';
+            return $row['first_name'].' '.$row['last_name'];
         }
     }
 
