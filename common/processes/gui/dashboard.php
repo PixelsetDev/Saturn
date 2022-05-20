@@ -95,12 +95,17 @@
         } elseif ($type == 'Editor') {
             $return .= 'Approvals';
         }
+        if ($current == 0 || $max == 0) {
+            $width = 0;
+        } else {
+            $width = ($current / $max) * 100;
+        }
         $return .= '
                                     </span>
                                 </div>
                             </div>
                             <div class="w-full h-3 bg-gray-100 dark:bg-neutral-600 absolute bottom-0">
-                                <div style="width:'.(($current / $max) * 100).'%" class="h-full text-center text-xs text-white bg-'.$colour.'-400 dark:bg-'.$colour.'-600">
+                                <div style="width:'.$width.'%" class="h-full text-center text-xs text-white bg-'.$colour.'-400 dark:bg-'.$colour.'-600">
                                 </div>
                             </div>
                         </a>

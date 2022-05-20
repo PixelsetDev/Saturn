@@ -284,7 +284,7 @@
                 </div>
                 <div class="flex flex-wrap space-x-4">
                     <?php
-                        $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statisticcs` WHERE 1 ORDER BY edits;');
+                        $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits;');
         $row = mysqli_fetch_row($result);
         $uid = $row[0]; ?>
                     <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 rounded-xl w-full md:w-80 p-4 bg-white dark:bg-neutral-800 relative overflow-hidden mt-4">
@@ -301,8 +301,9 @@
                                 $x = 0;
         $result = mysqli_query($conn, 'SELECT `id`, `edits` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY edits DESC;');
         $row = mysqli_fetch_row($result);
+        $rows = mysqli_num_rows($result);
         $uid = $row[0];
-        while ($uid != null && $x != '4') {
+        while ($uid != null && $x != '4' && $x != $rows) {
             if (get_user_roleID($uid) != '0' && get_user_roleID($uid) != '1') {
                 echo '<div class="flex-grow">
                                 <div class="flex flex-col items-center">
@@ -353,8 +354,9 @@
                         $x = 0;
                         $result = mysqli_query($conn, 'SELECT `id`, `approvals` FROM `'.DATABASE_PREFIX.'users_statistics` WHERE 1 ORDER BY approvals DESC;');
                         $row = mysqli_fetch_row($result);
+                        $rows = mysqli_num_rows($result);
                         $uid = $row[0];
-                        while ($uid != null && $x != '4') {
+                        while ($uid != null && $x != '4' && $x != $rows) {
                             if (get_user_roleID($uid) > '2') {
                                 echo '<div class="flex-grow">
                                 <div class="flex flex-col items-center">

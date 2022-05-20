@@ -5,7 +5,7 @@
         global $conn;
 
         if (SECURITY_ACTIVE === true) {
-            if ($data != null) {
+            if ($data != null && !is_array($data)) {
                 $data = mysqli_real_escape_string($conn, $data);
                 $data = checkData($data, 'PHP', '<?', '&lt;?');
                 $data = checkData($data, 'External JavaScript', '<script src=', '&lt;script src=');

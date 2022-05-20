@@ -79,4 +79,6 @@
             echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
         }
     }
+    require_once __DIR__.'/processes/telemetry.php';
+    if (CONFIG_SEND_DATA) { send_data(); }
     ob_end_flush();

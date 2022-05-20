@@ -121,13 +121,17 @@
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `id`, `timestamp` FROM `'.DATABASE_PREFIX."pages_history` WHERE `page_id` = '".$id."' ORDER BY `id` DESC";
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `id`, `timestamp` FROM `' . DATABASE_PREFIX . "pages_history` WHERE `page_id` = '" . $id . "' ORDER BY `id` DESC";
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['timestamp'];
+            return $row['timestamp'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_page_url($id)
