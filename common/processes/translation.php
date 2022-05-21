@@ -7,7 +7,7 @@
         $rs = mysqli_query($conn, $query);
         $row = mysqli_fetch_assoc($rs);
         $Language = $row['language'];
-        if ($Language == NULL || $Language == 'DEFAULT') {
+        if ($Language == null || $Language == 'DEFAULT') {
             $Language = CONFIG_LANGUAGE;
         }
     } else {

@@ -8,7 +8,9 @@ function get_page_id_from_url($uri)
 {
     $uri = checkInput('HTML', $uri);
 
-    if($uri != '/') { $uri = rtrim($uri,"/"); }
+    if ($uri != '/') {
+        $uri = rtrim($uri, '/');
+    }
 
     global $conn;
 
