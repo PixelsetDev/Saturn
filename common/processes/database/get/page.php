@@ -124,7 +124,7 @@
         if ($id != null) {
             global $conn;
 
-            $query = 'SELECT `id`, `timestamp` FROM `' . DATABASE_PREFIX . "pages_history` WHERE `page_id` = '" . $id . "' ORDER BY `id` DESC";
+            $query = 'SELECT `id`, `timestamp` FROM `'.DATABASE_PREFIX."pages_history` WHERE `page_id` = '".$id."' ORDER BY `id` DESC";
             $rs = mysqli_query($conn, $query);
             $row = mysqli_fetch_assoc($rs);
 

@@ -83,7 +83,7 @@
     require_once __DIR__.'/processes/telemetry.php';
     if (CONFIG_SEND_DATA) {
         if (send_data() == 0) {
-            alert('ERROR','Failed to connect to Saturn Link Stats Server.',true);
+            alert('ERROR', 'Failed to connect to Saturn Link Stats Server.', true);
         }
     }
     ob_end_flush();

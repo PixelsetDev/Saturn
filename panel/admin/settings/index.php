@@ -169,11 +169,11 @@
                         <label for="send_data">Send Usage and Debug Data (Telemetry)</label>
                         <select id="send_data" name="send_data" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_SEND_DATA) {
-                                echo ' selected';
-                            } ?>>True</option>
+                                    echo ' selected';
+                                } ?>>True</option>
                             <option value="false"<?php if (!CONFIG_SEND_DATA) {
-                                echo ' selected';
-                            } ?>>False</option>
+                                    echo ' selected';
+                                } ?>>False</option>
                         </select>
                     </div>
                 </div>
@@ -510,22 +510,22 @@
                         <label for="update_check">Check for Updates</label>
                         <select id="update_check" name="update_check" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_UPDATE_CHECK) {
-                                echo ' selected';
-                            } ?>>True</option>
+                                    echo ' selected';
+                                } ?>>True</option>
                             <option value="false"<?php if (!CONFIG_UPDATE_CHECK) {
-                                echo ' selected';
-                            } ?>>False</option>
+                                    echo ' selected';
+                                } ?>>False</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
                         <label for="update_auto">Automatic Updates</label>
                         <select id="update_auto" name="update_auto" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_UPDATE_AUTO) {
-                                echo ' selected';
-                            } ?>>True</option>
+                                    echo ' selected';
+                                } ?>>True</option>
                             <option value="false"<?php if (!CONFIG_UPDATE_AUTO) {
-                                echo ' selected';
-                            } ?>>False</option>
+                                    echo ' selected';
+                                } ?>>False</option>
                         </select>
                     </div>
                 </div>
