@@ -84,7 +84,7 @@
                     </div>
                     <?php if (($remoteVersion != $themeData->{'theme'}->{'version'}->{'theme'}) && ($remoteVersion != '')) { ?>
                     <div class="absolute top-1/4 left-1/4 text-white z-20 bg-red-500 px-4 pt-4 pb-2 rounded-md bg-opacity-50">
-                        <i class="fas fa-sync fa-3x text-center w-full"></i><br>
+                        <i class="fas fa-sync fa-3x text-center w-full" aria-hidden="true"></i><br>
                         <span class="text-lg"><?php echo __('General:Update'); ?></span>
                     </div>
                     <?php } ?>

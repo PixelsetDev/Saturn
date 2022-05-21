@@ -74,7 +74,7 @@
         }
     }
 
-    function get_user_fullname($id)
+    function get_user_fullname($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
@@ -140,9 +140,12 @@
             } elseif ($q == '-1') {
                 $role = __('General:Deleted');
             } else {
-                $role = '?';
+                $role = __('General:Unknown');
             }
+        } else {
+            $role = __('General:Unknown');
         }
+        return $role;
     }
 
     function get_user_roleID($id)

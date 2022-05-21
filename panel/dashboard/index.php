@@ -387,7 +387,7 @@
                             <div class="flex items-center justify-between px-4 py-6 space-x-4">
                                 <div class="flex items-center">
                                     <span class="rounded-full relative pl-3 pr-2 py-2 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-300">
-                                        <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
+                                        <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700" aria-hidden="true"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
                                         <?php echo __('Panel:Views_Page') ?> <?php $pageviews = get_user_statistics_views_pages($_SESSION['id']);
@@ -405,7 +405,7 @@
                                 <div style="width:<?php if ($pageviews == 0) {
             echo 0;
         } else {
-            echo($pageviews / $totalpageviews) * 100;
+            echo (($pageviews / $totalpageviews) * 100);
         } ?>%" class="h-full text-center text-xs text-white bg-<?php echo THEME_PANEL_COLOUR; ?>-400 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-900">
                                 </div>
                             </div>
@@ -418,7 +418,7 @@
                             <div class="flex items-center justify-between px-4 py-6 space-x-4">
                                 <div class="flex items-center">
                                     <span class="rounded-full relative pl-3 pr-2 py-2 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-<?php echo THEME_PANEL_COLOUR; ?>-300">
-                                        <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700"></i>
+                                        <i class="fa-solid fa-chart-line text-<?php echo THEME_PANEL_COLOUR; ?>-500 dark:text-<?php echo THEME_PANEL_COLOUR; ?>-700" aria-hidden="true"></i>
                                     </span>
                                     <p class="text-sm text-gray-700 dark:text-white ml-2 font-semibold">
                                         <?php echo __('Panel:Views_Article') ?> <?php $articleviews = get_user_statistics_views_articles($_SESSION['id']);
