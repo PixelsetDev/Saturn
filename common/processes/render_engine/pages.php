@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../../../common/global_public.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/common/global_public.php';
 
 const THEME_DIRECTORY = '/themes/';
 
@@ -39,30 +39,30 @@ function replacedata($pageOutput, $pageData, $themeData): string
         $starttime = microtime(true);
     }
     // Sections
-    $pageOutput = str_replace('{{section:navigation}}', $pageData['section']['navigation'], $pageOutput);
-    $pageOutput = str_replace('{{section:footer}}', $pageData['section']['footer'], $pageOutput);
+    if ($pageData['section']['navigation'] != null) { $pageOutput = str_replace('{{section:navigation}}', $pageData['section']['navigation'], $pageOutput); }
+    if ($pageData['section']['footer'] != null) { $pageOutput = str_replace('{{section:footer}}', $pageData['section']['footer'], $pageOutput); }
     // Page Data
-    $pageOutput = str_replace('{{page:title}}', $pageData['title'], $pageOutput);
-    $pageOutput = str_replace('{{page:content}}', $pageData['content'], $pageOutput);
-    $pageOutput = str_replace('{{page:references}}', $pageData['references'], $pageOutput);
-    $pageOutput = str_replace('{{page:description}}', $pageData['description'], $pageOutput);
-    $pageOutput = str_replace('{{page:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput);
-    $pageOutput = str_replace('{{page:image}}', $pageData['image']['url'], $pageOutput);
-    $pageOutput = str_replace('{{page:image:credit}}', $pageData['image']['credit'], $pageOutput);
-    $pageOutput = str_replace('{{page:image:license}}', $pageData['image']['credit'], $pageOutput);
+    if ($pageData['title'] != null) { $pageOutput = str_replace('{{page:title}}', $pageData['title'], $pageOutput); } else { $pageOutput = str_replace('{{page:title}}', '', $pageOutput); }
+    if ($pageData['content'] != null) { $pageOutput = str_replace('{{page:content}}', $pageData['content'], $pageOutput); } else { $pageOutput = str_replace('{{page:content}}', '', $pageOutput); }
+    if ($pageData['references'] != null) { $pageOutput = str_replace('{{page:references}}', $pageData['references'], $pageOutput); } else { $pageOutput = str_replace('{{page:references}}', '', $pageOutput); }
+    if ($pageData['description'] != null) { $pageOutput = str_replace('{{page:description}}', $pageData['description'], $pageOutput); } else { $pageOutput = str_replace('{{page:description}}', '', $pageOutput); }
+    if ($pageData['author']['id'] != null) { $pageOutput = str_replace('{{page:author:name}}', get_user_fullname($pageData['author']['id']), $pageOutput); } else { $pageOutput = str_replace('{{page:author:name}}', '', $pageOutput); }
+    if ($pageData['image']['url'] != null) { $pageOutput = str_replace('{{page:image}}', $pageData['image']['url'], $pageOutput); } else { $pageOutput = str_replace('{{page:image}}', '', $pageOutput); }
+    if ($pageData['image']['credit'] != null) { $pageOutput = str_replace('{{page:image:credit}}', $pageData['image']['credit'], $pageOutput); } else { $pageOutput = str_replace('{{page:image:credit}}', '', $pageOutput); }
+    if ($pageData['image']['license'] != null) { $pageOutput = str_replace('{{page:image:license}}', $pageData['image']['license'], $pageOutput); } else { $pageOutput = str_replace('{{page:image:license}}', '', $pageOutput); }
     // Data
     try {
         $pageOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $pageOutput);
     } catch (Exception $e) {
-        errorHandlerError($e, __('Error:RandomInteger'));
+        errorHandlerError($e, 'Random integer creation error.');
     }
     // Config values
-    $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput);
-    $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput);
-    $pageOutput = str_replace('{{config:sitename}}', CONFIG_SITE_NAME, $pageOutput);
-    $pageOutput = str_replace('{{config:description}}', CONFIG_SITE_DESCRIPTION, $pageOutput);
-    $pageOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $pageOutput);
-    $pageOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $pageOutput);
+    if (CONFIG_INSTALL_URL != null) { $pageOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $pageOutput); } else { $pageOutput = str_replace('{{config:basedir}}', '', $pageOutput); }
+    if (CONFIG_SITE_TIMEZONE != null) { $pageOutput = str_replace('{{config:timezone}}', CONFIG_SITE_TIMEZONE, $pageOutput); } else { $pageOutput = str_replace('{{config:timezone}}', '', $pageOutput); }
+    if (CONFIG_SITE_NAME != null) { $pageOutput = str_replace('{{config:sitename}}', CONFIG_SITE_NAME, $pageOutput); } else { $pageOutput = str_replace('{{config:sitename}}', '', $pageOutput); }
+    if (CONFIG_SITE_DESCRIPTION != null) { $pageOutput = str_replace('{{config:description}}', CONFIG_SITE_DESCRIPTION, $pageOutput); } else { $pageOutput = str_replace('{{config:description}}', '', $pageOutput); }
+    if (CONFIG_SITE_KEYWORDS != null) { $pageOutput = str_replace('{{config:keywords}}', CONFIG_SITE_KEYWORDS, $pageOutput); } else { $pageOutput = str_replace('{{config:keywords}}', '', $pageOutput); }
+    if (CONFIG_SITE_CHARSET != null) { $pageOutput = str_replace('{{config:charset}}', CONFIG_SITE_CHARSET, $pageOutput); } else { $pageOutput = str_replace('{{config:charset}}', '', $pageOutput); }
     // Images
     $pageOutput = str_replace('{{image:logo}}', '/storage/images/logo.png', $pageOutput);
     $pageOutput = str_replace('{{image:icon}}', '/storage/images/icon.png', $pageOutput);
@@ -118,7 +118,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
         $cdn_css = '';
         $cdn_js = '';
         if (CONFIG_DEBUG) {
-            log_console('Saturn][Resource Loader][G-Tags', __('FrameworkUnassigned'));
+            log_console('Saturn][Resource Loader][G-Tags', 'Unable to load framework or a framework may not be assigned.');
         }
     }
     $pageOutput = str_replace('{{cdn:css}}', $cdn_css, $pageOutput);
@@ -133,7 +133,7 @@ function replacedata($pageOutput, $pageData, $themeData): string
     $pageOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $pageOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', __('General:Converted_GTAGS_1').' 73'.__('General:Converted_GTAGS_2').' '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 73 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
 
     return $pageOutput;

@@ -17,14 +17,14 @@
             if ($getNumRows == 1) {
                 $userData = mysqli_fetch_assoc($rs);
                 if ($userData['role_id'] == '1') {
-                    $errorMsg = __('Error:AccountNotApproved');
+                    $errorMsg = "Your account has not been approved by a site administrator yet. We'll send you an email when we're ready for you to sign in.";
                 } elseif ($userData['role_id'] == '0') {
-                    $errorMsg = __('Error:Account_Deleted').' "'.CONFIG_EMAIL_ADMIN.'". ';
+                    $errorMsg = 'Your account has been deleted. If you require access, please contact your site administrator by emailing "'.CONFIG_EMAIL_ADMIN.'", thank you.';
                 } else {
                     try {
                         $code = random_int(100000, 999999);
                     } catch (Exception $e) {
-                        errorHandlerError($e, __('Error:RandomInteger'));
+                        errorHandlerError($e, 'ERROR GENERATING RANDOM NUMBER');
                     }
                     $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '$code' WHERE `email` = '".$username."' OR `username` = '".$username."';";
                     $rs = mysqli_query($conn, $sql);
@@ -32,17 +32,17 @@
                     $email = $userData['email'];
                     $user_id = $userData['id'];
                     $page = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http')."://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    send_email($email, __('General:Saturn').' '.__('Panel:Reset_Password'), __('Panel:VerificationCode_Message_1').' '.$code.'<br><br>'.__('Panel:VerificationCode_Message_2').'<a href="'.$page.'?code='.$code.'" class="underline">'.__('Panel:VerificationCode_Message_Link').'</a>.');
-                    $infoMsg = __('Panel:Reset_EmailConfirm');
+                    send_email($email, 'Saturn Password Reset', 'Your Saturn password reset code is: '.$code.'<br><br>Please enter this code into Saturn or <a href="'.$page.'?code='.$code.'" class="underline">click here to continue</a>.');
+                    $infoMsg = 'We\'ve sent you an email to confirm the information you have provided. Please click the link in your email to continue.';
 
                     $status = 0;
                 }
             } else {
-                $errorMsg = __('Error:UnknownAccount');
+                $errorMsg = 'Sorry, we were unable to determine what account the data you entered belongs to. Please try a different method of authentication.';
                 $status = 0;
             }
         } else {
-            $errorMsg = __('Error:Reset_UsernameRequired');
+            $errorMsg = 'Please enter a username or email address.';
             $status = 0;
         }
     }
@@ -61,7 +61,7 @@
             $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
             $rs = mysqli_query($conn, $sql);
 
-            $errorMsg = __('Error:CodeNotMatch');
+            $errorMsg = 'The code you provided does not match our records. For security purposes we have de-validated your security code, please generate a new one by completing the form again.';
             $status = 0;
         }
     }
@@ -89,20 +89,20 @@
                     $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
                     $rs = mysqli_query($conn, $sql);
 
-                    $successMsg = __('Panel:Reset_Success').'<br>'.__('Panel:Reset_CanLogin');
+                    $successMsg = 'Password changed successfully.<br>You can now log in using your new credentials.';
                     $status = 2;
                 } else {
-                    $errorMsg = __('Error:Reset_PasswordNotMatch');
+                    $errorMsg = 'The password and confirmed password provided does not match. You can try again by clicking the link in your email.';
                     $status = 0;
                 }
             } else {
-                $errorMsg = __('Error:Reset_PasswordEmpty');
+                $errorMsg = 'You did not enter a password and confirmed password. You can try again by clicking the link in your email.';
             }
         } else {
             $sql = 'UPDATE `'.DATABASE_PREFIX."users` SET `auth_code` = '' WHERE `id` = '".$userData['id']."';";
             $rs = mysqli_query($conn, $sql);
 
-            $errorMsg = __('Error:UnknownAccount');
+            $errorMsg = 'Sorry, we were unable to determine what account the data you entered belongs to. For security purposes we have de-validated your security code, please generate a new one by completing the form again.';
             $status = 0;
         }
     }
@@ -110,7 +110,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
-        <title><?php echo __('Panel:Reset'); ?> - <?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></title>
+        <title>Forgot Password - Saturn Panel</title>
         <?php
         include_once __DIR__.'/../../../../common/panel/vendors.php';
         include_once __DIR__.'/../../../../common/panel/theme.php';
@@ -124,7 +124,7 @@
         <header class="bg-white shadow dark:bg-neutral-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></a>
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white">Saturn Panel</a>
                 </h1>
             </div>
         </header>
@@ -134,7 +134,7 @@
                     <div>
                         <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
-                            <?php echo __('Panel:Reset'); ?>
+                            Forgot Password.
                         </h2>
                         <?php
                         if (isset($errorMsg)) {
@@ -156,8 +156,8 @@
 <?php if ($status == 0) { ?>
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="username" class="sr-only"><?php echo __('Panel:UsernameEmail'); ?></label>
-                                <input id="username" name="username" type="text" autocomplete="username" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:UsernameEmail'); ?>">
+                                <label for="username" class="sr-only">Email address or Username</label>
+                                <input id="username" name="username" type="text" autocomplete="username" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Email Address or Username">
                             </div>
                         </div>
                         <div>
@@ -165,24 +165,24 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
-                                <?php echo __('Panel:Reset'); ?>
+                                Reset Password
                             </button>
                         </div>
 <?php } elseif ($status == 1) { ?>
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="securitycode" class="text-xs"><?php echo __('Panel:Code'); ?></label><br>
-                                <input id="securitycode" name="securitycode" type="password" autocomplete="code" value="<?php echo $code; ?>" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Admin:Security'); ?> <?php echo __('Panel:Code'); ?>">
+                                <label for="securitycode" class="text-xs">Security Code</label><br>
+                                <input id="securitycode" name="securitycode" type="password" autocomplete="code" value="<?php echo $code; ?>" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Security Code">
                             </div>
                         </div>
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="password" class="sr-only"><?php echo __('Panel:Password'); ?></label>
-                                <input id="password" name="password" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Password'); ?>">
+                                <label for="password" class="sr-only">Password</label>
+                                <input id="password" name="password" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Password">
                             </div>
                             <div>
-                                <label for="confirmpassword" class="sr-only"><?php echo __('Panel:Reset_ConfirmPassword'); ?></label>
-                                <input id="confirmpassword" name="confirmpassword" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Reset_ConfirmPassword'); ?>">
+                                <label for="confirmpassword" class="sr-only">Confirm Password</label>
+                                <input id="confirmpassword" name="confirmpassword" type="password" autocomplete="password" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Confirm Password">
                             </div>
                         </div>
                         <div>
@@ -190,7 +190,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-unlock" aria-hidden="true"></i>
                                 </span>
-                                <?php echo __('Panel:ResetPassword'); ?>
+                                Reset Password
                             </button>
                         </div>
 <?php } elseif ($status == 2) { ?>
@@ -198,12 +198,12 @@
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <i class="fas fa-lock" aria-hidden="true"></i>
                             </span>
-                            <?php echo __('SignIn'); ?>
+                            Sign in
                         </a>
 <?php
     } else {
-        echo alert('ERROR', __('Error:Unknown'));
-        log_error('ERROR', __('Error:Reset_Unknown'));
+        echo alert('ERROR', 'An error has occurred, please try again later.');
+        log_error('ERROR', 'An error occurred when resetting a user\'s password.');
     }
 ?>
                     </form>

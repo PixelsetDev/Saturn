@@ -74,7 +74,7 @@
                 <br>
                 <div class="flex w-full">
                     <div class="w-full mr-1 my-1 duration-300 transform bg-<?php echo THEME_PANEL_COLOUR; ?>-100 border-l-4 border-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5 text-<?php echo THEME_PANEL_COLOUR; ?>-700">
                                 <?php
                                 $result = mysqli_query($conn, 'SELECT `id` FROM `'.DATABASE_PREFIX.'pages` WHERE 1;');
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="w-full mr-1 my-1 duration-300 transform bg-<?php echo THEME_PANEL_COLOUR; ?>-100 border-l-4 border-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5 text-<?php echo THEME_PANEL_COLOUR; ?>-700">
                                 <?php
                                 $result = mysqli_query($conn, 'SELECT `content` FROM `'.DATABASE_PREFIX.'articles` WHERE 1;');
@@ -138,7 +138,7 @@
                         $bannedrows = mysqli_num_rows($results);
                     ?>
                     <div class="w-full mr-1 my-1 duration-300 transform bg-<?php echo $colour; ?>-100 border-l-4 border-<?php echo $colour; unset($colour); ?>-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5"><?php echo $rows; ?> users.</h6>
                             <p><?php echo $activerows; ?> authorised users.</p>
                             <p><em><?php echo $pendingrows; ?> pending users.</em></p>
@@ -147,25 +147,34 @@
                     </div>
                     <?php
                     $phpversion = phpversion(); $badServer = 0;
-                    if ($phpversion < '7.4.0' || $phpversion > '8') {
+                    if ($phpversion < '7.4.0') {
                         $badServer++;
                     }
-                    if (PHP_OS != 'Linux') {
+                    if (PHP_OS != 'Linux' && PHP_OS != 'WINNT') {
                         $badServer++;
                     }
 
                     if ($badServer == 1) {
                         echo '<div class="w-full mr-1 my-1 duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5">We recommend configuration changes to your server.</h6>
                             Please see the \'My Server\' section below.
                         </div>
                     </div>';
                     } elseif ($badServer == 2) {
                         echo '<div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5">We recommend configuration changes to your server.</h6>
-                            PHP Version not Supported and OS Not Recommended.
+                            PHP Version not Supported, OS Not Recommended, and Telemetry disabled.
+                        </div>
+                    </div>';
+                    }
+
+                    if (!CONFIG_SEND_DATA) {
+                        echo '<div class="w-full mr-1 my-1 duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
+                            <h6 class="mb-2 font-semibold leading-5">Telemetry is disabled.</h6>
+                            Telemetry helps us to collect important usage and debugging information. It\'s totally optional, but having it enabled helps us to make Saturn better for you.
                         </div>
                     </div>';
                     }
@@ -173,7 +182,7 @@
                     <?php if ($remoteVersion != SATURN_VERSION && CONFIG_UPDATE_CHECK) {
                         echo '
                     <div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5">An update is available.</h6>
                             It\'s recommended that you update your Saturn installation as soon as possible. You can see the release notes for this version in the \'News\' section below.<br>
                             <a href="?update=true" class="underline">Update now</a>.
@@ -232,15 +241,20 @@
                         <h2 class="text-gray-900 text-2xl">Your Server</h2>
                         <p>
                             <?php
-                                if ($phpversion < '7.4.0' || $phpversion > '8') {
+                                if ($phpversion < '7.4.0') {
                                     echo '<u>PHP Version</u>: <span class="text-red-500">'.$phpversion.'</span> <small class="text-red-900">Recommended: 7.4.0</small>';
                                 } else {
                                     echo '<u>PHP Version</u>: <span class="text-green-500">'.$phpversion.'</span>';
                                 }
-                                if (PHP_OS != 'Linux') {
+                                if (PHP_OS != 'Linux' && PHP_OS != 'WINNT') {
                                     echo '<br><u>Operating System</u>: <span class="text-red-500">'.PHP_OS.'</span> <small class="text-red-900">Recommended: Linux</small>';
                                 } else {
                                     echo '<br><u>Operating System</u>: <span class="text-green-500">'.PHP_OS.'</span>';
+                                }
+                                if (!CONFIG_SEND_DATA) {
+                                    echo '<br><u>Telemetry</u>: <span class="text-red-500">Disabled</span> <small class="text-red-900">Enabling telemetry helps us to make Saturn better for you. See website settings page if you\'d like to turn it on.</small>';
+                                } else {
+                                    echo '<br><u>Telemetry</u>: <span class="text-green-500">Enabled</span>';
                                 }
                             ?>
                         </p>
@@ -261,7 +275,7 @@
                     <div class="md:h-screen h-auto md:w-1/3">
                         <br class="md:hidden block">
                         <h2 class="text-gray-900 text-2xl px-2">News</h2>
-                        <iframe src="https://link.saturncms.net/news?embedded=true" class="h-1/2 border border-black rounded-md shadow-lg" title="News"></iframe>
+                        <iframe src="https://link.saturncms.net/news" class="h-1/2 border border-black rounded-md shadow-lg" title="News"></iframe>
                     </div>
                 </div>
             </div>

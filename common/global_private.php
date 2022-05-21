@@ -8,6 +8,7 @@
     // Saturn Info
     $saturnInfo = json_decode(file_get_contents(__DIR__.'/../assets/saturn.json'));
     define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
+    define('SATURN_BRANCH', $saturnInfo->{'saturn'}->{'branch'});
     define('SATURN_STORAGE_DIRECTORY', $saturnInfo->{'saturn'}->{'storagedir'});
     unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
@@ -19,7 +20,7 @@
     set_error_handler('errorHandlerWarning', E_WARNING);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
-        error_reporting('E_ALL');
+        error_reporting(E_ALL);
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */
@@ -37,9 +38,6 @@
     require_once __DIR__.'/processes/link.php';
     require_once __DIR__.'/processes/themes.php';
     require_once __DIR__.'/processes/redirect.php';
-    if (CONFIG_SEND_DATA) {
-        require_once __DIR__.'/processes/telemetry.php';
-    }
     require_once __DIR__.'/panel/theme.php';
     /* GUI */
     require_once __DIR__.'/processes/gui/dashboard.php';
@@ -82,7 +80,10 @@
             echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
         }
     }
+    require_once __DIR__.'/processes/telemetry.php';
     if (CONFIG_SEND_DATA) {
-        send_data();
+        if (send_data() == 0) {
+            alert('ERROR','Failed to connect to Saturn Link Stats Server.',true);
+        }
     }
     ob_end_flush();

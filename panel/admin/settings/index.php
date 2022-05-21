@@ -26,7 +26,7 @@
     const CONFIG_SITE_KEYWORDS = '".htmlspecialchars($_POST['site_keywords'], ENT_QUOTES)."';
     const CONFIG_SITE_CHARSET = '".htmlspecialchars($_POST['site_charset'], ENT_QUOTES)."';
     const CONFIG_SITE_TIMEZONE = '".$_POST['site_timezone']."';
-    const CONFIG_LANGUAGE = '".$_POST['site_language']."';
+    const CONFIG_SEND_DATA = '".$_POST['send_data']."';
     /* Users and Accounts */
     const CONFIG_REGISTRATION_ENABLED = ".$_POST['registration_enabled'].";
     /* Database */
@@ -64,7 +64,10 @@
     const LOGGING_ACTIVE = ".$_POST['logging'].';
     const LOGGING_AUTOLOG = '.$_POST['logging_autolog'].';
     /* Developer Tools */
-    const CONFIG_DEBUG = '.$_POST['debug'].";
+    const CONFIG_DEBUG = '.$_POST['debug'].';
+    /* Updating */
+    const CONFIG_UPDATE_CHECK = '.$_POST['update_check'].';
+    const CONFIG_UPDATE_AUTO = '.$_POST['update_auto'].";
     /* Permissions */
     const PERMISSION_CREATE_CATEGORY = '".PERMISSION_CREATE_CATEGORY."';
     const PERMISSION_CREATE_PAGE = '".PERMISSION_CREATE_PAGE."';
@@ -72,7 +75,7 @@
 
         if (file_put_contents($file, $message, LOCK_EX) && ccv_reset()) {
             log_file('SATURN][SECURITY', get_user_fullname($_SESSION['id']).' updated Website Settings.');
-            internal_redirect('/panel/admin/settings?successMsg=Website settings saved successfully. You may need to refresh the page to see changes. If an error message appears please refresh the page.');
+            internal_redirect('/panel/admin/settings?successMsg=Website settings saved successfully. You may need to refresh the page to see changes. If an error message appears, refresh the page.');
             exit;
         } else {
             internal_redirect('/panel/admin/settings?errorMsg=Unable to save website settings, an error occurred.');
@@ -115,7 +118,7 @@
                         <input id="site_name" name="site_name" type="text" value="<?php echo CONFIG_SITE_NAME; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="site_description">Website Description</label>
+                        <label for="site_description">Site Description</label>
                         <input id="site_description" name="site_description" type="text" value="<?php echo CONFIG_SITE_DESCRIPTION; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
@@ -163,8 +166,15 @@
                         <input id="activation_key" name="activation_key" type="text" value="<?php echo CONFIG_ACTIVATION_KEY; ?>" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="site_language">Language</label>
-                        <input id="site_language" name="site_language" type="text" value="<?php echo CONFIG_LANGUAGE; ?>" class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <label for="send_data">Send Usage and Debug Data (Telemetry)</label>
+                        <select id="send_data" name="send_data" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_SEND_DATA) {
+                                echo ' selected';
+                            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_SEND_DATA) {
+                                echo ' selected';
+                            } ?>>False</option>
+                        </select>
                     </div>
                 </div>
 
@@ -172,7 +182,7 @@
                     <h2 class="text-gray-900 text-2xl pb-4 mb-1">Users and Accounts</h2>
                     <div class="grid grid-cols-2">
                         <label for="registration_enabled">Registration Enabled</label>
-                        <select id="registration_enabled" name="registration_enabled" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                        <select id="registration_enabled" name="registration_enabled" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                             <option value="true"<?php if (CONFIG_REGISTRATION_ENABLED) {
                                     echo ' selected';
                                 } ?>>True</option>
@@ -190,7 +200,7 @@
                         <input id="database_host" name="database_host" type="text" value="<?php echo DATABASE_HOST; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="database_name">Database Name</label>
+                        <label for="database_name">Database Username</label>
                         <input id="database_name" name="database_name" type="text" value="<?php echo DATABASE_NAME; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                     <div class="grid grid-cols-2">
@@ -224,7 +234,7 @@
                         </select>
                     </div>
                     <div class="grid grid-cols-2">
-                        <label for="email_sendfrom">Send from Email</label>
+                        <label for="email_sendfrom">Email Sendfrom</label>
                         <input id="email_sendfrom" name="email_sendfrom" type="text" value="<?php echo CONFIG_EMAIL_SENDFROM; ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     </div>
                 </div>
@@ -328,7 +338,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Security</h2>
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Security System</h2>
                     <div class="grid grid-cols-2">
                         <label for="security_active">Security Active</label>
                         <select id="security_active" name="security_active" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
@@ -490,6 +500,32 @@
                             <option value="false"<?php if (!CONFIG_DEBUG) {
                                     echo' selected';
                                 } ?>>False</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Updating</h2>
+                    <div class="grid grid-cols-2">
+                        <label for="update_check">Check for Updates</label>
+                        <select id="update_check" name="update_check" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_UPDATE_CHECK) {
+                                echo ' selected';
+                            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_UPDATE_CHECK) {
+                                echo ' selected';
+                            } ?>>False</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="update_auto">Automatic Updates</label>
+                        <select id="update_auto" name="update_auto" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (CONFIG_UPDATE_AUTO) {
+                                echo ' selected';
+                            } ?>>True</option>
+                            <option value="false"<?php if (!CONFIG_UPDATE_AUTO) {
+                                echo ' selected';
+                            } ?>>False</option>
                         </select>
                     </div>
                 </div>

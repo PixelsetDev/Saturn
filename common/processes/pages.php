@@ -2,21 +2,22 @@
 
 function get_assigned_writers()
 {
+    global $conn;
+
     echo '</div>
                                 </div>
                             <div class="container mx-auto">
-                                    '.__('Panel:AssignedWriters').'
+                                    Assigned Writers:
                                     <div class="flex -space-x-1 overflow-hidden">';
-    $uid = 1;
-    $users = get_user_firstname($uid);
-    while ($users != null) {
-        if (get_user_roleID($uid) != '1') {
-            echo '<a href="'.get_user_profile_link($uid).'" class="relative inline-block">
-                                                <img class="bg-white dark:bg-gray-700 inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-gray-700" src="'.get_user_profilephoto($uid).'" title="'.get_user_fullname($uid).'" alt="'.get_user_fullname($uid).'">
-                                                <span class="absolute bottom-0 right-0 inline-block w-2 h-2 bg-'.get_activity_colour($uid).'-600 border-2 border-white dark:border-gray-700 rounded-full"></span>
+    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'users` WHERE 1;';
+    $result = mysqli_query($conn, $query);
+    $users = mysqli_fetch_all($result);
+    foreach ($users as $uid) {
+        if (get_user_roleID($uid[0]) != '1') {
+            echo'<a href="'.get_user_profile_link($uid[0]).'" class="relative inline-block">
+                                                <img class="bg-white dark:bg-gray-700 inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-gray-700" src="'.get_user_profilephoto($uid[0]).'" title="'.get_user_fullname($uid[0]).'" alt="'.get_user_fullname($uid[0]).'">
+                                                <span class="absolute bottom-0 right-0 inline-block w-2 h-2 bg-'.get_activity_colour($uid[0]).'-600 border-2 border-white dark:border-bg-gray-700 rounded-full"></span>
                                             </a>';
-            $uid++;
-            $users = get_user_firstname($uid);
         }
     }
     echo '</div>
@@ -26,21 +27,21 @@ function get_assigned_writers()
 
 function get_assigned_editors()
 {
+    global $conn;
     echo '<div class="flex">
                                 <div class="container mx-auto">
-                                    '.__('Panel:AssignedEditors').'
+    Assigned Editors:
                                     <div class="flex -space-x-1 overflow-hidden">';
-    $uid = 1;
-    $users = get_user_firstname($uid);
-    while ($users != null) {
-        if (get_user_roleID($uid) == '3' || get_user_roleID($uid) == '4') {
-            echo'<a href="'.get_user_profile_link($uid).'" class="relative inline-block">
-                                                <img class="bg-white dark:bg-gray-700 inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-gray-700" src="'.get_user_profilephoto($uid).'" title="'.get_user_fullname($uid).'" alt="'.get_user_fullname($uid).'">
-                                                <span class="absolute bottom-0 right-0 inline-block w-2 h-2 bg-'.get_activity_colour($uid).'-600 border-2 border-white dark:border-bg-gray-700 rounded-full"></span>
+    $query = 'SELECT `id` FROM `'.DATABASE_PREFIX.'users` WHERE 1;';
+    $result = mysqli_query($conn, $query);
+    $users = mysqli_fetch_all($result);
+    foreach ($users as $uid) {
+        if (get_user_roleID($uid[0]) == '3' || get_user_roleID($uid[0]) == '4') {
+            echo'<a href="'.get_user_profile_link($uid[0]).'" class="relative inline-block">
+                                                <img class="bg-white dark:bg-gray-700 inline-block h-6 w-6 rounded-full ring-2 ring-white dark:ring-gray-700" src="'.get_user_profilephoto($uid[0]).'" title="'.get_user_fullname($uid[0]).'" alt="'.get_user_fullname($uid[0]).'">
+                                                <span class="absolute bottom-0 right-0 inline-block w-2 h-2 bg-'.get_activity_colour($uid[0]).'-600 border-2 border-white dark:border-bg-gray-700 rounded-full"></span>
                                             </a>';
         }
-        $uid++;
-        $users = get_user_firstname($uid);
     }
 }
 

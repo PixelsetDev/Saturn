@@ -63,30 +63,30 @@
                 ?>
                 <div class="px-4 py-6 sm:px-0">
                     <div class="flex space-x-2 mb-2">
-                        <h1 class="text-xl w-1/6 self-center">Title</h1>
+                        <h1 class="text-xl w-1/6 self-center">Page Title</h1>
                         <div class="flex-grow">
-                            <label for="pagetitle" class="sr-only self-center">Title</label>
+                            <label for="pagetitle" class="sr-only self-center">Page Title</label>
                             <input id="pagetitle" maxlength="64" name="pagetitle" type="text" maxlength="100" value="<?php echo stripslashes($pageTitle); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page Title">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
-                        <h1 class="text-xl w-1/6 self-center">Description</h1>
+                        <h1 class="text-xl w-1/6 self-center">Page Description</h1>
                         <div class="flex-grow">
-                            <label for="pagedescription" class="sr-only self-center">Description</label>
+                            <label for="pagedescription" class="sr-only self-center">Page Description</label>
                             <input id="pagedescription" maxlength="127" name="pagedescription" type="text" maxlength="255" value="<?php echo stripslashes($pageTitle); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page Description">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
-                        <h1 class="text-xl w-1/6 self-center">URL</h1>
+                        <h1 class="text-xl w-1/6 self-center">Page URL</h1>
                         <div class="flex-grow">
-                            <label for="pageurl" class="sr-only self-center">URL</label>
+                            <label for="pageurl" class="sr-only self-center">Page Title</label>
                             <input id="pageurl" name="pageurl" maxlength="64" type="text" value="<?php echo str_replace(' ', '-', '/'.stripslashes(strtolower($pageCategory)).'/'.stripslashes(strtolower($pageTitle))); ?>" required class="self-center appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 text-lg" placeholder="Page URL">
                         </div>
                     </div>
                     <div class="flex space-x-2 mb-2">
-                        <h1 class="text-xl w-1/6 self-center">Category</h1>
+                        <h1 class="text-xl w-1/6 self-center">Page Category</h1>
                         <div class="flex-grow">
-                            <label for="pagecategory" class="sr-only self-center">Category</label>
+                            <label for="pagecategory" class="sr-only self-center">Page Category</label>
                             <select name="pagecategory" id="pagecategory" class="flex-grow w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
                     <?php
                     try {
@@ -109,9 +109,9 @@
                         </div>
                     </div>
                     <div class="flex space-x-2">
-                        <h1 class="text-xl w-1/6 self-center">Template</h1>
+                        <h1 class="text-xl w-1/6 self-center">Page Template</h1>
                         <div class="flex-grow">
-                            <label for="pagetemplate" class="sr-only self-center">Template</label>
+                            <label for="pagetemplate" class="sr-only self-center">Page Template</label>
                             <select name="pagetemplate" id="pagetemplate" class="flex-grow w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline">
                                 <option value="HOMEPAGE">Homepage</option>
                                 <option value="DEFAULT" selected>Default</option>
@@ -119,7 +119,7 @@
                             </div>
                     </div>
                     <div class="mt-6">
-                        <input type="submit" name="posted" id="posted" value="Create New" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
+                        <input type="submit" name="posted" id="posted" value="CREATE NEW" class="hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-'.THEME_PANEL_COLOUR.'-700 bg-'.THEME_PANEL_COLOUR.'-200 hover:bg-'.THEME_PANEL_COLOUR.'-300 transition-all duration-200 md:py-1 md:text-rg md:px-10 h-full">
                     </div>
                 </div>
             </div>

@@ -13,12 +13,13 @@
     // Saturn Info
     $saturnInfo = json_decode(file_get_contents(__DIR__.'/../assets/saturn.json'));
     define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
+    define('SATURN_BRANCH', $saturnInfo->{'saturn'}->{'branch'});
     define('SATURN_STORAGE_DIRECTORY', $saturnInfo->{'saturn'}->{'storagedir'});
     unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
-        error_reporting('E_ALL');
+        error_reporting(E_ALL);
         log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
     }
     /* Database: Required Files */

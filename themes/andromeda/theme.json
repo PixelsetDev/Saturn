@@ -4,8 +4,8 @@
   "author": "Lewis Milburn",
   "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Andromeda_Galaxy_560mm_FL.jpg/1200px-Andromeda_Galaxy_560mm_FL.jpg",
   "version": {
-    "theme": "1.0.1",
-    "saturn": "0.1.2"
+    "theme": "1.0.0",
+    "saturn": "0.1.3"
   },
   "framework": "tailwind",
   "theme-colours": {

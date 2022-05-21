@@ -4,10 +4,6 @@
 
     include_once __DIR__.'/../../../../common/global_public.php';
 
-    if (!isset($_GET['type']) || !isset($_GET['username'])) {
-        header('Location: /panel/account/signin/?signedout=true');
-    }
-
     require_once __DIR__.'/../../../../common/processes/database/get/user.php';
 
     if (isset($_POST['verify'])) {
@@ -48,8 +44,8 @@
                     }
                 }
             } else {
-                log_file('SATURN][SECURITY', __('Account_FailedLogin_1').' '.$username.' '.__('Account_FailedLogin_2').' '.hash_ip($_SERVER['REMOTE_ADDR']));
-                $errorMsg = __('Error:CodeNotMatch');
+                log_file('SATURN][SECURITY', 'Failed login verification attempt by user to account '.$username.' with IP Hash: '.hash_ip($_SERVER['REMOTE_ADDR']));
+                $errorMsg = 'Code does not match. A new code has been sent to your email address.';
             }
         }
     } else {
@@ -63,16 +59,17 @@
             exit;
         }
         require_once __DIR__.'/../../../../common/processes/database/update/user.php';
+        update_user_auth_code($id, $code);
         $email = get_user_email($id);
-        send_email($email, CONFIG_SITE_NAME.' - '.__('Panel:VerificationCode'), __('Panel:VerificationCode_Message_1').' "'.$code.'". '.__('Panel:VerificationCode_Message_2'));
+        send_email($email, CONFIG_SITE_NAME.' - Saturn Verification Code', 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.');
         if (isset($_GET['type'])) {
             if ($_GET['type'] == '1') {
-                $infoMsg = __('Panel:Verify_NewLocation').' '.__('Panel:Verify_EnterCode');
+                $infoMsg = "We've detected that you're attempting to sign in from a new location. To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
             } elseif ($_GET['type'] == '2') {
-                $infoMsg = __('Panel:Verify_EnterCode');
+                $infoMsg = "To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
             } else {
-                $errorMsg = __('Error:Verify_Unknown');
-                $infoMsg = __('Panel:Verify_EnterCode');
+                $errorMsg = "The user verification system has been triggered, but we're not quite sure why. If you experience any issues please go back and sign in again or contact your website administrator for help. If this is a reoccurring issue you can also report it at saturncms.net/reportbug and we'll look into it for you.";
+                $infoMsg = "To help us keep your account secure please enter the security code we've sent to your email address in the box below.";
             }
         }
     }
@@ -81,7 +78,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark:bg-neutral-800 dark:text-white">
     <head>
-        <title><?php echo __('Panel:Verify_User'); ?> - <?php echo __('General:Saturn').' '.__('Panel:Panel'); ?></title>
+        <title>User Verification - Saturn Panel</title>
         <?php
         include_once __DIR__.'/../../../../common/panel/vendors.php';
         include_once __DIR__.'/../../../../common/panel/theme.php';
@@ -92,7 +89,7 @@
         <header class="bg-white shadow dark:bg-neutral-900">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold leading-tight">
-                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white"><?php echo __('General:Saturn').' '.__('Panel:Panel'); ?></a>
+                    <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel" class="text-<?php echo THEME_PANEL_COLOUR; ?>-900 dark:text-white">Saturn Panel</a>
                 </h1>
             </div>
         </header>
@@ -100,14 +97,14 @@
             <div class="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
                     <div>
-                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="<?php echo __('General:Saturn'); ?>">
+                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
                             <?php
                                 if (isset($_GET['type'])) {
                                     if ($_GET['type'] == '2') {
-                                        echo __('Panel:Verify_2FA');
+                                        echo 'Two Factor Authentication';
                                     } else {
-                                        echo __('Panel:Verify_User');
+                                        echo 'User Verification';
                                     }
                                 }
                             ?>
@@ -128,8 +125,8 @@
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="code" class="sr-only"><?php echo __('Panel:Verify_Code'); ?></label>
-                                <input id="code" name="code" type="text" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="<?php echo __('Panel:Verify_Code'); ?>">
+                                <label for="code" class="sr-only">Verification Code</label>
+                                <input id="code" name="code" type="code" autocomplete="one-time-code" required class="dark:bg-neutral-700 dark:text-white appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 dark:border-neutral-900 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
                             </div>
                         </div>
 
@@ -138,7 +135,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-lock" aria-hidden="true"></i>
                                 </span>
-                                <?php echo __('Panel:Verify'); ?>
+                                Verify
                             </button>
                         </div>
                     </form>

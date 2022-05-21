@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../../../common/global_public.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/common/global_public.php';
 
 const THEME_DIRECTORY = '/themes/';
 
@@ -14,11 +14,11 @@ function getarticles()
         if ($articleStatus == 'PUBLISHED') {
             $return .= '<div class="w-full bg-gray-100 rounded-md shadow hover:shadow-xl mb-8 p-2 transition duration-200 flex">
     <div class="flex-grow">
-        <h1 class="text-xl">'.$article.'</h1>
-        <p>By '.get_user_fullname(get_article_author_id($i)).'</p>
+        <h1 class="text-xl">' . $article . '</h1>
+        <p>By ' . get_user_fullname(get_article_author_id($i)) . '</p>
     </div>
     <div>
-        <a href="/articles/'.$i.'" class="hover:shadow-lg cursor-pointer w-full h-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all duration-200 md:py-1 md:text-rg md:px-10">
+        <a href="/articles/' . $i . '" class="hover:shadow-lg cursor-pointer w-full h-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all duration-200 md:py-1 md:text-rg md:px-10">
             <i class="fas fa-eye" aria-hidden="true"></i>&nbsp;View
         </a>
     </div>
@@ -35,23 +35,17 @@ function getarticles()
 
 function getdata($articleID): array
 {
-    if (get_article_status($articleID) == 'PUBLISHED') {
-        $articleData['title'] = get_article_title($articleID);
-    } elseif ($articleID != null) {
-        $articleData['title'] = __('Panel:Article_Unavailable').'<br><i>'.__('Panel:Article_ReadOther').'</i>';
-    }
-    if (get_article_status($articleID) == 'PUBLISHED') {
-        $articleData['content'] = get_article_content($articleID);
-    } elseif ($articleID != null) {
-        $articleData['content'] = null;
-    }
+    if(get_article_status($articleID) == 'PUBLISHED') { $articleData['title'] = get_article_title($articleID); }
+    else if ($articleID != null) { $articleData['title'] = 'Sorry, this article is temporarily unavailable.<br><i>Why not read one of our other great articles?</i>'; }
+    if(get_article_status($articleID) == 'PUBLISHED') { $articleData['content'] = get_article_content($articleID); }
+    else if ($articleID != null) { $articleData['content'] = null; }
     $articleData['references'] = get_article_references($articleID);
     $articleData['description'] = null;
     $articleData['author']['id'] = get_article_author_id($articleID);
     $articleData['section']['navigation'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/navigation.tt');
     $articleData['section']['footer'] = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/footer.tt');
     if ($articleID != null && get_article_status($articleID) == 'PUBLISHED') {
-        $articleData['section']['articles'] = $articleData['content'].'<br><br>'.$articleData['references'].'<br><br><em>'.__('Panel:Article_WrittenBy').' '.get_user_fullname($articleData['author']['id']).'</em>';
+        $articleData['section']['articles'] = $articleData['content'].'<br><br>'.$articleData['references'].'<br><br><em>Written by '.get_user_fullname($articleData['author']['id']).'</em>';
     } else {
         $articleData['section']['articles'] = getarticles();
     }
@@ -84,7 +78,7 @@ function replacedata($articleOutput, $articleData, $themeData): string
     try {
         $articleOutput = str_replace('{{data:random:integer}}', random_int(0, 9999), $articleOutput);
     } catch (Exception $e) {
-        errorHandlerError($e, __('Error:RandomInteger'));
+        errorHandlerError($e, 'Random integer creation error.');
     }
     // Config values
     $articleOutput = str_replace('{{config:basedir}}', CONFIG_INSTALL_URL, $articleOutput);
@@ -145,10 +139,10 @@ function replacedata($articleOutput, $articleData, $themeData): string
         $cdn_css = 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css';
         $cdn_js = 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js';
     } else {
-        $cdn_css = '';
-        $cdn_js = '';
         if (CONFIG_DEBUG) {
-            log_console('Saturn][Resource Loader][G-Tags', __('FrameworkUnassigned'));
+            $cdn_css = '';
+            $cdn_js = '';
+            log_console('Saturn][Resource Loader][G-Tags', 'Unable to load framework or a framework may not be assigned.');
         }
     }
     $articleOutput = str_replace('{{cdn:css}}', $cdn_css, $articleOutput);
@@ -163,7 +157,7 @@ function replacedata($articleOutput, $articleData, $themeData): string
     $articleOutput = str_replace('{{config:socialimage}}', THEME_SOCIAL_IMAGE, $articleOutput);
 
     if (CONFIG_DEBUG) {
-        log_console('Saturn][Resource Loader][G-Tags', __('General:Converted_GTAGS_1').' 74 '.__('General:Converted_GTAGS_2').' '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
+        log_console('Saturn][Resource Loader][G-Tags', 'Converted 74 Global Tags in '.(number_format(microtime(true) - $starttime, 5)).' seconds.');
     }
 
     return $articleOutput;

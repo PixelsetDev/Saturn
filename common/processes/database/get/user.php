@@ -4,57 +4,73 @@
     {
         $username = checkInput('DEFAULT', $username);
 
-        global $conn;
+        if ($username != null) {
+            global $conn;
 
-        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `username` = '".$username."'";
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `username` = '".$username."'";
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['id'];
+            return $row['id'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_username($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `username` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `username` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['username'];
+            return $row['username'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_firstname($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `first_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `first_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['first_name'];
+            return $row['first_name'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_lastname($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `last_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `last_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        if (get_user_settings_privacy_abbreviate_surname($id)) {
-            $lastname = $row['last_name'];
+            if (get_user_settings_privacy_abbreviate_surname($id)) {
+                $lastname = $row['last_name'];
 
-            return substr($lastname, 0);
+                return substr($lastname, 0);
+            } else {
+                return $row['last_name'];
+            }
         } else {
-            return $row['last_name'];
+            return 'Unknown';
         }
     }
 
@@ -62,19 +78,23 @@
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `first_name`, `last_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `first_name`, `last_name` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        if (get_user_settings_privacy_abbreviate_surname($id)) {
-            $lastname = $row['last_name'];
-            $lastname = substr($lastname, 0, 1);
+            if (get_user_settings_privacy_abbreviate_surname($id)) {
+                $lastname = $row['last_name'];
+                $lastname = substr($lastname, 0, 1);
 
-            return $row['first_name'].' '.$lastname;
+                return $row['first_name'].' '.$lastname;
+            } else {
+                return $row['first_name'].' '.$row['last_name'];
+            }
         } else {
-            return $row['first_name'].' '.$row['last_name'];
+            return 'Unknown';
         }
     }
 
@@ -82,198 +102,250 @@
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `email` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `email` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['email'];
+            return $row['email'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_role($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `role_id` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
-        $q = $row['role_id'];
+            $query = 'SELECT `role_id` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
+            $q = $row['role_id'];
 
-        if ($q == '0') {
-            $role = 'Restricted';
-        } elseif ($q == '1') {
-            $role = 'Pending';
-        } elseif ($q == '2') {
-            $role = 'Writer';
-        } elseif ($q == '3') {
-            $role = 'Editor';
-        } elseif ($q == '4') {
-            $role = 'Administrator';
-        } elseif ($q == '-1') {
-            $role = 'Deleted';
+            if ($q == '0') {
+                $role = 'Restricted';
+            } elseif ($q == '1') {
+                $role = 'Pending';
+            } elseif ($q == '2') {
+                $role = 'Writer';
+            } elseif ($q == '3') {
+                $role = 'Editor';
+            } elseif ($q == '4') {
+                $role = 'Administrator';
+            } elseif ($q == '-1') {
+                $role = 'Deleted';
+            } else {
+                $role = 'Unknown';
+            }
+
+            return $role;
         } else {
-            $role = 'Unknown';
+            return 'Unknown';
         }
-
-        return $role;
     }
 
     function get_user_roleID($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `role_id` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $query = 'SELECT `role_id` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
 
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['role_id'];
+            return $row['role_id'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_bio($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `bio` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $query = 'SELECT `bio` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
 
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['bio'];
+            return $row['bio'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_website($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `website` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $query = 'SELECT `website` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
 
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['website'];
+            return $row['website'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_profilephoto($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `profile_photo` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $query = 'SELECT `profile_photo` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
 
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['profile_photo'];
+            return $row['profile_photo'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_key($id)
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `user_key` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $query = 'SELECT `user_key` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
 
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['user_key'];
+            return $row['user_key'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_auth_code($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `auth_code` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $query = 'SELECT `auth_code` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
 
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['auth_code'];
+            return $row['auth_code'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_last_login_ip($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `last_login_ip` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `last_login_ip` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['last_login_ip'];
+            return $row['last_login_ip'];
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_profile_link($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
-        return CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($id);
+        if ($id != null) {
+            return CONFIG_INSTALL_URL.'/panel/team/profile/?u='.get_user_username($id);
+        } else {
+            return 'Unknown';
+        }
     }
 
     function get_user_email_exists($email): bool
     {
         $email = checkInput('DEFAULT', $email);
 
-        global $conn;
+        if ($email != null) {
+            global $conn;
 
-        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `email` = '".$email."'";
+            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `email` = '".$email."'";
 
-        $rs = mysqli_query($conn, $query);
-        $rows = mysqli_num_rows($rs);
+            $rs = mysqli_query($conn, $query);
+            $rows = mysqli_num_rows($rs);
 
-        if ($rows == 0) {
-            $return = false;
+            if ($rows == 0) {
+                $return = false;
+            } else {
+                $return = true;
+            }
+
+            return $return;
         } else {
-            $return = true;
+            return 'Unknown';
         }
-
-        return $return;
     }
 
     function get_username_exists($username): bool
     {
         $username = checkInput('DEFAULT', $username);
 
-        global $conn;
+        if ($username != null) {
+            global $conn;
 
-        $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `username` = '".$username."'";
+            $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."users` WHERE `username` = '".$username."'";
 
-        $rs = mysqli_query($conn, $query);
-        $rows = mysqli_num_rows($rs);
+            $rs = mysqli_query($conn, $query);
+            $rows = mysqli_num_rows($rs);
 
-        if ($rows == 0) {
-            $return = false;
+            if ($rows == 0) {
+                $return = false;
+            } else {
+                $return = true;
+            }
+
+            return $return;
         } else {
-            $return = true;
+            return 'Unknown';
         }
-
-        return $return;
     }
 
     function get_user_last_seen($id): string
     {
         $id = checkInput('DEFAULT', $id);
 
-        global $conn;
+        if ($id != null) {
+            global $conn;
 
-        $query = 'SELECT `last_seen` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
-        $rs = mysqli_query($conn, $query);
-        $row = mysqli_fetch_assoc($rs);
+            $query = 'SELECT `last_seen` FROM `' . DATABASE_PREFIX . 'users` WHERE `id` = ' . $id;
+            $rs = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($rs);
 
-        return $row['last_seen'];
+            return $row['last_seen'];
+        } else {
+            return 'Unknown';
+        }
     }

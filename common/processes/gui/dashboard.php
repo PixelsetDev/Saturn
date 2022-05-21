@@ -17,24 +17,24 @@
     function getvalues_dashboard_statistics($value): array
     {
         if ($value < '10') {
-            $current = __('Panel:Level_Beginner');
-            $next = __('Panel:Level_Explorer');
+            $current = 'Beginner';
+            $next = 'Explorer';
             $colour = 'red';
         } elseif ($value < '20') {
-            $current = __('Panel:Level_Explorer');
-            $next = __('Panel:Level_Junior');
+            $current = 'Explorer';
+            $next = 'Junior';
             $colour = 'yellow';
         } elseif ($value < '30') {
-            $current = __('Panel:Level_Junior');
-            $next = __('Panel:Level_Experienced');
+            $current = 'Junior';
+            $next = 'Experienced';
             $colour = 'green';
         } elseif ($value < '40') {
-            $current = __('Panel:Level_Experienced');
-            $next = __('Panel:Level_Senior');
+            $current = 'Experienced';
+            $next = 'Senior';
             $colour = 'blue';
         } elseif ($value < '50') {
-            $current = __('Panel:Level_Senior');
-            $next = __('Panel:Level_Semi-Pro');
+            $current = 'Senior';
+            $next = 'Semi-Pro';
             $colour = 'purple';
         }
         if (isset($colour)) {
@@ -42,22 +42,22 @@
         } else {
             if ($value < '100') {
                 $max = '100';
-                $current = __('Panel:Level_Semi-Pro');
-                $next = __('Panel:Level_Professional');
+                $current = 'Semi-Pro';
+                $next = 'Professional';
                 $colour = 'pink';
             } elseif ($value < '200') {
                 $max = '200';
-                $current = __('Panel:Level_Professional');
-                $next = __('Panel:Level_Master');
+                $current = 'Professional';
+                $next = 'Master';
                 $colour = 'red';
             } elseif ($value < '500') {
                 $max = '500';
-                $current = __('Panel:Level_Master');
-                $next = __('Panel:Level_Legendary');
+                $current = 'Master';
+                $next = 'Legendary';
                 $colour = 'yellow';
             } else {
                 $max = '500';
-                $current = __('Panel:Level_Legendary');
+                $current = 'Legendary';
                 $next = 'None';
                 $colour = 'green';
             }
@@ -95,12 +95,17 @@
         } elseif ($type == 'Editor') {
             $return .= 'Approvals';
         }
+        if ($current == 0 || $max == 0) {
+            $width = 0;
+        } else {
+            $width = ($current / $max) * 100;
+        }
         $return .= '
                                     </span>
                                 </div>
                             </div>
                             <div class="w-full h-3 bg-gray-100 dark:bg-neutral-600 absolute bottom-0">
-                                <div style="width:'.(($current / $max) * 100).'%" class="h-full text-center text-xs text-white bg-'.$colour.'-400 dark:bg-'.$colour.'-600">
+                                <div style="width:'.$width.'%" class="h-full text-center text-xs text-white bg-'.$colour.'-400 dark:bg-'.$colour.'-600">
                                 </div>
                             </div>
                         </a>

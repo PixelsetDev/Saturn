@@ -1,6 +1,6 @@
 <?php
 
-function checkOutput($mode, $data): string
+function checkOutput($mode, $data)
 {
     return stripslashes(checkInput($mode, $data));
 }
