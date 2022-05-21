@@ -340,7 +340,7 @@
         if ($id != null) {
             global $conn;
 
-            $query = 'SELECT `last_seen` FROM `' . DATABASE_PREFIX . 'users` WHERE `id` = ' . $id;
+            $query = 'SELECT `last_seen` FROM `'.DATABASE_PREFIX.'users` WHERE `id` = '.$id;
             $rs = mysqli_query($conn, $query);
             $row = mysqli_fetch_assoc($rs);
 

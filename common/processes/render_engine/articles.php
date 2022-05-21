@@ -14,11 +14,11 @@ function getarticles()
         if ($articleStatus == 'PUBLISHED') {
             $return .= '<div class="w-full bg-gray-100 rounded-md shadow hover:shadow-xl mb-8 p-2 transition duration-200 flex">
     <div class="flex-grow">
-        <h1 class="text-xl">' . $article . '</h1>
-        <p>By ' . get_user_fullname(get_article_author_id($i)) . '</p>
+        <h1 class="text-xl">'.$article.'</h1>
+        <p>By '.get_user_fullname(get_article_author_id($i)).'</p>
     </div>
     <div>
-        <a href="/articles/' . $i . '" class="hover:shadow-lg cursor-pointer w-full h-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all duration-200 md:py-1 md:text-rg md:px-10">
+        <a href="/articles/'.$i.'" class="hover:shadow-lg cursor-pointer w-full h-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-200 hover:bg-gray-300 transition-all duration-200 md:py-1 md:text-rg md:px-10">
             <i class="fas fa-eye" aria-hidden="true"></i>&nbsp;View
         </a>
     </div>
@@ -35,10 +35,16 @@ function getarticles()
 
 function getdata($articleID): array
 {
-    if(get_article_status($articleID) == 'PUBLISHED') { $articleData['title'] = get_article_title($articleID); }
-    else if ($articleID != null) { $articleData['title'] = 'Sorry, this article is temporarily unavailable.<br><i>Why not read one of our other great articles?</i>'; }
-    if(get_article_status($articleID) == 'PUBLISHED') { $articleData['content'] = get_article_content($articleID); }
-    else if ($articleID != null) { $articleData['content'] = null; }
+    if (get_article_status($articleID) == 'PUBLISHED') {
+        $articleData['title'] = get_article_title($articleID);
+    } elseif ($articleID != null) {
+        $articleData['title'] = 'Sorry, this article is temporarily unavailable.<br><i>Why not read one of our other great articles?</i>';
+    }
+    if (get_article_status($articleID) == 'PUBLISHED') {
+        $articleData['content'] = get_article_content($articleID);
+    } elseif ($articleID != null) {
+        $articleData['content'] = null;
+    }
     $articleData['references'] = get_article_references($articleID);
     $articleData['description'] = null;
     $articleData['author']['id'] = get_article_author_id($articleID);
