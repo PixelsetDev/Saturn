@@ -3,8 +3,6 @@
     ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../config.php';
-    require_once __DIR__.'/../storage/core_checksum.php';
-    require_once __DIR__.'/../theme.php';
     // Saturn Info
     $saturnInfo = json_decode(file_get_contents(__DIR__.'/../assets/saturn.json'));
     define('SATURN_VERSION', $saturnInfo->{'saturn'}->{'version'});
@@ -13,15 +11,18 @@
     unset($saturnInfo);
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Important Functions */
+    require_once __DIR__.'/processes/translation.php';
+    require_once __DIR__.'/../storage/core_checksum.php';
+    require_once __DIR__.'/../theme.php';
     require_once __DIR__.'/processes/database/connect.php';
     require_once __DIR__.'/processes/security/security.php';
-    require_once __DIR__.'/processes/errorHandler.php';
+    require_once __DIR__.'/processes/error_handler.php';
     set_error_handler('errorHandlerError', E_ERROR);
     set_error_handler('errorHandlerWarning', E_WARNING);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
         error_reporting(E_ALL);
-        log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
+        log_console('SATURN][DEBUG', __('Error:DebugEnabled'));
     }
     /* Database: Required Files */
     // Create
@@ -38,6 +39,14 @@
     require_once __DIR__.'/processes/link.php';
     require_once __DIR__.'/processes/themes.php';
     require_once __DIR__.'/processes/redirect.php';
+    require_once __DIR__.'/processes/session.php';
+    require_once __DIR__.'/processes/version_check.php';
+    if (CONFIG_SEND_DATA) {
+        require_once __DIR__.'/processes/telemetry.php';
+        if (Telemetry() == 0 && CONFIG_DEBUG) {
+            alert('ERROR', 'Failed to connect to Saturn Link Stats Server.', true);
+        }
+    }
     require_once __DIR__.'/panel/theme.php';
     /* GUI */
     require_once __DIR__.'/processes/gui/dashboard.php';
@@ -69,21 +78,15 @@
     /* Validate CCV */
     ccv_validate_all();
     if (!activation_validate()) {
-        echo alert('INFO', 'Activation: Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel. <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#activation" class="underline text-xs text-black" target="_blank" rel="noopener">Get help.</a></h6>', true);
-        log_console('SATURN][ACTIVATION', 'Saturn is not activated, certain features may be unavailable. You can still use some features of Saturn unactivated. You can activate Saturn in your Admin Panel.');
+        echo alert('INFO', __('Error:NotActivated').' <a href="https://docs.saturncms.net/'.SATURN_VERSION.'/warnings/#activation" class="underline text-xs text-black" target="_blank" rel="noopener">'.__('Error:GetHelp').'</a></h6>', true);
+        log_console('SATURN][ACTIVATION', __('Error:NotActivated'));
     }
     update_user_last_seen($_SESSION['id'], date('Y-m-d H:i:s'));
     if (get_announcement_panel_active()) {
         if (get_announcement_panel_link() != null && get_announcement_panel_link() != '') {
-            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message().' - For more information <a href="'.get_announcement_panel_link().'" class="underline">please click here</a>.', true);
+            echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message().' - '.__('General:MoreInfo').' <a href="'.get_announcement_panel_link().'" class="underline">'.__('General:ClickHere').'</a>.', true);
         } else {
             echo alert(get_announcement_panel_type(), '<span class="underline">'.get_announcement_panel_title().':</span> '.get_announcement_panel_message(), true);
-        }
-    }
-    require_once __DIR__.'/processes/telemetry.php';
-    if (CONFIG_SEND_DATA) {
-        if (send_data() == 0) {
-            alert('ERROR', 'Failed to connect to Saturn Link Stats Server.', true);
         }
     }
     ob_end_flush();

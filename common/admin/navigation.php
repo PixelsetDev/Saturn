@@ -36,7 +36,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <nav aria-label="Saturn Admin Panel Mobile Menu">
+                            <nav aria-label="<?php echo __('General:Saturn'); ?> <?php echo __('Admin:Panel'); ?>">
                                 <ul class="space-y-4">
                                     <li><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" aria-label="Switch to Edit Mode" title="Switch to Edit Mode" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Dashboard</a></li>
                                     <li><a href="<?php echo CONFIG_INSTALL_URL; ?>" aria-label="Exit" title="Exit" class="font-medium tracking-wide text-gray-200 transition-colors duration-200 hover:text-<?php echo THEME_PANEL_COLOUR; ?>-400">Exit to Website</a></li>
@@ -91,3 +91,4 @@
                     <span class="fixed bottom-0 text-xs text-<?php echo THEME_PANEL_COLOUR; ?>-600">Saturn Panel &copy; 2021 - <?php echo date('Y'); ?> Saturn CMS</span>
                 </nav>
             </div>
+            <div class="fixed bottom-1/2 -right-[500px] w-[575px] z-40 hover:-translate-x-[500px] translation duration-500" id="sessionCountdown"></div><script><?php echo countdownJavascript(); ?></script>

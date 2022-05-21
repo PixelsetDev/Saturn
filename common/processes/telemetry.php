@@ -1,6 +1,6 @@
 <?php
 
-function send_data(): string
+function Telemetry(): string
 {
     if (CONFIG_SEND_DATA && CONFIG_ACTIVATION_KEY != null) {
         $data = [

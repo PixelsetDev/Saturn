@@ -19,20 +19,20 @@
                 if (update_article_title($articleID, checkInput('DEFAULT', $_POST['title'])) &&
                     update_article_content($articleID, checkInput('HTML', $_POST['content'])) &&
                     update_article_references($articleID, checkInput('HTML', $_POST['references']))) {
-                    $successMsg = 'Your article has been saved.';
+                    $successMsg = __('Panel:Article_Saved');
                     header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&success='.checkOutput('DEFAULT', $successMsg));
-                    log_all('SATURN][ARTICLES', get_user_fullname($_SESSION['id']).' edited page with ID: '.$articleID.' ('.get_article_title($articleID).'). The edit is pending approval.');
+                    log_all('SATURN][ARTICLES', get_user_fullname($_SESSION['id']).' '.__('Panel:Article_Edited_Log_1').' '.$articleID.' ('.get_article_title($articleID).'). '.__('Panel:Article_Edited_Log_2'));
                 } else {
-                    $errorMsg = 'Unable to save edit, an error occurred.';
+                    $errorMsg = __('Error:SaveEdit');
                     header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&error='.checkOutput('DEFAULT', $errorMsg));
                 }
             } else {
-                $errorMsg = 'Article requires content.';
+                $errorMsg = __('Error:Article_NoContent');
                 header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&error='.checkOutput('DEFAULT', $errorMsg));
                 exit;
             }
         } else {
-            $errorMsg = 'Article requires a title.';
+            $errorMsg = __('Error:Article_NoTitle');
             header('Location: '.htmlspecialchars($_SERVER['PHP_SELF']).'/?articleID='.checkOutput('DEFAULT', $articleID).'&error='.checkOutput('DEFAULT', $errorMsg));
             exit;
         }
@@ -47,14 +47,14 @@
         ?>
 
         <script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js" integrity="sha256-5RjTlnB92dAMNEPY6q0rX2AusjFwvVf1YHHikzobEss=" crossorigin="anonymous"></script>
-        <title>Article Editor - Saturn Panel</title>
+        <title><?php echo __('Panel:Articles'); ?> <?php echo __('Panel:Editor'); ?> - <?php echo __('General:Saturn').' '.__('Admin:Panel'); ?></title>
 
     </head>
     <body class="mb-8 dark:bg-neutral-700 dark:text-white">
         <?php include_once __DIR__.'/../../../common/panel/navigation.php'; ?>
         <header class="bg-white shadow dark:bg-neutral-800">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Article Editor: <?php $title = get_article_title($articleID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white"><?php echo __('Panel:Articles'); ?> <?php echo __('Panel:Editor'); ?>: <?php $title = get_article_title($articleID); $title = mysqli_real_escape_string($conn, $title); echo $title; ?></h1>
             </div>
         </header>
 
@@ -69,8 +69,8 @@
             ?>
 
             <div class="py-6">
-                <h2 class="text-2xl mb-2 font-bold my-2">Title</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_TITLE_CHARS; ?> Characters.</p>
+                <h2 class="text-2xl mb-2 font-bold my-2"><?php echo __('Panel:Title'); ?></h2>
+                <p class="mb-2"><?php echo __('General:Maximum'); ?> <?php echo CONFIG_MAX_TITLE_CHARS; ?> <?php echo __('Panel:Characters'); ?></p>
                 <textarea name="title" id="title" maxlength="60" class="w-full border"><?php
                     $title = get_article_title($articleID);
                     $title = checkOutput('DEFAULT', $title);
@@ -80,8 +80,8 @@
             </div>
 
             <div class="py-6">
-                <h2 class="text-2xl font-bold mt-2">Content</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_ARTICLE_CHARS - 10000; ?> Characters.</p>
+                <h2 class="text-2xl font-bold mt-2"><?php echo __('Panel:Content'); ?></h2>
+                <p class="mb-2"><?php echo __('General:Maximum'); ?> <?php echo CONFIG_MAX_ARTICLE_CHARS - 10000; ?> <?php echo __('Panel:Characters'); ?></p>
                 <textarea name="content" id="content"><?php
                     $content = get_article_content($articleID);
                     $content = checkOutput('HTML', $content);
@@ -91,8 +91,8 @@
             </div>
 
             <div class="py-6">
-                <h2 class="text-2xl font-bold mt-2">References</h2>
-                <p class="mb-2">Max. <?php echo CONFIG_MAX_REFERENCES_CHARS - 2000; ?> Characters.</p>
+                <h2 class="text-2xl font-bold mt-2"><?php echo __('Panel:References'); ?></h2>
+                <p class="mb-2"><?php echo __('General:Maximum'); ?> <?php echo CONFIG_MAX_REFERENCES_CHARS - 2000; ?> <?php echo __('Panel:Characters'); ?></p>
                 <textarea name="references" id="references"><?php
                     $references = get_article_references($articleID);
                     $references = checkOutput('HTML', $references);
@@ -102,9 +102,9 @@
             </div>
 
             <div class="flex space-x-4">
-                <input type="submit" id="submit" name="submit" value="Save" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 dark:text-white bg-green-200 dark:bg-green-700 dark:hover:bg-green-600 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
+                <input type="submit" id="submit" name="submit" value="<?php echo __('General:Save'); ?>" class="transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-green-900 dark:text-white bg-green-200 dark:bg-green-700 dark:hover:bg-green-600 hover:bg-green-300 md:py-1 md:text-rg md:px-10">
                 <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/articles" class="transition-all duration-200 hover:shadow-lg w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-red-900 dark:text-white bg-red-200 dark:bg-red-700 dark:hover:bg-red-600 hover:bg-red-300 md:py-1 md:text-rg md:px-10">
-                    Cancel
+                    <?php echo __('General:Cancel'); ?>
                 </a>
             </div>
         </form>

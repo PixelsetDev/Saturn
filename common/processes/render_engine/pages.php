@@ -8,6 +8,8 @@ function get_page_id_from_url($uri)
 {
     $uri = checkInput('HTML', $uri);
 
+    if($uri != '/') { $uri = rtrim($uri,"/"); }
+
     global $conn;
 
     $query = 'SELECT `id` FROM `'.DATABASE_PREFIX."pages` WHERE `url` = '".$uri."';";
@@ -207,4 +209,9 @@ $file = strtolower(get_page_template($pageID));
 $pageOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.THEME_SLUG.'/'.$file.'.tt');
 
 $pageData = getdata($pageID);
+
+global $conn;
+$query = 'UPDATE `'.DATABASE_PREFIX.'users_statistics` SET `page_views`=`page_views`+1 WHERE `id` = '.$pageData['author']['id'];
+mysqli_query($conn, $query);
+
 echo stripslashes(replacedata($pageOutput, $pageData, $data));

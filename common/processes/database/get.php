@@ -9,3 +9,4 @@ require_once __DIR__.'/get/articles.php';
 require_once __DIR__.'/get/notification.php';
 require_once __DIR__.'/get/page.php';
 require_once __DIR__.'/get/page_category.php';
+require_once __DIR__.'/get/total.php';

@@ -30,7 +30,7 @@ ob_end_flush();
     <head>
         <?php include __DIR__.'/../../../common/panel/vendors.php'; ?>
 
-        <title>Security - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
+        <title><?php echo __('Admin:Security'); ?> - <?php echo CONFIG_SITE_NAME.' '.__('Admin:Panel'); ?></title>
         <?php require __DIR__.'/../../../common/panel/theme.php'; ?>
 
     </head>

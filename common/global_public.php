@@ -1,13 +1,13 @@
 <?php
-
     ob_start();
     /* Load Configuration */
     require_once __DIR__.'/../config.php';
-    require_once __DIR__.'/../theme.php';
     /* Important Functions */
+    require_once __DIR__.'/processes/translation.php';
+    require_once __DIR__.'/../theme.php';
     require_once __DIR__.'/processes/database/connect.php';
     require_once __DIR__.'/processes/security/security.php';
-    require_once __DIR__.'/processes/errorHandler.php';
+    require_once __DIR__.'/processes/error_handler.php';
     set_error_handler('errorHandlerError', E_ERROR);
     set_error_handler('errorHandlerWarning', E_WARNING);
     // Saturn Info
@@ -20,7 +20,7 @@
     /* Developer Tools */
     if (CONFIG_DEBUG) {
         error_reporting(E_ALL);
-        log_console('SATURN][DEBUG', 'Debug Mode is ENABLED. This is NOT recommended in production environments. You can disable this in your site configuration settings.');
+        log_console('SATURN][DEBUG', __('Error:DebugEnabled'));
     }
     /* Database: Required Files */
     require_once __DIR__.'/processes/database/get/announcement.php';
@@ -33,6 +33,7 @@
     /* Required Files */
     require_once __DIR__.'/processes/resource_loader/resource_loader.php';
     require_once __DIR__.'/processes/email.php';
+    require_once __DIR__.'/processes/version_check.php';
     require_once __DIR__.'/processes/gui/alerts.php';
     /* Require HTTPS */
     if ($_SERVER['HTTPS'] != 'on' && SECURITY_USE_HTTPS) {
@@ -41,7 +42,7 @@
     }
     if (get_announcement_website_active()) {
         if (get_announcement_website_link() != null && get_announcement_website_link() != '') {
-            echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message().' - For more information <a href="'.get_announcement_website_link().'" class="underline">please click here</a>.', true);
+            echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message().' - '.__('General:MoreInfo').' <a href="'.get_announcement_website_link().'" class="underline">'.__('General:ClickHere').'</a>.', true);
         } else {
             echo alert(get_announcement_website_type(), '<span class="underline">'.get_announcement_website_title().':</span> '.get_announcement_website_message(), true);
         }

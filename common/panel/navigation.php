@@ -2,11 +2,11 @@
             <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto lg:items-center lg:justify-between lg:flex-row lg:px-6 lg:px-8">
                 <div class="p-4 flex flex-row items-center justify-between flex-none w-full lg:w-1/6">
                     <div class="flex space-x-6">
-                        <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" title="Saturn" class="w-32 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn" class="flex-none w-40 h-auto">
+                        <a href="<?php echo CONFIG_INSTALL_URL; ?>/panel/dashboard" title="<?php echo __('General:Saturn'); ?>" class="w-32 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn" class="flex-none w-auto h-8">
                         </a>
                         <a href="<?php echo CONFIG_INSTALL_URL; ?>/" title="<?php echo CONFIG_SITE_NAME; ?>" class="w-40 flex-none text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline">
-                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-40 h-auto">
+                            <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" alt="<?php echo CONFIG_SITE_NAME; ?>" class="flex-none w-auto h-8">
                         </a>
                     </div>
                     <div class="flex-grow">&nbsp;</div>
@@ -107,7 +107,10 @@
             </div>
         </div>
         <div class="flex fixed bottom-0 left-0 px-2 text-xs w-full bg-<?php echo THEME_PANEL_COLOUR; ?>-100 dark:bg-neutral-900 z-40">
-            <span class="w-1/3">Saturn Panel &copy; 2021 - <?php echo date('Y'); ?> Saturn CMS</span>
-            <span class="w-1/3 text-center font-bold">Let's Make Saturn Error Free: <a href="https://saturncms.net/feedback" target="_blank" class="font-normal underline text-black dark:text-white text-black" rel="nofollow noopener">Found a problem? Let us know!</a></span>
-            <span class="w-1/3 text-right"><?php echo SATURN_VERSION; ?></span>
+            <span class="w-1/3"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?> &copy; 2021 - <?php echo date('Y'); ?> <?php echo __('General:SaturnCMS'); ?></span>
+            <span class="w-1/3 text-center font-bold"><?php echo __('Panel:BugFree_Message'); ?> <a href="https://saturncms.net/feedback" target="_blank" class="font-normal underline text-black dark:text-white text-black" rel="nofollow noopener"><?php echo __('Panel:BugFree_Contact'); ?></a></span>
+            <span class="w-1/3 text-right"><?php echo SATURN_VERSION; ?><?php if (SATURN_BRANCH != 'release') {
+                                    echo '-'.SATURN_BRANCH;
+                                } ?></span>
         </div>
+<div class="fixed bottom-1/2 -right-[500px] w-[575px] z-40 hover:-translate-x-[500px] translation duration-500" id="sessionCountdown"></div><script><?php echo countdownJavascript(); ?></script>

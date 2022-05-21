@@ -12,7 +12,7 @@ function getarticles()
     $return = '';
     while ($article != null) {
         if ($articleStatus == 'PUBLISHED') {
-            $return .= '<div class="w-full bg-gray-100 rounded-md shadow hover:shadow-xl mb-8 p-2 transition duration-200 flex">
+            $return .= '<div class="w-full bg-gray-100 rounded-md shadow-md hover:shadow-xl mb-8 p-2 transition duration-200 flex">
     <div class="flex-grow">
         <h1 class="text-xl">'.$article.'</h1>
         <p>By '.get_user_fullname(get_article_author_id($i)).'</p>
@@ -174,4 +174,9 @@ $data = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].THEME_DIRECTORY.
 $articleOutput = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/themes/'.THEME_SLUG.'/article.tt');
 
 $articleData = getdata($articleID);
+
+global $conn;
+$query = 'UPDATE `'.DATABASE_PREFIX.'users_statistics` SET `article_views`=`article_views`+1 WHERE `id` = '.$articleData['author']['id'];
+mysqli_query($conn, $query);
+
 echo stripslashes(replacedata($articleOutput, $articleData, $data));
