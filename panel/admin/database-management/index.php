@@ -13,19 +13,19 @@ function optimise_tables(): bool
     global $conn;
 
     $query1 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'announcements`';
-    $query2 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'articles`';
-    $query3 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'chats_messages`';
-    $query4 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'notifications`';
-    $query5 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages`';
-    $query6 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_authors`';
-    $query7 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_history`';
-    $query8 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_pending`';
-    $query9 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_statistics`';
-    $query10 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_items`';
-    $query11 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_lists`';
-    $query12 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users`';
-    $query13 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_settings`';
-    $query14 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_statistics`';
+    $query1 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'articles`';
+    $query2 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'chats_messages`';
+    $query3 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'notifications`';
+    $query4 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages`';
+    $query5 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_authors`';
+    $query6 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_history`';
+    $query7 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_pending`';
+    $query8 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'pages_statistics`';
+    $query9 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_items`';
+    $query10 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'todo_lists`';
+    $query11 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users`';
+    $query12 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_settings`';
+    $query13 = 'OPTIMIZE TABLE `'.DATABASE_PREFIX.'users_statistics`';
 
     return mysqli_query($conn, $query1) &&
         mysqli_query($conn, $query2) &&
@@ -39,16 +39,15 @@ function optimise_tables(): bool
         mysqli_query($conn, $query10) &&
         mysqli_query($conn, $query11) &&
         mysqli_query($conn, $query12) &&
-        mysqli_query($conn, $query13) &&
-        mysqli_query($conn, $query14);
+        mysqli_query($conn, $query13);
 }
 
 if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
     if (optimise_tables()) {
-        $successMsg = __('Admin:Database_Optimised');
-        log_file('Saturn', get_user_fullname($_SESSION['id']).' '.__('Admin:Database_OptimisedLog'));
+        $successMsg = 'Tables optimised.';
+        log_file('Saturn', get_user_fullname($_SESSION['id']).' optimised the database tables.');
     } else {
-        $errorMsg = __('Error:DatabaseOptimisation');
+        $errorMsg = 'Unable to optimise the database, an error occurred.';
     }
 }
 ?><!DOCTYPE html>
@@ -56,7 +55,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
     <head>
         <?php include __DIR__.'/../../../common/panel/vendors.php'; ?>
 
-        <title><?php echo __('Admin:Database_Management'); ?> - <?php echo CONFIG_SITE_NAME.' '.__('Admin:Panel'); ?></title>
+        <title>Database Management - <?php echo CONFIG_SITE_NAME.' Admin Panel'; ?></title>
         <?php require __DIR__.'/../../../common/panel/theme.php'; ?>
 
     </head>
@@ -64,7 +63,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
         <?php require __DIR__.'/../../../common/admin/navigation.php'; ?>
 
         <div class="px-8 py-4 w-full">
-            <h1 class="text-gray-900 text-3xl"><?php echo __('Admin:Database_Management'); ?></h1>
+            <h1 class="text-gray-900 text-3xl">Database Management</h1>
             <?php
             if (isset($errorMsg)) {
                 echo alert('ERROR', $errorMsg);
@@ -76,8 +75,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
                 unset($successMsg);
             }
             ?>
-            <h2 class="text-gray-900 text-2xl mt-8"><?php echo __('Admin:Database_TableOverhead'); ?></h2>
-            <p class="text-xs"><?php echo __('Admin:Database_TableOverhead_Message'); ?></p>
+            <h2 class="text-gray-900 text-2xl mt-8">Table Overhead</h2>
+            <p class="text-xs">Table overhead is the number of allocated but unused bytes, high overhead can slow down your website and use more storage space. You can reduce overhead by clicking on the 'Optimise Tables' button.</p>
             <div class="grid grid-cols-2 lg:grid-cols-3">
             <?php
             $query = 'SHOW TABLE STATUS';
@@ -92,7 +91,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'optimise') {
             ?>
             </div>
             <br>
-            <a href="index.php/?action=optimise" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10"><?php echo __('Admin:Database_Optimise'); ?></a>
+            <a href="index.php/?action=optimise" class="flex-grow transition-all duration-200 hover:shadow-lg cursor-pointer w-full flex items-center justify-center px-8 py-1 border border-transparent text-base font-medium rounded-md text-gray-700 bg-gray-100 hover:bg-gray-200 md:py-1 md:text-rg md:px-10">Optimise Tables</a>
         </div>
     </body>
 </html>

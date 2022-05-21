@@ -72,7 +72,7 @@
                 <br>
                 <div class="flex w-full">
                     <div class="w-full mr-1 my-1 duration-300 transform bg-<?php echo THEME_PANEL_COLOUR; ?>-100 border-l-4 border-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5 text-<?php echo THEME_PANEL_COLOUR; ?>-700">
                                 <?php
                                 $result = mysqli_query($conn, 'SELECT `id` FROM `'.DATABASE_PREFIX.'pages` WHERE 1;');
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="w-full mr-1 my-1 duration-300 transform bg-<?php echo THEME_PANEL_COLOUR; ?>-100 border-l-4 border-<?php echo THEME_PANEL_COLOUR; ?>-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
                             <h6 class="mb-2 font-semibold leading-5 text-<?php echo THEME_PANEL_COLOUR; ?>-700">
                                 <?php
                                 $result = mysqli_query($conn, 'SELECT `content` FROM `'.DATABASE_PREFIX.'articles` WHERE 1;');
@@ -145,10 +145,10 @@
                     </div>
                     <?php
                     $phpversion = phpversion(); $badServer = 0;
-                    if ($phpversion < '7.4.0' || $phpversion > '8') {
+                    if ($phpversion < '7.4.0') {
                         $badServer++;
                     }
-                    if (PHP_OS != 'Linux') {
+                    if (PHP_OS != 'Linux' && PHP_OS != 'WINNT') {
                         $badServer++;
                     }
 
@@ -161,9 +161,18 @@
                     </div>';
                     } elseif ($badServer == 2) {
                         echo '<div class="w-full mr-1 my-1 duration-300 transform bg-red-100 border-l-4 border-red-500 hover:-translate-y-2">
-                        <div class="h-auto p-5 border border-l-0 rounded-r shadow-sm">
-                            <h6 class="mb-2 font-semibold leading-5">'.__('Admin:ConfigChanges_Title').'</h6>
-                            '.__('Admin:ConfigChanges_Message_Version').'
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
+                            <h6 class="mb-2 font-semibold leading-5">We recommend configuration changes to your server.</h6>
+                            PHP Version not Supported, OS Not Recommended, and Telemetry disabled.
+                        </div>
+                    </div>';
+                    }
+
+                    if (!CONFIG_SEND_DATA) {
+                        echo '<div class="w-full mr-1 my-1 duration-300 transform bg-yellow-100 border-l-4 border-yellow-500 hover:-translate-y-2">
+                        <div class="h-full p-5 border border-l-0 shadow-sm">
+                            <h6 class="mb-2 font-semibold leading-5">Telemetry is disabled.</h6>
+                            Telemetry helps us to collect important usage and debugging information. It\'s totally optional, but having it enabled helps us to make Saturn better for you.
                         </div>
                     </div>';
                     }
@@ -230,15 +239,20 @@
                         <h2 class="text-gray-900 text-2xl">Your Server</h2>
                         <p>
                             <?php
-                                if ($phpversion < '7.4.0' || $phpversion > '8') {
+                                if ($phpversion < '7.4.0') {
                                     echo '<u>'.__('Admin:PHPVersion').'</u> <span class="text-red-500">'.$phpversion.'</span> <small class="text-red-900">'.__('Admin:PHPVersion_Recommended').'</small>';
                                 } else {
                                     echo '<u>'.__('Admin:PHPVersion').'</u> <span class="text-green-500">'.$phpversion.'</span>';
                                 }
-                                if (PHP_OS != 'Linux') {
+                                if (PHP_OS != 'Linux' && PHP_OS != 'WINNT') {
                                     echo '<br><u>'.__('Admin:OperatingSystem').'</u> <span class="text-red-500">'.PHP_OS.'</span> <small class="text-red-900">'.__('Admin:Operating_Recommended').'</small>';
                                 } else {
                                     echo '<br><u>'.__('Admin:OperatingSystem').'</u> <span class="text-green-500">'.PHP_OS.'</span>';
+                                }
+                                if (!CONFIG_SEND_DATA) {
+                                    echo '<br><u>Telemetry</u>: <span class="text-red-500">Disabled</span> <small class="text-red-900">Enabling telemetry helps us to make Saturn better for you. See website settings page if you\'d like to turn it on.</small>';
+                                } else {
+                                    echo '<br><u>Telemetry</u>: <span class="text-green-500">Enabled</span>';
                                 }
                             ?>
                         </p>

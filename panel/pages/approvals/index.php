@@ -8,7 +8,7 @@
         include_once __DIR__.'/../../../common/processes/pages.php';
         include_once __DIR__.'/../../../common/processes/gui/pages.php';
         ?>
-        <title>Page Approvals - Saturn Panel</title>
+        <title>Pages - Saturn Panel</title>
 
         <?php
         if (isset($_GET['error'])) {
@@ -45,7 +45,7 @@
 
     <header class="bg-white shadow dark:bg-neutral-800">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Page Approvals</h1>
+            <h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white">Pages Approvals</h1>
         </div>
     </header>
 

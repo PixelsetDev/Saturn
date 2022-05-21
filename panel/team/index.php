@@ -36,7 +36,7 @@ function listUsers($role)
             include_once __DIR__.'/../../common/panel/theme.php';
         ?>
 
-        <title>Team - Saturn Panel</title>
+        <title>Saturn Panel</title>
     </head>
     <body class="mb-8 dark:bg-neutral-700 dark:text-white">
         <?php include_once __DIR__.'/../../common/panel/navigation.php'; ?>

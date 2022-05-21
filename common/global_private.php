@@ -21,7 +21,7 @@
     set_error_handler('errorHandlerWarning', E_WARNING);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
-        error_reporting('E_ALL');
+        error_reporting(E_ALL);
         log_console('SATURN][DEBUG', __('Error:DebugEnabled'));
     }
     /* Database: Required Files */
@@ -43,7 +43,9 @@
     require_once __DIR__.'/processes/version_check.php';
     if (CONFIG_SEND_DATA) {
         require_once __DIR__.'/processes/telemetry.php';
-        log_console('Saturn][Telemetry', Telemetry());
+        if (Telemetry() == 0 && CONFIG_DEBUG) {
+            alert('ERROR', 'Failed to connect to Saturn Link Stats Server.', true);
+        }
     }
     require_once __DIR__.'/panel/theme.php';
     /* GUI */

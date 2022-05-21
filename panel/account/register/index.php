@@ -9,24 +9,24 @@
                     include_once __DIR__.'/../../../common/processes/database/get/user.php';
                     $email = checkInput('DEFAULT', $_POST['verify_email']);
                     if (get_user_email_exists($email)) {
-                        $errorMsg = __('Error:EmailExists');
+                        $errorMsg = 'A user with this email address already exists.';
                         header('Location: log.php?error='.$errorMsg);
                         exit;
                     } else {
                         try {
                             $code = random_int(100000, 999999);
                         } catch (Exception $e) {
-                            $errorMsg = __('Error:Code');
-                            $code = ('Error:TryAgain');
+                            $errorMsg = 'An error occurred whilst generating a code. Please try again later.';
+                            $code = '[ERROR] Please try again.';
                         }
                         $code = checkInput('DEFAULT', $code);
                         $hashCode = hash('SHA3-512', $code);
-                        $message = __('Panel:VerificationCode_Message_1').' "'.$code.'". '.__('Panel:VerificationCode_Message_2');
-                        send_email($email, __('Panel:VerificationCode'), $message);
-                        $successMsg = __('Panel:VerificationCode_Email');
+                        $message = 'Your Saturn Verification Code is: "'.$code.'". Please enter this code into Saturn to proceed.';
+                        send_email($email, 'Saturn Verification Code', $message);
+                        $successMsg = 'Please check your email and do not exit this page.';
                     }
                 } else {
-                    $errorMsg = __('Error:EmailBlank');
+                    $errorMsg = 'Email address must not be blank.';
                 }
             } elseif (isset($_POST['confirm'])) {
                 if (!empty($_POST['code'])) {
@@ -34,12 +34,12 @@
                     $code = checkInput('DEFAULT', $_POST['code']);
                     $newHashCode = hash('SHA3-512', $code);
                     if ($hashCode != $newHashCode) {
-                        $errorMsg = __('Error:CodeNotMatch');
+                        $errorMsg = 'The verification code that you provided does not match the code that we sent.';
                         header('Location: index.php?error='.$errorMsg);
                         exit;
                     }
                 } else {
-                    $errorMsg = __('Error:CodeBlank');
+                    $errorMsg = 'Code must not be blank.';
                     header('Location: index.php?error='.$errorMsg);
                     exit;
                 }
@@ -57,9 +57,9 @@
                 $organisation = $_POST['organisation'];
                 $organisation = checkInput('DEFAULT', $organisation);
                 if (create_user($email, $firstname, $lastname, $password, $organisation)) {
-                    $successMsg = __('Panel:PendingApproval');
+                    $successMsg = 'Your Saturn account is now pending approval, we\'ll send you an email when you\'re ready to get started.';
                 } else {
-                    $errorMsg = __('Error:Error');
+                    $errorMsg = 'Sorry there was an error, please try again later.';
                     header('Location: index.php?error='.$errorMsg);
                     exit;
                 }
@@ -68,7 +68,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title><?php echo __('Panel:Register'); ?> - <?php echo __('General:Saturn'); ?></title>
+        <title>Register - Saturn Panel</title>
         <?php
         include_once __DIR__.'/../../../common/panel/vendors.php';
         include_once __DIR__.'/../../../common/panel/theme.php'; ?>
@@ -77,19 +77,19 @@
     <body>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></a></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
             </div>
         </header>
         <main>
             <div class="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
                     <div>
-                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="<?php echo __('General:Saturn'); ?>">
+                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                            <?php echo __('Panel:Register_Message'); ?> <?php echo CONFIG_SITE_NAME; ?>.
+                            Register to Join <?php echo CONFIG_SITE_NAME; ?>.
                         </h2>
                         <p class="mt-6 text-center text-md font-base text-gray-900">
-                            <?php echo __('Panel:Register_AccountsApprove'); ?>
+                            Saturn accounts must be approved by the website owner before you can access them.
                         </p>
                         <?php
                             if (isset($errorMsg)) {
@@ -106,8 +106,8 @@
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="code" class="sr-only">'.__('Panel:Code').'</label>
-                                <input id="code" name="code" type="text" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="'.__('Panel:VerificationCode').'">
+                                <label for="code" class="sr-only">Code</label>
+                                <input id="code" name="code" type="text" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Verification Code">
                             </div>
                         </div>
         
@@ -118,7 +118,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-envelope"></i>
                                 </span>
-                                '.__('Panel:Verify').'
+                                Verify Code
                             </button>
                         </div>
                     </form>';
@@ -127,26 +127,26 @@
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="email_address" class="sr-only">'.__('Panel:EmailAddress').'</label>
-                                <input id="email_address" name="email_address" type="email" value="'.checkOutput('DEFAULT', $_POST['email']).'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="'.__('Panel:EmailAddress').'">
+                                <label for="email_address" class="sr-only">Email Address</label>
+                                <input id="email_address" name="email_address" type="email" value="'.checkOutput('DEFAULT', $_POST['email']).'" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Email address">
                             </div>
                             <div class="flex w-full">
                                 <div class="flex-grow">
-                                    <label for="firstname" class="sr-only">'.__('Panel:FirstName').'</label>
-                                    <input id="firstname" name="firstname" type="text" autocomplete="firstname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="'.__('Panel:FirstName').'">
+                                    <label for="firstname" class="sr-only">First Name</label>
+                                    <input id="firstname" name="firstname" type="text" autocomplete="firstname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="First Name">
                                 </div>
                                 <div class="flex-grow">
-                                    <label for="lastname" class="sr-only">'.__('Panel:LastName').'</label>
-                                    <input id="lastname" name="lastname" type="text" autocomplete="lastname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="'.__('Panel:LastName').'">
+                                    <label for="lastname" class="sr-only">Last Name</label>
+                                    <input id="lastname" name="lastname" type="text" autocomplete="lastname" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="First Name">
                                 </div>
                             </div>
                             <div>
-                                <label for="password" class="sr-only">'.__('Panel:Password').'</label>
-                                <input id="password" name="password" type="password" autocomplete="password" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="'.__('Panel:Password').'">
+                                <label for="password" class="sr-only">Password</label>
+                                <input id="password" name="password" type="password" autocomplete="password" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-none focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Password">
                             </div>
                             <div>
-                                <label for="organisation" class="sr-only">'.__('Panel:Organisation').'</label>
-                                <input id="organisation" name="organisation" type="text" autocomplete="organisation" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="'.__('Panel:Organisation').' ('.__('General:Optional').')">
+                                <label for="organisation" class="sr-only">Organisation</label>
+                                <input id="organisation" name="organisation" type="text" autocomplete="organisation" class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Organisation (Optional)">
                             </div>
                         </div>
         
@@ -155,7 +155,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-padlock"></i>
                                 </span>
-                                '.__('Panel:RequestAccount').'
+                                Request Account
                             </button>
                         </div>
                     </form>';
@@ -164,8 +164,8 @@
                         <input type="hidden" name="remember" value="true">
                         <div class="rounded-md shadow-sm -space-y-px">
                             <div>
-                                <label for="verify_email" class="sr-only">'.__('Panel:EmailAddress').'</label>
-                                <input id="verify_email" name="verify_email" type="email" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="'.__('Panel:EmailAddress').'">
+                                <label for="verify_email" class="sr-only">Email Address</label>
+                                <input id="verify_email" name="verify_email" type="email" autocomplete="email" required class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-'.THEME_PANEL_COLOUR.'-500 focus:border-'.THEME_PANEL_COLOUR.'-500 focus:z-10 sm:text-sm" placeholder="Email address">
                             </div>
                         </div>
         
@@ -174,7 +174,7 @@
                                 <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                     <i class="fas fa-envelope"></i>
                                 </span>
-                                '.__('Panel:Verify').'
+                                Verify Email
                             </button>
                         </div>
                     </form>
@@ -196,7 +196,7 @@
         <!DOCTYPE html>
         <html lang="en">
         <head>
-            <title><?php echo __('Panel:Register'); ?> - <?php echo __('General:Saturn'); ?></title>
+            <title>Register - Saturn Panel</title>
             <?php
             include_once __DIR__.'/../../../common/panel/vendors.php';
             include_once __DIR__.'/../../../common/panel/theme.php';
@@ -206,19 +206,20 @@
         <body>
         <header class="bg-white shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel"><?php echo __('General:Saturn'); ?> <?php echo __('Panel:Panel'); ?></a></h1>
+                <h1 class="text-3xl font-bold leading-tight text-gray-900"><a href="<?php echo CONFIG_INSTALL_URL; ?>/panel">Saturn Panel</a></h1>
             </div>
         </header>
         <main>
             <div class="flex justify-center py-12 px-4 sm:px-6 lg:px-8">
                 <div class="max-w-md w-full space-y-8">
                     <div>
-                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="<?php echo __('General:Saturn'); ?>">
+                        <img class="mx-auto h-12 w-auto" src="<?php echo CONFIG_INSTALL_URL; ?>/assets/panel/images/saturn.png" alt="Saturn">
                         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                            <?php echo __('Panel:Register_Message'); ?> <?php echo CONFIG_SITE_NAME; ?>.
+                            Register to Join <?php echo CONFIG_SITE_NAME; ?>.
                         </h2>
+
                         <?php
-                        echo alert('ERROR', __('Panel:Register_Closed'));
+                        echo alert('ERROR', 'Sorry, registration is currently closed.');
 
                         if (isset($errorMsg)) {
                             echo alert('ERROR', $errorMsg);

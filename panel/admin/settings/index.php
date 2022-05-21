@@ -247,7 +247,49 @@
                             </select>
                         </li>
                     </div>
+                <div class="mt-4">
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Database</h2>
+                    <div class="grid grid-cols-2">
+                        <label for="database_host">Database Host</label>
+                        <input id="database_host" name="database_host" type="text" value="<?php echo DATABASE_HOST; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="database_name">Database Username</label>
+                        <input id="database_name" name="database_name" type="text" value="<?php echo DATABASE_NAME; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="database_username">Database Username</label>
+                        <input id="database_username" name="database_username" type="text" value="<?php echo DATABASE_USERNAME; ?>" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="database_password">Database Password</label>
+                        <input id="database_password" name="database_password" type="password" value="<?php echo DATABASE_PASSWORD; ?>" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="database_port">Database Port</label>
+                        <input id="database_port" name="database_port" type="text" value="<?php echo DATABASE_PORT; ?>" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="database_prefix">Database Prefix</label>
+                        <input id="database_prefix" name="database_prefix" type="text" value="<?php echo DATABASE_PREFIX; ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                </div>
 
+                <div class="mt-4">
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Email</h2>
+                    <div class="grid grid-cols-2">
+                        <label for="email_admin">Administrator's Email</label>
+                        <input id="email_admin" name="email_admin" type="text" value="<?php echo CONFIG_EMAIL_ADMIN; ?>" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="email_function">Email Function</label>
+                        <select id="email_function" name="email_function" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="phpmail" selected>phpmail</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="email_sendfrom">Email Sendfrom</label>
+                        <input id="email_sendfrom" name="email_sendfrom" type="text" value="<?php echo CONFIG_EMAIL_SENDFROM; ?>" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
                     <div class="mt-4">
                         <li><label class="text-gray-900 text-2xl pb-4 mb-1"><?php echo __('Admin:Settings_Updating'); ?></label></li>
 
@@ -351,6 +393,92 @@
                         </li>
                     </div>
 
+                <div class="mt-4">
+                    <h2 class="text-gray-900 text-2xl pb-4 mb-1">Security System</h2>
+                    <div class="grid grid-cols-2">
+                        <label for="security_active">Security Active</label>
+                        <select id="security_active" name="security_active" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (SECURITY_ACTIVE) {
+                                    echo' selected';
+                                } ?>>True (Recommended)</option>
+                            <option value="false"<?php if (!SECURITY_ACTIVE) {
+                                    echo' selected';
+                                } ?>>False</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="security_mode">Security Mode</label>
+                        <select id="security_mode" name="security_mode" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="clean"<?php if (SECURITY_MODE == 'clean') {
+                                    echo' selected';
+                                } ?>>Clean (Recommended)</option>
+                            <option value="halt"<?php if (SECURITY_MODE == 'halt') {
+                                    echo' selected';
+                                } ?>>Halt</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="security_use_https">Use HTTPS</label>
+                        <select id="security_use_https" name="security_use_https" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (SECURITY_USE_HTTPS) {
+                                    echo' selected';
+                                } ?>>True (Recommended)</option>
+                            <option value="false"<?php if (!SECURITY_USE_HTTPS) {
+                                    echo' selected';
+                                } ?>>False</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="security_use_gss">Use Saturn Global Security System</label>
+                        <select id="security_use_gss" name="security_use_gss" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="true"<?php if (SECURITY_USE_GSS) {
+                                    echo' selected';
+                                } ?>>True (Recommended)</option>
+                            <option value="false"<?php if (!SECURITY_USE_GSS) {
+                                    echo' selected';
+                                } ?>>False</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <label for="security_default_hash">Default Hash</label>
+                        <select id="security_default_hash" name="security_default_hash" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                            <option value="sha3-512"<?php if (SECURITY_DEFAULT_HASH == 'sha3-512') {
+                                    echo' selected';
+                                } ?>>sha3-512 (Recommended)</option>
+                            <option value="sha3-384"<?php if (SECURITY_DEFAULT_HASH == 'sha3-384') {
+                                    echo' selected';
+                                } ?>>sha3-384</option>
+                            <option value="sha3-256"<?php if (SECURITY_DEFAULT_HASH == 'sha3-256') {
+                                    echo' selected';
+                                } ?>>sha3-256</option>
+                            <option value="sha3-224"<?php if (SECURITY_DEFAULT_HASH == 'sha3-224') {
+                                    echo' selected';
+                                } ?>>sha3-224</option>
+                            <option value="sha512"<?php if (SECURITY_DEFAULT_HASH == 'sha512') {
+                                    echo' selected';
+                                } ?>>sha512</option>
+                            <option value="sha512/224"<?php if (SECURITY_DEFAULT_HASH == 'sha512/224') {
+                                    echo' selected';
+                                } ?>>sha512/224</option>
+                            <option value="sha512/256"<?php if (SECURITY_DEFAULT_HASH == 'sha512/256') {
+                                    echo' selected';
+                                } ?>>sha512/256</option>
+                            <option value="sha256"<?php if (SECURITY_DEFAULT_HASH == 'sha256') {
+                                    echo' selected';
+                                } ?>>sha256</option>
+                            <option value="haval256,5"<?php if (SECURITY_DEFAULT_HASH == 'haval256,5') {
+                                    echo' selected';
+                                } ?>>haval256,5</option>
+                            <option value="haval256,4"<?php if (SECURITY_DEFAULT_HASH == 'haval256,4') {
+                                    echo' selected';
+                                } ?>>haval256,4</option>
+                            <option value="haval256,3"<?php if (SECURITY_DEFAULT_HASH == 'haval256,3') {
+                                    echo' selected';
+                                } ?>>haval256,3</option>
+                            <option value="whirlpool"<?php if (SECURITY_DEFAULT_HASH == 'whirlpool') {
+                                    echo' selected';
+                                } ?>>whirlpool</option>
+                        </select>
                     <div class="mt-4">
                         <li><label class="text-gray-900 text-2xl pb-4 mb-1"><?php echo __('Admin:Settings_Welcome'); ?></label></li>
                         <li class="grid grid-cols-2">
@@ -586,6 +714,31 @@
                         </div>
                     </div>
 
+                    <div class="mt-4">
+                        <h2 class="text-gray-900 text-2xl pb-4 mb-1">Updating</h2>
+                        <div class="grid grid-cols-2">
+                            <label for="update_check">Check for Updates</label>
+                            <select id="update_check" name="update_check" required class="appearance-none rounded-t-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                <option value="true"<?php if (CONFIG_UPDATE_CHECK) {
+                                        echo ' selected';
+                                    } ?>>True</option>
+                                <option value="false"<?php if (!CONFIG_UPDATE_CHECK) {
+                                        echo ' selected';
+                                    } ?>>False</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2">
+                            <label for="update_auto">Automatic Updates</label>
+                            <select id="update_auto" name="update_auto" required class="appearance-none rounded-b-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:border-<?php echo THEME_PANEL_COLOUR; ?>-500 focus:z-10 sm:text-sm">
+                                <option value="true"<?php if (CONFIG_UPDATE_AUTO) {
+                                        echo ' selected';
+                                    } ?>>True</option>
+                                <option value="false"<?php if (!CONFIG_UPDATE_AUTO) {
+                                        echo ' selected';
+                                    } ?>>False</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="mt-8 grid grid-cols-2">
                         <div></div>
                         <input type="submit" name="save" value="<?php echo __('General:Save'); ?>" class="hover:shadow-lg cursor-pointer group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-<?php echo THEME_PANEL_COLOUR; ?>-700 bg-<?php echo THEME_PANEL_COLOUR; ?>-100 hover:bg-<?php echo THEME_PANEL_COLOUR; ?>-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-<?php echo THEME_PANEL_COLOUR; ?>-500 transition-all duration-200">

@@ -3,7 +3,7 @@
 ob_start();
 /**
  * @author      LMWN <contact@lmwn.co.uk>
- * @copyright   Copyright (c), 2022 LMWN & Lewis Milburn
+ * @copyright   Copyright (c), 2021 LMWN & Lewis Milburn
  *
  * This file is a modified version of the demo router provided by https://github.com/bramus/router.
  */
@@ -33,7 +33,7 @@ $router->set404('/api(/.*)?', function () {
 
     $jsonArray = [];
     $jsonArray['status'] = '404';
-    $jsonArray['status_text'] = 'Route not defined';
+    $jsonArray['status_text'] = 'route not defined';
 
     echo json_encode($jsonArray);
 });

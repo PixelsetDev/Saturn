@@ -19,7 +19,7 @@
     date_default_timezone_set(CONFIG_SITE_TIMEZONE);
     /* Developer Tools */
     if (CONFIG_DEBUG) {
-        error_reporting('E_ALL');
+        error_reporting(E_ALL);
         log_console('SATURN][DEBUG', __('Error:DebugEnabled'));
     }
     /* Database: Required Files */
