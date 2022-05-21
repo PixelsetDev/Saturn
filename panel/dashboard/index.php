@@ -40,8 +40,7 @@
         if (isset($_GET['acceptTerms']) && $_GET['acceptTerms'] == 'true') {
             update_user_accepted_terms($_SESSION['id'], true);
             echo alert('ERROR', __('Error:TryAgain'));
-        }
-        ?>
+        } ?>
 
     </head>
     <body class="mb-14">
