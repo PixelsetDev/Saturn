@@ -1,6 +1,7 @@
 # Security Policy
 
 ## Supported Versions
+Saturn versions are supported for 6 months as standard. Long-term-support versions may be supported for longer.
 
 The following versions of Saturn are currently supported and will receive future Security Updates.
 
