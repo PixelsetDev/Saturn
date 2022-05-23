@@ -8,7 +8,9 @@ Saturn is in early access BETA, it's highly likely that you'll find bugs. We don
 Saturn uses the Saturn Router and Render Engine to show pages, meaning that we don't need to hard-code any frontend of your website. The Saturn router is fast and powerful, it allows us to save space and complexity by serving all your public-facing webpages from only two files! It handles rendering, themeing, errors and more.
 
 ## Links
-Issue Tracker: https://tracker.lmwn.co.uk/issues/?p=saturn
+Submit Feedback, Suggestions, Bug Reports, and Issues: https://feedback.lmwn.co.uk/software-feedback
+Issue Tracker: https://feedback.lmwn.co.uk/saturn/reports
+Documentation: https://docs.saturncms.net
 
 Changelog: https://docs.saturncms.net/changelog
 
