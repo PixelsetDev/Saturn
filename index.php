@@ -52,29 +52,29 @@ $router->mount('/rss', function () use ($router) {
         ?>
         <!DOCTYPE html>
         <html lang="en">
-            <head>
-                <title>RSS Feeds - <?php echo CONFIG_SITE_NAME; ?></title>
-                <?php include_once __DIR__.'/common/vendors.php'; ?>
-            </head>
-            <body>
-                <div class="p-2">
-                    <section class="mb-10">
-                        <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" class="w-1/4 mx-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
-                        <h1 class="text-4xl w-full text-center"><?php echo CONFIG_SITE_NAME; ?> RSS Feeds</h1>
-                    </section>
-                    <?php $current_url = 'feed://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
-                    <section>
-                        <div class="mb-2">
-                            <h1 class="text-2xl">Articles</h1>
-                            <p>Link: <a href="<?php echo $current_url; ?>/articles"><?php echo $current_url; ?>/articles</a></p>
-                        </div>
-                        <div class="mb-2">
-                            <h1 class="text-2xl">Page Updates</h1>
-                            <p>Link: <a href="<?php echo $current_url; ?>/page-updates"><?php echo $current_url; ?>/page-updates</a></p>
-                        </div>
-                    </section>
+        <head>
+            <title>RSS Feeds - <?php echo CONFIG_SITE_NAME; ?></title>
+            <?php include_once __DIR__.'/common/vendors.php'; ?>
+        </head>
+        <body>
+        <div class="p-2">
+            <section class="mb-10">
+                <img src="<?php echo CONFIG_INSTALL_URL; ?>/storage/images/logo.png" class="w-1/4 mx-auto" alt="<?php echo CONFIG_SITE_NAME; ?>">
+                <h1 class="text-4xl w-full text-center"><?php echo CONFIG_SITE_NAME; ?> RSS Feeds</h1>
+            </section>
+            <?php $current_url = 'feed://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>
+            <section>
+                <div class="mb-2">
+                    <h1 class="text-2xl">Articles</h1>
+                    <p>Link: <a href="<?php echo $current_url; ?>/articles"><?php echo $current_url; ?>/articles</a></p>
                 </div>
-            </body>
+                <div class="mb-2">
+                    <h1 class="text-2xl">Page Updates</h1>
+                    <p>Link: <a href="<?php echo $current_url; ?>/page-updates"><?php echo $current_url; ?>/page-updates</a></p>
+                </div>
+            </section>
+        </div>
+        </body>
         </html>
         <?php
     });

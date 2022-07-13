@@ -1,4 +1,4 @@
-# Saturn
+# Saturn 1.0.0
 Saturn is a powerful content management system for publishers, educators and everyone in-between. Saturn is a lightweight, blazing-fast and incredibly powerful CMS. Designed with speed, performance and reliability in mind, Saturn is perfect for websites of any size that can scale with ease.
 
 ## Feedback & Issue / Bug Tracker
@@ -6,11 +6,14 @@ Submit Feedback, Suggestions, Bug Reports, and Issues: https://feedback.lmwn.co.
 
 Issue Tracker: https://feedback.lmwn.co.uk/saturn/reports
 
-## Early Access
-Saturn is in early access BETA, it's highly likely that you'll find bugs. We don't recommend it's use in production environments.
+## Contact us
+Please use the links above to submit feedback, suggestions, reports and issues.
 
-## How does Saturn display pages?
-Saturn uses the Saturn Router and Render Engine to show pages, meaning that we don't need to hard-code any frontend of your website. The Saturn router is fast and powerful, it allows us to save space and complexity by serving all your public-facing webpages from only two files! It handles rendering, themeing, errors and more.
+General enquiries: contact@saturncms.net
+
+Account enquiries: support@lmwn.co.uk
+
+Security enquiries or reports: security@lmwn.co.uk
 
 ## Links
 Documentation: https://docs.saturncms.net
