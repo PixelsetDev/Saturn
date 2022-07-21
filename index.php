@@ -15,7 +15,7 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
 
-require_once __DIR__ . '/Boa/Router.php';
+require_once __DIR__.'/Boa/Router.php';
 $App = new App();
 $Router = new Router();
 

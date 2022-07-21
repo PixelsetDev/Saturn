@@ -16,14 +16,13 @@ ob_start();
  *
  * This file is a modified version of the demo router provided by Boa.
  */
-
 $filename = __DIR__.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
 if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
 
-require_once __DIR__ . '/Boa/Boa.php';
-require_once __DIR__ . '/Settings/Load.php';
+require_once __DIR__.'/Boa/Boa.php';
+require_once __DIR__.'/Settings/Load.php';
 $App = new App();
 $Router = new Router();
 
@@ -49,7 +48,6 @@ $Router->get('/', function () {
     $jsonArray['response'] = 'Saturn API';
     echo json_encode($jsonArray);
 });
-
 
 // Thunderbirds are go!
 $Router->run();
