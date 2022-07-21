@@ -1,3 +1,3 @@
-[submodule "Boa"]
-	path = Boa
-	url = https://github.com/lewmilburn/Boa
+[submodule "saturn-boa"]
+	path =
+	url = https://github.com/lmwnweb/saturn-boa
