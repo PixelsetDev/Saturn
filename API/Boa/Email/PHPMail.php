@@ -18,7 +18,7 @@ class PHPMail extends App
         parent::__construct();
     }
 
-    public function sendMail(string $to, string $from, string $subject, string $message, string $replyto = null, string $cc = null, string $bcc = null)
+    public function sendMail(string $to, string $from, string $subject, string $message, string $replyto = null, string $cc = null, string $bcc = null): bool
     {
         // To send HTML mail, the Content-type header must be set
         $headers[] = 'MIME-Version: 1.0';
@@ -39,6 +39,6 @@ class PHPMail extends App
         $headers[] = 'X-Mailer: PHP/'.phpversion();
 
         // Mail it
-        mail($to, $subject, $message, implode("\r\n", $headers));
+        return mail($to, $subject, $message, implode("\r\n", $headers));
     }
 }
