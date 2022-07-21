@@ -5,8 +5,8 @@ const DATABASE_HOSTNAME = 'localhost';
 const DATABASE_USERNAME = 'root';
 const DATABASE_PASSWORD = 'root';
 const DATABASE_DATABASE = 'feedback';
-const DATABASE_PORT = NULL;
-const DATABASE_SOCKET = NULL;
+const DATABASE_PORT = null;
+const DATABASE_SOCKET = null;
 
 // Security
 const SECURITY_PASSWORD_HASH = 'PASSWORD_DEFAULT';
