@@ -32,7 +32,7 @@ class App
         // Load external settings
         if (file_exists(__DIR__.'/../../Settings.php')) {
             require_once __DIR__.'/../../Settings.php';
-        } elseif (file_exists(__DIR__.'/../../Settings.php')) {
+        } elseif (file_exists(__DIR__.'/../Settings.php')) {
             require_once __DIR__.'/../Settings.php';
         } else {
             exit('Unable to locate Settings.php file.');
