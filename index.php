@@ -15,9 +15,18 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
 
-require_once __DIR__.'/Boa/Router.php';
+
+if (!file_exists(__DIR__ . '/Boa/Boa.php')) {
+    die ('Boa is not installed. Saturn requires Boa to work correctly.');
+}
+
+// Load Boa
+require_once __DIR__ . '/Boa/Boa.php';
 $App = new App();
 $Router = new Router();
+
+// Load ClientKit
+require_once __DIR__ . '/Processes/ClientKit/ClientKit.php';
 
 // Error Handler
 $Router->set404(function () {
@@ -44,6 +53,14 @@ $Router->before('GET', '/.*', function () {
 // Homepage
 $Router->get('/', function () {
     echo '<h1>Saturn</h1><p>Whoops, we were unable to locate a file to render for the homepage. Please allocate a homepage in the <a href="panel">Saturn Panel</a>.</p>';
+});
+
+// Panel
+$Router->get('/panel', function () {
+    require_once __DIR__ . '/Views/Panel/Account/Login.php';
+});
+$Router->post('/panel', function () {
+    require_once __DIR__ . '/Processes/Panel/Account/Login.php';
 });
 
 // Thunderbirds are go!

@@ -1,0 +1,17 @@
+{
+  "Code": "en",
+  "Version": "1.0.0",
+  "Authors": "Lewis Milburn, LMWN",
+  "Language": "English",
+  "Translations": {
+    "Copyright": "Copyright",
+    "CreateAccount": "Create an Account",
+    "ForgotDetails": "Forgot your Username or Password?",
+    "Password": "Password",
+    "Saturn": "Saturn",
+    "SaturnCMS": "Saturn CMS",
+    "SignIn": "Sign in",
+    "SignIn_Message": "Sign in to Saturn",
+    "UsernameEmail": "Username or Email Address"
+  }
+}

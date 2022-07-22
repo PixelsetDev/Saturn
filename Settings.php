@@ -11,6 +11,7 @@ const DATABASE_USERNAME = 'root';
 const DATABASE_PASSWORD = 'root';
 const DATABASE_DATABASE = 'feedback';
 const DATABASE_PORT = null;
+const DATABASE_PREFIX = 'sat_';
 const DATABASE_SOCKET = null;
 
 // Security

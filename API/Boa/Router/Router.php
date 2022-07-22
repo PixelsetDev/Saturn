@@ -54,7 +54,7 @@ class Router
     private string $serverBasePath;
 
     /**
-     * @var string Default Controllers Namespace
+     * @var string Default Processes Namespace
      */
     private string $namespace = '';
 
