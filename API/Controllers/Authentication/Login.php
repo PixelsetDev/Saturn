@@ -40,7 +40,7 @@ class Login
             $SQL = new SQL();
             $JWT = new \Boa\Authentication\JWT(JWT_SECRET, JWT_ISSUER);
 
-            $User = $SQL->Select('Password', DATABASE_PREFIX.'Users', '`username` = \''.$Username.'\'', 'ALL:ASSOC');
+            $User = $SQL->Select('*', DATABASE_PREFIX . 'Users', '`username` = \''.$Username.'\'', 'ALL:ASSOC');
             $User = $User[0];
             if ($User['Password'] == null) {
                 $Response['response']['code'] = '401';
@@ -51,7 +51,7 @@ class Login
                     $Response['response']['code'] = '200';
                     $Response['response']['status'] = 'OK';
                     $Response['response']['message'] = 'Authorised';
-                    $Response['token'] = $JWT->Generate('PAYLOAD');
+                    $Response['token'] = $JWT->Generate('{"username": "'.$User['Username'].'", "role": "'.$User['Role'].'", "IP": "'.$User['IP'].'"}');
                 } else {
                     $Response['response']['code'] = '401';
                     $Response['response']['status'] = 'Unauthorised';
