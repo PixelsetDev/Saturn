@@ -18,6 +18,7 @@ const DATABASE_SOCKET = null;
 const SECURITY_PASSWORD_HASH = 'PASSWORD_DEFAULT';
 const SECURITY_IP_HASH = 'sha3-512';
 const SECURITY_OTHER_HASH = 'sha3-512';
+const SECURITY_JWT_ALGORITHM = 'HS512';
 
 // Email
 const EMAIL_SENDFROM = 'noreply@example.com';

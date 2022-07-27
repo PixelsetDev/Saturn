@@ -26,7 +26,7 @@ $App = new App();
 $Router = new Router();
 
 // Load ClientKit
-require_once __DIR__ . '/Processes/ClientKit/ClientKit.php';
+require_once __DIR__ . '/Kit/ClientKit/ClientKit.php';
 
 // Error Handler
 $Router->set404(function () {

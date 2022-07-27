@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Boa Portal SSO Library.
- *
+ * Boa Portal SSO Library
  * @author      LMWN <contact@lmwn.co.uk>
  * @license     Apache-2.0 License
  */
@@ -15,15 +14,14 @@ class PortalSSO extends App
 {
     public array $settings;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
-        global $settings;
-        $settings = [
+
+        $this->settings = array(
             'portal_redirect_url' => 'https://localhost/account/login',
-            'portal_permissions'  => '110100000000011',
-            'portal_secret'       => 'LMWN_PORTAL_USER',
-        ];
+            'portal_permissions' => '110100000000011',
+            'portal_secret' => 'LMWN_PORTAL_USER'
+        );
     }
 
     /**
@@ -31,23 +29,20 @@ class PortalSSO extends App
      */
     public function Login(): bool
     {
-        global $settings;
         $token = $_GET['token'];
         $sig = $_GET['sig'];
-        if (!empty($token) && !$_SESSION['token']) {
+        if(!empty($token) && !$_SESSION['token'])
+        {
             $algorithm = file_get_contents('https://portal.lmwn.co.uk/assets/common/ptkhash.txt');
-            if (hash_equals(hash_hmac($algorithm, $token, $settings['portal_secret']), $sig)) {
+            if (hash_equals(hash_hmac($algorithm, $token, $this->settings['portal_secret']), $sig)) {
                 $_SESSION['token'] = $token;
-
                 return true;
             } else {
-                header('Location: https://portal.lmwn.co.uk/authenticate/?redirect_url='.$settings['portal_redirect_url'].'&permissions='.$settings['portal_permissions']);
-
+                header('Location: https://portal.lmwn.co.uk/authenticate/?redirect_url='.$this->settings['portal_redirect_url'].'&permissions='.$this->settings['portal_permissions']);
                 return false;
             }
         } else {
-            header('Location: https://portal.lmwn.co.uk/authenticate/?redirect_url='.$settings['portal_redirect_url'].'&permissions='.$settings['portal_permissions']);
-
+            header('Location: https://portal.lmwn.co.uk/authenticate/?redirect_url='.$this->settings['portal_redirect_url'].'&permissions='.$this->settings['portal_permissions']);
             return false;
         }
     }
@@ -57,15 +52,14 @@ class PortalSSO extends App
      */
     public function Authenticate(): bool|string
     {
-        if ($_SESSION['token']) {
-            $url = 'https://portal.lmwn.co.uk/authenticate/authservice.php?token='.$_SESSION['token'];
+        if($_SESSION['token']) {
+            $url = "https://portal.lmwn.co.uk/authenticate/authservice.php?token=".$_SESSION['token'];
 
             $response = json_decode($this->RequestData($url));
             $user = $response->data;
 
             if ($response->code != 200) {
                 unset($_SESSION['token']);
-
                 return false;
             } else {
                 return $user;
@@ -79,32 +73,31 @@ class PortalSSO extends App
      * @param $url "The URL data should be requested from."
      * @param string $method "The method that should be used. Default: 'GET'"
      * @param $postdata "The post data that should be used. Default: null"
-     *
      * @return bool|string "Returns false or the data response."
      */
-    private function RequestData($url, string $method = 'GET', $postdata = null): bool|string
+    private function RequestData($url, string $method = "GET", $postdata = null): bool|string
     {
         $ch = curl_init($url);
 
-        $headers = [
+        $headers = array(
             'Accept: application/json',
-        ];
+        );
 
-        if ($method == 'POST') {
-            curl_setopt_array($ch, [
-                CURLOPT_POST            => 1,
-                CURLOPT_HTTPHEADER      => $headers,
-                CURLOPT_POSTFIELDS      => $postdata,
-                CURLOPT_RETURNTRANSFER  => true,
-                CURLOPT_VERBOSE         => 1,
-            ]);
-        } else {
-            curl_setopt_array($ch, [
-                CURLOPT_HTTPGET         => 1,
-                CURLOPT_HTTPHEADER      => $headers,
-                CURLOPT_RETURNTRANSFER  => true,
-                CURLOPT_VERBOSE         => 1,
-            ]);
+        if ($method == "POST") {
+            curl_setopt_array($ch, array(
+                CURLOPT_POST  => 1,
+                CURLOPT_HTTPHEADER  => $headers,
+                CURLOPT_POSTFIELDS  => $postdata,
+                CURLOPT_RETURNTRANSFER  =>true,
+                CURLOPT_VERBOSE     => 1
+            ));
+        }else{
+            curl_setopt_array($ch, array(
+                CURLOPT_HTTPGET  => 1,
+                CURLOPT_HTTPHEADER  => $headers,
+                CURLOPT_RETURNTRANSFER  =>true,
+                CURLOPT_VERBOSE     => 1
+            ));
         }
 
         $output = curl_exec($ch);

@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Boa Demo Application.
- *
+ * Boa Demo Application
  * @author      Lewis Milburn <contact@lewismilburn.com>
  * @license     Apache-2.0 License
  */
-require __DIR__.'/Boa.php';
+
+require __DIR__ . '/Boa.php';
 $Boa = new Boa\App();
 ?><!DOCTYPE html>
 <html lang="en">
@@ -33,10 +33,11 @@ $Boa = new Boa\App();
             <?php
                 $modules = $Boa->Modules();
                 foreach ($modules as $module) {
-                    if ($module->enabled == 'true') {
-                        echo '<span class="font-medium">'.$module->module.'</span> is <span class="text-green-500">activated</span>. <span class="text-gray-500 italic">You can use this module on this page.</span><br>';
+                    if ($module->enabled == 'true')
+                    {
+                        echo '<span class="font-medium">' . $module->module . '</span> is <span class="text-green-500">activated</span>. <span class="text-gray-500 italic">You can use this module on this page.</span><br>';
                     } else {
-                        echo '<span class="font-medium">'.$module->module.'</span> is <span class="text-red-500">deactivated</span>. <span class="text-gray-500 italic">You\'ll need to activate it before you can use it here.</span><br>';
+                        echo '<span class="font-medium">' . $module->module . '</span> is <span class="text-red-500">deactivated</span>. <span class="text-gray-500 italic">You\'ll need to activate it before you can use it here.</span><br>';
                     }
                 }
             ?>

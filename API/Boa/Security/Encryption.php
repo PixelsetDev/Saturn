@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Boa Encryption Library.
- *
+ * Boa Encryption Library
  * @author      Lewis Milburn <contact@lewismilburn.com>
  * @license     Apache-2.0 License
  */
@@ -19,11 +18,11 @@ class Encryption extends App
     {
         parent::__construct();
 
-        $this->settings = [
+        $this->settings = array(
             'password_hash' => SECURITY_PASSWORD_HASH,
-            'ip_hash'       => SECURITY_IP_HASH,
-            'other_hash'    => SECURITY_OTHER_HASH,
-        ];
+            'ip_hash' => SECURITY_IP_HASH,
+            'other_hash' => SECURITY_OTHER_HASH,
+        );
     }
 
     public function hash_ip($ip): string
@@ -38,11 +37,11 @@ class Encryption extends App
 
     public function hash_password($password): string
     {
-        return password_hash($password, $this->settings['password_hash']);
+        return password_hash($password,$this->settings['password_hash']);
     }
 
     public function verify_password($password): bool
     {
-        return password_verify($password, $this->settings['password_hash']);
+        return password_verify($password,$this->settings['password_hash']);
     }
 }
