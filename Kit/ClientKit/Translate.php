@@ -6,10 +6,10 @@ class Translate
 {
     public string $Path;
 
-    public function __construct(string $Path = __DIR__ . '/../../Assets/Languages/')
+    public function __construct(string $Path = __DIR__.'/../../Assets/Languages/')
     {
         $this->Path = $Path;
-        if (file_exists($Path . 'en.json')) {
+        if (file_exists($Path.'en.json')) {
             return true;
         } else {
             return false;
@@ -18,9 +18,11 @@ class Translate
 
     /**
      * @since 1.0.0
+     *
      * @author Lewis Milburn <lewis.milburn@lmwn.co.uk>
      *
      * @param string $Key
+     *
      * @return string
      */
     public function TL(string $Key): string|object
@@ -28,7 +30,7 @@ class Translate
         $Translations = $this->GetTranslations(WEBSITE_LANGUAGE);
 
         if (!$Translations) {
-            die ('There was an error loading the translations file. Saturn cannot run. Please use Saturn repair to fix this installation.');
+            exit('There was an error loading the translations file. Saturn cannot run. Please use Saturn repair to fix this installation.');
         } else {
             if (property_exists($Translations, $Key)) {
                 return $Translations->$Key;
@@ -40,9 +42,11 @@ class Translate
 
     /**
      * @since 1.0.0
+     *
      * @author Lewis Milburn <lewis.milburn@lmwn.co.uk>
      *
      * @param string $Language
+     *
      * @return mixed
      */
     private function GetTranslations(string $Language): mixed
@@ -56,21 +60,23 @@ class Translate
 
     /**
      * @author Lewis Milburn <lewis.milburn@lmwn.co.uk>
+     *
      * @since 1.0.0
      *
      * @param string $Language
+     *
      * @return string|bool
      */
     private function GetLanguageFile(string $Language): string|bool
     {
-        if (file_exists($this->Path . $Language . '.json')) {
-            $LanguageFile = file_get_contents($this->Path . $Language . '.json');
+        if (file_exists($this->Path.$Language.'.json')) {
+            $LanguageFile = file_get_contents($this->Path.$Language.'.json');
         } else {
-            if (file_exists($this->Path . 'en.json')) {
+            if (file_exists($this->Path.'en.json')) {
                 echo 'Unable to load the requested language file. Loading fallback (english) instead.';
-                $LanguageFile = file_get_contents($this->Path . 'en.json');
+                $LanguageFile = file_get_contents($this->Path.'en.json');
             } else {
-                die('Unable to load the language files. Saturn cannot run. Please use Saturn repair to fix this installation.');
+                exit('Unable to load the language files. Saturn cannot run. Please use Saturn repair to fix this installation.');
             }
         }
 

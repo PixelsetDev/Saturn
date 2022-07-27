@@ -12,19 +12,25 @@ class Login
      *
      * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
      * @license     Apache 2.0
+     *
      * @since       1.0.0
+     *
      * @version     1.0.0
      */
-    function __construct() {
+    public function __construct()
+    {
     }
 
     /**
      * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
      * @license     Apache 2.0
+     *
      * @since       1.0.0
+     *
      * @version     1.0.0
      *
      * @param $data
+     *
      * @return bool|string
      */
     public function DoLogin($data): bool|string
@@ -34,7 +40,7 @@ class Login
             $SQL = new SQL();
             $JWT = new \Boa\Authentication\JWT(JWT_SECRET, JWT_ISSUER);
 
-            $User = $SQL->Select('Password', DATABASE_PREFIX . 'Users', '`username` = \''.$Username.'\'', 'ALL:ASSOC');
+            $User = $SQL->Select('Password', DATABASE_PREFIX.'Users', '`username` = \''.$Username.'\'', 'ALL:ASSOC');
             $User = $User[0];
             if ($User['Password'] == null) {
                 $Response['response']['code'] = '401';
@@ -57,6 +63,7 @@ class Login
             $Response['response']['status'] = 'Unauthorised';
             $Response['response']['message'] = 'Username or Password was Incorrect';
         }
+
         return json_encode($Response);
     }
 }

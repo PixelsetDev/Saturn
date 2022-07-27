@@ -50,10 +50,10 @@ $Router->get('/', function () {
 
 // Panel
 $Router->get('/panel', function () {
-    require_once __DIR__ . '/../../Views/Panel/Account/Login.php';
+    require_once __DIR__.'/../../Views/Panel/Account/Login.php';
 });
 $Router->post('/panel', function () {
-    require_once __DIR__ . '/../Panel/Account/Login.php';
+    require_once __DIR__.'/../Panel/Account/Login.php';
 });
 
 // Thunderbirds are go!
