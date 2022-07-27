@@ -4,5 +4,4 @@ namespace SaturnServer\Authentication;
 
 class JWT
 {
-
 }

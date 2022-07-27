@@ -1,12 +1,13 @@
 <?php
 use Saturn\ClientKit;
 use Saturn\ClientKit\Translate;
+
 new ClientKit();
 $TL = new Translate();
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
-        <?php require_once __DIR__ . '/../Vendors.inc'; ?>
+        <?php require_once __DIR__.'/../Vendors.inc'; ?>
 
         <title><?= $TL->TL('SignIn'); ?> - <?= $TL->TL('Saturn'); ?></title>
     </head>

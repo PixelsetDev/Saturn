@@ -7,7 +7,7 @@ use Boa\Security\Encryption;
 
 global $API_LOCATION;
 
-require_once __DIR__ . '/../../../Processes/Boa/Boa.php';
+require_once __DIR__.'/../../../Processes/Boa/Boa.php';
 
 new App();
 $Encryption = new Encryption();
