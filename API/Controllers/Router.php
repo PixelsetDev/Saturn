@@ -6,7 +6,6 @@
  */
 
 use Boa\App;
-use Boa\Authentication\JWT;
 use Boa\Router\Router;
 
 ob_start();
@@ -16,7 +15,9 @@ ob_start();
  *
  * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
  * @license     Apache 2.0
+ *
  * @since       1.0.0
+ *
  * @version     1.0.0
  */
 $filename = __DIR__.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
@@ -49,7 +50,7 @@ $Router->get('/', function () {
 
 // Auth
 $Router->get('/v1/authenticate', function () {
-    require_once __DIR__ . '/Controllers/Authentication/Login.php';
+    require_once __DIR__.'/Controllers/Authentication/Login.php';
     $Login = new \SaturnServer\Authentication\Login();
     $Data = $Login->DoLogin($_GET);
 
