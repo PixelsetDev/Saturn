@@ -1,17 +1,15 @@
 <?php
 
 use Boa\App;
-use Boa\Database\SQL;
 
 echo 'Please wait...';
 
-$App = new App();
-$SQL = new SQL();
+require_once __DIR__ . '/../../../Boa';
+$Boa = new App();
+$_POST['username'];
+$_POST['password'];
 
-if ($SQL->Select('id', DATABASE_PREFIX.'users', '`username` = \''.$_POST['username'].'\'', 'NUMROWS') == 1) {
-    echo 'User found';
-} else {
-    header('Location: index.php?status=0');
-}
+?>
+<script>
 
-var_dump($_POST);
+</script>
