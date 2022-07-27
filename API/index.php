@@ -1,32 +1,37 @@
 <?php
-
 /*
- * WELCOME TO THE SATURN API.
+ * WELCOME TO THE SATURN SERVER.
  *
- * FOR MORE INFORMATION ON HOW TO USE THE API PLEASE VISIT DOCS.SATURNCMS.NET
+ * FOR MORE INFORMATION ON HOW TO USE THE SERVER PLEASE VISIT DOCS.SATURNCMS.NET
  */
 
 use Boa\App;
+use Boa\Authentication\JWT;
 use Boa\Router\Router;
 
 ob_start();
 /**
- * @author      LMWN <contact@lmwn.co.uk>
- * @copyright   Copyright (c), 2021 LMWN & Lewis Milburn
- *
- * This file is a modified version of the demo router provided by Boa.
+ * Saturn Server Router.
+ * This file is a modified version of the demo router provided by https://github.com/bramus/router.
+ * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
+ * @license     Apache 2.0
+ * @since       1.0.0
+ * @version     1.0.0
  */
 $filename = __DIR__.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
 if (php_sapi_name() === 'cli-server' && is_file($filename)) {
     return false;
 }
 
-require_once __DIR__.'/Boa/Boa.php';
-require_once __DIR__.'/Settings/Load.php';
+
+if (!file_exists(__DIR__ . '/Boa/Boa.php')) {
+    die ('Boa is not installed. Saturn Server requires Boa to work correctly.');
+}
+
+// Load Boa
+require_once __DIR__ . '/Boa/Boa.php';
 $App = new App();
 $Router = new Router();
-
-$jsonArray = [];
 
 $Router->set404('(/.*)?', function () {
     header('HTTP/1.1 404 Not Found');
@@ -47,6 +52,15 @@ $Router->get('/', function () {
     $jsonArray['status'] = '200';
     $jsonArray['response'] = 'Saturn API';
     echo json_encode($jsonArray);
+});
+
+// Auth
+$Router->get('/v1/authenticate', function () {
+    require_once __DIR__ . '/Controllers/Authentication/Login.php';
+    $Login = new \SaturnServer\Authentication\Login();
+    $Data = $Login->DoLogin($_GET);
+
+    echo $Data;
 });
 
 // Thunderbirds are go!

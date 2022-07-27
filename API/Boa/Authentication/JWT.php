@@ -52,7 +52,7 @@ class JWT extends App
     public function __construct(string $key,
                                 string $issuer,
                                 string $type = 'JWT',
-                                string $algorithm = SECURITY_JWT_ALGORITHM,
+                                string $algorithm = JWT_ALGORITHM,
                                 int $starttime = 0)
     {
         parent::__construct();

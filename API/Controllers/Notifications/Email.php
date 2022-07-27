@@ -1,15 +1,18 @@
 <?php
 
-namespace SaturnAPI\Notifications;
+namespace SaturnServer\Notifications;
 
 use Boa\App;
 use Boa\Email\PHPMail;
 
 class Email
 {
-    /**
-     * @since 1.0.0
-     * @author Lewis Milburn <lewis.milburn@lmwn.co.uk>
+    /** Send emails from the Saturn Server.
+     *
+     * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
+     * @license     Apache 2.0
+     * @since       1.0.0
+     * @version     1.0.0
      *
      * @param string $to
      * @param string $subject

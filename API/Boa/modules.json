@@ -6,17 +6,17 @@
   },
   "2": {
     "module": "/Authentication/JWT.php",
-    "enabled": false,
+    "enabled": true,
     "requires": null
   },
   "3": {
     "module": "/Database/SQL.php",
-    "enabled": false,
+    "enabled": true,
     "requires": null
   },
   "4": {
     "module": "/Email/PHPMail.php",
-    "enabled": false,
+    "enabled": true,
     "requires": null
   },
   "5": {
@@ -31,12 +31,12 @@
   },
   "7": {
     "module": "/Router/Router.php",
-    "enabled": false,
+    "enabled": true,
     "requires": null
   },
   "8": {
     "module": "/Security/Encryption.php",
-    "enabled": false,
+    "enabled": true,
     "requires": null
   }
 }

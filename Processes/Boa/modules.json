@@ -36,7 +36,7 @@
   },
   "8": {
     "module": "/Security/Encryption.php",
-    "enabled": false,
+    "enabled": true,
     "requires": null
   }
 }
