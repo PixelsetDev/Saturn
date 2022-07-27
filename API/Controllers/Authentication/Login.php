@@ -6,7 +6,9 @@ use Boa\Database\SQL;
 
 class Login
 {
-    /** Login and authenticate users.
+    /**
+     * Saturn Server
+     * Login and authenticate users.
      *
      * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
      * @license     Apache 2.0
