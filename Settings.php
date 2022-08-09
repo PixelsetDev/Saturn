@@ -13,7 +13,10 @@
 // Website
 const WEBSITE_NAME = 'Saturn';
 const WEBSITE_DESCRIPTION = 'This website is powered by Saturn.';
-const WEBSITE_LANGUAGE = 'en';
+
+// Panel
+const PANEL_LANGUAGE = 'EN';
+const PANEL_IMAGE_QUALITY = 'HD';
 
 //  Database
 const DATABASE_HOSTNAME = 'scarif-lon1.krystal.uk';

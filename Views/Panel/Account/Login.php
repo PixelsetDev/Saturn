@@ -5,20 +5,20 @@ use Saturn\ClientKit\Translate;
 new ClientKit();
 $TL = new Translate();
 ?><!DOCTYPE html>
-<html lang="<?= WEBSITE_LANGUAGE; ?>">
+<html lang="<?= PANEL_LANGUAGE; ?>" class="min-h-full">
     <head>
         <?php require_once __DIR__.'/../Vendors.inc'; ?>
 
-        <title><?= $TL->TL('SignIn'); ?> - <?= $TL->TL('Saturn'); ?></title>
+        <title><?= $TL->TL('SignIn'); ?> - <?= WEBSITE_NAME; ?></title>
     </head>
-    <body class="bg-white dark:bg-black">
+    <body class="bg-[url('/Assets/Images/LoginBackground<?= PANEL_IMAGE_QUALITY; ?>.webp')] dark:bg-[url('')] bg-cover bg-center bg-no-repeat dark:bg-black min-h-full">
         <div class="my-16 max-w-sm mx-auto bg-neutral-300 dark:bg-neutral-800">
             <div class="w-full py-12 relative overflow-hidden">
                 <img src="/Assets/Images/SaturnIcon.png" class="absolute left-0 right-0 -top-8 h-40 p-1 mx-auto grayscale" alt="Saturn">
             </div>
-            <form class="bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white w-full h-full" action="/panel" method="POST">
+            <form class="bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white w-full h-full" action="" method="POST">
                 <div class="md:px-6 md:py-8 sm:px-4 sm:py-6 px-2 py-4">
-                    <h1 class="text-3xl text-center font-bold mb-8"><?= $TL->TL('SignIn_Message'); ?></h1>
+                    <h1 class="text-3xl text-center font-bold mb-8"><?= $TL->TL('SignIn'); ?></h1>
                     <input type="text" name="username" id="username" maxlength="127" required placeholder="<?= $TL->TL('UsernameEmail'); ?>" class="input-full">
                     <input type="password" name="password" id="password" maxlength="255" required placeholder="<?= $TL->TL('Password'); ?>" class="input-full">
                 </div>

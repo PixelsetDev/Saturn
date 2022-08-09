@@ -23,8 +23,8 @@ $Router = new Router();
 
 // Error Handler
 $Router->set404(function () {
-    header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
-    echo '404 Not Found.';
+    //header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
+    echo '404';
 });
 
 // Before Router Middleware
@@ -38,8 +38,46 @@ $Router->get('/', function () {
 });
 
 // Panel
+$_SESSION['LoggedIn'] = true;
 $Router->mount('/panel', function () use ($Router) {
-    require_once 'PanelRouter.php';
+    $Router->get('/', function () {
+        if (isset($_SESSION['LoggedIn'])) {
+            require_once __DIR__ . '/../../../Views/Panel/Dashboard/Dashboard.php';
+        } else {
+            require_once __DIR__ . '/../../../Views/Panel/Account/Login.php';
+        }
+    });
+    $Router->post('/', function () {
+        require_once __DIR__ . '/../../Panel/Account/Login.php';
+    });
+    // Register
+    $Router->get('/register', function () {
+        require_once __DIR__ . '/../../../Views/Panel/Account/Register.php';
+    });
+
+    // Reset
+    $Router->get('/reset', function () {
+        require_once __DIR__ . '/../../../Views/Panel/Account/Register.php';
+    });
+});
+
+// Panel
+$Router->mount('/account', function () use ($Router) {
+    $Router->get('/', function () {
+        require_once __DIR__ . '/../../../Views/Panel/Account/Login.php';
+    });
+    $Router->post('/', function () {
+        require_once __DIR__ . '/../../Panel/Account/Login.php';
+    });
+    // Register
+    $Router->get('/register', function () {
+        require_once __DIR__ . '/../../../Views/Panel/Account/Register.php';
+    });
+
+    // Reset
+    $Router->get('/reset', function () {
+        require_once __DIR__ . '/../../../Views/Panel/Account/Reset.php';
+    });
 });
 
 // Thunderbirds are go!

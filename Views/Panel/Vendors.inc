@@ -22,16 +22,16 @@
         }
 
         .input {
-            @apply w-full px-2 py-1 my-2 rounded-sm appearance-none border input-light dark:input-dark;
+            @apply px-2 py-1 my-2 rounded-sm appearance-none border input-light dark:input-dark;
         }
         .input-full {
             @apply input w-full;
         }
         .input-dark {
-            @apply input bg-neutral-700 text-white border-neutral-900 placeholder:text-neutral-400;
+            @apply bg-neutral-700 text-white border-neutral-900 placeholder:text-neutral-400;
         }
         .input-light {
-            @apply input bg-neutral-200 text-black border-neutral-400 placeholder:text-neutral-400;
+            @apply bg-neutral-200 text-black border-neutral-400 placeholder:text-neutral-400;
         }
     }
 </style>

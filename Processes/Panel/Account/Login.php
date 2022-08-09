@@ -14,6 +14,7 @@ $Encryption = new Encryption();
 
 $Username = $Encryption->hash($_POST['username']);
 $Password = $Encryption->hash($_POST['password'].SECURITY_HASH_SALT);
+
 ?>
 <script>
     let data = {element: "barium"};

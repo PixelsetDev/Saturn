@@ -1,0 +1,26 @@
+{
+  "Code": "en",
+  "Version": "1.0.0",
+  "Authors": "Lewis Milburn, LMWN",
+  "Language": "English",
+  "Translations": {
+    "Copyright": "Copyright",
+    "CreateAccount": "Create an Account",
+    "Password": "Password",
+    "ConfirmPassword": "Confirm Password",
+    "Saturn": "Saturn",
+    "SaturnCMS": "Saturn CMS",
+    "SignIn": "Sign in",
+    "SignIn_Forgot": "Forgot",
+    "Register": "Create an Account",
+    "FirstName": "First name",
+    "LastName": "Last name",
+    "Email": "Email Address",
+    "UsernameEmail": "Username or Email Address",
+    "Back": "Back",
+    "Reset": "Reset Password",
+    "Dashboard": "Dashboard",
+    "Pages": "Pages",
+    "Settings": "Settings"
+  }
+}
