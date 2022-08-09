@@ -26,7 +26,7 @@ $TL = new Translate();
                     <p><?= $TL->TL('ForgotDetails'); ?></p>
                     <p class="text-right"><?= $TL->TL('CreateAccount'); ?></p>
                 </div>
-                <p class="absolute bottom-0 text-xs pb-2 text-white/50">
+                <p class="btn-primary">
                     <?= $TL->TL('Copyright'); ?> &copy; 2021 - <?= date('Y'); ?> <?= $TL->TL('SaturnCMS'); ?>
                 </p>
             </form>

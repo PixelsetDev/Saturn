@@ -24,18 +24,6 @@ $Router = new Router();
 // Error Handler
 $Router->set404(function () {
     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
-    echo '404 Not Found';
-});
-
-$Router->set404('/api(/.*)?', function () {
-    header('HTTP/1.1 404 Not Found');
-    header('Content-Type: application/json');
-
-    $jsonArray = [];
-    $jsonArray['status'] = '404';
-    $jsonArray['status_text'] = 'route not defined';
-
-    echo json_encode($jsonArray);
 });
 
 // Before Router Middleware
