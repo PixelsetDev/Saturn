@@ -9,7 +9,7 @@ $TL = new Translate();
     <head>
         <?php require_once __DIR__.'/../Vendors.inc'; ?>
 
-        <title><?= $TL->TL('SignIn'); ?> - <?= $TL->TL('Saturn'); ?></title>
+        <title><?= $TL->TL('SignIn_Forgot'); ?> - <?= $TL->TL('Saturn'); ?></title>
     </head>
     <body class="bg-white dark:bg-black">
         <div class="my-16 max-w-sm mx-auto bg-neutral-300 dark:bg-neutral-800">

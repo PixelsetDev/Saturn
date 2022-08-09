@@ -6,12 +6,14 @@
   "Translations": {
     "Copyright": "Copyright",
     "CreateAccount": "Create an Account",
-    "ForgotDetails": "Forgot your Username or Password?",
     "Password": "Password",
     "Saturn": "Saturn",
     "SaturnCMS": "Saturn CMS",
     "SignIn": "Sign in",
+    "SignIn_Forgot": "Forgot",
     "SignIn_Message": "Sign in to Saturn",
+    "Register": "Sign in",
+    "Register_Message": "Sign in to Saturn",
     "UsernameEmail": "Username or Email Address"
   }
 }
