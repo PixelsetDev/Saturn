@@ -42,41 +42,41 @@ $_SESSION['LoggedIn'] = true;
 $Router->mount('/panel', function () use ($Router) {
     $Router->get('/', function () {
         if (isset($_SESSION['LoggedIn'])) {
-            require_once __DIR__ . '/../../../Views/Panel/Dashboard/Dashboard.php';
+            require_once __DIR__.'/../../../Views/Panel/Dashboard/Dashboard.php';
         } else {
-            require_once __DIR__ . '/../../../Views/Panel/Account/Login.php';
+            require_once __DIR__.'/../../../Views/Panel/Account/Login.php';
         }
     });
     $Router->post('/', function () {
-        require_once __DIR__ . '/../../Panel/Account/Login.php';
+        require_once __DIR__.'/../../Panel/Account/Login.php';
     });
     // Register
     $Router->get('/register', function () {
-        require_once __DIR__ . '/../../../Views/Panel/Account/Register.php';
+        require_once __DIR__.'/../../../Views/Panel/Account/Register.php';
     });
 
     // Reset
     $Router->get('/reset', function () {
-        require_once __DIR__ . '/../../../Views/Panel/Account/Register.php';
+        require_once __DIR__.'/../../../Views/Panel/Account/Register.php';
     });
 });
 
 // Panel
 $Router->mount('/account', function () use ($Router) {
     $Router->get('/', function () {
-        require_once __DIR__ . '/../../../Views/Panel/Account/Login.php';
+        require_once __DIR__.'/../../../Views/Panel/Account/Login.php';
     });
     $Router->post('/', function () {
-        require_once __DIR__ . '/../../Panel/Account/Login.php';
+        require_once __DIR__.'/../../Panel/Account/Login.php';
     });
     // Register
     $Router->get('/register', function () {
-        require_once __DIR__ . '/../../../Views/Panel/Account/Register.php';
+        require_once __DIR__.'/../../../Views/Panel/Account/Register.php';
     });
 
     // Reset
     $Router->get('/reset', function () {
-        require_once __DIR__ . '/../../../Views/Panel/Account/Reset.php';
+        require_once __DIR__.'/../../../Views/Panel/Account/Reset.php';
     });
 });
 

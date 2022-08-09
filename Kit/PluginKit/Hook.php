@@ -24,6 +24,7 @@ class Hook
     public function RegisterHook($Name, $Function): bool
     {
         $this->Hooks[$Name][] = $Function;
+
         return true;
     }
 
@@ -38,9 +39,10 @@ class Hook
      */
     public function ExecuteHook($Name): bool
     {
-        foreach($this->Hooks[$Name] as $Function){
+        foreach ($this->Hooks[$Name] as $Function) {
             call_user_func($Function);
         }
+
         return true;
     }
 }

@@ -43,4 +43,4 @@ if (DEBUG && DEBUG_INSECURE) {
 }
 
 // Start the Router
-require_once __DIR__ . '/Processes/Controllers/Router/Router.php';
+require_once __DIR__.'/Processes/Controllers/Router/Router.php';

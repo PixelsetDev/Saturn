@@ -40,7 +40,7 @@ class Login
             $SQL = new SQL();
             $JWT = new \Boa\Authentication\JWT(JWT_SECRET, JWT_ISSUER);
 
-            $User = $SQL->Select('*', DATABASE_PREFIX . 'Users', '`username` = \''.$Username.'\'', 'ALL:ASSOC');
+            $User = $SQL->Select('*', DATABASE_PREFIX.'Users', '`username` = \''.$Username.'\'', 'ALL:ASSOC');
             $User = $User[0];
             if ($User['Password'] == null) {
                 $Response['response']['code'] = '401';
