@@ -10,10 +10,13 @@ $TL = new Translate();
         <?php require_once __DIR__.'/../Vendors.inc'; ?>
 
         <title><?= $TL->TL('SignIn'); ?> - <?= WEBSITE_NAME; ?></title>
+        <?php global $Plugins; $Plugins->ExecuteHook('PANEL_HEAD_END'); ?>
+
     </head>
     <body class="dark:bg-black dark:text-white flex w-full h-full">
         <div class="w-1/12 h-full">
-            <?php require_once __DIR__.'/../Navigation.inc'; ?>
+            <?php require_once __DIR__ . '/../Sidebar.inc'; ?>
+
         </div>
         <div class="w-11/12 h-full">
             <div class="container max-w-3xl mx-auto">

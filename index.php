@@ -25,6 +25,17 @@ require_once __DIR__.'/Processes/Boa/Boa.php';
 require_once __DIR__.'/Kit/ClientKit/ClientKit.php';
 require_once __DIR__.'/Kit/PluginKit/PluginKit.php';
 
+$Plugins = new \Saturn\PluginKit();
+$loaded = 0;
+foreach (glob(__DIR__ . "/../../Plugins/*/*.php") as $Filename)
+{
+    if ($Plugins->GetPluginName($Filename) == $Plugins->GetFileName($Filename))
+    {
+        require $Filename;
+        $loaded++;
+    }
+}
+
 // Set API Location
 // ALWAYS USE SECURE HTTPS WHERE POSSIBLE
 // THIS OPTION IS HERE FOR LOCALHOST ONLY
