@@ -59,6 +59,11 @@ $Router->mount('/panel', function () use ($Router) {
     $Router->get('/reset', function () {
         require_once __DIR__.'/../../../Views/Panel/Account/Register.php';
     });
+
+    // Reset
+    $Router->get('/pages', function () {
+        require_once __DIR__.'/../../../Views/Panel/Pages/List.php';
+    });
 });
 
 // Panel

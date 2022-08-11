@@ -21,6 +21,13 @@
     "Reset": "Reset Password",
     "Dashboard": "Dashboard",
     "Pages": "Pages",
+    "Articles": "Articles",
+    "PendingActions": "Pending Actions",
+    "Analytics": "Analytics",
+    "Tasks": "Tasks",
+    "Tasks_My": "My Tasks",
+    "Tasks_Team": "Team Tasks",
+    "Tasks_Done": "All done!",
     "Settings": "Settings"
   }
 }
