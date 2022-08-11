@@ -19,12 +19,12 @@ const PANEL_LANGUAGE = 'EN';
 const PANEL_IMAGE_QUALITY = 'HD';
 
 //  Database
-const DATABASE_HOSTNAME = 'scarif-lon1.krystal.uk';
-const DATABASE_USERNAME = 'lmwncouk_saturn_dev';
-const DATABASE_PASSWORD = 'EEl-0MSGU;S7';
-const DATABASE_DATABASE = 'lmwncouk_saturn_dev';
+const DATABASE_HOSTNAME = 'localhost';
+const DATABASE_USERNAME = 'root';
+const DATABASE_PASSWORD = '';
+const DATABASE_DATABASE = 'saturn';
 const DATABASE_PORT = null;
-const DATABASE_PREFIX = 'Saturn_';
+const DATABASE_PREFIX = 'saturn_';
 const DATABASE_SOCKET = null;
 
 // Security

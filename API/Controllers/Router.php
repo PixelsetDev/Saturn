@@ -50,9 +50,27 @@ $Router->get('/', function () {
 
 // Auth
 $Router->get('/v1/authenticate', function () {
-    require_once __DIR__.'/Controllers/Authentication/Login.php';
+    require_once __DIR__.'/Authentication/Login.php';
     $Login = new \SaturnServer\Authentication\Login();
     $Data = $Login->DoLogin($_GET);
+
+    echo $Data;
+});
+
+// Pages
+$Router->get('/v1/page/count', function () {
+    require_once __DIR__.'/Page/Count.php';
+    $Count = new \SaturnServer\Page\Count();
+    $Data = $Count->CountTotalPages();
+
+    echo $Data;
+});
+
+// Articles
+$Router->get('/v1/article/count', function () {
+    require_once __DIR__.'/Article/Count.php';
+    $Count = new \SaturnServer\Article\Count();
+    $Data = $Count->CountTotalArticles();
 
     echo $Data;
 });

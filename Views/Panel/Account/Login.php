@@ -26,10 +26,10 @@ $TL = new Translate();
                     <button type="submit" name="login" id="login" class="btn col-span-2">
                         <i class="fas fa-lock fa-sm absolute left-4 top-1/3" aria-hidden="true"></i> <span><?= $TL->TL('SignIn'); ?></span>
                     </button>
-                    <a href="reset" class="btn-sm">
+                    <a href="/account/reset" class="btn-sm">
                         <?= $TL->TL('SignIn_Forgot'); ?>
                     </a>
-                    <a href="register" class="btn-sm">
+                    <a href="/account/register" class="btn-sm">
                         <?= $TL->TL('CreateAccount'); ?>
                     </a>
                 </div>

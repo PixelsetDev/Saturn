@@ -25,7 +25,7 @@ $TL = new Translate();
                     <button type="submit" name="login" id="login" class="btn">
                         <i class="fas fa-lock fa-sm absolute left-4 top-1/3" aria-hidden="true"></i> <span><?= $TL->TL('Reset'); ?></span>
                     </button>
-                    <a href="./" class="btn-sm">
+                    <a href="/account" class="btn-sm">
                         <?= $TL->TL('Back'); ?>
                     </a>
                 </div>

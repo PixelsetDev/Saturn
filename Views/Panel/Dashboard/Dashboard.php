@@ -23,8 +23,8 @@ $TL = new Translate();
                 <h1 class="text-3xl font-bold mb-8"><?= $TL->TL('Dashboard'); ?></h1>
 
                 <div class="flex space-x-8">
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-white dark:bg-neutral-800">
-                        <a href="pages">
+                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800">
+                        <a href="/panel/pages">
                             <div class="flex items-center">
                                 <div class="bg-neutral-200 dark:bg-neutral-900 h-8 w-8 rounded-full relative text-center">
                                     <div class="absolute top-[12%] left-[27%]"><i class="far fa-file fa-lg text-neutral-700 dark:text-white" aria-hidden="true"></i></div>
@@ -34,14 +34,12 @@ $TL = new Translate();
                                 </p>
                             </div>
                             <div class="flex flex-col justify-start">
-                                <h2 class="text-4xl text-left font-bold my-4">
-                                    0
-                                </h2>
+                                <p class="text-4xl text-left font-bold my-4" id="PageCount">0</p>
                             </div>
                         </a>
                     </div>
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-white dark:bg-neutral-800">
-                        <a href="articles">
+                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800">
+                        <a href="/panel/articles">
                             <div class="flex items-center">
                                 <div class="bg-neutral-200 dark:bg-neutral-900 h-8 w-8 rounded-full relative text-center">
                                     <div class="absolute top-[12%] left-[18%]"><i class="far fa-newspaper fa-lg text-neutral-700 dark:text-white" aria-hidden="true"></i></div>
@@ -51,14 +49,12 @@ $TL = new Translate();
                                 </p>
                             </div>
                             <div class="flex flex-col justify-start">
-                                <h2 class="text-4xl text-left font-bold my-4">
-                                    0
-                                </h2>
+                                <p class="text-4xl text-left font-bold my-4" id="ArticleCount">0</p>
                             </div>
                         </a>
                     </div>
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-white dark:bg-neutral-800">
-                        <a href="actions">
+                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800">
+                        <a href="/panel/actions">
                             <div class="flex items-center">
                                 <div class="bg-neutral-200 dark:bg-neutral-900 h-8 w-8 rounded-full relative text-center">
                                     <div class="absolute top-[12%] left-[18%]"><i class="fas fa-search fa-lg text-neutral-700 dark:text-white" aria-hidden="true"></i></div>
@@ -68,16 +64,14 @@ $TL = new Translate();
                                 </h2>
                             </div>
                             <div class="flex flex-col justify-start">
-                                <p class="text-4xl text-left font-bold my-4">
-                                    0
-                                </p>
+                                <p class="text-4xl text-left font-bold my-4" id="PendingActionCount">0</p>
                             </div>
                         </a>
                     </div>
                 </div>
 
-                <div class="shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-white dark:bg-neutral-800 mt-8">
-                    <a href="analytics">
+                <div class="shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800 mt-8">
+                    <a href="/panel/analytics">
                         <div class="flex flex-col justify-start">
                             <h2 class="text-3xl font-bold mb-4"><?= $TL->TL('Analytics'); ?></h2>
                             <p class="text-xl text-left my-4">
@@ -87,8 +81,8 @@ $TL = new Translate();
                     </a>
                 </div>
 
-                <div class="shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-white dark:bg-neutral-800 mt-8">
-                    <a href="tasks">
+                <div class="shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800 mt-8">
+                    <a href="/panel/tasks">
                         <div class="flex flex-col justify-start">
                             <h2 class="text-3xl font-bold mb-4"><?= $TL->TL('Tasks'); ?></h2>
                             <div class="text-left my-4 grid grid-cols-2 gap-4">
@@ -108,4 +102,17 @@ $TL = new Translate();
             </div>
         </div>
     </body>
+    <?php global $API_LOCATION;?>
+
+    <script>
+        fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/page/count')
+            .then(response=>response.json())
+            .then(data=>{ document.getElementById('PageCount').innerText = data; })
+        fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/article/count')
+            .then(response=>response.json())
+            .then(data=>{ document.getElementById('ArticleCount').innerText = data; })
+        fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/action/count/pending')
+            .then(response=>response.json())
+            .then(data=>{ document.getElementById('PendingActionCount').innerText = data; })
+    </script>
 </html>
