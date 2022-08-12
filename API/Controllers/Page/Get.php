@@ -7,7 +7,7 @@ use Boa\Database\SQL;
 class Get
 {
 
-    private $List = array();
+    private array $List = array();
 
     /**
      * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
@@ -17,9 +17,9 @@ class Get
      *
      * @version     1.0.0
      *
-     * @return mixed
+     * @return array
      */
-    public function List() {
+    public function List(): array {
         $SQL = new SQL();
 
         $PageList = $SQL->Select('*', $SQL->Escape(DATABASE_PREFIX).'Pages', '`parent` IS NULL', 'ALL:ASSOC');
@@ -38,6 +38,8 @@ class Get
      * @since       1.0.0
      *
      * @version     1.0.0
+     *
+     * @param $ID
      *
      * @return void
      */
