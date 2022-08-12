@@ -10,7 +10,7 @@ class QOTD
     {
         global $Plugins;
 
-        $Plugins->RegisterHook('PANEL_DASH_WIDGETS_END', __NAMESPACE__ .'\QOTD::DashboardQOTD');
+        $Plugins->RegisterHook('PANEL_DASH_WIDGETS_END', __NAMESPACE__.'\QOTD::DashboardQOTD');
     }
 
     public static function DashboardQOTD(): void
@@ -26,7 +26,8 @@ class QOTD
                         </div>');
     }
 
-    public static function GetQOTD() {
+    public static function GetQOTD()
+    {
         return json_decode(file_get_contents('https://zenquotes.io/api/today'));
     }
 }

@@ -16,7 +16,8 @@ class Count
      *
      * @return mixed
      */
-    public function CountTotalPages() {
+    public function CountTotalPages()
+    {
         $SQL = new SQL();
 
         return $SQL->Select('*', DATABASE_PREFIX.'Pages', '1', 'NUMROWS');

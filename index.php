@@ -17,7 +17,6 @@
  *
  * @version     1.0.0
  */
-
 ob_start();
 session_start();
 
@@ -30,10 +29,8 @@ require_once __DIR__.'/Kit/PluginKit/PluginKit.php';
 
 $Plugins = new \Saturn\PluginKit();
 $loaded = 0;
-foreach (glob(__DIR__ . "/Plugins/*/*.php") as $Filename)
-{
-    if ($Plugins->GetPluginName($Filename) == $Plugins->GetFileName($Filename))
-    {
+foreach (glob(__DIR__.'/Plugins/*/*.php') as $Filename) {
+    if ($Plugins->GetPluginName($Filename) == $Plugins->GetFileName($Filename)) {
         require $Filename;
         $loaded++;
     }

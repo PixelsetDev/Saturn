@@ -75,7 +75,7 @@ $Router->get('/v1/article/count', function () {
     $Count = new \SaturnServer\Article\Count();
     $Data = $Count->CountTotalArticles();
 
-    if ($Data == NULL) {
+    if ($Data == null) {
         echo 0;
     } else {
         echo $Data;

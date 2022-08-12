@@ -16,10 +16,12 @@ class UserData
      *
      * @return mixed
      */
-    public function GetFullName($Username) {
+    public function GetFullName($Username)
+    {
         $SQL = new SQL();
 
         $Name = $SQL->Select('`firstname`, `lastname`', DATABASE_PREFIX.'users', '`username` = \''.$Username.'\'', 'ALL:ASSOC');
+
         return $Name[0]['firstname'].' '.$Name[0]['lastname'];
     }
 }
