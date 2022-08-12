@@ -16,7 +16,8 @@ class Count
      *
      * @return mixed
      */
-    public function CountTotalArticles() {
+    public function CountTotalArticles()
+    {
         $SQL = new SQL();
 
         return $SQL->Select('*', DATABASE_PREFIX.'Articles', '1', 'NUMROWS');

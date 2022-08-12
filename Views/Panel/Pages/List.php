@@ -12,10 +12,10 @@ $TL = new Translate();
 
     </head>
     <body class="dark:bg-black dark:text-white w-full h-full">
-        <?php require_once __DIR__ . '/../Header.inc'; ?>
+        <?php require_once __DIR__.'/../Header.inc'; ?>
 
         <div class="flex md:flex-row flex-col w-full h-full">
-            <?php require_once __DIR__ . '/../Sidebar.inc'; ?>
+            <?php require_once __DIR__.'/../Sidebar.inc'; ?>
 
             <div class="h-full w-full py-8 px-10">
                 <h1 class="text-3xl font-bold mb-7"><?= $TL->TL('Pages'); ?></h1>
