@@ -58,12 +58,15 @@ $Router->get('/v1/authenticate', function () {
 });
 
 // Pages
+$Router->get('/v1/page/list', function () {
+    require_once __DIR__.'/Page/Get.php';
+    $GET = new \SaturnServer\Page\Get();
+    echo json_encode($GET->List());
+});
 $Router->get('/v1/page/count', function () {
     require_once __DIR__.'/Page/Count.php';
     $Count = new \SaturnServer\Page\Count();
-    $Data = $Count->CountTotalPages();
-
-    echo $Data;
+    echo $Count->CountTotalPages();
 });
 
 // Articles
@@ -79,13 +82,11 @@ $Router->get('/v1/article/count', function () {
     }
 });
 
-// Articles
+// Users
 $Router->get('/v1/user/fullname', function () {
     require_once __DIR__.'/User/UserData.php';
     $UserData = new \SaturnServer\User\UserData();
-    $Data = $UserData->GetFullName($_GET['username']);
-
-    echo $Data;
+    echo $UserData->GetFullName($_GET['username']);
 });
 
 // Thunderbirds are go!

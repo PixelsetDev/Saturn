@@ -14,7 +14,7 @@ class Authentication
         new App();
         $SQL = new SQL();
 
-        $User = $SQL->Select('*', DATABASE_PREFIX.'users', '`username` = \''.$Username.'\' OR `email` = \''.$Username.'\'', 'ALL:ASSOC');
+        $User = $SQL->Select('*', $SQL->Escape(DATABASE_PREFIX).'users', '`username` = \''.$SQL->Escape($Username).'\' OR `email` = \''.$SQL->Escape($Username).'\'', 'ALL:ASSOC');
 
         if (!isset($User[0]['id'])) {
             return 1;
