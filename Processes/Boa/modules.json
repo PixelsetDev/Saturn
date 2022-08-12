@@ -6,12 +6,12 @@
   },
   "2": {
     "module": "/Authentication/JWT.php",
-    "enabled": true,
+    "enabled": false,
     "requires": null
   },
   "3": {
     "module": "/Database/SQL.php",
-    "enabled": false,
+    "enabled": true,
     "requires": null
   },
   "4": {

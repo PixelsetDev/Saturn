@@ -2,19 +2,33 @@
 
 namespace QOTD;
 
+use Saturn\ClientKit\GUI;
+
 class QOTD
 {
     public function __construct()
     {
         global $Plugins;
 
-        $Plugins->RegisterHook('PANEL_SIDEBAR_LINKS_END', __NAMESPACE__ .'\QOTD::GetQOTD');
+        $Plugins->RegisterHook('PANEL_DASH_WIDGETS_END', __NAMESPACE__ .'\QOTD::DashboardQOTD');
+    }
+
+    public static function DashboardQOTD(): void
+    {
+        $Quote = self::GetQOTD();
+        $GUI = new GUI();
+        echo $GUI->Widget('<div class="flex flex-col justify-start">
+                            <h2 class="text-3xl font-bold mb-2">Quote of the Day</h2>
+                            <p class="text-xl text-left my-2">
+                                "'.$Quote[0]->q.'" <span class="text-sm">- '.$Quote[0]->a.'</span><br>
+                                <span class="italic text-xs">Provided by ZenQuotes API</span>
+                            </p>
+                        </div>');
     }
 
     public static function GetQOTD() {
-        $Quote = json_decode(file_get_contents('https://zenquotes.io/api/today'));
-        echo '<div>&nbsp;</div><div class="text-xs md:block hidden" id="QOTDPlugin"><span class="" id="QOTD">'.$Quote[0]->q.'</span><br><span class="italic" id="QOTDAuthor">'.$Quote[0]->a.' (Zen Quotes API)</span></div>';
+        return json_decode(file_get_contents('https://zenquotes.io/api/today'));
     }
 }
 
-$QOTD = new QOTD();
+new QOTD();

@@ -1,8 +1,6 @@
 <?php
-use Saturn\ClientKit;
 use Saturn\ClientKit\Translate;
 
-new ClientKit();
 $TL = new Translate();
 ?><!DOCTYPE html>
 <html lang="<?= PANEL_LANGUAGE; ?>" class="min-h-full">

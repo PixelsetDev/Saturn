@@ -12,6 +12,9 @@
     "SaturnCMS": "Saturn CMS",
     "SignIn": "Sign in",
     "SignIn_Forgot": "Forgot",
+    "SignIn_Error_UsernamePassword": "Username or Password is incorrect.",
+    "SignIn_Error_MultipleAccounts": "That email address matches multiple accounts.",
+    "SignIn_Error_UseUsername": "Please use your username instead.",
     "Register": "Create an Account",
     "FirstName": "First name",
     "LastName": "Last name",
@@ -28,6 +31,8 @@
     "Tasks_My": "My Tasks",
     "Tasks_Team": "Team Tasks",
     "Tasks_Done": "All done!",
-    "Settings": "Settings"
+    "Settings": "Settings",
+    "UnknownError": "An unknown error has occurred.",
+    "Warnings": "Warnings"
   }
 }

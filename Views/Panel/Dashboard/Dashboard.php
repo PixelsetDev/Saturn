@@ -1,15 +1,17 @@
 <?php
-use Saturn\ClientKit;
-use Saturn\ClientKit\Translate;
+use Saturn\ClientKit\SecureArea;use Saturn\ClientKit\Translate;
 
-new ClientKit();
 $TL = new Translate();
+$SecureArea = new SecureArea();
+
+require_once __DIR__ . '/../../../Processes/Controllers/Panel/Dashboard/DashErrors.php';
+
 ?><!DOCTYPE html>
 <html lang="<?= PANEL_LANGUAGE; ?>" class="min-h-full">
     <head>
         <?php require_once __DIR__.'/../Vendors.inc'; ?>
 
-        <title><?= $TL->TL('SignIn'); ?> - <?= WEBSITE_NAME; ?></title>
+        <title><?= $TL->TL('Saturn'); ?> <?= $TL->TL('Dashboard'); ?> - <?= WEBSITE_NAME; ?></title>
         <?php global $Plugins; $Plugins->ExecuteHook('PANEL_HEAD_END'); ?>
 
     </head>
@@ -70,6 +72,17 @@ $TL = new Translate();
                     </div>
                 </div>
 
+                <?php if (isset($DashErrors) && $DashErrors != '') { ?>
+                <div class="shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-red-50 dark:bg-red-800 mt-8">
+                    <div class="flex flex-col justify-start">
+                        <h2 class="text-3xl font-bold mb-4"><i class="fa-solid fa-triangle-exclamation text-red-500" aria-hidden="true"></i> <?= $TL->TL('Warnings'); ?></h2>
+                        <p class="text-xl text-left my-4">
+                            <?= $DashErrors; ?>
+                        </p>
+                    </div>
+                </div>
+                <?php } ?>
+
                 <div class="shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800 mt-8">
                     <a href="/panel/analytics">
                         <div class="flex flex-col justify-start">
@@ -99,6 +112,9 @@ $TL = new Translate();
                         </div>
                     </a>
                 </div>
+
+                <?php global $Plugins; $Plugins->ExecuteHook('PANEL_DASH_WIDGETS_END'); ?>
+
             </div>
         </div>
     </body>
@@ -106,13 +122,13 @@ $TL = new Translate();
 
     <script>
         fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/page/count')
-            .then(response=>response.json())
+            .then(response=>response.text())
             .then(data=>{ document.getElementById('PageCount').innerText = data; })
         fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/article/count')
-            .then(response=>response.json())
+            .then(response=>response.text())
             .then(data=>{ document.getElementById('ArticleCount').innerText = data; })
         fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/action/count/pending')
-            .then(response=>response.json())
+            .then(response=>response.text())
             .then(data=>{ document.getElementById('PendingActionCount').innerText = data; })
     </script>
 </html>

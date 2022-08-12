@@ -18,6 +18,9 @@
  * @version     1.0.0
  */
 
+ob_start();
+session_start();
+
 // Load required files, kits and libraries
 require_once __DIR__.'/Settings.php';
 require_once __DIR__.'/Processes/Data.php';
@@ -55,3 +58,5 @@ if (DEBUG && DEBUG_INSECURE) {
 
 // Start the Router
 require_once __DIR__.'/Processes/Controllers/Router/Router.php';
+
+ob_end_flush();

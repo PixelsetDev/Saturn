@@ -72,6 +72,19 @@ $Router->get('/v1/article/count', function () {
     $Count = new \SaturnServer\Article\Count();
     $Data = $Count->CountTotalArticles();
 
+    if ($Data == NULL) {
+        echo 0;
+    } else {
+        echo $Data;
+    }
+});
+
+// Articles
+$Router->get('/v1/user/fullname', function () {
+    require_once __DIR__.'/User/UserData.php';
+    $UserData = new \SaturnServer\User\UserData();
+    $Data = $UserData->GetFullName($_GET['username']);
+
     echo $Data;
 });
 

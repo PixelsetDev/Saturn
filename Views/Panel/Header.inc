@@ -16,11 +16,16 @@
                     <li>
                         <a href="#" class="flex items-center text-base font-normal text-white rounded-lg dark:text-white">
                             <img src="/Assets/Images/BlankPFP.png" class="h-6 rounded-full bg-neutral-700" alt="Lewis Milburn">
-                            <span class="ml-2">Lewis Milburn</span>
+                            <span class="ml-2" id="FullName"></span>
                         </a>
                     </li>
                 </ul>
             </div>
-            <?php global $Plugins; $Plugins->ExecuteHook('PANEL_HEADER_END'); ?>
+            <?php global $Plugins; global $API_LOCATION; $Plugins->ExecuteHook('PANEL_HEADER_END'); ?>
 
         </header>
+        <script>
+            fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/user/fullname?username=<?= $_SESSION['username']; ?>')
+                .then(response=>response.text())
+                .then(data=>{ document.getElementById('FullName').innerText = data; })
+        </script>

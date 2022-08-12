@@ -1,3 +1,0 @@
-/**
- * ServerKit JS
- */

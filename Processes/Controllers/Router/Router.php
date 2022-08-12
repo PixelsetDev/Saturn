@@ -38,17 +38,16 @@ $Router->get('/', function () {
 });
 
 // Panel
-$_SESSION['LoggedIn'] = true;
 $Router->mount('/panel', function () use ($Router) {
     $Router->get('/', function () {
-        if (isset($_SESSION['LoggedIn'])) {
+        if (isset($_SESSION['token'])) {
             require_once __DIR__.'/../../../Views/Panel/Dashboard/Dashboard.php';
         } else {
             require_once __DIR__.'/../../../Views/Panel/Account/Login.php';
         }
     });
     $Router->post('/', function () {
-        require_once __DIR__.'/../../Panel/Account/Login.php';
+        require_once __DIR__ . '/../../Controllers/Panel/Account/Login.php';
     });
     // Register
     $Router->get('/register', function () {
@@ -72,7 +71,7 @@ $Router->mount('/account', function () use ($Router) {
         require_once __DIR__.'/../../../Views/Panel/Account/Login.php';
     });
     $Router->post('/', function () {
-        require_once __DIR__.'/../../Panel/Account/Login.php';
+        require_once __DIR__ . '/../../Controllers/Panel/Account/Login.php';
     });
     // Register
     $Router->get('/register', function () {
