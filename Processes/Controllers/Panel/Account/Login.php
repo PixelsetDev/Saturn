@@ -4,7 +4,7 @@ use Saturn\ClientKit\Authentication;
 
 global $API_LOCATION;
 
-require_once __DIR__ . '/../../../../Kit/ClientKit/ClientKit.php';
+require_once __DIR__.'/../../../../Kit/ClientKit/ClientKit.php';
 
 $Auth = new Authentication();
 

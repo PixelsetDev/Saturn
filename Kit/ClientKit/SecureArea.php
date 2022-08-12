@@ -7,7 +7,7 @@ class SecureArea
     public function __construct()
     {
         if (!isset($_SESSION['token'])) {
-            header ('Location: /account');
+            header('Location: /account');
         }
     }
 }

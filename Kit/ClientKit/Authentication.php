@@ -7,9 +7,9 @@ use Boa\Database\SQL;
 
 class Authentication
 {
-    public function DoLogin($Username, $Password): int | array
+    public function DoLogin($Username, $Password): int|array
     {
-        require_once __DIR__ . '/../../Processes/Boa/Boa.php';
+        require_once __DIR__.'/../../Processes/Boa/Boa.php';
 
         new App();
         $SQL = new SQL();

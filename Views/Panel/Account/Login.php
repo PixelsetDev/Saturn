@@ -1,6 +1,7 @@
 <?php
 use Saturn\ClientKit\GUI;
 use Saturn\ClientKit\Translate;
+
 $TL = new Translate();
 $GUI = new GUI();
 ?><!DOCTYPE html>
@@ -18,9 +19,15 @@ $GUI = new GUI();
             <form class="bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white w-full h-full" action="" method="POST">
                 <div class="md:px-6 md:py-8 sm:px-4 sm:py-6 px-2 py-4">
                     <h1 class="text-3xl text-center font-bold mb-8"><?= $TL->TL('SignIn'); ?></h1>
-                    <?php if (isset($_GET['Error']) && $_GET['Error'] == 1) { echo $GUI->Alert('ERROR', $TL->TL('SignIn_Error_UsernamePassword'), NULL, NULL, NULL, '4'); } ?>
-                    <?php if (isset($_GET['Error']) && $_GET['Error'] == 2) { echo $GUI->Alert('ERROR', $TL->TL('SignIn_Error_MultipleAccounts'), $TL->TL('SignIn_Error_UseUsername'), NULL, NULL, '4'); } ?>
-                    <?php if (isset($_GET['Error']) && $_GET['Error'] == -1) { echo $GUI->Alert('ERROR', $TL->TL('UnknownError'), NULL, NULL, NULL, '4'); } ?>
+                    <?php if (isset($_GET['Error']) && $_GET['Error'] == 1) {
+    echo $GUI->Alert('ERROR', $TL->TL('SignIn_Error_UsernamePassword'), null, null, null, '4');
+} ?>
+                    <?php if (isset($_GET['Error']) && $_GET['Error'] == 2) {
+    echo $GUI->Alert('ERROR', $TL->TL('SignIn_Error_MultipleAccounts'), $TL->TL('SignIn_Error_UseUsername'), null, null, '4');
+} ?>
+                    <?php if (isset($_GET['Error']) && $_GET['Error'] == -1) {
+    echo $GUI->Alert('ERROR', $TL->TL('UnknownError'), null, null, null, '4');
+} ?>
                     <input type="text" name="username" id="username" maxlength="127" required placeholder="<?= $TL->TL('UsernameEmail'); ?>" class="input-full">
                     <input type="password" name="password" id="password" maxlength="255" required placeholder="<?= $TL->TL('Password'); ?>" class="input-full">
                 </div>

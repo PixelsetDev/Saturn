@@ -6,6 +6,7 @@ class PluginKit
 {
     /**
      * @since 1.0.0
+     *
      * @var array
      */
     public array $Hooks;
@@ -17,7 +18,7 @@ class PluginKit
      */
     public function __construct()
     {
-        $this->Hooks = array();
+        $this->Hooks = [];
     }
 
     /**
@@ -33,6 +34,7 @@ class PluginKit
     public function RegisterHook($Name, $Function): bool
     {
         $this->Hooks[$Name][] = $Function;
+
         return true;
     }
 
@@ -48,9 +50,10 @@ class PluginKit
     public function ExecuteHook($Name): bool
     {
         if (array_key_exists($Name, $this->Hooks)) {
-            foreach($this->Hooks[$Name] as $Function){
+            foreach ($this->Hooks[$Name] as $Function) {
                 call_user_func($Function);
             }
+
             return true;
         } else {
             return false;
@@ -66,10 +69,11 @@ class PluginKit
      *
      * @return string
      */
-    static public function GetPluginName($Filename): string
+    public static function GetPluginName($Filename): string
     {
         $Directories = explode('/', $Filename);
         $NumKeys = array_key_last($Directories) - 1;
+
         return $Directories[$NumKeys];
     }
 
@@ -82,11 +86,12 @@ class PluginKit
      *
      * @return string
      */
-    static public function GetFileName($Filename): string
+    public static function GetFileName($Filename): string
     {
         $Directories = explode('/', $Filename);
         $NumKeys = array_key_last($Directories);
         $FileName = explode('.', $Directories[$NumKeys]);
+
         return $FileName[0];
     }
 }
