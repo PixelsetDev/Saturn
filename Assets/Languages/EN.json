@@ -33,6 +33,13 @@
     "Tasks_Done": "All done!",
     "Settings": "Settings",
     "UnknownError": "An unknown error has occurred.",
-    "Warnings": "Warnings"
+    "Warnings": "Warnings",
+    "SignOut": "Sign out",
+    "SignedIn": "You are signed in to your account. To end this session, click sign out.",
+    "Exit": "Exit",
+    "Page_Empty": "Page Empty",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Inbox": "Inbox"
   }
 }

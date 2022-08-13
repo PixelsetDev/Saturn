@@ -44,14 +44,22 @@ class SQL extends App
         return $this->connect;
     }
 
-    public function Select($select, $from, $where = '1', $mode = 'NONE')
+    public function Select($select, $from, $where = '1', $mode = 'NONE', $order_by = null)
     {
         $DB = $this->connect;
 
         if ($select != '*' && !str_contains($select, '`')) {
-            $result = $DB->query("SELECT `$select` FROM `$from` WHERE $where;");
+            if ($order_by == NULL) {
+                $result = $DB->query("SELECT `$select` FROM `$from` WHERE $where;");
+            } else {
+                $result = $DB->query("SELECT `$select` FROM `$from` WHERE $where ORDER BY $order_by ASC;");
+            }
         } else {
-            $result = $DB->query("SELECT $select FROM `$from` WHERE $where;");
+            if ($order_by == NULL) {
+                $result = $DB->query("SELECT $select FROM `$from` WHERE $where;");
+            } else {
+                $result = $DB->query("SELECT $select FROM `$from` WHERE $where ORDER BY $order_by ASC;");
+            }
         }
 
         if ($result->num_rows > 0) {

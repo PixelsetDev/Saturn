@@ -65,10 +65,14 @@ $Router->mount('/panel', function () use ($Router) {
     });
 });
 
-// Panel
+// Account
 $Router->mount('/account', function () use ($Router) {
     $Router->get('/', function () {
-        require_once __DIR__.'/../../../Views/Panel/Account/Login.php';
+        if (isset($_SESSION['token'])) {
+            require_once __DIR__.'/../../../Views/Panel/Account/Overview.php';
+        } else {
+            require_once __DIR__.'/../../../Views/Panel/Account/Login.php';
+        }
     });
     $Router->post('/', function () {
         require_once __DIR__.'/../../Controllers/Panel/Account/Login.php';
@@ -77,7 +81,12 @@ $Router->mount('/account', function () use ($Router) {
     $Router->get('/register', function () {
         require_once __DIR__.'/../../../Views/Panel/Account/Register.php';
     });
-
+    // Sign out
+    $Router->get('/signout', function () {
+        session_unset();
+        session_destroy();
+        header('Location: /account');
+    });
     // Reset
     $Router->get('/reset', function () {
         require_once __DIR__.'/../../../Views/Panel/Account/Reset.php';

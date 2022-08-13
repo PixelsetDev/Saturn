@@ -16,17 +16,17 @@ require_once __DIR__.'/../../../Processes/Controllers/Panel/Dashboard/DashErrors
         <?php global $Plugins; $Plugins->ExecuteHook('PANEL_HEAD_END'); ?>
 
     </head>
-    <body class="dark:bg-black dark:text-white w-full h-full">
+    <body class="dark:bg-black dark:text-white w-full min-h-screen flex flex-col">
         <?php require_once __DIR__.'/../Header.inc'; ?>
 
-        <div class="flex md:flex-row flex-col w-full h-full">
+        <div class="md:grid xl:grid-cols-8 md:grid-cols-4 w-full flex-grow">
             <?php require_once __DIR__.'/../Sidebar.inc'; ?>
 
-            <div class="h-full w-full py-8 px-10">
+            <div class="h-full w-full py-8 px-10 xl:col-span-7 md:col-span-3">
                 <h1 class="text-3xl font-bold mb-8"><?= $TL->TL('Dashboard'); ?></h1>
 
                 <div class="flex space-x-8">
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800">
+                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800" id="Pages">
                         <a href="/panel/pages">
                             <div class="flex items-center">
                                 <div class="bg-neutral-200 dark:bg-neutral-900 h-8 w-8 rounded-full relative text-center">
@@ -41,7 +41,7 @@ require_once __DIR__.'/../../../Processes/Controllers/Panel/Dashboard/DashErrors
                             </div>
                         </a>
                     </div>
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800">
+                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800" id="Articles">
                         <a href="/panel/articles">
                             <div class="flex items-center">
                                 <div class="bg-neutral-200 dark:bg-neutral-900 h-8 w-8 rounded-full relative text-center">
@@ -56,7 +56,7 @@ require_once __DIR__.'/../../../Processes/Controllers/Panel/Dashboard/DashErrors
                             </div>
                         </a>
                     </div>
-                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800">
+                    <div class="flex-grow shadow-lg hover:shadow-xl transition-shadow duration-200 w-auto p-4 bg-neutral-50 dark:bg-neutral-800 hidden" id="PendingActions">
                         <a href="/panel/actions">
                             <div class="flex items-center">
                                 <div class="bg-neutral-200 dark:bg-neutral-900 h-8 w-8 rounded-full relative text-center">
@@ -130,6 +130,11 @@ require_once __DIR__.'/../../../Processes/Controllers/Panel/Dashboard/DashErrors
             .then(data=>{ document.getElementById('ArticleCount').innerText = data; })
         fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/action/count/pending')
             .then(response=>response.text())
-            .then(data=>{ document.getElementById('PendingActionCount').innerText = data; })
+            .then(data=>{
+                if (data != 'disabled') {
+                    document.getElementById('PendingActions').classList.remove("hidden");
+                    document.getElementById('PendingActionCount').innerText = data;
+                }
+            })
     </script>
 </html>

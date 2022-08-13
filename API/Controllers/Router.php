@@ -89,6 +89,11 @@ $Router->get('/v1/user/fullname', function () {
     echo $UserData->GetFullName($_GET['username']);
 });
 
+// Actions
+$Router->get('/v1/action/count/pending', function () {
+    echo 'disabled';
+});
+
 // Thunderbirds are go!
 $Router->run();
 
