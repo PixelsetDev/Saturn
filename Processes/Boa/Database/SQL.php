@@ -49,13 +49,13 @@ class SQL extends App
         $DB = $this->connect;
 
         if ($select != '*' && !str_contains($select, '`')) {
-            if ($order_by == NULL) {
+            if ($order_by == null) {
                 $result = $DB->query("SELECT `$select` FROM `$from` WHERE $where;");
             } else {
                 $result = $DB->query("SELECT `$select` FROM `$from` WHERE $where ORDER BY $order_by ASC;");
             }
         } else {
-            if ($order_by == NULL) {
+            if ($order_by == null) {
                 $result = $DB->query("SELECT $select FROM `$from` WHERE $where;");
             } else {
                 $result = $DB->query("SELECT $select FROM `$from` WHERE $where ORDER BY $order_by ASC;");
