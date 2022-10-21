@@ -46,7 +46,7 @@ class SQL extends App
 
             $jsonArray['status'] = '500';
             $jsonArray['response'] = 'Internal Server Error - Unable to connect to the database';
-            die(json_encode($jsonArray));
+            exit(json_encode($jsonArray));
         }
 
         // Return the connection.

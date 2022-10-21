@@ -62,8 +62,7 @@ class JWT extends App
         string $type = 'JWT',
         string $algorithm = JWT_ALGORITHM,
         int $starttime = 0
-    )
-    {
+    ) {
         parent::__construct();
 
         $this->key = $key;

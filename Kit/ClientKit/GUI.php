@@ -15,9 +15,9 @@ class GUI
         };
 
         if ($Message != null) {
-            return '<div class="px-2 py-1 my-' . $YMargin . ' bg-' . $Colour . '-100 border-l-2 border-' . $Colour . '-500"><strong>' . $Title . '</strong><br>' . $Message . '</div>';
+            return '<div class="px-2 py-1 my-'.$YMargin.' bg-'.$Colour.'-100 border-l-2 border-'.$Colour.'-500"><strong>'.$Title.'</strong><br>'.$Message.'</div>';
         } else {
-            return '<div class="px-2 py-1 my-' . $YMargin . ' bg-' . $Colour . '-100 border-l-2 border-' . $Colour . '-500"><strong>' . $Title . '</strong></div>';
+            return '<div class="px-2 py-1 my-'.$YMargin.' bg-'.$Colour.'-100 border-l-2 border-'.$Colour.'-500"><strong>'.$Title.'</strong></div>';
         }
     }
 
