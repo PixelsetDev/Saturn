@@ -28,6 +28,11 @@ $GUI = new GUI();
                     <?php if (isset($_GET['Error']) && $_GET['Error'] == -1) {
     echo $GUI->Alert('ERROR', $TL->TL('UnknownError'), null, null, null, '4');
 } ?>
+                    <?php if (isset($_GET['Error']) && $_GET['Error'] == 3) {
+                        session_unset();
+                        session_destroy();
+                        echo $GUI->Alert('ERROR', $TL->TL('DatabaseError'), $TL->TL('DatabaseError_Message'), null, null, '4');
+} ?>
                     <input type="text" name="username" id="username" maxlength="127" required placeholder="<?= $TL->TL('UsernameEmail'); ?>" class="input-full">
                     <input type="password" name="password" id="password" maxlength="255" required placeholder="<?= $TL->TL('Password'); ?>" class="input-full">
                 </div>

@@ -122,6 +122,9 @@ require_once __DIR__.'/../../../Processes/Controllers/Panel/Dashboard/DashErrors
     <?php global $API_LOCATION; ?>
 
     <script>
+        fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/status')
+            .then(response=>response.json())
+            .then(data=>{ if(data.status === '500') { console.log('database error'); window.location.replace('/account/?Error=3'); }} );
         fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/page/count')
             .then(response=>response.text())
             .then(data=>{ document.getElementById('PageCount').innerText = data; })
@@ -131,7 +134,7 @@ require_once __DIR__.'/../../../Processes/Controllers/Panel/Dashboard/DashErrors
         fetch('<?= $API_LOCATION; ?>/<?= API_VERSION; ?>/action/count/pending')
             .then(response=>response.text())
             .then(data=>{
-                if (data != 'disabled') {
+                if (data !== 'disabled') {
                     document.getElementById('PendingActions').classList.remove("hidden");
                     document.getElementById('PendingActionCount').innerText = data;
                 }

@@ -38,7 +38,16 @@ class SQL extends App
         ];
 
         // Connect to the database.
-        $this->connect = new mysqli($this->settings['database_hostname'], $this->settings['database_username'], $this->settings['database_password'], $this->settings['database_database'], $this->settings['database_port'], $this->settings['database_socket']);
+        try {
+            $this->connect = new mysqli($this->settings['database_hostname'], $this->settings['database_username'], $this->settings['database_password'], $this->settings['database_database'], $this->settings['database_port'], $this->settings['database_socket']);
+        } catch (\mysqli_sql_exception) {
+            header('HTTP/1.1 500 Internal Server Error');
+            header('Content-Type: application/json');
+
+            $jsonArray['status'] = '500';
+            $jsonArray['response'] = 'Internal Server Error - Unable to connect to the database';
+            die(json_encode($jsonArray));
+        }
 
         // Return the connection.
         return $this->connect;

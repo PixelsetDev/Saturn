@@ -14,7 +14,11 @@ class GUI
             'NOTIFICATION' => 'neutral'
         };
 
-        return '<div class="px-2 py-1 my-'.$YMargin.' bg-'.$Colour.'-100 border-l-2 border-'.$Colour.'-500"><strong>'.$Title.'</strong> '.$Message.'</div>';
+        if ($Message != null) {
+            return '<div class="px-2 py-1 my-' . $YMargin . ' bg-' . $Colour . '-100 border-l-2 border-' . $Colour . '-500"><strong>' . $Title . '</strong><br>' . $Message . '</div>';
+        } else {
+            return '<div class="px-2 py-1 my-' . $YMargin . ' bg-' . $Colour . '-100 border-l-2 border-' . $Colour . '-500"><strong>' . $Title . '</strong></div>';
+        }
     }
 
     public function Widget(string $Content, string $Link = null)
