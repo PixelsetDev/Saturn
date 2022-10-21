@@ -2,8 +2,6 @@
 
 namespace Discord;
 
-use Saturn\ClientKit\GUI;
-
 class Discord
 {
     public function __construct()

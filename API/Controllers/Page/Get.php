@@ -6,8 +6,7 @@ use Boa\Database\SQL;
 
 class Get
 {
-
-    private array $List = array();
+    private array $List = [];
 
     /**
      * @author      Lewis Milburn <lewis.milburn@lmwn.co.uk>
@@ -19,7 +18,8 @@ class Get
      *
      * @return array
      */
-    public function List(): array {
+    public function List(): array
+    {
         $SQL = new SQL();
 
         $PageList = $SQL->Select('*', $SQL->Escape(DATABASE_PREFIX).'Pages', '`slug` IS NULL', 'ALL:ASSOC', 'title');
@@ -40,7 +40,8 @@ class Get
      *
      * @return array
      */
-    public function ListPages(): array {
+    public function ListPages(): array
+    {
         $SQL = new SQL();
 
         $PageList = $SQL->Select('*', $SQL->Escape(DATABASE_PREFIX).'Pages', '`parent` IS NULL AND `slug` IS NOT NULL', 'ALL:ASSOC', 'title');
@@ -71,7 +72,8 @@ class Get
      *
      * @return void
      */
-    private function ListChildPages($ID, $Parents): bool {
+    private function ListChildPages($ID, $Parents): bool
+    {
         $SQL = new SQL();
 
         $ChildList = $SQL->Select('*', $SQL->Escape(DATABASE_PREFIX).'Pages', '`parent` = \''.$ID.'\'', 'ALL:ASSOC', 'title');
@@ -88,6 +90,7 @@ class Get
                     $this->List[] = $Child;
                 }
             }
+
             return true;
         } else {
             return false;
@@ -106,7 +109,8 @@ class Get
      *
      * @return void
      */
-    private function IsParent($ID): bool {
+    private function IsParent($ID): bool
+    {
         $SQL = new SQL();
 
         $IsParent = $SQL->Select('*', $SQL->Escape(DATABASE_PREFIX).'Pages', '`parent` = \''.$ID.'\'', 'NUM_ROWS');
