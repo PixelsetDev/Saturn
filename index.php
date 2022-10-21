@@ -17,6 +17,9 @@
  *
  * @version     1.0.0
  */
+
+use Saturn\PluginKit;
+
 ob_start();
 session_start();
 
@@ -27,7 +30,7 @@ require_once __DIR__.'/Processes/Boa/Boa.php';
 require_once __DIR__.'/Kit/ClientKit/ClientKit.php';
 require_once __DIR__.'/Kit/PluginKit/PluginKit.php';
 
-$Plugins = new \Saturn\PluginKit();
+$Plugins = new PluginKit();
 $loaded = 0;
 foreach (glob(__DIR__.'/Plugins/*/*.php') as $Filename) {
     if ($Plugins->GetPluginName($Filename) == $Plugins->GetFileName($Filename)) {
@@ -36,20 +39,27 @@ foreach (glob(__DIR__.'/Plugins/*/*.php') as $Filename) {
     }
 }
 
-// Set API Location
 // ALWAYS USE SECURE HTTPS WHERE POSSIBLE
 // THIS OPTION IS HERE FOR LOCALHOST ONLY
 if (DEBUG && DEBUG_INSECURE) {
+    // Set API Location
     if (CUSTOM_API_LOCATION) {
         $API_LOCATION = 'http://'.CUSTOM_API_LOCATION;
     } else {
         $API_LOCATION = 'http://'.$_SERVER['HTTP_HOST'].'/API';
     }
 } else {
+    // Set API Location
     if (CUSTOM_API_LOCATION) {
         $API_LOCATION = 'https://'.CUSTOM_API_LOCATION;
     } else {
         $API_LOCATION = 'https://'.$_SERVER['HTTP_HOST'].'/API';
+    }
+    // Force HTTPS
+    if($_SERVER["HTTPS"] != "on")
+    {
+        header("Location: https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"]);
+        exit;
     }
 }
 

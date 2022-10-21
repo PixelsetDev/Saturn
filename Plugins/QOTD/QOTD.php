@@ -21,7 +21,7 @@ class QOTD
                             <h2 class="text-3xl font-bold mb-2">Quote of the Day</h2>
                             <p class="text-xl text-left my-2">
                                 "'.$Quote[0]->q.'" <span class="text-sm">- '.$Quote[0]->a.'</span><br>
-                                <span class="italic text-xs">Provided by ZenQuotes API</span>
+                                <span class="italic text-xs text-neutral-400">Provided by ZenQuotes API</span>
                             </p>
                         </div>');
     }
