@@ -38,8 +38,11 @@
     "SignedIn": "You are signed in to your account. To end this session, click sign out.",
     "Exit": "Exit",
     "Page_Empty": "Page Empty",
+    "Page_Editor": "Page Editor",
     "Edit": "Edit",
     "Delete": "Delete",
-    "Inbox": "Inbox"
+    "Inbox": "Inbox",
+    "DatabaseError": "Database Error",
+    "DatabaseError_Message": "Saturn is unable to connect to the database. Please verify that it is online and log in again."
   }
 }

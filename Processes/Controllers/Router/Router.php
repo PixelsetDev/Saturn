@@ -59,16 +59,21 @@ $Router->mount('/panel', function () use ($Router) {
         require_once __DIR__.'/../../../Views/Panel/Account/Register.php';
     });
 
-    // Reset
+    // Pages
     $Router->get('/pages', function () {
         require_once __DIR__.'/../../../Views/Panel/Pages/List.php';
+    });
+
+    // Page Editor
+    $Router->get('/pages/edit', function () {
+        require_once __DIR__.'/../../../Views/Panel/Pages/Editor.php';
     });
 });
 
 // Account
 $Router->mount('/account', function () use ($Router) {
     $Router->get('/', function () {
-        if (isset($_SESSION['token'])) {
+        if (isset($_SESSION['token']) && !isset($_GET['Error'])) {
             require_once __DIR__.'/../../../Views/Panel/Account/Overview.php';
         } else {
             require_once __DIR__.'/../../../Views/Panel/Account/Login.php';

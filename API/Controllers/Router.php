@@ -27,6 +27,8 @@ if (php_sapi_name() === 'cli-server' && is_file($filename)) {
 $App = new App();
 $Router = new Router();
 
+const ROUTEVERSION = 'v1';
+
 $Router->set404('(/.*)?', function () {
     header('HTTP/1.1 404 Not Found');
     header('Content-Type: application/json');
@@ -49,7 +51,7 @@ $Router->get('/', function () {
 });
 
 // Auth
-$Router->get('/v1/authenticate', function () {
+$Router->get('/'.ROUTEVERSION.'/authenticate', function () {
     require_once __DIR__.'/Authentication/Login.php';
     $Login = new \SaturnServer\Authentication\Login();
     $Data = $Login->DoLogin($_GET);
@@ -58,19 +60,19 @@ $Router->get('/v1/authenticate', function () {
 });
 
 // Pages
-$Router->get('/v1/page/list', function () {
+$Router->get('/'.ROUTEVERSION.'/page/list', function () {
     require_once __DIR__.'/Page/Get.php';
     $GET = new \SaturnServer\Page\Get();
     echo json_encode($GET->List());
 });
-$Router->get('/v1/page/count', function () {
+$Router->get('/'.ROUTEVERSION.'/page/count', function () {
     require_once __DIR__.'/Page/Count.php';
     $Count = new \SaturnServer\Page\Count();
     echo $Count->CountTotalPages();
 });
 
 // Articles
-$Router->get('/v1/article/count', function () {
+$Router->get('/'.ROUTEVERSION.'/article/count', function () {
     require_once __DIR__.'/Article/Count.php';
     $Count = new \SaturnServer\Article\Count();
     $Data = $Count->CountTotalArticles();
@@ -83,15 +85,22 @@ $Router->get('/v1/article/count', function () {
 });
 
 // Users
-$Router->get('/v1/user/fullname', function () {
+$Router->get('/'.ROUTEVERSION.'/user/fullname', function () {
     require_once __DIR__.'/User/UserData.php';
     $UserData = new \SaturnServer\User\UserData();
     echo $UserData->GetFullName($_GET['username']);
 });
 
 // Actions
-$Router->get('/v1/action/count/pending', function () {
+$Router->get('/'.ROUTEVERSION.'/action/count/pending', function () {
     echo 'disabled';
+});
+
+// Status
+$Router->get('/'.ROUTEVERSION.'/status', function () {
+    require_once __DIR__.'/Status/Status.php';
+    $Status = new \SaturnServer\Status\Status();
+    echo $Status->Status();
 });
 
 // Thunderbirds are go!
