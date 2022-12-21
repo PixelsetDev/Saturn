@@ -1,3 +1,5 @@
+> :warning_triangle: The current version of Saturn is unstable and likely to have bugs. If you use it in a production environment you should backup your website regularly. I'm working on a new version of Saturn that will be much more stable and have new features. ETA late 2023 or early 2024.
+
 # Saturn
 Saturn is a powerful content management system for publishers, educators and everyone in-between. Saturn is a lightweight, blazing-fast and incredibly powerful CMS. Designed with speed, performance and reliability in mind, Saturn is perfect for websites of any size that can scale with ease.
 
