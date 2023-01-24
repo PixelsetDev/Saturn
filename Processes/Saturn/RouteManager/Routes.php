@@ -14,6 +14,7 @@ class Routes {
     public function Register(): void
     {
         $Router = new Router();
+
         $RouteMain = new RouteMain($Router);
         $RoutePanel = new RoutePanel($Router);
 
