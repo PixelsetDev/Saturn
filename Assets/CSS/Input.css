@@ -46,3 +46,41 @@
 .text-error-sm {
     @apply dark:bg-neutral-900 bg-neutral-100 border-2 dark:border-black border-neutral-200 rounded p-1;
 }
+
+/* ALERTS */
+
+.alert {
+    @apply flex;
+}
+
+.alert-text {
+    @apply px-2 py-1;
+}
+
+.alert-icon {
+    @apply px-2 py-1;
+}
+
+.alert-warning {
+    @apply alert border-l-yellow-400 bg-yellow-100 text-black;
+}
+
+.alert-warning-text {
+    @apply alert-text text-yellow-900;
+}
+
+.alert-warning-icon {
+    @apply alert-icon bg-yellow-400 text-yellow-900;
+}
+
+.alert-error {
+    @apply alert border-l-red-400 bg-red-100 text-black;
+}
+
+.alert-error-text {
+    @apply alert-text text-red-900;
+}
+
+.alert-error-icon {
+    @apply alert-icon bg-red-400 text-red-900;
+}
