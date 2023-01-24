@@ -1,5 +1,6 @@
 <?php
 use Saturn\SecurityManager\XSS;
+
 $XSS = new XSS();
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
@@ -54,7 +55,11 @@ $XSS = new XSS();
                     </p>
                 </div><?php }  ?>
                 <p class="text-body pb-2">
-                    <?= __('Operating_System'); ?> <code class="text-error-sm"> <?php if(PHP_OS == 'Darwin') { echo out('macOS (Darwin)'); } else { echo out(PHP_OS); } ?></code>
+                    <?= __('Operating_System'); ?> <code class="text-error-sm"> <?php if (PHP_OS == 'Darwin') {
+    echo out('macOS (Darwin)');
+} else {
+    echo out(PHP_OS);
+} ?></code>
                 </p>
             </div>
         </main>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Saturn Security Manager - Encryption
+ * Saturn Security Manager - Encryption.
  *
  * Manages encryption and decryption of data.
  */
@@ -12,6 +12,5 @@ class Encryption
 {
     public function __construct()
     {
-
     }
 }

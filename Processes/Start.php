@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Saturn
+ * Saturn.
  *
  * This file starts up Saturn.
  */
@@ -20,6 +20,7 @@ $ErrorHandler->Register();
 function out(string $text): string
 {
     $XSS = new XSS();
+
     return $XSS->out($text);
 }
 
@@ -29,15 +30,16 @@ function __(string $text): string
     $XSS = new XSS();
 
     $text = $Translation->Translate($text);
+
     return $XSS->out($text);
 }
 
 // DATABASE
 if (DB_TYPE == 'PDO') {
     $DB = new PDODB();
-} else if (DB_TYPE == 'MySQLi') {
+} elseif (DB_TYPE == 'MySQLi') {
     $DB = new MySQLiDB();
 }
 
 // ROUTER
-require __DIR__ . '/Saturn/ViewManager/Error.php';
+require __DIR__.'/Saturn/ViewManager/Error.php';
