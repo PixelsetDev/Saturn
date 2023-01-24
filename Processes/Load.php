@@ -6,11 +6,19 @@
  * This file loads all the scripts and libraries needed to run Saturn.
  */
 
-// ERROR HANDLER
-require __DIR__ . '/Saturn/ErrorHandler.php';
+// SYSTEM
+require __DIR__ . '/Saturn/System.php';
+
+if (PHP_VERSION < SATURN_MINIMUM_PHP) {
+    echo 'Saturn requires PHP ' . SATURN_MINIMUM_PHP . ' or newer. You are using PHP ' . PHP_VERSION . '.';
+    exit;
+}
 
 // SETTINGS
 require __DIR__ . '/../Settings/Settings.php';
+
+// ERROR HANDLER
+require __DIR__ . '/Saturn/ErrorHandler.php';
 
 // SECURITY MANAGER
 require __DIR__ . '/Saturn/SecurityManager/CSRF.php';

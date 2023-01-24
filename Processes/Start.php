@@ -40,4 +40,4 @@ if (DB_TYPE == 'PDO') {
 }
 
 // ROUTER
-require __DIR__ . '/Router.php';
+require __DIR__ . '/Saturn/ViewManager/Error.php';
