@@ -15,6 +15,7 @@
 // WEBSITE
 const WEBSITE_NAME = 'Saturn';
 const WEBSITE_LANGUAGE = 'en';
+const WEBSITE_ROOT = '';
 
 // DATABASE
 const DB_TYPE = 'PDO';

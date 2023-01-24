@@ -12,8 +12,8 @@ namespace Saturn\SecurityManager;
 
 class XSS
 {
-    public function out($text): void
+    public function out($text): string
     {
-        echo htmlspecialchars($text);
+        return htmlspecialchars($text);
     }
 }

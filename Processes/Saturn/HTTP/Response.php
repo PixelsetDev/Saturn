@@ -6,7 +6,7 @@
  * Sends HTTP headers with response codes.
  */
 
-namespace Saturn\HTTP;
+namespace Saturn\Saturn\HTTP;
 
 class Response {
     public function HTTP404(): void
@@ -18,6 +18,12 @@ class Response {
     public function HTTP405(): void
     {
         header($_SERVER['SERVER_PROTOCOL'] . " 405 Method Not Allowed", true, 405);
+        exit;
+    }
+
+    public function HTTP500()
+    {
+        header($_SERVER['SERVER_PROTOCOL'] . " 500 Internal Server Error", true, 500);
         exit;
     }
 }

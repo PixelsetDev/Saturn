@@ -11,6 +11,7 @@
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
         <title><?= WEBSITE_NAME; ?></title>
+        <link rel="stylesheet" type="text/css" href="<?= WEBSITE_ROOT; ?>/Assets/CSS/Saturn.css">
     </head>
     <body>
         <h1><?= WEBSITE_NAME; ?></h1>

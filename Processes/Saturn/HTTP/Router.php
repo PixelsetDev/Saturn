@@ -6,7 +6,7 @@
  * Modified version of the PHPRouter - MIT License (https://github.com/phprouter/main/blob/main/LICENSE)
  */
 
-namespace Saturn\HTTP;
+namespace Saturn\Saturn\HTTP;
 
 class Router {
     public function GET($route, $path_to_include){

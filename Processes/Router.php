@@ -1,6 +1,6 @@
 <?php
 
-use Saturn\HTTP\Router;
+use Saturn\Saturn\HTTP\Router;
 
 $Router = new Router();
 

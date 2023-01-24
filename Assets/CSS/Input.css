@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* GENERIC */
+.body {
+    @apply dark:bg-neutral-800 dark:text-white;
+}
+
+.main {
+    @apply p-8;
+}
+
+.navigation {
+    @apply bg-neutral-100 dark:bg-neutral-900 dark:text-white px-8 py-2 flex space-x-4;
+}
+
+.navigation-item {
+    @apply bg-neutral-300 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-standard px-2 py-1
+}
+
+.text-header {
+    @apply text-5xl font-bold pt-8 pb-6;
+}
+
+.text-subheader {
+    @apply text-3xl font-bold pt-6 pb-4;
+}
+
+.text-body {
+    @apply text-xl;
+}
+
+/* ANIMATIONS */
+
+.transition-standard {
+    @apply transition duration-200 ease-in-out;
+}
+
+/* ERROR PAGE */
+
+.text-error {
+    @apply dark:bg-neutral-900 bg-neutral-100 border-2 dark:border-black border-neutral-200 rounded px-2 py-1;
+}
+
+.text-error-sm {
+    @apply dark:bg-neutral-900 bg-neutral-100 border-2 dark:border-black border-neutral-200 rounded p-1;
+}
