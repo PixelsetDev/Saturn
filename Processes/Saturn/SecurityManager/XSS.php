@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Saturn Security Manager - XSS
+ * Saturn Security Manager - XSS.
  *
  * Prevents cross-site scripting.
  *
