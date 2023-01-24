@@ -1,3 +1,8 @@
 {
-  "Error": "Error"
+  "Error": "Error",
+  "Error_Information": "Error Information",
+  "Operating_System": "Operating System:",
+  "PHP_Version": "PHP Version:",
+  "Request_URI": "Request URI:",
+  "Server_Information": "Server Information"
 }
