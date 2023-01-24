@@ -2,6 +2,11 @@
 use Saturn\SecurityManager\XSS;
 
 $XSS = new XSS();
+
+if (!isset($ErrorCode)) { $ErrorCode = 'Unknown'; }
+if (!isset($ErrorDescription)) { $ErrorDescription = 'Unknown'; }
+if (!isset($ErrorName)) { $ErrorName = 'Unknown'; }
+if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }exit;
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
@@ -46,7 +51,7 @@ $XSS = new XSS();
                 <p class="text-body pb-2">
                     <?= __('PHP_Version'); ?> <code class="text-error-sm"><?= out(PHP_VERSION); ?></code>
                 </p>
-                <?php if (PHP_VERSION > SATURN_RECOMMENDED_PHP) { ?><div class="alert-warning mb-2 mt-1">
+                <?php if (PHP_VERSION < SATURN_RECOMMENDED_PHP) { ?><div class="alert-warning mb-2 mt-1">
                     <div class="alert-warning-icon">
                         <i class="fa-solid fa-exclamation-triangle"></i>
                     </div>

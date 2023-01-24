@@ -1,7 +1,10 @@
 <?php
 
-use Saturn\Saturn\HTTP\Router;
+use Saturn\RouteManager\Routes;
 
-$Router = new Router();
+require_once __DIR__ . '/Saturn/RouteManager/Routes.php';
+require_once __DIR__ . '/Saturn/RouteManager/RoutePanel.php';
 
-$Router->GET('/', 'Processes/ViewManager/NoView.php');
+$Routes = new Routes();
+
+$Routes->Register();
