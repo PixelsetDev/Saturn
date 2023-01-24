@@ -12,7 +12,7 @@ class Error {
     public function Connection($e) {
         $ErrorCode = '500';
         $ErrorName = 'Internal Server Error';
-        $ErrorDescription = 'Database connection failed.';
+        $ErrorDescription = 'Database Connection Failed';
         $ErrorMessage = $e->getMessage();
         require_once __DIR__ . '/../ViewManager/Error.php';
         exit;
