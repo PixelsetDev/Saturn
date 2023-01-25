@@ -21,18 +21,15 @@ class ErrorHandler
     public function Error($errno, $errstr, $errfile, $errline): void
     {
         echo out('<p style="color: red;">Error: '.$errstr.'</p>');
-        exit;
     }
 
     public function Warning($errno, $errstr, $errfile, $errline): void
     {
         echo out('<p style="color: yellow;">Warning: '.$errstr.'</p>');
-        exit;
     }
 
     public function Notice($errno, $errstr, $errfile, $errline): void
     {
         echo out('<p style="color: blue;">Notice: '.$errstr.'</p>');
-        exit;
     }
 }

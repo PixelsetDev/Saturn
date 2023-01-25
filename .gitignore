@@ -12,6 +12,7 @@ yarn.lock
 yarn-error.log
 types/generated/*.d.ts
 .idea
+/Settings/Settings.php
 
 .turbo
 

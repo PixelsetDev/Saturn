@@ -24,10 +24,6 @@ class Translation
     {
         $LanguageJSON = json_decode($LanguageFile);
 
-        if (isset($LanguageJSON->$key)) {
-            return $LanguageJSON->$key;
-        } else {
-            return $key;
-        }
+        return $LanguageJSON->$key ?? $key ?? 'Unknown';
     }
 }
