@@ -18,12 +18,12 @@ const WEBSITE_LANGUAGE = 'en';
 const WEBSITE_ROOT = '';
 
 // DATABASE
-const DB_TYPE = 'PDO';
-const DB_HOST = 'scarif-lon1.krystal.uk';
-const DB_NAME = 'lmwncouk_saturn_dev';
-const DB_USER = 'lmwncouk_saturn_dev';
-const DB_PASS = 'a5,01Hk!y$@K';
-const DB_PORT = '';
+const DB_TYPE = 'MySQLi';
+const DB_HOST = 'localhost';
+const DB_NAME = 'Saturn';
+const DB_USER = 'root';
+const DB_PASS = 'B$o?MrR}zLe9';
+const DB_PORT = 3306;
 const DB_CHARSET = 'utf8mb4';
 const DB_OPTIONS = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,

@@ -33,16 +33,12 @@ function __(string $text): string
 
     return $XSS->out($text);
 }
-echo 1;
+
 // DATABASE
 if (DB_TYPE == 'PDO') {
-    echo 2;
     $DB = new PDODB();
-    echo 3;
 } elseif (DB_TYPE == 'MySQLi') {
-    echo 2;
     $DB = new MySQLiDB();
-    echo 3;
 } else {
     $ErrorHandler->Fatal('1', 'Database type not supported.', 'Start.php', '48');
 }

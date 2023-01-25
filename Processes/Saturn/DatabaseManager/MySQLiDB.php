@@ -8,17 +8,20 @@
 
 namespace Saturn\DatabaseManager;
 
-use Exception;
 use mysqli;
+use mysqli_sql_exception;
 
 class MySQLiDB
 {
+    public mysqli $mysqli;
+
     public function __construct()
     {
-        $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
-
-        if ($mysqli->connect_errno) {
-            throw new Exception('Failed to connect to MySQL: ('.$mysqli->connect_errno.') '.$mysqli->connect_error);
+        try {
+            $this->mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+        } catch (mysqli_sql_exception $e) {
+            $Error = new Error();
+            $Error->Connection($e);
         }
     }
 }
