@@ -45,12 +45,6 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                 <h2 class="text-subheader">
                     <?= __('Server_Information'); ?>
                 </h2>
-                <p class="text-body pb-2">
-                    <?= __('Request_URI'); ?> <code class="text-error-sm"><?= out($_SERVER['REQUEST_URI']); ?></code>
-                </p>
-                <p class="text-body pb-2">
-                    <?= __('PHP_Version'); ?> <code class="text-error-sm"><?= out(PHP_VERSION); ?></code>
-                </p>
                 <?php if (PHP_VERSION < SATURN_RECOMMENDED_PHP) { ?><div class="alert-warning mb-2 mt-1">
                     <div class="alert-warning-icon">
                         <i class="fa-solid fa-exclamation-triangle"></i>
@@ -59,13 +53,20 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                         <strong>Warning:</strong> Saturn recommends using PHP <?= SATURN_RECOMMENDED_PHP; ?> or higher.
                     </p>
                 </div><?php }  ?>
-                <p class="text-body pb-2">
-                    <?= __('Operating_System'); ?> <code class="text-error-sm"> <?php if (PHP_OS == 'Darwin') {
-    echo out('macOS (Darwin)');
-} else {
-    echo out(PHP_OS);
-} ?></code>
-                </p>
+                <table>
+                    <tr>
+                        <td class="td"><?= __('Request_URI'); ?></td>
+                        <td class="td"><?= out($_SERVER['REQUEST_URI']); ?></td>
+                    </tr>
+                    <tr>
+                        <td class="td"><?= __('PHP_Version'); ?></td>
+                        <td class="td"><?= out(PHP_VERSION); ?></td>
+                    </tr>
+                    <tr>
+                        <td class="td"><?= __('Operating_System'); ?></td>
+                        <td class="td"><?= out(PHP_OS); ?></td>
+                    </tr>
+                </table>
             </div>
         </main>
     </body>

@@ -84,3 +84,9 @@
 .alert-error-icon {
     @apply alert-icon bg-red-400 text-red-900;
 }
+
+/* TABLE */
+
+.td {
+    @apply border-neutral-300 dark:border-neutral-900;
+}
