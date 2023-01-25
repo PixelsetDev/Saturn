@@ -53,7 +53,7 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                         <strong>Warning:</strong> Saturn recommends using PHP <?= SATURN_RECOMMENDED_PHP; ?> or higher.
                     </p>
                 </div><?php }  ?>
-                <table>
+                <table class="w-full">
                     <tr>
                         <td class="td"><?= __('Request_URI'); ?></td>
                         <td class="td"><?= out($_SERVER['REQUEST_URI']); ?></td>

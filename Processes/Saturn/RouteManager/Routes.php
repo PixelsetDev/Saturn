@@ -13,14 +13,12 @@ class Routes {
 
     public function Register(): void
     {
-        $Router = new Router();echo 1;
+        $Router = new Router();
 
-        $RouteMain = new RouteMain($Router);echo 1;
+        $RouteMain = new RouteMain($Router);
         $RoutePanel = new RoutePanel($Router);
-        echo 1;
+
         $RouteMain->Register();
-        echo 1;
         $RoutePanel->Register();
-        echo 1;
     }
 }

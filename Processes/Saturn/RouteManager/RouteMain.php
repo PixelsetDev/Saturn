@@ -15,6 +15,6 @@ class RouteMain {
     public function Register(): void
     {
         // Homepage
-        $this->Router->GET('/', 'Saturn/ViewManager/NoView.php');
+        $this->Router->GET('/', 'Saturn/ViewManager/Error.php');
     }
 }
