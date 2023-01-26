@@ -14,7 +14,5 @@ class RoutePanel {
 
     public function Register(): void
     {
-        // Panel
-        $this->Router->GET('/account', '/test');
     }
 }

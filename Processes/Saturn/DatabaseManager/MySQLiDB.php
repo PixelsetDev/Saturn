@@ -13,7 +13,7 @@ use mysqli_sql_exception;
 
 class MySQLiDB
 {
-    public mysqli $mysqli;
+    private mysqli $mysqli;
 
     public function __construct()
     {
@@ -22,6 +22,47 @@ class MySQLiDB
         } catch (mysqli_sql_exception $e) {
             $Error = new Error();
             $Error->Connection($e);
+        }
+    }
+
+    public function Select(string $what, string $from, string $where, string $action, string $order, string $limit): array|object|int|null
+    {
+        echo 5;
+        $query = "SELECT `" . $what . "` FROM `" . $from . "`";
+
+        if ($where != null) {
+            $query .= ' WHERE ' . $where;
+        }
+
+        if ($order != null) {
+            $query .= ' ORDER BY ' . $order;
+        }
+
+        if ($limit != null) {
+            $query .= ' LIMIT ' . $limit;
+        }
+
+        echo 6;
+        $result = $this->mysqli->query($query);
+        echo 7;
+
+        if ($result) {
+            if ($action == 'assoc') {
+                return $result->fetch_assoc();
+            } elseif ($action == 'all') {
+                return $result->fetch_all();
+            } elseif ($action == 'array') {
+                return $result->fetch_array();
+            } elseif ($action == 'object') {
+                return $result->fetch_object();
+            } elseif ($action == 'num_rows') {
+                echo 8;
+                return $result->num_rows;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 }

@@ -17,10 +17,11 @@ const WEBSITE_NAME = 'Saturn';
 const WEBSITE_LANGUAGE = 'en-gb';
 const WEBSITE_ROOT = '';
 const WEBSITE_MODE = 0;
-const WEBSITE_ENV = 1;
+const WEBSITE_ENV = 0;
+const WEBSITE_CHARSET = 'utf-8';
 
 // DATABASE
-const DB_TYPE = 'MySQLi';
+const DB_TYPE = 'MySQL';
 const DB_HOST = 'localhost';
 const DB_NAME = 'Saturn';
 const DB_USER = 'root';

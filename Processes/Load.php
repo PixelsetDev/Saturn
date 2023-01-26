@@ -9,12 +9,13 @@
 // SYSTEM
 require __DIR__.'/Saturn/System.php';
 
-if (PHP_VERSION < SATURN_MINIMUM_PHP) {
-    echo 'Saturn requires PHP '.SATURN_MINIMUM_PHP.' or newer. You are using PHP '.PHP_VERSION.'.';
+if (PHP_VERSION < SATSYS_MINIMUM_PHP) {
+    echo 'Saturn requires PHP '.SATSYS_MINIMUM_PHP.' or newer. You are using PHP '.PHP_VERSION.'.';
     exit;
 }
 
 // SETTINGS
+require __DIR__.'/../Settings/Panel.php';
 require __DIR__.'/../Settings/Settings.php';
 require __DIR__.'/../Settings/Theme.php';
 
@@ -35,11 +36,9 @@ require __DIR__.'/Saturn/Translation.php';
 
 // DATABASE MANAGER
 require __DIR__.'/Saturn/DatabaseManager/Error.php';
-if (DB_TYPE == 'PDO') {
-    require __DIR__.'/Saturn/DatabaseManager/PDODB.php';
-} elseif (DB_TYPE == 'MySQLi') {
-    require __DIR__.'/Saturn/DatabaseManager/MySQLiDB.php';
-}
+require __DIR__.'/Saturn/DatabaseManager/DBMS.php';
+require __DIR__.'/Saturn/DatabaseManager/PDODB.php';
+require __DIR__.'/Saturn/DatabaseManager/MySQLiDB.php';
 
 // ROUTER
 require __DIR__.'/Saturn/HTTP/Response.php';

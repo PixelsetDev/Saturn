@@ -32,4 +32,12 @@ class ErrorHandler
     {
         echo out('<p style="color: blue;">Notice: '.$errstr.'</p>');
     }
+
+    public function SaturnError($HTTPCode, $SaturnCode, $ErrorName, $ErrorDescription, $DocsURL)
+    {
+        $ErrorCode = $HTTPCode;
+        $ErrorMessage = '['.$SaturnCode.'] '.$DocsURL;
+        require_once __DIR__.'/ViewManager/Error.php';
+        exit;
+    }
 }

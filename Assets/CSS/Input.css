@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 /* GENERIC */
+
 .body {
     @apply dark:bg-neutral-800 dark:text-white;
 }
@@ -23,12 +24,24 @@
     @apply text-5xl font-bold pt-8 pb-6;
 }
 
+.text-header-nopt {
+    @apply text-5xl font-bold pb-6;
+}
+
 .text-subheader {
     @apply text-3xl font-bold pt-6 pb-4;
 }
 
 .text-body {
     @apply text-xl;
+}
+
+.input {
+    @apply border border-neutral-400 dark:border-neutral-900 dark:bg-neutral-700 bg-neutral-100 px-2 py-1 appearance-none;
+}
+
+.input-button {
+    @apply bg-neutral-300 hover:bg-neutral-100 dark:bg-neutral-700 dark:hover:bg-neutral-500 dark:text-white px-2 py-1 appearance-none transition-standard;
 }
 
 /* ANIMATIONS */

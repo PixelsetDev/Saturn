@@ -11,6 +11,11 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
         <title><?= __('Error'); ?> <?= out($ErrorCode); ?> - <?= out(WEBSITE_NAME); ?></title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex">
+        <meta name="charset" content="<?= WEBSITE_CHARSET; ?>">
+
         <link rel="stylesheet" type="text/css" href="<?= out(WEBSITE_ROOT); ?>/Assets/CSS/Saturn.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
@@ -37,9 +42,7 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                     <?= __('Error_Information'); ?>
                 </h2>
                 <p class="text-error">
-                    <?php if (WEBSITE_ENV == 1) { ?>
-                        You can't see detailed error messages whilst in a production environment.
-                    <?php } else { out($ErrorMessage); } ?>
+                    <?= out($ErrorMessage); ?>
                 </p>
             </div>
 
@@ -47,32 +50,56 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                 <h2 class="text-subheader">
                     <?= __('Server_Information'); ?>
                 </h2>
-                <?php if (PHP_VERSION < SATURN_RECOMMENDED_PHP && WEBSITE_ENV != 1) { ?><div class="alert-warning mb-2 mt-1">
+                <?php if (PHP_VERSION < SATSYS_RECOMMENDED_PHP && WEBSITE_ENV == 0) { ?><div class="alert-warning mb-2 mt-1">
                     <div class="alert-warning-icon">
                         <i class="fa-solid fa-exclamation-triangle"></i>
                     </div>
                     <p class="alert-warning-text">
-                        <strong>Warning:</strong> Saturn recommends using PHP <?= SATURN_RECOMMENDED_PHP; ?> or higher.
+                        <strong>Warning:</strong> Saturn recommends using PHP <?= SATSYS_RECOMMENDED_PHP; ?> or higher.
                     </p>
                 </div><?php }  ?>
                 <table class="w-full">
-                    <?php if (WEBSITE_ENV == 1) { ?>
-                    <tr>
-                        <td class="td" colspan="2">You can't see server information whilst in a production environment.</td>
-                    </tr>
-                    <?php } else { ?>
                     <tr>
                         <td class="td"><?= __('Request_URI'); ?></td>
                         <td class="td"><?= out($_SERVER['REQUEST_URI']); ?></td>
                     </tr>
                     <tr>
-                        <td class="td"><?= __('PHP_Version'); ?></td>
-                        <td class="td"><?= out(PHP_VERSION); ?></td>
+                        <td class="td"><?= __('Server_Protocol'); ?></td>
+                        <td class="td"><?= out($_SERVER['SERVER_PROTOCOL']); ?></td>
                     </tr>
                     <tr>
-                        <td class="td"><?= __('Operating_System'); ?></td>
-                        <td class="td"><?= out(PHP_OS); ?></td>
+                        <td class="td"><?= __('Request_Time'); ?></td>
+                        <td class="td"><?= out(date('Y-m-d h:i:s')); ?></td>
                     </tr>
+                    <tr>
+                        <td class="td"><?= __('Request_IP'); ?></td>
+                        <td class="td"><?= out($_SERVER['REMOTE_ADDR']); ?></td>
+                    </tr>
+                    <tr>
+                        <td class="td"><?= __('Software_Version'); ?></td>
+                        <td class="td"><?= out(SATSYS_VERSION); ?></td>
+                    </tr>
+                    <?php if (WEBSITE_ENV != 0) { ?>
+                        <tr>
+                            <td class="td" colspan="2">To see more advanced information please switch your website environment to development (0).</td>
+                        </tr>
+                    <?php } else { ?>
+                        <tr>
+                            <td class="td"><?= __('PHP_Version'); ?></td>
+                            <td class="td"><?= out(PHP_VERSION); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="td"><?= __('Operating_System'); ?></td>
+                            <td class="td"><?= out(PHP_OS); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="td"><?= __('Server_Software'); ?></td>
+                            <td class="td"><?= out($_SERVER['SERVER_SOFTWARE']); ?></td>
+                        </tr>
+                        <tr>
+                            <td class="td"><?= __('Server_Port'); ?></td>
+                            <td class="td"><?= out($_SERVER['SERVER_PORT']); ?></td>
+                        </tr>
                     <?php } ?>
                 </table>
             </div>

@@ -34,13 +34,17 @@ function __(string $text): string
     return $XSS->out($text);
 }
 
-// DATABASE
-if (DB_TYPE == 'PDO') {
-    $DB = new PDODB();
-} elseif (DB_TYPE == 'MySQLi') {
-    $DB = new MySQLiDB();
+if (WEBSITE_ENV == 1) {
+    error_reporting(E_ERROR);
+} elseif (WEBSITE_ENV == 0) {
+    error_reporting(E_ALL);
 } else {
-    $ErrorHandler->Fatal('1', 'Database type not supported.', 'Start.php', '48');
+    $EH = new ErrorHandler();
+    $EH->SaturnError('500',
+        'SAT-1',
+        'Unknown website environment.',
+        'Please check your settings and try again.',
+        SATSYS_DOCS_URL . '/troubleshooting/errors/saturn#sat-1');
 }
 
 // ROUTER

@@ -104,9 +104,7 @@ class Router
         exit;
     }
 
-    public function http_bad()
-    {
-        $Response = new Response();
-        $Response->HTTP405();
+    public function bad() {
+        return;
     }
 }
