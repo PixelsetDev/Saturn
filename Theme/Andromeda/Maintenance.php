@@ -14,11 +14,15 @@
 
             <div class="pb-8">
                 <h1 class="text-header">
-                    <?= __('Maintenance'); ?>
+                    <?= __('Maintenance_Mode_Message_1'); ?>
                 </h1>
 
-                <a class="navigation-item text-white" href="<?= WEBSITE_ROOT; ?>/account">
-                    <?= __('Login'); ?>
+                <p class="text-body mb-4">
+                    <?= __('Maintenance_Mode_Message_2'); ?>
+                </p>
+
+                <a class="navigation-item dark:text-white" href="<?= WEBSITE_ROOT; ?>/account">
+                    <?= __('Admin_Login'); ?>
                 </a>
             </div>
         </main>

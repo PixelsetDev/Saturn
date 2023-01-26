@@ -33,13 +33,13 @@
 
                         <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __('Username_or_Email'); ?>"><br>
                         <input type="password" id="password" name="password" class="input w-full mb-4" required placeholder="<?= __('Password'); ?>"><br>
-                        <button type="submit" class="input-button w-full"><?= __('Login'); ?></button>
+                        <button type="submit" class="input-button w-full mb-1"><?= __('Login'); ?></button>
 
-                        <br><br><br>
+                        <br>
 
-                        <a href="<?= WEBSITE_ROOT; ?>/account/join" class="input"><?= __('Register'); ?></a>
+                        <a href="<?= WEBSITE_ROOT; ?>/account/join" class="input-button"><?= __('Register'); ?></a>
 
-                        <a href="<?= WEBSITE_ROOT; ?>/account/reset" class="input"><?= __('Forgot_Password'); ?></a>
+                        <a href="<?= WEBSITE_ROOT; ?>/account/reset" class="input-button"><?= __('Forgot_Password'); ?></a>
                     </div>
                     <div class="flex-grow"></div>
                 </form>
