@@ -14,6 +14,8 @@ use mysqli_sql_exception;
 class MySQLiDB
 {
     private mysqli $mysqli;
+    public int $num_rows;
+    public string|null $error;
 
     public function __construct()
     {
@@ -25,10 +27,13 @@ class MySQLiDB
         }
     }
 
-    public function Select(string $what, string $from, string $where, string $action, string $order, string $limit): array|object|int|null
+    public function Select(string $what, string $from, string $where, string $action, string|null $order = null, string|null $limit = null): array|object|int|null
     {
-        echo 5;
-        $query = "SELECT `" . $what . "` FROM `" . $from . "`";
+        if ($what != '*') {
+            $query = "SELECT `" . $what . "` FROM `" . $from . "`";
+        } else {
+            $query = "SELECT * FROM `" . $from . "`";
+        }
 
         if ($where != null) {
             $query .= ' WHERE ' . $where;
@@ -42,27 +47,34 @@ class MySQLiDB
             $query .= ' LIMIT ' . $limit;
         }
 
-        echo 6;
         $result = $this->mysqli->query($query);
-        echo 7;
+
+        $this->error = null;
 
         if ($result) {
-            if ($action == 'assoc') {
-                return $result->fetch_assoc();
-            } elseif ($action == 'all') {
-                return $result->fetch_all();
-            } elseif ($action == 'array') {
-                return $result->fetch_array();
-            } elseif ($action == 'object') {
-                return $result->fetch_object();
-            } elseif ($action == 'num_rows') {
-                echo 8;
-                return $result->num_rows;
+            if ($action == 'all:assoc') {
+                $actionResult = $result->fetch_all(MYSQLI_ASSOC);
+            } elseif ($action == 'all:num') {
+                $actionResult = $result->fetch_all();
+            } elseif ($action == 'first:assoc') {
+                $actionResult = $result->fetch_array(MYSQLI_ASSOC);
+            } elseif ($action == 'first:num') {
+                $actionResult = $result->fetch_array(MYSQLI_NUM);
+            } elseif ($action == 'first:object') {
+                $actionResult = $result->fetch_object();
+            } elseif ($action == 'all:raw') {
+                $actionResult = $result;
             } else {
-                return false;
+                $actionResult = false;
+                $this->error = 'DBMS-2';
             }
         } else {
-            return false;
+            $actionResult = false;
+            $this->error = 'DBMS-3';
         }
+
+        $this->num_rows = $result->num_rows;
+
+        return $actionResult;
     }
 }

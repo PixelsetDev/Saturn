@@ -35,17 +35,24 @@ class DBMS
         return htmlspecialchars($string);
     }
 
+    public function num_rows(): int
+    {
+        return $this->Database->num_rows;
+    }
+
+    public function error(): string|null
+    {
+        return $this->Database->error;
+    }
+
     public function Select(string $what, string $from, string|null $where, string $action, string|null $order = null, string|null $limit = null): array|object|int|null
     {
-        echo 3;
         if ($what != '*' && !str_contains($what, '`')) {
             $what = '`' . $what . '`';
         }
-        echo 4;
 
-        $DB = new MySQLiDB();
+        $Result = $this->Database->Select($what, $from, $where, $action, $order, $limit);
 
-        var_dump($DB->Select($what, $from, $where, $action, $order, $limit));
-        echo $DB->Select($what, $from, $where, $action, $order, $limit);
+        return $Result;
     }
 }

@@ -15,7 +15,7 @@ class RouteAccount {
     public function Register(): void
     {
         // Login
-        $this->Router->GET('/account', 'Saturn/ViewManager/Panel/Login.php');
+        $this->Router->GET('/account', 'Saturn/ViewManager/Panel/Authenticate.php');
         $this->Router->POST('/account', 'Saturn/FormManager/PanelLogin.php');
         // Register
         $this->Router->GET('/account/join', 'Saturn/ViewManager/Panel/Register.php');

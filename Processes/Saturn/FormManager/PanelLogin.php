@@ -7,8 +7,30 @@
  */
 
 use Saturn\DatabaseManager\DBMS;
-echo 1;
-$DB = new DBMS();
-echo 2;
+use Saturn\ErrorHandler;
+use Saturn\SessionManager\Authenticate;
 
-var_dump($DB->Select('*', 'users', 'username = ' . $DB->Escape($_POST['username']), 'num_rows'));
+$DB = new DBMS();
+
+
+$Result = $DB->Select('*', 'users', "`username` = '" . $DB->Escape($_POST['username'])."'", 'first:object');
+
+if ($DB->num_rows() == 1) {
+    if ($DB->error() == NULL) {
+        if (password_verify($_POST['password'], $Result->password)) {
+            $Authenticate = new Authenticate();
+            $Authenticate->Login($Result->username);
+            header('Location: /panel');
+        }
+    } else {
+        $EH = new ErrorHandler();
+        $EH->SaturnError('500',
+            $DB->error(),
+            'Database error',
+            'There was a problem with the database query.',
+            SATSYS_DOCS_URL.'/troubleshooting/errors/database#'.strtolower($DB->error()));
+    }
+} else {
+    header('Location: '.WEBSITE_ROOT.'/account/?notfound');
+}
+exit;
