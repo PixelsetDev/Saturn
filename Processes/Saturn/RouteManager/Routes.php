@@ -16,9 +16,9 @@ class Routes {
         $Router = new Router();
 
         $RouteMain = new RouteMain($Router);
-        $RoutePanel = new RoutePanel($Router);
-
         $RouteMain->Register();
+
+        $RoutePanel = new RoutePanel($Router);
         $RoutePanel->Register();
     }
 }

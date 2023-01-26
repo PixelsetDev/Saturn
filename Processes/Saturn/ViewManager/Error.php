@@ -37,7 +37,9 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                     <?= __('Error_Information'); ?>
                 </h2>
                 <p class="text-error">
-                    <?= out($ErrorMessage); ?>
+                    <?php if (WEBSITE_ENV == 1) { ?>
+                        You can't see detailed error messages whilst in a production environment.
+                    <?php } else { out($ErrorMessage); } ?>
                 </p>
             </div>
 
@@ -45,7 +47,7 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                 <h2 class="text-subheader">
                     <?= __('Server_Information'); ?>
                 </h2>
-                <?php if (PHP_VERSION < SATURN_RECOMMENDED_PHP) { ?><div class="alert-warning mb-2 mt-1">
+                <?php if (PHP_VERSION < SATURN_RECOMMENDED_PHP && WEBSITE_ENV != 1) { ?><div class="alert-warning mb-2 mt-1">
                     <div class="alert-warning-icon">
                         <i class="fa-solid fa-exclamation-triangle"></i>
                     </div>
@@ -54,6 +56,11 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                     </p>
                 </div><?php }  ?>
                 <table class="w-full">
+                    <?php if (WEBSITE_ENV == 1) { ?>
+                    <tr>
+                        <td class="td" colspan="2">You can't see server information whilst in a production environment.</td>
+                    </tr>
+                    <?php } else { ?>
                     <tr>
                         <td class="td"><?= __('Request_URI'); ?></td>
                         <td class="td"><?= out($_SERVER['REQUEST_URI']); ?></td>
@@ -66,6 +73,7 @@ if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
                         <td class="td"><?= __('Operating_System'); ?></td>
                         <td class="td"><?= out(PHP_OS); ?></td>
                     </tr>
+                    <?php } ?>
                 </table>
             </div>
         </main>

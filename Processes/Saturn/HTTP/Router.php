@@ -61,7 +61,7 @@ class Router
             }
         }
         if ($route == '/404') {
-            include_once __DIR__.'/'.$path_to_include;
+            require_once __DIR__.'/'.$path_to_include;
             $Response = new Response();
             $Response->HTTP404();
             exit;
@@ -78,7 +78,7 @@ class Router
                 call_user_func_array($callback, []);
                 exit;
             }
-            include_once __DIR__.'/../../'.$path_to_include;
+            require_once __DIR__.'/../../'.$path_to_include;
             exit;
         }
         if (count($route_parts) != count($request_url_parts)) {
@@ -100,7 +100,7 @@ class Router
             call_user_func_array($callback, $parameters);
             exit;
         }
-        include_once __DIR__.'/../../'.$path_to_include;
+        require_once __DIR__.'/../../'.$path_to_include;
         exit;
     }
 

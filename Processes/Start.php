@@ -45,4 +45,3 @@ if (DB_TYPE == 'PDO') {
 
 // ROUTER
 require __DIR__ . '/Router.php';
-echo 4;

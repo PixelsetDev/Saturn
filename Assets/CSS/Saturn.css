@@ -546,6 +546,11 @@ video {
   padding-bottom: 2rem;
 }
 
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 /* GENERIC */
 
 @media (prefers-color-scheme: dark) {

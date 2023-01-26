@@ -15,6 +15,6 @@ class RoutePanel {
     public function Register(): void
     {
         // Panel
-        $this->Router->GET('/panel', '/test');
+        $this->Router->GET('/account', '/test');
     }
 }

@@ -14,7 +14,12 @@ class RouteMain {
 
     public function Register(): void
     {
-        // Homepage
-        $this->Router->GET('/', 'Saturn/ViewManager/Error.php');
+        if (WEBSITE_MODE == 1 /*|| (WEBSITE_MODE == 0 && AUTH)*/) {
+            echo 1;
+            // Homepage
+            $this->Router->GET('/', 'Saturn/ViewManager/NoHomepage.php');
+        } elseif (WEBSITE_MODE == 0) {
+            $this->Router->GET('/', '/../Theme/' . THEME_SLUG . '/Maintenance.php');
+        }
     }
 }

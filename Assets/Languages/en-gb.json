@@ -1,6 +1,8 @@
 {
   "Error": "Error",
   "Error_Information": "Error Information",
+  "Login": "Login",
+  "Maintenance": "Maintenance",
   "No_Homepage": "No homepage set.",
   "No_Homepage_Instructions_1": "Please set a homepage in the ",
   "No_Homepage_Instructions_2": ". You can do this by clicking the 'Add homepage' button at the top of the screen.",
