@@ -6,7 +6,7 @@
  * Modified version of the PHPRouter - MIT License (https://github.com/phprouter/main/blob/main/LICENSE)
  */
 
-namespace Saturn\Saturn\HTTP;
+namespace Saturn\HTTP;
 
 class Router
 {

@@ -16,7 +16,7 @@ class DBMS
 
     public function __construct()
     {
-        if (DB_TYPE == 'MySQLi') {
+        if (DB_TYPE == 'MySQLi' || DB_TYPE == 'MySQL') {
             $this->Database = new MySQLiDB();
         } elseif (DB_TYPE == 'PDO') {
             $this->Database = new PDODB();
@@ -43,7 +43,9 @@ class DBMS
         }
         echo 4;
 
-        var_dump($this->Database->Select($what, $from, $where, $action, $order, $limit));
-        return $this->Database->Select($what, $from, $where, $action, $order, $limit);
+        $DB = new MySQLiDB();
+
+        var_dump($DB->Select($what, $from, $where, $action, $order, $limit));
+        echo $DB->Select($what, $from, $where, $action, $order, $limit);
     }
 }

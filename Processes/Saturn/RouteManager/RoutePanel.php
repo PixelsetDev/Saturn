@@ -2,7 +2,7 @@
 
 namespace Saturn\RouteManager;
 
-use Saturn\Saturn\HTTP\Router;
+use Saturn\HTTP\Router;
 
 class RoutePanel {
     public Router $Router;
