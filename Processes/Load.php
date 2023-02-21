@@ -43,3 +43,6 @@ require __DIR__.'/Saturn/DatabaseManager/MySQLiDB.php';
 // ROUTER
 require __DIR__.'/Saturn/HTTP/Response.php';
 require __DIR__.'/Saturn/HTTP/Router.php';
+
+// PLUGIN MANAGER
+require __DIR__.'/Saturn/PluginManager/PluginLoader.php';

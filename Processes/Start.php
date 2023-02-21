@@ -6,9 +6,8 @@
  * This file starts up Saturn.
  */
 
-use Saturn\DatabaseManager\MySQLiDB;
-use Saturn\DatabaseManager\PDODB;
 use Saturn\ErrorHandler;
+use Saturn\PluginManager\PluginLoader;
 use Saturn\SecurityManager\XSS;
 use Saturn\Translation;
 
@@ -46,6 +45,10 @@ if (WEBSITE_ENV == 1) {
         'Please check your settings and try again.',
         SATSYS_DOCS_URL . '/troubleshooting/errors/saturn#sat-1');
 }
+
+// PLUGINS
+$PluginLoader = new PluginLoader();
+$SaturnPlugins = $PluginLoader->LoadAll();
 
 // ROUTER
 require __DIR__ . '/Router.php';
