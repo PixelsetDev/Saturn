@@ -6,8 +6,8 @@ class PluginLoader
 {
     public function LoadAll(): array
     {
-        $SaturnPlugins = array();
-        $Plugins = scandir(__DIR__ . '/../../../Plugins');
+        $SaturnPlugins = [];
+        $Plugins = scandir(__DIR__.'/../../../Plugins');
         foreach ($Plugins as $Plugin) {
             if ($Plugin != '.' && $Plugin != '..') {
                 $Manifest = $this->GetManifest($Plugin);
@@ -18,8 +18,8 @@ class PluginLoader
                                 // TODO: ADD DEPENDENCY MANAGER
                             } else {
                                 foreach ($Manifest->Startup as $Startup) {
-                                    if (file_exists(__DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup)) {
-                                        require_once __DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup;
+                                    if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
+                                        require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
                                         $SaturnPlugins[$Plugin]['Loaded'] = true;
                                     } else {
                                         $SaturnPlugins[$Plugin]['Loaded'] = false;
@@ -41,15 +41,18 @@ class PluginLoader
                 }
             }
         }
+
         return $SaturnPlugins;
     }
 
     private function GetManifest(string $Plugin): object|null
     {
-        if (file_exists(__DIR__ . '/../../../Plugins/' . $Plugin . '/Manifest.json')) {
-            $Manifest = file_get_contents(__DIR__ . '/../../../Plugins/' . $Plugin . '/Manifest.json');
+        if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/Manifest.json')) {
+            $Manifest = file_get_contents(__DIR__.'/../../../Plugins/'.$Plugin.'/Manifest.json');
+
             return json_decode($Manifest);
         }
+
         return null;
     }
 

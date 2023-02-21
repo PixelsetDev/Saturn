@@ -27,7 +27,8 @@ class PDODB
         }
     }
 
-    public function Select(string $what, string $from, string $where, string $action, string $order, string $limit) {
+    public function Select(string $what, string $from, string $where, string $action, string $order, string $limit)
+    {
         echo -1;
     }
 }

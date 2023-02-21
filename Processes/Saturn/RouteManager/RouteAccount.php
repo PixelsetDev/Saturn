@@ -4,7 +4,8 @@ namespace Saturn\RouteManager;
 
 use Saturn\HTTP\Router;
 
-class RouteAccount {
+class RouteAccount
+{
     public Router $Router;
 
     public function __construct(Router $Router)

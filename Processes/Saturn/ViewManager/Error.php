@@ -3,10 +3,18 @@ use Saturn\SecurityManager\XSS;
 
 $XSS = new XSS();
 
-if (!isset($ErrorCode)) { $ErrorCode = 'Unknown'; }
-if (!isset($ErrorDescription)) { $ErrorDescription = 'Unknown'; }
-if (!isset($ErrorName)) { $ErrorName = 'Unknown'; }
-if (!isset($ErrorMessage)) { $ErrorMessage = 'Unknown'; }
+if (!isset($ErrorCode)) {
+    $ErrorCode = 'Unknown';
+}
+if (!isset($ErrorDescription)) {
+    $ErrorDescription = 'Unknown';
+}
+if (!isset($ErrorName)) {
+    $ErrorName = 'Unknown';
+}
+if (!isset($ErrorMessage)) {
+    $ErrorMessage = 'Unknown';
+}
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>

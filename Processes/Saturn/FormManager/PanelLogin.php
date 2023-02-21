@@ -14,31 +14,35 @@ use Saturn\SessionManager\Authenticate;
 $DB = new DBMS();
 $CSRF = new CSRF();
 
-$Result = $DB->Select('*', 'users', "`username` = '" . $DB->Escape($_POST['username'])."'", 'first:object');
+$Result = $DB->Select('*', 'users', "`username` = '".$DB->Escape($_POST['username'])."'", 'first:object');
 
 if ($DB->num_rows() == 1) {
     if ($CSRF->is_csrf_valid()) {
-        if ($DB->error() == NULL) {
+        if ($DB->error() == null) {
             if (password_verify($_POST['password'], $Result->password)) {
                 $Authenticate = new Authenticate();
                 $Authenticate->Login($Result->username);
-                header('Location: ' . WEBSITE_ROOT . '/panel');
+                header('Location: '.WEBSITE_ROOT.'/panel');
             }
         } else {
             $EH = new ErrorHandler();
-            $EH->SaturnError('500',
+            $EH->SaturnError(
+                '500',
                 $DB->error(),
                 'Database error',
                 'There was a problem with the database query.',
-                SATSYS_DOCS_URL . '/troubleshooting/errors/database#' . strtolower($DB->error()));
+                SATSYS_DOCS_URL.'/troubleshooting/errors/database#'.strtolower($DB->error())
+            );
         }
     } else {
         $EH = new ErrorHandler();
-        $EH->SaturnError('400',
+        $EH->SaturnError(
+            '400',
             'SAT-2',
             'CSRF Mismatch',
             'The CSRF token was not accepted.',
-            SATSYS_DOCS_URL . '/troubleshooting/errors/saturn#sat-2');
+            SATSYS_DOCS_URL.'/troubleshooting/errors/saturn#sat-2'
+        );
     }
 } else {
     header('Location: '.WEBSITE_ROOT.'/account/not-found');
