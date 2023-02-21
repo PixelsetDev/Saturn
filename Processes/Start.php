@@ -39,11 +39,13 @@ if (WEBSITE_ENV == 1) {
     error_reporting(E_ALL);
 } else {
     $EH = new ErrorHandler();
-    $EH->SaturnError('500',
+    $EH->SaturnError(
+        '500',
         'SAT-1',
         'Unknown website environment.',
         'Please check your settings and try again.',
-        SATSYS_DOCS_URL . '/troubleshooting/errors/saturn#sat-1');
+        SATSYS_DOCS_URL.'/troubleshooting/errors/saturn#sat-1'
+    );
 }
 
 // PLUGINS
@@ -51,4 +53,4 @@ $PluginLoader = new PluginLoader();
 $SaturnPlugins = $PluginLoader->LoadAll();
 
 // ROUTER
-require __DIR__ . '/Router.php';
+require __DIR__.'/Router.php';

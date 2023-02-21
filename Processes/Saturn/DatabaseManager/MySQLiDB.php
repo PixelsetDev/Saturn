@@ -30,21 +30,21 @@ class MySQLiDB
     public function Select(string $what, string $from, string $where, string $action, string|null $order = null, string|null $limit = null): array|object|int|null
     {
         if ($what != '*') {
-            $query = "SELECT `" . $what . "` FROM `" . $from . "`";
+            $query = 'SELECT `'.$what.'` FROM `'.$from.'`';
         } else {
-            $query = "SELECT * FROM `" . $from . "`";
+            $query = 'SELECT * FROM `'.$from.'`';
         }
 
         if ($where != null) {
-            $query .= ' WHERE ' . $where;
+            $query .= ' WHERE '.$where;
         }
 
         if ($order != null) {
-            $query .= ' ORDER BY ' . $order;
+            $query .= ' ORDER BY '.$order;
         }
 
         if ($limit != null) {
-            $query .= ' LIMIT ' . $limit;
+            $query .= ' LIMIT '.$limit;
         }
 
         $result = $this->mysqli->query($query);

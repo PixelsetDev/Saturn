@@ -4,7 +4,8 @@ namespace Saturn\RouteManager;
 
 use Saturn\HTTP\Router;
 
-class RouteMain {
+class RouteMain
+{
     public Router $Router;
 
     public function __construct(Router $Router)
@@ -18,9 +19,8 @@ class RouteMain {
             // Homepage
             $this->Router->GET('/', 'Saturn/ViewManager/NoHomepage.php');
         } elseif (WEBSITE_MODE == 0) {
-            $this->Router->GET('/', '/../Theme/' . THEME_SLUG . '/Maintenance.php');
+            $this->Router->GET('/', '/../Theme/'.THEME_SLUG.'/Maintenance.php');
         }
 
-        return;
     }
 }

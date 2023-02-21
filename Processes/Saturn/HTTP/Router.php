@@ -104,7 +104,8 @@ class Router
         exit;
     }
 
-    public function bad() {
-        return;
+    public function bad()
+    {
+
     }
 }

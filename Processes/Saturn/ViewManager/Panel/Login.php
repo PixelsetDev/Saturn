@@ -7,6 +7,7 @@
  */
 
 use Saturn\SecurityManager\CSRF;
+
 $CSRF = new CSRF();
 
 ?><!DOCTYPE html>

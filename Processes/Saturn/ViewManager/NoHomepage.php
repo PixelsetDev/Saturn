@@ -5,7 +5,6 @@
  *
  * This file is used when a view is not found.
  */
-
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>

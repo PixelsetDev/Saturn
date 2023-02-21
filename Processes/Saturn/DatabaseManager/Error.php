@@ -15,7 +15,7 @@ class Error
         $ErrorCode = '500';
         $ErrorName = 'Internal Server Error';
         $ErrorDescription = 'Database Connection Failed';
-        $ErrorMessage = '[' . $e->getCode() . '] ' . $e->getMessage();
+        $ErrorMessage = '['.$e->getCode().'] '.$e->getMessage();
 
         require_once __DIR__.'/../ViewManager/Error.php';
         exit;
