@@ -10,7 +10,7 @@
         </nav>
 
         <main class="main">
-            <img src="<?= WEBSITE_ROOT; ?>/Storage/Theme/Logo.webp" class="w-1/4 mx-auto">
+            <img src="<?= WEBSITE_ROOT; ?>/Storage/Theme/Logo.webp" class="w-1/4 mx-auto" alt="<?= WEBSITE_NAME; ?>">
 
             <div class="pb-8">
                 <h1 class="text-header">

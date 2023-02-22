@@ -19,7 +19,7 @@ class RouteMain
             // Homepage
             $this->Router->GET('/', 'Saturn/ViewManager/NoHomepage.php');
         } elseif (WEBSITE_MODE == 1) {
-            $this->Router->GET('/', '/../Theme/'.THEME_SLUG.'/Maintenance.php');
+            $this->Router->GET('/', '/../Themes/'.THEME_SLUG.'/Maintenance.php');
         }
 
     }
