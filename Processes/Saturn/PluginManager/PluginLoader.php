@@ -15,14 +15,15 @@ class PluginLoader
         $Manifest = $this->GetManifest($Plugin);
         if ($Manifest == null) {
             $this->LoadStatus($Plugin, false, 'Manifest file is missing.');
+
             return false;
         }
 
         if ($this->ValidateManifest($Manifest)) {
             if ($this->CheckCompatability($Manifest)) {
                 foreach ($Manifest->Startup as $Startup) {
-                    if (file_exists(__DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup)) {
-                        require_once __DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup;
+                    if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
+                        require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
                         $this->LoadStatus($Plugin, true);
                     } else {
                         $this->LoadStatus($Plugin, false, 'Startup file is missing.');
@@ -42,11 +43,10 @@ class PluginLoader
     {
         $Actions = new Actions();
 
-        $SaturnPlugins = array();
-        $Plugins = scandir(__DIR__ . '/../../../Plugins');
+        $SaturnPlugins = [];
+        $Plugins = scandir(__DIR__.'/../../../Plugins');
 
         foreach ($Plugins as $Plugin) {
-
             if ($Plugin == '.' || $Plugin == '..') {
                 continue;
             }
@@ -60,11 +60,11 @@ class PluginLoader
             if ($this->ValidateManifest($Manifest)) {
                 if ($this->CheckCompatability($Manifest)) {
                     if ($this->HasDependencies($Manifest)) {
-                        $Actions->Register('Saturn.PluginManager.LoadedNonDepends',  array(new PluginLoader(),'LoadSpecific'), array($Plugin));
+                        $Actions->Register('Saturn.PluginManager.LoadedNonDepends', [new PluginLoader(), 'LoadSpecific'], [$Plugin]);
                     } else {
                         foreach ($Manifest->Startup as $Startup) {
-                            if (file_exists(__DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup)) {
-                                require_once __DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup;
+                            if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
+                                require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
                                 $this->LoadStatus($Plugin, true);
                             } else {
                                 $this->LoadStatus($Plugin, false, 'Startup file is missing.');
@@ -84,10 +84,12 @@ class PluginLoader
 
     private function GetManifest(string $Plugin): object|null
     {
-        if (file_exists(__DIR__ . '/../../../Plugins/' . $Plugin . '/Manifest.json')) {
-            $Manifest = file_get_contents(__DIR__ . '/../../../Plugins/' . $Plugin . '/Manifest.json');
+        if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/Manifest.json')) {
+            $Manifest = file_get_contents(__DIR__.'/../../../Plugins/'.$Plugin.'/Manifest.json');
+
             return json_decode($Manifest);
         }
+
         return null;
     }
 

@@ -21,6 +21,5 @@ class RouteMain
         } elseif (WEBSITE_MODE == 1) {
             $this->Router->GET('/', '/../Themes/'.THEME_SLUG.'/Maintenance.php');
         }
-
     }
 }
