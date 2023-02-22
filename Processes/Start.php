@@ -62,4 +62,4 @@ $PluginLoader->LoadAll();
 $Actions->Run('Saturn.PluginManager.LoadedAll');
 
 // ROUTER
-require __DIR__.'/Router.php';
+require_once __DIR__.'/Router.php';

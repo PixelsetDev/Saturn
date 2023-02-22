@@ -3,7 +3,7 @@
 use ControlPanel\CPRouter;
 use Saturn\HTTP\Router;
 
-require __DIR__.'/CPRouter.php';
+require_once __DIR__.'/CPRouter.php';
 
 $Router = new Router();
 

@@ -7,45 +7,45 @@
  */
 
 // SYSTEM
-require __DIR__.'/Saturn/System.php';
+require_once __DIR__.'/Saturn/System.php';
 
 if (PHP_VERSION < SATSYS_MINIMUM_PHP) {
-    echo 'Saturn requires PHP '.SATSYS_MINIMUM_PHP.' or newer. You are using PHP '.PHP_VERSION.'.';
+    echo 'Saturn require_onces PHP '.SATSYS_MINIMUM_PHP.' or newer. You are using PHP '.PHP_VERSION.'.';
     exit;
 }
 
 // SETTINGS
-require __DIR__.'/../Settings/Panel.php';
-require __DIR__.'/../Settings/Settings.php';
-require __DIR__.'/../Settings/Theme.php';
+require_once __DIR__.'/../Settings/Panel.php';
+require_once __DIR__.'/../Settings/Settings.php';
+require_once __DIR__.'/../Settings/Theme.php';
 
 // HOOK MANAGER
-require __DIR__.'/Saturn/HookManager/Actions.php';
+require_once __DIR__.'/Saturn/HookManager/Actions.php';
 
 // ERROR HANDLER
-require __DIR__.'/Saturn/ErrorHandler.php';
+require_once __DIR__.'/Saturn/ErrorHandler.php';
 
 // SECURITY MANAGER
-require __DIR__.'/Saturn/SecurityManager/CSRF.php';
-require __DIR__.'/Saturn/SecurityManager/Encryption.php';
-require __DIR__.'/Saturn/SecurityManager/XSS.php';
+require_once __DIR__.'/Saturn/SecurityManager/CSRF.php';
+require_once __DIR__.'/Saturn/SecurityManager/Encryption.php';
+require_once __DIR__.'/Saturn/SecurityManager/XSS.php';
 
 // SESSION MANAGER
-require __DIR__.'/Saturn/SessionManager/Start.php';
-require __DIR__.'/Saturn/SessionManager/Checker.php';
+require_once __DIR__.'/Saturn/SessionManager/Start.php';
+require_once __DIR__.'/Saturn/SessionManager/Checker.php';
 
 // TRANSLATION
-require __DIR__.'/Saturn/Translation.php';
+require_once __DIR__.'/Saturn/Translation.php';
 
 // DATABASE MANAGER
-require __DIR__.'/Saturn/DatabaseManager/Error.php';
-require __DIR__.'/Saturn/DatabaseManager/DBMS.php';
-require __DIR__.'/Saturn/DatabaseManager/PDODB.php';
-require __DIR__.'/Saturn/DatabaseManager/MySQLiDB.php';
+require_once __DIR__.'/Saturn/DatabaseManager/Error.php';
+require_once __DIR__.'/Saturn/DatabaseManager/DBMS.php';
+require_once __DIR__.'/Saturn/DatabaseManager/PDODB.php';
+require_once __DIR__.'/Saturn/DatabaseManager/MySQLiDB.php';
 
 // ROUTER
-require __DIR__.'/Saturn/HTTP/Response.php';
-require __DIR__.'/Saturn/HTTP/Router.php';
+require_once __DIR__.'/Saturn/HTTP/Response.php';
+require_once __DIR__.'/Saturn/HTTP/Router.php';
 
 // PLUGIN MANAGER
-require __DIR__.'/Saturn/PluginManager/PluginLoader.php';
+require_once __DIR__.'/Saturn/PluginManager/PluginLoader.php';
