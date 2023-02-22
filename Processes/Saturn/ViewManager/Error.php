@@ -33,7 +33,7 @@ if (!isset($ErrorMessage)) {
         </nav>
 
         <main class="main">
-            <img src="<?= out(WEBSITE_ROOT); ?>/Assets/Images/Saturn-logo.webp" class="w-1/4 mx-auto">
+            <img src="<?= out(WEBSITE_ROOT); ?>/Assets/Images/Saturn-logo.webp" class="w-1/4 mx-auto" alt="Logo">
 
             <div class="pb-8">
                 <h1 class="text-header">
