@@ -19,6 +19,9 @@ require __DIR__.'/../Settings/Panel.php';
 require __DIR__.'/../Settings/Settings.php';
 require __DIR__.'/../Settings/Theme.php';
 
+// HOOK MANAGER
+require __DIR__ . '/Saturn/HookManager/Actions.php';
+
 // ERROR HANDLER
 require __DIR__.'/Saturn/ErrorHandler.php';
 

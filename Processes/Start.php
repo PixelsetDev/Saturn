@@ -7,9 +7,15 @@
  */
 
 use Saturn\ErrorHandler;
+use Saturn\HookManager\Actions;
 use Saturn\PluginManager\PluginLoader;
 use Saturn\SecurityManager\XSS;
 use Saturn\Translation;
+
+// ACTIONS
+$ActionList = [];
+$Actions = new Actions();
+$Actions->Run('Saturn.PreStart');
 
 // ERROR HANDLER
 $ErrorHandler = new ErrorHandler();
@@ -49,8 +55,11 @@ if (WEBSITE_ENV == 1) {
 }
 
 // PLUGINS
+$SaturnPlugins = array();
+$Actions->Run('Saturn.PluginManager.PreLoad');
 $PluginLoader = new PluginLoader();
-$SaturnPlugins = $PluginLoader->LoadAll();
+$PluginLoader->LoadAll();
+$Actions->Run('Saturn.PluginManager.LoadedAll');
 
 // ROUTER
 require __DIR__.'/Router.php';

@@ -2,13 +2,49 @@
 
 namespace Saturn\PluginManager;
 
+use Saturn\HookManager\Actions;
+
 class PluginLoader
 {
-    private array $PluginList = array();
-    public function LoadAll(): array
+    public function LoadSpecific(mixed $Plugin): bool
     {
+        if ($Plugin == '.' || $Plugin == '..') {
+            return false;
+        }
+
+        $Manifest = $this->GetManifest($Plugin);
+        if ($Manifest == null) {
+            $this->LoadStatus($Plugin, false, 'Manifest file is missing.');
+            return false;
+        }
+
+        if ($this->ValidateManifest($Manifest)) {
+            if ($this->CheckCompatability($Manifest)) {
+                foreach ($Manifest->Startup as $Startup) {
+                    if (file_exists(__DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup)) {
+                        require_once __DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup;
+                        $this->LoadStatus($Plugin, true);
+                    } else {
+                        $this->LoadStatus($Plugin, false, 'Startup file is missing.');
+                    }
+                }
+            } else {
+                $this->LoadStatus($Plugin, false, 'Plugin is not compatible with this version of Saturn.');
+            }
+        } else {
+            $this->LoadStatus($Plugin, false, 'Manifest file is corrupt.');
+        }
+
+        return true;
+    }
+
+    public function LoadAll(): void
+    {
+        $Actions = new Actions();
+
         $SaturnPlugins = array();
         $Plugins = scandir(__DIR__ . '/../../../Plugins');
+
         foreach ($Plugins as $Plugin) {
 
             if ($Plugin == '.' || $Plugin == '..') {
@@ -24,7 +60,7 @@ class PluginLoader
             if ($this->ValidateManifest($Manifest)) {
                 if ($this->CheckCompatability($Manifest)) {
                     if ($this->HasDependencies($Manifest)) {
-                        // TODO: ADD DEPENDENCY MANAGER
+                        $Actions->Register('Saturn.PluginManager.LoadedNonDepends',  array(new PluginLoader(),'LoadSpecific'), array($Plugin));
                     } else {
                         foreach ($Manifest->Startup as $Startup) {
                             if (file_exists(__DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup)) {
@@ -42,7 +78,8 @@ class PluginLoader
                 $this->LoadStatus($Plugin, false, 'Manifest file is corrupt.');
             }
         }
-        return $this->PluginList;
+
+        $Actions->Run('Saturn.PluginManager.LoadedNonDepends');
     }
 
     private function GetManifest(string $Plugin): object|null
@@ -95,9 +132,10 @@ class PluginLoader
 
     private function LoadStatus(string $Plugin, bool $Success, string|null $Reason = null): void
     {
-        $this->PluginList[$Plugin]['Loaded'] = $Success;
+        global $SaturnPlugins;
+        $SaturnPlugins[$Plugin]['Loaded'] = $Success;
         if ($Reason != null) {
-            $this->PluginList[$Plugin]['Loaded']['Reason'] = $Reason;
+            $SaturnPlugins[$Plugin]['Reason'] = $Reason;
         }
     }
 }

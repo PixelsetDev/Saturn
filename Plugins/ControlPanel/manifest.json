@@ -1,0 +1,11 @@
+{
+  "Name": "Control Panel",
+  "Description": "The Saturn Control Panel.",
+  "Author": ["Lewis Milburn"],
+  "Version": {
+    "Plugin": "1.0",
+    "Saturn": ["1.0.0"]
+  },
+  "Dependencies": [],
+  "Startup": ["Main.php"]
+}

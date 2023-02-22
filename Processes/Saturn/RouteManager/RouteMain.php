@@ -15,10 +15,10 @@ class RouteMain
 
     public function Register(): void
     {
-        if (WEBSITE_MODE == 1 /*|| (WEBSITE_MODE == 0 && AUTH)*/) {
+        if (WEBSITE_MODE == 0 /*|| (WEBSITE_MODE == 1 && AUTH)*/) {
             // Homepage
             $this->Router->GET('/', 'Saturn/ViewManager/NoHomepage.php');
-        } elseif (WEBSITE_MODE == 0) {
+        } elseif (WEBSITE_MODE == 1) {
             $this->Router->GET('/', '/../Theme/'.THEME_SLUG.'/Maintenance.php');
         }
 
