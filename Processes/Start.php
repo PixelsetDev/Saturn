@@ -55,7 +55,7 @@ if (WEBSITE_ENV == 1) {
 }
 
 // PLUGINS
-$SaturnPlugins = array();
+$SaturnPlugins = [];
 $Actions->Run('Saturn.PluginManager.PreLoad');
 $PluginLoader = new PluginLoader();
 $PluginLoader->LoadAll();

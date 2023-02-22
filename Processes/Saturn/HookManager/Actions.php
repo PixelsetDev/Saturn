@@ -4,11 +4,12 @@ namespace Saturn\HookManager;
 
 use Exception;
 
-class Actions {
+class Actions
+{
     public function Register(string $ActionCode, string|array $Function, mixed $Data = null): void
     {
         global $ActionList;
-        $ActionList[$ActionCode][] = array(['Function' => $Function, 'Data' => $Data]);
+        $ActionList[$ActionCode][] = [['Function' => $Function, 'Data' => $Data]];
     }
 
     public function Unregister(string $ActionCode, string $Function): void
@@ -31,7 +32,8 @@ class Actions {
         foreach ($ActionList[$ActionName] as $ActionFunction) {
             try {
                 call_user_func_array($ActionFunction[0]['Function'], $ActionFunction[0]['Data']);
-            } catch (Exception) {}
+            } catch (Exception) {
+            }
         }
     }
 }
