@@ -17,8 +17,10 @@ class DBMS
     public function __construct()
     {
         if (DB_TYPE == 'MySQLi' || DB_TYPE == 'MySQL') {
+            require_once __DIR__ . '/MySQLiDB.php';
             $this->Database = new MySQLiDB();
         } elseif (DB_TYPE == 'PDO') {
+            require_once __DIR__ . '/PDODB.php';
             $this->Database = new PDODB();
         } else {
             $EH = new ErrorHandler();

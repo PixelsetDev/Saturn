@@ -40,8 +40,6 @@ require_once __DIR__.'/Saturn/Translation.php';
 // DATABASE MANAGER
 require_once __DIR__.'/Saturn/DatabaseManager/Error.php';
 require_once __DIR__.'/Saturn/DatabaseManager/DBMS.php';
-require_once __DIR__.'/Saturn/DatabaseManager/PDODB.php';
-require_once __DIR__.'/Saturn/DatabaseManager/MySQLiDB.php';
 
 // ROUTER
 require_once __DIR__.'/Saturn/HTTP/Response.php';
@@ -49,3 +47,5 @@ require_once __DIR__.'/Saturn/HTTP/Router.php';
 
 // PLUGIN MANAGER
 require_once __DIR__.'/Saturn/PluginManager/PluginLoader.php';
+require_once __DIR__ . '/Saturn/PluginManager/PluginLoadOrder.php';
+require_once __DIR__.'/Saturn/PluginManager/PluginManifest.php';
