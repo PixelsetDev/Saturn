@@ -58,8 +58,10 @@ if (WEBSITE_ENV == 1) {
 $SaturnPlugins = [];
 $Actions->Run('Saturn.PluginManager.PreLoad');
 $PluginLoader = new PluginLoader();
-$PluginLoader->LoadAll();
-$Actions->Run('Saturn.PluginManager.LoadedAll');
+$PluginLoader->Load();
+$Actions->Run('Saturn.PluginManager.PostLoad');
+
+$Actions->Run('Saturn.PostStart');
 
 // ROUTER
 require_once __DIR__.'/Router.php';

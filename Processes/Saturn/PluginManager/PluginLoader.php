@@ -6,52 +6,22 @@ use Saturn\HookManager\Actions;
 
 class PluginLoader
 {
-    public function LoadSpecific(mixed $Plugin): bool
-    {
-        if ($Plugin == '.' || $Plugin == '..') {
-            return false;
-        }
-
-        $Manifest = $this->GetManifest($Plugin);
-        if ($Manifest == null) {
-            $this->LoadStatus($Plugin, false, 'Manifest file is missing.');
-
-            return false;
-        }
-
-        if ($this->ValidateManifest($Manifest)) {
-            if ($this->CheckCompatability($Manifest)) {
-                foreach ($Manifest->Startup as $Startup) {
-                    if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
-                        require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
-                        $this->LoadStatus($Plugin, true);
-                    } else {
-                        $this->LoadStatus($Plugin, false, 'Startup file is missing.');
-                    }
-                }
-            } else {
-                $this->LoadStatus($Plugin, false, 'Plugin is not compatible with this version of Saturn.');
-            }
-        } else {
-            $this->LoadStatus($Plugin, false, 'Manifest file is corrupt.');
-        }
-
-        return true;
-    }
-
-    public function LoadAll(): void
+    public function Load(): void
     {
         $Actions = new Actions();
+
+        $Actions->Run('Saturn.PluginLoader.PreLoad');
 
         $SaturnPlugins = [];
         $Plugins = scandir(__DIR__.'/../../../Plugins');
 
-        foreach ($Plugins as $Plugin) {
-            if ($Plugin == '.' || $Plugin == '..') {
-                continue;
-            }
+        $LOM = new PluginLoadOrder($Plugins);
+        $Plugins = $LoadOrder = $LOM->GetLoadOrder();
 
-            $Manifest = $this->GetManifest($Plugin);
+        foreach ($Plugins as $Plugin) {
+            $PM = new PluginManifest();
+            $Manifest = $PM->GetManifest($Plugin);
+
             if ($Manifest == null) {
                 $this->LoadStatus($Plugin, false, 'Manifest file is missing.');
                 continue;
@@ -59,16 +29,12 @@ class PluginLoader
 
             if ($this->ValidateManifest($Manifest)) {
                 if ($this->CheckCompatability($Manifest)) {
-                    if ($this->HasDependencies($Manifest)) {
-                        $Actions->Register('Saturn.PluginManager.LoadedNonDepends', [new PluginLoader(), 'LoadSpecific'], [$Plugin]);
-                    } else {
-                        foreach ($Manifest->Startup as $Startup) {
-                            if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
-                                require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
-                                $this->LoadStatus($Plugin, true);
-                            } else {
-                                $this->LoadStatus($Plugin, false, 'Startup file is missing.');
-                            }
+                    foreach ($Manifest->Startup as $Startup) {
+                        if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
+                            require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
+                            $this->LoadStatus($Plugin, true);
+                        } else {
+                            $this->LoadStatus($Plugin, false, 'Startup file is missing.');
                         }
                     }
                 } else {
@@ -79,18 +45,7 @@ class PluginLoader
             }
         }
 
-        $Actions->Run('Saturn.PluginManager.LoadedNonDepends');
-    }
-
-    private function GetManifest(string $Plugin): object|null
-    {
-        if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/Manifest.json')) {
-            $Manifest = file_get_contents(__DIR__.'/../../../Plugins/'.$Plugin.'/Manifest.json');
-
-            return json_decode($Manifest);
-        }
-
-        return null;
+        $Actions->Run('Saturn.PluginLoader.PostLoad');
     }
 
     private function CheckCompatability(object $Manifest): bool
@@ -117,15 +72,6 @@ class PluginLoader
             isset($Manifest->Dependencies) &&
             isset($Manifest->Startup)
         ) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private function HasDependencies(object $Manifest): bool
-    {
-        if (count($Manifest->Dependencies) > 0) {
             return true;
         } else {
             return false;
