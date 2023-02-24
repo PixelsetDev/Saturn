@@ -31,7 +31,11 @@ class Actions
 
         foreach ($ActionList[$ActionName] as $ActionFunction) {
             try {
-                call_user_func_array($ActionFunction[0]['Function'], $ActionFunction[0]['Data']);
+                if ($ActionFunction[0]['Data'] == null) {
+                    call_user_func($ActionFunction[0]['Function']);
+                } else {
+                    call_user_func_array($ActionFunction[0]['Function'], $ActionFunction[0]['Data']);
+                }
             } catch (Exception) {
             }
         }
