@@ -17,12 +17,12 @@ $CSRF = new CSRF();
 $Result = $DB->Select('*', 'users', "`username` = '".$DB->Escape($_POST['username'])."'", 'first:object');
 
 if ($DB->num_rows() == 1) {
-    if ($CSRF->is_csrf_valid()) {
+    if ($CSRF->Check()) {
         if ($DB->error() == null) {
             if (password_verify($_POST['password'], $Result->password)) {
                 $Authenticate = new Authenticate();
                 $Authenticate->Login($Result->username);
-                header('Location: '.WEBSITE_ROOT.'/panel');
+                header('Location: '.SATURN_ROOT.'/panel');
             }
         } else {
             $EH = new ErrorHandler();
@@ -45,6 +45,6 @@ if ($DB->num_rows() == 1) {
         );
     }
 } else {
-    header('Location: '.WEBSITE_ROOT.'/account/not-found');
+    header('Location: '.SATURN_ROOT.'/account/not-found');
 }
 exit;
