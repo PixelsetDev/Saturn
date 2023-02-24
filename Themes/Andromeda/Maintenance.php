@@ -2,7 +2,7 @@
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
         <title><?= WEBSITE_NAME; ?></title>
-        <link rel="stylesheet" type="text/css" href="<?= WEBSITE_ROOT; ?>/Assets/CSS/Saturn.css">
+        <link rel="stylesheet" type="text/css" href="<?= SATURN_ROOT; ?>/Assets/CSS/Saturn.css">
     </head>
     <body>
         <nav class="navigation">
@@ -10,7 +10,7 @@
         </nav>
 
         <main class="main">
-            <img src="<?= WEBSITE_ROOT; ?>/Storage/Theme/Logo.webp" class="w-1/4 mx-auto" alt="<?= WEBSITE_NAME; ?>">
+            <img src="<?= SATURN_ROOT; ?>/Storage/Theme/Logo.webp" class="w-1/4 mx-auto" alt="<?= WEBSITE_NAME; ?>">
 
             <div class="pb-8">
                 <h1 class="text-header">
@@ -21,7 +21,7 @@
                     <?= __('Maintenance_Mode_Message_2'); ?>
                 </p>
 
-                <a class="navigation-item dark:text-white" href="<?= WEBSITE_ROOT; ?>/account">
+                <a class="navigation-item dark:text-white" href="<?= SATURN_ROOT; ?>/account">
                     <?= __('Admin_Login'); ?>
                 </a>
             </div>
