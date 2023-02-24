@@ -15,10 +15,13 @@
 // WEBSITE
 const WEBSITE_NAME = 'Saturn';
 const WEBSITE_LANGUAGE = 'en-gb';
-const WEBSITE_ROOT = '';
 const WEBSITE_MODE = 0;
 const WEBSITE_ENV = 0;
 const WEBSITE_CHARSET = 'utf-8';
+
+// SATURN
+const SATURN_ROOT = '';
+const SATURN_LANGUAGE = 'en-gb';
 
 // DATABASE
 const DB_TYPE = 'MySQLi';
