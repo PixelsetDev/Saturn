@@ -10,7 +10,7 @@
 require_once __DIR__.'/Saturn/System.php';
 
 if (PHP_VERSION < SATSYS_MINIMUM_PHP) {
-    echo 'Saturn require_onces PHP '.SATSYS_MINIMUM_PHP.' or newer. You are using PHP '.PHP_VERSION.'.';
+    echo 'Saturn requires PHP '.SATSYS_MINIMUM_PHP.' or newer. You are using PHP '.PHP_VERSION.'.';
     exit;
 }
 
@@ -18,6 +18,10 @@ if (PHP_VERSION < SATSYS_MINIMUM_PHP) {
 require_once __DIR__ . '/../Settings/Developer.php';
 require_once __DIR__.'/../Settings/Settings.php';
 require_once __DIR__.'/../Settings/Theme.php';
+
+// TEST MANAGER
+require_once __DIR__.'/Saturn/TestManager/Profiler.php';
+require_once __DIR__.'/Saturn/TestManager/Timings.php';
 
 // HOOK MANAGER
 require_once __DIR__.'/Saturn/HookManager/Actions.php';
@@ -34,8 +38,8 @@ require_once __DIR__.'/Saturn/SecurityManager/XSS.php';
 require_once __DIR__.'/Saturn/SessionManager/Start.php';
 require_once __DIR__.'/Saturn/SessionManager/Checker.php';
 
-// TRANSLATION
-require_once __DIR__.'/Saturn/Translation.php';
+// LANGUAGE MANAGER
+require_once __DIR__.'/Saturn/LanguageManager/Translation.php';
 
 // DATABASE MANAGER
 require_once __DIR__.'/Saturn/DatabaseManager/Error.php';
