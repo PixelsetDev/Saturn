@@ -12,7 +12,7 @@ namespace Saturn\SecurityManager;
 
 class CSRF
 {
-    public function set_csrf(): void
+    public function Set(): void
     {
         if (!isset($_SESSION['csrf'])) {
             $_SESSION['csrf'] = bin2hex(random_bytes(50));
@@ -20,7 +20,7 @@ class CSRF
         echo '<input type="hidden" name="csrf" value="'.$_SESSION['csrf'].'">';
     }
 
-    public function is_csrf_valid(): bool
+    public function Check(): bool
     {
         if (!isset($_SESSION['csrf']) || !isset($_POST['csrf'])) {
             return false;
