@@ -8,9 +8,16 @@
 
 use Saturn\ErrorHandler;
 use Saturn\HookManager\Actions;
+use Saturn\LanguageManager\Translation;
 use Saturn\PluginManager\PluginLoader;
 use Saturn\SecurityManager\XSS;
-use Saturn\Translation;
+
+register_shutdown_function('SaturnEnd');
+
+function SaturnEnd() {
+    $Actions = new Actions();
+    $Actions->Run('Saturn.End');
+}
 
 // ACTIONS
 $ActionList = [];
@@ -63,5 +70,9 @@ $Actions->Run('Saturn.PluginManager.PostLoad');
 
 $Actions->Run('Saturn.PostStart');
 
+$Actions->Register('Saturn.End', 'OutputTests');
+
 // ROUTER
 require_once __DIR__.'/Router.php';
+
+exit;
