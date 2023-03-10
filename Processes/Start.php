@@ -70,8 +70,6 @@ $Actions->Run('Saturn.PluginManager.PostLoad');
 
 $Actions->Run('Saturn.PostStart');
 
-$Actions->Register('Saturn.End', 'OutputTests');
-
 // ROUTER
 require_once __DIR__.'/Router.php';
 
