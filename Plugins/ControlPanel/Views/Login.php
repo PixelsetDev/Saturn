@@ -7,7 +7,7 @@ $CSRF = new CSRF();
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
 <head>
-    <title><?= __('Saturn'); ?></title>
+    <title><?= __CP('Saturn'); ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex">
@@ -26,19 +26,19 @@ $CSRF = new CSRF();
             <div class="flex-grow"></div>
             <div class="bg-neutral-100 dark:bg-neutral-900 p-4 mt-6">
                 <h1 class="text-header-nopt text-center">
-                    <?= __('Login'); ?>
+                    <?= __CP('Login'); ?>
                 </h1>
 
                 <?php $CSRF->Set(); ?>
-                <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __('Username_or_Email'); ?>"><br>
-                <input type="password" id="password" name="password" class="input w-full mb-4" required placeholder="<?= __('Password'); ?>"><br>
-                <button type="submit" class="input-button w-full mb-1"><?= __('Login'); ?></button>
+                <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __CP('Username_or_Email'); ?>"><br>
+                <input type="password" id="password" name="password" class="input w-full mb-4" required placeholder="<?= __CP('Password'); ?>"><br>
+                <button type="submit" class="input-button w-full mb-1"><?= __CP('Login'); ?></button>
 
                 <br>
 
-                <a href="<?= SATURN_ROOT; ?>/account/join" class="input-button"><?= __('Register'); ?></a>
+                <a href="<?= SATURN_ROOT; ?>/account/join" class="input-button"><?= __CP('Register'); ?></a>
 
-                <a href="<?= SATURN_ROOT; ?>/account/reset" class="input-button"><?= __('Forgot_Password'); ?></a>
+                <a href="<?= SATURN_ROOT; ?>/account/reset" class="input-button"><?= __CP('Forgot_Password'); ?></a>
             </div>
             <div class="flex-grow"></div>
         </form>
