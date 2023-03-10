@@ -37,7 +37,7 @@ class ErrorHandler
     {
         $ErrorCode = $HTTPCode;
         $ErrorMessage = '['.$SaturnCode.'] '.$DocsURL;
-        require_once __DIR__.'/ViewManager/Error.php';
+        require_once __DIR__ . '/DefaultViews/Error.php';
         exit;
     }
 }

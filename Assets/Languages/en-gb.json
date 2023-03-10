@@ -10,7 +10,7 @@
   "Maintenance_Mode_Message_2": "Please check back later or login if you're a website editor.",
   "No_Homepage": "No homepage set.",
   "No_Homepage_Instructions_1": "Please set a homepage in the ",
-  "No_Homepage_Instructions_2": ". You can do this by clicking the 'Add homepage' button at the top of the screen.",
+  "No_Homepage_Instructions_2": ". You can do this by clicking the login button below and clicking 'Add home screen' in the Saturn Control Panel.",
   "Operating_System": "Operating System",
   "Password": "Password",
   "PHP_Version": "PHP Version",

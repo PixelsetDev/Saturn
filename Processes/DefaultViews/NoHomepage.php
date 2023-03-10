@@ -31,7 +31,11 @@
                 </h1>
 
                 <p class="text-body">
-                    <?= __('No_Homepage_Instructions_1'); ?><a href="/panel"><?= __('Saturn_Control_Panel'); ?></a><?= __('No_Homepage_Instructions_2'); ?>
+                    <?= __('No_Homepage_Instructions_1'); ?><a href="../../index.php"><?= __('Saturn_Control_Panel'); ?></a><?= __('No_Homepage_Instructions_2'); ?>
+                </p>
+
+                <p class="text-body text-center">
+                    <a href="/panel" class="navigation-item">Login</a>
                 </p>
             </div>
         </main>
