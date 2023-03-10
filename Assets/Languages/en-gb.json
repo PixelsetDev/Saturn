@@ -2,8 +2,6 @@
   "Admin_Login": "Administrator Login",
   "Error": "Error",
   "Error_Information": "Error Information",
-  "Exit": "Exit",
-  "Forgot_Password": "Forgot Password",
   "Loading": "Loading",
   "Login": "Login",
   "Maintenance_Mode_Message_1": "This website is in maintenance mode.",
@@ -12,7 +10,6 @@
   "No_Homepage_Instructions_1": "Please set a homepage in the ",
   "No_Homepage_Instructions_2": ". You can do this by clicking the login button below and clicking 'Add home screen' in the Saturn Control Panel.",
   "Operating_System": "Operating System",
-  "Password": "Password",
   "PHP_Version": "PHP Version",
   "Register": "Register",
   "Request_IP": "Request IP",
@@ -24,6 +21,5 @@
   "Server_Port": "Server Port",
   "Server_Protocol": "Server Procol",
   "Server_Software": "Server Software",
-  "Software_Version": "Software Version",
-  "Username_or_Email": "Username or Email"
+  "Software_Version": "Software Version"
 }
