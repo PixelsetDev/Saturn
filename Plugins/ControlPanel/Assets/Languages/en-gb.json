@@ -1,7 +1,12 @@
 {
+  "Email": "Email address",
   "Exit": "Exit",
   "Forgot_Password": "Forgot Password",
+  "Join": "Join",
+  "Not_Found": "We couldn't find an account with that username or email.",
   "Login": "Login",
   "Password": "Password",
+  "Success": "Success",
+  "Unknown_Error": "An unknown error occurred. Please try again later.",
   "Username_or_Email": "Username or Email"
 }

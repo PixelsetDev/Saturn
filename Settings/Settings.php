@@ -12,6 +12,10 @@
 //           //  edit this file in the admin panel.                                                            //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+// SECURITY
+const WEBSITE_SALT = 'CHANGE_ME';
+
 // WEBSITE
 const WEBSITE_NAME = 'Saturn';
 const WEBSITE_LANGUAGE = 'en-gb';
@@ -31,6 +35,7 @@ const DB_USER = 'root';
 const DB_PASS = '';
 const DB_PORT = 3306;
 const DB_CHARSET = 'utf8mb4';
+const DB_PREFIX = 'Saturn_';
 const DB_OPTIONS = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,

@@ -55,7 +55,7 @@ class DBMS
             $what = '`'.$what.'`';
         }
 
-        $Result = $this->Database->Select($what, $from, $where, $action, $order, $limit);
+        $Result = $this->Database->Select($what, DB_PREFIX.$from, $where, $action, $order, $limit);
 
         return $Result;
     }

@@ -45,6 +45,6 @@ if ($DB->num_rows() == 1) {
         );
     }
 } else {
-    header('Location: '.SATURN_ROOT.'/account/not-found');
+    header('Location: '.SATURN_ROOT.'/account/join?error=notfound');
 }
 exit;

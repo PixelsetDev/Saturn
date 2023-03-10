@@ -7,7 +7,7 @@ $CSRF = new CSRF();
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
 <head>
-    <title><?= WEBSITE_NAME ?></title>
+    <title><?= WEBSITE_NAME; ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex">
@@ -22,25 +22,36 @@ $CSRF = new CSRF();
     <img src="<?= SATURN_ROOT; ?>/Storage/Theme/Logo.webp" class="w-1/4 mx-auto" alt="Logo">
 
     <div class="pb-8">
-        <form action="<?= SATURN_ROOT; ?>/API/Login" method="POST" class="flex">
+        <form action="<?= SATURN_ROOT; ?>/API/Join" method="POST" class="flex">
             <div class="flex-grow"></div>
             <div class="bg-neutral-100 dark:bg-neutral-900 p-4 mt-6">
                 <h1 class="text-header-nopt text-center">
-                    <?= __CP('Login'); ?>
+                    <?= __CP('Join'); ?>
                 </h1>
 
+                <?php if (isset($_GET['error'])) { ?>
+                    <div class="alert-warning">
+                        <div class="alert-warning-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="alert-warning-text">
+                            <?php
+                                if ($_GET['error'] == 'notfound') { echo __CP('Not_Found'); }
+                                else { echo __CP('Unknown_Error'); }
+                            ?>
+                        </div>
+                    </div>
+                    <br>
+                <?php } ?>
+
                 <?php $CSRF->Set(); ?>
-                <label for="username" class="hidden"><?= __CP('Username_or_Email'); ?></label>
-                <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __CP('Username_or_Email'); ?>"><br>
+                <label for="email" class="hidden"><?= __CP('Email'); ?></label>
+                <input type="text" id="email" name="email" class="input w-full mb-2" required placeholder="<?= __CP('Email'); ?>"><br>
+                <label for="username" class="hidden"><?= __CP('Username'); ?></label>
+                <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __CP('Username'); ?>"><br>
                 <label for="password" class="hidden"><?= __CP('Password'); ?></label>
                 <input type="password" id="password" name="password" class="input w-full mb-4" required placeholder="<?= __CP('Password'); ?>"><br>
-                <button type="submit" class="input-button w-full mb-1"><?= __CP('Login'); ?></button>
-
-                <br>
-
-                <a href="<?= SATURN_ROOT; ?>/account/join" class="input-button"><?= __CP('Register'); ?></a>
-
-                <a href="<?= SATURN_ROOT; ?>/account/reset" class="input-button"><?= __CP('Forgot_Password'); ?></a>
+                <button type="submit" class="input-button w-full mb-1"><?= __CP('Join'); ?></button>
             </div>
             <div class="flex-grow"></div>
         </form>

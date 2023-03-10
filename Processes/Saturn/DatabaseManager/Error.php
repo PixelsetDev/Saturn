@@ -17,7 +17,7 @@ class Error
         $ErrorDescription = 'Database Connection Failed';
         $ErrorMessage = '['.$e->getCode().'] '.$e->getMessage();
 
-        require_once __DIR__ . '/../DefaultViews/Error.php';
+        require_once __DIR__ . '/../../DefaultViews/Error.php';
         exit;
     }
 }
