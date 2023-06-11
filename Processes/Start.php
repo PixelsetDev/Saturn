@@ -14,7 +14,8 @@ use Saturn\SecurityManager\XSS;
 
 register_shutdown_function('SaturnEnd');
 
-function SaturnEnd() {
+function SaturnEnd()
+{
     $Actions = new Actions();
     $Actions->Run('Saturn.End');
 }
