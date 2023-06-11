@@ -106,6 +106,5 @@ class Router
 
     public function bad()
     {
-
     }
 }

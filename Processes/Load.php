@@ -15,7 +15,7 @@ if (PHP_VERSION < SATSYS_MINIMUM_PHP) {
 }
 
 // SETTINGS
-require_once __DIR__ . '/../Settings/Developer.php';
+require_once __DIR__.'/../Settings/Developer.php';
 require_once __DIR__.'/../Settings/Settings.php';
 require_once __DIR__.'/../Settings/Theme.php';
 
@@ -51,5 +51,5 @@ require_once __DIR__.'/Saturn/HTTP/Router.php';
 
 // PLUGIN MANAGER
 require_once __DIR__.'/Saturn/PluginManager/PluginLoader.php';
-require_once __DIR__ . '/Saturn/PluginManager/PluginLoadOrder.php';
+require_once __DIR__.'/Saturn/PluginManager/PluginLoadOrder.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginManifest.php';
