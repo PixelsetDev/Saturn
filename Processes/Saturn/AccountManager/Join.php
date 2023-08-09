@@ -17,7 +17,7 @@ $DB = new DBMS();
 $CSRF = new CSRF();
 $UUID = new UUID();
 
-$Result = $DB->Select('*', 'users', "`username` = '".$DB->Escape($_POST['username'])."'", 'first:object');
+$Result = $DB->Select('*', 'user', "`username` = '".$DB->Escape($_POST['username'])."'", 'first:object');
 
 if ($DB->num_rows() == 0) {
     if ($CSRF->Check()) {
