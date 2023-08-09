@@ -23,7 +23,7 @@
             <h1 class="text-header-nopt"><?= __CP('Dashboard'); ?></h1>
             <div class="grid-block">
                 <div class="grid-item grid-padding">
-                    <span id="PageCount">Loading...</span>
+                    <span id="PageCount">...</span> Pages
                 </div>
             </div>
         </main>
