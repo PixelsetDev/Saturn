@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Saturn Form Manager - Account Login.
+ * Saturn Account Manager - Login.
  *
- * Handles errors with the database system.
+ * Allows users to login to Saturn.
  */
 
 use Saturn\DatabaseManager\DBMS;

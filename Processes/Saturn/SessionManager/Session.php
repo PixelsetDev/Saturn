@@ -14,4 +14,12 @@ class Session
     {
         session_start();
     }
+
+    public function End(): void
+    {
+        unset($_SESSION['username']);
+        unset($_SESSION['token']);
+        session_unset();
+        session_destroy();
+    }
 }

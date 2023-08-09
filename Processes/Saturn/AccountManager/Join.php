@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Saturn Form Manager - Account Join.
+ * Saturn Account Manager - Join.
  *
- * Handles errors with the database system.
+ * Allows users to join Saturn.
  */
 
 use Saturn\AccountManager\UUID;
@@ -24,7 +24,10 @@ if ($DB->num_rows() == 0) {
         $Username = $DB->Escape($_POST['username']);
         $Email = $DB->Escape($_POST['email']);
         $Password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $Result = $DB->Insert('users', '`id`, `uuid`, `username`, `email`, `password`', "NULL, '".$UUID->Generate()."', '".$Username."', '".$Email."', '".$Password."'");
+        $UniqID = $UUID->Generate();
+
+        $Result = $DB->Insert('user', '`id`, `uuid`, `username`, `email`, `password`', "NULL, '".$UniqID."', '".$Username."', '".$Email."', '".$Password."'");
+        $Result = $DB->Insert('user_permissions', '`id`, `uuid`', "NULL, '".$UniqID."'");
         if ($DB->error() == null) {
             header('Location: /account?success=created');
         } else {
