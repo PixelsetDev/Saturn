@@ -22,5 +22,6 @@
         <main class="main">
             Sorry, you don't have access to the requested resource.
         </main>
+        <script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Console.js"></script>
     </body>
 </html>

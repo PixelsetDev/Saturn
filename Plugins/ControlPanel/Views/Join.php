@@ -58,5 +58,6 @@ $CSRF = new CSRF();
         </form>
     </div>
 </main>
+<script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Console.js"></script>
 </body>
 </html>

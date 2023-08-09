@@ -1,0 +1,1 @@
+console.log('%cSTOP! %cThis console is a tool for developers, if someone told you to paste something here, they may be trying to trick you into performing a Self-XSS attack, DO NOT paste code you do not understand. See https://en.wikipedia.org/wiki/Self-XSS for more information.','color: red; font-size: 16px','font-size: 16px; color: orange')

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
-        <title><?= WEBSITE_NAME ?></title>
+        <title><?= WEBSITE_NAME ?> <?= __CP('ControlPanel'); ?></title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex">
@@ -20,7 +20,15 @@
             <a href="<?= SATURN_ROOT; ?>/account" class="navigation-item"><?= __CP('Account'); ?></a>
         </nav>
         <main class="main">
-            Hey!
+            <h1 class="text-header-nopt"><?= __CP('Dashboard'); ?></h1>
+            <div class="grid-block">
+                <div class="grid-item grid-padding">
+                    <span id="PageCount">Loading...</span>
+                </div>
+            </div>
         </main>
+
+        <script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Console.js"></script>
+        <script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Statistics.js"></script>
     </body>
 </html>
