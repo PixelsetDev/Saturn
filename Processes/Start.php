@@ -18,7 +18,7 @@ $Session->Start();
 
 register_shutdown_function('SaturnEnd');
 
-function SaturnEnd()
+function SaturnEnd(): void
 {
     $Actions = new Actions();
     $Actions->Run('Saturn.End');
