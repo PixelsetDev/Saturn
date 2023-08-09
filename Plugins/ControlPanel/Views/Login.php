@@ -37,6 +37,7 @@ $CSRF = new CSRF();
                         <div class="alert-success-text">
                             <?php
                             if ($_GET['success'] == 'created') { echo __CP('Account_Created'); }
+                            if ($_GET['success'] == 'logout') { echo __CP('Account_Logged_Out'); }
                             else { echo __CP('Unknown_Success'); }
                             ?>
                         </div>

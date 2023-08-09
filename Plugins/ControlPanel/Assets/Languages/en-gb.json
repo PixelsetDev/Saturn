@@ -11,5 +11,6 @@
   "Unknown_Error": "An unknown error occurred. Please try again later.",
   "Username_or_Email": "Username or Email",
   "Account_Created": "Account created, please login.",
+  "Account_Logged_Out": "You have been logged out.",
   "Unknown_Success": "Something went well, but the system that sent you here didn't say what exactly it was."
 }
