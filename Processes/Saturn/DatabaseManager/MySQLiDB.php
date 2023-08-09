@@ -77,4 +77,9 @@ class MySQLiDB
 
         return $actionResult;
     }
+
+    public function Insert(string $into, string|null $columns, string|null $values): array|object|int|null
+    {
+        return $this->mysqli->query('INSERT INTO `'.$into.'` ('.$columns.') VALUES ('.$values.')');
+    }
 }

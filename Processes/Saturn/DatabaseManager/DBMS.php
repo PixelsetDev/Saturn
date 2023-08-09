@@ -59,4 +59,11 @@ class DBMS
 
         return $Result;
     }
+
+    public function Insert(string $into, string|null $columns, string|null $values): array|object|int|null
+    {
+        $Result = $this->Database->Insert(DB_PREFIX.$into, $columns, $values);
+
+        return $Result;
+    }
 }

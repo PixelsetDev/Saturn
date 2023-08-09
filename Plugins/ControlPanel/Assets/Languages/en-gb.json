@@ -3,10 +3,13 @@
   "Exit": "Exit",
   "Forgot_Password": "Forgot Password",
   "Join": "Join",
-  "Not_Found": "We couldn't find an account with that username or email.",
+  "Account_Not_Found": "We couldn't find an account with that username or email.",
+  "Account_Already_Exists": "An account with this information already exists.",
   "Login": "Login",
   "Password": "Password",
   "Success": "Success",
   "Unknown_Error": "An unknown error occurred. Please try again later.",
-  "Username_or_Email": "Username or Email"
+  "Username_or_Email": "Username or Email",
+  "Account_Created": "Account created, please login.",
+  "Unknown_Success": "Something went well, but the system that sent you here didn't say what exactly it was."
 }

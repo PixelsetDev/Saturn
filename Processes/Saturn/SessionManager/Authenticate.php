@@ -21,7 +21,7 @@ class Authenticate
             return false;
         }
 
-        if ($token == password_hash($username.WEBSITE_SALT, SECURITY_TOKEN_ALGORITHM)) {
+        if (password_verify($username.WEBSITE_SALT, $token)) {
             return true;
         } else {
             return false;

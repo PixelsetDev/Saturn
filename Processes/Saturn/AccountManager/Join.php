@@ -1,29 +1,32 @@
 <?php
 
 /**
- * Saturn Form Manager - Account Login.
+ * Saturn Form Manager - Account Join.
  *
  * Handles errors with the database system.
  */
 
+use Saturn\AccountManager\UUID;
 use Saturn\DatabaseManager\DBMS;
 use Saturn\ErrorHandler;
 use Saturn\SecurityManager\CSRF;
-use Saturn\SessionManager\Authenticate;
+
+require_once __DIR__ . '/UUID.php';
 
 $DB = new DBMS();
 $CSRF = new CSRF();
+$UUID = new UUID();
 
 $Result = $DB->Select('*', 'users', "`username` = '".$DB->Escape($_POST['username'])."'", 'first:object');
 
-if ($DB->num_rows() == 1) {
+if ($DB->num_rows() == 0) {
     if ($CSRF->Check()) {
+        $Username = $DB->Escape($_POST['username']);
+        $Email = $DB->Escape($_POST['email']);
+        $Password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $Result = $DB->Insert('users', '`id`, `uuid`, `username`, `email`, `password`', "NULL, '".$UUID->Generate()."', '".$Username."', '".$Email."', '".$Password."'");
         if ($DB->error() == null) {
-            if (password_verify($_POST['password'], $Result->password)) {
-                $Authenticate = new Authenticate();
-                $Authenticate->Login($Result->username);
-                header('Location: '.SATURN_ROOT.'/panel');
-            }
+            header('Location: /account?success=created');
         } else {
             $EH = new ErrorHandler();
             $EH->SaturnError(
@@ -45,6 +48,6 @@ if ($DB->num_rows() == 1) {
         );
     }
 } else {
-    header('Location: '.SATURN_ROOT.'/account/join?error=notfound');
+    header('Location: '.SATURN_ROOT.'/account/join?error=exists');
 }
 exit;

@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -31,6 +31,7 @@
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
 */
 
 html {
@@ -47,6 +48,8 @@ html {
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
 }
 
 /*
@@ -187,6 +190,10 @@ optgroup,
 select,
 textarea {
   font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -339,6 +346,14 @@ menu {
 }
 
 /*
+Reset default styling for dialogs.
+*/
+
+dialog {
+  padding: 0;
+}
+
+/*
 Prevent resizing textareas horizontally by default.
 */
 
@@ -433,6 +448,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -480,6 +498,9 @@ video {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -518,20 +539,40 @@ video {
   margin-right: auto;
 }
 
-.mb-2 {
-  margin-bottom: 0.5rem;
+.mb-1 {
+  margin-bottom: 0.25rem;
 }
 
-.mt-1 {
-  margin-top: 0.25rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-4 {
   margin-bottom: 1rem;
 }
 
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.flex {
+  display: flex;
+}
+
 .table {
   display: table;
+}
+
+.grid {
+  display: grid;
 }
 
 .hidden {
@@ -544,6 +585,27 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.bg-neutral-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .pb-8 {
@@ -849,6 +911,36 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.alert-success {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(74 222 128 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+  display: flex;
+}
+
+.alert-success-text {
+  --tw-text-opacity: 1;
+  color: rgb(20 83 45 / var(--tw-text-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.alert-success-icon {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(20 83 45 / var(--tw-text-opacity));
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 /* TABLE */
 
 .td {
@@ -868,6 +960,11 @@ video {
     border-color: rgb(23 23 23 / var(--tw-border-opacity));
     --tw-bg-opacity: 1;
     background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+  }
+
+  .dark\:bg-neutral-900 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(23 23 23 / var(--tw-bg-opacity));
   }
 
   .dark\:text-white {

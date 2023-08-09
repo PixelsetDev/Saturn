@@ -36,7 +36,8 @@ $CSRF = new CSRF();
                         </div>
                         <div class="alert-warning-text">
                             <?php
-                                if ($_GET['error'] == 'notfound') { echo __CP('Not_Found'); }
+                                if ($_GET['error'] == 'exists') { echo __CP('Account_Already_Exists'); }
+                                if ($_GET['error'] == 'notfound') { echo __CP('Account_Not_Found'); }
                                 else { echo __CP('Unknown_Error'); }
                             ?>
                         </div>
@@ -46,9 +47,9 @@ $CSRF = new CSRF();
 
                 <?php $CSRF->Set(); ?>
                 <label for="email" class="hidden"><?= __CP('Email'); ?></label>
-                <input type="text" id="email" name="email" class="input w-full mb-2" required placeholder="<?= __CP('Email'); ?>"><br>
+                <input type="text" id="email" name="email" class="input w-full mb-2" required placeholder="<?= __CP('Email'); ?>" maxlength="128"><br>
                 <label for="username" class="hidden"><?= __CP('Username'); ?></label>
-                <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __CP('Username'); ?>"><br>
+                <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __CP('Username'); ?>" maxlength="64"><br>
                 <label for="password" class="hidden"><?= __CP('Password'); ?></label>
                 <input type="password" id="password" name="password" class="input w-full mb-4" required placeholder="<?= __CP('Password'); ?>"><br>
                 <button type="submit" class="input-button w-full mb-1"><?= __CP('Join'); ?></button>

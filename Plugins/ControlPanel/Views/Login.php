@@ -29,18 +29,35 @@ $CSRF = new CSRF();
                     <?= __CP('Login'); ?>
                 </h1>
 
+                <?php if (isset($_GET['success'])) { ?>
+                    <div class="alert-success">
+                        <div class="alert-success-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="alert-success-text">
+                            <?php
+                            if ($_GET['success'] == 'created') { echo __CP('Account_Created'); }
+                            else { echo __CP('Unknown_Success'); }
+                            ?>
+                        </div>
+                    </div>
+                    <br>
+                <?php } ?>
+
                 <?php $CSRF->Set(); ?>
                 <label for="username" class="hidden"><?= __CP('Username_or_Email'); ?></label>
                 <input type="text" id="username" name="username" class="input w-full mb-2" required placeholder="<?= __CP('Username_or_Email'); ?>"><br>
                 <label for="password" class="hidden"><?= __CP('Password'); ?></label>
                 <input type="password" id="password" name="password" class="input w-full mb-4" required placeholder="<?= __CP('Password'); ?>"><br>
-                <button type="submit" class="input-button w-full mb-1"><?= __CP('Login'); ?></button>
+                <button type="submit" class="input-button w-full"><?= __CP('Login'); ?></button>
 
                 <br>
 
-                <a href="<?= SATURN_ROOT; ?>/account/join" class="input-button"><?= __CP('Register'); ?></a>
+                <div class="grid grid-cols-2 gap-2 mt-2 text-center">
+                    <a href="<?= SATURN_ROOT; ?>/account/join" class="input-button"><?= __CP('Register'); ?></a>
 
-                <a href="<?= SATURN_ROOT; ?>/account/reset" class="input-button"><?= __CP('Forgot_Password'); ?></a>
+                    <a href="<?= SATURN_ROOT; ?>/account/reset" class="input-button"><?= __CP('Forgot_Password'); ?></a>
+                </div>
             </div>
             <div class="flex-grow"></div>
         </form>

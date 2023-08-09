@@ -11,6 +11,10 @@ use Saturn\HookManager\Actions;
 use Saturn\LanguageManager\Translation;
 use Saturn\PluginManager\PluginLoader;
 use Saturn\SecurityManager\XSS;
+use Saturn\SessionManager\Session;
+
+$Session = new Session();
+$Session->Start();
 
 register_shutdown_function('SaturnEnd');
 

@@ -98,6 +98,18 @@
     @apply alert-icon bg-red-400 text-red-900;
 }
 
+.alert-success {
+    @apply alert border-l-green-400 bg-green-100 text-black;
+}
+
+.alert-success-text {
+    @apply alert-text text-green-900;
+}
+
+.alert-success-icon {
+    @apply alert-icon bg-green-400 text-green-900;
+}
+
 /* TABLE */
 
 .td {

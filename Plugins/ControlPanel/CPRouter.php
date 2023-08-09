@@ -18,11 +18,15 @@ class CPRouter
 
             $Router->GET('/account', '../Plugins/ControlPanel/Views/Account.php');
             $Router->GET('/account/join', '../Plugins/ControlPanel/Views/Account.php');
+
+            $Router->GET('/panel/edit', '../Plugins/ControlPanel/Views/Edit.php');
         } else {
             $Router->GET('/panel', '../Plugins/ControlPanel/Views/Login.php');
 
             $Router->GET('/account', '../Plugins/ControlPanel/Views/Login.php');
             $Router->GET('/account/join', '../Plugins/ControlPanel/Views/Join.php');
+
+            $Router->GET('/panel/edit', '../Plugins/ControlPanel/Views/Edit.php');
         }
     }
 }
