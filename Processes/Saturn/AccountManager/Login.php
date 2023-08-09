@@ -21,7 +21,7 @@ if ($DB->num_rows() == 1) {
         if ($DB->error() == null) {
             if (password_verify($_POST['password'], $Result->password)) {
                 $Authenticate = new Authenticate();
-                $Authenticate->Login($Result->username);
+                $Authenticate->Login($Result->username,$Result->uuid);
                 header('Location: '.SATURN_ROOT.'/panel');
             }
         } else {

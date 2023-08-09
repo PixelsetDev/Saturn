@@ -9,10 +9,11 @@ namespace Saturn\SessionManager;
 
 class Authenticate
 {
-    public function Login(string $username)
+    public function Login(string $Username, string $UUID): void
     {
-        $_SESSION['username'] = $username;
-        $_SESSION['token'] = password_hash($username.WEBSITE_SALT, SECURITY_TOKEN_ALGORITHM);
+        $_SESSION['username'] = $Username;
+        $_SESSION['uuid'] = $UUID;
+        $_SESSION['token'] = password_hash($Username.WEBSITE_SALT, SECURITY_TOKEN_ALGORITHM);
     }
 
     public function Authenticated(string $username, string $token): bool

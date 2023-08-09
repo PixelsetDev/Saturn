@@ -53,3 +53,7 @@ require_once __DIR__.'/Saturn/HTTP/Router.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginLoader.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginLoadOrder.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginManifest.php';
+
+// ACCOUNT MANAGER
+require_once __DIR__ . '/Saturn/AccountManager/Permissions.php';
+require_once __DIR__ . '/Saturn/AccountManager/UUID.php';
