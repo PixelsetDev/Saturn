@@ -20,6 +20,18 @@
     @apply bg-neutral-300 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-standard px-2 py-1
 }
 
+.grid-block {
+    @apply grid grid-cols-2 gap-2;
+}
+
+.grid-item {
+    @apply bg-neutral-100 dark:bg-neutral-900;
+}
+
+.grid-padding {
+    @apply px-2 py-1;
+}
+
 .text-header {
     @apply text-5xl font-bold pt-8 pb-6;
 }
