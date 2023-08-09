@@ -32,6 +32,7 @@ class CPRouter
 
                 // Has access to control panel
                 $Router->GET('/panel', '../Plugins/ControlPanel/Views/Panel.php');
+                $Router->GET('/panel/alert', '../Plugins/ControlPanel/Views/Alert.php');
                 $Router->GET('/panel/api/statistics', '../Plugins/ControlPanel/API/Statistics.php');
             } else {
                 // Does not have access to control panel
@@ -44,6 +45,7 @@ class CPRouter
             $Router->GET('/account/join', '../Plugins/ControlPanel/Views/Join.php');
             $Router->GET('/account/logout', '../Processes/Saturn/AccountManager/Logout.php');
 
+            $Router->GET('/panel/alert', '../Plugins/ControlPanel/Views/Login.php');
             $Router->GET('/panel/edit', '../Plugins/ControlPanel/Views/Login.php');
             $Router->GET('/panel', '../Plugins/ControlPanel/Views/Login.php');
         }

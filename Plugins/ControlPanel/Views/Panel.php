@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+require_once __DIR__ . '/Include/Security.php';
+?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
         <title><?= WEBSITE_NAME ?> <?= __CP('ControlPanel'); ?></title>

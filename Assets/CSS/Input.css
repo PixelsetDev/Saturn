@@ -44,7 +44,7 @@
     @apply text-3xl font-bold pt-6 pb-4;
 }
 
-.text-body {
+.text-body, body {
     @apply text-xl;
 }
 
