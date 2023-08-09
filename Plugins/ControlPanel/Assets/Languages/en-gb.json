@@ -1,16 +1,17 @@
 {
+  "Account_Already_Exists": "An account with this information already exists.",
+  "Account_Created": "Account created, please login.",
+  "Account_Logged_Out": "You have been logged out.",
+  "Account_Not_Found": "We couldn't find an account with that username or email.",
+  "ControlPanel": "Saturn Control Panel",,
   "Email": "Email address",
   "Exit": "Exit",
   "Forgot_Password": "Forgot Password",
   "Join": "Join",
-  "Account_Not_Found": "We couldn't find an account with that username or email.",
-  "Account_Already_Exists": "An account with this information already exists.",
   "Login": "Login",
   "Password": "Password",
   "Success": "Success",
   "Unknown_Error": "An unknown error occurred. Please try again later.",
-  "Username_or_Email": "Username or Email",
-  "Account_Created": "Account created, please login.",
-  "Account_Logged_Out": "You have been logged out.",
-  "Unknown_Success": "Something went well, but the system that sent you here didn't say what exactly it was."
+  "Unknown_Success": "Something went well, but the system that sent you here didn't say what exactly it was.",
+  "Username_or_Email": "Username or Email"
 }
