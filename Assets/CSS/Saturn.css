@@ -599,6 +599,10 @@ video {
   gap: 0.5rem;
 }
 
+.self-center {
+  align-self: center;
+}
+
 .bg-neutral-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));
