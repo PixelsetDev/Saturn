@@ -21,6 +21,6 @@ class Routes
         $RouteAPI = new RouteAPI($Router);
         $RouteAPI->Register();
 
-        echo '404';
+        echo '404 - Page not found.';
     }
 }
