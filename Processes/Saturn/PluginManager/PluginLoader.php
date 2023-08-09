@@ -10,8 +10,6 @@ class PluginLoader
     {
         $Actions = new Actions();
 
-        $Actions->Run('Saturn.PluginLoader.PreLoad');
-
         $SaturnPlugins = [];
         $Plugins = scandir(__DIR__.'/../../../Plugins');
 
@@ -85,5 +83,15 @@ class PluginLoader
         if ($Reason != null) {
             $SaturnPlugins[$Plugin]['Reason'] = $Reason;
         }
+    }
+
+    public function PluginLoaded(string $Plugin): bool
+    {
+        global $SaturnPlugins;
+        if ($SaturnPlugins[$Plugin]['Loaded']) {
+            return true;
+        }
+
+        return false;
     }
 }

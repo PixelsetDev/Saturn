@@ -27,7 +27,6 @@ function SaturnEnd(): void
 // ACTIONS
 $ActionList = [];
 $Actions = new Actions();
-$Actions->Run('Saturn.PreStart');
 
 // ERROR HANDLER
 $ErrorHandler = new ErrorHandler();

@@ -1,10 +1,14 @@
 <?php
 
 use ControlPanel\CPRouter;
+use Saturn\HookManager\Actions;
 use Saturn\HTTP\Router;
 use Saturn\LanguageManager\Translation;
 
 require_once __DIR__.'/CPRouter.php';
+
+$Actions = new Actions();
+$Actions->Run('ControlPanel.Start');
 
 function __CP(string $key): string
 {
@@ -14,6 +18,6 @@ function __CP(string $key): string
 }
 
 $Router = new Router();
-
-global $Actions;
 $Actions->Register('RouteRegister', [new CPRouter(), 'Register'], [$Router]);
+
+$Actions->Run('ControlPanel.End');
