@@ -9,8 +9,8 @@
 //  ##########    ###    ###       ###       ##########   ###   ###    ###   ####
 //  #########     ###    ###       ###        ########    ###    ###   ###    ###
 //
-//                           SATURN CMS VERSION 1.0.0 [DEV]
-//                             LMWN - APACHE LICENSE 2.0
+//                              SATURN CMS VERSION 1.0.0
+//                           PIXELSET -- APACHE LICENSE 2.0
 
 require_once __DIR__.'/Processes/Load.php';
 require_once __DIR__.'/Processes/Start.php';
