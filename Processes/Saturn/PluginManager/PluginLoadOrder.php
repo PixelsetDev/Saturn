@@ -5,6 +5,7 @@ namespace Saturn\PluginManager;
 class PluginLoadOrder
 {
     private array $LoadOrder;
+
     public function __construct(array $Plugins)
     {
         $this->LoadOrder = $Plugins;
@@ -13,10 +14,12 @@ class PluginLoadOrder
     public function GetLoadOrder(): array
     {
         $this->SortLoadOrder();
+
         return $this->LoadOrder;
     }
 
-    private function SortLoadOrder(): void {
+    private function SortLoadOrder(): void
+    {
         foreach ($this->LoadOrder as $Plugin) {
             if ($Plugin == '.' || $Plugin == '..') {
                 unset($this->LoadOrder[array_search($Plugin, $this->LoadOrder)]);

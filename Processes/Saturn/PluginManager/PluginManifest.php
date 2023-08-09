@@ -2,7 +2,8 @@
 
 namespace Saturn\PluginManager;
 
-class PluginManifest {
+class PluginManifest
+{
     public function GetManifest(string $Plugin): object|null
     {
         if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/Manifest.json')) {

@@ -6,7 +6,6 @@ use Saturn\ErrorHandler;
 
 class Translation
 {
-
     private string $LanguageFile;
 
     public function __construct($LanguageFile = null)
@@ -28,6 +27,7 @@ class Translation
             $ErrorHandler = new ErrorHandler();
             $ErrorHandler->Fatal('1', 'Language file not found at '.$this->LanguageFile, 'Translation.php', '23');
         }
+
         return false;
     }
 
