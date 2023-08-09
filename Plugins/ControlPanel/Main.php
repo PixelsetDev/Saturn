@@ -4,7 +4,6 @@ use ControlPanel\CPRouter;
 use Saturn\HTTP\Router;
 use Saturn\LanguageManager\Translation;
 
-var_dump($_SESSION);
 require_once __DIR__.'/CPRouter.php';
 
 function __CP(string $key): string
