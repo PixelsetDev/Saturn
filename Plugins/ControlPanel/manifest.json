@@ -8,5 +8,7 @@
     "Saturn": ["1.0.0"]
   },
   "Dependencies": [],
+  "Conflicts": [],
+  "Hibernate": ["/panel", "/account"],
   "Startup": ["Main.php"]
 }

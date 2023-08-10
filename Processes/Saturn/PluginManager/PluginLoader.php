@@ -25,18 +25,28 @@ class PluginLoader
                 continue;
             }
 
+            if ($Manifest->Hibernate !== false) {
+                $Hibernate = new Hibernate();
+                if ($Hibernate->Hibernate($Manifest)) {
+                    $this->LoadStatus($Plugin, false, 'Plugin is hibernating.');
+                    continue;
+                }
+            }
+
             if ($this->ValidateManifest($Manifest)) {
-                if ($this->CheckCompatability($Manifest)) {
+                $PluginCompatability = new PluginCompatability($Manifest);
+                $Compatible = $PluginCompatability->Check();
+                if ($Compatible['Compatible']) {
                     foreach ($Manifest->Startup as $Startup) {
                         if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
-                            require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
+                            require_once __DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup;
                             $this->LoadStatus($Plugin, true);
                         } else {
                             $this->LoadStatus($Plugin, false, 'Startup file is missing.');
                         }
                     }
                 } else {
-                    $this->LoadStatus($Plugin, false, 'Plugin is not compatible with this version of Saturn.');
+                    $this->LoadStatus($Plugin, false, $Compatible['Reason']);
                 }
             } else {
                 $this->LoadStatus($Plugin, false, 'Manifest file is corrupt.');
@@ -44,19 +54,6 @@ class PluginLoader
         }
 
         $Actions->Run('Saturn.PluginLoader.PostLoad');
-    }
-
-    private function CheckCompatability(object $Manifest): bool
-    {
-        $Compatible = false;
-
-        foreach ($Manifest->Version->Saturn as $Version) {
-            if ($Version == SATSYS_VERSION) {
-                $Compatible = true;
-            }
-        }
-
-        return $Compatible;
     }
 
     private function ValidateManifest(object $Manifest): bool

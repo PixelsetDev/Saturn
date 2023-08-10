@@ -25,11 +25,15 @@
 }
 
 .grid-item {
-    @apply bg-neutral-100 dark:bg-neutral-900;
+    @apply bg-neutral-100 dark:bg-neutral-700;
+}
+
+.grid-item-link {
+    @apply bg-neutral-100 hover:bg-neutral-50 dark:bg-neutral-900 dark:hover:bg-neutral-700 transition duration-200;
 }
 
 .grid-padding {
-    @apply px-2 py-1;
+    @apply px-4 py-3;
 }
 
 .text-header {
@@ -42,6 +46,10 @@
 
 .text-subheader {
     @apply text-3xl font-bold pt-6 pb-4;
+}
+
+.text-subheader-nopt {
+    @apply text-3xl font-bold pb-4;
 }
 
 .text-body, body {
@@ -126,4 +134,13 @@
 
 .td {
     @apply border bg-neutral-400 dark:border-neutral-900 dark:bg-neutral-700 bg-neutral-100 px-2 py-1;
+}
+
+/* BUTTON */
+
+.btn-sm {
+    @apply bg-neutral-100 hover:bg-neutral-50 dark:bg-neutral-900 dark:hover:bg-neutral-700 transition duration-200 px-2 py-1;
+}
+.btn-lg {
+    @apply bg-neutral-100 hover:bg-neutral-50 dark:bg-neutral-900 dark:hover:bg-neutral-700 transition duration-200 px-4 py-2;
 }

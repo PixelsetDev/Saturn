@@ -50,6 +50,8 @@ require_once __DIR__.'/Saturn/HTTP/Response.php';
 require_once __DIR__.'/Saturn/HTTP/Router.php';
 
 // PLUGIN MANAGER
+require_once __DIR__.'/Saturn/PluginManager/Hibernate.php';
+require_once __DIR__.'/Saturn/PluginManager/PluginCompatability.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginLoader.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginLoadOrder.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginManifest.php';
