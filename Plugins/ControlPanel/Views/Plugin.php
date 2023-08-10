@@ -57,6 +57,7 @@ global $SaturnPlugins;
                         <h2 class="text-subheader-nopt"><?= __CP('Plugin_About'); ?></h2>
                         <p class="pb-2"><?= $Manifest->Description; ?></p>
                     </div>
+
                     <?php if ($Manifest->Conflicts !== []) { ?>
                     <div class="grid-item grid-padding">
                         <h2 class="text-subheader-nopt"><?= __CP('Plugin_Conflicts'); ?></h2>
@@ -71,6 +72,16 @@ global $SaturnPlugins;
                         ?>
                     </div>
                     <?php } ?>
+
+                    <div class="grid-item grid-padding">
+                        <h2 class="text-subheader-nopt"><?= __CP('PowerFeatures'); ?></h2>
+                        <p class="pb-2"><?= __CP('PowerFeatures_Message'); ?></p>
+                        <?php if ($Manifest->Hibernate !== false) { ?>
+                        <p><i class="fa-solid fa-moon" aria-hidden="true"></i> <strong><?= __CP('PowerFeatures_Hibernate'); ?></strong> <?= __CP('PowerFeatures_Hibernate_Message'); ?></p>
+                        <?php } else { ?>
+                        <p><?= __CP('PowerFeatures_None'); ?></p>
+                        <?php } ?>
+                    </div>
                 </div>
 
                 <div class="grid gap-4">
