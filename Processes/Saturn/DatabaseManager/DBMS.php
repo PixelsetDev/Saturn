@@ -34,9 +34,9 @@ class DBMS
         }
     }
 
-    public function Escape(string $string): string
+    public function Escape(string $String): string
     {
-        return htmlspecialchars($string);
+        return htmlspecialchars($String);
     }
 
     public function RowCount(): int
@@ -49,20 +49,20 @@ class DBMS
         return $this->Database->error;
     }
 
-    public function Select(string $what, string $from, string|null $where, string $action, string|null $order = null, string|null $limit = null): array|object|int|null
+    public function Select(string $What, string $From, string|null $Where, string $Action, string|null $Order = null, string|null $Limit = null): array|object|int|null
     {
-        if ($what != '*' && !str_contains($what, '`')) {
-            $what = '`'.$what.'`';
+        if ($What !== '*' && !str_contains($What, '`')) {
+            $What = '`'.$What.'`';
         }
 
-        $Result = $this->Database->Select($what, DB_PREFIX.$from, $where, $action, $order, $limit);
+        $Result = $this->Database->Select($What, DB_PREFIX.$From, $Where, $Action, $Order, $Limit);
 
         return $Result;
     }
 
-    public function Insert(string $into, string|null $columns, string|null $values): array|object|int|null
+    public function Insert(string $Into, string|null $Columns, string|null $Values): array|object|int|null
     {
-        $Result = $this->Database->Insert(DB_PREFIX.$into, $columns, $values);
+        $Result = $this->Database->Insert(DB_PREFIX.$Into, $Columns, $Values);
 
         return $Result;
     }

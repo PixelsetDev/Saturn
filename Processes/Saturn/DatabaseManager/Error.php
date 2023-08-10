@@ -10,12 +10,12 @@ namespace Saturn\DatabaseManager;
 
 class Error
 {
-    public function Connection($e): void
+    public function Connection($Error): void
     {
         $ErrorCode = '500';
         $ErrorName = 'Internal Server Error';
         $ErrorDescription = 'Database Connection Failed';
-        $ErrorMessage = '['.$e->getCode().'] '.$e->getMessage();
+        $ErrorMessage = '['.$Error->getCode().'] '.$Error->getMessage();
 
         require_once __DIR__.'/../../DefaultViews/Error.php';
         exit;

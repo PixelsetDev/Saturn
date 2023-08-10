@@ -11,11 +11,11 @@ require_once __DIR__.'/CPRouter.php';
 $Actions = new Actions();
 $Actions->Run('ControlPanel.Start');
 
-function __CP(string $key): string
+function __CP(string $Key): string
 {
     $CPTranslate = new Translation(__DIR__.'/Assets/Languages/'.SATURN_LANGUAGE.'.json');
 
-    return $CPTranslate->Translate($key);
+    return $CPTranslate->Translate($Key);
 }
 
 $Router = new Router();

@@ -13,79 +13,79 @@ use mysqli_sql_exception;
 
 class MySQLiDB
 {
-    private mysqli $mysqli;
+    private mysqli $MySQLi;
     public int $num_rows;
     public string|null $error;
 
     public function __construct()
     {
         try {
-            $this->mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+            $this->MySQLi = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
         } catch (mysqli_sql_exception $e) {
             $Error = new Error();
             $Error->Connection($e);
         }
     }
 
-    public function Select(string $what, string $from, string $where, string $action, string|null $order = null, string|null $limit = null): array|object|int|null
+    public function Select(string $What, string $From, string $Where, string $Action, string|null $Order = null, string|null $Limit = null): array|object|int|null
     {
-        if ($what !== '*') {
-            $query = 'SELECT `'.$what.'` FROM `'.$from.'`';
+        if ($What !== '*') {
+            $Query = 'SELECT `'.$What.'` FROM `'.$From.'`';
         } else {
-            $query = 'SELECT * FROM `'.$from.'`';
+            $Query = 'SELECT * FROM `'.$From.'`';
         }
 
-        if ($where != null) {
-            $query .= ' WHERE '.$where;
+        if ($Where != null) {
+            $Query .= ' WHERE '.$Where;
         }
 
-        if ($order != null) {
-            $query .= ' ORDER BY '.$order;
+        if ($Order != null) {
+            $Query .= ' ORDER BY '.$Order;
         }
 
-        if ($limit != null) {
-            $query .= ' LIMIT '.$limit;
+        if ($Limit != null) {
+            $Query .= ' LIMIT '.$Limit;
         }
 
-        $result = $this->mysqli->query($query);
+        $Result = $this->MySQLi->query($Query);
 
         $this->error = null;
 
-        if ($result) {
-            if ($result->num_rows == 0) {
+        if ($Result) {
+            if ($Result->num_rows == 0) {
                 $this->num_rows = 0;
 
                 return null;
             }
 
-            if ($action === 'all:assoc') {
-                $actionResult = $result->fetch_all(MYSQLI_ASSOC);
-            } elseif ($action === 'all:num') {
-                $actionResult = $result->fetch_all();
-            } elseif ($action === 'first:assoc') {
-                $actionResult = $result->fetch_array(MYSQLI_ASSOC);
-            } elseif ($action === 'first:num') {
-                $actionResult = $result->fetch_array(MYSQLI_NUM);
-            } elseif ($action === 'first:object') {
-                $actionResult = $result->fetch_object();
-            } elseif ($action === 'all:raw') {
-                $actionResult = $result;
+            if ($Action === 'all:assoc') {
+                $ActionResult = $Result->fetch_all(MYSQLI_ASSOC);
+            } elseif ($Action === 'all:num') {
+                $ActionResult = $Result->fetch_all();
+            } elseif ($Action === 'first:assoc') {
+                $ActionResult = $Result->fetch_array(MYSQLI_ASSOC);
+            } elseif ($Action === 'first:num') {
+                $ActionResult = $Result->fetch_array(MYSQLI_NUM);
+            } elseif ($Action === 'first:object') {
+                $ActionResult = $Result->fetch_object();
+            } elseif ($Action === 'all:raw') {
+                $ActionResult = $Result;
             } else {
-                $actionResult = false;
+                $ActionResult = false;
                 $this->error = 'DBMS-2';
             }
         } else {
-            $actionResult = false;
+            $ActionResult = false;
             $this->error = 'DBMS-3';
         }
 
-        $this->num_rows = $result->num_rows;
+        $this->num_rows = $Result->num_rows;
 
-        return $actionResult;
+        return $ActionResult;
     }
 
-    public function Insert(string $into, string $columns, string $values): array|object|int|null
+    public function Insert(string $Into, string $Columns, string $Values): array|object|int|null
     {
-        return $this->mysqli->query('INSERT INTO `'.$into.'` ('.$columns.') VALUES ('.$values.')');
+        return $this->MySQLi->query('INSERT INTO `'.$Into.'` ('.$Columns.') VALUES ('.$Values.')');
     }
 }
