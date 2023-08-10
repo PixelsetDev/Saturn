@@ -6,23 +6,10 @@ require_once __DIR__ . '/Include/Security.php';
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
         <title><?= __CP('Plugins'); ?> - <?= WEBSITE_NAME ?> <?= __CP('ControlPanel'); ?></title>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="robots" content="noindex">
-        <meta name="charset" content="<?= WEBSITE_CHARSET; ?>">
-
-        <link rel="stylesheet" type="text/css" href="<?= SATURN_ROOT; ?>/Assets/CSS/Saturn.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <?php require_once __DIR__ . '/Include/Header.php'; ?>
     </head>
     <body class="body">
-        <nav class="navigation">
-            <div class="flex-grow self-center">
-                <a href="<?= SATURN_ROOT; ?>">
-                    <img src="<?= SATURN_ROOT; ?>/Storage/Theme/Logo.webp" alt="Logo" width="125px">
-                </a>
-            </div>
-            <a href="<?= SATURN_ROOT; ?>/account" class="navigation-item"><?= __CP('Account'); ?></a>
-        </nav>
+        <?php require_once __DIR__ . '/Include/Navigation.php'; ?>
         <main class="main">
             <h1 class="text-header-nopt"><?= __CP('Plugins'); ?></h1>
             <?php $Actions = new Actions(); $Actions->Run('ControlPanel.PluginsListStart'); ?>
