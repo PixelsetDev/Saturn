@@ -2,10 +2,10 @@
 
 namespace ControlPanel;
 
+use Saturn\AccountManager\Permissions;
 use Saturn\DatabaseManager\DBMS;
 use Saturn\HTTP\Router;
 use Saturn\SessionManager\Authenticate;
-use Saturn\AccountManager\Permissions;
 
 class CPRouter
 {
@@ -22,8 +22,8 @@ class CPRouter
             $Router->GET('/account/join', '../Plugins/ControlPanel/Views/Account.php');
             $Router->GET('/account/logout', '../Processes/Saturn/AccountManager/Logout.php');
 
-            if ($Permissions->HasPermission(['administrator','panel_access'],'OR')) {
-                if ($Permissions->HasPermission(['administrator','panel_pages_edit'],'OR')) {
+            if ($Permissions->HasPermission(['administrator', 'panel_access'], 'OR')) {
+                if ($Permissions->HasPermission(['administrator', 'panel_pages_edit'], 'OR')) {
                     // Has access to editing pages
                     $Router->GET('/panel/edit', '../Plugins/ControlPanel/Views/Edit.php');
                 } else {
@@ -31,7 +31,7 @@ class CPRouter
                     $Router->GET('/panel/edit', '../Plugins/ControlPanel/Views/NoAccess.php');
                 }
 
-                if ($Permissions->HasPermission(['administrator','panel_settings'],'OR')) {
+                if ($Permissions->HasPermission(['administrator', 'panel_settings'], 'OR')) {
                     // Has access to editing pages
                     $Router->GET('/panel/plugins', '../Plugins/ControlPanel/Views/Plugins.php');
                     $Router->GET('/panel/users', '../Plugins/ControlPanel/Views/Users.php');
@@ -40,7 +40,7 @@ class CPRouter
                         $Router->GET('/panel/plugins/'.$Plugin, '../Plugins/ControlPanel/Views/Plugin.php');
                     }
                     $DBMS = new DBMS();
-                    $Users = $DBMS->Select('*','user','1','all:assoc');
+                    $Users = $DBMS->Select('*', 'user', '1', 'all:assoc');
                     foreach ($Users as $User) {
                         $Router->GET('/panel/users/'.$User['uuid'], '../Plugins/ControlPanel/Views/User.php');
                     }

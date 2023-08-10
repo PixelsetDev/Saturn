@@ -11,7 +11,7 @@ use Saturn\DatabaseManager\DBMS;
 use Saturn\ErrorHandler;
 use Saturn\SecurityManager\CSRF;
 
-require_once __DIR__ . '/UUID.php';
+require_once __DIR__.'/UUID.php';
 
 $DB = new DBMS();
 $CSRF = new CSRF();
