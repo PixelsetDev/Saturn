@@ -66,7 +66,7 @@ if (!isset($ErrorMessage)) {
                         <strong>Warning:</strong> Saturn recommends using PHP <?= SATSYS_RECOMMENDED_PHP; ?> or higher.
                     </p>
                 </div><?php }  ?>
-                <table class="w-full">
+                <table class="w-full" role="presentation">
                     <tr>
                         <td class="td"><?= __('Request_URI'); ?></td>
                         <td class="td"><?= Out($_SERVER['REQUEST_URI']); ?></td>
