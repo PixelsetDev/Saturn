@@ -39,7 +39,7 @@ class PluginCompatability
         if (count(glob(__DIR__.'/../../../Plugins/'.'/*'.$this->Manifest->Slug)) == 1) {
             return true;
         } else {
-            return true;
+            return false;
         }
     }
 
