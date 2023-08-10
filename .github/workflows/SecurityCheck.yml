@@ -2,7 +2,7 @@ name: SecurityCheck
 on:
   push:
     branches:
-      - master
+      - main
       - 1.0.0-dev
   pull_request:
     types: [opened, synchronize, reopened]
