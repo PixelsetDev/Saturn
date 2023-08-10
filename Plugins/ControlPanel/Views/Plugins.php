@@ -72,6 +72,5 @@ require_once __DIR__ . '/Include/Security.php';
         </main>
 
         <script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Console.js"></script>
-        <script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Statistics.js"></script>
     </body>
 </html>

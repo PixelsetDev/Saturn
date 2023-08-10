@@ -2,7 +2,7 @@
 use Saturn\HookManager\Actions;
 use Saturn\PluginManager\PluginCompatability;
 use Saturn\PluginManager\PluginManifest;
-use Saturn\Processes\ContentManager\PluginContent;
+use Saturn\ContentManager\PluginContent;
 require_once __DIR__ . '/Include/Security.php';
 $Slug = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
@@ -13,15 +13,17 @@ global $SaturnPlugins;
 
 if (isset($_GET['uninstall']) && $_GET['uninstall'] === 'confirmed') {
     $ContentManager = new PluginContent();
-    $ContentManager->Delete($Slug);
-
-    header('Location: '.SATURN_ROOT.'/panel/plugins');
+    if ($ContentManager->Delete($Manifest->Slug)) {
+        header('Location: ' . SATURN_ROOT . '/panel/plugins');
+    } else {
+        header('Location: ' . SATURN_ROOT . '/panel/plugins/' . $Manifest->Slug . '?uninstallerror');
+    }
     exit;
 }
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
-        <title><?= __CP('Plugins'); ?> - <?= WEBSITE_NAME ?> <?= __CP('ControlPanel'); ?></title>
+        <title><?= $Manifest->Name ?> - <?= WEBSITE_NAME ?> <?= __CP('ControlPanel'); ?></title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex">
@@ -64,8 +66,17 @@ if (isset($_GET['uninstall']) && $_GET['uninstall'] === 'confirmed') {
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
                     <div class="alert-warning-text">
-                        <strong><?= __CP('Uninstall_Confirm_Message'); ?></strong><br>
+                        <strong><?= __CP('Uninstall_Confirm_Message'); ?> <?= $Manifest->Name; ?></strong><br>
                         <p class="mb-2"><a href="?uninstall=confirmed" class="bg-red-500 hover:bg-red-400 text-white transition duration-200 px-2 py-1"><?= __CP('Uninstall_Confirm'); ?></a></p>
+                    </div>
+                </div>
+            <?php } if (isset($_GET['uninstallerror'])) { ?>
+                <div class="alert-warning mb-6">
+                    <div class="alert-warning-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="alert-warning-text">
+                        <strong><?= __CP('Uninstall_Error'); ?></strong><br>
                     </div>
                 </div>
             <?php } ?>
@@ -169,6 +180,5 @@ if (isset($_GET['uninstall']) && $_GET['uninstall'] === 'confirmed') {
         </main>
 
         <script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Console.js"></script>
-        <script src="<?= SATURN_ROOT; ?>/Plugins/ControlPanel/Assets/JS/Statistics.js"></script>
     </body>
 </html>
