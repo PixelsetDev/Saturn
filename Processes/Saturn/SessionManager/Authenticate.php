@@ -16,7 +16,7 @@ class Authenticate
         $_SESSION['token'] = password_hash($Username.WEBSITE_SALT, SECURITY_TOKEN_ALGORITHM);
     }
 
-    public function Authenticated(string $username, string $token): bool
+    public function Validate(string $username, string $token): bool
     {
         if (!isset($username) && !isset($token)) {
             return false;

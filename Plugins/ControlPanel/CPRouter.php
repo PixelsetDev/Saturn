@@ -13,7 +13,7 @@ class CPRouter
         require_once __DIR__.'/../../Processes/Saturn/SessionManager/Authenticate.php';
         $Authenticate = new Authenticate();
 
-        if (isset($_SESSION['username']) && isset($_SESSION['token']) && $Authenticate->Authenticated($_SESSION['username'], $_SESSION['token'])) {
+        if (isset($_SESSION['username']) && isset($_SESSION['token']) && $Authenticate->Validate($_SESSION['username'], $_SESSION['token'])) {
             $Permissions = new Permissions($_SESSION['uuid']);
 
             // Logged in
