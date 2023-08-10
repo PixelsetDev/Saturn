@@ -22,7 +22,7 @@ class Authenticate
         $UUID = $_SESSION['UUID'];
         $Token = $_SESSION['Token'];
 
-        if (!empty($Username) && !empty($UUID) && !empty($Token)) {
+        if (empty($Username) || empty($UUID) || empty($Token)) {
             return false;
         }
 
