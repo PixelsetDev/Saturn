@@ -11,6 +11,7 @@ class CPRouter
 {
     private Router $Router;
     private Permissions $Permissions;
+
     public function Register(Router $Router): void
     {
         $this->Router = $Router;
