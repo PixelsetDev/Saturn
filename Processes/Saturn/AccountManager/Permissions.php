@@ -18,7 +18,7 @@ class Permissions {
     {
         $DB = new DBMS();
         $Result = $DB->Select('*', 'user_permissions', "`uuid` = '".$DB->Escape($UUID)."'", 'first:object');
-        if ($DB->num_rows() == 1) {
+        if ($DB->RowCount() == 1) {
             $this->Permissions = $Result;
         } else {
             $this->Permissions = null;

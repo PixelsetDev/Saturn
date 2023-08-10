@@ -19,7 +19,7 @@ $UUID = new UUID();
 
 $Result = $DB->Select('*', 'user', "`username` = '".$DB->Escape($_POST['username'])."'", 'first:object');
 
-if ($DB->num_rows() == 0) {
+if ($DB->RowCount() == 0) {
     if ($CSRF->Check()) {
         $Username = $DB->Escape($_POST['username']);
         $Email = $DB->Escape($_POST['email']);
@@ -28,16 +28,16 @@ if ($DB->num_rows() == 0) {
 
         $Result = $DB->Insert('user', '`id`, `uuid`, `username`, `email`, `password`', "NULL, '".$UniqID."', '".$Username."', '".$Email."', '".$Password."'");
         $Result = $DB->Insert('user_permissions', '`id`, `uuid`', "NULL, '".$UniqID."'");
-        if ($DB->error() == null) {
+        if ($DB->Error() == null) {
             header('Location: /account?success=created');
         } else {
             $EH = new ErrorHandler();
             $EH->SaturnError(
                 '500',
-                $DB->error(),
+                $DB->Error(),
                 'Database error',
                 'There was a problem with the database query.',
-                SATSYS_DOCS_URL.'/troubleshooting/errors/database#'.strtolower($DB->error())
+                SATSYS_DOCS_URL.'/troubleshooting/errors/database#'.strtolower($DB->Error())
             );
         }
     } else {

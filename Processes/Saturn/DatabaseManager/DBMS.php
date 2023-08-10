@@ -39,12 +39,12 @@ class DBMS
         return htmlspecialchars($string);
     }
 
-    public function num_rows(): int
+    public function RowCount(): int
     {
         return $this->Database->num_rows;
     }
 
-    public function error(): string|null
+    public function Error(): string|null
     {
         return $this->Database->error;
     }

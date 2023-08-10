@@ -16,9 +16,9 @@ $CSRF = new CSRF();
 
 $Result = $DB->Select('*', 'user', "`username` = '".$DB->Escape($_POST['username'])."'", 'first:object');
 
-if ($DB->num_rows() == 1) {
+if ($DB->RowCount() == 1) {
     if ($CSRF->Check()) {
-        if ($DB->error() == null) {
+        if ($DB->Error() == null) {
             if (password_verify($_POST['password'], $Result->password)) {
                 $Authenticate = new Authenticate();
                 $Authenticate->Login($Result->username,$Result->uuid);
@@ -28,10 +28,10 @@ if ($DB->num_rows() == 1) {
             $EH = new ErrorHandler();
             $EH->SaturnError(
                 '500',
-                $DB->error(),
+                $DB->Error(),
                 'Database error',
                 'There was a problem with the database query.',
-                SATSYS_DOCS_URL.'/troubleshooting/errors/database#'.strtolower($DB->error())
+                SATSYS_DOCS_URL.'/troubleshooting/errors/database#'.strtolower($DB->Error())
             );
         }
     } else {
