@@ -112,9 +112,22 @@ global $SaturnPlugins;
                         <h2 class="text-subheader-nopt"><?= __CP('Plugin_Compatability'); ?></h2>
                         <?php $Compatability = new PluginCompatability($Manifest); ?>
 
-                        <?php if ($Compatability->CheckVersion()) { ?><i class="fa-solid fa-check"></i><?php } else { ?><i class="fa-solid fa-times"></i><?php } ?> Compatible with Saturn <?= SATSYS_VERSION; ?><br>
-                        <?php if ($Compatability->CheckDuplicate()) { ?><i class="fa-solid fa-check"></i><?php } else { ?><i class="fa-solid fa-times"></i><?php } ?> Unique Plugin ID<br>
-                        <?php if ($Compatability->CheckConflicts()) { ?><i class="fa-solid fa-check"></i><?php } else { ?><i class="fa-solid fa-times"></i><?php } ?> Conflicts with other installed plugins<br>
+                        <?php if ($Compatability->CheckVersion()) { ?>
+                            <i class="fa-solid fa-check"></i> Compatible with Saturn <?= SATSYS_VERSION; ?>
+                        <?php } else { ?>
+                            <i class="fa-solid fa-times"></i> Not compatible with Saturn <?= SATSYS_VERSION; ?>
+                        <?php } ?><br>
+
+                        <?php if ($Compatability->CheckUnique()) { ?>
+                            <i class="fa-solid fa-check"></i> Unique Plugin ID
+                        <?php } else { ?>
+                            <i class="fa-solid fa-times"></i> Duplicate plugin found
+                        <?php } ?><br>
+                        <?php if ($Compatability->CheckConflicts()) { ?>
+                            <i class="fa-solid fa-check"></i> No conflicts with other installed plugins
+                        <?php } else { ?>
+                            <i class="fa-solid fa-times"></i> Conflicts with other installed plugins
+                        <?php } ?><br>
                     </div>
                 </div>
             </div>

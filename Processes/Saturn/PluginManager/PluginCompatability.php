@@ -12,7 +12,7 @@ class PluginCompatability
     public function Check(): array
     {
         if (!$this->CheckVersion()) { return ['Compatible' => false, 'Reason' => 'Not compatible with this version of Saturn.']; }
-        if (!$this->CheckDuplicate()) { return ['Compatible' => false, 'Reason' => 'There are multiple versions of this plugin installed at the same time.']; }
+        if (!$this->CheckUnique()) { return ['Compatible' => false, 'Reason' => 'There are multiple versions of this plugin installed at the same time.']; }
 
         return ['Compatible' => true, 'Reason' => ''];
     }
@@ -28,7 +28,7 @@ class PluginCompatability
         return false;
     }
 
-    public function CheckDuplicate(): bool
+    public function CheckUnique(): bool
     {
         if (count(glob(__DIR__.'/../../../Plugins/' . '/*' . $this->Manifest->Slug)) == 1) {
             return true;
@@ -39,10 +39,14 @@ class PluginCompatability
 
     public function CheckConflicts(): bool
     {
-        if ($this->Manifest->Conflicts === false) {
-            return true;
-        } else {
-            return false;
+        if ($this->Manifest->Conflicts !== null) {
+            foreach ($this->Manifest->Conflicts as $Conflict) {
+                if (file_exists(__DIR__.'/../../../Plugins/' . $Conflict)) {
+                    return false;
+                }
+            }
         }
+
+        return true;
     }
 }
