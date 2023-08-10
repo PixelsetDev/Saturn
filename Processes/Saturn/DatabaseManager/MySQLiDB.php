@@ -54,6 +54,7 @@ class MySQLiDB
         if ($result) {
             if ($result->num_rows == 0) {
                 $this->num_rows = 0;
+
                 return null;
             }
 

@@ -39,7 +39,7 @@ class PluginLoader
                 if ($Compatible['Compatible']) {
                     foreach ($Manifest->Startup as $Startup) {
                         if (file_exists(__DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup)) {
-                            require_once __DIR__ . '/../../../Plugins/' . $Plugin . '/' . $Startup;
+                            require_once __DIR__.'/../../../Plugins/'.$Plugin.'/'.$Startup;
                             $this->LoadStatus($Plugin, true);
                         } else {
                             $this->LoadStatus($Plugin, false, 'Startup file is missing.');

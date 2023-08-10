@@ -12,6 +12,7 @@ class Hibernate
 
         return false;
     }
+
     public function URL($URL): bool
     {
         if (str_contains($_SERVER['REQUEST_URI'], $URL)) {
