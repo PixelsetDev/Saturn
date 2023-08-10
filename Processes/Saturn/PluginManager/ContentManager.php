@@ -9,22 +9,22 @@ class ContentManager
         return $this->rrmdir(__DIR__.'/../../../Plugins/'.$Plugin);
     }
 
-    private function rrmdir($dir): bool
+    private function rrmdir($Directory): bool
     {
-        if (is_dir($dir)) {
-            $objects = scandir($dir);
+        if (is_dir($Directory)) {
+            $Objects = scandir($Directory);
 
-            foreach ($objects as $object) {
-                if ($object != '.' && $object != '..') {
-                    if (filetype($dir.'/'.$object) == 'dir') {
-                        $this->rrmdir($dir.'/'.$object);
+            foreach ($Objects as $Object) {
+                if ($Object != '.' && $Object != '..') {
+                    if (filetype($Directory.'/'.$Object) == 'dir') {
+                        $this->rrmdir($Directory.'/'.$Object);
                     } else {
-                        unlink($dir.'/'.$object);
+                        unlink($Directory.'/'.$Object);
                     }
                 }
             }
 
-            return rmdir($dir);
+            return rmdir($Directory);
         }
 
         return false;

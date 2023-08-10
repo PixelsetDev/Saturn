@@ -17,12 +17,12 @@ class Translation
         }
     }
 
-    public function Translate(string $key): string|bool
+    public function Translate(string $Key): string|bool
     {
         if (file_exists($this->LanguageFile)) {
             $LanguageFile = file_get_contents($this->LanguageFile);
 
-            return $this->DoTranslation($LanguageFile, $key);
+            return $this->DoTranslation($LanguageFile, $Key);
         } else {
             $ErrorHandler = new ErrorHandler();
             $ErrorHandler->Fatal('1', 'Language file not found at '.$this->LanguageFile, 'Translation.php', '23');
@@ -31,10 +31,10 @@ class Translation
         return false;
     }
 
-    private function DoTranslation(string $LanguageFile, string $key)
+    private function DoTranslation(string $LanguageFile, string $Key)
     {
         $LanguageJSON = json_decode($LanguageFile);
 
-        return $LanguageJSON->$key ?? $key ?? 'Unknown';
+        return $LanguageJSON->$Key ?? $Key ?? 'Unknown';
     }
 }

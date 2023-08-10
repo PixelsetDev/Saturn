@@ -33,21 +33,21 @@ $ErrorHandler = new ErrorHandler();
 $ErrorHandler->Register();
 
 // FUNCTIONS
-function Out(string $text): string
+function Out(string $Text): string
 {
     $XSS = new XSS();
 
-    return $XSS->Escape($text);
+    return $XSS->Escape($Text);
 }
 
-function __(string $text): string
+function __(string $Text): string
 {
     $Translation = new Translation();
     $XSS = new XSS();
 
-    $text = $Translation->Translate($text);
+    $text = $Translation->Translate($Text);
 
-    return $XSS->Escape($text);
+    return $XSS->Escape($Text);
 }
 
 if (WEBSITE_ENV == 1) {
