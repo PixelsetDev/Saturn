@@ -36,7 +36,7 @@ require_once __DIR__.'/Saturn/SecurityManager/XSS.php';
 
 // SESSION MANAGER
 require_once __DIR__.'/Saturn/SessionManager/Session.php';
-require_once __DIR__.'/Saturn/SessionManager/Checker.php';
+require_once __DIR__.'/Saturn/SessionManager/Authenticate.php';
 
 // LANGUAGE MANAGER
 require_once __DIR__.'/Saturn/LanguageManager/Translation.php';
