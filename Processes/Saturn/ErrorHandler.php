@@ -14,23 +14,23 @@ class ErrorHandler
 
     public function Fatal($errno, $errstr, $errfile, $errline): void
     {
-        echo out('<p style="color: red;">Fatal error: '.$errstr.'</p>');
+        echo Out('<p style="color: red;">Fatal error: '.$errstr.'</p>');
         exit;
     }
 
     public function Error($errno, $errstr, $errfile, $errline): void
     {
-        echo out('<p style="color: orange;">Error: '.$errstr.'</p>');
+        echo Out('<p style="color: orange;">Error: '.$errstr.'</p>');
     }
 
     public function Warning($errno, $errstr, $errfile, $errline): void
     {
-        echo out('<p style="color: yellow;">Warning: '.$errstr.'</p>');
+        echo Out('<p style="color: yellow;">Warning: '.$errstr.'</p>');
     }
 
     public function Notice($errno, $errstr, $errfile, $errline): void
     {
-        echo out('<p style="color: blue;">Notice: '.$errstr.'</p>');
+        echo Out('<p style="color: blue;">Notice: '.$errstr.'</p>');
     }
 
     public function SaturnError($HTTPCode, $SaturnCode, $ErrorName, $ErrorDescription, $DocsURL)

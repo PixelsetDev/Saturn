@@ -18,13 +18,13 @@ if (!isset($ErrorMessage)) {
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
-        <title><?= __('Error'); ?> <?= out($ErrorCode); ?> - <?= out(WEBSITE_NAME); ?></title>
+        <title><?= __('Error'); ?> <?= Out($ErrorCode); ?> - <?= Out(WEBSITE_NAME); ?></title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex">
         <meta name="charset" content="<?= WEBSITE_CHARSET; ?>">
 
-        <link rel="stylesheet" type="text/css" href="<?= out(SATURN_ROOT); ?>/Assets/CSS/Saturn.css">
+        <link rel="stylesheet" type="text/css" href="<?= Out(SATURN_ROOT); ?>/Assets/CSS/Saturn.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body class="body">
@@ -33,15 +33,15 @@ if (!isset($ErrorMessage)) {
         </nav>
 
         <main class="main">
-            <img src="<?= out(SATURN_ROOT); ?>/Assets/Images/Saturn-logo.webp" class="w-1/4 mx-auto" alt="Logo">
+            <img src="<?= Out(SATURN_ROOT); ?>/Assets/Images/Saturn-logo.webp" class="w-1/4 mx-auto" alt="Logo">
 
             <div class="pb-8">
                 <h1 class="text-header">
-                    <?= __('Error'); ?> <?= out($ErrorCode); ?>: <?= out($ErrorName); ?>
+                    <?= __('Error'); ?> <?= Out($ErrorCode); ?>: <?= Out($ErrorName); ?>
                 </h1>
 
                 <p class="text-body">
-                    <?= out($ErrorDescription); ?>
+                    <?= Out($ErrorDescription); ?>
                 </p>
             </div>
 
@@ -50,7 +50,7 @@ if (!isset($ErrorMessage)) {
                     <?= __('Error_Information'); ?>
                 </h2>
                 <p class="text-error">
-                    <?= out($ErrorMessage); ?>
+                    <?= Out($ErrorMessage); ?>
                 </p>
             </div>
 
@@ -69,23 +69,23 @@ if (!isset($ErrorMessage)) {
                 <table class="w-full">
                     <tr>
                         <td class="td"><?= __('Request_URI'); ?></td>
-                        <td class="td"><?= out($_SERVER['REQUEST_URI']); ?></td>
+                        <td class="td"><?= Out($_SERVER['REQUEST_URI']); ?></td>
                     </tr>
                     <tr>
                         <td class="td"><?= __('Server_Protocol'); ?></td>
-                        <td class="td"><?= out($_SERVER['SERVER_PROTOCOL']); ?></td>
+                        <td class="td"><?= Out($_SERVER['SERVER_PROTOCOL']); ?></td>
                     </tr>
                     <tr>
                         <td class="td"><?= __('Request_Time'); ?></td>
-                        <td class="td"><?= out(date('Y-m-d h:i:s')); ?></td>
+                        <td class="td"><?= Out(date('Y-m-d h:i:s')); ?></td>
                     </tr>
                     <tr>
                         <td class="td"><?= __('Request_IP'); ?></td>
-                        <td class="td"><?= out($_SERVER['REMOTE_ADDR']); ?></td>
+                        <td class="td"><?= Out($_SERVER['REMOTE_ADDR']); ?></td>
                     </tr>
                     <tr>
                         <td class="td"><?= __('Software_Version'); ?></td>
-                        <td class="td"><?= out(SATSYS_VERSION); ?></td>
+                        <td class="td"><?= Out(SATSYS_VERSION); ?></td>
                     </tr>
                     <?php if (WEBSITE_ENV != 0) { ?>
                         <tr>
@@ -94,19 +94,19 @@ if (!isset($ErrorMessage)) {
                     <?php } else { ?>
                         <tr>
                             <td class="td"><?= __('PHP_Version'); ?></td>
-                            <td class="td"><?= out(PHP_VERSION); ?></td>
+                            <td class="td"><?= Out(PHP_VERSION); ?></td>
                         </tr>
                         <tr>
                             <td class="td"><?= __('Operating_System'); ?></td>
-                            <td class="td"><?= out(PHP_OS); ?></td>
+                            <td class="td"><?= Out(PHP_OS); ?></td>
                         </tr>
                         <tr>
                             <td class="td"><?= __('Server_Software'); ?></td>
-                            <td class="td"><?= out($_SERVER['SERVER_SOFTWARE']); ?></td>
+                            <td class="td"><?= Out($_SERVER['SERVER_SOFTWARE']); ?></td>
                         </tr>
                         <tr>
                             <td class="td"><?= __('Server_Port'); ?></td>
-                            <td class="td"><?= out($_SERVER['SERVER_PORT']); ?></td>
+                            <td class="td"><?= Out($_SERVER['SERVER_PORT']); ?></td>
                         </tr>
                     <?php } ?>
                 </table>

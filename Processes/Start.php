@@ -33,11 +33,11 @@ $ErrorHandler = new ErrorHandler();
 $ErrorHandler->Register();
 
 // FUNCTIONS
-function out(string $text): string
+function Out(string $text): string
 {
     $XSS = new XSS();
 
-    return $XSS->out($text);
+    return $XSS->Escape($text);
 }
 
 function __(string $text): string
@@ -47,7 +47,7 @@ function __(string $text): string
 
     $text = $Translation->Translate($text);
 
-    return $XSS->out($text);
+    return $XSS->Escape($text);
 }
 
 if (WEBSITE_ENV == 1) {

@@ -12,7 +12,7 @@ namespace Saturn\SecurityManager;
 
 class XSS
 {
-    public function out($text): string
+    public function Escape($text): string
     {
         return htmlspecialchars($text);
     }

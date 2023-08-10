@@ -8,13 +8,13 @@
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
-        <title><?= __('No_Homepage'); ?> - <?= out(WEBSITE_NAME); ?></title>
+        <title><?= __('No_Homepage'); ?> - <?= Out(WEBSITE_NAME); ?></title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="noindex">
         <meta name="charset" content="<?= WEBSITE_CHARSET; ?>">
 
-        <link rel="stylesheet" type="text/css" href="<?= out(SATURN_ROOT); ?>/Assets/CSS/Saturn.css">
+        <link rel="stylesheet" type="text/css" href="<?= Out(SATURN_ROOT); ?>/Assets/CSS/Saturn.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body class="body">
@@ -23,7 +23,7 @@
         </nav>
 
         <main class="main">
-            <img src="<?= out(SATURN_ROOT); ?>/Assets/Images/Saturn-logo.webp" class="w-1/4 mx-auto" alt="Logo">
+            <img src="<?= Out(SATURN_ROOT); ?>/Assets/Images/Saturn-logo.webp" class="w-1/4 mx-auto" alt="Logo">
 
             <div class="pb-8">
                 <h1 class="text-header">

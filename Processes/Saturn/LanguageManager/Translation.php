@@ -31,7 +31,7 @@ class Translation
         return false;
     }
 
-    public function DoTranslation(string $LanguageFile, string $key)
+    private function DoTranslation(string $LanguageFile, string $key)
     {
         $LanguageJSON = json_decode($LanguageFile);
 
