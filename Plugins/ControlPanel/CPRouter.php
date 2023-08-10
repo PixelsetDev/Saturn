@@ -68,7 +68,8 @@ class CPRouter
         }
     }
 
-    private function Settings(bool $HasPermission) {
+    private function Settings(bool $HasPermission): void
+    {
         if ($HasPermission) {
             $this->Router->GET(CPURL_Panel.CPURL_Plugins, '../Plugins/ControlPanel/Views/Plugins.php');
             $this->Router->GET(CPURL_Panel.CPURL_Users, '../Plugins/ControlPanel/Views/Users.php');
@@ -87,7 +88,8 @@ class CPRouter
         }
     }
 
-    private function Pages(bool $HasPermission) {
+    private function Pages(bool $HasPermission): void
+    {
         if ($HasPermission) {
             $this->Router->GET(CPURL_Panel.CPURL_Edit, '../Plugins/ControlPanel/Views/Edit.php');
         } else {
@@ -95,7 +97,8 @@ class CPRouter
         }
     }
 
-    private function PanelAccess(bool $HasPermission) {
+    private function PanelAccess(bool $HasPermission): void
+    {
         if ($HasPermission) {
             $this->Router->GET(CPURL_Panel, '../Plugins/ControlPanel/Views/Panel.php');
             $this->Router->GET(CPURL_Panel.'/alert', '../Plugins/ControlPanel/Views/Alert.php');
