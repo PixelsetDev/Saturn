@@ -9,20 +9,24 @@ namespace Saturn\SessionManager;
 
 class Authenticate
 {
-    public function Login(string $Username, string $UUID): void
+    public function Generate(string $Username, string $UUID): void
     {
-        $_SESSION['username'] = $Username;
-        $_SESSION['uuid'] = $UUID;
-        $_SESSION['token'] = password_hash($Username.WEBSITE_SALT, SECURITY_TOKEN_ALGORITHM);
+        $_SESSION['Username'] = $Username;
+        $_SESSION['UUID'] = $UUID;
+        $_SESSION['Token'] = password_hash($Username.$UUID.WEBSITE_SALT, SECURITY_TOKEN_ALGORITHM);
     }
 
-    public function Validate(string $username, string $token): bool
+    public function Validate(): bool
     {
-        if (!isset($username) && !isset($token)) {
+        $Username = $_SESSION['Username'];
+        $UUID = $_SESSION['UUID'];
+        $Token = $_SESSION['Token'];
+
+        if (!empty($Username) && !empty($UUID) && !empty($Token)) {
             return false;
         }
 
-        if (password_verify($username.WEBSITE_SALT, $token)) {
+        if (password_verify($Username.$UUID.WEBSITE_SALT, $Token)) {
             return true;
         } else {
             return false;
