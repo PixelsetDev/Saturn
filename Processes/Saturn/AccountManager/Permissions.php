@@ -11,19 +11,22 @@ namespace Saturn\AccountManager;
 use Saturn\DatabaseManager\DBMS;
 use Saturn\ErrorHandler;
 
-class Permissions {
+class Permissions
+{
     public object|null $Permissions;
 
-    function __construct($UUID)
+    public function __construct($UUID)
     {
         $DB = new DBMS();
         $Result = $DB->Select('*', 'user_permissions', "`uuid` = '".$DB->Escape($UUID)."'", 'first:object');
         $this->Permissions = $Result;
     }
 
-    function HasPermission(array $RequestedPermissions, string $Operation): bool
+    public function HasPermission(array $RequestedPermissions, string $Operation): bool
     {
-        if ($this->Permissions == null) { return false; }
+        if ($this->Permissions == null) {
+            return false;
+        }
 
         if ($Operation === 'OR') {
             foreach ($RequestedPermissions as $RP) {
