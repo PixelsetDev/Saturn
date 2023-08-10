@@ -7,7 +7,7 @@ In this guide you will get an overview of the contribution workflow from opening
 ## New contributor guide
 
   See the [README](README.md) to get an overview of the project. Here are some helpful resources to get you comfortable with open source contribution:
-  If you're programming with us, please see the [STYLE GUIDE](STYLE GUIDE.md).
+  If you're programming with us, please see the [STYLEGUIDE](STYLEGUIDE.md).
 - [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
 - [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
 

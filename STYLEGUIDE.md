@@ -14,3 +14,6 @@ PSR does not currently have recommendations for what style to write variables in
 For now, we ask that contributors write variables in PascalCase.
 
 For example: $Variable or $MyVariable
+
+Of course, plugins, themes, and extensions made by other people are not expected to follow our guides, it's your own software - do what you want!
+But anything in Saturn's core (including the official Control Panel plugin) should follow these guidelines.
