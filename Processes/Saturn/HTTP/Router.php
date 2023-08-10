@@ -81,7 +81,7 @@ class Router
             require_once __DIR__.'/../../'.$path_to_include;
             exit;
         }
-        if (count($route_parts) != count($request_url_parts)) {
+        if (count($route_parts) !== count($request_url_parts)) {
             return;
         }
         $parameters = [];
@@ -106,5 +106,7 @@ class Router
 
     public function bad()
     {
+        $R = $Response = new Response();
+        $R->HTTP405();
     }
 }

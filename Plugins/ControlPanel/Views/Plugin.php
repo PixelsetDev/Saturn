@@ -47,7 +47,10 @@ if (isset($_GET['uninstall']) && $_GET['uninstall'] === 'confirmed') {
                     <?= __CP('Plugin_NotLoaded_Reason'); ?> <?= $SaturnPlugins[$Slug]['Reason']; ?>
                 </div>
             </div>
-            <?php } if (isset($_GET['uninstall'])) { ?>
+            <?php
+                }
+                if (isset($_GET['uninstall'])) {
+            ?>
                 <div class="alert-warning mb-6">
                     <div class="alert-warning-icon">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -57,7 +60,10 @@ if (isset($_GET['uninstall']) && $_GET['uninstall'] === 'confirmed') {
                         <p class="mb-2"><a href="?uninstall=confirmed" class="bg-red-500 hover:bg-red-400 text-white transition duration-200 px-2 py-1"><?= __CP('Uninstall_Confirm'); ?></a></p>
                     </div>
                 </div>
-            <?php } if (isset($_GET['uninstallerror'])) { ?>
+            <?php
+                }
+                if (isset($_GET['uninstallerror'])) {
+            ?>
                 <div class="alert-warning mb-6">
                     <div class="alert-warning-icon">
                         <i class="fas fa-exclamation-triangle"></i>
