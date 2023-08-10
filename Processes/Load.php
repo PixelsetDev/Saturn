@@ -49,10 +49,8 @@ require_once __DIR__.'/Saturn/DatabaseManager/DBMS.php';
 require_once __DIR__.'/Saturn/HTTP/Response.php';
 require_once __DIR__.'/Saturn/HTTP/Router.php';
 
-// CONTENT MANAGER
-require_once __DIR__.'/Saturn/ContentManager/PluginContent.php';
-
 // PLUGIN MANAGER
+require_once __DIR__.'/Saturn/PluginManager/ContentManager.php';
 require_once __DIR__.'/Saturn/PluginManager/Hibernate.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginCompatability.php';
 require_once __DIR__.'/Saturn/PluginManager/PluginLoader.php';

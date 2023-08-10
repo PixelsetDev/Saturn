@@ -1,8 +1,8 @@
 <?php
 use Saturn\HookManager\Actions;
 use Saturn\PluginManager\PluginCompatability;
+use Saturn\PluginManager\ContentManager;
 use Saturn\PluginManager\PluginManifest;
-use Saturn\ContentManager\PluginContent;
 require_once __DIR__ . '/Include/Security.php';
 $Slug = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
@@ -12,7 +12,7 @@ $Manifest = $PM->GetManifest($Slug);
 global $SaturnPlugins;
 
 if (isset($_GET['uninstall']) && $_GET['uninstall'] === 'confirmed') {
-    $ContentManager = new PluginContent();
+    $ContentManager = new ContentManager();
     if ($ContentManager->Delete($Manifest->Slug)) {
         header('Location: ' . SATURN_ROOT . '/panel/plugins');
     } else {

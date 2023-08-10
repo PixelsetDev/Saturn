@@ -1,8 +1,8 @@
 <?php
 
-namespace Saturn\ContentManager;
+namespace Saturn\PluginManager;
 
-class PluginContent {
+class ContentManager {
     public function Delete($Plugin) {
         return $this->rrmdir(__DIR__ . '/../../../Plugins/' . $Plugin);
     }

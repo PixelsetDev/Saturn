@@ -43,6 +43,7 @@
   "Uninstall": "Uninstall",
   "Uninstall_Confirm": "Confirm Uninstall",
   "Uninstall_Confirm_Message": "Please confirm you'd like to uninstall",
+  "Uninstall_Error": "There was an issue whilst attempting to uninstall. Please try again later or remove it manually from the file system.",
   "Unknown_Error": "An unknown error occurred. Please try again later.",
   "Unknown_Success": "Something went well, but the system that sent you here didn't say what exactly it was.",
   "Unloaded": "Unloaded",
