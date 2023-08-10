@@ -31,11 +31,11 @@ class CPRouter
     private function Account(bool $Authenticated): void
     {
         if ($Authenticated) {
-            $this->Router->GET(CPURL_Account, '../Plugins/ControlPanel/Views/Account.php');
-            $this->Router->GET(CPURL_Account.CPURL_Join, '../Plugins/ControlPanel/Views/Account.php');
-            $this->Router->GET(CPURL_Account.CPURL_Logout, '../Processes/Saturn/AccountManager/Logout.php');
+            $this->Router->GET(CPURL_ACCOUNT, '../Plugins/ControlPanel/Views/Account.php');
+            $this->Router->GET(CPURL_ACCOUNT.CPURL_JOIN, '../Plugins/ControlPanel/Views/Account.php');
+            $this->Router->GET(CPURL_ACCOUNT.CPURL_LOGOUT, '../Processes/Saturn/AccountManager/Logout.php');
         } else {
-            $this->Router->GET('/account', CPPage_Login);
+            $this->Router->GET('/account', CPPAGE_LOGIN);
             $this->Router->GET('/account/join', '../Plugins/ControlPanel/Views/Join.php');
             $this->Router->GET('/account/logout', '../Processes/Saturn/AccountManager/Logout.php');
         }
@@ -62,52 +62,52 @@ class CPRouter
                 $this->PanelAccess(false);
             }
         } else {
-            $this->Router->GET('/panel/alert', CPPage_Login);
-            $this->Router->GET('/panel/edit', CPPage_Login);
-            $this->Router->GET('/panel', CPPage_Login);
+            $this->Router->GET('/panel/alert', CPPAGE_LOGIN);
+            $this->Router->GET('/panel/edit', CPPAGE_LOGIN);
+            $this->Router->GET('/panel', CPPAGE_LOGIN);
         }
     }
 
     private function Settings(bool $HasPermission): void
     {
         if ($HasPermission) {
-            $this->Router->GET(CPURL_Panel.CPURL_Plugins, '../Plugins/ControlPanel/Views/Plugins.php');
-            $this->Router->GET(CPURL_Panel.CPURL_Users, '../Plugins/ControlPanel/Views/Users.php');
+            $this->Router->GET(CPURL_PANEL.CPURL_PLUGINS, '../Plugins/ControlPanel/Views/Plugins.php');
+            $this->Router->GET(CPURL_PANEL.CPURL_USERS, '../Plugins/ControlPanel/Views/Users.php');
             global $SaturnPlugins;
             foreach ($SaturnPlugins as $Plugin => $Loaded) {
-                $this->Router->GET(CPURL_Panel.CPURL_Plugins.'/'.$Plugin, '../Plugins/ControlPanel/Views/Plugin.php');
+                $this->Router->GET(CPURL_PANEL.CPURL_PLUGINS.'/'.$Plugin, '../Plugins/ControlPanel/Views/Plugin.php');
             }
             $DBMS = new DBMS();
             $Users = $DBMS->Select('*', 'user', '1', 'all:assoc');
             foreach ($Users as $User) {
-                $this->Router->GET(CPURL_Panel.CPURL_Users.'/'.$User['uuid'], '../Plugins/ControlPanel/Views/User.php');
+                $this->Router->GET(CPURL_PANEL.CPURL_USERS.'/'.$User['uuid'], '../Plugins/ControlPanel/Views/User.php');
             }
         } else {
-            $this->Router->GET(CPURL_Panel.CPURL_Plugins, CPPage_NoAccess);
-            $this->Router->GET(CPURL_Panel.CPURL_Users, CPPage_NoAccess);
+            $this->Router->GET(CPURL_PANEL.CPURL_PLUGINS, CPPAGE_NOACCESS);
+            $this->Router->GET(CPURL_PANEL.CPURL_USERS, CPPAGE_NOACCESS);
         }
     }
 
     private function Pages(bool $HasPermission): void
     {
         if ($HasPermission) {
-            $this->Router->GET(CPURL_Panel.CPURL_Edit, '../Plugins/ControlPanel/Views/Edit.php');
+            $this->Router->GET(CPURL_PANEL.CPURL_EDIT, '../Plugins/ControlPanel/Views/Edit.php');
         } else {
-            $this->Router->GET(CPURL_Panel.CPURL_Edit, CPPage_NoAccess);
+            $this->Router->GET(CPURL_PANEL.CPURL_EDIT, CPPAGE_NOACCESS);
         }
     }
 
     private function PanelAccess(bool $HasPermission): void
     {
         if ($HasPermission) {
-            $this->Router->GET(CPURL_Panel, '../Plugins/ControlPanel/Views/Panel.php');
-            $this->Router->GET(CPURL_Panel.'/alert', '../Plugins/ControlPanel/Views/Alert.php');
-            $this->Router->GET(CPURL_Panel.'/api/statistics', '../Plugins/ControlPanel/API/Statistics.php');
+            $this->Router->GET(CPURL_PANEL, '../Plugins/ControlPanel/Views/Panel.php');
+            $this->Router->GET(CPURL_PANEL.'/alert', '../Plugins/ControlPanel/Views/Alert.php');
+            $this->Router->GET(CPURL_PANEL.'/api/statistics', '../Plugins/ControlPanel/API/Statistics.php');
         } else {
-            $this->Router->GET(CPURL_Panel.'/api/statistics', CPPage_NoAccess);
-            $this->Router->GET(CPURL_Panel.'/alert', CPPage_NoAccess);
-            $this->Router->GET(CPURL_Panel.CPURL_Edit, CPPage_NoAccess);
-            $this->Router->GET(CPURL_Panel, CPPage_NoAccess);
+            $this->Router->GET(CPURL_PANEL.'/api/statistics', CPPAGE_NOACCESS);
+            $this->Router->GET(CPURL_PANEL.'/alert', CPPAGE_NOACCESS);
+            $this->Router->GET(CPURL_PANEL.CPURL_EDIT, CPPAGE_NOACCESS);
+            $this->Router->GET(CPURL_PANEL, CPPAGE_NOACCESS);
         }
     }
 }

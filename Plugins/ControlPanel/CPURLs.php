@@ -1,11 +1,11 @@
 <?php
 
-const CPURL_Account = '/account';
-const CPURL_Join = '/join';
-const CPURL_Logout = '/logout';
-const CPURL_Panel = '/panel';
-const CPURL_Edit = '/edit';
-const CPURL_Plugins = '/plugins';
-const CPURL_Users = '/users';
-const CPPage_NoAccess = '../Plugins/ControlPanel/Views/NoAccess.php';
-const CPPage_Login = '../Plugins/ControlPanel/Views/Login.php';
+const CPURL_ACCOUNT = '/account';
+const CPURL_JOIN = '/join';
+const CPURL_LOGOUT = '/logout';
+const CPURL_PANEL = '/panel';
+const CPURL_EDIT = '/edit';
+const CPURL_PLUGINS = '/plugins';
+const CPURL_USERS = '/users';
+const CPPAGE_NOACCESS = '../Plugins/ControlPanel/Views/NoAccess.php';
+const CPPAGE_LOGIN = '../Plugins/ControlPanel/Views/Login.php';
