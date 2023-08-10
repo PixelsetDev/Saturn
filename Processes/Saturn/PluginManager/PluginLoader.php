@@ -16,6 +16,8 @@ class PluginLoader
         $LOM = new PluginLoadOrder($Plugins);
         $Plugins = $LoadOrder = $LOM->GetLoadOrder();
 
+        var_dump($Plugins);
+
         foreach ($Plugins as $Plugin) {
             $PM = new PluginManifest();
             $Manifest = $PM->GetManifest($Plugin);

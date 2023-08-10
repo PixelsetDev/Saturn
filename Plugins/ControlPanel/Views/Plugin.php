@@ -2,6 +2,7 @@
 use Saturn\HookManager\Actions;
 use Saturn\PluginManager\PluginCompatability;
 use Saturn\PluginManager\PluginManifest;
+use Saturn\Processes\ContentManager\PluginContent;
 require_once __DIR__ . '/Include/Security.php';
 $Slug = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
@@ -9,6 +10,14 @@ $PM = new PluginManifest();
 $Manifest = $PM->GetManifest($Slug);
 
 global $SaturnPlugins;
+
+if (isset($_GET['uninstall']) && $_GET['uninstall'] === 'confirmed') {
+    $ContentManager = new PluginContent();
+    $ContentManager->Delete($Slug);
+
+    header('Location: '.SATURN_ROOT.'/panel/plugins');
+    exit;
+}
 ?><!DOCTYPE html>
 <html lang="<?= WEBSITE_LANGUAGE; ?>">
     <head>
@@ -49,6 +58,16 @@ global $SaturnPlugins;
                     <?= __CP('Plugin_NotLoaded_Reason'); ?> <?= $SaturnPlugins[$Slug]['Reason']; ?>
                 </div>
             </div>
+            <?php } if (isset($_GET['uninstall'])) { ?>
+                <div class="alert-warning mb-6">
+                    <div class="alert-warning-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="alert-warning-text">
+                        <strong><?= __CP('Uninstall_Confirm_Message'); ?></strong><br>
+                        <p class="mb-2"><a href="?uninstall=confirmed" class="bg-red-500 hover:bg-red-400 text-white transition duration-200 px-2 py-1"><?= __CP('Uninstall_Confirm'); ?></a></p>
+                    </div>
+                </div>
             <?php } ?>
 
             <div class="grid lg:grid-cols-3 gap-4">
@@ -106,30 +125,44 @@ global $SaturnPlugins;
                     </div>
                     <div class="grid-item grid-padding">
                         <h2 class="text-subheader-nopt"><?= __CP('Version'); ?></h2>
-                        <p><?= $Manifest->Version->Plugin; ?></p>
+                        <p><?= __CP('Plugin'); ?> <?= $Manifest->Version->Plugin; ?></p>
+                        <p> <?= __CP('Saturn'); ?>
+                            <?php
+                            $i = 0;
+                            foreach ($Manifest->Version->Saturn as $SV) {
+                                if ($i !== 0) { echo ', '; }
+                                echo $SV;
+                                $i++;
+                            }
+                            ?></p>
                     </div>
                     <div class="grid-item grid-padding">
                         <h2 class="text-subheader-nopt"><?= __CP('Plugin_Compatability'); ?></h2>
                         <?php $Compatability = new PluginCompatability($Manifest); ?>
 
                         <?php if ($Compatability->CheckVersion()) { ?>
-                            <i class="fa-solid fa-check"></i> Compatible with Saturn <?= SATSYS_VERSION; ?>
+                            <i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Compatible with Saturn <?= SATSYS_VERSION; ?>
                         <?php } else { ?>
-                            <i class="fa-solid fa-times"></i> Not compatible with Saturn <?= SATSYS_VERSION; ?>
+                            <i class="fa-solid fa-times text-red-500" aria-hidden="true"></i> Not compatible with Saturn <?= SATSYS_VERSION; ?>
                         <?php } ?><br>
 
                         <?php if ($Compatability->CheckUnique()) { ?>
-                            <i class="fa-solid fa-check"></i> Unique Plugin ID
+                            <i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> Unique Plugin ID
                         <?php } else { ?>
-                            <i class="fa-solid fa-times"></i> Duplicate plugin found
+                            <i class="fa-solid fa-times text-red-500" aria-hidden="true"></i> Duplicate plugin found
                         <?php } ?><br>
                         <?php if ($Compatability->CheckConflicts()) { ?>
-                            <i class="fa-solid fa-check"></i> No conflicts with other installed plugins
+                            <i class="fa-solid fa-check text-green-500" aria-hidden="true"></i> No conflicts with other installed plugins
                         <?php } else { ?>
-                            <i class="fa-solid fa-times"></i> Conflicts with other installed plugins
+                            <i class="fa-solid fa-times text-red-500" aria-hidden="true"></i> Conflicts with other installed plugins
                         <?php } ?><br>
                     </div>
                 </div>
+            </div>
+
+            <div class="grid-item grid-padding mt-4">
+                <h2 class="text-subheader-nopt"><?= __CP('Settings'); ?></h2>
+                <p class="mb-2"><a href="?uninstall" class="bg-red-500 hover:bg-red-400 text-white transition duration-200 px-4 py-3"><?= __CP('Uninstall'); ?></a></p>
             </div>
 
             <?php $Actions = new Actions(); $Actions->Run('ControlPanel.PluginsPageEnd'); ?>

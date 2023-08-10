@@ -21,14 +21,14 @@ class PluginLoadOrder
     private function SortLoadOrder(): void
     {
         foreach ($this->LoadOrder as $Plugin) {
-            if ($Plugin == '.' || $Plugin == '..') {
+            if ($Plugin == '.' || $Plugin == '..' || strtoupper($Plugin) == '.DS_STORE') {
                 unset($this->LoadOrder[array_search($Plugin, $this->LoadOrder)]);
             } else {
                 $PM = new PluginManifest();
 
                 $Manifest = $PM->GetManifest($Plugin);
 
-                if ($Manifest->Dependencies != null) {
+                if (isset($Manifest->Dependencies) && $Manifest->Dependencies !== null) {
                     foreach ($Manifest->Dependencies as $Dependency) {
                         if (in_array($Dependency, $this->LoadOrder)) {
                             $DependencyIndex = array_search($Dependency, $this->LoadOrder);
