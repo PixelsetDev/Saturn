@@ -29,7 +29,7 @@ class MySQLiDB
 
     public function Select(string $what, string $from, string $where, string $action, string|null $order = null, string|null $limit = null): array|object|int|null
     {
-        if ($what != '*') {
+        if ($what !== '*') {
             $query = 'SELECT `'.$what.'` FROM `'.$from.'`';
         } else {
             $query = 'SELECT * FROM `'.$from.'`';
@@ -52,17 +52,22 @@ class MySQLiDB
         $this->error = null;
 
         if ($result) {
-            if ($action == 'all:assoc') {
+            if ($result->num_rows == 0) {
+                $this->num_rows = 0;
+                return null;
+            }
+
+            if ($action === 'all:assoc') {
                 $actionResult = $result->fetch_all(MYSQLI_ASSOC);
-            } elseif ($action == 'all:num') {
+            } elseif ($action === 'all:num') {
                 $actionResult = $result->fetch_all();
-            } elseif ($action == 'first:assoc') {
+            } elseif ($action === 'first:assoc') {
                 $actionResult = $result->fetch_array(MYSQLI_ASSOC);
-            } elseif ($action == 'first:num') {
+            } elseif ($action === 'first:num') {
                 $actionResult = $result->fetch_array(MYSQLI_NUM);
-            } elseif ($action == 'first:object') {
+            } elseif ($action === 'first:object') {
                 $actionResult = $result->fetch_object();
-            } elseif ($action == 'all:raw') {
+            } elseif ($action === 'all:raw') {
                 $actionResult = $result;
             } else {
                 $actionResult = false;

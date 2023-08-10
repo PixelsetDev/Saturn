@@ -807,6 +807,12 @@ video {
   gap: 0.5rem;
 }
 
+@media (min-width: 1024px) {
+  .grid-block {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .grid-item {
   --tw-bg-opacity: 1;
   background-color: rgb(245 245 245 / var(--tw-bg-opacity));

@@ -18,15 +18,13 @@ class Permissions {
     {
         $DB = new DBMS();
         $Result = $DB->Select('*', 'user_permissions', "`uuid` = '".$DB->Escape($UUID)."'", 'first:object');
-        if ($DB->RowCount() == 1) {
-            $this->Permissions = $Result;
-        } else {
-            $this->Permissions = null;
-        }
+        $this->Permissions = $Result;
     }
 
     function HasPermission(array $RequestedPermissions, string $Operation): bool
     {
+        if ($this->Permissions == null) { return false; }
+
         if ($Operation === 'OR') {
             foreach ($RequestedPermissions as $RP) {
                 if (property_exists($this->Permissions, $RP)) {

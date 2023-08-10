@@ -21,7 +21,7 @@
 }
 
 .grid-block {
-    @apply grid grid-cols-2 gap-2;
+    @apply grid grid-cols-2 lg:grid-cols-3 gap-2;
 }
 
 .grid-item {
@@ -133,7 +133,7 @@
 /* TABLE */
 
 .td {
-    @apply border bg-neutral-400 dark:border-neutral-900 dark:bg-neutral-700 bg-neutral-100 px-2 py-1;
+    @apply border border-neutral-400 dark:border-neutral-900 dark:bg-neutral-700 bg-neutral-100 px-2 py-1;
 }
 
 /* BUTTON */

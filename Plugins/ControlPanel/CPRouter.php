@@ -2,6 +2,7 @@
 
 namespace ControlPanel;
 
+use Saturn\DatabaseManager\DBMS;
 use Saturn\HTTP\Router;
 use Saturn\SessionManager\Authenticate;
 use Saturn\AccountManager\Permissions;
@@ -33,13 +34,20 @@ class CPRouter
                 if ($Permissions->HasPermission(['administrator','panel_settings'],'OR')) {
                     // Has access to editing pages
                     $Router->GET('/panel/plugins', '../Plugins/ControlPanel/Views/Plugins.php');
+                    $Router->GET('/panel/users', '../Plugins/ControlPanel/Views/Users.php');
                     global $SaturnPlugins;
                     foreach ($SaturnPlugins as $Plugin => $Loaded) {
                         $Router->GET('/panel/plugins/'.$Plugin, '../Plugins/ControlPanel/Views/Plugin.php');
                     }
+                    $DBMS = new DBMS();
+                    $Users = $DBMS->Select('*','user','1','all:assoc');
+                    foreach ($Users as $User) {
+                        $Router->GET('/panel/users/'.$User['uuid'], '../Plugins/ControlPanel/Views/User.php');
+                    }
                 } else {
                     // Does not have access to editing pages
                     $Router->GET('/panel/plugins', '../Plugins/ControlPanel/Views/NoAccess.php');
+                    $Router->GET('/panel/users', '../Plugins/ControlPanel/Views/NoAccess.php');
                 }
 
                 // Has access to control panel
