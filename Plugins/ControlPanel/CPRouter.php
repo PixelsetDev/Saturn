@@ -15,12 +15,12 @@ class CPRouter
     public function Register(Router $Router): void
     {
         $this->Router = $Router;
-        $this->Permissions = new Permissions($_SESSION['UUID']);
 
         require_once __DIR__.'/../../Processes/Saturn/SessionManager/Authenticate.php';
         $Authenticate = new Authenticate();
 
         if (isset($_SESSION['Username']) && isset($_SESSION['Token']) && $Authenticate->Validate()) {
+            $this->Permissions = new Permissions($_SESSION['UUID']);
             $this->Account(true);
             $this->Panel(true);
         } else {
