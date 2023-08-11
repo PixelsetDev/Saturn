@@ -31,10 +31,10 @@ class Translation
         return false;
     }
 
-    private function DoTranslation(string $LanguageFile, string $Key)
+    private function DoTranslation(string $LanguageFile, string $Key): string
     {
         $LanguageJSON = json_decode($LanguageFile);
 
-        return $LanguageJSON->$Key ?? $Key ?? 'Unknown';
+        return $LanguageJSON->$Key ?? 'Unknown';
     }
 }
